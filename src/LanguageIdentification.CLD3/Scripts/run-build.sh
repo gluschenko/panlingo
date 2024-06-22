@@ -6,7 +6,7 @@ echo "Hello world";
 workspace="build_temp"
 
 mkdir "$workspace" -p
-cp -a ThirdParty/. $workspace
+cp -a ../../third_party/. $workspace
 ls -R .
 
 rm "$workspace/setup.py"

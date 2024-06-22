@@ -58,7 +58,7 @@ public class CLD3Detector : IDisposable
     }
 }
 
-internal static class CLD3DetectorWrapper
+public static class CLD3DetectorWrapper
 {
 #pragma warning disable IDE1006 // Naming Styles
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
