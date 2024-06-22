@@ -1,0 +1,3 @@
+[submodule "third_party/cld3"]
+	path = third_party/cld3
+	url = https://github.com/google/cld3.git
