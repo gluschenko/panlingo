@@ -29,6 +29,15 @@ jobs:
       working-directory: ${{env.ROOT}}
       run: ls -R
 
+    - name: 🚀 Prepare LanguageIdentification.CLD3.Native
+      working-directory: ${{env.ROOT}}/..
+      run: |
+          cd ./${{env.ROOT}}/LanguageIdentification.CLD3.Native
+          bash -c ./Scripts/setup-build.sh
+          bash -c ./Scripts/run-build.sh
+          dotnet pack -c Release -o out
+
+
     - name: 🚀 Pack LanguageIdentification.CLD3.Native
       working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3.Native
       run: dotnet pack -c Release -o out 
