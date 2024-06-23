@@ -19,12 +19,10 @@
     <DocumentationFile>..\LanguageIdentification.CLD3.xml</DocumentationFile>
   </PropertyGroup>
 
-  <!--
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="$([MSBuild]::IsOSPlatform('Linux'))">
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)'=='Release' AND $([MSBuild]::IsOSPlatform('Linux'))">
     <Exec Command="bash -c ./Scripts/setup-build.sh" />
     <Exec Command="bash -c ./Scripts/run-build.sh" />
   </Target>
-  -->
 
   <ItemGroup>
     <None Update="libcld3.so">
