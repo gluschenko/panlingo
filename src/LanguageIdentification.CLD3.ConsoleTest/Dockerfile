@@ -11,17 +11,18 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /repo
 COPY ["src/LanguageIdentification.CLD3.ConsoleTest/LanguageIdentification.CLD3.ConsoleTest.csproj", "src/LanguageIdentification.CLD3.ConsoleTest/"]
 COPY ["src/LanguageIdentification.CLD3/LanguageIdentification.CLD3.csproj", "src/LanguageIdentification.CLD3/"]
+COPY ["src/LanguageIdentification.CLD3.Native/LanguageIdentification.CLD3.Native.csproj", "src/LanguageIdentification.CLD3.Native/"]
 
 ### CLD3
-COPY ["src/LanguageIdentification.CLD3/Scripts/setup-build.sh", "src/LanguageIdentification.CLD3/Scripts/"]
-RUN cd /repo/src/LanguageIdentification.CLD3 && bash -c ./Scripts/setup-build.sh
+COPY ["src/LanguageIdentification.CLD3.Native/Scripts/setup-build.sh", "src/LanguageIdentification.CLD3.Native/Scripts/"]
+RUN cd /repo/src/LanguageIdentification.CLD3.Native && bash -c ./Scripts/setup-build.sh
 ###
 
 RUN dotnet restore "./src/LanguageIdentification.CLD3.ConsoleTest/LanguageIdentification.CLD3.ConsoleTest.csproj"
 COPY . .
 
 ### CLD3
-RUN cd /repo/src/LanguageIdentification.CLD3 && bash -c ./Scripts/run-build.sh
+RUN cd /repo/src/LanguageIdentification.CLD3.Native && bash -c ./Scripts/run-build.sh
 ###
 
 WORKDIR /repo/src/LanguageIdentification.CLD3.ConsoleTest

@@ -29,13 +29,13 @@ jobs:
       working-directory: ${{env.ROOT}}
       run: ls -R
 
-    - name: 🚀 Pack LanguageIdentification.CLD3
-      working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3
-      run: dotnet pack -c Release -o out
-
     - name: 🚀 Pack LanguageIdentification.CLD3.Native
       working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3.Native
       run: dotnet pack -c Release -o out 
+
+    - name: 🚀 Pack LanguageIdentification.CLD3
+      working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3
+      run: dotnet pack -c Release -o out
 
     - uses: actions/upload-artifact@v2
       if: github.ref == 'refs/heads/master'
@@ -71,12 +71,12 @@ jobs:
       working-directory: ${{env.ROOT}}
       run: ls -R
 
-    - name: 🚚 Push LanguageIdentification.CLD3 to GitHub registry
-      working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3
-      run: dotnet nuget push ./out/*.nupkg --skip-duplicate -k ${{env.NUGET_AUTH_TOKEN}}
-
     - name: 🚚 Push LanguageIdentification.CLD3.Native to GitHub registry
       working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3.Native
+      run: dotnet nuget push ./out/*.nupkg --skip-duplicate -k ${{env.NUGET_AUTH_TOKEN}}
+
+    - name: 🚚 Push LanguageIdentification.CLD3 to GitHub registry
+      working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3
       run: dotnet nuget push ./out/*.nupkg --skip-duplicate -k ${{env.NUGET_AUTH_TOKEN}}
 
     - uses: geekyeggo/delete-artifact@v1

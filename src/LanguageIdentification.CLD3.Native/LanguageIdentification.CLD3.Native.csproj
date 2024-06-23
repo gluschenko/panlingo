@@ -20,4 +20,10 @@
     <DocumentationFile>..\LanguageIdentification.CLD3.Native.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="libcld3.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
