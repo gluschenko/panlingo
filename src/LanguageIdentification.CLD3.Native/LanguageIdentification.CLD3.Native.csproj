@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>0.0.0.4</Version>
+    <Version>0.0.0.5</Version>
     <PackageId>LanguageIdentification.CLD3.Native</PackageId>
     <AssemblyName>LanguageIdentification.CLD3.Native</AssemblyName>
     <RootNamespace>LanguageIdentification.CLD3.Native</RootNamespace>
@@ -40,9 +40,11 @@
 
   <ItemGroup>
     <Content Include="libcld3.so">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/linux-x64/native</PackagePath>
       <pack>true</pack>
+      <Visible>false</Visible>
     </Content>
   </ItemGroup>
 
