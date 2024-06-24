@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>0.0.0.2</Version>
+    <Version>0.0.0.3</Version>
     <PackageId>LanguageIdentification.CLD3.Native</PackageId>
     <AssemblyName>LanguageIdentification.CLD3.Native</AssemblyName>
     <RootNamespace>LanguageIdentification.CLD3.Native</RootNamespace>
@@ -11,7 +11,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -37,13 +36,6 @@
     <Exec Command="docker run --name $(DockerContainerName) -v $(ThirdPartyAbsolutePath):/repo/third_party/cld3/ -v $(CurrentAbsolutePath):/repo/src/LanguageIdentification.CLD3.Native $(DockerImageName)" />
     <Exec Command="docker rm $(DockerContainerName) --force" />
   </Target>
-
-  <!--
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)'=='Release' AND $([MSBuild]::IsOSPlatform('Linux'))">
-    <Exec Command="bash -c ./Scripts/setup-build.sh" />
-    <Exec Command="bash -c ./Scripts/run-build.sh" />
-  </Target>
-  -->
 
   <ItemGroup>
     <None Include="..\.dockerignore" Link=".dockerignore">
