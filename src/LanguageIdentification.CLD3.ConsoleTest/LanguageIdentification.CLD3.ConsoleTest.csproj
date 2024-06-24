@@ -8,6 +8,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <ContainerDevelopmentMode>Regular</ContainerDevelopmentMode>
     <DockerfileContext>..\..</DockerfileContext>
+    <DockerfileRunArguments>--name language-identification-cld3</DockerfileRunArguments>
   </PropertyGroup>
 
   <ItemGroup>

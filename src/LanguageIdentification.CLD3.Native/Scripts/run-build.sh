@@ -22,7 +22,7 @@ python3 setup.py build_ext
 
 ls -R build
 
-cd ..
+cd -
 find "$workspace/build" -name "libcld3.so" -exec cp {} libcld3.so \;
 rm -rf "$workspace"
 ldd libcld3.so

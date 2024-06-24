@@ -10,8 +10,8 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /repo
 COPY ["src/LanguageIdentification.CLD3.ConsoleTest/LanguageIdentification.CLD3.ConsoleTest.csproj", "src/LanguageIdentification.CLD3.ConsoleTest/"]
-COPY ["src/LanguageIdentification.CLD3/LanguageIdentification.CLD3.csproj", "src/LanguageIdentification.CLD3/"]
 COPY ["src/LanguageIdentification.CLD3.Native/LanguageIdentification.CLD3.Native.csproj", "src/LanguageIdentification.CLD3.Native/"]
+COPY ["src/LanguageIdentification.CLD3/LanguageIdentification.CLD3.csproj", "src/LanguageIdentification.CLD3/"]
 
 ### CLD3
 COPY ["src/LanguageIdentification.CLD3.Native/Scripts/setup-build.sh", "src/LanguageIdentification.CLD3.Native/Scripts/"]

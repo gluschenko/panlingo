@@ -20,15 +20,43 @@
     <DocumentationFile>..\LanguageIdentification.CLD3.Native.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <DockerImageName>cld3-builder</DockerImageName>
+    <DockerContainerName>cld3-builder</DockerContainerName>
+    <CurrentAbsolutePath>$(MSBuildThisFileDirectory)</CurrentAbsolutePath>
+    <ThirdPartyAbsolutePath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', '../../third_party/cld3/'))</ThirdPartyAbsolutePath>
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)'=='Release'">
+    <Exec Command="echo $(CurrentAbsolutePath)" />
+    <Exec Command="echo $(ThirdPartyAbsolutePath)" />
+    <Exec Command="echo 'docker build --file ./Dockerfile -t $(DockerImageName) ../..'" />
+    <Exec Command="echo 'docker run --name $(DockerContainerName) -v $(ThirdPartyAbsolutePath):/repo/third_party/cld3/ -v $(CurrentAbsolutePath):/repo/src/LanguageIdentification.CLD3.Native $(DockerImageName)'" />
+    
+    <Exec Command="docker build --file ./Dockerfile -t $(DockerImageName) ../.." />
+    <Exec Command="docker run --name $(DockerContainerName) -v $(ThirdPartyAbsolutePath):/repo/third_party/cld3/ -v $(CurrentAbsolutePath):/repo/src/LanguageIdentification.CLD3.Native $(DockerImageName)" />
+    <Exec Command="docker rm $(DockerContainerName) --force" />
+  </Target>
+
+  <!--
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)'=='Release' AND $([MSBuild]::IsOSPlatform('Linux'))">
     <Exec Command="bash -c ./Scripts/setup-build.sh" />
     <Exec Command="bash -c ./Scripts/run-build.sh" />
   </Target>
+  -->
 
   <ItemGroup>
-    <None Update="libcld3.so">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="..\.dockerignore" Link=".dockerignore">
+      <DependentUpon>$(DockerDefaultDockerfile)</DependentUpon>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="libcld3.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <pack>true</pack>
+    </Content>
   </ItemGroup>
 
 </Project>
