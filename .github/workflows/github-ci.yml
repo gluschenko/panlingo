@@ -31,10 +31,6 @@ jobs:
       working-directory: ${{env.ROOT}}
       run: ls -R
 
-    - name: 📂 Files (third party)
-      working-directory: ${{env.ROOT}}/../third_party
-      run: ls -R
-
     - name: 🚀 Pack LanguageIdentification.CLD3.Native
       working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3.Native
       run: dotnet pack -c Release -o out 
@@ -80,6 +76,10 @@ jobs:
     - name: 🚚 Push LanguageIdentification.CLD3.Native to GitHub registry
       working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3.Native
       run: dotnet nuget push ./out/*.nupkg --skip-duplicate -k ${{env.NUGET_AUTH_TOKEN}}
+
+    - name: 📂 Files
+      working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3
+      run: ls -R
 
     - name: 🚚 Push LanguageIdentification.CLD3 to GitHub registry
       working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3
