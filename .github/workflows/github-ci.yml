@@ -11,6 +11,12 @@ jobs:
   # DEPLOY NUGETS
   build_nugets:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        projectName: 
+          - LanguageIdentification.CLD3.Native
+          - LanguageIdentification.CLD3
     env:
       ROOT: ./src
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
@@ -31,13 +37,9 @@ jobs:
       working-directory: ${{env.ROOT}}
       run: ls -R
 
-    - name: 🚀 Pack LanguageIdentification.CLD3.Native
-      working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3.Native
+    - name: 🚀 Pack ${{matrix.projectName}}
+      working-directory: ${{env.ROOT}}/${{matrix.projectName}}
       run: dotnet pack -c Release -o out 
-
-    - name: 🚀 Pack LanguageIdentification.CLD3
-      working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3
-      run: dotnet pack -c Release -o out
 
     - uses: actions/upload-artifact@v2
       if: github.ref == 'refs/heads/master'
@@ -50,6 +52,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_nugets
     if: github.ref == 'refs/heads/master'
+    strategy:
+      fail-fast: false
+      matrix:
+        projectName: 
+          - LanguageIdentification.CLD3.Native
+          - LanguageIdentification.CLD3
     env:
       ROOT: ./src
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
@@ -73,16 +81,8 @@ jobs:
       working-directory: ${{env.ROOT}}
       run: ls -R
 
-    - name: 🚚 Push LanguageIdentification.CLD3.Native to GitHub registry
-      working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3.Native
-      run: dotnet nuget push ./out/*.nupkg --skip-duplicate -k ${{env.NUGET_AUTH_TOKEN}}
-
-    - name: 📂 Files
-      working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3
-      run: ls -R
-
-    - name: 🚚 Push LanguageIdentification.CLD3 to GitHub registry
-      working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3
+    - name: 🚚 Push ${{matrix.projectName}} to GitHub registry
+      working-directory: ${{env.ROOT}}/${{matrix.projectName}}
       run: dotnet nuget push ./out/*.nupkg --skip-duplicate -k ${{env.NUGET_AUTH_TOKEN}}
 
     - uses: geekyeggo/delete-artifact@v1
