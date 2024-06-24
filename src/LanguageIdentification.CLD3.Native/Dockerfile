@@ -1,15 +1,14 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 
-# RUN apt -y update
-# RUN apt -y install protobuf-compiler libprotobuf-dev
-
 WORKDIR /repo
 COPY ["src/LanguageIdentification.CLD3.Native/LanguageIdentification.CLD3.Native.csproj", "src/LanguageIdentification.CLD3.Native/"]
 COPY ["src/LanguageIdentification.CLD3.Native/Scripts/setup-build.sh", "src/LanguageIdentification.CLD3.Native/Scripts/"]
+COPY ["src/LanguageIdentification.CLD3.Native/Scripts/setup-runtime.sh", "src/LanguageIdentification.CLD3.Native/Scripts/"]
 COPY ["src/LanguageIdentification.CLD3.Native/Scripts/run-build.sh", "src/LanguageIdentification.CLD3.Native/Scripts/"]
 WORKDIR /repo/src/LanguageIdentification.CLD3.Native
 
+RUN bash ./Scripts/setup-runtime.sh
 RUN bash ./Scripts/setup-build.sh
 
 COPY . .
