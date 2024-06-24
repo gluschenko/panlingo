@@ -30,14 +30,6 @@ jobs:
       run: ls -R
 
     - name: 🚀 Pack LanguageIdentification.CLD3.Native
-      working-directory: ${{env.ROOT}}/..
-      run: |
-          cd ./${{env.ROOT}}/LanguageIdentification.CLD3.Native
-          sudo bash -c ./Scripts/setup-build.sh
-          sudo bash -c ./Scripts/run-build.sh
-          dotnet pack -c Release -o out 
-
-    - name: 🚀 Pack LanguageIdentification.CLD3.Native
       working-directory: ${{env.ROOT}}/LanguageIdentification.CLD3.Native
       run: dotnet pack -c Release -o out 
 
