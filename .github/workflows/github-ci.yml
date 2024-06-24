@@ -15,7 +15,9 @@ jobs:
       ROOT: ./src
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+      with: 
+        submodules: 'true'
 
     - name: 📂 Setup .NET Core
       uses: actions/setup-dotnet@v1
@@ -56,7 +58,7 @@ jobs:
       ROOT: ./src
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - uses: actions/download-artifact@v2
       with:
