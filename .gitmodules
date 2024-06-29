@@ -1,3 +1,6 @@
 [submodule "third_party/cld3"]
 	path = third_party/cld3
 	url = https://github.com/google/cld3.git
+[submodule "third_party/fastText"]
+	path = third_party/fastText
+	url = https://github.com/facebookresearch/fastText.git
