@@ -4,7 +4,23 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "/models/fasttext217.bin");
+
+            using var fastText = new FastTextWrapper();
+
+            fastText.LoadModel(modelPath);
+
+            var labels = fastText.GetLabels();
+
+            var text = "Hello, how are you? Привіт, як справи? Привет, как дела?";
+            var predictions = fastText.PredictMultiple(text, 10);
+
+            Console.WriteLine($"{text}:");
+
+            foreach (var prediction in predictions)
+            {
+                Console.WriteLine($"{prediction.Label.Replace("__label__", "")}: {prediction.Probability}");
+            }
         }
     }
 }
