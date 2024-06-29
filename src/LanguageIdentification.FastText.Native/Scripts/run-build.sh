@@ -19,8 +19,9 @@ cd ..
 
 echo $(pwd)
 ls -R build
+cd ..
 
-find build -name "fasttext" -exec cp {} fasttext \;
+find "$workspace/build" -name "fasttext" -exec cp {} fasttext \;
 mv fasttext libfasttext.so
 rm -rf "$workspace"
 ldd libfasttext.so
