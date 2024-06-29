@@ -2,12 +2,32 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+    <Version>0.0.0.1</Version>
+    <PackageId>LanguageIdentification.FastText</PackageId>
+    <AssemblyName>LanguageIdentification.FastText</AssemblyName>
+    <RootNamespace>LanguageIdentification.FastText</RootNamespace>
+    <Authors>Alexander Gluschenko</Authors>
+    <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591,1573</NoWarn>
+    <DocumentationFile>..\LanguageIdentification.FastText.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LanguageIdentification.FastText.Native\LanguageIdentification.FastText.Native.csproj" />
+    <ProjectReference Include="..\LanguageIdentification.FastText.Native\LanguageIdentification.FastText.Native.csproj">
+      <IncludeAssets>All</IncludeAssets>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
 </Project>

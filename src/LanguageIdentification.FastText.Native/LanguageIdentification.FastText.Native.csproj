@@ -2,8 +2,50 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+    <Version>0.0.0.1</Version>
+    <PackageId>LanguageIdentification.FastText.Native</PackageId>
+    <AssemblyName>LanguageIdentification.FastText.Native</AssemblyName>
+    <RootNamespace>LanguageIdentification.FastText.Native</RootNamespace>
+    <Authors>Alexander Gluschenko</Authors>
+    <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591,1573</NoWarn>
+    <DocumentationFile>..\LanguageIdentification.FastText.Native.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DockerImageName>fasttext-builder</DockerImageName>
+    <DockerContainerName>fasttext-builder</DockerContainerName>
+    <CurrentAbsolutePath>$(MSBuildThisFileDirectory)</CurrentAbsolutePath>
+    <ThirdPartyAbsolutePath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', '../../third_party/fastText/'))</ThirdPartyAbsolutePath>
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)'=='Release'">
+    <Exec Command="docker build --file ./Dockerfile -t $(DockerImageName) ../.." />
+    <Exec Command="docker run --name $(DockerContainerName) -v $(ThirdPartyAbsolutePath):/repo/third_party/fastText/ -v $(CurrentAbsolutePath):/repo/src/LanguageIdentification.FastText.Native $(DockerImageName)" />
+    <Exec Command="docker rm $(DockerContainerName) --force" />
+  </Target>
+
+  <ItemGroup>
+    <None Include="..\.dockerignore" Link=".dockerignore">
+      <DependentUpon>$(DockerDefaultDockerfile)</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="libfasttext.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/linux-x64/native</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+  
 </Project>
