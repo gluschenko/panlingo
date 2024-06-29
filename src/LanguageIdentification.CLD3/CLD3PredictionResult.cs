@@ -2,20 +2,18 @@
 
 namespace LanguageIdentification.CLD3;
 
-#pragma warning disable IDE1006 // Naming Styles
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-public struct CLD3PredictionResult
+public readonly struct CLD3PredictionResult
 {
     [MarshalAs(UnmanagedType.LPStr)]
-    public string Language;
+    public readonly string Language;
 
     [MarshalAs(UnmanagedType.R8)]
-    public double Probability;
+    public readonly double Probability;
 
     [MarshalAs(UnmanagedType.I1)]
-    public bool IsReliable;
+    public readonly bool IsReliable;
 
     [MarshalAs(UnmanagedType.R8)]
-    public double Proportion;
+    public readonly double Proportion;
 }
-#pragma warning restore IDE1006 // Naming Styles
