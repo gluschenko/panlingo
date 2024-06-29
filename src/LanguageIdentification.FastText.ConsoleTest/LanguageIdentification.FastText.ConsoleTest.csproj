@@ -6,6 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <ContainerDevelopmentMode>Regular</ContainerDevelopmentMode>
+    <DockerfileContext>..\..</DockerfileContext>
+    <DockerfileRunArguments>--name language-identification-fasttext</DockerfileRunArguments>
   </PropertyGroup>
 
   <ItemGroup>
