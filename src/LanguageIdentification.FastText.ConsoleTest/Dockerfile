@@ -2,8 +2,8 @@ FROM mcr.microsoft.com/dotnet/runtime:8.0 AS base
 WORKDIR /app
 
 ### FastText
-RUN apt -y update
-RUN apt -y install protobuf-compiler libprotobuf-dev
+RUN mkdir /models -p
+RUN curl -o /models/fasttext217.bin https://huggingface.co/facebook/fasttext-language-identification/resolve/main/model.bin?download=true
 ###
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
