@@ -6,7 +6,7 @@
         {
             var modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "/models/fasttext217.bin");
 
-            using var fastText = new FastTextWrapper();
+            using var fastText = new FastTextDetector();
 
             fastText.LoadModel(modelPath);
 
