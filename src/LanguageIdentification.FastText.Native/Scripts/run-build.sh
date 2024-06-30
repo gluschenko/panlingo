@@ -14,15 +14,15 @@ cd "$workspace"
 mkdir build
 cd build
 cmake ..
-make
+make -j $(nproc) # make
 cd ..
 
 echo $(pwd)
 ls -R build
 cd ..
 
-find "$workspace/build" -name "fasttext" -exec cp {} fasttext \;
-mv fasttext libfasttext.so
+find "$workspace/build" -name "libfasttext.so.0" -exec cp {} libfasttext.so.0 \;
+mv libfasttext.so.0 libfasttext.so
 rm -rf "$workspace"
 ldd libfasttext.so
 

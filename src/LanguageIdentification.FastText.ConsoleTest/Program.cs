@@ -1,10 +1,18 @@
-﻿namespace LanguageIdentification.FastText.ConsoleTest
+﻿using System.Runtime.InteropServices;
+
+namespace LanguageIdentification.FastText.ConsoleTest
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            var modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "/models/fasttext217.bin");
+            var files = Directory.GetFiles(".", "*", SearchOption.AllDirectories);
+
+            var xx = File.Exists("libfasttext.so");
+
+            NativeLibrary.Load(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "libfasttext.so"));
+
+            var modelPath = "/models/fasttext217.bin";
 
             using var fastText = new FastTextDetector();
 
