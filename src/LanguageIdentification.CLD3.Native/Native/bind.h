@@ -4,14 +4,17 @@
 #include "nnet_language_identifier.h"
 
 using namespace std;
-#ifdef __linux__
-#define EXPORT __attribute__((visibility("default")))
-#else
-#if defined(_MSC_VER)
-#define EXPORT __declspec(dllexport)
-#else
-#define EXPORT __attribute__((visibility("default")))
-#endif
+
+#ifndef EXPORT
+#   ifdef __linux__
+#       define EXPORT __attribute__((visibility("default")))
+#   else
+#       if defined(_MSC_VER)
+#           define EXPORT __declspec(dllexport)
+#       else
+#           define EXPORT __attribute__((visibility("default")))
+#       endif
+#   endif
 #endif
 
 extern "C" {
