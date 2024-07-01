@@ -65,6 +65,7 @@ jobs:
           - LanguageIdentification.FastText.Native
           - LanguageIdentification.FastText
     permissions:
+      contents: read
       packages: write
     env:
       ROOT: ./src
