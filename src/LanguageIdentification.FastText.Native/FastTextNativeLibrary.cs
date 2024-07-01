@@ -1,10 +1,10 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace LanguageIdentification.CLD3.Native
+namespace LanguageIdentification.FastText.Native
 {
-    public static class CLD3NativeLibrary
+    public class FastTextNativeLibrary
     {
-        public const string Name = "libcld3.so";
+        public const string Name = "libfasttext.so";
 
         public static void LoadNativeLibrary()
         {
@@ -12,3 +12,4 @@ namespace LanguageIdentification.CLD3.Native
         }
     }
 }
+

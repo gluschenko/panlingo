@@ -18,16 +18,18 @@ jobs:
         projectName: 
           - LanguageIdentification.CLD3.Native
           - LanguageIdentification.CLD3
+          - LanguageIdentification.FastText.Native
+          - LanguageIdentification.FastText
     env:
       ROOT: ./src
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with: 
         submodules: 'true'
 
     - name: 📂 Setup .NET Core
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.100
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
@@ -60,11 +62,13 @@ jobs:
         projectName: 
           - LanguageIdentification.CLD3.Native
           - LanguageIdentification.CLD3
+          - LanguageIdentification.FastText.Native
+          - LanguageIdentification.FastText
     env:
       ROOT: ./src
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - uses: actions/download-artifact@v2
       with:
@@ -72,7 +76,7 @@ jobs:
         path: ${{env.ROOT}}
 
     - name: 📂 Setup .NET Core
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.100
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
