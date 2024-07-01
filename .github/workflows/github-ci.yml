@@ -20,6 +20,8 @@ jobs:
           - LanguageIdentification.CLD3
           - LanguageIdentification.FastText.Native
           - LanguageIdentification.FastText
+    permissions:
+      packages: write
     env:
       ROOT: ./src
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
@@ -33,8 +35,6 @@ jobs:
       with:
         dotnet-version: 8.0.100
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{secrets.PACKAGES_WRITE_TOKEN}} 
 
     - name: 📂 Files
       working-directory: ${{env.ROOT}}
@@ -64,9 +64,11 @@ jobs:
           - LanguageIdentification.CLD3
           - LanguageIdentification.FastText.Native
           - LanguageIdentification.FastText
+    permissions:
+      packages: write
     env:
       ROOT: ./src
-      NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+      NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
     steps:
     - uses: actions/checkout@v4
 
@@ -80,8 +82,6 @@ jobs:
       with:
         dotnet-version: 8.0.100
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{secrets.PACKAGES_WRITE_TOKEN}} 
 
     - name: 📂 Files
       working-directory: ${{env.ROOT}}
