@@ -5,6 +5,7 @@ WORKDIR /app
 RUN apt -y update
 RUN apt -y install curl
 RUN mkdir /models -p
+RUN curl --location -o /models/fasttext176.bin https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin
 RUN curl --location -o /models/fasttext217.bin https://huggingface.co/facebook/fasttext-language-identification/resolve/main/model.bin?download=true
 ###
 
