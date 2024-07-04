@@ -32,11 +32,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cld3", "cld3", "{F54C81D9-9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "fasttext", "fasttext", "{FCC39A16-91D3-48C6-BEBE-4CFB4CA6A365}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.FastText", "LanguageIdentification.FastText\LanguageIdentification.FastText.csproj", "{9310BAF6-084A-43C8-8949-B84A29B67A2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.FastText", "LanguageIdentification.FastText\LanguageIdentification.FastText.csproj", "{9310BAF6-084A-43C8-8949-B84A29B67A2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.FastText.ConsoleTest", "LanguageIdentification.FastText.ConsoleTest\LanguageIdentification.FastText.ConsoleTest.csproj", "{F9061126-EC76-4405-B8F4-ADBF436B66D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.FastText.ConsoleTest", "LanguageIdentification.FastText.ConsoleTest\LanguageIdentification.FastText.ConsoleTest.csproj", "{F9061126-EC76-4405-B8F4-ADBF436B66D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.FastText.Native", "LanguageIdentification.FastText.Native\LanguageIdentification.FastText.Native.csproj", "{B6A6035E-AB74-4188-87D1-176C160A60B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.FastText.Native", "LanguageIdentification.FastText.Native\LanguageIdentification.FastText.Native.csproj", "{B6A6035E-AB74-4188-87D1-176C160A60B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cld2", "cld2", "{33499C07-9A27-4AD7-9855-F01EAEC392CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.CLD2", "LanguageIdentification.CLD2\LanguageIdentification.CLD2.csproj", "{933AE320-DCC7-483D-8D3A-DC79A30CE275}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.CLD2.Native", "LanguageIdentification.CLD2.Native\LanguageIdentification.CLD2.Native.csproj", "{FA0388BE-DF78-41D4-A09D-9EE1DED77097}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.CLD2.ConsoleTest", "LanguageIdentification.CLD2.ConsoleTest\LanguageIdentification.CLD2.ConsoleTest.csproj", "{7FD7BC00-00A2-4391-94D1-CD848C5DD471}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +80,18 @@ Global
 		{B6A6035E-AB74-4188-87D1-176C160A60B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6A6035E-AB74-4188-87D1-176C160A60B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6A6035E-AB74-4188-87D1-176C160A60B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{933AE320-DCC7-483D-8D3A-DC79A30CE275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{933AE320-DCC7-483D-8D3A-DC79A30CE275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{933AE320-DCC7-483D-8D3A-DC79A30CE275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{933AE320-DCC7-483D-8D3A-DC79A30CE275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA0388BE-DF78-41D4-A09D-9EE1DED77097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA0388BE-DF78-41D4-A09D-9EE1DED77097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA0388BE-DF78-41D4-A09D-9EE1DED77097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA0388BE-DF78-41D4-A09D-9EE1DED77097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FD7BC00-00A2-4391-94D1-CD848C5DD471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FD7BC00-00A2-4391-94D1-CD848C5DD471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FD7BC00-00A2-4391-94D1-CD848C5DD471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FD7BC00-00A2-4391-94D1-CD848C5DD471}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +103,9 @@ Global
 		{9310BAF6-084A-43C8-8949-B84A29B67A2A} = {FCC39A16-91D3-48C6-BEBE-4CFB4CA6A365}
 		{F9061126-EC76-4405-B8F4-ADBF436B66D6} = {FCC39A16-91D3-48C6-BEBE-4CFB4CA6A365}
 		{B6A6035E-AB74-4188-87D1-176C160A60B0} = {FCC39A16-91D3-48C6-BEBE-4CFB4CA6A365}
+		{933AE320-DCC7-483D-8D3A-DC79A30CE275} = {33499C07-9A27-4AD7-9855-F01EAEC392CD}
+		{FA0388BE-DF78-41D4-A09D-9EE1DED77097} = {33499C07-9A27-4AD7-9855-F01EAEC392CD}
+		{7FD7BC00-00A2-4391-94D1-CD848C5DD471} = {33499C07-9A27-4AD7-9855-F01EAEC392CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C9437BCA-E720-4E50-AD1B-6AC91C4A4E5C}
