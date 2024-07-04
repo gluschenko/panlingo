@@ -16,6 +16,8 @@ jobs:
       fail-fast: false
       matrix:
         projectName: 
+          - LanguageIdentification.CLD2.Native
+          - LanguageIdentification.CLD2
           - LanguageIdentification.CLD3.Native
           - LanguageIdentification.CLD3
           - LanguageIdentification.FastText.Native
@@ -61,6 +63,8 @@ jobs:
       fail-fast: false
       matrix:
         projectName: 
+          - LanguageIdentification.CLD2.Native
+          - LanguageIdentification.CLD2
           - LanguageIdentification.CLD3.Native
           - LanguageIdentification.CLD3
           - LanguageIdentification.FastText.Native
