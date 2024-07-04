@@ -56,8 +56,8 @@ extern "C"
 
         PredictionResult* result = new PredictionResult[*resultCount];
         for (int i = 0; i < *resultCount; ++i) {
-            result[i].language = CLD2::LanguageCode(language3[i]);
-            result[i].script = CLD2::ULScriptCode(CLD2::LanguageRecognizedScript(language3[i], 0));
+            result[i].language = strdup(CLD2::LanguageCode(language3[i]));
+            result[i].script = strdup(CLD2::ULScriptCode(CLD2::LanguageRecognizedScript(language3[i], 0)));
             result[i].probability = normalized_score3[i];
             result[i].is_reliable = is_reliable;
             result[i].proportion = percent3[i];
@@ -72,6 +72,6 @@ extern "C"
             free((void*)results[i].language);
             free((void*)results[i].script);
         }
-        // delete[] results;
+        delete[] results;
     }
 }
