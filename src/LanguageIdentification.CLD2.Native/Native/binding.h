@@ -22,7 +22,7 @@ extern "C"
         double proportion;
     };
 
-    EXPORT PredictionResult* PredictLanguage(char *data, int length, int* resultCount);
+    EXPORT PredictionResult* PredictLanguage(char* text, int* resultCount);
 
     EXPORT void FreeResults(PredictionResult* results, int count);
 }

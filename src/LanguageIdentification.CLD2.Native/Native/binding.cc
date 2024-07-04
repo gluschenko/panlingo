@@ -1,4 +1,4 @@
-#include <cstddef>
+﻿#include <cstddef>
 #include <cstring>
 #include <vector>
 #include <string>
@@ -9,58 +9,67 @@
 
 extern "C"
 {
-    PredictionResult* PredictLanguage(char *data, int length, int* resultCount)
+    PredictionResult* PredictLanguage(char *text, int* resultCount)
     {
+        int textLength = strlen(text);
+
         bool is_plain_text = true;
         CLD2::CLDHints cldhints = {NULL, NULL, 0, CLD2::UNKNOWN_LANGUAGE};
         bool allow_extended_lang = true;
         int flags = 0;
-        CLD2::Language language3[MAX_LANGUAGE_COUNT];
-        int percent3[MAX_LANGUAGE_COUNT];
-        double normalized_score3[MAX_LANGUAGE_COUNT];
         CLD2::ResultChunkVector result_chunk_vector;
         int text_bytes;
         bool is_reliable;
 
-        if (length <= 0)
-        {
-            length = strlen(data);
-        }
+        CLD2::Language languages[MAX_LANGUAGE_COUNT];
+        int percents[MAX_LANGUAGE_COUNT];
+        double scores[MAX_LANGUAGE_COUNT];
 
         CLD2::Language summary_lang = CLD2::UNKNOWN_LANGUAGE;
 
         summary_lang = CLD2::ExtDetectLanguageSummary(
-            data,
-            length,
+            text,
+            textLength,
             is_plain_text,
             &cldhints,
             flags,
-            language3,
-            percent3,
-            normalized_score3,
+            languages,
+            percents,
+            scores,
             &result_chunk_vector,
             &text_bytes,
             &is_reliable);
 
-        int a = 0;
+        int predictionCount = 0;
 
         for (int i = 0; i < MAX_LANGUAGE_COUNT; ++i)
         {
-            // if (percent3[i] > 0) 
+            if (percents[i] > 0 || (i == 0 && languages[i] == CLD2::UNKNOWN_LANGUAGE))
             {
-                a++;
+                predictionCount++;
             }
         }
 
-        *resultCount = a;
+        *resultCount = predictionCount;
 
-        PredictionResult* result = new PredictionResult[*resultCount];
-        for (int i = 0; i < *resultCount; ++i) {
-            result[i].language = strdup(CLD2::LanguageCode(language3[i]));
-            result[i].script = strdup(CLD2::ULScriptCode(CLD2::LanguageRecognizedScript(language3[i], 0)));
-            result[i].probability = normalized_score3[i];
+        int scoreTotal = 0;
+
+        for (int i = 0; i < predictionCount; ++i) {
+            scoreTotal += scores[i];
+        }
+
+        PredictionResult* result = new PredictionResult[predictionCount];
+        for (int i = 0; i < predictionCount; ++i) {
+
+            CLD2::Language language = languages[i];
+            double probability = scoreTotal > 0 ? scores[i] / (double)scoreTotal : 1.0;
+            double proportion = percents[i] / 100.0;
+
+            result[i].language = strdup(CLD2::LanguageCode(language));
+            result[i].script = strdup(CLD2::ULScriptCode(CLD2::LanguageRecognizedScript(language, 0)));
+            result[i].probability = probability;
             result[i].is_reliable = is_reliable;
-            result[i].proportion = percent3[i];
+            result[i].proportion = proportion;
         }
 
         return result;

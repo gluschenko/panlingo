@@ -17,12 +17,8 @@ public class CLD2Detector : IDisposable
         {
             _semaphore.Wait();
 
-            var textLength = text.Length;
-            var textPointer = Marshal.StringToHGlobalUni(text);
-
             var resultPtr = CLD2DetectorWrapper.PredictLanguage(
-                data: textPointer, 
-                length: textLength,
+                text: text, 
                 resultCount: out var resultCount
             );
 
@@ -36,12 +32,11 @@ public class CLD2Detector : IDisposable
                     result[i] = Marshal.PtrToStructure<CLD2PredictionResult>(resultPtr + i * structSize);
                 }
 
-                return result;
+                return result.OrderByDescending(x => x.Probability).ToArray();
             }
             finally
             {
                 CLD2DetectorWrapper.FreeResults(resultPtr, resultCount);
-                Marshal.FreeHGlobal(textPointer);
             }
         }
         finally
