@@ -1,4 +1,4 @@
-#include "bind.h"
+#include "binding.h"
 #include <cstring>
 
 using namespace chrome_lang_id;

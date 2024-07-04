@@ -50,7 +50,7 @@ SRCS = [
     'src/cld_3/protos/sentence.pb.cc',
     'src/cld_3/protos/task_spec.pb.cc',
     # CUSTOM
-    'src/bind.cc',
+    'src/binding.cc',
 ]
 
 

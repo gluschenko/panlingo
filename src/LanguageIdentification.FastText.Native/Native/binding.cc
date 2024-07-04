@@ -6,7 +6,7 @@
 #include "fasttext.h"
 #include "autotune.h"
 
-#include "bind.h"
+#include "binding.h"
 
 using namespace std;
 using namespace fasttext;
