@@ -17,11 +17,11 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/include)
 
 
-set(SOURCES ${PROJECT_SOURCE_DIR}/bind.cc)
+set(SOURCES ${PROJECT_SOURCE_DIR}/binding.cc)
 
 add_library(objlib OBJECT ${SOURCES})
 
 add_library(fasttext SHARED $<TARGET_OBJECTS:objlib>)
-set_target_properties(fasttext PROPERTIES PUBLIC_HEADER ${PROJECT_SOURCE_DIR}/bind.h)
+set_target_properties(fasttext PROPERTIES PUBLIC_HEADER ${PROJECT_SOURCE_DIR}/binding.h)
 target_link_libraries(fasttext fasttext-static_pic)
 

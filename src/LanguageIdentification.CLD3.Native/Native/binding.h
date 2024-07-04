@@ -18,7 +18,7 @@ using namespace std;
 #endif
 
 extern "C" {
-    struct Result {
+    struct PredictionResult {
         const char* language;
         double probability;
         bool is_reliable;
@@ -27,7 +27,7 @@ extern "C" {
 
     EXPORT void* CreateIdentifier(int minNumBytes, int maxNumBytes);
     EXPORT void FreeIdentifier(void* identifier);
-    EXPORT Result FindLanguage(void* identifier, const char* text);
-    EXPORT Result* FindTopNMostFreqLangs(void* identifier, const char* text, int numLangs, int* resultCount);
-    EXPORT void FreeResults(Result* results, int count);
+    EXPORT PredictionResult FindLanguage(void* identifier, const char* text);
+    EXPORT PredictionResult* FindTopNMostFreqLangs(void* identifier, const char* text, int numLangs, int* resultCount);
+    EXPORT void FreeResults(PredictionResult* results, int count);
 }

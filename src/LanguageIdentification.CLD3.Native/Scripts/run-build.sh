@@ -11,8 +11,8 @@ ls -R .
 
 rm "$workspace/setup.py"
 cp Native/setup.py "$workspace/setup.py"
-cp Native/bind.cc "$workspace/src/bind.cc"
-cp Native/bind.h "$workspace/src/bind.h"
+cp Native/binding.cc "$workspace/src/binding.cc"
+cp Native/binding.h "$workspace/src/binding.h"
 
 cd "$workspace"
 export PYTHONPATH=$(pwd)/site-packages
