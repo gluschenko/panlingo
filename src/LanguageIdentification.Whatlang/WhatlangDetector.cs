@@ -17,12 +17,17 @@ public class WhatlangDetector : IDisposable
         {
             _semaphore.Wait();
 
-            var resultPtr = WhatlangDetectorWrapper.PredictLanguage(
+            var resultPtr = WhatlangDetectorWrapper.whatlang_detect(
                 text: text, 
-                resultCount: out var resultCount
+                info: out var resultCount
             );
 
-            try
+            return new[] 
+            {
+                resultCount,
+            };
+
+            /*try
             {
                 var result = new WhatlangPredictionResult[resultCount];
                 var structSize = Marshal.SizeOf(typeof(WhatlangPredictionResult));
@@ -37,7 +42,7 @@ public class WhatlangDetector : IDisposable
             finally
             {
                 WhatlangDetectorWrapper.FreeResults(resultPtr, resultCount);
-            }
+            }*/
         }
         finally
         {

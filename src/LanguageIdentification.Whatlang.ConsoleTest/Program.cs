@@ -12,7 +12,7 @@
 
             foreach (var lang in topLangs)
             {
-                Console.WriteLine($"Language: {lang.Language}, Probability: {lang.Probability}, IsReliable: {lang.IsReliable}, Proportion: {lang.Proportion}");
+                Console.WriteLine($"Language: {lang.Lang}, Probability: {lang.Confidence}, IsReliable: {lang.IsReliable}, Script: {lang.Script}");
             }
 
             ;

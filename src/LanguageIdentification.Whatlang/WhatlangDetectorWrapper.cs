@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using System.Text;
 using LanguageIdentification.Whatlang.Native;
 
 namespace LanguageIdentification.Whatlang;
@@ -6,10 +7,22 @@ namespace LanguageIdentification.Whatlang;
 internal static class WhatlangDetectorWrapper
 {
     [DllImport(WhatlangNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-    public static extern nint PredictLanguage(string text, out int resultCount);
+    public static extern WhatLangStatus whatlang_detect([MarshalAs(UnmanagedType.LPStr)] string text, out WhatlangPredictionResult info);
 
     [DllImport(WhatlangNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-    public static extern void FreeResults(nint results, int count);
+    public static extern WhatLangStatus whatlang_detectn([MarshalAs(UnmanagedType.LPStr)] string text, UIntPtr len, out WhatlangPredictionResult info);
+
+    [DllImport(WhatlangNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
+    public static extern int whatlang_lang_code(WhatLangLang lang, out string buffer);
+    
+    [DllImport(WhatlangNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
+    public static extern int whatlang_lang_eng_name(WhatLangLang lang, out string buffer);
+    
+    [DllImport(WhatlangNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
+    public static extern int whatlang_lang_name(WhatLangLang lang, out string buffer);
+    
+    [DllImport(WhatlangNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
+    public static extern int whatlang_script_name(WhatLangScript script, out string buffer);
 }
 
 public enum WhatLangStatus : byte
