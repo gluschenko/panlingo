@@ -17,6 +17,8 @@ cargo build --release
 
 ls -R .
 
+cd ..
+
 find "$workspace/target/release" -name "libwhatlang.so" -exec cp {} libwhatlang.so \;
 rm -rf "$workspace"
 ldd libwhatlang.so
