@@ -4,13 +4,24 @@
     {
         static void Main(string[] args)
         {
-            using var cld2 = new WhatlangDetector();
+            using var whatlang = new WhatlangDetector();
 
-            string text = "Hello, how are you? Привіт, як справи? Привет, как дела?";
+            var texts = new[] 
+            {
+                "Hello, how are you?",
+                "Привіт, як справи?",
+                "Привет, как дела?",
+            };
 
-            var topLangs = cld2.PredictLanguage(text);
+            var list = new List<IEnumerable<WhatlangPredictionResult>>();
 
-            foreach (var lang in topLangs)
+            foreach (var text in texts)
+            {
+                var predictions = whatlang.PredictLanguage(text);
+                list.Add(predictions);
+            }
+
+            foreach (var lang in list.SelectMany(x => x))
             {
                 Console.WriteLine($"Language: {lang.Lang}, Probability: {lang.Confidence}, IsReliable: {lang.IsReliable}, Script: {lang.Script}");
             }
