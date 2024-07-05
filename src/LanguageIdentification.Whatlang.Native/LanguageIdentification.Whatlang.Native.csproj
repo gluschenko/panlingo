@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Version>0.0.0.1</Version>
+    <PackageId>LanguageIdentification.Whatlang.Native</PackageId>
+    <AssemblyName>LanguageIdentification.Whatlang.Native</AssemblyName>
+    <RootNamespace>LanguageIdentification.Whatlang.Native</RootNamespace>
+    <Authors>Alexander Gluschenko</Authors>
+    <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591,1573</NoWarn>
+    <DocumentationFile>..\LanguageIdentification.Whatlang.Native.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DockerImageName>whatlang-builder</DockerImageName>
+    <DockerContainerName>whatlang-builder</DockerContainerName>
+    <CurrentAbsolutePath>$(MSBuildThisFileDirectory)</CurrentAbsolutePath>
+    <ThirdPartyAbsolutePath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', '../../third_party/whatlang-ffi/'))</ThirdPartyAbsolutePath>
+    <NativeFileAbsolutePath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', 'libwhatlang.so'))</NativeFileAbsolutePath>
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="!Exists('$(NativeFileAbsolutePath)')">
+    <Exec Command="docker build --file ./Dockerfile -t $(DockerImageName) ../.." />
+    <Exec Command="docker run --name $(DockerContainerName) -v $(ThirdPartyAbsolutePath):/repo/third_party/whatlang-ffi/ -v $(CurrentAbsolutePath):/repo/src/LanguageIdentification.Whatlang.Native $(DockerImageName)" />
+    <Exec Command="docker rm $(DockerContainerName) --force" />
+  </Target>
+
+  <ItemGroup>
+    <None Include="..\.dockerignore" Link=".dockerignore">
+      <DependentUpon>$(DockerDefaultDockerfile)</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="libwhatlang.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/linux-x64/native</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+
+</Project>

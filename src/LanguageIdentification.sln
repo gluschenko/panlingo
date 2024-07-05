@@ -40,11 +40,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.Fast
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cld2", "cld2", "{33499C07-9A27-4AD7-9855-F01EAEC392CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.CLD2", "LanguageIdentification.CLD2\LanguageIdentification.CLD2.csproj", "{933AE320-DCC7-483D-8D3A-DC79A30CE275}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.CLD2", "LanguageIdentification.CLD2\LanguageIdentification.CLD2.csproj", "{933AE320-DCC7-483D-8D3A-DC79A30CE275}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.CLD2.Native", "LanguageIdentification.CLD2.Native\LanguageIdentification.CLD2.Native.csproj", "{FA0388BE-DF78-41D4-A09D-9EE1DED77097}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.CLD2.Native", "LanguageIdentification.CLD2.Native\LanguageIdentification.CLD2.Native.csproj", "{FA0388BE-DF78-41D4-A09D-9EE1DED77097}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.CLD2.ConsoleTest", "LanguageIdentification.CLD2.ConsoleTest\LanguageIdentification.CLD2.ConsoleTest.csproj", "{7FD7BC00-00A2-4391-94D1-CD848C5DD471}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.CLD2.ConsoleTest", "LanguageIdentification.CLD2.ConsoleTest\LanguageIdentification.CLD2.ConsoleTest.csproj", "{7FD7BC00-00A2-4391-94D1-CD848C5DD471}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "whatlang", "whatlang", "{C930A06F-0951-4774-97CC-001A477C1092}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.Whatlang.ConsoleTest", "LanguageIdentification.Whatlang.ConsoleTest\LanguageIdentification.Whatlang.ConsoleTest.csproj", "{B76A01EA-4FA5-414F-B7FD-0F7741F7F29D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.Whatlang.Native", "LanguageIdentification.Whatlang.Native\LanguageIdentification.Whatlang.Native.csproj", "{047FA65C-E597-4C7A-9AC9-C689ACB85C60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.Whatlang", "LanguageIdentification.Whatlang\LanguageIdentification.Whatlang.csproj", "{E12065C1-B27B-49F6-A401-0F468B63F0F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,6 +100,18 @@ Global
 		{7FD7BC00-00A2-4391-94D1-CD848C5DD471}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FD7BC00-00A2-4391-94D1-CD848C5DD471}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FD7BC00-00A2-4391-94D1-CD848C5DD471}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B76A01EA-4FA5-414F-B7FD-0F7741F7F29D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B76A01EA-4FA5-414F-B7FD-0F7741F7F29D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B76A01EA-4FA5-414F-B7FD-0F7741F7F29D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B76A01EA-4FA5-414F-B7FD-0F7741F7F29D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{047FA65C-E597-4C7A-9AC9-C689ACB85C60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{047FA65C-E597-4C7A-9AC9-C689ACB85C60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{047FA65C-E597-4C7A-9AC9-C689ACB85C60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{047FA65C-E597-4C7A-9AC9-C689ACB85C60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E12065C1-B27B-49F6-A401-0F468B63F0F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E12065C1-B27B-49F6-A401-0F468B63F0F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E12065C1-B27B-49F6-A401-0F468B63F0F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E12065C1-B27B-49F6-A401-0F468B63F0F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,6 +126,9 @@ Global
 		{933AE320-DCC7-483D-8D3A-DC79A30CE275} = {33499C07-9A27-4AD7-9855-F01EAEC392CD}
 		{FA0388BE-DF78-41D4-A09D-9EE1DED77097} = {33499C07-9A27-4AD7-9855-F01EAEC392CD}
 		{7FD7BC00-00A2-4391-94D1-CD848C5DD471} = {33499C07-9A27-4AD7-9855-F01EAEC392CD}
+		{B76A01EA-4FA5-414F-B7FD-0F7741F7F29D} = {C930A06F-0951-4774-97CC-001A477C1092}
+		{047FA65C-E597-4C7A-9AC9-C689ACB85C60} = {C930A06F-0951-4774-97CC-001A477C1092}
+		{E12065C1-B27B-49F6-A401-0F468B63F0F4} = {C930A06F-0951-4774-97CC-001A477C1092}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C9437BCA-E720-4E50-AD1B-6AC91C4A4E5C}
