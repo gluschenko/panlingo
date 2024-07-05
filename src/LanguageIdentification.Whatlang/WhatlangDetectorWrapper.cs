@@ -6,23 +6,23 @@ namespace LanguageIdentification.Whatlang;
 
 internal static class WhatlangDetectorWrapper
 {
-    [DllImport(WhatlangNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-    public static extern WhatLangStatus whatlang_detect([MarshalAs(UnmanagedType.LPStr)] string text, out WhatlangPredictionResult info);
+    [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_detect", CallingConvention = CallingConvention.Cdecl)]
+    public static extern WhatLangStatus WhatlangDetect(string text, out WhatlangPredictionResult info);
 
-    [DllImport(WhatlangNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-    public static extern WhatLangStatus whatlang_detectn([MarshalAs(UnmanagedType.LPStr)] string text, UIntPtr len, out WhatlangPredictionResult info);
+    [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_detectn", CallingConvention = CallingConvention.Cdecl)]
+    public static extern WhatLangStatus WhatlangDetectN(string text, int len, out WhatlangPredictionResult info);
 
-    [DllImport(WhatlangNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int whatlang_lang_code(WhatLangLang lang, out string buffer);
+    [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_lang_code", CallingConvention = CallingConvention.Cdecl)]
+    public static extern int WhatlangLangCode(WhatLangLang lang, out string buffer);
     
-    [DllImport(WhatlangNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int whatlang_lang_eng_name(WhatLangLang lang, out string buffer);
+    [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_lang_eng_name", CallingConvention = CallingConvention.Cdecl)]
+    public static extern int WhatlangLangEngName(WhatLangLang lang, out string buffer);
     
-    [DllImport(WhatlangNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int whatlang_lang_name(WhatLangLang lang, out string buffer);
+    [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_lang_name", CallingConvention = CallingConvention.Cdecl)]
+    public static extern int WhatlangLangName(WhatLangLang lang, out string buffer);
     
-    [DllImport(WhatlangNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int whatlang_script_name(WhatLangScript script, out string buffer);
+    [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_script_name", CallingConvention = CallingConvention.Cdecl)]
+    public static extern int WhatlangScriptName(WhatLangScript script, out string buffer);
 }
 
 public enum WhatLangStatus : byte

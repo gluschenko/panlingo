@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-namespace LanguageIdentification.Whatlang;
+﻿namespace LanguageIdentification.Whatlang;
 
 public class WhatlangDetector : IDisposable
 {
@@ -17,32 +15,25 @@ public class WhatlangDetector : IDisposable
         {
             _semaphore.Wait();
 
-            var resultPtr = WhatlangDetectorWrapper.whatlang_detect(
+            var status = WhatlangDetectorWrapper.WhatlangDetect(
                 text: text, 
                 info: out var resultCount
             );
+
+            if (status == WhatLangStatus.DetectFailure)
+            {
+                return Array.Empty<WhatlangPredictionResult>();
+            }
+
+            if (status == WhatLangStatus.BadTextPtr || status == WhatLangStatus.BadOutputPtr)
+            {
+                throw new Exception($"Failed to detect langauge: {status}");
+            }
 
             return new[] 
             {
                 resultCount,
             };
-
-            /*try
-            {
-                var result = new WhatlangPredictionResult[resultCount];
-                var structSize = Marshal.SizeOf(typeof(WhatlangPredictionResult));
-
-                for (var i = 0; i < resultCount; i++)
-                {
-                    result[i] = Marshal.PtrToStructure<WhatlangPredictionResult>(resultPtr + i * structSize);
-                }
-
-                return result.OrderByDescending(x => x.Probability).ToArray();
-            }
-            finally
-            {
-                WhatlangDetectorWrapper.FreeResults(resultPtr, resultCount);
-            }*/
         }
         finally
         {
