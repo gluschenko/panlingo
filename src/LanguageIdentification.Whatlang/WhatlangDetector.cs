@@ -11,7 +11,7 @@ public class WhatlangDetector : IDisposable
         _semaphore = new(1, 1);
     }
 
-    public IEnumerable<WhatlangPredictionResult> PredictLanguage(string text)
+    public WhatlangPredictionResult? PredictLanguage(string text)
     {
         try
         {
@@ -24,7 +24,7 @@ public class WhatlangDetector : IDisposable
 
             if (status == WhatLangStatus.DetectFailure)
             {
-                return Array.Empty<WhatlangPredictionResult>();
+                return null;
             }
 
             if (status == WhatLangStatus.BadTextPtr || status == WhatLangStatus.BadOutputPtr)
@@ -32,10 +32,7 @@ public class WhatlangDetector : IDisposable
                 throw new Exception($"Failed to detect langauge: {status}");
             }
 
-            return new[] 
-            {
-                resultCount,
-            };
+            return resultCount;
         }
         finally
         {

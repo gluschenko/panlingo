@@ -13,15 +13,18 @@
                 "Привет, как дела?",
             };
 
-            var list = new List<IEnumerable<WhatlangPredictionResult>>();
+            var list = new List<WhatlangPredictionResult>();
 
             foreach (var text in texts)
             {
-                var predictions = whatlang.PredictLanguage(text);
-                list.Add(predictions);
+                var prediction = whatlang.PredictLanguage(text);
+                if (prediction.HasValue)
+                {
+                    list.Add(prediction.Value);
+                }
             }
 
-            foreach (var lang in list.SelectMany(x => x))
+            foreach (var lang in list)
             {
                 Console.WriteLine($"Language: {lang.Lang}, Probability: {lang.Confidence}, IsReliable: {lang.IsReliable}, Script: {lang.Script}");
             }
