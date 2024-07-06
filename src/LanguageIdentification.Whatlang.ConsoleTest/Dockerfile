@@ -9,15 +9,15 @@ COPY ["src/LanguageIdentification.Whatlang.Native/LanguageIdentification.Whatlan
 COPY ["src/LanguageIdentification.Whatlang/LanguageIdentification.Whatlang.csproj", "src/LanguageIdentification.Whatlang/"]
 
 ### Whatlang
-COPY ["src/LanguageIdentification.Whatlang.Native/Scripts/setup-build.sh", "src/LanguageIdentification.Whatlang.Native/Scripts/"]
-RUN cd /repo/src/LanguageIdentification.Whatlang.Native && bash -c ./Scripts/setup-build.sh
+## COPY ["src/LanguageIdentification.Whatlang.Native/Scripts/setup-build.sh", "src/LanguageIdentification.Whatlang.Native/Scripts/"]
+## RUN cd /repo/src/LanguageIdentification.Whatlang.Native && bash -c ./Scripts/setup-build.sh
 ###
 
 RUN dotnet restore "./src/LanguageIdentification.Whatlang.ConsoleTest/LanguageIdentification.Whatlang.ConsoleTest.csproj"
 COPY . .
 
 ### Whatlang
-RUN cd /repo/src/LanguageIdentification.Whatlang.Native && bash -c ./Scripts/run-build.sh
+## RUN cd /repo/src/LanguageIdentification.Whatlang.Native && bash -c ./Scripts/run-build.sh
 ###
 
 WORKDIR /repo/src/LanguageIdentification.Whatlang.ConsoleTest
