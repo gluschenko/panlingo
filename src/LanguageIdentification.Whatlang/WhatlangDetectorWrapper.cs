@@ -13,16 +13,16 @@ internal static class WhatlangDetectorWrapper
     public static extern WhatLangStatus WhatlangDetectN(string text, int len, out WhatlangPredictionResult info);
 
     [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_lang_code", CallingConvention = CallingConvention.Cdecl)]
-    public static extern int WhatlangLangCode(WhatLangLang lang, out string buffer);
+    public static extern int WhatlangLangCode(WhatLangLang lang, [MarshalAs(UnmanagedType.LPStr)] StringBuilder buffer, UIntPtr bufferSize);
     
     [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_lang_eng_name", CallingConvention = CallingConvention.Cdecl)]
-    public static extern int WhatlangLangEngName(WhatLangLang lang, out string buffer);
+    public static extern int WhatlangLangEngName(WhatLangLang lang, [MarshalAs(UnmanagedType.LPStr)] StringBuilder buffer, UIntPtr bufferSize);
     
     [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_lang_name", CallingConvention = CallingConvention.Cdecl)]
-    public static extern int WhatlangLangName(WhatLangLang lang, out string buffer);
+    public static extern int WhatlangLangName(WhatLangLang lang, [MarshalAs(UnmanagedType.LPStr)] StringBuilder buffer, UIntPtr bufferSize);
     
     [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_script_name", CallingConvention = CallingConvention.Cdecl)]
-    public static extern int WhatlangScriptName(WhatLangScript script, out string buffer);
+    public static extern int WhatlangScriptName(WhatLangScript script, [MarshalAs(UnmanagedType.LPStr)] StringBuilder buffer, UIntPtr bufferSize);
 }
 
 public enum WhatLangStatus : byte
@@ -33,6 +33,11 @@ public enum WhatLangStatus : byte
     BadOutputPtr = 3,
 }
 
+/// <summary>
+/// Language codes due to ISO 639-3
+/// 
+/// https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
+/// </summary>
 public enum WhatLangLang : byte
 {
     /// Esperanto (Esperanto)
@@ -175,31 +180,36 @@ public enum WhatLangLang : byte
     Hye = 68,
 }
 
+/// <summary>
+/// Language scripts due to ISO 15924.
+/// 
+/// https://en.wikipedia.org/wiki/ISO_15924
+/// </summary>
 public enum WhatLangScript : byte
 {
-    ARABIC = 0, 
-    BENGALI = 1, 
-    CYRILLIC = 2, 
-    DEVANAGARI = 3, 
-    ETHIOPIC = 4,
-    GEORGIAN = 5, 
-    GREEK = 6, 
-    GUJARATI = 7,
-    GURMUKHI = 8,
-    HANGUL = 9,
-    HEBREW = 10, 
-    HIRAGANA = 11, 
-    KANNADA = 12, 
-    KATAKANA = 13, 
-    KHMER = 14,
-    LATIN = 15,
-    MALAYALAM = 16, 
-    MANDARIN = 17, 
-    MYANMAR = 18, 
-    ORIYA = 19,
-    SINHALA = 20, 
-    TAMIL = 21, 
-    TELUGU = 22, 
-    THAI = 23,
+    Arab = 0, // Arabic
+    Beng = 1, // Bengali
+    Cyrl = 2, // Cyrillic
+    Deva = 3, // Devanagari
+    Ethi = 4, // Ethiopic
+    Geor = 5, // Georgian
+    Grek = 6, // Greek
+    Gujr = 7, // Gujarati
+    Guru = 8, // Gurmukhi
+    Hang = 9, // Hangul
+    Hebr = 10, // Hebrew
+    Hira = 11, // Hiragana
+    Knda = 12, // Kannada
+    Kana = 13, // Katakana
+    Khmr = 14, // Khmer
+    Latn = 15, // Latin
+    Mlym = 16, // Malayalam
+    Mand = 17, // Mandarin
+    Mymr = 18, // Myanmar
+    Orya = 19, // Oriya (now officially Odia)
+    Sinh = 20, // Sinhala
+    Taml = 21, // Tamil
+    Telu = 22, // Telugu
+    Thai = 23  // Thai
 }
 

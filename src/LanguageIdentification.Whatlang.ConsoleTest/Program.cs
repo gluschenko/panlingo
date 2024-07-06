@@ -26,6 +26,14 @@
                 Console.WriteLine($"Language: {lang.Lang}, Probability: {lang.Confidence}, IsReliable: {lang.IsReliable}, Script: {lang.Script}");
             }
 
+            var code1 = whatlang.GetLangCode(WhatLangLang.Ukr);
+
+            var code2 = whatlang.GetLangName(WhatLangLang.Ukr);
+
+            var code3 = whatlang.GetScriptName(WhatLangScript.Cyrl);
+
+            var code4 = whatlang.GetLangEngName(WhatLangLang.Ukr);
+
             ;
         }
     }
