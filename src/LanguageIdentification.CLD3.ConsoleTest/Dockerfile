@@ -14,15 +14,15 @@ COPY ["src/LanguageIdentification.CLD3.Native/LanguageIdentification.CLD3.Native
 COPY ["src/LanguageIdentification.CLD3/LanguageIdentification.CLD3.csproj", "src/LanguageIdentification.CLD3/"]
 
 ### CLD3
-COPY ["src/LanguageIdentification.CLD3.Native/Scripts/setup-build.sh", "src/LanguageIdentification.CLD3.Native/Scripts/"]
-RUN cd /repo/src/LanguageIdentification.CLD3.Native && bash -c ./Scripts/setup-build.sh
+# COPY ["src/LanguageIdentification.CLD3.Native/Scripts/setup-build.sh", "src/LanguageIdentification.CLD3.Native/Scripts/"]
+# RUN cd /repo/src/LanguageIdentification.CLD3.Native && bash -c ./Scripts/setup-build.sh
 ###
 
 RUN dotnet restore "./src/LanguageIdentification.CLD3.ConsoleTest/LanguageIdentification.CLD3.ConsoleTest.csproj"
 COPY . .
 
 ### CLD3
-RUN cd /repo/src/LanguageIdentification.CLD3.Native && bash -c ./Scripts/run-build.sh
+# RUN cd /repo/src/LanguageIdentification.CLD3.Native && bash -c ./Scripts/run-build.sh
 ###
 
 WORKDIR /repo/src/LanguageIdentification.CLD3.ConsoleTest

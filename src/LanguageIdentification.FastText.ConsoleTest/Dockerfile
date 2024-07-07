@@ -17,15 +17,15 @@ COPY ["src/LanguageIdentification.FastText.Native/LanguageIdentification.FastTex
 COPY ["src/LanguageIdentification.FastText/LanguageIdentification.FastText.csproj", "src/LanguageIdentification.FastText/"]
 
 ### FastText
-COPY ["src/LanguageIdentification.FastText.Native/Scripts/setup-build.sh", "src/LanguageIdentification.FastText.Native/Scripts/"]
-RUN cd /repo/src/LanguageIdentification.FastText.Native && bash -c ./Scripts/setup-build.sh
+# COPY ["src/LanguageIdentification.FastText.Native/Scripts/setup-build.sh", "src/LanguageIdentification.FastText.Native/Scripts/"]
+# RUN cd /repo/src/LanguageIdentification.FastText.Native && bash -c ./Scripts/setup-build.sh
 ###
 
 RUN dotnet restore "./src/LanguageIdentification.FastText.ConsoleTest/LanguageIdentification.FastText.ConsoleTest.csproj"
 COPY . .
 
 ### FastText
-RUN cd /repo/src/LanguageIdentification.FastText.Native && bash -c ./Scripts/run-build.sh
+# RUN cd /repo/src/LanguageIdentification.FastText.Native && bash -c ./Scripts/run-build.sh
 ###
 
 WORKDIR /repo/src/LanguageIdentification.FastText.ConsoleTest
