@@ -5,21 +5,31 @@ namespace LanguageIdentification.FastText;
 public class FastTextDetector : IDisposable
 {
     private IntPtr _fastText;
+    private readonly SemaphoreSlim _semaphore;
 
     public FastTextDetector()
     {
         _fastText = FastTextDetectorWrapper.CreateFastText();
+        _semaphore = new SemaphoreSlim(1, 1);
     }
 
     public string ModelPath { get; private set; } = string.Empty;
 
     public void LoadModel(string path)
     {
-        var errptr = IntPtr.Zero;
-        FastTextDetectorWrapper.FastTextLoadModel(_fastText, path, ref errptr);
-        CheckError(errptr);
+        _semaphore.Wait();
+        try
+        {
+            var errptr = IntPtr.Zero;
+            FastTextDetectorWrapper.FastTextLoadModel(_fastText, path, ref errptr);
+            CheckError(errptr);
 
-        ModelPath = path;
+            ModelPath = path;
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
     }
 
     public IEnumerable<PredictionLabel> GetLabels()
@@ -89,10 +99,19 @@ public class FastTextDetector : IDisposable
 
     public void Dispose()
     {
-        if (_fastText != IntPtr.Zero)
+        try
         {
-            FastTextDetectorWrapper.DestroyFastText(_fastText);
-            _fastText = IntPtr.Zero;
+            _semaphore.Wait();
+
+            if (_fastText != IntPtr.Zero)
+            {
+                FastTextDetectorWrapper.DestroyFastText(_fastText);
+                _fastText = IntPtr.Zero;
+            }
+        }
+        finally
+        {
+            _semaphore.Release();
         }
     }
 
