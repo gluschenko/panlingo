@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>0.0.0.5</Version>
+    <Version>0.0.0.6</Version>
     <PackageId>LanguageIdentification.CLD3</PackageId>
     <AssemblyName>LanguageIdentification.CLD3</AssemblyName>
     <RootNamespace>LanguageIdentification.CLD3</RootNamespace>
