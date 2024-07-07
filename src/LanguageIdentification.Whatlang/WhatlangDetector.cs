@@ -4,40 +4,29 @@ namespace LanguageIdentification.Whatlang;
 
 public class WhatlangDetector : IDisposable
 {
-    private readonly SemaphoreSlim _semaphore;
-
     public WhatlangDetector()
     {
-        _semaphore = new(1, 1);
+
     }
 
     public WhatlangPredictionResult? PredictLanguage(string text)
     {
-        try
+        var status = WhatlangDetectorWrapper.WhatlangDetect(
+            text: text, 
+            info: out var resultCount
+        );
+
+        if (status == WhatLangStatus.DetectFailure)
         {
-            _semaphore.Wait();
-
-            var status = WhatlangDetectorWrapper.WhatlangDetect(
-                text: text, 
-                info: out var resultCount
-            );
-
-            if (status == WhatLangStatus.DetectFailure)
-            {
-                return null;
-            }
-
-            if (status == WhatLangStatus.BadTextPtr || status == WhatLangStatus.BadOutputPtr)
-            {
-                throw new Exception($"Failed to detect langauge: {status}");
-            }
-
-            return resultCount;
+            return null;
         }
-        finally
+
+        if (status == WhatLangStatus.BadTextPtr || status == WhatLangStatus.BadOutputPtr)
         {
-            _semaphore.Release();
+            throw new Exception($"Failed to detect langauge: {status}");
         }
+
+        return resultCount;
     }
 
     public string GetLangCode(WhatLangLang lang)
