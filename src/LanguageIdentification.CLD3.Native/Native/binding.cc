@@ -23,7 +23,7 @@ PredictionResult FindLanguage(void* identifier, const char* text) {
     return result;
 }
 
-PredictionResult* FindTopNMostFreqLangs(void* identifier, const char* text, int numLangs, int* resultCount) {
+PredictionResult* FindLanguages(void* identifier, const char* text, int numLangs, int* resultCount) {
     NNetLanguageIdentifier* nativeIdentifier = static_cast<NNetLanguageIdentifier*>(identifier);
     auto nativeResults = nativeIdentifier->FindTopNMostFreqLangs(text, numLangs);
 

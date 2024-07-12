@@ -37,7 +37,7 @@ public class CLD3Detector : IDisposable
         int numLangs
     )
     {
-        var resultPtr = CLD3DetectorWrapper.FindTopNMostFreqLangs(
+        var resultPtr = CLD3DetectorWrapper.FindLanguages(
             identifier: _identifier,
             text: text,
             numLangs: numLangs,
