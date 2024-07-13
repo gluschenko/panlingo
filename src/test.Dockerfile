@@ -22,3 +22,6 @@ RUN \
   do \
     dotnet nuget add source $dir; \
   done
+
+RUN dotnet nuget list source
+
