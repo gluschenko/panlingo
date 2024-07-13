@@ -8,7 +8,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  # DEPLOY NUGETS
   build_nugets:
     name: 🚀 Pack ${{matrix.projectName}}
     runs-on: ubuntu-latest
@@ -56,10 +55,53 @@ jobs:
         path: ${{env.ROOT}}/**/out
         retention-days: 1
 
+  test_nugets:
+    name: 🧪 Test ${{matrix.projectName}}
+    runs-on: ubuntu-latest
+    needs: build_nugets
+    strategy:
+      fail-fast: false
+      matrix:
+        projectName: 
+          - LanguageIdentification.Tests
+    permissions:
+      contents: read
+      packages: write
+    env:
+      ROOT: ./src
+      NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+    steps:
+    - uses: actions/checkout@v4
+      with: 
+        submodules: 'true'
+
+    - uses: actions/download-artifact@v2
+      with:
+        name: build_nugets
+        path: ${{env.ROOT}}
+
+    - name: 📂 Setup .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.100
+        source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
+
+    - name: 📂 Files
+      working-directory: ${{env.ROOT}}
+      run: ls -R
+
+    - name: 📂 Build Docker Image
+      working-directory: ${{env.ROOT}}
+      run: docker build -f ./test.Dockerfile -t local-dotnet-test-sdk:latest .
+
+    - name: 🧪 Test ${{matrix.projectName}}
+      working-directory: ${{env.ROOT}}
+      run: docker run --rm -v $(pwd):/src -w /src/${{matrix.projectName}} local-dotnet-test-sdk:latest dotnet test -c Release
+
   deploy_nugets:
     name: 🚚 Push ${{matrix.projectName}}
     runs-on: ubuntu-latest
-    needs: build_nugets
+    needs: test_nugets
     if: github.ref == 'refs/heads/master'
     strategy:
       fail-fast: false
@@ -81,6 +123,8 @@ jobs:
       NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
     steps:
     - uses: actions/checkout@v4
+      with: 
+        submodules: 'true'
 
     - uses: actions/download-artifact@v2
       with:
