@@ -98,7 +98,7 @@ jobs:
       working-directory: ${{env.ROOT}}
       run: |
         docker run --rm -v $(pwd):/src -w /src/${{matrix.projectName}} local-dotnet-test-sdk:latest \
-        sh -c "for dir in $(find /src -name '*.nupkg' -exec dirname {} \; | sort -u); do dotnet nuget add source $dir; done && dotnet test -c Release"
+        sh -c "for dir in $(find . -name '*.nupkg' -exec dirname {} \; | sort -u); do dotnet nuget add source $dir; done && dotnet test -c Release"
 
   deploy_nugets:
     name: 🚚 Push ${{matrix.projectName}}
