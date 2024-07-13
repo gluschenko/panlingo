@@ -3,13 +3,6 @@
 RUN wget https://aka.ms/getvsdbgsh && \
     sh getvsdbgsh -v latest  -l /vsdbg
 
-# Adding local nuget packages if they were found
-RUN \
-  for dir in $(find /src -name '*.nupkg' -exec dirname {} \; | sort -u); \
-  do \
-    dotnet nuget add source $dir; \
-  done
-
 ### CLD3
 RUN apt -y update
 RUN apt -y install protobuf-compiler libprotobuf-dev
@@ -23,3 +16,9 @@ RUN curl --location -o /models/fasttext176.bin https://dl.fbaipublicfiles.com/fa
 # RUN curl --location -o /models/fasttext217.bin https://huggingface.co/facebook/fasttext-language-identification/resolve/main/model.bin?download=true
 ###
 
+# Adding local nuget packages
+RUN \
+  for dir in $(find /src -type d -path '*/out');\
+  do \
+    dotnet nuget add source $dir; \
+  done

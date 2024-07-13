@@ -80,16 +80,6 @@ jobs:
         name: build_nugets
         path: ${{env.ROOT}}
 
-    - name: 📂 Setup .NET Core
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.100
-        source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
-
-    - name: 📂 Files
-      working-directory: ${{env.ROOT}}
-      run: ls -R
-
     - name: 📂 Build Docker Image
       working-directory: ${{env.ROOT}}
       run: docker build -f ./test.Dockerfile -t local-dotnet-test-sdk:latest .
@@ -98,7 +88,7 @@ jobs:
       working-directory: ${{env.ROOT}}
       run: |
         docker run --rm -v $(pwd):/src -w /src/${{matrix.projectName}} local-dotnet-test-sdk:latest \
-        sh -c "for dir in $(find . -name '*.nupkg' -exec dirname {} \; | sort -u); do dotnet nuget add source $dir; done && dotnet test -c Release"
+        dotnet test -c Release
 
   deploy_nugets:
     name: 🚚 Push ${{matrix.projectName}}
