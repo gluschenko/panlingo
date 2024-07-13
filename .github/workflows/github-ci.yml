@@ -88,6 +88,8 @@ jobs:
       working-directory: ${{env.ROOT}}
       run: |
         docker run --rm -v $(pwd):/src -w /src/${{matrix.projectName}} local-dotnet-test-sdk:latest \
+        for dir in $(find . -type d -path '*/out'); do dotnet nuget add source $dir; done && \
+        dotnet nuget list source && \
         dotnet test -c Release
 
   deploy_nugets:

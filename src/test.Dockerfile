@@ -16,14 +16,4 @@ RUN curl --location -o /models/fasttext176.bin https://dl.fbaipublicfiles.com/fa
 # RUN curl --location -o /models/fasttext217.bin https://huggingface.co/facebook/fasttext-language-identification/resolve/main/model.bin?download=true
 ###
 
-RUN ls -R
-
-# Adding local nuget packages
-RUN \
-  for dir in $(find /src -type d -path '*/out');\
-  do \
-    dotnet nuget add source $dir; \
-  done
-
-RUN dotnet nuget list source
 
