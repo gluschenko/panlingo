@@ -53,6 +53,7 @@ jobs:
         name: build_nugets
         path: ${{env.ROOT}}/**/out
         retention-days: 1
+        overwrite: 'true'
 
   test_nugets:
     name: 🧪 Test ${{matrix.projectName}}
