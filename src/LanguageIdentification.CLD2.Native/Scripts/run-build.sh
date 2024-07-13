@@ -28,3 +28,4 @@ rm -rf "$workspace"
 ldd libcld2.so
 
 echo "Goodbye world";
+

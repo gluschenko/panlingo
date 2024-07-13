@@ -28,3 +28,4 @@ rm -rf "$workspace"
 ldd libfasttext.so
 
 echo "Goodbye world";
+
