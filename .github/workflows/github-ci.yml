@@ -49,7 +49,6 @@ jobs:
       run: dotnet pack -c Release -o out 
 
     - uses: actions/upload-artifact@v2
-      if: github.ref == 'refs/heads/master'
       with:
         name: build_nugets
         path: ${{env.ROOT}}/**/out
