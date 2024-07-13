@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_nugets:
+  build-nugets:
     name: 🚀 Pack ${{matrix.projectName}}
     runs-on: ubuntu-latest
     strategy:
@@ -50,15 +50,15 @@ jobs:
 
     - uses: actions/upload-artifact@v4
       with:
-        name: build_nugets
+        name: build-nugets
         path: ${{env.ROOT}}/${{matrix.projectName}}/out
         retention-days: 1
         overwrite: 'true'
 
-  test_nugets:
+  test-nugets:
     name: 🧪 Test ${{matrix.projectName}}
     runs-on: ubuntu-latest
-    needs: build_nugets
+    needs: build-nugets
     permissions:
       contents: read
       packages: write
@@ -72,7 +72,7 @@ jobs:
 
     - uses: actions/download-artifact@v4
       with:
-        name: build_nugets
+        name: build-nugets
         path: ${{env.ROOT}}
 
     - name: 📂 Build Docker Image \#1
@@ -85,12 +85,12 @@ jobs:
 
     - name: 🧪 Test
       working-directory: ${{env.ROOT}}
-      run: docker run --rm -v $(pwd):/src local-dotnet-test-ci-sdk:latest 
+      run: docker run --rm -v $(pwd):/src local-dotnet-test-ci-sdk:latest
 
-  deploy_nugets:
+  deploy-nugets:
     name: 🚚 Push ${{matrix.projectName}}
     runs-on: ubuntu-latest
-    needs: test_nugets
+    needs: test-nugets
     if: github.ref == 'refs/heads/master'
     strategy:
       fail-fast: false
@@ -117,7 +117,7 @@ jobs:
 
     - uses: actions/download-artifact@v4
       with:
-        name: build_nugets
+        name: build-nugets
         path: ${{env.ROOT}}
 
     - name: 📂 Setup .NET Core
@@ -136,4 +136,4 @@ jobs:
 
     - uses: geekyeggo/delete-artifact@v1
       with:
-        name: build_nugets
+        name: build-nugets
