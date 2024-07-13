@@ -59,11 +59,6 @@ jobs:
     name: 🧪 Test ${{matrix.projectName}}
     runs-on: ubuntu-latest
     needs: build_nugets
-    strategy:
-      fail-fast: false
-      matrix:
-        projectName: 
-          - LanguageIdentification.Tests
     permissions:
       contents: read
       packages: write
@@ -80,17 +75,17 @@ jobs:
         name: build_nugets
         path: ${{env.ROOT}}
 
-    - name: 📂 Build Docker Image
+    - name: 📂 Build Docker Image \#1
       working-directory: ${{env.ROOT}}
       run: docker build -f ./test.Dockerfile -t local-dotnet-test-sdk:latest .
 
-    - name: 🧪 Test ${{matrix.projectName}}
+    - name: 📂 Build Docker Image \#2
       working-directory: ${{env.ROOT}}
-      run: |
-        docker run --rm -v $(pwd):/src -w /src/${{matrix.projectName}} local-dotnet-test-sdk:latest \
-        for dir in $(find . -type d -path '*/out'); do dotnet nuget add source $dir; done && \
-        dotnet nuget list source && \
-        dotnet test -c Release
+      run: docker build -f ./test-ci.Dockerfile -t local-dotnet-test-ci-sdk:latest .
+
+    - name: 🧪 Test
+      working-directory: ${{env.ROOT}}
+      run: docker run --rm -v $(pwd):/src local-dotnet-test-ci-sdk:latest 
 
   deploy_nugets:
     name: 🚚 Push ${{matrix.projectName}}
