@@ -9,6 +9,19 @@
     <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Authors>Alexander Gluschenko</Authors>
+    <Copyright>Alexander Gluschenko © 2024</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README_CLD3.md</PackageReadmeFile>
+    <PackageReleaseNotes>
+      - Initial release
+    </PackageReleaseNotes>
+    <Description>
+      This package provides the native resources required for the CLD3 (Chrome Language Detection) library
+      by Google Inc. It includes the necessary native components to enable language recognition capabilities
+      in applications using the CLD3 for .NET. This package is essential for the proper functioning
+      of the CLD3 language identification features in your .NET
+    </Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -45,6 +58,10 @@
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README_CLD3.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
