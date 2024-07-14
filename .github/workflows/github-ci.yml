@@ -78,7 +78,7 @@ jobs:
 
     - name: 📂 Files
       working-directory: ${{env.ROOT}}
-      run: ls -R | grep "*.nupkg"
+      run: ls -R
 
     - name: 📂 Build Docker Image \#1
       working-directory: ${{env.ROOT}}
