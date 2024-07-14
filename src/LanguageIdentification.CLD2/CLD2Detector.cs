@@ -1,40 +1,45 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System;
+using System.Runtime.InteropServices;
 
-namespace LanguageIdentification.CLD2;
-
-public class CLD2Detector : IDisposable
+namespace LanguageIdentification.CLD2
 {
-    public CLD2Detector()
+    public class CLD2Detector : IDisposable
     {
-    }
-
-    public IEnumerable<CLD2PredictionResult> PredictLanguage(string text)
-    {
-        var resultPtr = CLD2DetectorWrapper.PredictLanguage(
-            text: text, 
-            resultCount: out var resultCount
-        );
-
-        try
+        public CLD2Detector()
         {
-            var result = new CLD2PredictionResult[resultCount];
-            var structSize = Marshal.SizeOf(typeof(CLD2PredictionResult));
+        }
 
-            for (var i = 0; i < resultCount; i++)
+        public IEnumerable<CLD2PredictionResult> PredictLanguage(string text)
+        {
+            var resultPtr = CLD2DetectorWrapper.PredictLanguage(
+                text: text,
+                resultCount: out var resultCount
+            );
+
+            try
             {
-                result[i] = Marshal.PtrToStructure<CLD2PredictionResult>(resultPtr + i * structSize);
+                var result = new CLD2PredictionResult[resultCount];
+                var structSize = Marshal.SizeOf(typeof(CLD2PredictionResult));
+
+                for (var i = 0; i < resultCount; i++)
+                {
+                    result[i] = Marshal.PtrToStructure<CLD2PredictionResult>(resultPtr + i * structSize);
+                }
+
+                return result.OrderByDescending(x => x.Probability).ToArray();
             }
-
-            return result.OrderByDescending(x => x.Probability).ToArray();
+            finally
+            {
+                CLD2DetectorWrapper.FreeResults(resultPtr, resultCount);
+            }
         }
-        finally
+
+        public void Dispose()
         {
-            CLD2DetectorWrapper.FreeResults(resultPtr, resultCount);
+            GC.SuppressFinalize(this);
         }
-    }
-
-    public void Dispose()
-    {
-        GC.SuppressFinalize(this);
     }
 }
+

@@ -1,14 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
     <Version>0.0.0.2</Version>
     <PackageId>LanguageIdentification.CLD2.Native</PackageId>
     <AssemblyName>LanguageIdentification.CLD2.Native</AssemblyName>
     <RootNamespace>LanguageIdentification.CLD2.Native</RootNamespace>
     <Authors>Alexander Gluschenko</Authors>
     <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
