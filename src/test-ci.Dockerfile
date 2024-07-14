@@ -10,14 +10,14 @@ COPY . .
 #     dotnet nuget add source $dir; \
 #   done
 
-RUN dotnet nuget add source ./LanguageIdentification.CLD2.Native/out
-RUN dotnet nuget add source ./LanguageIdentification.CLD2/out
-RUN dotnet nuget add source ./LanguageIdentification.CLD3.Native/out
-RUN dotnet nuget add source ./LanguageIdentification.CLD3/out
-RUN dotnet nuget add source ./LanguageIdentification.FastText.Native/out
-RUN dotnet nuget add source ./LanguageIdentification.FastText/out
-RUN dotnet nuget add source ./LanguageIdentification.Whatlang.Native/out
-RUN dotnet nuget add source ./LanguageIdentification.Whatlang/out
+RUN dotnet nuget add source /src/LanguageIdentification.CLD2.Native/out
+RUN dotnet nuget add source /src/LanguageIdentification.CLD2/out
+RUN dotnet nuget add source /src/LanguageIdentification.CLD3.Native/out
+RUN dotnet nuget add source /src/LanguageIdentification.CLD3/out
+RUN dotnet nuget add source /src/LanguageIdentification.FastText.Native/out
+RUN dotnet nuget add source /src/LanguageIdentification.FastText/out
+RUN dotnet nuget add source /src/LanguageIdentification.Whatlang.Native/out
+RUN dotnet nuget add source /src/LanguageIdentification.Whatlang/out
 
 RUN dotnet nuget list source
 
