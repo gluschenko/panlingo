@@ -17,12 +17,12 @@ jobs:
         projectName: 
           - LanguageIdentification.CLD2.Native
           - LanguageIdentification.CLD2
-          - LanguageIdentification.CLD3.Native
-          - LanguageIdentification.CLD3
-          - LanguageIdentification.FastText.Native
-          - LanguageIdentification.FastText
-          - LanguageIdentification.Whatlang.Native
-          - LanguageIdentification.Whatlang
+          #- LanguageIdentification.CLD3.Native
+          #- LanguageIdentification.CLD3
+          #- LanguageIdentification.FastText.Native
+          #- LanguageIdentification.FastText
+          #- LanguageIdentification.Whatlang.Native
+          #- LanguageIdentification.Whatlang
     permissions:
       contents: read
       packages: write
@@ -106,12 +106,12 @@ jobs:
         projectName: 
           - LanguageIdentification.CLD2.Native
           - LanguageIdentification.CLD2
-          - LanguageIdentification.CLD3.Native
-          - LanguageIdentification.CLD3
-          - LanguageIdentification.FastText.Native
-          - LanguageIdentification.FastText
-          - LanguageIdentification.Whatlang.Native
-          - LanguageIdentification.Whatlang
+          #- LanguageIdentification.CLD3.Native
+          #- LanguageIdentification.CLD3
+          #- LanguageIdentification.FastText.Native
+          #- LanguageIdentification.FastText
+          #- LanguageIdentification.Whatlang.Native
+          #- LanguageIdentification.Whatlang
     permissions:
       contents: read
       packages: write
