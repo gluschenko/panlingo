@@ -1,12 +1,15 @@
-﻿namespace LanguageIdentification.FastText;
+﻿using System;
 
-public class NativeLibraryException : Exception
+namespace LanguageIdentification.FastText
 {
-    public NativeLibraryException()
+    public class NativeLibraryException : Exception
     {
-    }
+        public NativeLibraryException()
+        {
+        }
 
-    public NativeLibraryException(string message) : base(message)
-    {
+        public NativeLibraryException(string message) : base(message)
+        {
+        }
     }
 }
