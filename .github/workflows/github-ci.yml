@@ -75,7 +75,7 @@ jobs:
       with:
         pattern: build-*
         merge-multiple: true
-        path: ${{env.ROOT}}/nugets
+        path: ${{env.ROOT}}/local-nugets
 
     - name: 📂 Files
       working-directory: ${{env.ROOT}}
