@@ -50,7 +50,7 @@ jobs:
 
     - uses: actions/upload-artifact@v4
       with:
-        name: build-nugets
+        name: build-${{matrix.projectName}}
         path: ${{env.ROOT}}/${{matrix.projectName}}/out
         retention-days: 1
         overwrite: 'true'
@@ -73,8 +73,9 @@ jobs:
 
     - uses: actions/download-artifact@v4
       with:
-        name: build-nugets
-        path: ${{env.ROOT}}
+        pattern: build-*
+        merge-multiple: true
+        path: ${{env.ROOT}}/nugets
 
     - name: 📂 Files
       working-directory: ${{env.ROOT}}
@@ -122,8 +123,8 @@ jobs:
 
     - uses: actions/download-artifact@v4
       with:
-        name: build-nugets
-        path: ${{env.ROOT}}
+        pattern: build-${{matrix.projectName}}
+        path: ${{env.ROOT}}/${{matrix.projectName}}/out
 
     - name: 📂 Setup .NET Core
       uses: actions/setup-dotnet@v4
