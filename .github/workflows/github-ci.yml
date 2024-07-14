@@ -28,7 +28,7 @@ jobs:
       packages: write
     env:
       ROOT: ./src
-      NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+      GITHUB_NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
     steps:
     - uses: actions/checkout@v4
       with: 
@@ -65,7 +65,7 @@ jobs:
       packages: write
     env:
       ROOT: ./src
-      NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+      GITHUB_NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
     steps:
     - uses: actions/checkout@v4
       with: 
@@ -115,7 +115,8 @@ jobs:
       packages: write
     env:
       ROOT: ./src
-      NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+      GITHUB_NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+      MICROSOFT_NUGET_AUTH_TOKEN: ${{ secrets.PACKAGES_WRITE_TOKEN }} 
     steps:
     - uses: actions/checkout@v4
       with: 
@@ -138,7 +139,11 @@ jobs:
 
     - name: 🚚 Push ${{matrix.projectName}} to GitHub registry
       working-directory: ${{env.ROOT}}/${{matrix.projectName}}
-      run: dotnet nuget push ./out/**/*.nupkg --skip-duplicate -k ${{env.NUGET_AUTH_TOKEN}}
+      run: dotnet nuget push ./out/**/*.nupkg --skip-duplicate -k ${{env.GITHUB_NUGET_AUTH_TOKEN}} --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
+
+#    - name: 🚚 Push ${{matrix.projectName}} to Microsoft registry
+#      working-directory: ${{env.ROOT}}/${{matrix.projectName}}
+#      run: dotnet nuget push ./out/**/*.nupkg --skip-duplicate -k ${{env.MICROSOFT_NUGET_AUTH_TOKEN}} --source https://api.nuget.org/v3/index.json
 
     - uses: geekyeggo/delete-artifact@v5
       with:
