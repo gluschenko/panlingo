@@ -1,10 +1,10 @@
-﻿namespace LanguageIdentification.Whatlang;
-
-public enum WhatLangStatus : byte
+﻿namespace LanguageIdentification.Whatlang
 {
-    OK = 0,
-    DetectFailure = 1,
-    BadTextPtr = 2,
-    BadOutputPtr = 3,
+    public enum WhatLangStatus : byte
+    {
+        OK = 0,
+        DetectFailure = 1,
+        BadTextPtr = 2,
+        BadOutputPtr = 3,
+    }
 }
-

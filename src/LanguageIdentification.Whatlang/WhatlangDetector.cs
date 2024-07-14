@@ -1,120 +1,123 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
-namespace LanguageIdentification.Whatlang;
-
-public class WhatlangDetector : IDisposable
+namespace LanguageIdentification.Whatlang
 {
-    public WhatlangDetector()
+    public class WhatlangDetector : IDisposable
     {
-
-    }
-
-    public WhatlangPredictionResult? PredictLanguage(string text)
-    {
-        var status = WhatlangDetectorWrapper.WhatlangDetect(
-            text: text, 
-            info: out var resultCount
-        );
-
-        if (status == WhatLangStatus.DetectFailure)
+        public WhatlangDetector()
         {
-            return null;
+
         }
 
-        if (status == WhatLangStatus.BadTextPtr || status == WhatLangStatus.BadOutputPtr)
+        public WhatlangPredictionResult? PredictLanguage(string text)
         {
-            throw new Exception($"Failed to detect langauge: {status}");
-        }
+            var status = WhatlangDetectorWrapper.WhatlangDetect(
+                text: text,
+                info: out var resultCount
+            );
 
-        return resultCount;
-    }
-
-    public string GetLangCode(WhatLangLang lang)
-    {
-        var stringBuider = new StringBuilder(100);
-
-        try
-        {
-            var code = WhatlangDetectorWrapper.WhatlangLangCode(lang, stringBuider, (UIntPtr)stringBuider.Capacity);
-            if (code < 0)
+            if (status == WhatLangStatus.DetectFailure)
             {
-                throw new Exception($"Language code '{lang}' is not found");
+                return null;
             }
 
-            var result = stringBuider.ToString();
-            return result;
-        }
-        finally 
-        {
-            stringBuider.Clear();
-        }
-    }
-
-    public string GetLangName(WhatLangLang lang)
-    {
-        var stringBuider = new StringBuilder(100);
-
-        try
-        {
-            var code = WhatlangDetectorWrapper.WhatlangLangName(lang, stringBuider, (UIntPtr)stringBuider.Capacity);
-            if (code < 0)
+            if (status == WhatLangStatus.BadTextPtr || status == WhatLangStatus.BadOutputPtr)
             {
-                throw new Exception($"Language code '{lang}' is not found");
+                throw new Exception($"Failed to detect langauge: {status}");
             }
 
-            var result = stringBuider.ToString();
-            return result;
+            return resultCount;
         }
-        finally
-        {
-            stringBuider.Clear();
-        }
-    }
 
-    public string GetScriptName(WhatLangScript script)
-    {
-        var stringBuider = new StringBuilder(100);
-
-        try
+        public string GetLangCode(WhatLangLang lang)
         {
-            var code = WhatlangDetectorWrapper.WhatlangScriptName(script, stringBuider, (UIntPtr)stringBuider.Capacity);
-            if (code < 0)
+            var stringBuider = new StringBuilder(100);
+
+            try
             {
-                throw new Exception($"Language script '{script}' is not found");
+                var code = WhatlangDetectorWrapper.WhatlangLangCode(lang, stringBuider, (UIntPtr)stringBuider.Capacity);
+                if (code < 0)
+                {
+                    throw new Exception($"Language code '{lang}' is not found");
+                }
+
+                var result = stringBuider.ToString();
+                return result;
             }
-
-            var result = stringBuider.ToString();
-            return result;
-        }
-        finally
-        {
-            stringBuider.Clear();
-        }
-    }
-
-    public string GetLangEngName(WhatLangLang lang)
-    {
-        var stringBuider = new StringBuilder(100);
-
-        try
-        {
-            var code = WhatlangDetectorWrapper.WhatlangLangEngName(lang, stringBuider, (UIntPtr)stringBuider.Capacity);
-            if (code < 0)
+            finally
             {
-                throw new Exception($"Language code '{lang}' is not found");
+                stringBuider.Clear();
             }
-
-            var result = stringBuider.ToString();
-            return result;
         }
-        finally
+
+        public string GetLangName(WhatLangLang lang)
         {
-            stringBuider.Clear();
+            var stringBuider = new StringBuilder(100);
+
+            try
+            {
+                var code = WhatlangDetectorWrapper.WhatlangLangName(lang, stringBuider, (UIntPtr)stringBuider.Capacity);
+                if (code < 0)
+                {
+                    throw new Exception($"Language code '{lang}' is not found");
+                }
+
+                var result = stringBuider.ToString();
+                return result;
+            }
+            finally
+            {
+                stringBuider.Clear();
+            }
+        }
+
+        public string GetScriptName(WhatLangScript script)
+        {
+            var stringBuider = new StringBuilder(100);
+
+            try
+            {
+                var code = WhatlangDetectorWrapper.WhatlangScriptName(script, stringBuider, (UIntPtr)stringBuider.Capacity);
+                if (code < 0)
+                {
+                    throw new Exception($"Language script '{script}' is not found");
+                }
+
+                var result = stringBuider.ToString();
+                return result;
+            }
+            finally
+            {
+                stringBuider.Clear();
+            }
+        }
+
+        public string GetLangEngName(WhatLangLang lang)
+        {
+            var stringBuider = new StringBuilder(100);
+
+            try
+            {
+                var code = WhatlangDetectorWrapper.WhatlangLangEngName(lang, stringBuider, (UIntPtr)stringBuider.Capacity);
+                if (code < 0)
+                {
+                    throw new Exception($"Language code '{lang}' is not found");
+                }
+
+                var result = stringBuider.ToString();
+                return result;
+            }
+            finally
+            {
+                stringBuider.Clear();
+            }
+        }
+
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
         }
     }
 
-    public void Dispose()
-    {
-        GC.SuppressFinalize(this);
-    }
 }
