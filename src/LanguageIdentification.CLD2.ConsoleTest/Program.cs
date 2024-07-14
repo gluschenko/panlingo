@@ -1,4 +1,4 @@
-﻿namespace LanguageIdentification.CLD2.ConsoleTest
+﻿namespace Panlingo.LanguageIdentification.CLD2.ConsoleTest
 {
     internal class Program
     {

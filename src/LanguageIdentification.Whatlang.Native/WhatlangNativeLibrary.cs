@@ -1,4 +1,4 @@
-﻿namespace LanguageIdentification.Whatlang.Native
+﻿namespace Panlingo.LanguageIdentification.Whatlang.Native
 {
     public static class WhatlangNativeLibrary
     {

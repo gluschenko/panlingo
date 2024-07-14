@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Version>0.0.0.10</Version>
-    <PackageId>LanguageIdentification.Whatlang.Native</PackageId>
-    <AssemblyName>LanguageIdentification.Whatlang.Native</AssemblyName>
-    <RootNamespace>LanguageIdentification.Whatlang.Native</RootNamespace>
+    <PackageId>Panlingo.LanguageIdentification.Whatlang.Native</PackageId>
+    <AssemblyName>Panlingo.LanguageIdentification.Whatlang.Native</AssemblyName>
+    <RootNamespace>Panlingo.LanguageIdentification.Whatlang.Native</RootNamespace>
     <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -28,7 +28,7 @@
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
-    <DocumentationFile>..\LanguageIdentification.Whatlang.Native.xml</DocumentationFile>
+    <DocumentationFile>..\Panlingo.LanguageIdentification.Whatlang.Native.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup>

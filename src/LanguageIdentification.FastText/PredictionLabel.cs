@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace LanguageIdentification.FastText
+namespace Panlingo.LanguageIdentification.FastText
 {
     [DebuggerDisplay("{Label} ({Frequency})")]
     public readonly struct PredictionLabel

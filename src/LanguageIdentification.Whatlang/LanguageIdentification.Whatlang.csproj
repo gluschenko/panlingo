@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
     <Version>0.0.0.10</Version>
-    <PackageId>LanguageIdentification.Whatlang</PackageId>
-    <AssemblyName>LanguageIdentification.Whatlang</AssemblyName>
-    <RootNamespace>LanguageIdentification.Whatlang</RootNamespace>
+    <PackageId>Panlingo.LanguageIdentification.Whatlang</PackageId>
+    <AssemblyName>Panlingo.LanguageIdentification.Whatlang</AssemblyName>
+    <RootNamespace>Panlingo.LanguageIdentification.Whatlang</RootNamespace>
     <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -29,7 +29,7 @@
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
-    <DocumentationFile>..\LanguageIdentification.Whatlang.xml</DocumentationFile>
+    <DocumentationFile>..\Panlingo.LanguageIdentification.Whatlang.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Text;
-using LanguageIdentification.Whatlang.Native;
+using Panlingo.LanguageIdentification.Whatlang.Native;
 
-namespace LanguageIdentification.Whatlang
+namespace Panlingo.LanguageIdentification.Whatlang
 {
     internal static class WhatlangDetectorWrapper
     {

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace LanguageIdentification.CLD2
+namespace Panlingo.LanguageIdentification.CLD2
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
     public readonly struct CLD2PredictionResult

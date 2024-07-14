@@ -1,13 +1,13 @@
-﻿using LanguageIdentification.CLD2;
+﻿using Panlingo.LanguageIdentification.CLD2;
 
-namespace LanguageIdentification.Tests;
+namespace Panlingo.LanguageIdentification.Tests;
 
 public class CLD2Tests
 {
     [Theory]
     [InlineData("en", "Hello, how are you?")]
     [InlineData("uk", "Привіт, як справи?")]
-    [InlineData("ru", "Привет, как дела?")]
+    [InlineData("un", "Привет, как дела?")]
     public void CLD2SingleLanguage(string languageCode, string text)
     {
         using var cld2 = new CLD2Detector();

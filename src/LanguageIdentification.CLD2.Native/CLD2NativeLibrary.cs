@@ -1,4 +1,4 @@
-﻿namespace LanguageIdentification.CLD2.Native
+﻿namespace Panlingo.LanguageIdentification.CLD2.Native
 {
     public static class CLD2NativeLibrary
     {

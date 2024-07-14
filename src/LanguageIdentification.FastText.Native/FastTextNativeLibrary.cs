@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace LanguageIdentification.FastText.Native
+namespace Panlingo.LanguageIdentification.FastText.Native
 {
     public class FastTextNativeLibrary
     {

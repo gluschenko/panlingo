@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using LanguageIdentification.FastText.Native;
+using Panlingo.LanguageIdentification.FastText.Native;
 
-namespace LanguageIdentification.FastText
+namespace Panlingo.LanguageIdentification.FastText
 {
     internal static class FastTextDetectorWrapper
     {

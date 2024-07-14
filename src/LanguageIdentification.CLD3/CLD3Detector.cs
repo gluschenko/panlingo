@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace LanguageIdentification.CLD3
+namespace Panlingo.LanguageIdentification.CLD3
 {
     public class CLD3Detector : IDisposable
     {

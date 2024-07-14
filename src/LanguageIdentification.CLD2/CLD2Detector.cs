@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace LanguageIdentification.CLD2
+namespace Panlingo.LanguageIdentification.CLD2
 {
     public class CLD2Detector : IDisposable
     {

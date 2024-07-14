@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
     <Version>0.0.0.10</Version>
-    <PackageId>LanguageIdentification.FastText</PackageId>
-    <AssemblyName>LanguageIdentification.FastText</AssemblyName>
-    <RootNamespace>LanguageIdentification.FastText</RootNamespace>
+    <PackageId>Panlingo.LanguageIdentification.FastText</PackageId>
+    <AssemblyName>Panlingo.LanguageIdentification.FastText</AssemblyName>
+    <RootNamespace>Panlingo.LanguageIdentification.FastText</RootNamespace>
     <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -29,7 +29,7 @@
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
-    <DocumentationFile>..\LanguageIdentification.FastText.xml</DocumentationFile>
+    <DocumentationFile>..\Panlingo.LanguageIdentification.FastText.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

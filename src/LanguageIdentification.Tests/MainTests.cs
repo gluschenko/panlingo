@@ -1,4 +1,4 @@
-﻿namespace LanguageIdentification.Tests;
+﻿namespace Panlingo.LanguageIdentification.Tests;
 
 public class MainTests
 {

@@ -1,4 +1,4 @@
-﻿namespace LanguageIdentification.Whatlang.ConsoleTest
+﻿namespace Panlingo.LanguageIdentification.Whatlang.ConsoleTest
 {
     internal class Program
     {
