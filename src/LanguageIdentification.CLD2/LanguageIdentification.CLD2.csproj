@@ -10,6 +10,19 @@
     <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Copyright>Alexander Gluschenko © 2024</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README_CLD2.md</PackageReadmeFile>
+    <PackageReleaseNotes>
+      - Initial release
+    </PackageReleaseNotes>
+    <Description>
+      This is a .NET wrapper for the Chrome Language Detection (CLD2) library by Google Inc.
+      
+      This package facilitates the integration of language identification capabilities into .NET applications,
+      allowing for accurate and efficient recognition of over 80 languages with minimal effort.
+      Perfect for applications dealing with multilingual texts or requiring automatic language detection.
+    </Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -22,6 +35,10 @@
     <ProjectReference Include="..\LanguageIdentification.CLD2.Native\LanguageIdentification.CLD2.Native.csproj">
       <IncludeAssets>All</IncludeAssets>
     </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README_CLD2.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
