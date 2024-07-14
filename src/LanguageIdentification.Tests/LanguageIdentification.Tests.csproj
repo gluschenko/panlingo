@@ -24,10 +24,10 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Release'">
-    <PackageReference Include="LanguageIdentification.CLD2" Version="*" />
-    <PackageReference Include="LanguageIdentification.CLD3" Version="*" />
-    <PackageReference Include="LanguageIdentification.FastText" Version="*" />
-    <PackageReference Include="LanguageIdentification.Whatlang" Version="*" />
+    <PackageReference Include="Panlingo.LanguageIdentification.CLD2" Version="*" />
+    <PackageReference Include="Panlingo.LanguageIdentification.CLD3" Version="*" />
+    <PackageReference Include="Panlingo.LanguageIdentification.FastText" Version="*" />
+    <PackageReference Include="Panlingo.LanguageIdentification.Whatlang" Version="*" />
   </ItemGroup>
 
   <ItemGroup>
