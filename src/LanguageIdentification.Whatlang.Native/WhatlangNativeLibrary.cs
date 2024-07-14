@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-namespace LanguageIdentification.Whatlang.Native
+﻿namespace LanguageIdentification.Whatlang.Native
 {
     public static class WhatlangNativeLibrary
     {

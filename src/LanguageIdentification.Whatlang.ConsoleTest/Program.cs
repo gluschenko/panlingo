@@ -6,7 +6,7 @@
         {
             using var whatlang = new WhatlangDetector();
 
-            var texts = new[] 
+            var texts = new[]
             {
                 "Hello, how are you?",
                 "Привіт, як справи?",

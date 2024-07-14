@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-namespace LanguageIdentification.CLD3.Native
+﻿namespace LanguageIdentification.CLD3.Native
 {
     public static class CLD3NativeLibrary
     {
