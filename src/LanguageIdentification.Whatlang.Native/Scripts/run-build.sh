@@ -24,3 +24,4 @@ rm -rf "$workspace"
 ldd libwhatlang.so
 
 echo "Goodbye world";
+

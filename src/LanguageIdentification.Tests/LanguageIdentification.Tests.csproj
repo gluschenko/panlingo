@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -14,6 +14,20 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="xunit" Version="2.5.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <ProjectReference Include="..\LanguageIdentification.CLD2\LanguageIdentification.CLD2.csproj" />
+    <ProjectReference Include="..\LanguageIdentification.CLD3\LanguageIdentification.CLD3.csproj" />
+    <ProjectReference Include="..\LanguageIdentification.FastText\LanguageIdentification.FastText.csproj" />
+    <ProjectReference Include="..\LanguageIdentification.Whatlang\LanguageIdentification.Whatlang.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <PackageReference Include="LanguageIdentification.CLD2" Version="*" />
+    <PackageReference Include="LanguageIdentification.CLD3" Version="*" />
+    <PackageReference Include="LanguageIdentification.FastText" Version="*" />
+    <PackageReference Include="LanguageIdentification.Whatlang" Version="*" />
   </ItemGroup>
 
   <ItemGroup>

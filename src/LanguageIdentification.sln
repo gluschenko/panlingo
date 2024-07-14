@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".misc", ".misc", "{F741FF11-5F70-4E3B-BC72-9DA3090B90E9}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		test-ci.Dockerfile = test-ci.Dockerfile
 		test.Dockerfile = test.Dockerfile
 		testEnvironments.json = testEnvironments.json
 	EndProjectSection
@@ -48,11 +49,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.CLD2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "whatlang", "whatlang", "{C930A06F-0951-4774-97CC-001A477C1092}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.Whatlang.ConsoleTest", "LanguageIdentification.Whatlang.ConsoleTest\LanguageIdentification.Whatlang.ConsoleTest.csproj", "{B76A01EA-4FA5-414F-B7FD-0F7741F7F29D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.Whatlang.ConsoleTest", "LanguageIdentification.Whatlang.ConsoleTest\LanguageIdentification.Whatlang.ConsoleTest.csproj", "{B76A01EA-4FA5-414F-B7FD-0F7741F7F29D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.Whatlang.Native", "LanguageIdentification.Whatlang.Native\LanguageIdentification.Whatlang.Native.csproj", "{047FA65C-E597-4C7A-9AC9-C689ACB85C60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.Whatlang.Native", "LanguageIdentification.Whatlang.Native\LanguageIdentification.Whatlang.Native.csproj", "{047FA65C-E597-4C7A-9AC9-C689ACB85C60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.Whatlang", "LanguageIdentification.Whatlang\LanguageIdentification.Whatlang.csproj", "{E12065C1-B27B-49F6-A401-0F468B63F0F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.Whatlang", "LanguageIdentification.Whatlang\LanguageIdentification.Whatlang.csproj", "{E12065C1-B27B-49F6-A401-0F468B63F0F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
