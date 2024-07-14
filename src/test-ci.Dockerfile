@@ -1,4 +1,4 @@
-﻿FROM local-dotnet-test-sdk:latest AS build
+﻿FROM langunage-identification-test-runner:latest
 
 WORKDIR /src
 COPY . .
