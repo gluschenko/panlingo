@@ -1,19 +1,21 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace LanguageIdentification.CLD3;
-
-[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-public readonly struct CLD3PredictionResult
+namespace LanguageIdentification.CLD3
 {
-    [MarshalAs(UnmanagedType.LPStr)]
-    public readonly string Language;
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    public readonly struct CLD3PredictionResult
+    {
+        [MarshalAs(UnmanagedType.LPStr)]
+        public readonly string Language;
 
-    [MarshalAs(UnmanagedType.R8)]
-    public readonly double Probability;
+        [MarshalAs(UnmanagedType.R8)]
+        public readonly double Probability;
 
-    [MarshalAs(UnmanagedType.I1)]
-    public readonly bool IsReliable;
+        [MarshalAs(UnmanagedType.I1)]
+        public readonly bool IsReliable;
 
-    [MarshalAs(UnmanagedType.R8)]
-    public readonly double Proportion;
+        [MarshalAs(UnmanagedType.R8)]
+        public readonly double Proportion;
+    }
+
 }

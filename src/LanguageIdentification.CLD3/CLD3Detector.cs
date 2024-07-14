@@ -1,64 +1,68 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
+using System.Threading;
 
-namespace LanguageIdentification.CLD3;
-
-public class CLD3Detector : IDisposable
+namespace LanguageIdentification.CLD3
 {
-    private readonly nint _identifier;
-    private readonly SemaphoreSlim _semaphore;
-
-    public CLD3Detector(int minNumBytes, int maxNumBytes)
+    public class CLD3Detector : IDisposable
     {
-        _identifier = CLD3DetectorWrapper.CreateIdentifier(minNumBytes, maxNumBytes);
-        _semaphore = new(1, 1);
-    }
+        private readonly nint _identifier;
+        private readonly SemaphoreSlim _semaphore;
 
-    public void Dispose()
-    {
-        try
+        public CLD3Detector(int minNumBytes, int maxNumBytes)
         {
-            _semaphore.Wait();
-            GC.SuppressFinalize(this);
-            CLD3DetectorWrapper.FreeIdentifier(_identifier);
+            _identifier = CLD3DetectorWrapper.CreateIdentifier(minNumBytes, maxNumBytes);
+            _semaphore = new(1, 1);
         }
-        finally
+
+        public void Dispose()
         {
-            _semaphore.Release();
-        }
-    }
-
-    public CLD3PredictionResult FindLanguage(string text)
-    {
-        return CLD3DetectorWrapper.FindLanguage(_identifier, text);
-    }
-
-    public CLD3PredictionResult[] FindLanguageNMostFreqLangs(
-        string text,
-        int numLangs
-    )
-    {
-        var resultPtr = CLD3DetectorWrapper.FindLanguages(
-            identifier: _identifier,
-            text: text,
-            numLangs: numLangs,
-            resultCount: out var resultCount
-        );
-
-        try
-        {
-            var result = new CLD3PredictionResult[resultCount];
-            var structSize = Marshal.SizeOf(typeof(CLD3PredictionResult));
-
-            for (var i = 0; i < resultCount; i++)
+            try
             {
-                result[i] = Marshal.PtrToStructure<CLD3PredictionResult>(resultPtr + i * structSize);
+                _semaphore.Wait();
+                GC.SuppressFinalize(this);
+                CLD3DetectorWrapper.FreeIdentifier(_identifier);
             }
-
-            return result;
+            finally
+            {
+                _semaphore.Release();
+            }
         }
-        finally
+
+        public CLD3PredictionResult FindLanguage(string text)
         {
-            CLD3DetectorWrapper.FreeResults(resultPtr, resultCount);
+            return CLD3DetectorWrapper.FindLanguage(_identifier, text);
+        }
+
+        public CLD3PredictionResult[] FindLanguageNMostFreqLangs(
+            string text,
+            int numLangs
+        )
+        {
+            var resultPtr = CLD3DetectorWrapper.FindLanguages(
+                identifier: _identifier,
+                text: text,
+                numLangs: numLangs,
+                resultCount: out var resultCount
+            );
+
+            try
+            {
+                var result = new CLD3PredictionResult[resultCount];
+                var structSize = Marshal.SizeOf(typeof(CLD3PredictionResult));
+
+                for (var i = 0; i < resultCount; i++)
+                {
+                    result[i] = Marshal.PtrToStructure<CLD3PredictionResult>(resultPtr + i * structSize);
+                }
+
+                return result;
+            }
+            finally
+            {
+                CLD3DetectorWrapper.FreeResults(resultPtr, resultCount);
+            }
         }
     }
+
 }
