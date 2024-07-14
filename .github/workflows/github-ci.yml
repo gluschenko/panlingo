@@ -68,8 +68,6 @@ jobs:
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
     steps:
     - uses: actions/checkout@v4
-      with: 
-        submodules: 'true'
 
     - uses: actions/download-artifact@v4
       with:
@@ -119,8 +117,6 @@ jobs:
       MICROSOFT_NUGET_AUTH_TOKEN: ${{ secrets.PACKAGES_WRITE_TOKEN }} 
     steps:
     - uses: actions/checkout@v4
-      with: 
-        submodules: 'true'
 
     - uses: actions/download-artifact@v4
       with:
