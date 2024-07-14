@@ -140,6 +140,6 @@ jobs:
       working-directory: ${{env.ROOT}}/${{matrix.projectName}}
       run: dotnet nuget push ./out/*.nupkg --skip-duplicate -k ${{env.NUGET_AUTH_TOKEN}}
 
-    - uses: geekyeggo/delete-artifact@v1
+    - uses: geekyeggo/delete-artifact@v5
       with:
-        name: build-nugets
+        name: build-${{matrix.projectName}}
