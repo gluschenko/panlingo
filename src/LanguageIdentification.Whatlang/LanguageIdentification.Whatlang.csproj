@@ -1,14 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
-    <Version>0.0.0.2</Version>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+    <Version>0.0.0.10</Version>
     <PackageId>LanguageIdentification.Whatlang</PackageId>
     <AssemblyName>LanguageIdentification.Whatlang</AssemblyName>
     <RootNamespace>LanguageIdentification.Whatlang</RootNamespace>
     <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Authors>Alexander Gluschenko</Authors>
+    <Copyright>Alexander Gluschenko © 2024</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>nlp lid langauge-identification langauge-detection whatlang</PackageTags>
+    <PackageReadmeFile>README_WHATLANG.md</PackageReadmeFile>
+    <PackageReleaseNotes>
+      - Initial release
+    </PackageReleaseNotes>
+    <Description>
+      This is a .NET wrapper for the Whatlang library, which is an efficient and easy-to-use language detection library.
+      
+      This package simplifies the integration of language identification capabilities into .NET applications, utilizing the Whatlang
+      library to accurately and quickly recognize the languages of given texts. Perfect for projects that require lightweight yet
+      reliable language detection.
+    </Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -21,6 +36,10 @@
     <ProjectReference Include="..\LanguageIdentification.Whatlang.Native\LanguageIdentification.Whatlang.Native.csproj">
       <IncludeAssets>All</IncludeAssets>
     </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README_WHATLANG.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

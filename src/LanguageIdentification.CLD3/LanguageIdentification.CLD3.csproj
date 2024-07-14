@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
-    <Version>0.0.0.6</Version>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+    <Version>0.0.0.10</Version>
     <PackageId>LanguageIdentification.CLD3</PackageId>
     <AssemblyName>LanguageIdentification.CLD3</AssemblyName>
     <RootNamespace>LanguageIdentification.CLD3</RootNamespace>
@@ -12,6 +12,7 @@
     <Authors>Alexander Gluschenko</Authors>
     <Copyright>Alexander Gluschenko © 2024</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>nlp lid langauge-identification langauge-detection cld3</PackageTags>
     <PackageReadmeFile>README_CLD3.md</PackageReadmeFile>
     <PackageReleaseNotes>
       - Initial release

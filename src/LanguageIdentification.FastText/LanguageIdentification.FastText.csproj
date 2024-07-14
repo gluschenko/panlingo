@@ -1,14 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
-    <Version>0.0.0.2</Version>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+    <Version>0.0.0.10</Version>
     <PackageId>LanguageIdentification.FastText</PackageId>
     <AssemblyName>LanguageIdentification.FastText</AssemblyName>
     <RootNamespace>LanguageIdentification.FastText</RootNamespace>
     <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Authors>Alexander Gluschenko</Authors>
+    <Copyright>Alexander Gluschenko © 2024</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>nlp lid langauge-identification langauge-detection fasttext</PackageTags>
+    <PackageReadmeFile>README_FASTTEXT.md</PackageReadmeFile>
+    <PackageReleaseNotes>
+      - Initial release
+    </PackageReleaseNotes>
+    <Description>
+      This is a .NET wrapper for the FastText library by Facebook AI Research (FAIR).
+      
+      This package facilitates the integration of language identification capabilities into .NET applications,
+      leveraging the powerful and efficient FastText library to recognize and classify texts in multiple languages.
+      Ideal for applications that require fast and accurate language detection.
+    </Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -21,6 +36,10 @@
     <ProjectReference Include="..\LanguageIdentification.FastText.Native\LanguageIdentification.FastText.Native.csproj">
       <IncludeAssets>All</IncludeAssets>
     </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README_FASTTEXT.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
