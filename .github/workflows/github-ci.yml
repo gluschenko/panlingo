@@ -37,7 +37,11 @@ jobs:
     - name: 📂 Setup .NET Core
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.100
+        dotnet-version: |
+          5.0.x
+          6.0.x
+          7.0.x
+          8.0.x
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
     - name: 📂 Files
@@ -126,7 +130,11 @@ jobs:
     - name: 📂 Setup .NET Core
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.100
+        dotnet-version: |
+          5.0.x
+          6.0.x
+          7.0.x
+          8.0.x
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
     - name: 📂 Files
