@@ -6,7 +6,6 @@
     <PackageId>LanguageIdentification.FastText.Native</PackageId>
     <AssemblyName>LanguageIdentification.FastText.Native</AssemblyName>
     <RootNamespace>LanguageIdentification.FastText.Native</RootNamespace>
-    <Authors>Alexander Gluschenko</Authors>
     <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

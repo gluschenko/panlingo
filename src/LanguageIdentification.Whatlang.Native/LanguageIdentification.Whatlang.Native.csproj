@@ -6,7 +6,6 @@
     <PackageId>LanguageIdentification.Whatlang.Native</PackageId>
     <AssemblyName>LanguageIdentification.Whatlang.Native</AssemblyName>
     <RootNamespace>LanguageIdentification.Whatlang.Native</RootNamespace>
-    <Authors>Alexander Gluschenko</Authors>
     <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

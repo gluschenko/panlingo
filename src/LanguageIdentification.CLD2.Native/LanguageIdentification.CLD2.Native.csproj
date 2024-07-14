@@ -6,10 +6,10 @@
     <PackageId>LanguageIdentification.CLD2.Native</PackageId>
     <AssemblyName>LanguageIdentification.CLD2.Native</AssemblyName>
     <RootNamespace>LanguageIdentification.CLD2.Native</RootNamespace>
-    <Authors>Alexander Gluschenko</Authors>
     <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Authors>Alexander Gluschenko</Authors>
     <Copyright>Alexander Gluschenko © 2024</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README_CLD2.md</PackageReadmeFile>

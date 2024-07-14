@@ -6,7 +6,6 @@
     <PackageId>LanguageIdentification.CLD3</PackageId>
     <AssemblyName>LanguageIdentification.CLD3</AssemblyName>
     <RootNamespace>LanguageIdentification.CLD3</RootNamespace>
-    <Authors>Alexander Gluschenko</Authors>
     <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
