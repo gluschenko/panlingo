@@ -3,6 +3,9 @@
 
 Collection of language identification libraries for .NET
 
+[![GitHub CI](https://github.com/gluschenko/language-identification/actions/workflows/github-ci.yml/badge.svg)](https://github.com/gluschenko/language-identification/actions/workflows/github-ci.yml)
+
+
 ## Features
 
 - qwe

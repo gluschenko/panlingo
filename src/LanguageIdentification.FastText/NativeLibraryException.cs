@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LanguageIdentification.FastText
+namespace Panlingo.LanguageIdentification.FastText
 {
     public class NativeLibraryException : Exception
     {

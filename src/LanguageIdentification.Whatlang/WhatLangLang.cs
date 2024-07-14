@@ -1,4 +1,4 @@
-﻿namespace LanguageIdentification.Whatlang
+﻿namespace Panlingo.LanguageIdentification.Whatlang
 {
     /// <summary>
     /// Language codes due to ISO 639-3

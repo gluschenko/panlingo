@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace LanguageIdentification.FastText
+namespace Panlingo.LanguageIdentification.FastText
 {
     [DebuggerDisplay("{Label} ({Probability})")]
     public readonly struct Prediction

@@ -83,17 +83,15 @@ jobs:
       working-directory: ${{env.ROOT}}
       run: ls -R
 
-    - name: 📂 Build Docker Image \#1
+    - name: 📂 Build Docker Image
       working-directory: ${{env.ROOT}}
-      run: docker build -f ./test.Dockerfile -t local-dotnet-test-sdk:latest .
-
-    - name: 📂 Build Docker Image \#2
-      working-directory: ${{env.ROOT}}
-      run: docker build -f ./test-ci.Dockerfile -t local-dotnet-test-ci-sdk:latest .
+      run: |
+        docker build -f ./test.Dockerfile -t langunage-identification-test-runner:latest .
+        docker build -f ./test-ci.Dockerfile -t langunage-identification-test-runner-ci:latest .
 
     - name: 🧪 Test
       working-directory: ${{env.ROOT}}
-      run: docker run --rm -v $(pwd):/src local-dotnet-test-ci-sdk:latest
+      run: docker run --rm -v $(pwd):/src langunage-identification-test-runner-ci:latest
 
   deploy-nugets:
     name: 🚚 Push ${{matrix.projectName}}
@@ -145,9 +143,9 @@ jobs:
       working-directory: ${{env.ROOT}}/${{matrix.projectName}}
       run: dotnet nuget push ./out/**/*.nupkg --skip-duplicate -k ${{env.NUGET_AUTH_TOKEN}} --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
-#    - name: 🚚 Push ${{matrix.projectName}} to Microsoft registry
-#      working-directory: ${{env.ROOT}}/${{matrix.projectName}}
-#      run: dotnet nuget push ./out/**/*.nupkg --skip-duplicate -k ${{env.MICROSOFT_NUGET_AUTH_TOKEN}} --source https://api.nuget.org/v3/index.json
+    - name: 🚚 Push ${{matrix.projectName}} to Microsoft registry
+      working-directory: ${{env.ROOT}}/${{matrix.projectName}}
+      run: dotnet nuget push ./out/**/*.nupkg --skip-duplicate -k ${{env.MICROSOFT_NUGET_AUTH_TOKEN}} --source https://api.nuget.org/v3/index.json
 
     - uses: geekyeggo/delete-artifact@v5
       with:

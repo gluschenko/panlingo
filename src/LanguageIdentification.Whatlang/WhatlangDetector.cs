@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace LanguageIdentification.Whatlang
+namespace Panlingo.LanguageIdentification.Whatlang
 {
     public class WhatlangDetector : IDisposable
     {

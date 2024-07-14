@@ -1,4 +1,4 @@
-﻿namespace LanguageIdentification.Whatlang
+﻿namespace Panlingo.LanguageIdentification.Whatlang
 {
     /// <summary>
     /// Language scripts due to ISO 15924.

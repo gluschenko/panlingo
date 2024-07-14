@@ -1,4 +1,4 @@
-﻿namespace LanguageIdentification.FastText.ConsoleTest
+﻿namespace Panlingo.LanguageIdentification.FastText.ConsoleTest
 {
     internal class Program
     {
