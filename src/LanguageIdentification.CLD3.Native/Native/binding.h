@@ -28,6 +28,6 @@ extern "C" {
     EXPORT void* CreateIdentifier(int minNumBytes, int maxNumBytes);
     EXPORT void FreeIdentifier(void* identifier);
     EXPORT PredictionResult FindLanguage(void* identifier, const char* text);
-    EXPORT PredictionResult* FindTopNMostFreqLangs(void* identifier, const char* text, int numLangs, int* resultCount);
+    EXPORT PredictionResult* FindLanguages(void* identifier, const char* text, int numLangs, int* resultCount);
     EXPORT void FreeResults(PredictionResult* results, int count);
 }
