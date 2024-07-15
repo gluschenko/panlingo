@@ -6,7 +6,7 @@ namespace Panlingo.LanguageIdentification.CLD3
 {
     public class CLD3Detector : IDisposable
     {
-        private readonly nint _identifier;
+        private readonly IntPtr _identifier;
         private readonly SemaphoreSlim _semaphore;
 
         public CLD3Detector(int minNumBytes, int maxNumBytes)
