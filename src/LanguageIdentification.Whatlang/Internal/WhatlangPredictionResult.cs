@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Panlingo.LanguageIdentification.Whatlang
+namespace Panlingo.LanguageIdentification.Whatlang.Internal
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
     internal readonly struct WhatlangPredictionResult

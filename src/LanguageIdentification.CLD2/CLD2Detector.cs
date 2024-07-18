@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Panlingo.LanguageIdentification.CLD2.Internal;
 
 namespace Panlingo.LanguageIdentification.CLD2
 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Panlingo.LanguageIdentification.CLD3.Internal;
 
 namespace Panlingo.LanguageIdentification.CLD3
 {

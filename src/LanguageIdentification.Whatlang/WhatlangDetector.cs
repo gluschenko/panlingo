@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using Panlingo.LanguageIdentification.Whatlang.Internal;
 
 namespace Panlingo.LanguageIdentification.Whatlang
 {

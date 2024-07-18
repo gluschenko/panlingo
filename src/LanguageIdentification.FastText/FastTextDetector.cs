@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Panlingo.LanguageIdentification.FastText.Internal;
 
 namespace Panlingo.LanguageIdentification.FastText
 {
