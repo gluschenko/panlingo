@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Panlingo.LanguageIdentification.FastText.Internal;
@@ -36,35 +37,37 @@ namespace Panlingo.LanguageIdentification.FastText
             }
         }
 
-        public IEnumerable<FastTextLabelResult> GetLabels()
+        public IEnumerable<FastTextLabel> GetLabels()
         {
             var labelsPtr = FastTextDetectorWrapper.FastTextGetLabels(_fastText);
 
             if (labelsPtr == IntPtr.Zero)
             {
-                return Array.Empty<FastTextLabelResult>();
+                return Array.Empty<FastTextLabel>();
             }
 
             var labelsStruct = Marshal.PtrToStructure<FastTextLabels>(labelsPtr);
-            var result = new List<FastTextLabelResult>();
+            var result = new List<FastTextLabel>();
 
             for (ulong i = 0; i < labelsStruct.Length; i++)
             {
                 var labelPtr = Marshal.ReadIntPtr(labelsStruct.Labels, (int)i * IntPtr.Size);
                 var label = DecodeString(labelPtr);
                 var freq = Marshal.ReadInt64(labelsStruct.Freqs, (int)i * sizeof(long));
-                result.Add(new FastTextLabelResult(label: label, frequency: freq));
+                result.Add(new FastTextLabel(label: label, frequency: freq));
             }
 
             FastTextDetectorWrapper.DestroyLabels(labelsPtr);
+
             return result;
         }
 
-        public IEnumerable<FastTextPredictionResult> Predict(string text, int k, float threshold = 0.0f)
+        public IEnumerable<FastTextPrediction> Predict(string text, int k, float threshold = 0.0f)
         {
             var errptr = IntPtr.Zero;
             var predictionPtr = FastTextDetectorWrapper.FastTextPredict(
-                handle: _fastText, text: text,
+                handle: _fastText, 
+                text: text,
                 k: k,
                 threshold: threshold,
                 ref errptr
@@ -74,26 +77,29 @@ namespace Panlingo.LanguageIdentification.FastText
 
             if (predictionPtr == IntPtr.Zero)
             {
-                return Array.Empty<FastTextPredictionResult>();
+                return Array.Empty<FastTextPrediction>();
             }
 
-            var predictions = Marshal.PtrToStructure<FastTextPredictions>(predictionPtr);
-            var result = new List<FastTextPredictionResult>();
+            var predictions = Marshal.PtrToStructure<FastTextPredictionListNativeResult>(predictionPtr);
+            var result = new List<FastTextPrediction>();
 
             for (ulong i = 0; i < predictions.Length; i++)
             {
-                IntPtr elementPtr = new IntPtr(predictions.Predictions.ToInt64() + (long)(i * (uint)Marshal.SizeOf<FastTextPrediction>()));
-                var prediction = Marshal.PtrToStructure<FastTextPrediction>(elementPtr);
+                IntPtr elementPtr = new IntPtr(predictions.Predictions.ToInt64() + (long)(i * (uint)Marshal.SizeOf<FastTextPredictionNativeResult>()));
+                var prediction = Marshal.PtrToStructure<FastTextPredictionNativeResult>(elementPtr);
                 var label = DecodeString(prediction.Label);
 
-                result.Add(new FastTextPredictionResult(
+                result.Add(new FastTextPrediction(
                     label: label,
                     probability: prediction.Prob
                 ));
             }
 
             FastTextDetectorWrapper.DestroyPredictions(predictionPtr);
-            return result;
+
+            return result
+                .OrderByDescending(x => x.Probability)
+                .ToArray();
         }
 
         public int GetModelDimensions()

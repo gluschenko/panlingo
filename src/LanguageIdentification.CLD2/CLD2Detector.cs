@@ -12,7 +12,7 @@ namespace Panlingo.LanguageIdentification.CLD2
         {
         }
 
-        public IEnumerable<CLD2PredictionResult> PredictLanguage(string text)
+        public IEnumerable<CLD2Prediction> PredictLanguage(string text)
         {
             var resultPtr = CLD2DetectorWrapper.PredictLanguage(
                 text: text,
@@ -29,7 +29,10 @@ namespace Panlingo.LanguageIdentification.CLD2
                     result[i] = Marshal.PtrToStructure<CLD2PredictionResult>(resultPtr + i * structSize);
                 }
 
-                return result.OrderByDescending(x => x.Probability).ToArray();
+                return result
+                    .OrderByDescending(x => x.Probability)
+                    .Select(x => new CLD2Prediction(x))
+                    .ToArray();
             }
             finally
             {

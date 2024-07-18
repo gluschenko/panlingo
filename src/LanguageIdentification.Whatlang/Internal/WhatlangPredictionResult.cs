@@ -7,7 +7,7 @@ namespace Panlingo.LanguageIdentification.Whatlang.Internal
     {
         public readonly WhatlangLanguage Lang;
 
-        public readonly WhatlangScriptX Script;
+        public readonly WhatlangScript Script;
 
         [MarshalAs(UnmanagedType.R8)]
         public readonly double Confidence;

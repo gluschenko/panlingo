@@ -13,14 +13,14 @@
                 "Привет, как дела?",
             };
 
-            var list = new List<WhatlangPredictionResult>();
+            var list = new List<WhatlangPrediction>();
 
             foreach (var text in texts)
             {
                 var prediction = whatlang.PredictLanguage(text);
-                if (prediction.HasValue)
+                if (prediction is not null)
                 {
-                    list.Add(prediction.Value);
+                    list.Add(prediction);
                 }
             }
 
@@ -33,7 +33,7 @@
 
             var code2 = whatlang.GetLangName(WhatlangLanguage.Ukr);
 
-            var code3 = whatlang.GetScriptName(WhatlangScriptX.Cyrl);
+            var code3 = whatlang.GetScriptName(WhatlangScript.Cyrl);
 
             var code4 = whatlang.GetLangEngName(WhatlangLanguage.Ukr);
 

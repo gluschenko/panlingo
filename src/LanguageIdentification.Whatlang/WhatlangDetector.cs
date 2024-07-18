@@ -11,11 +11,11 @@ namespace Panlingo.LanguageIdentification.Whatlang
 
         }
 
-        public WhatlangPredictionResult? PredictLanguage(string text)
+        public WhatlangPrediction? PredictLanguage(string text)
         {
             var status = WhatlangDetectorWrapper.WhatlangDetect(
                 text: text,
-                info: out var resultCount
+                info: out var result
             );
 
             if (status == WhatlangStatus.DetectFailure)
@@ -28,7 +28,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
                 throw new Exception($"Failed to detect langauge: {status}");
             }
 
-            return resultCount;
+            return new WhatlangPrediction(result);
         }
 
         public string GetLangCode(WhatlangLanguage lang)

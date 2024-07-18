@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Panlingo.LanguageIdentification.CLD3.Internal;
@@ -30,12 +33,13 @@ namespace Panlingo.LanguageIdentification.CLD3
             }
         }
 
-        public CLD3PredictionResult FindLanguage(string text)
+        public CLD3Prediction FindLanguage(string text)
         {
-            return CLD3DetectorWrapper.FindLanguage(_identifier, text);
+            var result = CLD3DetectorWrapper.FindLanguage(_identifier, text);
+            return new CLD3Prediction(result);
         }
 
-        public CLD3PredictionResult[] FindLanguageNMostFreqLangs(
+        public IEnumerable<CLD3Prediction> FindLanguageNMostFreqLangs(
             string text,
             int numLangs
         )
@@ -57,7 +61,10 @@ namespace Panlingo.LanguageIdentification.CLD3
                     result[i] = Marshal.PtrToStructure<CLD3PredictionResult>(resultPtr + i * structSize);
                 }
 
-                return result;
+                return result
+                    .OrderByDescending(x => x.Probability)
+                    .Select(x => new CLD3Prediction(x))
+                    .ToArray();
             }
             finally
             {

@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 
 using Panlingo.LanguageIdentification.FastText.Native;
 
@@ -7,68 +8,68 @@ namespace Panlingo.LanguageIdentification.FastText.Internal
     internal static class FastTextDetectorWrapper
     {
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern nint CreateFastText();
+        public static extern IntPtr CreateFastText();
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void DestroyFastText(nint handle);
+        public static extern void DestroyFastText(IntPtr handle);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void FastTextLoadModel(nint handle, string filename, ref nint errptr);
+        public static extern void FastTextLoadModel(IntPtr handle, string filename, ref IntPtr errptr);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int FastTextGetModelDimensions(nint handle);
+        public static extern int FastTextGetModelDimensions(IntPtr handle);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern nint FastTextPredict(nint handle, string text, int k, float threshold, ref nint errptr);
+        public static extern IntPtr FastTextPredict(IntPtr handle, string text, int k, float threshold, ref IntPtr errptr);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void DestroyPredictions(nint predictions);
+        public static extern void DestroyPredictions(IntPtr predictions);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern nint FastTextGetLabels(nint handle);
+        public static extern IntPtr FastTextGetLabels(IntPtr handle);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void DestroyLabels(nint labels);
+        public static extern void DestroyLabels(IntPtr labels);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern nint FastTextTokenize(nint handle, string text);
+        public static extern IntPtr FastTextTokenize(IntPtr handle, string text);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void DestroyTokens(nint tokens);
+        public static extern void DestroyTokens(IntPtr tokens);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void FastTextAbort(nint handle);
+        public static extern void FastTextAbort(IntPtr handle);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void DestroyString(nint str);
+        public static extern void DestroyString(IntPtr str);
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal readonly struct FastTextPrediction
+    internal readonly struct FastTextPredictionNativeResult
     {
         public readonly float Prob;
-        public readonly nint Label;
+        public readonly IntPtr Label;
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal readonly struct FastTextPredictions
+    internal readonly struct FastTextPredictionListNativeResult
     {
-        public readonly nint Predictions;
+        public readonly IntPtr Predictions;
         public readonly ulong Length;
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal readonly struct FastTextTokens
+    internal readonly struct FastTextTokenListNativeResult
     {
-        public readonly nint Tokens;
+        public readonly IntPtr Tokens;
         public readonly ulong Length;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     internal readonly struct FastTextLabels
     {
-        public readonly nint Labels;
-        public readonly nint Freqs;
+        public readonly IntPtr Labels;
+        public readonly IntPtr Freqs;
         public readonly ulong Length;
     }
 }
