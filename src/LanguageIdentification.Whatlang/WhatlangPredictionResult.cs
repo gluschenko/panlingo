@@ -3,9 +3,9 @@
 namespace Panlingo.LanguageIdentification.Whatlang
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public readonly struct WhatlangPredictionResult
+    internal readonly struct WhatlangPredictionResult
     {
-        public readonly WhatLangLang Lang;
+        public readonly WhatlangLanguage Lang;
 
         public readonly WhatLangScript Script;
 

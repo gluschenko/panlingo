@@ -5,7 +5,7 @@
     /// 
     /// https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
     /// </summary>
-    public enum WhatLangLang : byte
+    public enum WhatlangLanguage : byte
     {
         /// Esperanto (Esperanto)
         Epo = 0,

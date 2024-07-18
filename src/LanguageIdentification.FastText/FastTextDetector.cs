@@ -35,31 +35,31 @@ namespace Panlingo.LanguageIdentification.FastText
             }
         }
 
-        public IEnumerable<PredictionLabel> GetLabels()
+        public IEnumerable<FastTextLabelResult> GetLabels()
         {
             var labelsPtr = FastTextDetectorWrapper.FastTextGetLabels(_fastText);
 
             if (labelsPtr == IntPtr.Zero)
             {
-                return Array.Empty<PredictionLabel>();
+                return Array.Empty<FastTextLabelResult>();
             }
 
             var labelsStruct = Marshal.PtrToStructure<FastTextLabels>(labelsPtr);
-            var result = new List<PredictionLabel>();
+            var result = new List<FastTextLabelResult>();
 
             for (ulong i = 0; i < labelsStruct.Length; i++)
             {
                 var labelPtr = Marshal.ReadIntPtr(labelsStruct.Labels, (int)i * IntPtr.Size);
                 var label = DecodeString(labelPtr);
                 var freq = Marshal.ReadInt64(labelsStruct.Freqs, (int)i * sizeof(long));
-                result.Add(new PredictionLabel(label: label, frequency: freq));
+                result.Add(new FastTextLabelResult(label: label, frequency: freq));
             }
 
             FastTextDetectorWrapper.DestroyLabels(labelsPtr);
             return result;
         }
 
-        public IEnumerable<Prediction> Predict(string text, int k, float threshold = 0.0f)
+        public IEnumerable<FastTextPredictionResult> Predict(string text, int k, float threshold = 0.0f)
         {
             var errptr = IntPtr.Zero;
             var predictionPtr = FastTextDetectorWrapper.FastTextPredict(
@@ -73,11 +73,11 @@ namespace Panlingo.LanguageIdentification.FastText
 
             if (predictionPtr == IntPtr.Zero)
             {
-                return Array.Empty<Prediction>();
+                return Array.Empty<FastTextPredictionResult>();
             }
 
             var predictions = Marshal.PtrToStructure<FastTextPredictions>(predictionPtr);
-            var result = new List<Prediction>();
+            var result = new List<FastTextPredictionResult>();
 
             for (ulong i = 0; i < predictions.Length; i++)
             {
@@ -85,7 +85,7 @@ namespace Panlingo.LanguageIdentification.FastText
                 var prediction = Marshal.PtrToStructure<FastTextPrediction>(elementPtr);
                 var label = DecodeString(prediction.Label);
 
-                result.Add(new Prediction(
+                result.Add(new FastTextPredictionResult(
                     label: label,
                     probability: prediction.Prob
                 ));

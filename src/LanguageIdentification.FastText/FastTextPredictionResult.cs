@@ -3,12 +3,12 @@
 namespace Panlingo.LanguageIdentification.FastText
 {
     [DebuggerDisplay("{Label} ({Probability})")]
-    public readonly struct Prediction
+    internal readonly struct FastTextPredictionResult
     {
         public readonly float Probability;
         public readonly string Label;
 
-        public Prediction(float probability, string label)
+        public FastTextPredictionResult(float probability, string label)
         {
             Probability = probability;
             Label = label;

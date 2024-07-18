@@ -17,12 +17,12 @@ namespace Panlingo.LanguageIdentification.Whatlang
                 info: out var resultCount
             );
 
-            if (status == WhatLangStatus.DetectFailure)
+            if (status == WhatlangStatusX.DetectFailure)
             {
                 return null;
             }
 
-            if (status == WhatLangStatus.BadTextPtr || status == WhatLangStatus.BadOutputPtr)
+            if (status == WhatlangStatusX.BadTextPtr || status == WhatlangStatusX.BadOutputPtr)
             {
                 throw new Exception($"Failed to detect langauge: {status}");
             }
@@ -30,7 +30,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
             return resultCount;
         }
 
-        public string GetLangCode(WhatLangLang lang)
+        public string GetLangCode(WhatlangLanguage lang)
         {
             var stringBuider = new StringBuilder(100);
 
@@ -51,7 +51,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
             }
         }
 
-        public string GetLangName(WhatLangLang lang)
+        public string GetLangName(WhatlangLanguage lang)
         {
             var stringBuider = new StringBuilder(100);
 
@@ -72,7 +72,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
             }
         }
 
-        public string GetScriptName(WhatLangScript script)
+        public string GetScriptName(WhatlangScriptX script)
         {
             var stringBuider = new StringBuilder(100);
 
@@ -93,7 +93,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
             }
         }
 
-        public string GetLangEngName(WhatLangLang lang)
+        public string GetLangEngName(WhatlangLanguage lang)
         {
             var stringBuider = new StringBuilder(100);
 
