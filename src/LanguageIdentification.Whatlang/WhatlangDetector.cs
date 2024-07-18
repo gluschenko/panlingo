@@ -17,12 +17,12 @@ namespace Panlingo.LanguageIdentification.Whatlang
                 info: out var resultCount
             );
 
-            if (status == WhatlangStatusX.DetectFailure)
+            if (status == WhatlangStatus.DetectFailure)
             {
                 return null;
             }
 
-            if (status == WhatlangStatusX.BadTextPtr || status == WhatlangStatusX.BadOutputPtr)
+            if (status == WhatlangStatus.BadTextPtr || status == WhatlangStatus.BadOutputPtr)
             {
                 throw new Exception($"Failed to detect langauge: {status}");
             }
@@ -72,7 +72,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
             }
         }
 
-        public string GetScriptName(WhatlangScriptX script)
+        public string GetScriptName(WhatlangScript script)
         {
             var stringBuider = new StringBuilder(100);
 

@@ -5,7 +5,7 @@
     /// 
     /// https://en.wikipedia.org/wiki/ISO_15924
     /// </summary>
-    public enum WhatlangScriptX : byte
+    public enum WhatlangScript : byte
     {
         Arab = 0, // Arabic
         Beng = 1, // Bengali
