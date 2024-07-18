@@ -8,14 +8,14 @@
 
             string text = "Hello, how are you? Привіт, як справи? Привет, как дела?";
 
-            var result = cld3.FindLanguage(text);
+            var result = cld3.PredictLanguage(text);
 
             Console.WriteLine($"Language: {result.Language}");
             Console.WriteLine($"Probability: {result.Probability}");
             Console.WriteLine($"IsReliable: {result.IsReliable}");
             Console.WriteLine($"Proportion: {result.Proportion}");
 
-            var topLangs = cld3.FindLanguageNMostFreqLangs(text, 3);
+            var topLangs = cld3.PredictLangauges(text, 3);
 
             foreach (var lang in topLangs)
             {

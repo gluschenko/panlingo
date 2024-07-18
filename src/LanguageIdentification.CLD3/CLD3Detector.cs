@@ -33,13 +33,13 @@ namespace Panlingo.LanguageIdentification.CLD3
             }
         }
 
-        public CLD3Prediction FindLanguage(string text)
+        public CLD3Prediction PredictLanguage(string text)
         {
             var result = CLD3DetectorWrapper.FindLanguage(_identifier, text);
             return new CLD3Prediction(result);
         }
 
-        public IEnumerable<CLD3Prediction> FindLanguageNMostFreqLangs(
+        public IEnumerable<CLD3Prediction> PredictLangauges(
             string text,
             int numLangs
         )
