@@ -7,7 +7,7 @@ public class CLD3Tests
     [Theory]
     [InlineData("en", "Hello, how are you?")]
     [InlineData("uk", "Привіт, як справи?")]
-    [InlineData("un", "Привет, как дела?")]
+    [InlineData("ru", "Привет, как дела?")]
     public void CLD3SingleLanguage(string languageCode, string text)
     {
         using var cld3 = new CLD3Detector(0, 512);
