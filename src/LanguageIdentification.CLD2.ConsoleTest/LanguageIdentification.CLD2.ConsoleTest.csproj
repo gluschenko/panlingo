@@ -9,6 +9,7 @@
     <ContainerDevelopmentMode>Regular</ContainerDevelopmentMode>
     <DockerfileContext>..\..</DockerfileContext>
     <DockerfileRunArguments>--name language-identification-cld2</DockerfileRunArguments>
+    <Configurations>Debug;Release;CI</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
