@@ -7,7 +7,6 @@ Welcome to **Panlingo.LanguageIdentification.CLD2**, a .NET wrapper for the Chro
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-- [API](#api)
 - [Alternatives](#alternatives)
 
 ## Requirements
@@ -38,14 +37,21 @@ class Program
     static void Main()
     {
         // Create an instance of the language detector
-        var detector = new LanguageDetector();
+        using var cld2 = new CLD2Detector();
 
         // Input text to detect language
-        string text = "こんにちは、世界！";
+        var predictions = cld2.PredictLanguage("Привіт, як справи?");
 
-        // Detect and print the language
-        var language = detector.DetectLanguage(text);
-        Console.WriteLine($"Detected language: {language}");
+        // Print the language
+        foreach (var prediction in predictions)
+        {
+            Console.WriteLine(
+                $"Language: {prediction.Language}, " + 
+                $"Probability: {prediction.Probability}, " +
+                $"IsReliable: {prediction.IsReliable}, " + 
+                $"Proportion: {prediction.Proportion}"
+            );
+        }
     }
 }
 ```

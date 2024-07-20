@@ -7,7 +7,6 @@ Welcome to **Panlingo.LanguageIdentification.FastText**, a .NET wrapper for the 
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-- [API](#api)
 - [Alternatives](#alternatives)
 
 ## Requirements
@@ -58,18 +57,21 @@ class Program
 {
     static void Main()
     {
-        // Path to the downloaded model
-        string modelPath = "/models/fasttext176.bin";
+        using var fastText = new FastTextDetector();
+        fastText.LoadModel("/models/fasttext217.bin");
 
-        // Create an instance of the language detector
-        var detector = new FastTextLanguageDetector(modelPath);
+        var predictions = fastText.Predict(
+            text: "Привіт, як справи?", 
+            count: 10
+        );
 
-        // Input text to detect language
-        string text = "Bonjour le monde!";
+        foreach (var prediction in predictions)
+        {
+            Console.WriteLine($"{prediction.Label}: {prediction.Probability}");
+        }
 
-        // Detect and print the language
-        var language = detector.DetectLanguage(text);
-        Console.WriteLine($"Detected language: {language}");
+        var dimensions = fastText.GetModelDimensions();
+        var labels = fastText.GetLabels();
     }
 }
 ```

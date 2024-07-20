@@ -7,7 +7,6 @@ Welcome to **Panlingo.LanguageIdentification.Whatlang**, a .NET wrapper for the 
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-- [API](#api)
 
 ## Requirements
 
@@ -39,14 +38,33 @@ class Program
     static void Main()
     {
         // Create an instance of the language detector
-        var detector = new WhatlangLanguageDetector();
+        using var whatlang = new WhatlangDetector();
 
-        // Input text to detect language
-        string text = "Hola, mundo!";
+        var texts = new[]
+        {
+            "Hello, how are you?",
+            "Привіт, як справи?",
+            "Привет, как дела?",
+        };
 
-        // Detect and print the language
-        var language = detector.DetectLanguage(text);
-        Console.WriteLine($"Detected language: {language}");
+        var predictions = texts
+            .Select(x => new
+            {
+                Text = x,
+                Prediction = whatlang.PredictLanguage(x),
+            })
+            .ToArray();
+
+        foreach (var x in predictions)
+        {
+            Console.WriteLine(
+                $"Text: {x.Text}, " +
+                $"Language: {x.Prediction?.Lang.ToString() ?? "NULL"}, " +
+                $"Probability: {x.Prediction?.Confidence.ToString() ?? "NULL"}, " +
+                $"IsReliable: {x.Prediction?.IsReliable.ToString() ?? "NULL"}, " +
+                $"Script: {x.Prediction?.Script.ToString() ?? "NULL"}"
+            );
+        }
     }
 }
 ```

@@ -7,7 +7,6 @@ Welcome to **Panlingo.LanguageIdentification.CLD3**, a .NET wrapper for the Chro
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-- [API](#api)
 - [Alternatives](#alternatives)
 
 ## Requirements
@@ -61,14 +60,28 @@ class Program
     static void Main()
     {
         // Create an instance of the language detector
-        var detector = new LanguageDetector();
+        using var cld3 = new CLD3Detector(minNumBytes: 0, maxNumBytes: 512);
 
-        // Input text to detect language
-        string text = "Hello, world!";
+        var text = "Hello, how are you? Привіт, як справи? Привет, как дела?";
 
-        // Detect and print the language
-        var language = detector.DetectLanguage(text);
-        Console.WriteLine($"Detected language: {language}");
+        var singlePrediction = cld3.PredictLanguage("Привіт, як справи?");
+
+        Console.WriteLine($"Language: {singlePrediction.Language}");
+        Console.WriteLine($"Probability: {singlePrediction.Probability}");
+        Console.WriteLine($"IsReliable: {singlePrediction.IsReliable}");
+        Console.WriteLine($"Proportion: {singlePrediction.Proportion}");
+
+        var predictions = cld3.PredictLangauges("Hello, how are you? Привіт, як справи? Привет, как дела?", 3);
+
+        foreach (var prediction in predictions)
+        {
+            Console.WriteLine(
+                $"Language: {prediction.Language}, " +
+                $"Probability: {prediction.Probability}, " +
+                $"IsReliable: {prediction.IsReliable}, " +
+                $"Proportion: {prediction.Proportion}"
+            );
+        }
     }
 }
 ```

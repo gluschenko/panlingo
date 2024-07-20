@@ -5,7 +5,6 @@
         static void Main(string[] args)
         {
             var text = "Hello, how are you? Привіт, як справи? Привет, как дела?";
-
             var modelPath = "/models/fasttext217.bin";
 
             using var fastText = new FastTextDetector();
@@ -18,11 +17,9 @@
 
             var labels = fastText.GetLabels();
 
-            Console.WriteLine($"{text}:");
-
-            foreach (var x in predictions)
+            foreach (var prediction in predictions)
             {
-                Console.WriteLine($"{x.Label}: {x.Probability}");
+                Console.WriteLine($"{prediction.Label}: {prediction.Probability}");
             }
         }
     }

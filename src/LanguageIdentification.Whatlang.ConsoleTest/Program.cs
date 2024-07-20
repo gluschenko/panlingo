@@ -13,20 +13,23 @@
                 "Привет, как дела?",
             };
 
-            var list = new List<WhatlangPrediction>();
-
-            foreach (var text in texts)
-            {
-                var prediction = whatlang.PredictLanguage(text);
-                if (prediction is not null)
+            var predictions = texts
+                .Select(x => new
                 {
-                    list.Add(prediction);
-                }
-            }
+                    Text = x,
+                    Prediction = whatlang.PredictLanguage(x),
+                })
+                .ToArray();
 
-            foreach (var lang in list)
+            foreach (var x in predictions)
             {
-                Console.WriteLine($"Language: {lang.Lang}, Probability: {lang.Confidence}, IsReliable: {lang.IsReliable}, Script: {lang.Script}");
+                Console.WriteLine(
+                    $"Text: {x.Text}, " +
+                    $"Language: {x.Prediction?.Lang.ToString() ?? "NULL"}, " +
+                    $"Probability: {x.Prediction?.Confidence.ToString() ?? "NULL"}, " +
+                    $"IsReliable: {x.Prediction?.IsReliable.ToString() ?? "NULL"}, " +
+                    $"Script: {x.Prediction?.Script.ToString() ?? "NULL"}"
+                );
             }
 
             var code1 = whatlang.GetLangCode(WhatlangLanguage.Ukr);
