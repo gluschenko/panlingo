@@ -64,6 +64,94 @@ If you are exploring other options, here are some alternatives to consider:
 - **[nuvi/NCLD2](https://github.com/nuvi/NCLD2)**: Another unmaintained wrapper for .NET ([NuGet](https://www.nuget.org/packages/NCLD2)).
 - **[curiosity-ai/catalyst](https://github.com/curiosity-ai/catalyst)**: Contains CLD2, with an example available [here](https://github.com/curiosity-ai/catalyst/blob/master/samples/LanguageDetection/Program.cs).
 
+## Supported languages
+
+| Langauge Name      | Output Code (ISO 639-1)    |
+|--------------------|----------------------------|
+| Afrikaans             | af        |
+| Albanian              | sq        |
+| Arabic                | ar        |
+| Armenian              | hy        |
+| Azerbaijani           | az        |
+| Basque                | eu        |
+| Belarusian            | be        |
+| Bengali               | bn        |
+| Bihari                | bh        |
+| Bulgarian             | bg        |
+| Catalan               | ca        |
+| Cebuano               | ceb       |
+| Cherokee              | chr       |
+| Croatian              | hr        |
+| Czech                 | cs        |
+| Chinese               | zh        |
+| Chinese_T             | zh-Hant   |
+| Danish                | da        |
+| Dhivehi               | dv        |
+| Dutch                 | nl        |
+| English               | en        |
+| Estonian              | et        |
+| Finnish               | fi        |
+| French                | fr        |
+| Galician              | gl        |
+| Ganda                 | lg        |
+| Georgian              | ka        |
+| German                | de        |
+| Greek                 | el        |
+| Gujarati              | gu        |
+| Haitian_Creole        | ht        |
+| Hebrew                | iw        |
+| Hindi                 | hi        |
+| Hmong                 | hmn       |
+| Hungarian             | hu        |
+| Icelandic             | is        |
+| Indonesian            | id        |
+| Inuktitut             | iu        |
+| Irish                 | ga        |
+| Italian               | it        |
+| Javanese              | jw        |
+| Japanese              | ja        |
+| Kannada               | kn        |
+| Khmer                 | km        |
+| Kinyarwanda           | rw        |
+| Korean                | ko        |
+| Laothian              | lo        |
+| Latvian               | lv        |
+| Limbu                 | lif       |
+| Lithuanian            | lt        |
+| Macedonian            | mk        |
+| Malay                 | ms        |
+| Malayalam             | ml        |
+| Maltese               | mt        |
+| Marathi               | mr        |
+| Nepali                | ne        |
+| Norwegian             | no        |
+| Oriya                 | or        |
+| Persian               | fa        |
+| Polish                | pl        |
+| Portuguese            | pt        |
+| Punjabi               | pa        |
+| Romanian              | ro        |
+| Russian               | ru        |
+| Scots_Gaelic          | gd        |
+| Serbian               | sr        |
+| Sinhalese             | si        |
+| Slovak                | sk        |
+| Slovenian             | sl        |
+| Spanish               | es        |
+| Swahili               | sw        |
+| Swedish               | sv        |
+| Syriac                | syr       |
+| Tagalog               | tl        |
+| Tamil                 | ta        |
+| Telugu                | te        |
+| Thai                  | th        |
+| Turkish               | tr        |
+| Ukrainian             | uk        |
+| Urdu                  | ur        |
+| Vietnamese            | vi        |
+| Welsh                 | cy        |
+| Yiddish               | yi        |
+
 ---
 
 We value your feedback. Feel free to open issues or contribute to the repository. Let’s make language detection in .NET even more powerful and versatile! 🌍📝

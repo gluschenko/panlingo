@@ -56,6 +56,7 @@ functionality into their applications.
 | Multi language prediction | Yes | Yes | Yes | No |
 | Supported langauges | 80 | 107 | 176 or 217 | 69 |
 | Unknown language detection | Yes | Yes | No | No |
+| Algorithm | quadgrams | neural network | neural network | trigrams |
 
 \* When using these models: 
 [lid176](https://fasttext.cc/docs/en/language-identification.html), 

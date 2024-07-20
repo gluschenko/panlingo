@@ -7,30 +7,102 @@
     /// </summary>
     public enum WhatlangScript : byte
     {
-        Arab = 0, // Arabic
-        Beng = 1, // Bengali
-        Cyrl = 2, // Cyrillic
-        Deva = 3, // Devanagari
-        Ethi = 4, // Ethiopic
-        Geor = 5, // Georgian
-        Grek = 6, // Greek
-        Gujr = 7, // Gujarati
-        Guru = 8, // Gurmukhi
-        Hang = 9, // Hangul
-        Hebr = 10, // Hebrew
-        Hira = 11, // Hiragana
-        Knda = 12, // Kannada
-        Kana = 13, // Katakana
-        Khmr = 14, // Khmer
-        Latn = 15, // Latin
-        Mlym = 16, // Malayalam
-        Mand = 17, // Mandarin
-        Mymr = 18, // Myanmar
-        Orya = 19, // Oriya (now officially Odia)
-        Sinh = 20, // Sinhala
-        Taml = 21, // Tamil
-        Telu = 22, // Telugu
-        Thai = 23  // Thai
+        /// <summary>
+        /// Arabic
+        /// </summary>
+        Arab = 0,
+        /// <summary>
+        /// Bengali
+        /// </summary>
+        Beng = 1,
+        /// <summary>
+        /// Cyrillic
+        /// </summary>
+        Cyrl = 2,
+        /// <summary>
+        /// Devanagari
+        /// </summary>
+        Deva = 3,
+        /// <summary>
+        /// Ethiopic
+        /// </summary>
+        Ethi = 4,
+        /// <summary>
+        /// Georgian
+        /// </summary>
+        Geor = 5,
+        /// <summary>
+        /// Greek
+        /// </summary>
+        Grek = 6,
+        /// <summary>
+        /// Gujarati
+        /// </summary>
+        Gujr = 7,
+        /// <summary>
+        /// Gurmukhi
+        /// </summary>
+        Guru = 8,
+        /// <summary>
+        /// Hangul
+        /// </summary>
+        Hang = 9,
+        /// <summary>
+        /// Hebrew
+        /// </summary>
+        Hebr = 10,
+        /// <summary>
+        /// Hiragana
+        /// </summary>
+        Hira = 11,
+        /// <summary>
+        /// Kannada
+        /// </summary>
+        Knda = 12,
+        /// <summary>
+        /// Katakana
+        /// </summary>
+        Kana = 13,
+        /// <summary>
+        /// Khmer
+        /// </summary>
+        Khmr = 14,
+        /// <summary>
+        /// Latin
+        /// </summary>
+        Latn = 15,
+        /// <summary>
+        /// Malayalam
+        /// </summary>
+        Mlym = 16,
+        /// <summary>
+        /// Mandarin
+        /// </summary>
+        Mand = 17,
+        /// <summary>
+        /// Myanmar
+        /// </summary>
+        Mymr = 18,
+        /// <summary>
+        /// Oriya (now officially Odia)
+        /// </summary>
+        Orya = 19,
+        /// <summary>
+        /// Sinhala
+        /// </summary>
+        Sinh = 20,
+        /// <summary>
+        /// Tamil
+        /// </summary>
+        Taml = 21,
+        /// <summary>
+        /// Telugu
+        /// </summary>
+        Telu = 22,
+        /// <summary>
+        /// Thai
+        /// </summary>
+        Thai = 23,
     }
 }
 
