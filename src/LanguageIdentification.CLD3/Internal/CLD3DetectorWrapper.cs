@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using Panlingo.LanguageIdentification.CLD3.Native;
 
-namespace Panlingo.LanguageIdentification.CLD3
+namespace Panlingo.LanguageIdentification.CLD3.Internal
 {
     internal static class CLD3DetectorWrapper
     {

@@ -1,13 +1,13 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Panlingo.LanguageIdentification.Whatlang
+namespace Panlingo.LanguageIdentification.Whatlang.Internal
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public readonly struct WhatlangPredictionResult
+    internal readonly struct WhatlangPredictionResult
     {
-        public readonly WhatLangLang Lang;
+        public readonly WhatlangLanguage Lang;
 
-        public readonly WhatLangScript Script;
+        public readonly WhatlangScript Script;
 
         [MarshalAs(UnmanagedType.R8)]
         public readonly double Confidence;

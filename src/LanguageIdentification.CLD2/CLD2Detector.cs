@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Panlingo.LanguageIdentification.CLD2.Internal;
 
 namespace Panlingo.LanguageIdentification.CLD2
 {
@@ -9,9 +10,15 @@ namespace Panlingo.LanguageIdentification.CLD2
     {
         public CLD2Detector()
         {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                throw new NotSupportedException(
+                    $"{nameof(CLD2Detector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
+                );
+            }
         }
 
-        public IEnumerable<CLD2PredictionResult> PredictLanguage(string text)
+        public IEnumerable<CLD2Prediction> PredictLanguage(string text)
         {
             var resultPtr = CLD2DetectorWrapper.PredictLanguage(
                 text: text,
@@ -28,7 +35,10 @@ namespace Panlingo.LanguageIdentification.CLD2
                     result[i] = Marshal.PtrToStructure<CLD2PredictionResult>(resultPtr + i * structSize);
                 }
 
-                return result.OrderByDescending(x => x.Probability).ToArray();
+                return result
+                    .OrderByDescending(x => x.Probability)
+                    .Select(x => new CLD2Prediction(x))
+                    .ToArray();
             }
             finally
             {

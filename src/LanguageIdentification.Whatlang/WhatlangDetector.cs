@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Text;
+using Panlingo.LanguageIdentification.Whatlang.Internal;
 
 namespace Panlingo.LanguageIdentification.Whatlang
 {
@@ -7,30 +9,35 @@ namespace Panlingo.LanguageIdentification.Whatlang
     {
         public WhatlangDetector()
         {
-
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                throw new NotSupportedException(
+                    $"{nameof(WhatlangDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
+                );
+            }
         }
 
-        public WhatlangPredictionResult? PredictLanguage(string text)
+        public WhatlangPrediction? PredictLanguage(string text)
         {
             var status = WhatlangDetectorWrapper.WhatlangDetect(
                 text: text,
-                info: out var resultCount
+                info: out var result
             );
 
-            if (status == WhatLangStatus.DetectFailure)
+            if (status == WhatlangStatus.DetectFailure)
             {
                 return null;
             }
 
-            if (status == WhatLangStatus.BadTextPtr || status == WhatLangStatus.BadOutputPtr)
+            if (status == WhatlangStatus.BadTextPtr || status == WhatlangStatus.BadOutputPtr)
             {
                 throw new Exception($"Failed to detect langauge: {status}");
             }
 
-            return resultCount;
+            return new WhatlangPrediction(result);
         }
 
-        public string GetLangCode(WhatLangLang lang)
+        public string GetLangCode(WhatlangLanguage lang)
         {
             var stringBuider = new StringBuilder(100);
 
@@ -51,7 +58,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
             }
         }
 
-        public string GetLangName(WhatLangLang lang)
+        public string GetLangName(WhatlangLanguage lang)
         {
             var stringBuider = new StringBuilder(100);
 
@@ -72,7 +79,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
             }
         }
 
-        public string GetScriptName(WhatLangScript script)
+        public string GetScriptName(WhatlangScript script)
         {
             var stringBuider = new StringBuilder(100);
 
@@ -93,7 +100,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
             }
         }
 
-        public string GetLangEngName(WhatLangLang lang)
+        public string GetLangEngName(WhatlangLanguage lang)
         {
             var stringBuider = new StringBuilder(100);
 

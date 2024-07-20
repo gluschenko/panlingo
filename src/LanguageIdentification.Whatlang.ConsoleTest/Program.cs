@@ -13,29 +13,32 @@
                 "Привет, как дела?",
             };
 
-            var list = new List<WhatlangPredictionResult>();
-
-            foreach (var text in texts)
-            {
-                var prediction = whatlang.PredictLanguage(text);
-                if (prediction.HasValue)
+            var predictions = texts
+                .Select(x => new
                 {
-                    list.Add(prediction.Value);
-                }
-            }
+                    Text = x,
+                    Prediction = whatlang.PredictLanguage(x),
+                })
+                .ToArray();
 
-            foreach (var lang in list)
+            foreach (var x in predictions)
             {
-                Console.WriteLine($"Language: {lang.Lang}, Probability: {lang.Confidence}, IsReliable: {lang.IsReliable}, Script: {lang.Script}");
+                Console.WriteLine(
+                    $"Text: {x.Text}, " +
+                    $"Language: {x.Prediction?.Language.ToString() ?? "NULL"}, " +
+                    $"Probability: {x.Prediction?.Confidence.ToString() ?? "NULL"}, " +
+                    $"IsReliable: {x.Prediction?.IsReliable.ToString() ?? "NULL"}, " +
+                    $"Script: {x.Prediction?.Script.ToString() ?? "NULL"}"
+                );
             }
 
-            var code1 = whatlang.GetLangCode(WhatLangLang.Ukr);
+            var code1 = whatlang.GetLangCode(WhatlangLanguage.Ukr);
 
-            var code2 = whatlang.GetLangName(WhatLangLang.Ukr);
+            var code2 = whatlang.GetLangName(WhatlangLanguage.Ukr);
 
-            var code3 = whatlang.GetScriptName(WhatLangScript.Cyrl);
+            var code3 = whatlang.GetScriptName(WhatlangScript.Cyrl);
 
-            var code4 = whatlang.GetLangEngName(WhatLangLang.Ukr);
+            var code4 = whatlang.GetLangEngName(WhatlangLanguage.Ukr);
 
             ;
         }

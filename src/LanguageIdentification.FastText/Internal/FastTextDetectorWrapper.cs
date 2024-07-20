@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+
 using Panlingo.LanguageIdentification.FastText.Native;
 
-namespace Panlingo.LanguageIdentification.FastText
+namespace Panlingo.LanguageIdentification.FastText.Internal
 {
     internal static class FastTextDetectorWrapper
     {
@@ -44,21 +45,21 @@ namespace Panlingo.LanguageIdentification.FastText
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal readonly struct FastTextPrediction
+    internal readonly struct FastTextPredictionNativeResult
     {
         public readonly float Prob;
         public readonly IntPtr Label;
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal readonly struct FastTextPredictions
+    internal readonly struct FastTextPredictionListNativeResult
     {
         public readonly IntPtr Predictions;
         public readonly ulong Length;
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal readonly struct FastTextTokens
+    internal readonly struct FastTextTokenListNativeResult
     {
         public readonly IntPtr Tokens;
         public readonly ulong Length;

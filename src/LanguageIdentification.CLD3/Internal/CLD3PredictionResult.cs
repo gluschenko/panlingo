@@ -1,9 +1,9 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Panlingo.LanguageIdentification.CLD3
+namespace Panlingo.LanguageIdentification.CLD3.Internal
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public readonly struct CLD3PredictionResult
+    internal readonly struct CLD3PredictionResult
     {
         [MarshalAs(UnmanagedType.LPStr)]
         public readonly string Language;
@@ -17,5 +17,4 @@ namespace Panlingo.LanguageIdentification.CLD3
         [MarshalAs(UnmanagedType.R8)]
         public readonly double Proportion;
     }
-
 }

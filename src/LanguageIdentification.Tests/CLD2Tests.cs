@@ -15,6 +15,11 @@ public class CLD2Tests
         var predictions = cld2.PredictLanguage(text);
         var mainLanguage = predictions.FirstOrDefault();
 
+        if (mainLanguage is null)
+        {
+            throw new NullReferenceException();
+        }
+
         Assert.Equal(languageCode, mainLanguage.Language);
     }
 }

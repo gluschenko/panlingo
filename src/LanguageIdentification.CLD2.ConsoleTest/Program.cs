@@ -6,16 +6,19 @@
         {
             using var cld2 = new CLD2Detector();
 
-            string text = "Hello, how are you? Привіт, як справи? Привет, как дела?";
+            var text = "Hello, how are you? Привіт, як справи? Привет, как дела?";
 
-            var topLangs = cld2.PredictLanguage(text);
+            var predictions = cld2.PredictLanguage(text);
 
-            foreach (var lang in topLangs)
+            foreach (var prediction in predictions)
             {
-                Console.WriteLine($"Language: {lang.Language}, Probability: {lang.Probability}, IsReliable: {lang.IsReliable}, Proportion: {lang.Proportion}");
+                Console.WriteLine(
+                    $"Language: {prediction.Language}, " +
+                    $"Probability: {prediction.Probability}, " +
+                    $"IsReliable: {prediction.IsReliable}, " +
+                    $"Proportion: {prediction.Proportion}"
+                );
             }
-
-            ;
         }
     }
 }

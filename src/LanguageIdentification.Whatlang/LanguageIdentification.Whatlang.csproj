@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
-    <Version>0.0.0.10</Version>
+    <Version>0.0.0.12</Version>
     <PackageId>Panlingo.LanguageIdentification.Whatlang</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.Whatlang</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.Whatlang</RootNamespace>
@@ -24,6 +24,7 @@
       library to accurately and quickly recognize the languages of given texts. Perfect for projects that require lightweight yet
       reliable language detection.
     </Description>
+    <Configurations>Debug;Release;CI</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">

@@ -9,6 +9,7 @@
     <ContainerDevelopmentMode>Regular</ContainerDevelopmentMode>
     <DockerfileContext>..\..</DockerfileContext>
     <DockerfileRunArguments>--name language-identification-fasttext</DockerfileRunArguments>
+    <Configurations>Debug;Release;CI</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

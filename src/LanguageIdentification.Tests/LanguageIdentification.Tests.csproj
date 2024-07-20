@@ -7,6 +7,8 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+
+    <Configurations>Debug;Release;CI</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,14 +18,14 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+  <ItemGroup Condition="'$(Configuration)' != 'CI'">
     <ProjectReference Include="..\LanguageIdentification.CLD2\LanguageIdentification.CLD2.csproj" />
     <ProjectReference Include="..\LanguageIdentification.CLD3\LanguageIdentification.CLD3.csproj" />
     <ProjectReference Include="..\LanguageIdentification.FastText\LanguageIdentification.FastText.csproj" />
     <ProjectReference Include="..\LanguageIdentification.Whatlang\LanguageIdentification.Whatlang.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+  <ItemGroup Condition="'$(Configuration)' == 'CI'">
     <PackageReference Include="Panlingo.LanguageIdentification.CLD2" Version="*" />
     <PackageReference Include="Panlingo.LanguageIdentification.CLD3" Version="*" />
     <PackageReference Include="Panlingo.LanguageIdentification.FastText" Version="*" />
