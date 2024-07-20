@@ -8,10 +8,13 @@ Collection of language identification libraries for .NET
 
 ## Features
 
-- qwe
-- qwe
-- qwe
-- qwe
+| # | CLD2 | CLD3 | FastText* | Whatlang |
+| - | ---- | ---- | -------- | -------- |
+| Single language prediction | Yes | Yes | Yes | Yes |
+| Multi language prediction | Yes | Yes | Yes | No |
+| Supported langauges | ? | ? | ? | ? |
+
+\* When using these models: [1](https://fasttext.cc/docs/en/language-identification.html), [2](https://huggingface.co/facebook/fasttext-language-identification)
 
 ## Platform support
 
