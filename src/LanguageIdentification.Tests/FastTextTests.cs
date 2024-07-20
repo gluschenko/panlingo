@@ -15,7 +15,7 @@ public class FastTextTests
         var modelPath = "/models/fasttext176.bin";
         fastText.LoadModel(modelPath);
 
-        var predictions = fastText.Predict(text: text, k: 10);
+        var predictions = fastText.Predict(text: text, count: 10);
         var mainLanguage = predictions.FirstOrDefault();
 
         if (mainLanguage is null)
@@ -24,5 +24,20 @@ public class FastTextTests
         }
 
         Assert.Equal(languageCode, mainLanguage.Label);
+    }
+
+    [Fact]
+    public void FastTextLabels()
+    {
+        using var fastText = new FastTextDetector();
+
+        var modelPath = "/models/fasttext176.bin";
+        fastText.LoadModel(modelPath);
+
+        var labels = fastText.GetLabels();
+
+        Assert.Contains(labels, x => x.Label == "__label__en");
+        Assert.Contains(labels, x => x.Label == "__label__uk");
+        Assert.Contains(labels, x => x.Label == "__label__ru");
     }
 }

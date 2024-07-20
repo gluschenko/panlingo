@@ -10,6 +10,12 @@ namespace Panlingo.LanguageIdentification.CLD2
     {
         public CLD2Detector()
         {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                throw new NotSupportedException(
+                    $"{nameof(CLD2Detector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
+                );
+            }
         }
 
         public IEnumerable<CLD2Prediction> PredictLanguage(string text)

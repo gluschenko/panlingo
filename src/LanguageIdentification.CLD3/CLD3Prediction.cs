@@ -16,5 +16,10 @@ namespace Panlingo.LanguageIdentification.CLD3
             IsReliable = item.IsReliable;
             Proportion = item.Proportion;
         }
+
+        public bool IsUnknown()
+        {
+            return Language.Equals("und", System.StringComparison.OrdinalIgnoreCase);
+        }
     }
 }

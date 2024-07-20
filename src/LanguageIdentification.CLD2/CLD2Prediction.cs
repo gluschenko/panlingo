@@ -18,5 +18,10 @@ namespace Panlingo.LanguageIdentification.CLD2
             IsReliable = item.IsReliable;
             Proportion = item.Proportion;
         }
+
+        public bool IsUnknown()
+        {
+            return Language.Equals("un", System.StringComparison.OrdinalIgnoreCase);
+        }
     }
 }

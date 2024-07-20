@@ -14,6 +14,13 @@ namespace Panlingo.LanguageIdentification.FastText
 
         public FastTextDetector()
         {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                throw new NotSupportedException(
+                    $"{nameof(FastTextDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
+                );
+            }
+
             _fastText = FastTextDetectorWrapper.CreateFastText();
             _semaphore = new SemaphoreSlim(1, 1);
         }
@@ -62,13 +69,13 @@ namespace Panlingo.LanguageIdentification.FastText
             return result;
         }
 
-        public IEnumerable<FastTextPrediction> Predict(string text, int k, float threshold = 0.0f)
+        public IEnumerable<FastTextPrediction> Predict(string text, int count, float threshold = 0.0f)
         {
             var errptr = IntPtr.Zero;
             var predictionPtr = FastTextDetectorWrapper.FastTextPredict(
                 handle: _fastText, 
                 text: text,
-                k: k,
+                k: count,
                 threshold: threshold,
                 ref errptr
             );

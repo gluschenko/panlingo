@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Text;
 using Panlingo.LanguageIdentification.Whatlang.Internal;
 
@@ -8,7 +9,12 @@ namespace Panlingo.LanguageIdentification.Whatlang
     {
         public WhatlangDetector()
         {
-
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                throw new NotSupportedException(
+                    $"{nameof(WhatlangDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
+                );
+            }
         }
 
         public WhatlangPrediction? PredictLanguage(string text)

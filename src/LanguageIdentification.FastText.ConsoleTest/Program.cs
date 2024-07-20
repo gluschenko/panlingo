@@ -14,7 +14,7 @@
 
             var dimensions = fastText.GetModelDimensions();
 
-            var predictions = fastText.Predict(text, 10);
+            var predictions = fastText.Predict(text: text, count: 10);
 
             var labels = fastText.GetLabels();
 
@@ -22,7 +22,7 @@
 
             foreach (var x in predictions)
             {
-                Console.WriteLine($"{x.Label.Replace("__label__", "")}: {x.Probability}");
+                Console.WriteLine($"{x.Label}: {x.Probability}");
             }
         }
     }
