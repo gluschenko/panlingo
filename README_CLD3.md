@@ -9,7 +9,7 @@ Perfect for applications dealing with multilingual texts or requiring automatic 
 ## Requirements
 
 * .NET >=5.0
-* Linux (Debian-like)
+* Linux
 
 ## How to use?
 
@@ -23,8 +23,16 @@ dotnet add package Panlingo.LanguageIdentification.CLD3
 
 Also requires to install Protobuf:
 ```
+# Ubuntu/Debian
 sudo apt -y update
 sudo apt -y install protobuf-compiler libprotobuf-dev
+
+# Fedora
+sudo yum install protobuf-devel
+
+# CentOS
+sudo yum install epel-release
+sudo yum install protobuf-devel
 ```
 
 ### API
@@ -33,6 +41,5 @@ TODO
 
 ## Alternatives
 
-* [diadistis/cld2.net](https://github.com/diadistis/cld2.net) — unmaintained wrapper for .NET
-* [nuvi/NCLD2](https://github.com/nuvi/NCLD2) — unmaintained wrapper for .NET ([NuGet](https://www.nuget.org/packages/NCLD2))
-* [curiosity-ai/catalyst](https://github.com/curiosity-ai/catalyst) — contains CLD2 ([example here](https://github.com/curiosity-ai/catalyst/blob/master/samples/LanguageDetection/Program.cs))
+* [NikulovE/cld3.net](https://github.com/NikulovE/cld3.net) — unmaintained wrapper for .NET
+* [uranium62/cld3-net](https://github.com/uranium62/cld3-net) — unmaintained wrapper for .NET

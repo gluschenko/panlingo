@@ -9,7 +9,7 @@ Perfect for applications dealing with multilingual texts or requiring automatic 
 ## Requirements
 
 * .NET >=5.0
-* Linux (Debian-like)
+* Linux
 
 ## How to use?
 
