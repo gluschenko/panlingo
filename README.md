@@ -1,4 +1,4 @@
-# Language Identification
+﻿# Language Identification
 
 
 Collection of language identification libraries for .NET
@@ -13,11 +13,24 @@ Collection of language identification libraries for .NET
 - qwe
 - qwe
 
+## Platform support
+
+| Model    | Linux | Windows | macOS | WASM |
+| -------- | ----- | ------- | ----- | ---- |
+| CLD2     | ✅   | ❌ *   | ❌    | ❌ * |
+| CLD3     | ✅   | ❌ *   | ❌    | ❌   |
+| FastText | ✅   | ❌ *   | ❌    | ❌   |
+| Whatlang | ✅   | ❌ *   | ❌    | ❌ * |
+
+\* Ports for another planforms are planned
+
 ## Project structure
 
 
 
 ## TODO
+
+
 
 ### CLD3
 
