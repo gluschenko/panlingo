@@ -59,7 +59,7 @@ class Program
         {
             Console.WriteLine(
                 $"Text: {x.Text}, " +
-                $"Language: {x.Prediction?.Lang.ToString() ?? "NULL"}, " +
+                $"Language: {x.Prediction?.Language.ToString() ?? "NULL"}, " +
                 $"Probability: {x.Prediction?.Confidence.ToString() ?? "NULL"}, " +
                 $"IsReliable: {x.Prediction?.IsReliable.ToString() ?? "NULL"}, " +
                 $"Script: {x.Prediction?.Script.ToString() ?? "NULL"}"

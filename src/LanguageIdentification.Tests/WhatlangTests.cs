@@ -19,6 +19,6 @@ public class WhatlangTests
             throw new NullReferenceException();
         }
 
-        Assert.Equal(languageCode, prediction.Lang);
+        Assert.Equal(languageCode, prediction.Language);
     }
 }
