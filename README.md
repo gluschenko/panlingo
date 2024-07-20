@@ -5,6 +5,12 @@ Collection of language identification libraries for .NET
 
 [![GitHub CI](https://github.com/gluschenko/language-identification/actions/workflows/github-ci.yml/badge.svg)](https://github.com/gluschenko/language-identification/actions/workflows/github-ci.yml)
 
+## Wrappers
+
+* [CLD2 docs](./README_CLD2.md)
+* [CLD3 docs](./README_CLD3.md)
+* [FastText docs](./README_FASTTEXT.md)
+* [Whatlang docs](./README_WHATLANG.md)
 
 ## Features
 
@@ -13,6 +19,7 @@ Collection of language identification libraries for .NET
 | Single language prediction | Yes | Yes | Yes | Yes |
 | Multi language prediction | Yes | Yes | Yes | No |
 | Supported langauges | ? | ? | ? | ? |
+| Unknown language detection | Yes | Yes | No | No |
 
 \* When using these models: [1](https://fasttext.cc/docs/en/language-identification.html), [2](https://huggingface.co/facebook/fasttext-language-identification)
 
@@ -25,7 +32,7 @@ Collection of language identification libraries for .NET
 | FastText | ✅   | ❌ *   | ❌    | ❌   |
 | Whatlang | ✅   | ❌ *   | ❌    | ❌ * |
 
-\* Ports for another planforms are planned
+\* Ports for another platforms are planned
 
 ## Project structure
 
@@ -33,6 +40,9 @@ Collection of language identification libraries for .NET
 
 ## TODO
 
+[ ] Research hot to support another platforms 
+[ ] More unit-tests
+[ ] More native methods
 
 
 ### CLD3
