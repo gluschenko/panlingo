@@ -11,6 +11,7 @@ namespace LangaugeCode.ConsoleTest
             var extractor = new ISOExtractor(new HttpClient());
 
             var a = await extractor.ExtractAsync();
+            var b = await extractor.Extract2Async();
 
             ;
         }
