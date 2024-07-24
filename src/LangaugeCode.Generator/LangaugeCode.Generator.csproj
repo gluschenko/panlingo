@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LangaugeCode.Core\LangaugeCode.Core.csproj" />
+    <ProjectReference Include="..\LangaugeCode.Core\LangaugeCode.Core.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
   </ItemGroup>
 
 </Project>

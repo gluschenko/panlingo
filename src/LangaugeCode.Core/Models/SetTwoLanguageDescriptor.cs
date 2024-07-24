@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace LangaugeCode.Core.Models
+﻿namespace LangaugeCode.Core.Models
 {
-    public class LanguageDescriptor2
+    public class SetTwoLanguageDescriptor
     {
         public string CodeAlpha3Bibliographic { get; set; }
         public string CodeAlpha3Terminologic { get; set; }

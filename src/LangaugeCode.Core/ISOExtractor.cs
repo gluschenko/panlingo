@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 using LangaugeCode.Core.Models;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace LangaugeCode.Core
 {
@@ -25,22 +22,23 @@ namespace LangaugeCode.Core
         /// Source: https://www.loc.gov/standards/iso639-2/ascii_8bits.html
         /// 
         /// Format:
+        /// <code>
         /// An alpha-3 (bibliographic) code, an alpha-3 (terminologic) code (when given), 
         /// an alpha-2 code (when given), an English name, and a French name of a language 
         /// are all separated by pipe (|) characters. If one of these elements is not applicable 
         /// to the entry, the field is left empty, i.e., a pipe (|) character immediately 
         /// follows the preceding entry. The Line terminator is the LF character.
-        /// 
+        /// </code>
         /// </summary>
         /// <param name="baseUrl"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<LanguageDescriptor>> ExtractAsync(
+        public async Task<IEnumerable<SetTwoLanguageDescriptor>> ExtractLangaugeCodesSetTwoAsync(
             string baseUrl = "https://www.loc.gov/standards/iso639-2/ISO-639-2_8859-1.txt", 
             CancellationToken token = default
         )
         {
-            var result = new List<LanguageDescriptor>();
+            var result = new List<SetTwoLanguageDescriptor>();
 
             var response = await _httpClient.GetStringAsync(baseUrl);
             response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
@@ -53,17 +51,14 @@ namespace LangaugeCode.Core
             foreach (var line in lines)
             {
                 var lineArray = line.Split(new[] { '|' });
-                if (lineArray.Length == 5)
+                result.Add(new SetTwoLanguageDescriptor
                 {
-                    result.Add(new LanguageDescriptor
-                    {
-                        CodeAlpha3Bibliographic = lineArray[0],
-                        CodeAlpha3Terminologic = lineArray[1],
-                        CodeAlpha2 = lineArray[2],
-                        EnglishName = lineArray[3],
-                        FrenchName = lineArray[4],
-                    });
-                }
+                    CodeAlpha3Bibliographic = lineArray.Length > 0 ? lineArray[0].Trim() : string.Empty,
+                    CodeAlpha3Terminologic = lineArray.Length > 1 ? lineArray[1].Trim() : string.Empty,
+                    CodeAlpha2 = lineArray.Length > 2 ? lineArray[2].Trim() : string.Empty,
+                    EnglishName = lineArray.Length > 3 ? lineArray[3].Trim() : string.Empty,
+                    FrenchName = lineArray.Length > 4 ? lineArray[4].Trim() : string.Empty,
+                });
             }
 
             return result;
@@ -73,6 +68,7 @@ namespace LangaugeCode.Core
         /// Source: https://iso639-3.sil.org/code_tables/download_tables
         /// 
         /// Format:
+        /// <code>
         /// CREATE TABLE [ISO_639-3] (
         /// Id char (3) NOT NULL,           -- The three-letter 639-3 identifier
         /// Part2B char (3) NULL,           -- Equivalent 639-2 identifier of the bibliographic applications 
@@ -85,14 +81,15 @@ namespace LangaugeCode.Core
         ///                                 -- E(xtinct), H(istorical), L(iving), S(pecial)
         /// Ref_Name varchar(150) NOT NULL, -- Reference language name
         /// Comment varchar(150) NULL)      -- Comment relating to one or more of the columns
+        /// </code>
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<LanguageDescriptor2>> Extract2Async(
+        public async Task<IEnumerable<SetThreeLanguageDescriptor>> ExtractLangaugeCodesSetThreeAsync(
             string baseUrl = "https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3.tab",
             CancellationToken token = default
         )
         {
-            var result = new List<LanguageDescriptor2>();
+            var result = new List<SetThreeLanguageDescriptor>();
 
             var response = await _httpClient.GetStringAsync(baseUrl);
             response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
@@ -106,18 +103,22 @@ namespace LangaugeCode.Core
             {
                 var lineArray = line.Split(new[] { '\t' });
 
-                if (lineArray[0] == "Id")
+                // Skip file header
+                if (lineArray[0] == "Id" && lineArray[1] == "Part2b")
                 {
                     continue;
                 }
 
-                result.Add(new LanguageDescriptor2
+                result.Add(new SetThreeLanguageDescriptor
                 {
-                    CodeAlpha3Bibliographic = lineArray[0],
-                    CodeAlpha3Terminologic = lineArray[1],
-                    CodeAlpha2 = lineArray[2],
-                    EnglishName = lineArray[3],
-                    FrenchName = lineArray[4],
+                    Id = lineArray.Length > 0 ? lineArray[0].Trim() : string.Empty,
+                    Part2b = lineArray.Length > 1 ? lineArray[1].Trim() : string.Empty,
+                    Part2t = lineArray.Length > 2 ? lineArray[2].Trim() : string.Empty,
+                    Part1 = lineArray.Length > 3 ? lineArray[3].Trim() : string.Empty,
+                    Scope = lineArray.Length > 4 ? lineArray[4].Trim() : string.Empty,
+                    LanguageType = lineArray.Length > 5 ? lineArray[5].Trim() : string.Empty,
+                    RefName = lineArray.Length > 6 ? lineArray[6].Trim() : string.Empty,
+                    Comment = lineArray.Length > 7 ? lineArray[7].Trim() : string.Empty,
                 });
             }
 
