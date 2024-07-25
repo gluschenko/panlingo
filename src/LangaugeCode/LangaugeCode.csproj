@@ -13,7 +13,7 @@
     <Copyright>Alexander Gluschenko © 2024</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>iso iso639 language-code</PackageTags>
-    <PackageReadmeFile>README_FASTTEXT.md</PackageReadmeFile>
+    <PackageReadmeFile>README_LANGUAGE_CODE.md</PackageReadmeFile>
     <PackageReleaseNotes>
       - Initial release
     </PackageReleaseNotes>
