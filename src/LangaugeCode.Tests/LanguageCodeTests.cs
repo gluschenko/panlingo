@@ -1,6 +1,6 @@
 ﻿namespace LangaugeCode.Tests
 {
-    public class UnitTest1
+    public class LanguageCodeTests
     {
         [Fact]
         public void GetTwoLetterISOCode()

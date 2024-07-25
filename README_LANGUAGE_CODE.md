@@ -1,0 +1,3 @@
+﻿# Panlingo.LanguageCode
+
+TODO
