@@ -6,8 +6,6 @@ namespace LangaugeCode.ConsoleTest
     {
         static async Task Main(string[] args)
         {
-            LanguageCodeHelper.A();
-
             var extractor = new ISOExtractor(new HttpClient());
 
             var a = await extractor.ExtractLangaugeCodesSetTwoAsync();

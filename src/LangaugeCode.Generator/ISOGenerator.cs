@@ -123,8 +123,6 @@ namespace {nameof(LangaugeCode)}
                 }};
                 ");
             }
-
-            
         }
 
         public void Initialize(GeneratorInitializationContext context)

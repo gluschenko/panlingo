@@ -1,18 +1,120 @@
-﻿namespace LangaugeCode
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using LangaugeCode.Core.Models;
+
+namespace LangaugeCode
 {
-    public class LanguageCodeHelper
+    public static class LanguageCodeHelper
     {
-        public static void A()
+        private static readonly Dictionary<string, string> _twoLetterCodes = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+        private static readonly Dictionary<string, string> _threeLetterCodes = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+        private static readonly Dictionary<string, string> _englishNames = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+        private static readonly Dictionary<string, string> _legacyCodes = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+
+        static LanguageCodeHelper()
         {
-            foreach (var x in ISOGeneratorResources.SetTwoLanguageDescriptorList)
+            static void Set(
+                Dictionary<string, string> target, 
+                SetThreeLanguageDescriptor culture, 
+                string value
+            )
             {
-
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    // ru, en, uk
+                    if (!string.IsNullOrWhiteSpace(culture.Part1))
+                    {
+                        target[culture.Part1] = value;
+                    }
+                    // rus, eng, ukr
+                    if (!string.IsNullOrWhiteSpace(culture.Part2b))
+                    {
+                        target[culture.Part2b] = value;
+                    }
+                }
             }
 
-            foreach (var x in ISOGeneratorResources.SetThreeLanguageDescriptorList)
-            {
+            var cultures = ISOGeneratorResources.SetThreeLanguageDescriptorList;
 
+            foreach (var culture in cultures)
+            {
+                var value = culture.Part1;
+                Set(
+                    target: _twoLetterCodes,
+                    culture: culture,
+                    value: value
+                );
             }
+
+            foreach (var culture in cultures)
+            {
+                var value = culture.Part2b;
+                Set(
+                    target: _threeLetterCodes,
+                    culture: culture,
+                    value: value
+                );
+            }
+
+            foreach (var culture in cultures)
+            {
+                var value = culture.RefName;
+                Set(
+                    target: _englishNames,
+                    culture: culture,
+                    value: value
+                );
+            }
+        }
+
+        public static string GetTwoLetterISOCode(string code)
+        {
+            return TryGetTwoLetterISOCode(code, out var value)
+                ? value
+                : throw new Exception($"Language code is unknown: {code}");
+        }
+
+        public static string GetThreeLetterISOCode(string code)
+        {
+            return TryGetThreeLetterISOCode(code, out var value)
+                ? value
+                : throw new Exception($"Language code is unknown: {code}");
+        }
+
+        public static string GetLanguageEnglishName(string code)
+        {
+            return TryGetLanguageEnglishName(code, out var value)
+                ? value
+                : throw new Exception($"Language code is unknown: {code}");
+        }
+
+        public static bool TryGetTwoLetterISOCode(string code, [MaybeNullWhen(false)] out string value)
+        {
+            code = NormalizeCode(code);
+            return _twoLetterCodes.TryGetValue(code, out value);
+        }
+
+        public static bool TryGetThreeLetterISOCode(string code, [MaybeNullWhen(false)] out string value)
+        {
+            code = NormalizeCode(code);
+            return _threeLetterCodes.TryGetValue(code, out value);
+        }
+
+        public static bool TryGetLanguageEnglishName(string code, [MaybeNullWhen(false)] out string value)
+        {
+            code = NormalizeCode(code);
+            return _englishNames.TryGetValue(code, out value);
+        }
+
+        public static string NormalizeCode(string code)
+        {
+            if (_legacyCodes.TryGetValue(code, out var value2))
+            {
+                code = value2;
+            }
+
+            return code;
         }
     }
 }
