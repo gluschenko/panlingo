@@ -90,9 +90,13 @@ jobs:
         docker build -f ./test.Dockerfile -t langunage-identification-test-runner:latest .
         docker build -f ./test-ci.Dockerfile -t langunage-identification-test-runner-ci:latest .
 
-    - name: 🧪 Test
+    - name: 🧪 Run Tests in Docker
       working-directory: ${{env.ROOT}}
       run: docker run --rm -v $(pwd):/src langunage-identification-test-runner-ci:latest
+
+    - name: 🧪 Run Test for LangaugeCode
+      working-directory: ${{env.ROOT}}/LangaugeCode.Tests
+      run: dotnet test -c CI
 
   deploy-nugets:
     name: 🚚 Push ${{matrix.projectName}}
