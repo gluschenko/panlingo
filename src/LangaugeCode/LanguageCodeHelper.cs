@@ -32,6 +32,11 @@ namespace LangaugeCode
                     {
                         target[culture.Part2b] = value;
                     }
+
+                    if (!string.IsNullOrWhiteSpace(culture.Part2t))
+                    {
+                        target[culture.Part2t] = value;
+                    }
                 }
             }
 
@@ -39,31 +44,22 @@ namespace LangaugeCode
 
             foreach (var culture in cultures)
             {
-                var value = culture.Part1;
                 Set(
                     target: _twoLetterCodes,
                     culture: culture,
-                    value: value
+                    value: culture.Part1
                 );
-            }
 
-            foreach (var culture in cultures)
-            {
-                var value = culture.Part2b;
                 Set(
                     target: _threeLetterCodes,
                     culture: culture,
-                    value: value
+                    value: culture.Part2b
                 );
-            }
 
-            foreach (var culture in cultures)
-            {
-                var value = culture.RefName;
                 Set(
                     target: _englishNames,
                     culture: culture,
-                    value: value
+                    value: culture.RefName
                 );
             }
         }
