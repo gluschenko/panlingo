@@ -5,9 +5,9 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using LangaugeCode.Core.Models;
+using Panlingo.LangaugeCode.Core.Models;
 
-namespace LangaugeCode.Core
+namespace Panlingo.LangaugeCode.Core
 {
     public class ISOExtractor
     {
@@ -34,7 +34,7 @@ namespace LangaugeCode.Core
         /// <param name="token"></param>
         /// <returns></returns>
         public async Task<IEnumerable<SetTwoLanguageDescriptor>> ExtractLangaugeCodesSetTwoAsync(
-            string baseUrl = "https://www.loc.gov/standards/iso639-2/ISO-639-2_8859-1.txt", 
+            string baseUrl = "https://www.loc.gov/standards/iso639-2/ISO-639-2_8859-1.txt",
             CancellationToken token = default
         )
         {

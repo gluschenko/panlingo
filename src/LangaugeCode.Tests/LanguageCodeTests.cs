@@ -1,4 +1,6 @@
-﻿namespace LangaugeCode.Tests
+﻿using Panlingo.LanguageCode;
+
+namespace LangaugeCode.Tests
 {
     public class LanguageCodeTests
     {

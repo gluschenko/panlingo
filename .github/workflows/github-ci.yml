@@ -23,6 +23,7 @@ jobs:
           - LanguageIdentification.FastText
           - LanguageIdentification.Whatlang.Native
           - LanguageIdentification.Whatlang
+          - LangaugeCode
     permissions:
       contents: read
       packages: write
@@ -110,6 +111,7 @@ jobs:
           - LanguageIdentification.FastText
           - LanguageIdentification.Whatlang.Native
           - LanguageIdentification.Whatlang
+          - LangaugeCode
     permissions:
       contents: read
       packages: write

@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{4F3FF1FF
 		..\README_CLD2.md = ..\README_CLD2.md
 		..\README_CLD3.md = ..\README_CLD3.md
 		..\README_FASTTEXT.md = ..\README_FASTTEXT.md
+		..\README_LANGUAGE_CODE.md = ..\README_LANGUAGE_CODE.md
 		..\README_WHATLANG.md = ..\README_WHATLANG.md
 	EndProjectSection
 EndProject
@@ -69,7 +70,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LangaugeCode.Generator", "L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LangaugeCode.ConsoleTest", "LangaugeCode.ConsoleTest\LangaugeCode.ConsoleTest.csproj", "{9B4140D4-20B1-47B8-A08D-746B3CC3430F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LangaugeCode.Tests", "LangaugeCode.Tests\LangaugeCode.Tests.csproj", "{4518F6B9-6EF8-429F-B7A6-72B9C37CA01F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LangaugeCode.Tests", "LangaugeCode.Tests\LangaugeCode.Tests.csproj", "{4518F6B9-6EF8-429F-B7A6-72B9C37CA01F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

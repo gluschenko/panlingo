@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace LangaugeCode.Core.Models
+﻿namespace Panlingo.LangaugeCode.Core.Models
 {
     public class SetThreeLanguageDescriptor
     {

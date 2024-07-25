@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using LangaugeCode.Core.Models;
+using Panlingo.LangaugeCode;
+using Panlingo.LangaugeCode.Core.Models;
 
-namespace LangaugeCode
+namespace Panlingo.LanguageCode
 {
     public static class LanguageCodeHelper
     {
@@ -15,8 +16,8 @@ namespace LangaugeCode
         static LanguageCodeHelper()
         {
             static void Set(
-                Dictionary<string, string> target, 
-                SetThreeLanguageDescriptor culture, 
+                Dictionary<string, string> target,
+                SetThreeLanguageDescriptor culture,
                 string value
             )
             {
