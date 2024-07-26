@@ -4,36 +4,26 @@ namespace LangaugeCode.Tests
 {
     public class LanguageCodeTests
     {
-        [Fact]
-        public void GetTwoLetterISOCode()
+        [Theory]
+        [InlineData("ru", "ru")]
+        [InlineData("rus", "ru")]
+        [InlineData("uk", "uk")]
+        [InlineData("ukr", "uk")]
+        public void GetTwoLetterISOCode(string source, string target)
         {
-            var ru = LanguageCodeHelper.GetTwoLetterISOCode("ru");
-            Assert.Equal("ru", ru);
-
-            var rus = LanguageCodeHelper.GetTwoLetterISOCode("rus");
-            Assert.Equal("ru", rus);
-
-            var uk = LanguageCodeHelper.GetTwoLetterISOCode("uk");
-            Assert.Equal("uk", uk);
-
-            var ukr = LanguageCodeHelper.GetTwoLetterISOCode("ukr");
-            Assert.Equal("uk", ukr);
+            var code = LanguageCodeHelper.GetTwoLetterISOCode(source);
+            Assert.Equal(target, code);
         }
 
-        [Fact]
-        public void GetThreeLetterISOCode()
+        [Theory]
+        [InlineData("ru", "rus")]
+        [InlineData("rus", "rus")]
+        [InlineData("uk", "ukr")]
+        [InlineData("ukr", "ukr")]
+        public void GetThreeLetterISOCode(string source, string target)
         {
-            var ru = LanguageCodeHelper.GetThreeLetterISOCode("ru");
-            Assert.Equal("rus", ru);
-
-            var rus = LanguageCodeHelper.GetThreeLetterISOCode("rus");
-            Assert.Equal("rus", rus);
-
-            var uk = LanguageCodeHelper.GetThreeLetterISOCode("uk");
-            Assert.Equal("ukr", uk);
-
-            var ukr = LanguageCodeHelper.GetThreeLetterISOCode("ukr");
-            Assert.Equal("ukr", ukr);
+            var code = LanguageCodeHelper.GetThreeLetterISOCode(source);
+            Assert.Equal(target, code);
         }
     }
 }
