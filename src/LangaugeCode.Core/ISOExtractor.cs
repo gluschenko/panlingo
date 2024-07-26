@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
+using HtmlAgilityPack;
 using Panlingo.LangaugeCode.Core.Models;
+using Panlingo.LanguageCode.Core.Models;
 
 namespace Panlingo.LangaugeCode.Core
 {
@@ -119,6 +124,70 @@ namespace Panlingo.LangaugeCode.Core
                     LanguageType = lineArray.Length > 5 ? lineArray[5].Trim() : string.Empty,
                     RefName = lineArray.Length > 6 ? lineArray[6].Trim() : string.Empty,
                     Comment = lineArray.Length > 7 ? lineArray[7].Trim() : string.Empty,
+                });
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Source: https://www.loc.gov/standards/iso639-2/php/code_changes.php
+        /// 
+        /// Deprecated codes are listed inside brackets [] with a hyphen preceding the code.
+        /// 
+        /// Categories of change key: Add = Newly added; Dep = Deprecated; CC = Code change; NC = Name change; 
+        /// NA = Variant name(s) added.
+        /// </summary>
+        /// <param name="baseUrl"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<SetTwoLanguageChangeDescriptor>> ExtractLanguageCodeChangesSetTwoAsync(
+            string baseUrl = "https://www.loc.gov/standards/iso639-2/php/code_changes.php",
+            CancellationToken token = default
+        )
+        {
+            var result = new List<SetTwoLanguageChangeDescriptor>();
+
+            var response = await _httpClient.GetStringAsync(baseUrl);
+            response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
+
+            var htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(response);
+
+            var tables = htmlDoc.DocumentNode.Descendants("table");
+
+            var table = tables.ElementAt(1);
+
+            var rows = table.Descendants("tr");
+
+            foreach (var row in rows)
+            {
+                var cells = row.Descendants("td");
+
+                var rowTexts = new List<string>();
+
+                foreach (var cell in cells)
+                {
+                    var text = cell.InnerText.Trim();
+
+                    if (text == "&nbsp;")
+                    {
+                        text = string.Empty;
+                    }
+
+                    rowTexts.Add(text);
+                }
+
+                if (!rowTexts.Any())
+                {
+                    continue;
+                }
+
+                result.Add(new SetTwoLanguageChangeDescriptor
+                {
+                    CodeAlpha2 = rowTexts[0],
+                    CodeAlpha3 = rowTexts[1],
+                    CategoryOfChange = rowTexts[5],
                 });
             }
 

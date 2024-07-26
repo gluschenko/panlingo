@@ -106,12 +106,20 @@ namespace Panlingo.LanguageCode
 
         public static string NormalizeCode(string code)
         {
-            if (_legacyCodes.TryGetValue(code, out var value2))
+            if (_legacyCodes.TryGetValue(code, out var value))
             {
-                code = value2;
+                code = value;
             }
 
             return code;
         }
+    }
+
+    [Flags]
+    public enum LangaugeCodeNormalizationOptions
+    {
+        ConvertDeprecatedCodes = 1 << 0,
+        StripIETF = 1 << 1,
+        ToLowerCase = 1 << 2,
     }
 }

@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LangaugeCode.Core\LangaugeCode.Core.csproj" />
-    <ProjectReference Include="..\LangaugeCode\LangaugeCode.csproj" />
   </ItemGroup>
 
 </Project>

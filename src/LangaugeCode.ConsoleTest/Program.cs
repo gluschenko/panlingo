@@ -1,4 +1,4 @@
-﻿using LangaugeCode.Core;
+﻿using Panlingo.LangaugeCode.Core;
 
 namespace LangaugeCode.ConsoleTest
 {
@@ -10,7 +10,8 @@ namespace LangaugeCode.ConsoleTest
 
             var a = await extractor.ExtractLangaugeCodesSetTwoAsync();
             var b = await extractor.ExtractLangaugeCodesSetThreeAsync();
-
+            var c = await extractor.ExtractLanguageCodeChangesSetTwoAsync();
+            
             ;
         }
     }
