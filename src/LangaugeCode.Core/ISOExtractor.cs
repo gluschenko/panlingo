@@ -175,6 +175,11 @@ namespace Panlingo.LangaugeCode.Core
                         text = string.Empty;
                     }
 
+                    if (text == "(none)")
+                    {
+                        text = string.Empty;
+                    }
+
                     rowTexts.Add(text);
                 }
 
