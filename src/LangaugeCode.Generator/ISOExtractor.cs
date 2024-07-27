@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Linq;
 using HtmlAgilityPack;
 using Panlingo.LangaugeCode.Core.Models;
 using Panlingo.LanguageCode.Core.Models;
 
-namespace Panlingo.LangaugeCode.Core
+namespace Panlingo.LangaugeCode.Generator
 {
     public class ISOExtractor
     {

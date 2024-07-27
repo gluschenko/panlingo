@@ -1,5 +1,8 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Text;
+using System.IO;
+using System.Reflection;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
 using Panlingo.LangaugeCode.Core;
@@ -32,6 +35,10 @@ namespace Panlingo.LangaugeCode.Generator
     [Generator]
     public class ISOGenerator : ISourceGenerator
     {
+        public void Initialize(GeneratorInitializationContext context)
+        {
+        }
+
         public void Execute(GeneratorExecutionContext context)
         {
             var className = $"{nameof(ISOGenerator)}Resources";
@@ -157,11 +164,5 @@ namespace {nameof(Panlingo)}.{nameof(LangaugeCode)}
                 ");
             }
         }
-
-        public void Initialize(GeneratorInitializationContext context)
-        {
-        }
-
-
     }
 }

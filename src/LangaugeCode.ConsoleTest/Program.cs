@@ -1,4 +1,4 @@
-﻿using Panlingo.LangaugeCode.Core;
+﻿using Panlingo.LangaugeCode.Generator;
 
 namespace LangaugeCode.ConsoleTest
 {
