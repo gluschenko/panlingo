@@ -7,5 +7,10 @@
         public string CodeAlpha2 { get; set; }
         public string EnglishName { get; set; }
         public string FrenchName { get; set; }
+
+        public override string ToString()
+        {
+            return $"{CodeAlpha3Bibliographic}; {CodeAlpha3Terminologic}; {CodeAlpha2}; {EnglishName}";
+        }
     }
 }

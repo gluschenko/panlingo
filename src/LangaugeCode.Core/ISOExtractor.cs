@@ -141,12 +141,36 @@ namespace Panlingo.LangaugeCode.Core
         /// <param name="baseUrl"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<SetTwoLanguageChangeDescriptor>> ExtractLanguageCodeChangesSetTwoAsync(
+        public async Task<IEnumerable<SetTwoLanguageDeprecationDescriptor>> ExtractLanguageCodeDeprecationsSetTwoAsync(
             string baseUrl = "https://www.loc.gov/standards/iso639-2/php/code_changes.php",
             CancellationToken token = default
         )
         {
-            var result = new List<SetTwoLanguageChangeDescriptor>();
+            KeyValuePair<string, string> ParseLangaugePair(string text)
+            {
+                text = text.Replace("&nbsp;", "").Trim();
+
+                var actual = "";
+                var deprecated = "";
+                
+                var words = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (var word in words)
+                {
+                    if (word.StartsWith("[-") && word.EndsWith("]"))
+                    {
+                        deprecated = word.Replace("[", "").Replace("]", "").Replace("-", "");
+                    }
+                    else
+                    {
+                        actual = word;
+                    }
+                }
+
+                return new KeyValuePair<string, string>(actual, deprecated);
+            }
+
+            var result = new List<SetTwoLanguageDeprecationDescriptor>();
 
             var response = await _httpClient.GetStringAsync(baseUrl);
             response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
@@ -188,11 +212,31 @@ namespace Panlingo.LangaugeCode.Core
                     continue;
                 }
 
-                result.Add(new SetTwoLanguageChangeDescriptor
+                var alpha2 = rowTexts[0];
+                var alpha3 = rowTexts[1];
+                var englishName = rowTexts[2];
+                var categoryOfChange = rowTexts[5];
+                var comment = rowTexts[6];
+
+                // We only need desrecations and code changes
+                if (!categoryOfChange.Equals("Dep", StringComparison.OrdinalIgnoreCase) && 
+                    !categoryOfChange.Equals("CC", StringComparison.OrdinalIgnoreCase))
                 {
-                    CodeAlpha2 = rowTexts[0],
-                    CodeAlpha3 = rowTexts[1],
-                    CategoryOfChange = rowTexts[5],
+                    continue;
+                }
+
+                var a = ParseLangaugePair(alpha2);
+                var b = ParseLangaugePair(alpha3);
+
+                result.Add(new SetTwoLanguageDeprecationDescriptor
+                {
+                    CodeAlpha2 = a.Key,
+                    CodeAlpha2Deprecated = a.Value,
+                    CodeAlpha3 = b.Key,
+                    CodeAlpha3Deprecated = b.Value,
+                    CategoryOfChange = categoryOfChange,
+                    EnglishName = englishName,
+                    Comment = comment,
                 });
             }
 

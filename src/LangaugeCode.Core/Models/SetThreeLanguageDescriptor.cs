@@ -10,5 +10,10 @@
         public string LanguageType { get; set; }
         public string RefName { get; set; }
         public string Comment { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id}; {Part2b}; {Part2t}; {Part1}; {Scope}";
+        }
     }
 }

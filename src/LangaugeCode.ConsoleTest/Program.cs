@@ -10,7 +10,7 @@ namespace LangaugeCode.ConsoleTest
 
             var a = await extractor.ExtractLangaugeCodesSetTwoAsync();
             var b = await extractor.ExtractLangaugeCodesSetThreeAsync();
-            var c = await extractor.ExtractLanguageCodeChangesSetTwoAsync();
+            var c = await extractor.ExtractLanguageCodeDeprecationsSetTwoAsync();
             
             ;
         }
