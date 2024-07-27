@@ -12,6 +12,15 @@ language identification models to the .NET ecosystem,
 allowing developers to seamlessly integrate language detection 
 functionality into their applications.
 
+## Libraries
+
+| Library | Nuget Release |
+| ------ | ------ |
+| [Panlingo.LanguageIdentification.CLD2](./README_CLD2.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.CLD2?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.CLD2/) |
+| [Panlingo.LanguageIdentification.CLD3](./README_CLD3.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.CLD3?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.CLD3/) |
+| [Panlingo.LanguageIdentification.FastText](./README_FASTTEXT.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.FastText?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.FastText/) |
+| [Panlingo.LanguageIdentification.Whatlang](./README_WHATLANG.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.Whatlang?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.Whatlang/) |
+
 ## Contents
 
 1. [Models](#models)
