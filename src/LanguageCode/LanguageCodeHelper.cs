@@ -12,54 +12,56 @@ namespace Panlingo.LanguageCode
         private static readonly Dictionary<string, string> _englishNames = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
         private static readonly Dictionary<string, string> _legacyCodes = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
 
+        private static NormalizationOptions _defaultNormalizationOptions;
+
         static LanguageCodeHelper()
         {
+            _defaultNormalizationOptions = new NormalizationOptions().ConvertFromIETF().ConvertFromDeprecatedCode();
+
             static void Set(
                 Dictionary<string, string> target,
-                SetThreeLanguageDescriptor culture,
+                SetThreeLanguageDescriptor item,
                 string value
             )
             {
                 if (!string.IsNullOrWhiteSpace(value))
                 {
                     // ru, en, uk
-                    if (!string.IsNullOrWhiteSpace(culture.Part1))
+                    if (!string.IsNullOrWhiteSpace(item.Part1))
                     {
-                        target[culture.Part1] = value;
+                        target[item.Part1] = value;
                     }
                     // rus, eng, ukr
-                    if (!string.IsNullOrWhiteSpace(culture.Part2b))
+                    if (!string.IsNullOrWhiteSpace(item.Part2b))
                     {
-                        target[culture.Part2b] = value;
+                        target[item.Part2b] = value;
                     }
 
-                    if (!string.IsNullOrWhiteSpace(culture.Part2t))
+                    if (!string.IsNullOrWhiteSpace(item.Part2t))
                     {
-                        target[culture.Part2t] = value;
+                        target[item.Part2t] = value;
                     }
                 }
             }
 
-            var cultures = ISOGeneratorResourceProvider.ISOGeneratorResources;
-
-            foreach (var culture in cultures.SetThreeLanguageDescriptorList)
+            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.SetThreeLanguageDescriptorList)
             {
                 Set(
                     target: _twoLetterCodes,
-                    culture: culture,
-                    value: culture.Part1
+                    item: item,
+                    value: item.Part1
                 );
 
                 Set(
                     target: _threeLetterCodes,
-                    culture: culture,
-                    value: culture.Part2b
+                    item: item,
+                    value: item.Part2b
                 );
 
                 Set(
                     target: _englishNames,
-                    culture: culture,
-                    value: culture.RefName
+                    item: item,
+                    value: item.RefName
                 );
             }
         }
@@ -68,38 +70,35 @@ namespace Panlingo.LanguageCode
         {
             return TryGetTwoLetterISOCode(code, out var value)
                 ? value
-                : throw new Exception($"Language code is unknown: {code}");
+                : throw new LanguageCodeException(code, $"Language code is unknown");
         }
 
         public static string GetThreeLetterISOCode(string code)
         {
             return TryGetThreeLetterISOCode(code, out var value)
                 ? value
-                : throw new Exception($"Language code is unknown: {code}");
+                : throw new LanguageCodeException(code, $"Language code is unknown");
         }
 
         public static string GetLanguageEnglishName(string code)
         {
             return TryGetLanguageEnglishName(code, out var value)
                 ? value
-                : throw new Exception($"Language code is unknown: {code}");
+                : throw new LanguageCodeException(code, $"Language code is unknown");
         }
 
         public static bool TryGetTwoLetterISOCode(string code, [MaybeNullWhen(false)] out string value)
         {
-            code = NormalizeCode(code);
             return _twoLetterCodes.TryGetValue(code, out value);
         }
 
         public static bool TryGetThreeLetterISOCode(string code, [MaybeNullWhen(false)] out string value)
         {
-            code = NormalizeCode(code);
             return _threeLetterCodes.TryGetValue(code, out value);
         }
 
         public static bool TryGetLanguageEnglishName(string code, [MaybeNullWhen(false)] out string value)
         {
-            code = NormalizeCode(code);
             return _englishNames.TryGetValue(code, out value);
         }
 
@@ -112,13 +111,178 @@ namespace Panlingo.LanguageCode
 
             return code;
         }
-    }
 
-    [Flags]
-    public enum LanguageCodeNormalizationOptions
-    {
-        ConvertDeprecatedCodes = 1 << 0,
-        StripIETF = 1 << 1,
-        ToLowerCase = 1 << 2,
+        public static string Normalize(
+            string code,
+            NormalizationOptions? options = null
+        )
+        {
+            options ??= new NormalizationOptions();
+            return options.Apply(code);
+        }
+
+
+        public class NormalizationOptions
+        {
+            private List<Func<string, string>> _rules;
+            private Func<string, string>? _resolveUnknown;
+            private Func<string, string>? _convert;
+
+            public NormalizationOptions()
+            {
+                _rules = new List<Func<string, string>>();
+            }
+
+            public NormalizationOptions ToLowerAndTrim()
+            {
+                _rules.Add(
+                    x => x.ToLower().Trim()
+                );
+
+                return this;
+            }
+
+            /// <summary>
+            /// Examples:
+            /// <code>iw -> he</code>
+            /// <code>mo -> ro</code>
+            /// <code>mol -> ron</code>
+            /// </summary>
+            /// <returns></returns>
+            public NormalizationOptions ConvertFromDeprecatedCode()
+            {
+                _rules.Add(
+                    x =>
+                    {
+                        if (_legacyCodes.TryGetValue(x, out var value))
+                        {
+                            return value;
+                        }
+
+                        return x;
+                    }
+                );
+
+                return this;
+            }
+
+            /// <summary>
+            /// Examples:
+            /// <code>ru-RU => ru</code>
+            /// <code>uk-UA => uk</code>
+            /// <code>en-US => en</code>
+            /// </summary>
+            /// <returns></returns>
+            public NormalizationOptions ConvertFromIETF()
+            {
+                _rules.Add(
+                    x =>
+                    {
+                        if (x.Contains('-'))
+                        {
+                            var words = x.Split('-');
+
+                            if (words.Length > 0)
+                            {
+                                return words[0];
+                            }
+                        }
+
+                        return x;
+                    }
+                );
+
+                return this;
+            }
+
+            /// <summary>
+            /// Allows you to manually resolve unknown or conflicting codes.
+            /// 
+            /// Example:
+            /// <code>
+            /// .ResolveUnknownCode((x) => 
+            /// {
+            ///     // Obsolete Serbo-Croatian to actual Serbian
+            ///     if (x == "sh")
+            ///     {
+            ///         return "sr";
+            ///     }
+            ///     
+            ///     return x;
+            /// });
+            /// </code>
+            /// </summary>
+            /// <returns></returns>
+            public NormalizationOptions ResolveUnknownCode(Func<string, string> resolver)
+            {
+                _resolveUnknown = resolver;
+                return this;
+            }
+
+            public NormalizationOptions ConvertTo(LanguageCodeType type)
+            {
+                _convert = x => 
+                {
+                    if (type == LanguageCodeType.Alpha2)
+                    {
+                        if (TryGetTwoLetterISOCode(x, out var value))
+                        {
+                            return value;
+                        }
+                        else
+                        {
+                            return ResolveUnknown(x);
+                        }
+                    }
+
+                    if (type == LanguageCodeType.Alpha3)
+                    {
+                        if (TryGetThreeLetterISOCode(x, out var value))
+                        {
+                            return value;
+                        }
+                        else
+                        {
+                            return ResolveUnknown(x);
+                        }
+                    }
+
+                    throw new NotImplementedException($"Type {type} is not implemented yet");
+                };
+
+                return this;
+            }
+
+            public string Apply(string code)
+            {
+                foreach (var rule in _rules)
+                {
+                    code = rule(code);
+                }
+
+                if (_convert != null)
+                {
+                    code = _convert(code);
+                }
+
+                return code;
+            }
+
+            private string ResolveUnknown(string code)
+            {
+                if (_resolveUnknown != null)
+                {
+                    var previousCode = code;
+                    code = _resolveUnknown(code);
+
+                    if (code.Equals(previousCode, StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new LanguageCodeException(code, $"Language code is unknown");
+                    }
+                }
+
+                throw new LanguageCodeException(code, $"Language code is unknown");
+            }
+        }
     }
 }
