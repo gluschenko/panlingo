@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json;
 
-namespace Panlingo.LanguageCode.Core.Models
+namespace Panlingo.LanguageCode.Models
 {
     public class ISOGeneratorResources
     {

@@ -1,6 +1,6 @@
 ﻿using Panlingo.LanguageCode;
 
-namespace LangaugeCode.Tests
+namespace LanguageCode.Tests
 {
     public class LanguageCodeTests
     {

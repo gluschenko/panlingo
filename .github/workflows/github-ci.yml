@@ -23,7 +23,7 @@ jobs:
           - LanguageIdentification.FastText
           - LanguageIdentification.Whatlang.Native
           - LanguageIdentification.Whatlang
-          - LangaugeCode
+          - LanguageCode
     permissions:
       contents: read
       packages: write
@@ -94,8 +94,8 @@ jobs:
       working-directory: ${{env.ROOT}}
       run: docker run --rm -v $(pwd):/src langunage-identification-test-runner-ci:latest
 
-    - name: 🧪 Run Test for LangaugeCode
-      working-directory: ${{env.ROOT}}/LangaugeCode.Tests
+    - name: 🧪 Run Test for LanguageCode
+      working-directory: ${{env.ROOT}}/LanguageCode.Tests
       run: dotnet test -c CI
 
   deploy-nugets:
@@ -115,7 +115,7 @@ jobs:
           - LanguageIdentification.FastText
           - LanguageIdentification.Whatlang.Native
           - LanguageIdentification.Whatlang
-          - LangaugeCode
+          - LanguageCode
     permissions:
       contents: read
       packages: write

@@ -2,7 +2,7 @@
 using HtmlAgilityPack;
 using Panlingo.LanguageCode.Core.Models;
 
-namespace LangaugeCode.Generator
+namespace LanguageCode.Generator
 {
     /// <summary>
     /// # ISO Home: 
@@ -49,7 +49,7 @@ namespace LangaugeCode.Generator
         /// <param name="baseUrl"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<SetTwoLanguageDescriptor>> ExtractLangaugeCodesSetTwoAsync(
+        public async Task<IEnumerable<SetTwoLanguageDescriptor>> ExtractLanguageCodesSetTwoAsync(
             string baseUrl = "https://www.loc.gov/standards/iso639-2/ISO-639-2_8859-1.txt",
             CancellationToken token = default
         )
@@ -100,7 +100,7 @@ namespace LangaugeCode.Generator
         /// </code>
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<SetThreeLanguageDescriptor>> ExtractLangaugeCodesSetThreeAsync(
+        public async Task<IEnumerable<SetThreeLanguageDescriptor>> ExtractLanguageCodesSetThreeAsync(
             string baseUrl = "https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3.tab",
             CancellationToken token = default
         )

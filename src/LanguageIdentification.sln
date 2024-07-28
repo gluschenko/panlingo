@@ -62,15 +62,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.What
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iso639", "iso639", "{3BF8041C-86B9-4F4E-AA4D-6E907951B85B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LangaugeCode", "LangaugeCode\LangaugeCode.csproj", "{E8FD2064-3BA2-4DBB-A4E2-FFD83A07468F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageCode", "LanguageCode\LanguageCode.csproj", "{E8FD2064-3BA2-4DBB-A4E2-FFD83A07468F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LangaugeCode.Generator", "LangaugeCode.Generator\LangaugeCode.Generator.csproj", "{56AED860-4A4D-4574-83AD-4C2C1F120321}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageCode.Generator", "LanguageCode.Generator\LanguageCode.Generator.csproj", "{56AED860-4A4D-4574-83AD-4C2C1F120321}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LangaugeCode.Tests", "LangaugeCode.Tests\LangaugeCode.Tests.csproj", "{4518F6B9-6EF8-429F-B7A6-72B9C37CA01F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageCode.Tests", "LanguageCode.Tests\LanguageCode.Tests.csproj", "{4518F6B9-6EF8-429F-B7A6-72B9C37CA01F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LangaugeCode.SourceGenerator", "LangaugeCode.SourceGenerator\LangaugeCode.SourceGenerator.csproj", "{D017F5B3-7DAC-4358-A757-48D910B501EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageCode.SourceGenerator", "LanguageCode.SourceGenerator\LanguageCode.SourceGenerator.csproj", "{D017F5B3-7DAC-4358-A757-48D910B501EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LangaugeCode.Models", "LangaugeCode.Models\LangaugeCode.Models.csproj", "{1DEC858F-72A6-4458-B78E-466C59AD9C39}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageCode.Models", "LanguageCode.Models\LanguageCode.Models.csproj", "{1DEC858F-72A6-4458-B78E-466C59AD9C39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

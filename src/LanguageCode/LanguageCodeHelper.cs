@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Panlingo.LangaugeCode;
+using Panlingo.LanguageCode;
 using Panlingo.LanguageCode.Core.Models;
 
 namespace Panlingo.LanguageCode
@@ -116,7 +116,7 @@ namespace Panlingo.LanguageCode
     }
 
     [Flags]
-    public enum LangaugeCodeNormalizationOptions
+    public enum LanguageCodeNormalizationOptions
     {
         ConvertDeprecatedCodes = 1 << 0,
         StripIETF = 1 << 1,

@@ -1,4 +1,4 @@
-﻿namespace Panlingo.LanguageCode.Core.Models
+﻿namespace Panlingo.LanguageCode.Models
 {
     public class SetTwoLanguageDescriptor
     {
