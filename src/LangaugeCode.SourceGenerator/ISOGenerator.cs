@@ -1,15 +1,10 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Text;
-using System.IO;
-using System.Reflection;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
-using Panlingo.LangaugeCode.Core;
-using Panlingo.LangaugeCode.Core.Models;
-using Panlingo.LanguageCode.Core.Models;
+using Panlingo.LanguageCode.SourceGenerator;
 
-namespace Panlingo.LangaugeCode.Generator
+namespace Panlingo.LanguageCode.SourceGenerator
 {
     [Generator]
     public class ISOGenerator : ISourceGenerator

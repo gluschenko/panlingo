@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Panlingo.LangaugeCode.Generator
+namespace Panlingo.LanguageCode.SourceGenerator
 {
     public static class TaskExtensions
     {

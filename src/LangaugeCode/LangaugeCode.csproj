@@ -29,12 +29,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LangaugeCode.Core\LangaugeCode.Core.csproj" PrivateAssets="all" />
-    <ProjectReference Include="..\LangaugeCode.Generator\LangaugeCode.Generator.csproj" PrivateAssets="all" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.61" PrivateAssets="all" GeneratePathProperty="true" />
+    <ProjectReference Include="..\LangaugeCode.SourceGenerator\LangaugeCode.SourceGenerator.csproj" PrivateAssets="all" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <!-- 

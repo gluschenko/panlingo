@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.Json;
-using Panlingo.LangaugeCode.Core.Models;
-using Panlingo.LanguageCode.Core.Models;
 
-namespace Panlingo.LangaugeCode.Core.Models
+namespace Panlingo.LanguageCode.Core.Models
 {
     public class ISOGeneratorResources
     {
-        public IEnumerable<SetTwoLanguageDescriptor> A { get; set; }
-        public IEnumerable<SetThreeLanguageDescriptor> B { get; set; }
-        public IEnumerable<SetTwoLanguageDeprecationDescriptor> C { get; set; }
+        public IEnumerable<SetTwoLanguageDescriptor> SetTwoLanguageDescriptorList { get; set; }
+        public IEnumerable<SetThreeLanguageDescriptor> SetThreeLanguageDescriptorList { get; set; }
+        public IEnumerable<SetTwoLanguageDeprecationDescriptor> SetTwoLanguageDeprecationDescriptorList { get; set; }
 
         public string ToJson()
         {
             var json = JsonSerializer.Serialize(
-                value: this, 
+                value: this,
                 options: new JsonSerializerOptions
                 {
                     WriteIndented = true,
@@ -27,7 +25,7 @@ namespace Panlingo.LangaugeCode.Core.Models
 
         public static ISOGeneratorResources FromJson(string json)
         {
-            return System.Text.Json.JsonSerializer.Deserialize<ISOGeneratorResources>(json)
+            return JsonSerializer.Deserialize<ISOGeneratorResources>(json)
                 ?? throw new Exception($"Failed to decode {nameof(ISOGeneratorResources)}");
         }
     }

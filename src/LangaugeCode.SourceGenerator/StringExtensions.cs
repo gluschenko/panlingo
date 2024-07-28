@@ -1,4 +1,4 @@
-﻿namespace Panlingo.LangaugeCode.Generator
+﻿namespace Panlingo.LanguageCode.SourceGenerator
 {
     public static class StringExtensions
     {

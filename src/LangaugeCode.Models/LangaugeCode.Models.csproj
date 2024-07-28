@@ -2,14 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Panlingo.LanguageCode.Core</AssemblyName>
-    <RootNamespace>Panlingo.LanguageCode.Core</RootNamespace>
+    <AssemblyName>Panlingo.LanguageCode.Models</AssemblyName>
+    <RootNamespace>Panlingo.LanguageCode.Models</RootNamespace>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
   </PropertyGroup>
-  
+
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.61" />
     <PackageReference Include="System.Text.Json" Version="8.0.4" />
   </ItemGroup>
 

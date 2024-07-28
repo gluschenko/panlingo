@@ -1,4 +1,4 @@
-﻿namespace Panlingo.LangaugeCode.Core.Models
+﻿namespace Panlingo.LanguageCode.Core.Models
 {
     public enum ISO639Set
     {
@@ -19,11 +19,5 @@
         /// including living, extinct and ancient languages.
         /// </summary>
         Set3 = 3,
-        /// <summary>
-        /// Set 5: three-letter language identifiers (originally as in ISO 639-5:2008) covering 
-        /// a larger set of language groups, living and extinct (including all language 
-        /// groups covered by Set 2).
-        /// </summary>
-        Set5 = 5,
     }
 }

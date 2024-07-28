@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Text;
 using HtmlAgilityPack;
-using Panlingo.LangaugeCode.Core.Models;
 using Panlingo.LanguageCode.Core.Models;
 
-namespace Panlingo.LangaugeCode.Generator
+namespace LangaugeCode.Generator
 {
     /// <summary>
     /// # ISO Home: 
@@ -170,7 +163,7 @@ namespace Panlingo.LangaugeCode.Generator
 
                 var actual = "";
                 var deprecated = "";
-                
+
                 var words = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
                 foreach (var word in words)
@@ -237,7 +230,7 @@ namespace Panlingo.LangaugeCode.Generator
                 var comment = rowTexts[6];
 
                 // We only need desrecations and code changes
-                if (!categoryOfChange.Equals("Dep", StringComparison.OrdinalIgnoreCase) && 
+                if (!categoryOfChange.Equals("Dep", StringComparison.OrdinalIgnoreCase) &&
                     !categoryOfChange.Equals("CC", StringComparison.OrdinalIgnoreCase))
                 {
                     continue;

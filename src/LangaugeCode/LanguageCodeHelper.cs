@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Panlingo.LangaugeCode;
-using Panlingo.LangaugeCode.Core.Models;
+using Panlingo.LanguageCode.Core.Models;
 
 namespace Panlingo.LanguageCode
 {

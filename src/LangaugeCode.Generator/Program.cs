@@ -1,7 +1,7 @@
 ﻿using Panlingo.LangaugeCode.Generator;
-using Panlingo.LangaugeCode.Core.Models;
+using Panlingo.LanguageCode.Core.Models;
 
-namespace LangaugeCode.ConsoleTest
+namespace LangaugeCode.Generator
 {
     internal class Program
     {
@@ -13,17 +13,17 @@ namespace LangaugeCode.ConsoleTest
             var b = await extractor.ExtractLangaugeCodesSetThreeAsync();
             var c = await extractor.ExtractLanguageCodeDeprecationsSetTwoAsync();
 
-            var aaa = new ISOGeneratorResources 
+            var aaa = new ISOGeneratorResources
             {
-                A = a,
-                B = b,
-                C = c,
+                SetTwoLanguageDescriptorList = a,
+                SetThreeLanguageDescriptorList = b,
+                SetTwoLanguageDeprecationDescriptorList = c,
             };
 
             var json = aaa.ToJson();
 
             var bbb = ISOGeneratorResources.FromJson(json);
-            
+
             ;
         }
     }
