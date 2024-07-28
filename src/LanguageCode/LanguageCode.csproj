@@ -29,6 +29,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LanguageCode.Models\LanguageCode.Models.csproj" PrivateAssets="all" />
     <ProjectReference Include="..\LanguageCode.SourceGenerator\LanguageCode.SourceGenerator.csproj" PrivateAssets="all" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
@@ -53,6 +54,10 @@
 
   <ItemGroup>
     <None Include="..\..\README_LANGUAGE_CODE.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="resources.json" />
   </ItemGroup>
 
 </Project>

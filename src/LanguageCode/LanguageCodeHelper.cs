@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Panlingo.LanguageCode;
-using Panlingo.LanguageCode.Core.Models;
+using Panlingo.LanguageCode.Models;
 
 namespace Panlingo.LanguageCode
 {
@@ -41,9 +40,9 @@ namespace Panlingo.LanguageCode
                 }
             }
 
-            var cultures = ISOGeneratorResources.SetThreeLanguageDescriptorList;
+            var cultures = ISOGeneratorResourceProvider.ISOGeneratorResources;
 
-            foreach (var culture in cultures)
+            foreach (var culture in cultures.SetThreeLanguageDescriptorList)
             {
                 Set(
                     target: _twoLetterCodes,

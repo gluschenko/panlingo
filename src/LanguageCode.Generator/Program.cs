@@ -1,4 +1,4 @@
-﻿using Panlingo.LanguageCode.Core.Models;
+﻿using Panlingo.LanguageCode.Models;
 
 namespace LanguageCode.Generator
 {
@@ -17,7 +17,7 @@ namespace LanguageCode.Generator
 
             var json = resources.ToJson();
 
-            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../../LanguageCode.SourceGenerator/resources.json");
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../../LanguageCode/resources.json");
 
             File.WriteAllText(path, json);
         }

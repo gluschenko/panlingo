@@ -1,6 +1,6 @@
 ﻿using System.Text;
 using HtmlAgilityPack;
-using Panlingo.LanguageCode.Core.Models;
+using Panlingo.LanguageCode.Models;
 
 namespace LanguageCode.Generator
 {
