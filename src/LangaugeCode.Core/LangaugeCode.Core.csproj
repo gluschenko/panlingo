@@ -7,5 +7,10 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.61" />
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
+  </ItemGroup>
 
 </Project>
