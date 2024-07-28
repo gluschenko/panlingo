@@ -4,8 +4,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Panlingo.LanguageCode.Models</AssemblyName>
     <RootNamespace>Panlingo.LanguageCode.Models</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
+    <DocumentationFile>..\Panlingo.LanguageCode.Models.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
