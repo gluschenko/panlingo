@@ -1,5 +1,4 @@
-﻿using Panlingo.LangaugeCode.Generator;
-using Panlingo.LanguageCode.Core.Models;
+﻿using Panlingo.LanguageCode.Core.Models;
 
 namespace LangaugeCode.Generator
 {
@@ -9,22 +8,18 @@ namespace LangaugeCode.Generator
         {
             var extractor = new ISOExtractor(new HttpClient());
 
-            var a = await extractor.ExtractLangaugeCodesSetTwoAsync();
-            var b = await extractor.ExtractLangaugeCodesSetThreeAsync();
-            var c = await extractor.ExtractLanguageCodeDeprecationsSetTwoAsync();
-
-            var aaa = new ISOGeneratorResources
+            var resources = new ISOGeneratorResources
             {
-                SetTwoLanguageDescriptorList = a,
-                SetThreeLanguageDescriptorList = b,
-                SetTwoLanguageDeprecationDescriptorList = c,
+                SetTwoLanguageDescriptorList = await extractor.ExtractLangaugeCodesSetTwoAsync(),
+                SetThreeLanguageDescriptorList = await extractor.ExtractLangaugeCodesSetThreeAsync(),
+                SetTwoLanguageDeprecationDescriptorList = await extractor.ExtractLanguageCodeDeprecationsSetTwoAsync(),
             };
 
-            var json = aaa.ToJson();
+            var json = resources.ToJson();
 
-            var bbb = ISOGeneratorResources.FromJson(json);
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../../LangaugeCode.SourceGenerator/resources.json");
 
-            ;
+            File.WriteAllText(path, json);
         }
     }
 }
