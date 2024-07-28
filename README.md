@@ -53,9 +53,9 @@ functionality into their applications.
 
 ## Key concerns
 
-- ❌ Avoid forks or modifications of the original code.
-- ✅ Extend the original code through wrappers.
-- ❌ Preserve the original library behavior without breaking changes.
+- Zero-dependency development. 
+- The original code of libraries (CLD2, CLD3, FastText, Whatlang) is used as submodules without additional modifications or improvements. Third-party code is not included into this repository.
+- Preserve the original library behavior without breaking changes.
 
 ## Features
 
@@ -84,9 +84,9 @@ functionality into their applications.
 
 ## TODO
 
-- [ ] Research support for additional platforms.
+- [ ] Research support for other platforms (Windows, macOS).
 - [ ] Enhance the suite of unit tests.
-- [ ] Introduce more native methods.
+- [ ] Introduce more native methods (FastText).
 
 ---
 
