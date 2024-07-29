@@ -30,10 +30,10 @@ namespace LanguageCode.Tests
         [InlineData("ru", "rus")]
         [InlineData("uk", "ukr")]
         [InlineData("en", "eng")]
-        [InlineData("mo", "ro")]
+        [InlineData("ro", "ron")]
         [InlineData("mo", "ron")]
         [InlineData("sr", "srp")]
-        [InlineData("sh", "srp")]
+        [InlineData("sh", "hbs")]
         [InlineData("he", "heb")]
         public void NormalizeGeneral(string source, string target)
         {
@@ -43,9 +43,9 @@ namespace LanguageCode.Tests
                 .ConvertFromDeprecatedCode()
                 .ResolveUnknownCode(x =>
                 {
-                    if (x == "sh")
+                    if (x == "mo")
                     {
-                        return "sr";
+                        return "ro";
                     }
 
                     return x;
@@ -63,6 +63,17 @@ namespace LanguageCode.Tests
         public void NormalizeIETF(string source, string target)
         {
             var options = new LanguageCodeHelper.NormalizationOptions().ConvertFromIETF();
+            var code = LanguageCodeHelper.Normalize(code: source, options: options);
+            Assert.Equal(target, code);
+        }
+
+        [Theory]
+        [InlineData("RU", "ru")]
+        [InlineData("UK  ", "uk")]
+        [InlineData("en", "en")]
+        public void NormalizeToLowerAndTrim(string source, string target)
+        {
+            var options = new LanguageCodeHelper.NormalizationOptions().ToLowerAndTrim();
             var code = LanguageCodeHelper.Normalize(code: source, options: options);
             Assert.Equal(target, code);
         }

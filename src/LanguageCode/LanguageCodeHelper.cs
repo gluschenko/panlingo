@@ -7,62 +7,53 @@ namespace Panlingo.LanguageCode
 {
     public static class LanguageCodeHelper
     {
-        private static readonly Dictionary<string, string> _twoLetterCodes = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-        private static readonly Dictionary<string, string> _threeLetterCodes = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-        private static readonly Dictionary<string, string> _englishNames = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-        private static readonly Dictionary<string, string> _legacyCodes = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+        private static readonly Dictionary<string, SetThreeLanguageDescriptor> _langauges = 
+            new Dictionary<string, SetThreeLanguageDescriptor>(StringComparer.InvariantCultureIgnoreCase);
 
-        private static NormalizationOptions _defaultNormalizationOptions;
+        private static readonly Dictionary<string, string> _legacyCodes = 
+            new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+
+        private static NormalizationOptions _defaultNormalizationOptions = new NormalizationOptions()
+            .ToLowerAndTrim()
+            .ConvertFromIETF()
+            .ConvertFromDeprecatedCode();
 
         static LanguageCodeHelper()
         {
-            _defaultNormalizationOptions = new NormalizationOptions().ConvertFromIETF().ConvertFromDeprecatedCode();
-
-            static void Set(
-                Dictionary<string, string> target,
-                SetThreeLanguageDescriptor item,
-                string value
-            )
+            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.SetThreeLanguageDescriptorList)
             {
-                if (!string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrWhiteSpace(item.Id))
                 {
-                    // ru, en, uk
-                    if (!string.IsNullOrWhiteSpace(item.Part1))
-                    {
-                        target[item.Part1] = value;
-                    }
-                    // rus, eng, ukr
-                    if (!string.IsNullOrWhiteSpace(item.Part2b))
-                    {
-                        target[item.Part2b] = value;
-                    }
+                    _langauges[item.Id] = item;
+                }
 
-                    if (!string.IsNullOrWhiteSpace(item.Part2t))
-                    {
-                        target[item.Part2t] = value;
-                    }
+                if (!string.IsNullOrWhiteSpace(item.Part1))
+                {
+                    _langauges[item.Part1] = item;
+                }
+
+                if (!string.IsNullOrWhiteSpace(item.Part2t))
+                {
+                    _langauges[item.Part2t] = item;
+                }
+
+                if (!string.IsNullOrWhiteSpace(item.Part2b))
+                {
+                    _langauges[item.Part2b] = item;
                 }
             }
 
-            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.SetThreeLanguageDescriptorList)
+            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.SetTwoLanguageDeprecationDescriptorList)
             {
-                Set(
-                    target: _twoLetterCodes,
-                    item: item,
-                    value: item.Part1
-                );
+                if (!string.IsNullOrWhiteSpace(item.CodeAlpha2) && !string.IsNullOrWhiteSpace(item.CodeAlpha2Deprecated))
+                {
+                    _legacyCodes[item.CodeAlpha2Deprecated] = item.CodeAlpha2;
+                }
 
-                Set(
-                    target: _threeLetterCodes,
-                    item: item,
-                    value: item.Part2b
-                );
-
-                Set(
-                    target: _englishNames,
-                    item: item,
-                    value: item.RefName
-                );
+                if (!string.IsNullOrWhiteSpace(item.CodeAlpha3) && !string.IsNullOrWhiteSpace(item.CodeAlpha3Deprecated))
+                {
+                    _legacyCodes[item.CodeAlpha3Deprecated] = item.CodeAlpha3;
+                }
             }
         }
 
@@ -89,27 +80,44 @@ namespace Panlingo.LanguageCode
 
         public static bool TryGetTwoLetterISOCode(string code, [MaybeNullWhen(false)] out string value)
         {
-            return _twoLetterCodes.TryGetValue(code, out value);
+            if (_langauges.TryGetValue(code, out var item) && !string.IsNullOrWhiteSpace(item.Part1))
+            {
+                value = item.Part1;
+                return true;
+            }
+            else
+            {
+                value = null;
+                return false;
+            }
         }
 
         public static bool TryGetThreeLetterISOCode(string code, [MaybeNullWhen(false)] out string value)
         {
-            return _threeLetterCodes.TryGetValue(code, out value);
+            if (_langauges.TryGetValue(code, out var item) && !string.IsNullOrWhiteSpace(item.Id))
+            {
+                value = item.Id;
+                return true;
+            }
+            else
+            {
+                value = null;
+                return false;
+            }
         }
 
         public static bool TryGetLanguageEnglishName(string code, [MaybeNullWhen(false)] out string value)
         {
-            return _englishNames.TryGetValue(code, out value);
-        }
-
-        public static string NormalizeCode(string code)
-        {
-            if (_legacyCodes.TryGetValue(code, out var value))
+            if (_langauges.TryGetValue(code, out var item) && !string.IsNullOrWhiteSpace(item.RefName))
             {
-                code = value;
+                value = item.RefName;
+                return true;
             }
-
-            return code;
+            else
+            {
+                value = null;
+                return false;
+            }
         }
 
         public static string Normalize(
@@ -117,10 +125,27 @@ namespace Panlingo.LanguageCode
             NormalizationOptions? options = null
         )
         {
-            options ??= new NormalizationOptions();
+            options ??= _defaultNormalizationOptions;
             return options.Apply(code);
         }
 
+        public static bool TryNormalize(
+            string code,
+            [MaybeNullWhen(false)] out string value,
+            NormalizationOptions? options = null
+        )
+        {
+            try
+            {
+                value = Normalize(code: code, options: options);
+                return true;
+            }
+            catch (LanguageCodeException)
+            {
+                value = null;
+                return false;
+            }
+        }
 
         public class NormalizationOptions
         {
@@ -138,6 +163,13 @@ namespace Panlingo.LanguageCode
                 _rules.Add(
                     x => x.ToLower().Trim()
                 );
+
+                return this;
+            }
+
+            public NormalizationOptions ReduceMacrolanguage()
+            {
+                // TODO
 
                 return this;
             }
@@ -231,11 +263,11 @@ namespace Panlingo.LanguageCode
                         }
                         else
                         {
-                            return ResolveUnknown(x);
+                            x = ResolveUnknown(x);
+                            return GetTwoLetterISOCode(x);
                         }
                     }
-
-                    if (type == LanguageCodeType.Alpha3)
+                    else if (type == LanguageCodeType.Alpha3)
                     {
                         if (TryGetThreeLetterISOCode(x, out var value))
                         {
@@ -243,11 +275,14 @@ namespace Panlingo.LanguageCode
                         }
                         else
                         {
-                            return ResolveUnknown(x);
+                            x = ResolveUnknown(x);
+                            return GetThreeLetterISOCode(x);
                         }
                     }
-
-                    throw new NotImplementedException($"Type {type} is not implemented yet");
+                    else
+                    {
+                        throw new NotImplementedException($"Type {type} is not implemented yet");
+                    }
                 };
 
                 return this;
@@ -275,10 +310,13 @@ namespace Panlingo.LanguageCode
                     var previousCode = code;
                     code = _resolveUnknown(code);
 
+                    // If there is no changes after custom resolver
                     if (code.Equals(previousCode, StringComparison.OrdinalIgnoreCase))
                     {
                         throw new LanguageCodeException(code, $"Language code is unknown");
                     }
+
+                    return code;
                 }
 
                 throw new LanguageCodeException(code, $"Language code is unknown");
