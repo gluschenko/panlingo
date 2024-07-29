@@ -80,9 +80,9 @@ namespace Panlingo.LanguageCode
 
         public static bool TryGetTwoLetterISOCode(string code, [MaybeNullWhen(false)] out string value)
         {
-            if (_langauges.TryGetValue(code, out var item) && !string.IsNullOrWhiteSpace(item.Part1))
+            if (TryGetEntity(code, LanguageCodeEntity.Alpha2, out var x))
             {
-                value = item.Part1;
+                value = x;
                 return true;
             }
             else
@@ -94,9 +94,9 @@ namespace Panlingo.LanguageCode
 
         public static bool TryGetThreeLetterISOCode(string code, [MaybeNullWhen(false)] out string value)
         {
-            if (_langauges.TryGetValue(code, out var item) && !string.IsNullOrWhiteSpace(item.Id))
+            if (TryGetEntity(code, LanguageCodeEntity.Alpha3, out var x))
             {
-                value = item.Id;
+                value = x;
                 return true;
             }
             else
@@ -108,9 +108,9 @@ namespace Panlingo.LanguageCode
 
         public static bool TryGetLanguageEnglishName(string code, [MaybeNullWhen(false)] out string value)
         {
-            if (_langauges.TryGetValue(code, out var item) && !string.IsNullOrWhiteSpace(item.RefName))
+            if (TryGetEntity(code, LanguageCodeEntity.EnglishName, out var x))
             {
-                value = item.RefName;
+                value = x;
                 return true;
             }
             else
@@ -120,6 +120,95 @@ namespace Panlingo.LanguageCode
             }
         }
 
+        public static string GetEntity(
+            string code, 
+            LanguageCodeEntity entity
+        )
+        {
+            if (TryGetEntity(code, entity, out var value))
+            {
+                return value;
+            }
+
+            throw new LanguageCodeException(code, $"Entity '{entity}' is not found for this code");
+        }
+
+        public static bool TryGetEntity(
+            string code, 
+            LanguageCodeEntity entity, 
+            [MaybeNullWhen(false)] out string value
+        )
+        {
+            if (!_langauges.TryGetValue(code, out var item))
+            {
+                value = null;
+                return false;
+            }
+
+            if (entity == LanguageCodeEntity.Alpha2)
+            {
+                if (!string.IsNullOrWhiteSpace(item.Part1))
+                {
+                    value = item.Part1;
+                    return true;
+                }
+                else
+                {
+                    value = null;
+                    return false;
+                }
+            }
+            else if (entity == LanguageCodeEntity.Alpha3)
+            {
+                if (!string.IsNullOrWhiteSpace(item.Id))
+                {
+                    value = item.Id;
+                    return true;
+                }
+                else
+                {
+                    value = null;
+                    return false;
+                }
+            }
+            else if (entity == LanguageCodeEntity.Alpha3B)
+            {
+                if (!string.IsNullOrWhiteSpace(item.Part2b))
+                {
+                    value = item.Part2b;
+                    return true;
+                }
+                else
+                {
+                    value = null;
+                    return false;
+                }
+            }
+            else if (entity == LanguageCodeEntity.Alpha3T)
+            {
+                if (!string.IsNullOrWhiteSpace(item.Part2t))
+                {
+                    value = item.Part2t;
+                    return true;
+                }
+                else
+                {
+                    value = null;
+                    return false;
+                }
+            }
+            else
+            {
+                throw new NotImplementedException($"Type '{entity}' is not implemented yet");
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public static string Normalize(
             string code,
             NormalizationOptions? options = null
@@ -129,6 +218,13 @@ namespace Panlingo.LanguageCode
             return options.Apply(code);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="value"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public static bool TryNormalize(
             string code,
             [MaybeNullWhen(false)] out string value,
@@ -234,10 +330,10 @@ namespace Panlingo.LanguageCode
             /// <code>
             /// .ResolveUnknownCode((x) => 
             /// {
-            ///     // Obsolete Serbo-Croatian to actual Serbian
-            ///     if (x == "sh")
+            ///     // Obsolete Moldovan to actual Romanian
+            ///     if (x == "mo")
             ///     {
-            ///         return "sr";
+            ///         return "ro";
             ///     }
             ///     
             ///     return x;
@@ -251,37 +347,18 @@ namespace Panlingo.LanguageCode
                 return this;
             }
 
-            public NormalizationOptions ConvertTo(LanguageCodeType type)
+            public NormalizationOptions ConvertTo(LanguageCodeEntity entity)
             {
                 _convert = x => 
                 {
-                    if (type == LanguageCodeType.Alpha2)
+                    if (TryGetEntity(x, entity, out var value))
                     {
-                        if (TryGetTwoLetterISOCode(x, out var value))
-                        {
-                            return value;
-                        }
-                        else
-                        {
-                            x = ResolveUnknown(x);
-                            return GetTwoLetterISOCode(x);
-                        }
-                    }
-                    else if (type == LanguageCodeType.Alpha3)
-                    {
-                        if (TryGetThreeLetterISOCode(x, out var value))
-                        {
-                            return value;
-                        }
-                        else
-                        {
-                            x = ResolveUnknown(x);
-                            return GetThreeLetterISOCode(x);
-                        }
+                        return value;
                     }
                     else
                     {
-                        throw new NotImplementedException($"Type {type} is not implemented yet");
+                        x = ResolveUnknown(x);
+                        return GetEntity(x, entity);
                     }
                 };
 

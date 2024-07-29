@@ -1,6 +1,6 @@
 ﻿namespace Panlingo.LanguageCode.Models
 {
-    public enum LanguageCodeType
+    public enum LanguageCodeEntity
     {
         /// <summary>
         /// Two letter code from ISO 639-1

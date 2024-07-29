@@ -1,4 +1,5 @@
 ﻿using Panlingo.LanguageCode;
+using Panlingo.LanguageCode.Models;
 
 namespace LanguageCode.Tests
 {
@@ -50,7 +51,7 @@ namespace LanguageCode.Tests
 
                     return x;
                 })
-                .ConvertTo(Panlingo.LanguageCode.Models.LanguageCodeType.Alpha3);
+                .ConvertTo(LanguageCodeEntity.Alpha3);
 
             var code = LanguageCodeHelper.Normalize(code: source, options: options);
             Assert.Equal(target, code);
