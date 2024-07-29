@@ -197,6 +197,19 @@ namespace Panlingo.LanguageCode
                     return false;
                 }
             }
+            else if (entity == LanguageCodeEntity.EnglishName)
+            {
+                if (!string.IsNullOrWhiteSpace(item.RefName))
+                {
+                    value = item.RefName;
+                    return true;
+                }
+                else
+                {
+                    value = null;
+                    return false;
+                }
+            }
             else
             {
                 throw new NotImplementedException($"Type '{entity}' is not implemented yet");

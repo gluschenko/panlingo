@@ -35,6 +35,7 @@ namespace LanguageCode.Tests
         [InlineData("mo", "ron")]
         [InlineData("sr", "srp")]
         [InlineData("sh", "hbs")]
+        [InlineData("iw", "heb")]
         [InlineData("he", "heb")]
         public void ResolveGeneral(string source, string target)
         {
@@ -52,6 +53,25 @@ namespace LanguageCode.Tests
                     return x;
                 })
                 .ConvertTo(LanguageCodeEntity.Alpha3);
+
+            var code = LanguageCodeHelper.Resolve(code: source, options: options);
+            Assert.Equal(target, code);
+        }
+
+        [Theory]
+        [InlineData("ru", "Russian")]
+        [InlineData("uk", "Ukrainian")]
+        [InlineData("en", "English")]
+        [InlineData("ro", "Romanian")]
+        [InlineData("sr", "Serbian")]
+        [InlineData("he", "Hebrew")]
+        public void ResolveEnglishName(string source, string target)
+        {
+            var options = new LanguageCodeHelper.LanguageCodeResolver()
+                .ToLowerAndTrim()
+                .ConvertFromIETF()
+                .ConvertFromDeprecatedCode()
+                .ConvertTo(LanguageCodeEntity.EnglishName);
 
             var code = LanguageCodeHelper.Resolve(code: source, options: options);
             Assert.Equal(target, code);
