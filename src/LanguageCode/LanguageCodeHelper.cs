@@ -13,7 +13,7 @@ namespace Panlingo.LanguageCode
         private static readonly Dictionary<string, string> _legacyCodes = 
             new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
 
-        private static NormalizationOptions _defaultNormalizationOptions = new NormalizationOptions()
+        private static LanguageCodeResolver _defaultNormalizationOptions = new LanguageCodeResolver()
             .ToLowerAndTrim()
             .ConvertFromIETF()
             .ConvertFromDeprecatedCode();
@@ -209,9 +209,9 @@ namespace Panlingo.LanguageCode
         /// <param name="code"></param>
         /// <param name="options"></param>
         /// <returns></returns>
-        public static string Normalize(
+        public static string Resolve(
             string code,
-            NormalizationOptions? options = null
+            LanguageCodeResolver? options = null
         )
         {
             options ??= _defaultNormalizationOptions;
@@ -225,15 +225,15 @@ namespace Panlingo.LanguageCode
         /// <param name="value"></param>
         /// <param name="options"></param>
         /// <returns></returns>
-        public static bool TryNormalize(
+        public static bool TryResolve(
             string code,
             [MaybeNullWhen(false)] out string value,
-            NormalizationOptions? options = null
+            LanguageCodeResolver? options = null
         )
         {
             try
             {
-                value = Normalize(code: code, options: options);
+                value = Resolve(code: code, options: options);
                 return true;
             }
             catch (LanguageCodeException)
@@ -243,18 +243,18 @@ namespace Panlingo.LanguageCode
             }
         }
 
-        public class NormalizationOptions
+        public class LanguageCodeResolver
         {
             private List<Func<string, string>> _rules;
             private Func<string, string>? _resolveUnknown;
             private Func<string, string>? _convert;
 
-            public NormalizationOptions()
+            public LanguageCodeResolver()
             {
                 _rules = new List<Func<string, string>>();
             }
 
-            public NormalizationOptions ToLowerAndTrim()
+            public LanguageCodeResolver ToLowerAndTrim()
             {
                 _rules.Add(
                     x => x.ToLower().Trim()
@@ -263,7 +263,7 @@ namespace Panlingo.LanguageCode
                 return this;
             }
 
-            public NormalizationOptions ReduceMacrolanguage()
+            public LanguageCodeResolver ReduceMacrolanguage()
             {
                 // TODO
 
@@ -277,7 +277,7 @@ namespace Panlingo.LanguageCode
             /// <code>mol -> ron</code>
             /// </summary>
             /// <returns></returns>
-            public NormalizationOptions ConvertFromDeprecatedCode()
+            public LanguageCodeResolver ConvertFromDeprecatedCode()
             {
                 _rules.Add(
                     x =>
@@ -301,7 +301,7 @@ namespace Panlingo.LanguageCode
             /// <code>en-US => en</code>
             /// </summary>
             /// <returns></returns>
-            public NormalizationOptions ConvertFromIETF()
+            public LanguageCodeResolver ConvertFromIETF()
             {
                 _rules.Add(
                     x =>
@@ -341,13 +341,13 @@ namespace Panlingo.LanguageCode
             /// </code>
             /// </summary>
             /// <returns></returns>
-            public NormalizationOptions ResolveUnknownCode(Func<string, string> resolver)
+            public LanguageCodeResolver ResolveUnknownCode(Func<string, string> resolver)
             {
                 _resolveUnknown = resolver;
                 return this;
             }
 
-            public NormalizationOptions ConvertTo(LanguageCodeEntity entity)
+            public LanguageCodeResolver ConvertTo(LanguageCodeEntity entity)
             {
                 _convert = x => 
                 {

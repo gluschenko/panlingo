@@ -36,9 +36,9 @@ namespace LanguageCode.Tests
         [InlineData("sr", "srp")]
         [InlineData("sh", "hbs")]
         [InlineData("he", "heb")]
-        public void NormalizeGeneral(string source, string target)
+        public void ResolveGeneral(string source, string target)
         {
-            var options = new LanguageCodeHelper.NormalizationOptions()
+            var options = new LanguageCodeHelper.LanguageCodeResolver()
                 .ToLowerAndTrim()
                 .ConvertFromIETF()
                 .ConvertFromDeprecatedCode()
@@ -53,7 +53,7 @@ namespace LanguageCode.Tests
                 })
                 .ConvertTo(LanguageCodeEntity.Alpha3);
 
-            var code = LanguageCodeHelper.Normalize(code: source, options: options);
+            var code = LanguageCodeHelper.Resolve(code: source, options: options);
             Assert.Equal(target, code);
         }
 
@@ -61,10 +61,10 @@ namespace LanguageCode.Tests
         [InlineData("ru-RU", "ru")]
         [InlineData("uk-UA", "uk")]
         [InlineData("en-US", "en")]
-        public void NormalizeIETF(string source, string target)
+        public void ResolveIETF(string source, string target)
         {
-            var options = new LanguageCodeHelper.NormalizationOptions().ConvertFromIETF();
-            var code = LanguageCodeHelper.Normalize(code: source, options: options);
+            var options = new LanguageCodeHelper.LanguageCodeResolver().ConvertFromIETF();
+            var code = LanguageCodeHelper.Resolve(code: source, options: options);
             Assert.Equal(target, code);
         }
 
@@ -72,10 +72,10 @@ namespace LanguageCode.Tests
         [InlineData("RU", "ru")]
         [InlineData("UK  ", "uk")]
         [InlineData("en", "en")]
-        public void NormalizeToLowerAndTrim(string source, string target)
+        public void ResolveToLowerAndTrim(string source, string target)
         {
-            var options = new LanguageCodeHelper.NormalizationOptions().ToLowerAndTrim();
-            var code = LanguageCodeHelper.Normalize(code: source, options: options);
+            var options = new LanguageCodeHelper.LanguageCodeResolver().ToLowerAndTrim();
+            var code = LanguageCodeHelper.Resolve(code: source, options: options);
             Assert.Equal(target, code);
         }
     }
