@@ -39,7 +39,7 @@ namespace LanguageCode.Tests
         [InlineData("he", "heb")]
         public void ResolveGeneral(string source, string target)
         {
-            var options = new LanguageCodeHelper.LanguageCodeResolver()
+            var options = new LanguageCodeResolver()
                 .ToLowerAndTrim()
                 .ConvertFromIETF()
                 .ConvertFromDeprecatedCode()
@@ -72,7 +72,7 @@ namespace LanguageCode.Tests
         [InlineData("scc", "srp")]
         public void ResolveLegacy(string source, string target)
         {
-            var options = new LanguageCodeHelper.LanguageCodeResolver()
+            var options = new LanguageCodeResolver()
                 .ToLowerAndTrim()
                 .ConvertFromIETF()
                 .ConvertFromDeprecatedCode()
@@ -100,7 +100,7 @@ namespace LanguageCode.Tests
         [InlineData("ind", "msa")]
         public void ResolveMacrolanguage(string source, string target)
         {
-            var options = new LanguageCodeHelper.LanguageCodeResolver()
+            var options = new LanguageCodeResolver()
                 .ToLowerAndTrim()
                 .ConvertFromIETF()
                 .ConvertFromDeprecatedCode()
@@ -120,7 +120,7 @@ namespace LanguageCode.Tests
         [InlineData("he", "Hebrew")]
         public void ResolveEnglishName(string source, string target)
         {
-            var options = new LanguageCodeHelper.LanguageCodeResolver()
+            var options = new LanguageCodeResolver()
                 .ToLowerAndTrim()
                 .ConvertFromIETF()
                 .ConvertFromDeprecatedCode()
@@ -136,7 +136,7 @@ namespace LanguageCode.Tests
         [InlineData("en-US", "en")]
         public void ResolveIETF(string source, string target)
         {
-            var options = new LanguageCodeHelper.LanguageCodeResolver().ConvertFromIETF();
+            var options = new LanguageCodeResolver().ConvertFromIETF();
             var code = LanguageCodeHelper.Resolve(code: source, options: options);
             Assert.Equal(target, code);
         }
@@ -147,7 +147,7 @@ namespace LanguageCode.Tests
         [InlineData("en", "en")]
         public void ResolveToLowerAndTrim(string source, string target)
         {
-            var options = new LanguageCodeHelper.LanguageCodeResolver().ToLowerAndTrim();
+            var options = new LanguageCodeResolver().ToLowerAndTrim();
             var code = LanguageCodeHelper.Resolve(code: source, options: options);
             Assert.Equal(target, code);
         }
