@@ -13,6 +13,8 @@ namespace LanguageCode.Generator
                 SetTwoLanguageDescriptorList = await extractor.ExtractLanguageCodesSetTwoAsync(),
                 SetThreeLanguageDescriptorList = await extractor.ExtractLanguageCodesSetThreeAsync(),
                 SetTwoLanguageDeprecationDescriptorList = await extractor.ExtractLanguageCodeDeprecationsSetTwoAsync(),
+                MarcolanguageDescriptorList = await extractor.ExtractMarcolanguagesAsync(),
+                LegacyLanguageDescriptorList = await extractor.ExtractLegacyLanguagesAsync(),
             };
 
             var json = resources.ToJson();

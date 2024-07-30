@@ -9,6 +9,8 @@ namespace Panlingo.LanguageCode.Models
         public IEnumerable<SetTwoLanguageDescriptor> SetTwoLanguageDescriptorList { get; set; }
         public IEnumerable<SetThreeLanguageDescriptor> SetThreeLanguageDescriptorList { get; set; }
         public IEnumerable<SetTwoLanguageDeprecationDescriptor> SetTwoLanguageDeprecationDescriptorList { get; set; }
+        public IEnumerable<SetThreeMarcolanguageDescriptor> MarcolanguageDescriptorList { get; set; }
+        public IEnumerable<SetThreeLegacyLanguageDescriptor> LegacyLanguageDescriptorList { get; set; }
 
         public string ToJson()
         {

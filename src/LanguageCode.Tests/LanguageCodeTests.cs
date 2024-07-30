@@ -59,6 +59,59 @@ namespace LanguageCode.Tests
         }
 
         [Theory]
+        [InlineData("mo", "ron")]
+        [InlineData("iw", "heb")]
+        [InlineData("ji", "yid")]
+        [InlineData("in", "ind")]
+        [InlineData("yib", "eng")]
+        [InlineData("aex", "eng")]
+        [InlineData("yuu", "yug")]
+        [InlineData("hr", "hrv")]
+        [InlineData("scr", "hrv")]
+        [InlineData("sr", "srp")]
+        [InlineData("scc", "srp")]
+        public void ResolveLegacy(string source, string target)
+        {
+            var options = new LanguageCodeHelper.LanguageCodeResolver()
+                .ToLowerAndTrim()
+                .ConvertFromIETF()
+                .ConvertFromDeprecatedCode()
+                .ResolveUnknownCode(x =>
+                {
+                    if (x == "mo")
+                    {
+                        return "ro";
+                    }
+
+                    return x;
+                })
+                .ConvertTo(LanguageCodeEntity.Alpha3);
+
+            var code = LanguageCodeHelper.Resolve(code: source, options: options);
+            Assert.Equal(target, code);
+        }
+
+        [Theory]
+        [InlineData("azb", "aze")]
+        [InlineData("azj", "aze")]
+        [InlineData("cmn", "zho")]
+        [InlineData("nan", "zho")]
+        [InlineData("hji", "msa")]
+        [InlineData("ind", "msa")]
+        public void ResolveMacrolanguage(string source, string target)
+        {
+            var options = new LanguageCodeHelper.LanguageCodeResolver()
+                .ToLowerAndTrim()
+                .ConvertFromIETF()
+                .ConvertFromDeprecatedCode()
+                .ReduceToMacrolanguage()
+                .ConvertTo(LanguageCodeEntity.Alpha3);
+
+            var code = LanguageCodeHelper.Resolve(code: source, options: options);
+            Assert.Equal(target, code);
+        }
+
+        [Theory]
         [InlineData("ru", "Russian")]
         [InlineData("uk", "Ukrainian")]
         [InlineData("en", "English")]

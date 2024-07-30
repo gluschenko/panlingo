@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Panlingo.LanguageCode
+namespace Panlingo.LanguageCode.Models
 {
     public sealed class LanguageCodeException : Exception
     {

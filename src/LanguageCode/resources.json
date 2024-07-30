@@ -82721,5 +82721,5297 @@
       "EnglishName": "Yiddish",
       "Comment": ""
     }
+  ],
+  "MarcolanguageDescriptorList": [
+    {
+      "Source": "aka",
+      "Target": "fat",
+      "Status": "A"
+    },
+    {
+      "Source": "aka",
+      "Target": "twi",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "aao",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "abh",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "abv",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "acm",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "acq",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "acw",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "acx",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "acy",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "adf",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "aeb",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "aec",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "afb",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "ajp",
+      "Status": "R"
+    },
+    {
+      "Source": "ara",
+      "Target": "apc",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "apd",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "arb",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "arq",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "ars",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "ary",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "arz",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "auz",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "avl",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "ayh",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "ayl",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "ayn",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "ayp",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "bbz",
+      "Status": "R"
+    },
+    {
+      "Source": "ara",
+      "Target": "pga",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "shu",
+      "Status": "A"
+    },
+    {
+      "Source": "ara",
+      "Target": "ssh",
+      "Status": "A"
+    },
+    {
+      "Source": "aym",
+      "Target": "ayc",
+      "Status": "A"
+    },
+    {
+      "Source": "aym",
+      "Target": "ayr",
+      "Status": "A"
+    },
+    {
+      "Source": "aze",
+      "Target": "azb",
+      "Status": "A"
+    },
+    {
+      "Source": "aze",
+      "Target": "azj",
+      "Status": "A"
+    },
+    {
+      "Source": "bal",
+      "Target": "bcc",
+      "Status": "A"
+    },
+    {
+      "Source": "bal",
+      "Target": "bgn",
+      "Status": "A"
+    },
+    {
+      "Source": "bal",
+      "Target": "bgp",
+      "Status": "A"
+    },
+    {
+      "Source": "bik",
+      "Target": "bcl",
+      "Status": "A"
+    },
+    {
+      "Source": "bik",
+      "Target": "bhk",
+      "Status": "R"
+    },
+    {
+      "Source": "bik",
+      "Target": "bln",
+      "Status": "A"
+    },
+    {
+      "Source": "bik",
+      "Target": "bto",
+      "Status": "A"
+    },
+    {
+      "Source": "bik",
+      "Target": "cts",
+      "Status": "A"
+    },
+    {
+      "Source": "bik",
+      "Target": "fbl",
+      "Status": "A"
+    },
+    {
+      "Source": "bik",
+      "Target": "lbl",
+      "Status": "A"
+    },
+    {
+      "Source": "bik",
+      "Target": "rbl",
+      "Status": "A"
+    },
+    {
+      "Source": "bik",
+      "Target": "ubl",
+      "Status": "A"
+    },
+    {
+      "Source": "bnc",
+      "Target": "ebk",
+      "Status": "A"
+    },
+    {
+      "Source": "bnc",
+      "Target": "lbk",
+      "Status": "A"
+    },
+    {
+      "Source": "bnc",
+      "Target": "obk",
+      "Status": "A"
+    },
+    {
+      "Source": "bnc",
+      "Target": "rbk",
+      "Status": "A"
+    },
+    {
+      "Source": "bnc",
+      "Target": "vbk",
+      "Status": "A"
+    },
+    {
+      "Source": "bua",
+      "Target": "bxm",
+      "Status": "A"
+    },
+    {
+      "Source": "bua",
+      "Target": "bxr",
+      "Status": "A"
+    },
+    {
+      "Source": "bua",
+      "Target": "bxu",
+      "Status": "A"
+    },
+    {
+      "Source": "chm",
+      "Target": "mhr",
+      "Status": "A"
+    },
+    {
+      "Source": "chm",
+      "Target": "mrj",
+      "Status": "A"
+    },
+    {
+      "Source": "cre",
+      "Target": "crj",
+      "Status": "A"
+    },
+    {
+      "Source": "cre",
+      "Target": "crk",
+      "Status": "A"
+    },
+    {
+      "Source": "cre",
+      "Target": "crl",
+      "Status": "A"
+    },
+    {
+      "Source": "cre",
+      "Target": "crm",
+      "Status": "A"
+    },
+    {
+      "Source": "cre",
+      "Target": "csw",
+      "Status": "A"
+    },
+    {
+      "Source": "cre",
+      "Target": "cwd",
+      "Status": "A"
+    },
+    {
+      "Source": "del",
+      "Target": "umu",
+      "Status": "A"
+    },
+    {
+      "Source": "del",
+      "Target": "unm",
+      "Status": "A"
+    },
+    {
+      "Source": "den",
+      "Target": "scs",
+      "Status": "A"
+    },
+    {
+      "Source": "den",
+      "Target": "xsl",
+      "Status": "A"
+    },
+    {
+      "Source": "din",
+      "Target": "dib",
+      "Status": "A"
+    },
+    {
+      "Source": "din",
+      "Target": "dik",
+      "Status": "A"
+    },
+    {
+      "Source": "din",
+      "Target": "dip",
+      "Status": "A"
+    },
+    {
+      "Source": "din",
+      "Target": "diw",
+      "Status": "A"
+    },
+    {
+      "Source": "din",
+      "Target": "dks",
+      "Status": "A"
+    },
+    {
+      "Source": "doi",
+      "Target": "dgo",
+      "Status": "A"
+    },
+    {
+      "Source": "doi",
+      "Target": "xnr",
+      "Status": "A"
+    },
+    {
+      "Source": "est",
+      "Target": "ekk",
+      "Status": "A"
+    },
+    {
+      "Source": "est",
+      "Target": "vro",
+      "Status": "A"
+    },
+    {
+      "Source": "fas",
+      "Target": "pes",
+      "Status": "A"
+    },
+    {
+      "Source": "fas",
+      "Target": "prs",
+      "Status": "A"
+    },
+    {
+      "Source": "ful",
+      "Target": "ffm",
+      "Status": "A"
+    },
+    {
+      "Source": "ful",
+      "Target": "fub",
+      "Status": "A"
+    },
+    {
+      "Source": "ful",
+      "Target": "fuc",
+      "Status": "A"
+    },
+    {
+      "Source": "ful",
+      "Target": "fue",
+      "Status": "A"
+    },
+    {
+      "Source": "ful",
+      "Target": "fuf",
+      "Status": "A"
+    },
+    {
+      "Source": "ful",
+      "Target": "fuh",
+      "Status": "A"
+    },
+    {
+      "Source": "ful",
+      "Target": "fui",
+      "Status": "A"
+    },
+    {
+      "Source": "ful",
+      "Target": "fuq",
+      "Status": "A"
+    },
+    {
+      "Source": "ful",
+      "Target": "fuv",
+      "Status": "A"
+    },
+    {
+      "Source": "gba",
+      "Target": "bdt",
+      "Status": "A"
+    },
+    {
+      "Source": "gba",
+      "Target": "gbp",
+      "Status": "A"
+    },
+    {
+      "Source": "gba",
+      "Target": "gbq",
+      "Status": "A"
+    },
+    {
+      "Source": "gba",
+      "Target": "gmm",
+      "Status": "A"
+    },
+    {
+      "Source": "gba",
+      "Target": "gso",
+      "Status": "A"
+    },
+    {
+      "Source": "gba",
+      "Target": "gya",
+      "Status": "A"
+    },
+    {
+      "Source": "gba",
+      "Target": "mdo",
+      "Status": "R"
+    },
+    {
+      "Source": "gon",
+      "Target": "esg",
+      "Status": "A"
+    },
+    {
+      "Source": "gon",
+      "Target": "ggo",
+      "Status": "R"
+    },
+    {
+      "Source": "gon",
+      "Target": "gno",
+      "Status": "A"
+    },
+    {
+      "Source": "gon",
+      "Target": "wsg",
+      "Status": "A"
+    },
+    {
+      "Source": "grb",
+      "Target": "gbo",
+      "Status": "A"
+    },
+    {
+      "Source": "grb",
+      "Target": "gec",
+      "Status": "A"
+    },
+    {
+      "Source": "grb",
+      "Target": "grj",
+      "Status": "A"
+    },
+    {
+      "Source": "grb",
+      "Target": "grv",
+      "Status": "A"
+    },
+    {
+      "Source": "grb",
+      "Target": "gry",
+      "Status": "A"
+    },
+    {
+      "Source": "grn",
+      "Target": "gnw",
+      "Status": "A"
+    },
+    {
+      "Source": "grn",
+      "Target": "gug",
+      "Status": "A"
+    },
+    {
+      "Source": "grn",
+      "Target": "gui",
+      "Status": "A"
+    },
+    {
+      "Source": "grn",
+      "Target": "gun",
+      "Status": "A"
+    },
+    {
+      "Source": "grn",
+      "Target": "nhd",
+      "Status": "A"
+    },
+    {
+      "Source": "hai",
+      "Target": "hax",
+      "Status": "A"
+    },
+    {
+      "Source": "hai",
+      "Target": "hdn",
+      "Status": "A"
+    },
+    {
+      "Source": "hbs",
+      "Target": "bos",
+      "Status": "A"
+    },
+    {
+      "Source": "hbs",
+      "Target": "cnr",
+      "Status": "A"
+    },
+    {
+      "Source": "hbs",
+      "Target": "hrv",
+      "Status": "A"
+    },
+    {
+      "Source": "hbs",
+      "Target": "srp",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "blu",
+      "Status": "R"
+    },
+    {
+      "Source": "hmn",
+      "Target": "cqd",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hea",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hma",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hmc",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hmd",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hme",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hmg",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hmh",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hmi",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hmj",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hml",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hmm",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hmp",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hmq",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hms",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hmw",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hmy",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hmz",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hnj",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "hrm",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "huj",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "mmr",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "muq",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "mww",
+      "Status": "A"
+    },
+    {
+      "Source": "hmn",
+      "Target": "sfm",
+      "Status": "A"
+    },
+    {
+      "Source": "iku",
+      "Target": "ike",
+      "Status": "A"
+    },
+    {
+      "Source": "iku",
+      "Target": "ikt",
+      "Status": "A"
+    },
+    {
+      "Source": "ipk",
+      "Target": "esi",
+      "Status": "A"
+    },
+    {
+      "Source": "ipk",
+      "Target": "esk",
+      "Status": "A"
+    },
+    {
+      "Source": "jrb",
+      "Target": "ajt",
+      "Status": "R"
+    },
+    {
+      "Source": "jrb",
+      "Target": "aju",
+      "Status": "A"
+    },
+    {
+      "Source": "jrb",
+      "Target": "jye",
+      "Status": "A"
+    },
+    {
+      "Source": "jrb",
+      "Target": "yhd",
+      "Status": "A"
+    },
+    {
+      "Source": "jrb",
+      "Target": "yud",
+      "Status": "A"
+    },
+    {
+      "Source": "kau",
+      "Target": "kby",
+      "Status": "A"
+    },
+    {
+      "Source": "kau",
+      "Target": "knc",
+      "Status": "A"
+    },
+    {
+      "Source": "kau",
+      "Target": "krt",
+      "Status": "A"
+    },
+    {
+      "Source": "kln",
+      "Target": "enb",
+      "Status": "A"
+    },
+    {
+      "Source": "kln",
+      "Target": "eyo",
+      "Status": "A"
+    },
+    {
+      "Source": "kln",
+      "Target": "niq",
+      "Status": "A"
+    },
+    {
+      "Source": "kln",
+      "Target": "oki",
+      "Status": "A"
+    },
+    {
+      "Source": "kln",
+      "Target": "pko",
+      "Status": "A"
+    },
+    {
+      "Source": "kln",
+      "Target": "sgc",
+      "Status": "A"
+    },
+    {
+      "Source": "kln",
+      "Target": "spy",
+      "Status": "A"
+    },
+    {
+      "Source": "kln",
+      "Target": "tec",
+      "Status": "A"
+    },
+    {
+      "Source": "kln",
+      "Target": "tuy",
+      "Status": "A"
+    },
+    {
+      "Source": "kok",
+      "Target": "gom",
+      "Status": "A"
+    },
+    {
+      "Source": "kok",
+      "Target": "knn",
+      "Status": "A"
+    },
+    {
+      "Source": "kom",
+      "Target": "koi",
+      "Status": "A"
+    },
+    {
+      "Source": "kom",
+      "Target": "kpv",
+      "Status": "A"
+    },
+    {
+      "Source": "kon",
+      "Target": "kng",
+      "Status": "A"
+    },
+    {
+      "Source": "kon",
+      "Target": "kwy",
+      "Status": "A"
+    },
+    {
+      "Source": "kon",
+      "Target": "ldi",
+      "Status": "A"
+    },
+    {
+      "Source": "kpe",
+      "Target": "gkp",
+      "Status": "A"
+    },
+    {
+      "Source": "kpe",
+      "Target": "xpe",
+      "Status": "A"
+    },
+    {
+      "Source": "kur",
+      "Target": "ckb",
+      "Status": "A"
+    },
+    {
+      "Source": "kur",
+      "Target": "kmr",
+      "Status": "A"
+    },
+    {
+      "Source": "kur",
+      "Target": "sdh",
+      "Status": "A"
+    },
+    {
+      "Source": "lah",
+      "Target": "hnd",
+      "Status": "A"
+    },
+    {
+      "Source": "lah",
+      "Target": "hno",
+      "Status": "A"
+    },
+    {
+      "Source": "lah",
+      "Target": "jat",
+      "Status": "A"
+    },
+    {
+      "Source": "lah",
+      "Target": "phr",
+      "Status": "A"
+    },
+    {
+      "Source": "lah",
+      "Target": "pmu",
+      "Status": "R"
+    },
+    {
+      "Source": "lah",
+      "Target": "pnb",
+      "Status": "A"
+    },
+    {
+      "Source": "lah",
+      "Target": "skr",
+      "Status": "A"
+    },
+    {
+      "Source": "lah",
+      "Target": "xhe",
+      "Status": "A"
+    },
+    {
+      "Source": "lav",
+      "Target": "ltg",
+      "Status": "A"
+    },
+    {
+      "Source": "lav",
+      "Target": "lvs",
+      "Status": "A"
+    },
+    {
+      "Source": "luy",
+      "Target": "bxk",
+      "Status": "A"
+    },
+    {
+      "Source": "luy",
+      "Target": "ida",
+      "Status": "A"
+    },
+    {
+      "Source": "luy",
+      "Target": "lkb",
+      "Status": "A"
+    },
+    {
+      "Source": "luy",
+      "Target": "lko",
+      "Status": "A"
+    },
+    {
+      "Source": "luy",
+      "Target": "lks",
+      "Status": "A"
+    },
+    {
+      "Source": "luy",
+      "Target": "lri",
+      "Status": "A"
+    },
+    {
+      "Source": "luy",
+      "Target": "lrm",
+      "Status": "A"
+    },
+    {
+      "Source": "luy",
+      "Target": "lsm",
+      "Status": "A"
+    },
+    {
+      "Source": "luy",
+      "Target": "lto",
+      "Status": "A"
+    },
+    {
+      "Source": "luy",
+      "Target": "lts",
+      "Status": "A"
+    },
+    {
+      "Source": "luy",
+      "Target": "lwg",
+      "Status": "A"
+    },
+    {
+      "Source": "luy",
+      "Target": "nle",
+      "Status": "A"
+    },
+    {
+      "Source": "luy",
+      "Target": "nyd",
+      "Status": "A"
+    },
+    {
+      "Source": "luy",
+      "Target": "rag",
+      "Status": "A"
+    },
+    {
+      "Source": "man",
+      "Target": "emk",
+      "Status": "A"
+    },
+    {
+      "Source": "man",
+      "Target": "mku",
+      "Status": "A"
+    },
+    {
+      "Source": "man",
+      "Target": "mlq",
+      "Status": "A"
+    },
+    {
+      "Source": "man",
+      "Target": "mnk",
+      "Status": "A"
+    },
+    {
+      "Source": "man",
+      "Target": "msc",
+      "Status": "A"
+    },
+    {
+      "Source": "man",
+      "Target": "mwk",
+      "Status": "A"
+    },
+    {
+      "Source": "man",
+      "Target": "myq",
+      "Status": "R"
+    },
+    {
+      "Source": "mlg",
+      "Target": "bhr",
+      "Status": "A"
+    },
+    {
+      "Source": "mlg",
+      "Target": "bjq",
+      "Status": "R"
+    },
+    {
+      "Source": "mlg",
+      "Target": "bmm",
+      "Status": "A"
+    },
+    {
+      "Source": "mlg",
+      "Target": "bzc",
+      "Status": "A"
+    },
+    {
+      "Source": "mlg",
+      "Target": "msh",
+      "Status": "A"
+    },
+    {
+      "Source": "mlg",
+      "Target": "plt",
+      "Status": "A"
+    },
+    {
+      "Source": "mlg",
+      "Target": "skg",
+      "Status": "A"
+    },
+    {
+      "Source": "mlg",
+      "Target": "tdx",
+      "Status": "A"
+    },
+    {
+      "Source": "mlg",
+      "Target": "tkg",
+      "Status": "A"
+    },
+    {
+      "Source": "mlg",
+      "Target": "txy",
+      "Status": "A"
+    },
+    {
+      "Source": "mlg",
+      "Target": "xmv",
+      "Status": "A"
+    },
+    {
+      "Source": "mlg",
+      "Target": "xmw",
+      "Status": "A"
+    },
+    {
+      "Source": "mon",
+      "Target": "khk",
+      "Status": "A"
+    },
+    {
+      "Source": "mon",
+      "Target": "mvf",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "bjn",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "btj",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "bve",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "bvu",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "coa",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "dup",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "hji",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "ind",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "jak",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "jax",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "kvb",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "kvr",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "kxd",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "lce",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "lcf",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "liw",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "max",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "meo",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "mfa",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "mfb",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "min",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "mly",
+      "Status": "R"
+    },
+    {
+      "Source": "msa",
+      "Target": "mqg",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "msi",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "mui",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "orn",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "ors",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "pel",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "pse",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "tmw",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "urk",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "vkk",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "vkt",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "xmm",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "zlm",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "zmi",
+      "Status": "A"
+    },
+    {
+      "Source": "msa",
+      "Target": "zsm",
+      "Status": "A"
+    },
+    {
+      "Source": "mwr",
+      "Target": "dhd",
+      "Status": "A"
+    },
+    {
+      "Source": "mwr",
+      "Target": "mtr",
+      "Status": "A"
+    },
+    {
+      "Source": "mwr",
+      "Target": "mve",
+      "Status": "A"
+    },
+    {
+      "Source": "mwr",
+      "Target": "rwr",
+      "Status": "A"
+    },
+    {
+      "Source": "mwr",
+      "Target": "swv",
+      "Status": "A"
+    },
+    {
+      "Source": "mwr",
+      "Target": "wry",
+      "Status": "A"
+    },
+    {
+      "Source": "nep",
+      "Target": "dty",
+      "Status": "A"
+    },
+    {
+      "Source": "nep",
+      "Target": "npi",
+      "Status": "A"
+    },
+    {
+      "Source": "nor",
+      "Target": "nno",
+      "Status": "A"
+    },
+    {
+      "Source": "nor",
+      "Target": "nob",
+      "Status": "A"
+    },
+    {
+      "Source": "oji",
+      "Target": "ciw",
+      "Status": "A"
+    },
+    {
+      "Source": "oji",
+      "Target": "ojb",
+      "Status": "A"
+    },
+    {
+      "Source": "oji",
+      "Target": "ojc",
+      "Status": "A"
+    },
+    {
+      "Source": "oji",
+      "Target": "ojg",
+      "Status": "A"
+    },
+    {
+      "Source": "oji",
+      "Target": "ojs",
+      "Status": "A"
+    },
+    {
+      "Source": "oji",
+      "Target": "ojw",
+      "Status": "A"
+    },
+    {
+      "Source": "oji",
+      "Target": "otw",
+      "Status": "A"
+    },
+    {
+      "Source": "ori",
+      "Target": "ory",
+      "Status": "A"
+    },
+    {
+      "Source": "ori",
+      "Target": "spv",
+      "Status": "A"
+    },
+    {
+      "Source": "orm",
+      "Target": "gax",
+      "Status": "A"
+    },
+    {
+      "Source": "orm",
+      "Target": "gaz",
+      "Status": "A"
+    },
+    {
+      "Source": "orm",
+      "Target": "hae",
+      "Status": "A"
+    },
+    {
+      "Source": "orm",
+      "Target": "orc",
+      "Status": "A"
+    },
+    {
+      "Source": "pus",
+      "Target": "pbt",
+      "Status": "A"
+    },
+    {
+      "Source": "pus",
+      "Target": "pbu",
+      "Status": "A"
+    },
+    {
+      "Source": "pus",
+      "Target": "pst",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "cqu",
+      "Status": "R"
+    },
+    {
+      "Source": "que",
+      "Target": "qub",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qud",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "quf",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qug",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "quh",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "quk",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qul",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qup",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qur",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qus",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "quw",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qux",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "quy",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "quz",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qva",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qvc",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qve",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qvh",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qvi",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qvj",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qvl",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qvm",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qvn",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qvo",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qvp",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qvs",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qvw",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qvz",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qwa",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qwc",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qwh",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qws",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qxa",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qxc",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qxh",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qxl",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qxn",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qxo",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qxp",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qxr",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qxt",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qxu",
+      "Status": "A"
+    },
+    {
+      "Source": "que",
+      "Target": "qxw",
+      "Status": "A"
+    },
+    {
+      "Source": "raj",
+      "Target": "bgq",
+      "Status": "A"
+    },
+    {
+      "Source": "raj",
+      "Target": "gda",
+      "Status": "A"
+    },
+    {
+      "Source": "raj",
+      "Target": "gju",
+      "Status": "A"
+    },
+    {
+      "Source": "raj",
+      "Target": "hoj",
+      "Status": "A"
+    },
+    {
+      "Source": "raj",
+      "Target": "mup",
+      "Status": "A"
+    },
+    {
+      "Source": "raj",
+      "Target": "wbr",
+      "Status": "A"
+    },
+    {
+      "Source": "rom",
+      "Target": "rmc",
+      "Status": "A"
+    },
+    {
+      "Source": "rom",
+      "Target": "rmf",
+      "Status": "A"
+    },
+    {
+      "Source": "rom",
+      "Target": "rml",
+      "Status": "A"
+    },
+    {
+      "Source": "rom",
+      "Target": "rmn",
+      "Status": "A"
+    },
+    {
+      "Source": "rom",
+      "Target": "rmo",
+      "Status": "A"
+    },
+    {
+      "Source": "rom",
+      "Target": "rmw",
+      "Status": "A"
+    },
+    {
+      "Source": "rom",
+      "Target": "rmy",
+      "Status": "A"
+    },
+    {
+      "Source": "san",
+      "Target": "cls",
+      "Status": "A"
+    },
+    {
+      "Source": "san",
+      "Target": "vsn",
+      "Status": "A"
+    },
+    {
+      "Source": "sqi",
+      "Target": "aae",
+      "Status": "A"
+    },
+    {
+      "Source": "sqi",
+      "Target": "aat",
+      "Status": "A"
+    },
+    {
+      "Source": "sqi",
+      "Target": "aln",
+      "Status": "A"
+    },
+    {
+      "Source": "sqi",
+      "Target": "als",
+      "Status": "A"
+    },
+    {
+      "Source": "srd",
+      "Target": "sdc",
+      "Status": "A"
+    },
+    {
+      "Source": "srd",
+      "Target": "sdn",
+      "Status": "A"
+    },
+    {
+      "Source": "srd",
+      "Target": "src",
+      "Status": "A"
+    },
+    {
+      "Source": "srd",
+      "Target": "sro",
+      "Status": "A"
+    },
+    {
+      "Source": "swa",
+      "Target": "swc",
+      "Status": "A"
+    },
+    {
+      "Source": "swa",
+      "Target": "swh",
+      "Status": "A"
+    },
+    {
+      "Source": "syr",
+      "Target": "aii",
+      "Status": "A"
+    },
+    {
+      "Source": "syr",
+      "Target": "cld",
+      "Status": "A"
+    },
+    {
+      "Source": "tmh",
+      "Target": "taq",
+      "Status": "A"
+    },
+    {
+      "Source": "tmh",
+      "Target": "thv",
+      "Status": "A"
+    },
+    {
+      "Source": "tmh",
+      "Target": "thz",
+      "Status": "A"
+    },
+    {
+      "Source": "tmh",
+      "Target": "ttq",
+      "Status": "A"
+    },
+    {
+      "Source": "uzb",
+      "Target": "uzn",
+      "Status": "A"
+    },
+    {
+      "Source": "uzb",
+      "Target": "uzs",
+      "Status": "A"
+    },
+    {
+      "Source": "yid",
+      "Target": "ydd",
+      "Status": "A"
+    },
+    {
+      "Source": "yid",
+      "Target": "yih",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zaa",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zab",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zac",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zad",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zae",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zaf",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zai",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zam",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zao",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zaq",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zar",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zas",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zat",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zav",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zaw",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zax",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zca",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zcd",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zoo",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpa",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpb",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpc",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpd",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpe",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpf",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpg",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zph",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpi",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpj",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpk",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpl",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpm",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpn",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpo",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpp",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpq",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpr",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zps",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpt",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpu",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpv",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpw",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpx",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpy",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zpz",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zsr",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "ztc",
+      "Status": "R"
+    },
+    {
+      "Source": "zap",
+      "Target": "zte",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "ztg",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "ztl",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "ztm",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "ztn",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "ztp",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "ztq",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zts",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "ztt",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "ztu",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "ztx",
+      "Status": "A"
+    },
+    {
+      "Source": "zap",
+      "Target": "zty",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "ccx",
+      "Status": "R"
+    },
+    {
+      "Source": "zha",
+      "Target": "ccy",
+      "Status": "R"
+    },
+    {
+      "Source": "zha",
+      "Target": "zch",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "zeh",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "zgb",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "zgm",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "zgn",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "zhd",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "zhn",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "zlj",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "zln",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "zlq",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "zqe",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "zyb",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "zyg",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "zyj",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "zyn",
+      "Status": "A"
+    },
+    {
+      "Source": "zha",
+      "Target": "zzj",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "cdo",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "cjy",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "cmn",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "cnp",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "cpx",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "csp",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "czh",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "czo",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "gan",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "hak",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "hsn",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "lzh",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "mnp",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "nan",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "wuu",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "yue",
+      "Status": "A"
+    },
+    {
+      "Source": "zza",
+      "Target": "diq",
+      "Status": "A"
+    },
+    {
+      "Source": "zza",
+      "Target": "kiu",
+      "Status": "A"
+    }
+  ],
+  "LegacyLanguageDescriptorList": [
+    {
+      "Id": "fri",
+      "RefName": "Western Frisian",
+      "RetReason": "C",
+      "ChangeTo": "fry",
+      "RetRemedy": "",
+      "Effective": "2007-02-01"
+    },
+    {
+      "Id": "auv",
+      "RefName": "Auvergnat",
+      "RetReason": "M",
+      "ChangeTo": "oci",
+      "RetRemedy": "",
+      "Effective": "2007-03-14"
+    },
+    {
+      "Id": "gsc",
+      "RefName": "Gascon",
+      "RetReason": "M",
+      "ChangeTo": "oci",
+      "RetRemedy": "",
+      "Effective": "2007-03-14"
+    },
+    {
+      "Id": "lms",
+      "RefName": "Limousin",
+      "RetReason": "M",
+      "ChangeTo": "oci",
+      "RetRemedy": "",
+      "Effective": "2007-03-14"
+    },
+    {
+      "Id": "lnc",
+      "RefName": "Languedocien",
+      "RetReason": "M",
+      "ChangeTo": "oci",
+      "RetRemedy": "",
+      "Effective": "2007-03-14"
+    },
+    {
+      "Id": "prv",
+      "RefName": "Proven\u00E7al",
+      "RetReason": "M",
+      "ChangeTo": "oci",
+      "RetRemedy": "",
+      "Effective": "2007-03-14"
+    },
+    {
+      "Id": "amd",
+      "RefName": "Amap\u00E1 Creole",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "bgh",
+      "RefName": "Bogan",
+      "RetReason": "D",
+      "ChangeTo": "bbh",
+      "RetRemedy": "",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "bnh",
+      "RefName": "Banaw\u00E1",
+      "RetReason": "M",
+      "ChangeTo": "jaa",
+      "RetRemedy": "",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "bvs",
+      "RefName": "Belgian Sign Language",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Langue des signes de Belgique Francophone [sfb], and Vlaamse Gebarentaal [vgt]",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "ccy",
+      "RefName": "Southern Zhuang",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into five languages: Nong Zhuang [zhn];  Yang Zhuang [zyg]; Yongnan Zhuang [zyn]; Zuojiang Zhuang [zzj]; Dai Zhuang [zhd].",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "cit",
+      "RefName": "Chittagonian",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Rohingya [rhg], and Chittagonian (new identifier [ctg])",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "flm",
+      "RefName": "Falam Chin",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Ranglong [rnl], and Falam Chin (new identifier [cfm]).",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "jap",
+      "RefName": "Jaru\u00E1ra",
+      "RetReason": "M",
+      "ChangeTo": "jaa",
+      "RetRemedy": "",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "kob",
+      "RefName": "Kohoroxitari",
+      "RetReason": "M",
+      "ChangeTo": "xsu",
+      "RetRemedy": "",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "mob",
+      "RefName": "Moinba",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into five languages: Chug [cvg]; Lish [lsh];  Kalaktang Monpa [kkf]; Tawang Monpa [twm]; Sartang [onp]",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "mzf",
+      "RefName": "Aiku",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into four languages: Ambrak [aag]; Yangum Dey [yde]; Yangum Gel [ygl]; Yangum Mon [ymo]",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "nhj",
+      "RefName": "Tlalitzlipa Nahuatl",
+      "RetReason": "M",
+      "ChangeTo": "nhi",
+      "RetRemedy": "",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "nhs",
+      "RefName": "Southeastern Puebla Nahuatl",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Sierra Negra Nahuatl [nsu] and Southeastern Puebla Nahuatl [npl]",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "occ",
+      "RefName": "Occidental",
+      "RetReason": "D",
+      "ChangeTo": "ile",
+      "RetRemedy": "",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "tmx",
+      "RefName": "Tomyang",
+      "RetReason": "M",
+      "ChangeTo": "ybi",
+      "RetRemedy": "",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "tot",
+      "RefName": "Patla-Chicontla Totonac",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Upper Necaxa Totonac [tku] and Tecpatl\u00E1n Totonac [tcw]",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "xmi",
+      "RefName": "Miarr\u00E3",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "yib",
+      "RefName": "Yinglish",
+      "RetReason": "M",
+      "ChangeTo": "eng",
+      "RetRemedy": "",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "ztc",
+      "RefName": "Lachirioag Zapotec",
+      "RetReason": "M",
+      "ChangeTo": "zty",
+      "RetRemedy": "",
+      "Effective": "2007-07-18"
+    },
+    {
+      "Id": "atf",
+      "RefName": "Atuence",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2007-08-10"
+    },
+    {
+      "Id": "bqe",
+      "RefName": "Navarro-Labourdin Basque",
+      "RetReason": "M",
+      "ChangeTo": "eus",
+      "RetRemedy": "",
+      "Effective": "2007-08-10"
+    },
+    {
+      "Id": "bsz",
+      "RefName": "Souletin Basque",
+      "RetReason": "M",
+      "ChangeTo": "eus",
+      "RetRemedy": "",
+      "Effective": "2007-08-10"
+    },
+    {
+      "Id": "aex",
+      "RefName": "Amerax",
+      "RetReason": "M",
+      "ChangeTo": "eng",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "ahe",
+      "RefName": "Ahe",
+      "RetReason": "M",
+      "ChangeTo": "knx",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "aiz",
+      "RefName": "Aari",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Aari [aiw] (new identifier) and Gayil [gyl]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "akn",
+      "RefName": "Amikoana",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "arf",
+      "RefName": "Arafundi",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into three languages: Andai [afd]; Nanubae [afk]; Tapei [afp]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "azr",
+      "RefName": "Adzera",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into three languages: Adzera [adz] (new identifier), Sukurum [zsu] and Sarasira [zsa]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "bcx",
+      "RefName": "Pamona",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Pamona [pmf] (new identifier) and Batui [zbt]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "bii",
+      "RefName": "Bisu",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Bisu [bzi] (new identifier) and Laomian [lwm]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "bke",
+      "RefName": "Bengkulu",
+      "RetReason": "M",
+      "ChangeTo": "pse",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "blu",
+      "RefName": "Hmong Njua",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into four languages: Hmong Njua [hnj] (new identifier); Chuanqiandian Cluster Miao [cqd]; Horned Miao [hrm]; Small Flowery Miao [sfm]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "boc",
+      "RefName": "Bakung Kenyah",
+      "RetReason": "M",
+      "ChangeTo": "xkl",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "bsd",
+      "RefName": "Sarawak Bisaya",
+      "RetReason": "M",
+      "ChangeTo": "bsb",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "bwv",
+      "RefName": "Bahau River Kenyah",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "bxt",
+      "RefName": "Buxinhua",
+      "RetReason": "D",
+      "ChangeTo": "bgk",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "byu",
+      "RefName": "Buyang",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into three languages: E\u0027ma Buyang [yzg]; Langnian Buyang [yln]; Baha Buyang [yha]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "ccx",
+      "RefName": "Northern Zhuang",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into ten languages: Guibian Zh [zgn]; Liujiang Zh [zlj]; Qiubei Zh [zqe]; Guibei Zh [zgb]; Youjiang Zh [zyj]; Central Hongshuihe Zh [zch]; Eastern Hongshuihe Zh [zeh]; Liuqian Zh [zlq]; Yongbei Zh [zyb]; Lianshan Zh [zln].",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "cru",
+      "RefName": "Car\u00FAtana",
+      "RetReason": "M",
+      "ChangeTo": "bwi",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "dat",
+      "RefName": "Darang Deng",
+      "RetReason": "D",
+      "ChangeTo": "mhu",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "dyk",
+      "RefName": "Land Dayak",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "eni",
+      "RefName": "Enim",
+      "RetReason": "M",
+      "ChangeTo": "pse",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "fiz",
+      "RefName": "Izere",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Ganang [gne] and Izere [izr] (new identifier)",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "gen",
+      "RefName": "Geman Deng",
+      "RetReason": "D",
+      "ChangeTo": "mxj",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "ggh",
+      "RefName": "Garreh-Ajuran",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "itu",
+      "RefName": "Itutang",
+      "RetReason": "M",
+      "ChangeTo": "mzu",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "kds",
+      "RefName": "Lahu Shi",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Kucong [lkc] and Lahu Shi [lhi] (new identifier)",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "knh",
+      "RefName": "Kayan River Kenyah",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "krg",
+      "RefName": "North Korowai",
+      "RetReason": "M",
+      "ChangeTo": "khe",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "krq",
+      "RefName": "Krui",
+      "RetReason": "M",
+      "ChangeTo": "ljp",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "kxg",
+      "RefName": "Katingan",
+      "RetReason": "M",
+      "ChangeTo": "nij",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "lmt",
+      "RefName": "Lematang",
+      "RetReason": "M",
+      "ChangeTo": "mui",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "lnt",
+      "RefName": "Lintang",
+      "RetReason": "M",
+      "ChangeTo": "pse",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "lod",
+      "RefName": "Berawan",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into three languages: West Berawan [zbw], Central Berawan [zbc], and East Berawan [zbe]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "mbg",
+      "RefName": "Northern Nambiku\u00E1ra",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into six languages: Alapmunte [apv]; Lakond\u00EA [lkd]; Latund\u00EA [ltn]; Mamaind\u00E9 [wmd]; Tawand\u00EA [xtw]; Yalakalore [xyl]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "mdo",
+      "RefName": "Southwest Gbaya",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Southwest Gbaya [gso] (new identifier) and Gbaya-Mbodomo [gmm]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "mhv",
+      "RefName": "Arakanese",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Marma [rmz] and Rakhine [rki]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "miv",
+      "RefName": "Mimi",
+      "RetReason": "M",
+      "ChangeTo": "amj",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "mqd",
+      "RefName": "Madang",
+      "RetReason": "M",
+      "ChangeTo": "xkl",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "nky",
+      "RefName": "Khiamniungan Naga",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into three languages: Khiamniungan Naga [kix] (new identifier); Para Naga [pzn]; Makuri Naga [jmn]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "nxj",
+      "RefName": "Nyadu",
+      "RetReason": "M",
+      "ChangeTo": "byd",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "ogn",
+      "RefName": "Ogan",
+      "RetReason": "M",
+      "ChangeTo": "pse",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "ork",
+      "RefName": "Orokaiva",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Orokaiva [okv] (new identifier), Aeka [aez] and Hunjara-Kaina Ke [hkk]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "paj",
+      "RefName": "Ipeka-Tapuia",
+      "RetReason": "M",
+      "ChangeTo": "kpc",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "pec",
+      "RefName": "Southern Pesisir",
+      "RetReason": "M",
+      "ChangeTo": "ljp",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "pen",
+      "RefName": "Penesak",
+      "RetReason": "M",
+      "ChangeTo": "mui",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "plm",
+      "RefName": "Palembang",
+      "RetReason": "M",
+      "ChangeTo": "mui",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "poj",
+      "RefName": "Lower Pokomo",
+      "RetReason": "M",
+      "ChangeTo": "pkb",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "pun",
+      "RefName": "Pubian",
+      "RetReason": "M",
+      "ChangeTo": "ljp",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "rae",
+      "RefName": "Ranau",
+      "RetReason": "M",
+      "ChangeTo": "ljp",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "rjb",
+      "RefName": "Rajbanshi",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Kamta (India) / Rangpuri (Bangladesh) [rkt] and Rajbanshi (Nepal) [rjs]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "rws",
+      "RefName": "Rawas",
+      "RetReason": "M",
+      "ChangeTo": "mui",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "sdd",
+      "RefName": "Semendo",
+      "RetReason": "M",
+      "ChangeTo": "pse",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "sdi",
+      "RefName": "Sindang Kelingi",
+      "RetReason": "M",
+      "ChangeTo": "liw",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "skl",
+      "RefName": "Selako",
+      "RetReason": "M",
+      "ChangeTo": "knx",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "slb",
+      "RefName": "Kahumamahon Saluan",
+      "RetReason": "M",
+      "ChangeTo": "loe",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "srj",
+      "RefName": "Serawai",
+      "RetReason": "M",
+      "ChangeTo": "pse",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "suf",
+      "RefName": "Tarpia",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Tarpia [tpf] (new identifier) and Kaptiau [kbi]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "suh",
+      "RefName": "Suba",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Suba [sxb] (Kenya) and Suba-Simbita [ssc] (Tanzania)",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "suu",
+      "RefName": "Sungkai",
+      "RetReason": "M",
+      "ChangeTo": "ljp",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "szk",
+      "RefName": "Sizaki",
+      "RetReason": "M",
+      "ChangeTo": "ikz",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "tle",
+      "RefName": "Southern Marakwet",
+      "RetReason": "D",
+      "ChangeTo": "enb",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "tnj",
+      "RefName": "Tanjong",
+      "RetReason": "M",
+      "ChangeTo": "kxn",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "ttx",
+      "RefName": "Tutong 1",
+      "RetReason": "M",
+      "ChangeTo": "bsb",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "ubm",
+      "RefName": "Upper Baram Kenyah",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "vky",
+      "RefName": "Kayu Agung",
+      "RetReason": "M",
+      "ChangeTo": "kge",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "vmo",
+      "RefName": "Muko-Muko",
+      "RetReason": "M",
+      "ChangeTo": "min",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "wre",
+      "RefName": "Ware",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "xah",
+      "RefName": "Kahayan",
+      "RetReason": "M",
+      "ChangeTo": "nij",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "xkm",
+      "RefName": "Mahakam Kenyah",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "xuf",
+      "RefName": "Kunfal",
+      "RetReason": "M",
+      "ChangeTo": "awn",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "yio",
+      "RefName": "Dayao Yi",
+      "RetReason": "M",
+      "ChangeTo": "lpo",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "ymj",
+      "RefName": "Muji Yi",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into five languages: Muji, Southern [ymc], Mojii [ymi], Qila Muji [ymq], Northern Muji [ymx], and Muzi [ymz]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "ypl",
+      "RefName": "Pula Yi",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into three languages: Phola [ypg], Phala [ypa] and Alo Phola [ypo]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "ypw",
+      "RefName": "Puwa Yi",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into three languages: Hlepho Phowa [yhl], Labo Phowa [ypb], and Ani Phowa [ypn]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "ywm",
+      "RefName": "Wumeng Yi",
+      "RetReason": "M",
+      "ChangeTo": "ywu",
+      "RetRemedy": "",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "yym",
+      "RefName": "Yuanjiang-Mojiang Yi",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Southern Nisu [nsd] and Southwestern Nisu [nsv]",
+      "Effective": "2008-01-14"
+    },
+    {
+      "Id": "mly",
+      "RefName": "Malay (individual language)",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into four languages: Standard Malay [zsm], Haji [hji], Papuan Malay [pmy] and Malay (individual language) [zlm]",
+      "Effective": "2008-02-18"
+    },
+    {
+      "Id": "muw",
+      "RefName": "Mundari",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Munda [unx] and Mundari [unr] (new identifier)",
+      "Effective": "2008-02-18"
+    },
+    {
+      "Id": "xst",
+      "RefName": "Silt\u0027e",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Wolane [wle] and Silt\u0027e [stv] (new identifier)",
+      "Effective": "2008-02-28"
+    },
+    {
+      "Id": "ope",
+      "RefName": "Old Persian",
+      "RetReason": "D",
+      "ChangeTo": "peo",
+      "RetRemedy": "",
+      "Effective": "2008-04-18"
+    },
+    {
+      "Id": "scc",
+      "RefName": "Serbian",
+      "RetReason": "D",
+      "ChangeTo": "srp",
+      "RetRemedy": "",
+      "Effective": "2008-06-28"
+    },
+    {
+      "Id": "scr",
+      "RefName": "Croatian",
+      "RetReason": "D",
+      "ChangeTo": "hrv",
+      "RetRemedy": "",
+      "Effective": "2008-06-28"
+    },
+    {
+      "Id": "xsk",
+      "RefName": "Sakan",
+      "RetReason": "D",
+      "ChangeTo": "kho",
+      "RetRemedy": "",
+      "Effective": "2008-10-23"
+    },
+    {
+      "Id": "mol",
+      "RefName": "Moldavian",
+      "RetReason": "M",
+      "ChangeTo": "ron",
+      "RetRemedy": "",
+      "Effective": "2008-11-03"
+    },
+    {
+      "Id": "aay",
+      "RefName": "Aariya",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "acc",
+      "RefName": "Cubulco Ach\u00ED",
+      "RetReason": "M",
+      "ChangeTo": "acr",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "cbm",
+      "RefName": "Yepocapa Southwestern Cakchiquel",
+      "RetReason": "M",
+      "ChangeTo": "cak",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "chs",
+      "RefName": "Chumash",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "ckc",
+      "RefName": "Northern Cakchiquel",
+      "RetReason": "M",
+      "ChangeTo": "cak",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "ckd",
+      "RefName": "South Central Cakchiquel",
+      "RetReason": "M",
+      "ChangeTo": "cak",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "cke",
+      "RefName": "Eastern Cakchiquel",
+      "RetReason": "M",
+      "ChangeTo": "cak",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "ckf",
+      "RefName": "Southern Cakchiquel",
+      "RetReason": "M",
+      "ChangeTo": "cak",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "cki",
+      "RefName": "Santa Mar\u00EDa De Jes\u00FAs Cakchiquel",
+      "RetReason": "M",
+      "ChangeTo": "cak",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "ckj",
+      "RefName": "Santo Domingo Xenacoj Cakchiquel",
+      "RetReason": "M",
+      "ChangeTo": "cak",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "ckk",
+      "RefName": "Acatenango Southwestern Cakchiquel",
+      "RetReason": "M",
+      "ChangeTo": "cak",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "ckw",
+      "RefName": "Western Cakchiquel",
+      "RetReason": "M",
+      "ChangeTo": "cak",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "cnm",
+      "RefName": "Ixtat\u00E1n Chuj",
+      "RetReason": "M",
+      "ChangeTo": "cac",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "cti",
+      "RefName": "Tila Chol",
+      "RetReason": "M",
+      "ChangeTo": "ctu",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "cun",
+      "RefName": "Cun\u00E9n Quich\u00E9",
+      "RetReason": "M",
+      "ChangeTo": "quc",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "eml",
+      "RefName": "Emiliano-Romagnolo",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Emilian [egl] and Romagnol [rgn]",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "eur",
+      "RefName": "Europanto",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "gmo",
+      "RefName": "Gamo-Gofa-Dawro",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into three languages: Gamo [gmv], Gofa [gof], and Dawro [dwr]",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "hsf",
+      "RefName": "Southeastern Huastec",
+      "RetReason": "M",
+      "ChangeTo": "hus",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "hva",
+      "RefName": "San Lu\u00EDs Potos\u00ED Huastec",
+      "RetReason": "M",
+      "ChangeTo": "hus",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "ixi",
+      "RefName": "Nebaj Ixil",
+      "RetReason": "M",
+      "ChangeTo": "ixl",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "ixj",
+      "RefName": "Chajul Ixil",
+      "RetReason": "M",
+      "ChangeTo": "ixl",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "jai",
+      "RefName": "Western Jacalteco",
+      "RetReason": "M",
+      "ChangeTo": "jac",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "mms",
+      "RefName": "Southern Mam",
+      "RetReason": "M",
+      "ChangeTo": "mam",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "mpf",
+      "RefName": "Tajumulco Mam",
+      "RetReason": "M",
+      "ChangeTo": "mam",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "mtz",
+      "RefName": "Tacanec",
+      "RetReason": "M",
+      "ChangeTo": "mam",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "mvc",
+      "RefName": "Central Mam",
+      "RetReason": "M",
+      "ChangeTo": "mam",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "mvj",
+      "RefName": "Todos Santos Cuchumat\u00E1n Mam",
+      "RetReason": "M",
+      "ChangeTo": "mam",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "poa",
+      "RefName": "Eastern Pokomam",
+      "RetReason": "M",
+      "ChangeTo": "poc",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "pob",
+      "RefName": "Western Pokomch\u00ED",
+      "RetReason": "M",
+      "ChangeTo": "poh",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "pou",
+      "RefName": "Southern Pokomam",
+      "RetReason": "M",
+      "ChangeTo": "poc",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "ppv",
+      "RefName": "Papav\u00F4",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "quj",
+      "RefName": "Joyabaj Quich\u00E9",
+      "RetReason": "M",
+      "ChangeTo": "quc",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "qut",
+      "RefName": "West Central Quich\u00E9",
+      "RetReason": "M",
+      "ChangeTo": "quc",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "quu",
+      "RefName": "Eastern Quich\u00E9",
+      "RetReason": "M",
+      "ChangeTo": "quc",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "qxi",
+      "RefName": "San Andr\u00E9s Quich\u00E9",
+      "RetReason": "M",
+      "ChangeTo": "quc",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "sic",
+      "RefName": "Malinguat",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Keak [keh] and Sos Kundi [sdk]",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "stc",
+      "RefName": "Santa Cruz",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Nat\u00FCgu [ntu] and Nal\u00F6go [nlz]",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "tlz",
+      "RefName": "Toala\u0027",
+      "RetReason": "M",
+      "ChangeTo": "rob",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "tzb",
+      "RefName": "Bachaj\u00F3n Tzeltal",
+      "RetReason": "M",
+      "ChangeTo": "tzh",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "tzc",
+      "RefName": "Chamula Tzotzil",
+      "RetReason": "M",
+      "ChangeTo": "tzo",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "tze",
+      "RefName": "Chenalh\u00F3 Tzotzil",
+      "RetReason": "M",
+      "ChangeTo": "tzo",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "tzs",
+      "RefName": "San Andr\u00E9s Larrainzar Tzotzil",
+      "RetReason": "M",
+      "ChangeTo": "tzo",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "tzt",
+      "RefName": "Western Tzutujil",
+      "RetReason": "M",
+      "ChangeTo": "tzj",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "tzu",
+      "RefName": "Huixt\u00E1n Tzotzil",
+      "RetReason": "M",
+      "ChangeTo": "tzo",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "tzz",
+      "RefName": "Zinacant\u00E1n Tzotzil",
+      "RetReason": "M",
+      "ChangeTo": "tzo",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "vlr",
+      "RefName": "Vatrata",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Vera\u0027a [vra] and Lemerig [lrz]",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "yus",
+      "RefName": "Chan Santa Cruz Maya",
+      "RetReason": "M",
+      "ChangeTo": "yua",
+      "RetRemedy": "",
+      "Effective": "2009-01-16"
+    },
+    {
+      "Id": "nfg",
+      "RefName": "Nyeng",
+      "RetReason": "M",
+      "ChangeTo": "nfd",
+      "RetRemedy": "",
+      "Effective": "2009-01-26"
+    },
+    {
+      "Id": "nfk",
+      "RefName": "Shakara",
+      "RetReason": "M",
+      "ChangeTo": "nfd",
+      "RetRemedy": "",
+      "Effective": "2009-01-26"
+    },
+    {
+      "Id": "agp",
+      "RefName": "Paranan",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Pahanan Agta [apf] and Paranan [prf] (new identifier)",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "bhk",
+      "RefName": "Albay Bicolano",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Buhi\u0027non Bikol [ubl]; Libon Bikol [lbl]; Miraya Bikol [rbl]; West Albay Bikol [fbl]",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "bkb",
+      "RefName": "Finallig",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Eastern Bontok [ebk] and Southern Bontok [obk]",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "btb",
+      "RefName": "Beti (Cameroon)",
+      "RetReason": "D",
+      "ChangeTo": "beb",
+      "RetRemedy": "",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "cjr",
+      "RefName": "Chorotega",
+      "RetReason": "M",
+      "ChangeTo": "mom",
+      "RetRemedy": "",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "cmk",
+      "RefName": "Chimakum",
+      "RetReason": "D",
+      "ChangeTo": "xch",
+      "RetRemedy": "",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "drh",
+      "RefName": "Darkhat",
+      "RetReason": "M",
+      "ChangeTo": "khk",
+      "RetRemedy": "",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "drw",
+      "RefName": "Darwazi",
+      "RetReason": "M",
+      "ChangeTo": "prs",
+      "RetRemedy": "",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "gav",
+      "RefName": "Gabutamon",
+      "RetReason": "M",
+      "ChangeTo": "dev",
+      "RetRemedy": "",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "mof",
+      "RefName": "Mohegan-Montauk-Narragansett",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "split into Mohegan-Pequot [xpq] and Narragansett [xnt]",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "mst",
+      "RefName": "Cataelano Mandaya",
+      "RetReason": "M",
+      "ChangeTo": "mry",
+      "RetRemedy": "",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "myt",
+      "RefName": "Sangab Mandaya",
+      "RetReason": "M",
+      "ChangeTo": "mry",
+      "RetRemedy": "",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "rmr",
+      "RefName": "Cal\u00F3",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "split into Cal\u00F3 [rmq] and Erromintxela [emx]",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "sgl",
+      "RefName": "Sanglechi-Ishkashimi",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "split into Sanglechi [sgy] and Ishkashimi [isk]",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "sul",
+      "RefName": "Surigaonon",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Tandaganon [tgn] and Surigaonon [sgd] (new identifier)",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "sum",
+      "RefName": "Sumo-Mayangna",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Mayangna [yan] and Ulwa [ulw]",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "tnf",
+      "RefName": "Tangshewi",
+      "RetReason": "M",
+      "ChangeTo": "prs",
+      "RetRemedy": "",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "wgw",
+      "RefName": "Wagawaga",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Yaleba [ylb] and Wagawaga [wgb] (new identifier)",
+      "Effective": "2010-01-18"
+    },
+    {
+      "Id": "ayx",
+      "RefName": "Ayi (China)",
+      "RetReason": "D",
+      "ChangeTo": "nun",
+      "RetRemedy": "",
+      "Effective": "2011-05-18"
+    },
+    {
+      "Id": "bjq",
+      "RefName": "Southern Betsimisaraka Malagasy",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "split into Southern Betsimisaraka [bzc] and Tesaka Malagasy [tkg]",
+      "Effective": "2011-05-18"
+    },
+    {
+      "Id": "dha",
+      "RefName": "Dhanwar (India)",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2011-05-18"
+    },
+    {
+      "Id": "dkl",
+      "RefName": "Kolum So Dogon",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "split into Ampari Dogon [aqd] and Mombo Dogon [dmb]",
+      "Effective": "2011-05-18"
+    },
+    {
+      "Id": "mja",
+      "RefName": "Mahei",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2011-05-18"
+    },
+    {
+      "Id": "nbf",
+      "RefName": "Naxi",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "split into Naxi [nxq] and Narua [nru]",
+      "Effective": "2011-05-18"
+    },
+    {
+      "Id": "noo",
+      "RefName": "Nootka",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into [dtd] Ditidaht and [nuk] Nuu-chah-nulth",
+      "Effective": "2011-05-18"
+    },
+    {
+      "Id": "tie",
+      "RefName": "Tingal",
+      "RetReason": "M",
+      "ChangeTo": "ras",
+      "RetRemedy": "",
+      "Effective": "2011-05-18"
+    },
+    {
+      "Id": "tkk",
+      "RefName": "Takpa",
+      "RetReason": "D",
+      "ChangeTo": "twm",
+      "RetRemedy": "",
+      "Effective": "2011-05-18"
+    },
+    {
+      "Id": "baz",
+      "RefName": "Tunen",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Tunen [tvu] and Nyokon [nvo]",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "bjd",
+      "RefName": "Bandjigali",
+      "RetReason": "M",
+      "ChangeTo": "drl",
+      "RetRemedy": "",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "ccq",
+      "RefName": "Chaungtha",
+      "RetReason": "M",
+      "ChangeTo": "rki",
+      "RetRemedy": "",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "cka",
+      "RefName": "Khumi Awa Chin",
+      "RetReason": "M",
+      "ChangeTo": "cmr",
+      "RetRemedy": "",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "dap",
+      "RefName": "Nisi (India)",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Nyishi [njz] and Tagin [tgj]",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "dwl",
+      "RefName": "Walo Kumbe Dogon",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Dogon, Bankan Tey (Walo) [dbw]  and Dogon, Ben Tey (Beni) [dbt]",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "elp",
+      "RefName": "Elpaputih",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "gbc",
+      "RefName": "Garawa",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Garrwa [wrk] and Wanyi [wny]",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "gio",
+      "RefName": "Gelao",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Qau [gqu] and A\u0027ou [aou] with some going to Green Gelao [gig], some to Red Gelao [gir], and some to White Gelao [giw]",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "hrr",
+      "RefName": "Horuru",
+      "RetReason": "M",
+      "ChangeTo": "jal",
+      "RetRemedy": "",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "ibi",
+      "RefName": "Ibilo",
+      "RetReason": "M",
+      "ChangeTo": "opa",
+      "RetRemedy": "",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "jar",
+      "RefName": "Jarawa (Nigeria)",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "split into Gwak [jgk] and Bankal [jjr]",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "kdv",
+      "RefName": "Kado",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "split into Kadu [zkd] and Kanan [zkn]",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "kgh",
+      "RefName": "Upper Tanudan Kalinga",
+      "RetReason": "M",
+      "ChangeTo": "kml",
+      "RetRemedy": "",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "kpp",
+      "RefName": "Paku Karen",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Paku Karen [jkp] and Mobwa Karen [jkm]",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "kzh",
+      "RefName": "Kenuzi-Dongola",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Andaandi (Dongolawi) [dgl] and Kenzi (Mattoki) [xnz]",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "lcq",
+      "RefName": "Luhu",
+      "RetReason": "M",
+      "ChangeTo": "ppr",
+      "RetRemedy": "",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "mgx",
+      "RefName": "Omati",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Barikewa [jbk] and Mouwase [jmw]",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "nln",
+      "RefName": "Durango Nahuatl",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Eastern Durango Nahuatl [azd] and Western Durango Nahuatl [azn]",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "pbz",
+      "RefName": "Palu",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "pgy",
+      "RefName": "Pongyong",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "sca",
+      "RefName": "Sansu",
+      "RetReason": "M",
+      "ChangeTo": "hle",
+      "RetRemedy": "",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "tlw",
+      "RefName": "South Wemale",
+      "RetReason": "M",
+      "ChangeTo": "weo",
+      "RetRemedy": "",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "unp",
+      "RefName": "Worora",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Worrorra [wro] and Unggumi [xgu].",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "wiw",
+      "RefName": "Wirangu",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Wirangu [wgu] and Nauo [nwo]",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "ybd",
+      "RefName": "Yangbye",
+      "RetReason": "M",
+      "ChangeTo": "rki",
+      "RetRemedy": "",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "yen",
+      "RefName": "Yendang",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Yendang [ynq] and Yotti [yot]",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "yma",
+      "RefName": "Yamphe",
+      "RetReason": "M",
+      "ChangeTo": "lrr",
+      "RetRemedy": "",
+      "Effective": "2012-02-03"
+    },
+    {
+      "Id": "daf",
+      "RefName": "Dan",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Dan [dnj] and Kla-Dan [lda]",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "djl",
+      "RefName": "Djiwarli",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Djiwarli [dze] and Thiin [iin]",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "ggr",
+      "RefName": "Aghu Tharnggalu",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Aghu-Tharnggala [gtu], Gugu-Mini [ggm], and Ikarranggal [ikr]",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "ilw",
+      "RefName": "Talur",
+      "RetReason": "M",
+      "ChangeTo": "gal",
+      "RetRemedy": "",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "izi",
+      "RefName": "Izi-Ezaa-Ikwo-Mgbo",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Izii [izz], Ezaa [eza], Ikwo [iqw], Mgbolizhia [gmz]",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "meg",
+      "RefName": "Mea",
+      "RetReason": "M",
+      "ChangeTo": "cir",
+      "RetRemedy": "",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "mld",
+      "RefName": "Malakhel",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "mnt",
+      "RefName": "Maykulan",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Mayi-Kulan [xyk], Mayi-Thakurti [xyt], Mayi-Yapi [xyj], and Wunumara [wnn]",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "mwd",
+      "RefName": "Mudbura",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Karranga [xrq] and Mudburra [dmw]",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "myq",
+      "RefName": "Forest Maninka",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "nbx",
+      "RefName": "Ngura",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Eastern Karnic [ekc], Garlali [gll], Punthamara [xpt], Wangkumara [xwk], and Badjiri [jbi]",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "nlr",
+      "RefName": "Ngarla",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Ngarla [nrk] and Yinhawangka [ywg]",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "pcr",
+      "RefName": "Panang",
+      "RetReason": "M",
+      "ChangeTo": "adx",
+      "RetRemedy": "",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "ppr",
+      "RefName": "Piru",
+      "RetReason": "M",
+      "ChangeTo": "lcq",
+      "RetRemedy": "",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "tgg",
+      "RefName": "Tangga",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Fanamaket [bjp], Niwer Mil [hrc], and Warwar Feni [hrw]",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "wit",
+      "RefName": "Wintu",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Wintu [wnw], Nomlaki [nol], and Patwin [pwi]",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "xia",
+      "RefName": "Xiandao",
+      "RetReason": "M",
+      "ChangeTo": "acn",
+      "RetRemedy": "",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "yiy",
+      "RefName": "Yir Yoront",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Yir Yoront [yyr] and Yirrk-Mel [yrm]",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "yos",
+      "RefName": "Yos",
+      "RetReason": "M",
+      "ChangeTo": "zom",
+      "RetRemedy": "",
+      "Effective": "2013-01-23"
+    },
+    {
+      "Id": "emo",
+      "RefName": "Emok",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2014-02-03"
+    },
+    {
+      "Id": "ggm",
+      "RefName": "Gugu Mini",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2014-02-03"
+    },
+    {
+      "Id": "leg",
+      "RefName": "Lengua",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Enlhet [enl] and Enxet [enx]",
+      "Effective": "2014-02-03"
+    },
+    {
+      "Id": "lmm",
+      "RefName": "Lamam",
+      "RetReason": "D",
+      "ChangeTo": "rmx",
+      "RetRemedy": "",
+      "Effective": "2014-02-03"
+    },
+    {
+      "Id": "mhh",
+      "RefName": "Maskoy Pidgin",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2014-02-03"
+    },
+    {
+      "Id": "puz",
+      "RefName": "Purum Naga",
+      "RetReason": "M",
+      "ChangeTo": "pub",
+      "RetRemedy": "",
+      "Effective": "2014-02-03"
+    },
+    {
+      "Id": "sap",
+      "RefName": "Sanapan\u00E1",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Sanapan\u00E1 [spn] and Angait\u00E9 [aqt]",
+      "Effective": "2014-02-03"
+    },
+    {
+      "Id": "yuu",
+      "RefName": "Yugh",
+      "RetReason": "D",
+      "ChangeTo": "yug",
+      "RetRemedy": "",
+      "Effective": "2014-02-03"
+    },
+    {
+      "Id": "aam",
+      "RefName": "Aramanik",
+      "RetReason": "M",
+      "ChangeTo": "aas",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "adp",
+      "RefName": "Adap",
+      "RetReason": "M",
+      "ChangeTo": "dzo",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "aue",
+      "RefName": "\u01C2Kx\u02BCau\u01C1\u02BCein",
+      "RetReason": "D",
+      "ChangeTo": "ktz",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "bmy",
+      "RefName": "Bemba (Democratic Republic of Congo)",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "bxx",
+      "RefName": "Borna (Democratic Republic of Congo)",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "byy",
+      "RefName": "Buya",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "dzd",
+      "RefName": "Daza",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "gfx",
+      "RefName": "Mangetti Dune \u01C3Xung",
+      "RetReason": "M",
+      "ChangeTo": "vaj",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "gti",
+      "RefName": "Gbati-ri",
+      "RetReason": "M",
+      "ChangeTo": "nyc",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "ime",
+      "RefName": "Imeraguen",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "kbf",
+      "RefName": "Kakauhua",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "koj",
+      "RefName": "Sara Dunjo",
+      "RetReason": "M",
+      "ChangeTo": "kwv",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "kwq",
+      "RefName": "Kwak",
+      "RetReason": "M",
+      "ChangeTo": "yam",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "kxe",
+      "RefName": "Kakihum",
+      "RetReason": "M",
+      "ChangeTo": "tvd",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "lii",
+      "RefName": "Lingkhim",
+      "RetReason": "M",
+      "ChangeTo": "raq",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "mwj",
+      "RefName": "Maligo",
+      "RetReason": "M",
+      "ChangeTo": "vaj",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "nnx",
+      "RefName": "Ngong",
+      "RetReason": "M",
+      "ChangeTo": "ngv",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "oun",
+      "RefName": "\u01C3O\u01C3ung",
+      "RetReason": "M",
+      "ChangeTo": "vaj",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "pmu",
+      "RefName": "Mirpur Panjabi",
+      "RetReason": "M",
+      "ChangeTo": "phr",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "sgo",
+      "RefName": "Songa",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "thx",
+      "RefName": "The",
+      "RetReason": "D",
+      "ChangeTo": "oyb",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "tsf",
+      "RefName": "Southwestern Tamang",
+      "RetReason": "M",
+      "ChangeTo": "taj",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "uok",
+      "RefName": "Uokha",
+      "RetReason": "M",
+      "ChangeTo": "ema",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "xsj",
+      "RefName": "Subi",
+      "RetReason": "D",
+      "ChangeTo": "suj",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "yds",
+      "RefName": "Yiddish Sign Language",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "ymt",
+      "RefName": "Mator-Taygi-Karagas",
+      "RetReason": "D",
+      "ChangeTo": "mtm",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "ynh",
+      "RefName": "Yangho",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2015-01-12"
+    },
+    {
+      "Id": "bgm",
+      "RefName": "Baga Mboteni",
+      "RetReason": "D",
+      "ChangeTo": "bcg",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "btl",
+      "RefName": "Bhatola",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "cbe",
+      "RefName": "Chipiajes",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "cbh",
+      "RefName": "Cagua",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "coy",
+      "RefName": "Coyaima",
+      "RetReason": "M",
+      "ChangeTo": "pij",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "cqu",
+      "RefName": "Chilean Quechua",
+      "RetReason": "M",
+      "ChangeTo": "quh",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "cum",
+      "RefName": "Cumeral",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "duj",
+      "RefName": "Dhuwal",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "split into [dwu] Dhuwal and [dwy] Dhuwaya",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "ggn",
+      "RefName": "Eastern Gurung",
+      "RetReason": "M",
+      "ChangeTo": "gvr",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "ggo",
+      "RefName": "Southern Gondi",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "split into [esg] Aheri Gondi and [wsg] Adilabad Gondi",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "guv",
+      "RefName": "Gey",
+      "RetReason": "M",
+      "ChangeTo": "duz",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "iap",
+      "RefName": "Iapama",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "ill",
+      "RefName": "Iranun",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Iranun (Philippines) [ilp] and Iranun (Malaysia) [ilm]",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "kgc",
+      "RefName": "Kasseng",
+      "RetReason": "D",
+      "ChangeTo": "tdf",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "kox",
+      "RefName": "Coxima",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "ktr",
+      "RefName": "Kota Marudu Tinagas",
+      "RetReason": "M",
+      "ChangeTo": "dtp",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "kvs",
+      "RefName": "Kunggara",
+      "RetReason": "D",
+      "ChangeTo": "gdj",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "kzj",
+      "RefName": "Coastal Kadazan",
+      "RetReason": "M",
+      "ChangeTo": "dtp",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "kzt",
+      "RefName": "Tambunan Dusun",
+      "RetReason": "M",
+      "ChangeTo": "dtp",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "nad",
+      "RefName": "Nijadali",
+      "RetReason": "D",
+      "ChangeTo": "xny",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "nts",
+      "RefName": "Natagaimas",
+      "RetReason": "M",
+      "ChangeTo": "pij",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "ome",
+      "RefName": "Omejes",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "pmc",
+      "RefName": "Palumata",
+      "RetReason": "D",
+      "ChangeTo": "huw",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "pod",
+      "RefName": "Ponares",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "ppa",
+      "RefName": "Pao",
+      "RetReason": "M",
+      "ChangeTo": "bfy",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "pry",
+      "RefName": "Pray 3",
+      "RetReason": "D",
+      "ChangeTo": "prt",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "rna",
+      "RefName": "Runa",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "svr",
+      "RefName": "Savara",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "tdu",
+      "RefName": "Tempasuk Dusun",
+      "RetReason": "M",
+      "ChangeTo": "dtp",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "thc",
+      "RefName": "Tai Hang Tong",
+      "RetReason": "M",
+      "ChangeTo": "tpo",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "tid",
+      "RefName": "Tidong",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Northern Tidung [ntd] and Southern Tidung [itd]",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "tmp",
+      "RefName": "Tai M\u00E8ne",
+      "RetReason": "M",
+      "ChangeTo": "tyj",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "tne",
+      "RefName": "Tinoc Kallahan",
+      "RetReason": "M",
+      "ChangeTo": "kak",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "toe",
+      "RefName": "Tomedes",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "xba",
+      "RefName": "Kamba (Brazil)",
+      "RetReason": "D",
+      "ChangeTo": "cax",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "xbx",
+      "RefName": "Kabix\u00ED",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "xip",
+      "RefName": "Xipin\u00E1wa",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "xkh",
+      "RefName": "Karahawyana",
+      "RetReason": "D",
+      "ChangeTo": "waw",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "yri",
+      "RefName": "Yar\u00ED",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2016-01-15"
+    },
+    {
+      "Id": "jeg",
+      "RefName": "Jeng",
+      "RetReason": "M",
+      "ChangeTo": "oyb",
+      "RetRemedy": "",
+      "Effective": "2017-01-31"
+    },
+    {
+      "Id": "kgd",
+      "RefName": "Kataang",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into [ncq] Northern Katang and [sct] Southern Katang",
+      "Effective": "2017-01-31"
+    },
+    {
+      "Id": "krm",
+      "RefName": "Krim",
+      "RetReason": "M",
+      "ChangeTo": "bmf",
+      "RetRemedy": "",
+      "Effective": "2017-01-31"
+    },
+    {
+      "Id": "prb",
+      "RefName": "Lua\u0027",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2017-01-31"
+    },
+    {
+      "Id": "puk",
+      "RefName": "Pu Ko",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2017-01-31"
+    },
+    {
+      "Id": "rie",
+      "RefName": "Rien",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2017-01-31"
+    },
+    {
+      "Id": "rsi",
+      "RefName": "Rennellese Sign Language",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2017-01-31"
+    },
+    {
+      "Id": "skk",
+      "RefName": "Sok",
+      "RetReason": "M",
+      "ChangeTo": "oyb",
+      "RetRemedy": "",
+      "Effective": "2017-01-31"
+    },
+    {
+      "Id": "snh",
+      "RefName": "Shinabo",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2017-01-31"
+    },
+    {
+      "Id": "lsg",
+      "RefName": "Lyons Sign Language",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2018-01-23"
+    },
+    {
+      "Id": "mwx",
+      "RefName": "Mediak",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2018-01-23"
+    },
+    {
+      "Id": "mwy",
+      "RefName": "Mosiro",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2018-01-23"
+    },
+    {
+      "Id": "ncp",
+      "RefName": "Ndaktup",
+      "RetReason": "M",
+      "ChangeTo": "kdz",
+      "RetRemedy": "",
+      "Effective": "2018-01-23"
+    },
+    {
+      "Id": "ais",
+      "RefName": "Nataoran Amis",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Amis [ami] and Sakizaya [szy]",
+      "Effective": "2019-01-25"
+    },
+    {
+      "Id": "asd",
+      "RefName": "Asas",
+      "RetReason": "M",
+      "ChangeTo": "snz",
+      "RetRemedy": "",
+      "Effective": "2019-01-25"
+    },
+    {
+      "Id": "dit",
+      "RefName": "Dirari",
+      "RetReason": "M",
+      "ChangeTo": "dif",
+      "RetRemedy": "",
+      "Effective": "2019-01-25"
+    },
+    {
+      "Id": "dud",
+      "RefName": "Hun-Saare",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into ut-Hun [uth] and us-Saare [uss]",
+      "Effective": "2019-01-25"
+    },
+    {
+      "Id": "lba",
+      "RefName": "Lui",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2019-01-25"
+    },
+    {
+      "Id": "llo",
+      "RefName": "Khlor",
+      "RetReason": "D",
+      "ChangeTo": "ngt",
+      "RetRemedy": "",
+      "Effective": "2019-01-25"
+    },
+    {
+      "Id": "myd",
+      "RefName": "Maramba",
+      "RetReason": "M",
+      "ChangeTo": "aog",
+      "RetRemedy": "",
+      "Effective": "2019-01-25"
+    },
+    {
+      "Id": "myi",
+      "RefName": "Mina (India)",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2019-01-25"
+    },
+    {
+      "Id": "nns",
+      "RefName": "Ningye",
+      "RetReason": "M",
+      "ChangeTo": "nbr",
+      "RetRemedy": "",
+      "Effective": "2019-01-25"
+    },
+    {
+      "Id": "aoh",
+      "RefName": "Arma",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "ayy",
+      "RefName": "Tayabas Ayta",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "bbz",
+      "RefName": "Babalia Creole Arabic",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "bpb",
+      "RefName": "Barbacoas",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "cca",
+      "RefName": "Cauca",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "cdg",
+      "RefName": "Chamari",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "dgu",
+      "RefName": "Degaru",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "drr",
+      "RefName": "Dororo",
+      "RetReason": "M",
+      "ChangeTo": "kzk",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "ekc",
+      "RefName": "Eastern Karnic",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "gli",
+      "RefName": "Guliguli",
+      "RetReason": "M",
+      "ChangeTo": "kzk",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "kjf",
+      "RefName": "Khalaj",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "kxl",
+      "RefName": "Nepali Kurux",
+      "RetReason": "M",
+      "ChangeTo": "kru",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "kxu",
+      "RefName": "Kui (India)",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into [dwk] Dawik Kui and [uki] Kui (India)",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "lmz",
+      "RefName": "Lumbee",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "nxu",
+      "RefName": "Narau",
+      "RetReason": "M",
+      "ChangeTo": "bpp",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "plp",
+      "RefName": "Palpa",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "sdm",
+      "RefName": "Semandang",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Semandang [sdq], Beginci [ebc] and Gerai [gef]",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "tbb",
+      "RefName": "Tapeba",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "xrq",
+      "RefName": "Karranga",
+      "RetReason": "M",
+      "ChangeTo": "dmw",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "xtz",
+      "RefName": "Tasmanian",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into [xpv] Northern Tasman,  [xph] North Midlands Tasman, [xpb] Northeastern Tasman, [xpd] Oyster Bay Tasmanian, [xpf] Southeast Tasma, [xpx] Southwestern Tasman, [xpw] Northwestern Tasman., [xpl] Port Sorell Tasman. and [xpz] Bruny Island Tasman.",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "zir",
+      "RefName": "Ziriya",
+      "RetReason": "D",
+      "ChangeTo": "scv",
+      "RetRemedy": "",
+      "Effective": "2020-01-23"
+    },
+    {
+      "Id": "thw",
+      "RefName": "Thudam",
+      "RetReason": "M",
+      "ChangeTo": "ola",
+      "RetRemedy": "",
+      "Effective": "2020-03-19"
+    },
+    {
+      "Id": "bic",
+      "RefName": "Bikaru",
+      "RetReason": "M",
+      "ChangeTo": "bir",
+      "RetRemedy": "",
+      "Effective": "2021-01-15"
+    },
+    {
+      "Id": "bij",
+      "RefName": "Vaghat-Ya-Bijim-Legeri",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Tiyaa [tyy], Bijim [jbm] and Kadung [dkg].",
+      "Effective": "2021-01-15"
+    },
+    {
+      "Id": "blg",
+      "RefName": "Balau",
+      "RetReason": "M",
+      "ChangeTo": "iba",
+      "RetRemedy": "",
+      "Effective": "2021-01-15"
+    },
+    {
+      "Id": "gji",
+      "RefName": "Geji",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Gyaazi [gyz], and Bu (Bauchi State) [zbu]",
+      "Effective": "2021-01-15"
+    },
+    {
+      "Id": "mvm",
+      "RefName": "Muya",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Eastern Minyag [emq] and Western Minyag [wmg]",
+      "Effective": "2021-01-15"
+    },
+    {
+      "Id": "ngo",
+      "RefName": "Ngoni",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Ngoni (Tanzania) [xnj] and Ngoni (Mozambique) [xnq]",
+      "Effective": "2021-01-15"
+    },
+    {
+      "Id": "pat",
+      "RefName": "Papitalai",
+      "RetReason": "M",
+      "ChangeTo": "kxr",
+      "RetRemedy": "",
+      "Effective": "2021-01-15"
+    },
+    {
+      "Id": "vki",
+      "RefName": "Ija-Zuba",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Koro Nulu [vkn] and Koro Zuba [vkz]",
+      "Effective": "2021-01-15"
+    },
+    {
+      "Id": "wra",
+      "RefName": "Warapu",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Bauni [bpe], Uni [uni] and Bouni [suo]",
+      "Effective": "2021-01-15"
+    },
+    {
+      "Id": "ajt",
+      "RefName": "Judeo-Tunisian Arabic",
+      "RetReason": "D",
+      "ChangeTo": "aeb",
+      "RetRemedy": "",
+      "Effective": "2022-01-20"
+    },
+    {
+      "Id": "cug",
+      "RefName": "Chungmboko",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Chung [cnq] and Mbuk [bpc]",
+      "Effective": "2022-01-20"
+    },
+    {
+      "Id": "lak",
+      "RefName": "Laka (Nigeria)",
+      "RetReason": "M",
+      "ChangeTo": "ksp",
+      "RetRemedy": "",
+      "Effective": "2022-01-20"
+    },
+    {
+      "Id": "lno",
+      "RefName": "Lango (South Sudan)",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Lango [lgo], Imotong [imt], Logir [lqr] and Okolie [oie]",
+      "Effective": "2022-01-20"
+    },
+    {
+      "Id": "pii",
+      "RefName": "Pini",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2022-01-20"
+    },
+    {
+      "Id": "smd",
+      "RefName": "Sama",
+      "RetReason": "M",
+      "ChangeTo": "kmb",
+      "RetRemedy": "",
+      "Effective": "2022-01-20"
+    },
+    {
+      "Id": "snb",
+      "RefName": "Sebuyau",
+      "RetReason": "M",
+      "ChangeTo": "iba",
+      "RetRemedy": "",
+      "Effective": "2022-01-20"
+    },
+    {
+      "Id": "uun",
+      "RefName": "Kulon-Pazeh",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Kulon [uon] and Pazeh [pzh]",
+      "Effective": "2022-01-20"
+    },
+    {
+      "Id": "wrd",
+      "RefName": "Warduji",
+      "RetReason": "N",
+      "ChangeTo": "",
+      "RetRemedy": "",
+      "Effective": "2022-01-20"
+    },
+    {
+      "Id": "wya",
+      "RefName": "Wyandot",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into Wyandot [wyn] and Wendat [wdt]",
+      "Effective": "2022-01-20"
+    },
+    {
+      "Id": "ajp",
+      "RefName": "South Levantine Arabic",
+      "RetReason": "M",
+      "ChangeTo": "apc",
+      "RetRemedy": "",
+      "Effective": "2023-01-20"
+    },
+    {
+      "Id": "pmk",
+      "RefName": "Pamlico",
+      "RetReason": "M",
+      "ChangeTo": "crr",
+      "RetRemedy": "",
+      "Effective": "2023-01-20"
+    },
+    {
+      "Id": "prp",
+      "RefName": "Parsi",
+      "RetReason": "M",
+      "ChangeTo": "guj",
+      "RetRemedy": "",
+      "Effective": "2023-01-20"
+    },
+    {
+      "Id": "zua",
+      "RefName": "Zeem",
+      "RetReason": "S",
+      "ChangeTo": "",
+      "RetRemedy": "Split into [tvi] Tulai, [dyr] Dyarim, [dsk] Dokshi, [cxh] Cha\u0027ari, and [zem] Zeem",
+      "Effective": "2023-01-20"
+    }
   ]
 }

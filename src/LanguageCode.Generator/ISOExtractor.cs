@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using HtmlAgilityPack;
 using Panlingo.LanguageCode.Models;
 
@@ -56,7 +57,7 @@ namespace LanguageCode.Generator
         {
             var result = new List<SetTwoLanguageDescriptor>();
 
-            var response = await _httpClient.GetStringAsync(baseUrl);
+            var response = await _httpClient.GetStringAsync(baseUrl, token);
             response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
 
             var lines = response.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
@@ -107,7 +108,7 @@ namespace LanguageCode.Generator
         {
             var result = new List<SetThreeLanguageDescriptor>();
 
-            var response = await _httpClient.GetStringAsync(baseUrl);
+            var response = await _httpClient.GetStringAsync(baseUrl, token);
             response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
 
             var lines = response.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
@@ -183,7 +184,7 @@ namespace LanguageCode.Generator
 
             var result = new List<SetTwoLanguageDeprecationDescriptor>();
 
-            var response = await _httpClient.GetStringAsync(baseUrl);
+            var response = await _httpClient.GetStringAsync(baseUrl, token);
             response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
 
             var htmlDoc = new HtmlDocument();
@@ -248,6 +249,107 @@ namespace LanguageCode.Generator
                     CategoryOfChange = categoryOfChange,
                     EnglishName = englishName,
                     Comment = comment,
+                });
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Source: https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3-macrolanguages.tab
+        /// 
+        /// CREATE TABLE [ISO_639-3_Macrolanguages] (
+        /// M_Id char (3) NOT NULL,      -- The identifier for a macrolanguage
+        /// I_Id char (3) NOT NULL,      -- The identifier for an individual language
+        ///                              -- that is a member of the macrolanguage
+        /// I_Status char (1) NOT NULL)  -- A(active) or R(retired) indicating the
+        ///                              -- status of the individual code element
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IEnumerable<SetThreeMarcolanguageDescriptor>> ExtractMarcolanguagesAsync(
+            string baseUrl = "https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3-macrolanguages.tab",
+            CancellationToken token = default
+        )
+        {
+            var result = new List<SetThreeMarcolanguageDescriptor>();
+
+            var response = await _httpClient.GetStringAsync(baseUrl, token);
+            response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
+
+            var lines = response.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => x.Trim())
+                .Where(x => x.Length > 0)
+                .ToArray();
+
+            foreach (var line in lines)
+            {
+                var lineArray = line.Split(new[] { '\t' });
+
+                // Skip file header
+                if (lineArray[0] == "M_Id" && lineArray[1] == "I_Id")
+                {
+                    continue;
+                }
+
+                result.Add(new SetThreeMarcolanguageDescriptor
+                {
+                    Source = lineArray.Length > 0 ? lineArray[0].Trim() : string.Empty,
+                    Target = lineArray.Length > 1 ? lineArray[1].Trim() : string.Empty,
+                    Status = lineArray.Length > 2 ? lineArray[2].Trim() : string.Empty,
+                });
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Source: https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3_Retirements.tab
+        /// 
+        /// CREATE TABLE [ISO_639-3_Retirements] (
+        /// Id char (3)      NOT NULL,        -- The three-letter 639-3 identifier
+        /// Ref_Name varchar(150) NOT NULL,   -- reference name of language
+        /// Ret_Reason char (1)      NOT NULL,-- code for retirement: C(change), D(duplicate),
+        ///                                   -- N(non-existent), S(split), M(merge)
+        /// Change_To char (3)      NULL,     -- in the cases of C, D, and M, the identifier 
+        ///                                   -- to which all instances of this Id should be changed
+        /// Ret_Remedy varchar(300) NULL,     -- The instructions for updating an instance
+        ///                                   -- of the retired (split) identifier
+        /// Effective date         NOT NULL)  -- The date the retirement became effective
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IEnumerable<SetThreeLegacyLanguageDescriptor>> ExtractLegacyLanguagesAsync(
+            string baseUrl = "https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3_Retirements.tab",
+            CancellationToken token = default
+        )
+        {
+            var result = new List<SetThreeLegacyLanguageDescriptor>();
+
+            var response = await _httpClient.GetStringAsync(baseUrl, token);
+            response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
+
+            var lines = response.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => x.Trim())
+                .Where(x => x.Length > 0)
+                .ToArray();
+
+            foreach (var line in lines)
+            {
+                var lineArray = line.Split(new[] { '\t' });
+
+                // Skip file header
+                if (lineArray[0] == "Id" && lineArray[1] == "Ref_Name")
+                {
+                    continue;
+                }
+
+                result.Add(new SetThreeLegacyLanguageDescriptor
+                {
+                    Id = lineArray.Length > 0 ? lineArray[0].Trim() : string.Empty,
+                    RefName = lineArray.Length > 1 ? lineArray[1].Trim() : string.Empty,
+                    RetReason = lineArray.Length > 2 ? lineArray[2].Trim() : string.Empty,
+                    ChangeTo = lineArray.Length > 3 ? lineArray[3].Trim() : string.Empty,
+                    RetRemedy = lineArray.Length > 4 ? lineArray[4].Trim() : string.Empty,
+                    Effective = lineArray.Length > 5 ? lineArray[5].Trim() : string.Empty,
                 });
             }
 

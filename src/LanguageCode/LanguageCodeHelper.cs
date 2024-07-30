@@ -13,6 +13,9 @@ namespace Panlingo.LanguageCode
         private static readonly Dictionary<string, string> _legacyCodes = 
             new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
 
+        private static readonly Dictionary<string, string> _macrolanguageCodes =
+            new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+
         private static LanguageCodeResolver _defaultNormalizationOptions = new LanguageCodeResolver()
             .ToLowerAndTrim()
             .ConvertFromIETF()
@@ -55,6 +58,25 @@ namespace Panlingo.LanguageCode
                     _legacyCodes[item.CodeAlpha3Deprecated] = item.CodeAlpha3;
                 }
             }
+
+            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.LegacyLanguageDescriptorList)
+            {
+                if (!string.IsNullOrWhiteSpace(item.Id) && !string.IsNullOrWhiteSpace(item.ChangeTo))
+                {
+                    _legacyCodes[item.Id] = item.ChangeTo;
+                }
+            }
+
+            // https://www.loc.gov/standards/iso639-2/php/code_changes.php
+            _legacyCodes["mo"] = "ro";
+
+            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.MarcolanguageDescriptorList)
+            {
+                if (!string.IsNullOrWhiteSpace(item.Target) && !string.IsNullOrWhiteSpace(item.Source))
+                {
+                    _macrolanguageCodes[item.Target] = item.Source;
+                }
+            }
         }
 
         public static string GetTwoLetterISOCode(string code)
@@ -78,7 +100,10 @@ namespace Panlingo.LanguageCode
                 : throw new LanguageCodeException(code, $"Language code is unknown");
         }
 
-        public static bool TryGetTwoLetterISOCode(string code, [MaybeNullWhen(false)] out string value)
+        public static bool TryGetTwoLetterISOCode(
+            string code, 
+            [MaybeNullWhen(false)] out string value
+        )
         {
             if (TryGetEntity(code, LanguageCodeEntity.Alpha2, out var x))
             {
@@ -92,7 +117,10 @@ namespace Panlingo.LanguageCode
             }
         }
 
-        public static bool TryGetThreeLetterISOCode(string code, [MaybeNullWhen(false)] out string value)
+        public static bool TryGetThreeLetterISOCode(
+            string code, 
+            [MaybeNullWhen(false)] out string value
+        )
         {
             if (TryGetEntity(code, LanguageCodeEntity.Alpha3, out var x))
             {
@@ -106,7 +134,10 @@ namespace Panlingo.LanguageCode
             }
         }
 
-        public static bool TryGetLanguageEnglishName(string code, [MaybeNullWhen(false)] out string value)
+        public static bool TryGetLanguageEnglishName(
+            string code, 
+            [MaybeNullWhen(false)] out string value
+        )
         {
             if (TryGetEntity(code, LanguageCodeEntity.EnglishName, out var x))
             {
@@ -267,6 +298,12 @@ namespace Panlingo.LanguageCode
                 _rules = new List<Func<string, string>>();
             }
 
+            /// <summary>
+            /// Examples:
+            /// <code>RU -> ru</code>
+            /// <code>eNg -> eng</code>
+            /// </summary>
+            /// <returns></returns>
             public LanguageCodeResolver ToLowerAndTrim()
             {
                 _rules.Add(
@@ -276,9 +313,29 @@ namespace Panlingo.LanguageCode
                 return this;
             }
 
-            public LanguageCodeResolver ReduceMacrolanguage()
+            /// <summary>
+            /// Examples:
+            /// <code>azb -> aze</code>
+            /// <code>azj -> aze</code>
+            /// <code>cmn -> zho</code>
+            /// <code>nan -> zho</code>
+            /// <code>hji -> msa</code>
+            /// <code>ind -> msa</code>
+            /// </summary>
+            /// <returns></returns>
+            public LanguageCodeResolver ReduceToMacrolanguage()
             {
-                // TODO
+                _rules.Add(
+                    x =>
+                    {
+                        if (_macrolanguageCodes.TryGetValue(x, out var value))
+                        {
+                            return value;
+                        }
+
+                        return x;
+                    }
+                );
 
                 return this;
             }
