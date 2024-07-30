@@ -43,15 +43,6 @@ namespace LanguageCode.Tests
                 .ToLowerAndTrim()
                 .ConvertFromIETF()
                 .ConvertFromDeprecatedCode()
-                .ResolveUnknownCode(x =>
-                {
-                    if (x == "mo")
-                    {
-                        return "ro";
-                    }
-
-                    return x;
-                })
                 .ConvertTo(LanguageCodeEntity.Alpha3);
 
             var code = LanguageCodeHelper.Resolve(code: source, options: options);
@@ -76,15 +67,6 @@ namespace LanguageCode.Tests
                 .ToLowerAndTrim()
                 .ConvertFromIETF()
                 .ConvertFromDeprecatedCode()
-                .ResolveUnknownCode(x =>
-                {
-                    if (x == "mo")
-                    {
-                        return "ro";
-                    }
-
-                    return x;
-                })
                 .ConvertTo(LanguageCodeEntity.Alpha3);
 
             var code = LanguageCodeHelper.Resolve(code: source, options: options);

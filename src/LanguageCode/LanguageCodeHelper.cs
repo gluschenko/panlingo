@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Panlingo.LanguageCode.Models;
 
@@ -10,6 +11,60 @@ namespace Panlingo.LanguageCode
             .ToLowerAndTrim()
             .ConvertFromIETF()
             .ConvertFromDeprecatedCode();
+
+        private readonly static Dictionary<LanguageCodeEntity, Func<SetThreeLanguageDescriptor, string>> _langaugeVisitors;
+
+        static LanguageCodeHelper()
+        {
+            _langaugeVisitors = new Dictionary<LanguageCodeEntity, Func<SetThreeLanguageDescriptor, string>>
+            {
+                [LanguageCodeEntity.Alpha2] = x => x.Part1,
+                [LanguageCodeEntity.Alpha3] = x => x.Id,
+                [LanguageCodeEntity.Alpha3B] = x => x.Part2b,
+                [LanguageCodeEntity.Alpha3T] = x => x.Part2t,
+                [LanguageCodeEntity.EnglishName] = x => x.RefName
+            };
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public static string Resolve(
+            string code,
+            LanguageCodeResolver? options = null
+        )
+        {
+            options ??= _defaultNormalizationOptions;
+            return options.Apply(code);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="value"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public static bool TryResolve(
+            string code,
+            [MaybeNullWhen(false)] out string value,
+            LanguageCodeResolver? options = null
+        )
+        {
+            try
+            {
+                value = Resolve(code: code, options: options);
+                return true;
+            }
+            catch (LanguageCodeException)
+            {
+                value = null;
+                return false;
+            }
+        }
 
         public static string GetTwoLetterISOCode(string code)
         {
@@ -108,63 +163,13 @@ namespace Panlingo.LanguageCode
                 return false;
             }
 
-            if (entity == LanguageCodeEntity.Alpha2)
+            if (_langaugeVisitors.TryGetValue(entity, out var visitor))
             {
-                if (!string.IsNullOrWhiteSpace(item.Part1))
+                var visitorValue = visitor(item);
+
+                if (!string.IsNullOrWhiteSpace(visitorValue))
                 {
-                    value = item.Part1;
-                    return true;
-                }
-                else
-                {
-                    value = null;
-                    return false;
-                }
-            }
-            else if (entity == LanguageCodeEntity.Alpha3)
-            {
-                if (!string.IsNullOrWhiteSpace(item.Id))
-                {
-                    value = item.Id;
-                    return true;
-                }
-                else
-                {
-                    value = null;
-                    return false;
-                }
-            }
-            else if (entity == LanguageCodeEntity.Alpha3B)
-            {
-                if (!string.IsNullOrWhiteSpace(item.Part2b))
-                {
-                    value = item.Part2b;
-                    return true;
-                }
-                else
-                {
-                    value = null;
-                    return false;
-                }
-            }
-            else if (entity == LanguageCodeEntity.Alpha3T)
-            {
-                if (!string.IsNullOrWhiteSpace(item.Part2t))
-                {
-                    value = item.Part2t;
-                    return true;
-                }
-                else
-                {
-                    value = null;
-                    return false;
-                }
-            }
-            else if (entity == LanguageCodeEntity.EnglishName)
-            {
-                if (!string.IsNullOrWhiteSpace(item.RefName))
-                {
-                    value = item.RefName;
+                    value = visitorValue;
                     return true;
                 }
                 else
@@ -176,46 +181,6 @@ namespace Panlingo.LanguageCode
             else
             {
                 throw new NotImplementedException($"Type '{entity}' is not implemented yet");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="code"></param>
-        /// <param name="options"></param>
-        /// <returns></returns>
-        public static string Resolve(
-            string code,
-            LanguageCodeResolver? options = null
-        )
-        {
-            options ??= _defaultNormalizationOptions;
-            return options.Apply(code);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="code"></param>
-        /// <param name="value"></param>
-        /// <param name="options"></param>
-        /// <returns></returns>
-        public static bool TryResolve(
-            string code,
-            [MaybeNullWhen(false)] out string value,
-            LanguageCodeResolver? options = null
-        )
-        {
-            try
-            {
-                value = Resolve(code: code, options: options);
-                return true;
-            }
-            catch (LanguageCodeException)
-            {
-                value = null;
-                return false;
             }
         }
     }
