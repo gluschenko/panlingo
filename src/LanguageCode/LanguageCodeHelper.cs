@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Panlingo.LanguageCode.Models;
 
@@ -7,77 +6,10 @@ namespace Panlingo.LanguageCode
 {
     public static class LanguageCodeHelper
     {
-        private static readonly Dictionary<string, SetThreeLanguageDescriptor> _langauges = 
-            new Dictionary<string, SetThreeLanguageDescriptor>(StringComparer.InvariantCultureIgnoreCase);
-
-        private static readonly Dictionary<string, string> _legacyCodes = 
-            new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-
-        private static readonly Dictionary<string, string> _macrolanguageCodes =
-            new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-
         private static LanguageCodeResolver _defaultNormalizationOptions = new LanguageCodeResolver()
             .ToLowerAndTrim()
             .ConvertFromIETF()
             .ConvertFromDeprecatedCode();
-
-        static LanguageCodeHelper()
-        {
-            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.SetThreeLanguageDescriptorList)
-            {
-                if (!string.IsNullOrWhiteSpace(item.Id))
-                {
-                    _langauges[item.Id] = item;
-                }
-
-                if (!string.IsNullOrWhiteSpace(item.Part1))
-                {
-                    _langauges[item.Part1] = item;
-                }
-
-                if (!string.IsNullOrWhiteSpace(item.Part2t))
-                {
-                    _langauges[item.Part2t] = item;
-                }
-
-                if (!string.IsNullOrWhiteSpace(item.Part2b))
-                {
-                    _langauges[item.Part2b] = item;
-                }
-            }
-
-            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.SetTwoLanguageDeprecationDescriptorList)
-            {
-                if (!string.IsNullOrWhiteSpace(item.CodeAlpha2) && !string.IsNullOrWhiteSpace(item.CodeAlpha2Deprecated))
-                {
-                    _legacyCodes[item.CodeAlpha2Deprecated] = item.CodeAlpha2;
-                }
-
-                if (!string.IsNullOrWhiteSpace(item.CodeAlpha3) && !string.IsNullOrWhiteSpace(item.CodeAlpha3Deprecated))
-                {
-                    _legacyCodes[item.CodeAlpha3Deprecated] = item.CodeAlpha3;
-                }
-            }
-
-            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.LegacyLanguageDescriptorList)
-            {
-                if (!string.IsNullOrWhiteSpace(item.Id) && !string.IsNullOrWhiteSpace(item.ChangeTo))
-                {
-                    _legacyCodes[item.Id] = item.ChangeTo;
-                }
-            }
-
-            // https://www.loc.gov/standards/iso639-2/php/code_changes.php
-            _legacyCodes["mo"] = "ro";
-
-            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.MarcolanguageDescriptorList)
-            {
-                if (!string.IsNullOrWhiteSpace(item.Target) && !string.IsNullOrWhiteSpace(item.Source))
-                {
-                    _macrolanguageCodes[item.Target] = item.Source;
-                }
-            }
-        }
 
         public static string GetTwoLetterISOCode(string code)
         {
@@ -170,7 +102,7 @@ namespace Panlingo.LanguageCode
             [MaybeNullWhen(false)] out string value
         )
         {
-            if (!_langauges.TryGetValue(code, out var item))
+            if (!LanguageCodeSearchIndex.Langauges.TryGetValue(code, out var item))
             {
                 value = null;
                 return false;
@@ -284,189 +216,6 @@ namespace Panlingo.LanguageCode
             {
                 value = null;
                 return false;
-            }
-        }
-
-        public class LanguageCodeResolver
-        {
-            private List<Func<string, string>> _rules;
-            private Func<string, string>? _resolveUnknown;
-            private Func<string, string>? _convert;
-
-            public LanguageCodeResolver()
-            {
-                _rules = new List<Func<string, string>>();
-            }
-
-            /// <summary>
-            /// Examples:
-            /// <code>RU -> ru</code>
-            /// <code>eNg -> eng</code>
-            /// </summary>
-            /// <returns></returns>
-            public LanguageCodeResolver ToLowerAndTrim()
-            {
-                _rules.Add(
-                    x => x.ToLower().Trim()
-                );
-
-                return this;
-            }
-
-            /// <summary>
-            /// Examples:
-            /// <code>azb -> aze</code>
-            /// <code>azj -> aze</code>
-            /// <code>cmn -> zho</code>
-            /// <code>nan -> zho</code>
-            /// <code>hji -> msa</code>
-            /// <code>ind -> msa</code>
-            /// </summary>
-            /// <returns></returns>
-            public LanguageCodeResolver ReduceToMacrolanguage()
-            {
-                _rules.Add(
-                    x =>
-                    {
-                        if (_macrolanguageCodes.TryGetValue(x, out var value))
-                        {
-                            return value;
-                        }
-
-                        return x;
-                    }
-                );
-
-                return this;
-            }
-
-            /// <summary>
-            /// Examples:
-            /// <code>iw -> he</code>
-            /// <code>mo -> ro</code>
-            /// <code>mol -> ron</code>
-            /// </summary>
-            /// <returns></returns>
-            public LanguageCodeResolver ConvertFromDeprecatedCode()
-            {
-                _rules.Add(
-                    x =>
-                    {
-                        if (_legacyCodes.TryGetValue(x, out var value))
-                        {
-                            return value;
-                        }
-
-                        return x;
-                    }
-                );
-
-                return this;
-            }
-
-            /// <summary>
-            /// Examples:
-            /// <code>ru-RU => ru</code>
-            /// <code>uk-UA => uk</code>
-            /// <code>en-US => en</code>
-            /// </summary>
-            /// <returns></returns>
-            public LanguageCodeResolver ConvertFromIETF()
-            {
-                _rules.Add(
-                    x =>
-                    {
-                        if (x.Contains('-'))
-                        {
-                            var words = x.Split('-');
-
-                            if (words.Length > 0)
-                            {
-                                return words[0];
-                            }
-                        }
-
-                        return x;
-                    }
-                );
-
-                return this;
-            }
-
-            /// <summary>
-            /// Allows you to manually resolve unknown or conflicting codes.
-            /// 
-            /// Example:
-            /// <code>
-            /// .ResolveUnknownCode((x) => 
-            /// {
-            ///     // Obsolete Moldovan to actual Romanian
-            ///     if (x == "mo")
-            ///     {
-            ///         return "ro";
-            ///     }
-            ///     
-            ///     return x;
-            /// });
-            /// </code>
-            /// </summary>
-            /// <returns></returns>
-            public LanguageCodeResolver ResolveUnknownCode(Func<string, string> resolver)
-            {
-                _resolveUnknown = resolver;
-                return this;
-            }
-
-            public LanguageCodeResolver ConvertTo(LanguageCodeEntity entity)
-            {
-                _convert = x => 
-                {
-                    if (TryGetEntity(x, entity, out var value))
-                    {
-                        return value;
-                    }
-                    else
-                    {
-                        x = ResolveUnknown(x);
-                        return GetEntity(x, entity);
-                    }
-                };
-
-                return this;
-            }
-
-            public string Apply(string code)
-            {
-                foreach (var rule in _rules)
-                {
-                    code = rule(code);
-                }
-
-                if (_convert != null)
-                {
-                    code = _convert(code);
-                }
-
-                return code;
-            }
-
-            private string ResolveUnknown(string code)
-            {
-                if (_resolveUnknown != null)
-                {
-                    var previousCode = code;
-                    code = _resolveUnknown(code);
-
-                    // If there is no changes after custom resolver
-                    if (code.Equals(previousCode, StringComparison.OrdinalIgnoreCase))
-                    {
-                        throw new LanguageCodeException(code, $"Language code is unknown");
-                    }
-
-                    return code;
-                }
-
-                throw new LanguageCodeException(code, $"Language code is unknown");
             }
         }
     }
