@@ -36,52 +36,6 @@ namespace LanguageCode.Generator
         }
 
         /// <summary>
-        /// Source: https://www.loc.gov/standards/iso639-2/ascii_8bits.html
-        /// 
-        /// Format:
-        /// <code>
-        /// An alpha-3 (bibliographic) code, an alpha-3 (terminologic) code (when given), 
-        /// an alpha-2 code (when given), an English name, and a French name of a language 
-        /// are all separated by pipe (|) characters. If one of these elements is not applicable 
-        /// to the entry, the field is left empty, i.e., a pipe (|) character immediately 
-        /// follows the preceding entry. The Line terminator is the LF character.
-        /// </code>
-        /// </summary>
-        /// <param name="baseUrl"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
-        public async Task<IEnumerable<SetTwoLanguageDescriptor>> ExtractLanguageCodesSetTwoAsync(
-            string baseUrl = "https://www.loc.gov/standards/iso639-2/ISO-639-2_8859-1.txt",
-            CancellationToken token = default
-        )
-        {
-            var result = new List<SetTwoLanguageDescriptor>();
-
-            var response = await _httpClient.GetStringAsync(baseUrl, token);
-            response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
-
-            var lines = response.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(x => x.Trim())
-                .Where(x => x.Length > 0)
-                .ToArray();
-
-            foreach (var line in lines)
-            {
-                var lineArray = line.Split(new[] { '|' });
-                result.Add(new SetTwoLanguageDescriptor
-                {
-                    CodeAlpha3Bibliographic = lineArray.Length > 0 ? lineArray[0].Trim() : string.Empty,
-                    CodeAlpha3Terminologic = lineArray.Length > 1 ? lineArray[1].Trim() : string.Empty,
-                    CodeAlpha2 = lineArray.Length > 2 ? lineArray[2].Trim() : string.Empty,
-                    EnglishName = lineArray.Length > 3 ? lineArray[3].Trim() : string.Empty,
-                    FrenchName = lineArray.Length > 4 ? lineArray[4].Trim() : string.Empty,
-                });
-            }
-
-            return result;
-        }
-
-        /// <summary>
         /// Source: https://iso639-3.sil.org/code_tables/download_tables
         /// 
         /// Format:
@@ -101,12 +55,12 @@ namespace LanguageCode.Generator
         /// </code>
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<SetThreeLanguageDescriptor>> ExtractLanguageCodesSetThreeAsync(
+        public async Task<IEnumerable<LanguageDescriptor>> ExtractLanguageCodesSetThreeAsync(
             string baseUrl = "https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3.tab",
             CancellationToken token = default
         )
         {
-            var result = new List<SetThreeLanguageDescriptor>();
+            var result = new List<LanguageDescriptor>();
 
             var response = await _httpClient.GetStringAsync(baseUrl, token);
             response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
@@ -126,7 +80,7 @@ namespace LanguageCode.Generator
                     continue;
                 }
 
-                result.Add(new SetThreeLanguageDescriptor
+                result.Add(new LanguageDescriptor
                 {
                     Id = lineArray.Length > 0 ? lineArray[0].Trim() : string.Empty,
                     Part2b = lineArray.Length > 1 ? lineArray[1].Trim() : string.Empty,
@@ -153,7 +107,7 @@ namespace LanguageCode.Generator
         /// <param name="baseUrl"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<SetTwoLanguageDeprecationDescriptor>> ExtractLanguageCodeDeprecationsSetTwoAsync(
+        public async Task<IEnumerable<LegacyLanguageAlphaTwoDescriptor>> ExtractLanguageCodeDeprecationsSetTwoAsync(
             string baseUrl = "https://www.loc.gov/standards/iso639-2/php/code_changes.php",
             CancellationToken token = default
         )
@@ -182,7 +136,7 @@ namespace LanguageCode.Generator
                 return new KeyValuePair<string, string>(actual, deprecated);
             }
 
-            var result = new List<SetTwoLanguageDeprecationDescriptor>();
+            var result = new List<LegacyLanguageAlphaTwoDescriptor>();
 
             var response = await _httpClient.GetStringAsync(baseUrl, token);
             response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
@@ -240,7 +194,7 @@ namespace LanguageCode.Generator
                 var a = ParseLangaugePair(alpha2);
                 var b = ParseLangaugePair(alpha3);
 
-                result.Add(new SetTwoLanguageDeprecationDescriptor
+                result.Add(new LegacyLanguageAlphaTwoDescriptor
                 {
                     CodeAlpha2 = a.Key,
                     CodeAlpha2Deprecated = a.Value,
@@ -266,12 +220,12 @@ namespace LanguageCode.Generator
         ///                              -- status of the individual code element
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<SetThreeMarcolanguageDescriptor>> ExtractMarcolanguagesAsync(
+        public async Task<IEnumerable<MarcolanguageDescriptor>> ExtractMarcolanguagesAsync(
             string baseUrl = "https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3-macrolanguages.tab",
             CancellationToken token = default
         )
         {
-            var result = new List<SetThreeMarcolanguageDescriptor>();
+            var result = new List<MarcolanguageDescriptor>();
 
             var response = await _httpClient.GetStringAsync(baseUrl, token);
             response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
@@ -291,7 +245,7 @@ namespace LanguageCode.Generator
                     continue;
                 }
 
-                result.Add(new SetThreeMarcolanguageDescriptor
+                result.Add(new MarcolanguageDescriptor
                 {
                     Source = lineArray.Length > 0 ? lineArray[0].Trim() : string.Empty,
                     Target = lineArray.Length > 1 ? lineArray[1].Trim() : string.Empty,
@@ -317,12 +271,12 @@ namespace LanguageCode.Generator
         /// Effective date         NOT NULL)  -- The date the retirement became effective
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<SetThreeLegacyLanguageDescriptor>> ExtractLegacyLanguagesAsync(
+        public async Task<IEnumerable<LegacyLanguageAlphaThreeDescriptor>> ExtractLegacyLanguagesAsync(
             string baseUrl = "https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3_Retirements.tab",
             CancellationToken token = default
         )
         {
-            var result = new List<SetThreeLegacyLanguageDescriptor>();
+            var result = new List<LegacyLanguageAlphaThreeDescriptor>();
 
             var response = await _httpClient.GetStringAsync(baseUrl, token);
             response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
@@ -342,7 +296,7 @@ namespace LanguageCode.Generator
                     continue;
                 }
 
-                result.Add(new SetThreeLegacyLanguageDescriptor
+                result.Add(new LegacyLanguageAlphaThreeDescriptor
                 {
                     Id = lineArray.Length > 0 ? lineArray[0].Trim() : string.Empty,
                     RefName = lineArray.Length > 1 ? lineArray[1].Trim() : string.Empty,

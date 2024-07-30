@@ -1,6 +1,6 @@
 ﻿namespace Panlingo.LanguageCode.Models
 {
-    public class SetThreeLegacyLanguageDescriptor
+    public class LegacyLanguageAlphaThreeDescriptor
     {
         public string Id { get; set; }
         public string RefName { get; set; }

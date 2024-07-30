@@ -1,6 +1,6 @@
 ﻿namespace Panlingo.LanguageCode.Models
 {
-    public class SetTwoLanguageDeprecationDescriptor
+    public class LegacyLanguageAlphaTwoDescriptor
     {
         public string CodeAlpha2 { get; set; }
         public string CodeAlpha2Deprecated { get; set; }

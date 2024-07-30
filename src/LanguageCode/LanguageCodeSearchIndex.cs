@@ -6,8 +6,8 @@ namespace Panlingo.LanguageCode
 {
     internal static class LanguageCodeSearchIndex
     {
-        public static readonly Dictionary<string, SetThreeLanguageDescriptor> Langauges =
-            new Dictionary<string, SetThreeLanguageDescriptor>(StringComparer.InvariantCultureIgnoreCase);
+        public static readonly Dictionary<string, LanguageDescriptor> Langauges =
+            new Dictionary<string, LanguageDescriptor>(StringComparer.InvariantCultureIgnoreCase);
 
         public static readonly Dictionary<string, string> LegacyCodes =
             new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);

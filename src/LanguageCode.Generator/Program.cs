@@ -10,7 +10,6 @@ namespace LanguageCode.Generator
 
             var resources = new ISOGeneratorResources
             {
-                SetTwoLanguageDescriptorList = await extractor.ExtractLanguageCodesSetTwoAsync(),
                 SetThreeLanguageDescriptorList = await extractor.ExtractLanguageCodesSetThreeAsync(),
                 SetTwoLanguageDeprecationDescriptorList = await extractor.ExtractLanguageCodeDeprecationsSetTwoAsync(),
                 MarcolanguageDescriptorList = await extractor.ExtractMarcolanguagesAsync(),

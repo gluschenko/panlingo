@@ -12,11 +12,11 @@ namespace Panlingo.LanguageCode
             .ConvertFromIETF()
             .ConvertFromDeprecatedCode();
 
-        private readonly static Dictionary<LanguageCodeEntity, Func<SetThreeLanguageDescriptor, string>> _langaugeVisitors;
+        private readonly static Dictionary<LanguageCodeEntity, Func<LanguageDescriptor, string>> _langaugeVisitors;
 
         static LanguageCodeHelper()
         {
-            _langaugeVisitors = new Dictionary<LanguageCodeEntity, Func<SetThreeLanguageDescriptor, string>>
+            _langaugeVisitors = new Dictionary<LanguageCodeEntity, Func<LanguageDescriptor, string>>
             {
                 [LanguageCodeEntity.Alpha2] = x => x.Part1,
                 [LanguageCodeEntity.Alpha3] = x => x.Id,
@@ -57,6 +57,54 @@ namespace Panlingo.LanguageCode
             try
             {
                 value = Resolve(code: code, options: options);
+                return true;
+            }
+            catch (LanguageCodeException)
+            {
+                value = null;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="codes"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public static IDictionary<string, string> Resolve(
+            IEnumerable<string> codes,
+            LanguageCodeResolver? options = null
+        )
+        {
+            options ??= _defaultNormalizationOptions;
+
+            var result = new Dictionary<string, string>();
+
+            foreach (var code in codes)
+            {
+                result[code] = options.Apply(code);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="codes"></param>
+        /// <param name="value"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public static bool TryResolve(
+            IEnumerable<string> codes,
+            [MaybeNullWhen(false)] out IDictionary<string, string> value,
+            LanguageCodeResolver? options = null
+        )
+        {
+            try
+            {
+                value = Resolve(codes: codes, options: options);
                 return true;
             }
             catch (LanguageCodeException)

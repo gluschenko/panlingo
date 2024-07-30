@@ -6,11 +6,10 @@ namespace Panlingo.LanguageCode.Models
 {
     public class ISOGeneratorResources
     {
-        public IEnumerable<SetTwoLanguageDescriptor> SetTwoLanguageDescriptorList { get; set; }
-        public IEnumerable<SetThreeLanguageDescriptor> SetThreeLanguageDescriptorList { get; set; }
-        public IEnumerable<SetTwoLanguageDeprecationDescriptor> SetTwoLanguageDeprecationDescriptorList { get; set; }
-        public IEnumerable<SetThreeMarcolanguageDescriptor> MarcolanguageDescriptorList { get; set; }
-        public IEnumerable<SetThreeLegacyLanguageDescriptor> LegacyLanguageDescriptorList { get; set; }
+        public IEnumerable<LanguageDescriptor> SetThreeLanguageDescriptorList { get; set; }
+        public IEnumerable<LegacyLanguageAlphaTwoDescriptor> SetTwoLanguageDeprecationDescriptorList { get; set; }
+        public IEnumerable<MarcolanguageDescriptor> MarcolanguageDescriptorList { get; set; }
+        public IEnumerable<LegacyLanguageAlphaThreeDescriptor> LegacyLanguageDescriptorList { get; set; }
 
         public string ToJson()
         {

@@ -1,6 +1,6 @@
 ﻿namespace Panlingo.LanguageCode.Models
 {
-    public class SetThreeLanguageDescriptor
+    public class LanguageDescriptor
     {
         public string Id { get; set; }
         public string Part2b { get; set; }

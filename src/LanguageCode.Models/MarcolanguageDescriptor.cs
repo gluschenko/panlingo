@@ -1,6 +1,6 @@
 ﻿namespace Panlingo.LanguageCode.Models
 {
-    public class SetThreeMarcolanguageDescriptor
+    public class MarcolanguageDescriptor
     {
         public string Source { get; set; }
         public string Target { get; set; }
