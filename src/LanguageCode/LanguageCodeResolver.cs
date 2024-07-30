@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Panlingo.LanguageCode.Models;
 
 namespace Panlingo.LanguageCode
 {
-    public class LanguageCodeResolver
+    public sealed class LanguageCodeResolver
     {
-        private List<Func<string, string>> _rules;
+        private Dictionary<LanguageCodeRule, Func<string, string>> _rules;
         private Func<string, string>? _resolveUnknown;
         private Func<string, string>? _convert;
 
         public LanguageCodeResolver()
         {
-            _rules = new List<Func<string, string>>();
+            _rules = new Dictionary<LanguageCodeRule, Func<string, string>>();
         }
 
         /// <summary>
@@ -23,9 +24,34 @@ namespace Panlingo.LanguageCode
         /// <returns></returns>
         public LanguageCodeResolver ToLowerAndTrim()
         {
-            _rules.Add(
-                x => x.ToLower().Trim()
-            );
+            _rules[LanguageCodeRule.ToLowerAndTrim] = x => x.ToLower().Trim();
+
+            return this;
+        }
+
+        /// <summary>
+        /// Examples:
+        /// <code>ru-RU => ru</code>
+        /// <code>uk-UA => uk</code>
+        /// <code>en-US => en</code>
+        /// </summary>
+        /// <returns></returns>
+        public LanguageCodeResolver ConvertFromIETF()
+        {
+            _rules[LanguageCodeRule.ConvertFromIETF] = x =>
+            {
+                if (x.Contains('-'))
+                {
+                    var words = x.Split('-');
+
+                    if (words.Length > 0)
+                    {
+                        return words[0];
+                    }
+                }
+
+                return x;
+            };
 
             return this;
         }
@@ -42,17 +68,15 @@ namespace Panlingo.LanguageCode
         /// <returns></returns>
         public LanguageCodeResolver ReduceToMacrolanguage()
         {
-            _rules.Add(
-                x =>
+            _rules[LanguageCodeRule.ReduceToMacrolanguage] = x =>
+            {
+                if (LanguageCodeSearchIndex.MacrolanguageCodes.TryGetValue(x, out var value))
                 {
-                    if (LanguageCodeSearchIndex.MacrolanguageCodes.TryGetValue(x, out var value))
-                    {
-                        return value;
-                    }
-
-                    return x;
+                    return value;
                 }
-            );
+
+                return x;
+            };
 
             return this;
         }
@@ -66,46 +90,15 @@ namespace Panlingo.LanguageCode
         /// <returns></returns>
         public LanguageCodeResolver ConvertFromDeprecatedCode()
         {
-            _rules.Add(
-                x =>
+            _rules[LanguageCodeRule.ConvertFromDeprecatedCode] = x =>
+            {
+                if (LanguageCodeSearchIndex.LegacyCodes.TryGetValue(x, out var value))
                 {
-                    if (LanguageCodeSearchIndex.LegacyCodes.TryGetValue(x, out var value))
-                    {
-                        return value;
-                    }
-
-                    return x;
+                    return value;
                 }
-            );
 
-            return this;
-        }
-
-        /// <summary>
-        /// Examples:
-        /// <code>ru-RU => ru</code>
-        /// <code>uk-UA => uk</code>
-        /// <code>en-US => en</code>
-        /// </summary>
-        /// <returns></returns>
-        public LanguageCodeResolver ConvertFromIETF()
-        {
-            _rules.Add(
-                x =>
-                {
-                    if (x.Contains('-'))
-                    {
-                        var words = x.Split('-');
-
-                        if (words.Length > 0)
-                        {
-                            return words[0];
-                        }
-                    }
-
-                    return x;
-                }
-            );
+                return x;
+            };
 
             return this;
         }
@@ -154,9 +147,9 @@ namespace Panlingo.LanguageCode
 
         public string Apply(string code)
         {
-            foreach (var rule in _rules)
+            foreach (var rule in _rules.OrderBy(x => x.Key))
             {
-                code = rule(code);
+                code = rule.Value(code);
             }
 
             if (_convert != null)
