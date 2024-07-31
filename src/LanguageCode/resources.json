@@ -79201,116 +79201,6 @@
       "Comment": ""
     }
   ],
-  "SetTwoLanguageDeprecationDescriptorList": [
-    {
-      "CodeAlpha2": "",
-      "CodeAlpha2Deprecated": "mo",
-      "CodeAlpha3": "",
-      "CodeAlpha3Deprecated": "mol",
-      "CategoryOfChange": "Dep",
-      "EnglishName": "Moldavian; Moldovan",
-      "Comment": "The identifiers mo and mol are deprecated, leaving ro and ron (639-2/T) and rum (639-2/B) the current language identifiers to be used for the variant of the Romanian language also known as Moldavian and Moldovan in English and moldave in French. The identifiers mo and mol will not be assigned to different items, and recordings using these identifiers will not be invalid."
-    },
-    {
-      "CodeAlpha2": "sr",
-      "CodeAlpha2Deprecated": "",
-      "CodeAlpha3": "srp",
-      "CodeAlpha3Deprecated": "scc",
-      "CategoryOfChange": "CC",
-      "EnglishName": "Serbian",
-      "Comment": "ISO 639-2/B code deprecated in favor of ISO 639-2/T code"
-    },
-    {
-      "CodeAlpha2": "hr",
-      "CodeAlpha2Deprecated": "",
-      "CodeAlpha3": "hrv",
-      "CodeAlpha3Deprecated": "scr",
-      "CategoryOfChange": "CC",
-      "EnglishName": "Croatian",
-      "Comment": "ISO 639-2/B code deprecated in favor of ISO 639-2/T code"
-    },
-    {
-      "CodeAlpha2": "jv",
-      "CodeAlpha2Deprecated": "jw",
-      "CodeAlpha3": "jav",
-      "CodeAlpha3Deprecated": "",
-      "CategoryOfChange": "Dep",
-      "EnglishName": "Javanese",
-      "Comment": "jw published in error; withdrawn in favor of jv."
-    },
-    {
-      "CodeAlpha2": "jv",
-      "CodeAlpha2Deprecated": "",
-      "CodeAlpha3": "jav",
-      "CodeAlpha3Deprecated": "jaw",
-      "CategoryOfChange": "CC",
-      "EnglishName": "Javanese",
-      "Comment": "jaw based on incorrect code; withdrawn in favor of jav."
-    },
-    {
-      "CodeAlpha2": "",
-      "CodeAlpha2Deprecated": "sh",
-      "CodeAlpha3": "",
-      "CodeAlpha3Deprecated": "",
-      "CategoryOfChange": "Dep",
-      "EnglishName": "Serbo-Croatian",
-      "Comment": "This  code was deprecated in 2000 because there were separate language codes for each individual language represented (Serbian, Croatian, and then Bosnian was added). It was published in a revision of ISO 639-1, but never was included in ISO 639-2. It is considered a macrolanguage (general name for a cluster of closely related individual languages) in ISO 639-3. Its deprecated status was reaffirmed by the ISO 639 JAC in 2005."
-    },
-    {
-      "CodeAlpha2": "he",
-      "CodeAlpha2Deprecated": "iw",
-      "CodeAlpha3": "heb",
-      "CodeAlpha3Deprecated": "",
-      "CategoryOfChange": "Dep",
-      "EnglishName": "Hebrew",
-      "Comment": "Withdrawn"
-    },
-    {
-      "CodeAlpha2": "he",
-      "CodeAlpha2Deprecated": "",
-      "CodeAlpha3": "heb",
-      "CodeAlpha3Deprecated": "",
-      "CategoryOfChange": "CC",
-      "EnglishName": "Hebrew",
-      "Comment": ""
-    },
-    {
-      "CodeAlpha2": "id",
-      "CodeAlpha2Deprecated": "in",
-      "CodeAlpha3": "ind",
-      "CodeAlpha3Deprecated": "",
-      "CategoryOfChange": "Dep",
-      "EnglishName": "Indonesian",
-      "Comment": "Withdrawn"
-    },
-    {
-      "CodeAlpha2": "id",
-      "CodeAlpha2Deprecated": "in",
-      "CodeAlpha3": "ind",
-      "CodeAlpha3Deprecated": "",
-      "CategoryOfChange": "CC",
-      "EnglishName": "Indonesian",
-      "Comment": ""
-    },
-    {
-      "CodeAlpha2": "yi",
-      "CodeAlpha2Deprecated": "ji",
-      "CodeAlpha3": "yid",
-      "CodeAlpha3Deprecated": "",
-      "CategoryOfChange": "Dep",
-      "EnglishName": "Yiddish",
-      "Comment": "Withdrawn"
-    },
-    {
-      "CodeAlpha2": "yi",
-      "CodeAlpha2Deprecated": "",
-      "CodeAlpha3": "yid",
-      "CodeAlpha3Deprecated": "",
-      "CategoryOfChange": "CC",
-      "EnglishName": "Yiddish",
-      "Comment": ""
-    }
-  ],
   "MarcolanguageDescriptorList": [
     {
       "Source": "aka",
@@ -81593,7 +81483,117 @@
       "Status": "A"
     }
   ],
-  "LegacyLanguageDescriptorList": [
+  "LegacyLanguageAlphaTwoDescriptorList": [
+    {
+      "CodeAlpha2": "",
+      "CodeAlpha2Deprecated": "mo",
+      "CodeAlpha3": "",
+      "CodeAlpha3Deprecated": "mol",
+      "CategoryOfChange": "Dep",
+      "EnglishName": "Moldavian; Moldovan",
+      "Comment": "The identifiers mo and mol are deprecated, leaving ro and ron (639-2/T) and rum (639-2/B) the current language identifiers to be used for the variant of the Romanian language also known as Moldavian and Moldovan in English and moldave in French. The identifiers mo and mol will not be assigned to different items, and recordings using these identifiers will not be invalid."
+    },
+    {
+      "CodeAlpha2": "sr",
+      "CodeAlpha2Deprecated": "",
+      "CodeAlpha3": "srp",
+      "CodeAlpha3Deprecated": "scc",
+      "CategoryOfChange": "CC",
+      "EnglishName": "Serbian",
+      "Comment": "ISO 639-2/B code deprecated in favor of ISO 639-2/T code"
+    },
+    {
+      "CodeAlpha2": "hr",
+      "CodeAlpha2Deprecated": "",
+      "CodeAlpha3": "hrv",
+      "CodeAlpha3Deprecated": "scr",
+      "CategoryOfChange": "CC",
+      "EnglishName": "Croatian",
+      "Comment": "ISO 639-2/B code deprecated in favor of ISO 639-2/T code"
+    },
+    {
+      "CodeAlpha2": "jv",
+      "CodeAlpha2Deprecated": "jw",
+      "CodeAlpha3": "jav",
+      "CodeAlpha3Deprecated": "",
+      "CategoryOfChange": "Dep",
+      "EnglishName": "Javanese",
+      "Comment": "jw published in error; withdrawn in favor of jv."
+    },
+    {
+      "CodeAlpha2": "jv",
+      "CodeAlpha2Deprecated": "",
+      "CodeAlpha3": "jav",
+      "CodeAlpha3Deprecated": "jaw",
+      "CategoryOfChange": "CC",
+      "EnglishName": "Javanese",
+      "Comment": "jaw based on incorrect code; withdrawn in favor of jav."
+    },
+    {
+      "CodeAlpha2": "",
+      "CodeAlpha2Deprecated": "sh",
+      "CodeAlpha3": "",
+      "CodeAlpha3Deprecated": "",
+      "CategoryOfChange": "Dep",
+      "EnglishName": "Serbo-Croatian",
+      "Comment": "This  code was deprecated in 2000 because there were separate language codes for each individual language represented (Serbian, Croatian, and then Bosnian was added). It was published in a revision of ISO 639-1, but never was included in ISO 639-2. It is considered a macrolanguage (general name for a cluster of closely related individual languages) in ISO 639-3. Its deprecated status was reaffirmed by the ISO 639 JAC in 2005."
+    },
+    {
+      "CodeAlpha2": "he",
+      "CodeAlpha2Deprecated": "iw",
+      "CodeAlpha3": "heb",
+      "CodeAlpha3Deprecated": "",
+      "CategoryOfChange": "Dep",
+      "EnglishName": "Hebrew",
+      "Comment": "Withdrawn"
+    },
+    {
+      "CodeAlpha2": "he",
+      "CodeAlpha2Deprecated": "",
+      "CodeAlpha3": "heb",
+      "CodeAlpha3Deprecated": "",
+      "CategoryOfChange": "CC",
+      "EnglishName": "Hebrew",
+      "Comment": ""
+    },
+    {
+      "CodeAlpha2": "id",
+      "CodeAlpha2Deprecated": "in",
+      "CodeAlpha3": "ind",
+      "CodeAlpha3Deprecated": "",
+      "CategoryOfChange": "Dep",
+      "EnglishName": "Indonesian",
+      "Comment": "Withdrawn"
+    },
+    {
+      "CodeAlpha2": "id",
+      "CodeAlpha2Deprecated": "in",
+      "CodeAlpha3": "ind",
+      "CodeAlpha3Deprecated": "",
+      "CategoryOfChange": "CC",
+      "EnglishName": "Indonesian",
+      "Comment": ""
+    },
+    {
+      "CodeAlpha2": "yi",
+      "CodeAlpha2Deprecated": "ji",
+      "CodeAlpha3": "yid",
+      "CodeAlpha3Deprecated": "",
+      "CategoryOfChange": "Dep",
+      "EnglishName": "Yiddish",
+      "Comment": "Withdrawn"
+    },
+    {
+      "CodeAlpha2": "yi",
+      "CodeAlpha2Deprecated": "",
+      "CodeAlpha3": "yid",
+      "CodeAlpha3Deprecated": "",
+      "CategoryOfChange": "CC",
+      "EnglishName": "Yiddish",
+      "Comment": ""
+    }
+  ],
+  "LegacyLanguageAlphaThreeDescriptorList": [
     {
       "Id": "fri",
       "RefName": "Western Frisian",

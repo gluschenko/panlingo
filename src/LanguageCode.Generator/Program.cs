@@ -11,9 +11,9 @@ namespace LanguageCode.Generator
             var resources = new ISOGeneratorResources
             {
                 SetThreeLanguageDescriptorList = await extractor.ExtractLanguageCodesSetThreeAsync(),
-                SetTwoLanguageDeprecationDescriptorList = await extractor.ExtractLanguageCodeDeprecationsSetTwoAsync(),
+                LegacyLanguageAlphaTwoDescriptorList = await extractor.ExtractLanguageCodeDeprecationsSetTwoAsync(),
                 MarcolanguageDescriptorList = await extractor.ExtractMarcolanguagesAsync(),
-                LegacyLanguageDescriptorList = await extractor.ExtractLegacyLanguagesAsync(),
+                LegacyLanguageAlphaThreeDescriptorList = await extractor.ExtractLegacyLanguagesAsync(),
             };
 
             var json = resources.ToJson();

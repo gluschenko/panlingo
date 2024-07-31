@@ -43,7 +43,7 @@ namespace Panlingo.LanguageCode
             }
 
             // Legacy langauges from ISO 639-1 & ISO 639-2
-            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.SetTwoLanguageDeprecationDescriptorList)
+            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.LegacyLanguageAlphaTwoDescriptorList)
             {
                 if (!string.IsNullOrWhiteSpace(item.CodeAlpha2) && !string.IsNullOrWhiteSpace(item.CodeAlpha2Deprecated))
                 {
@@ -57,7 +57,7 @@ namespace Panlingo.LanguageCode
             }
 
             // Legacy langauges from ISO 639-3
-            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.LegacyLanguageDescriptorList)
+            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.LegacyLanguageAlphaThreeDescriptorList)
             {
                 if (!string.IsNullOrWhiteSpace(item.Id) && item.ChangeTo.Any())
                 {
@@ -87,7 +87,40 @@ namespace Panlingo.LanguageCode
             // source: https://www.loc.gov/standards/iso639-2/php/code_changes.php
             LegacyCodes["mo"] = new[] { "ro" };
 
-            
+            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.LegacyLanguageAlphaThreeDescriptorList)
+            {
+                if (!string.IsNullOrWhiteSpace(item.Id) && !Langauges.ContainsKey(item.Id))
+                {
+                    Langauges[item.Id] = new LanguageDescriptor
+                    {
+                        Id = item.Id,
+                        Part2b = string.Empty,
+                        Part2t = string.Empty,
+                        Part1 = string.Empty,
+                        LanguageType = "SYNTHETIC",
+                        RefName = item.RefName,
+                        Comment = string.Empty,
+                    };
+
+                    if (item.Id == "mol")
+                    {
+                        Langauges["mo"] = Langauges[item.Id];
+                    }
+                }
+            }
+
+            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.LegacyLanguageAlphaTwoDescriptorList)
+            {
+                if (!string.IsNullOrWhiteSpace(item.CodeAlpha2Deprecated) && !string.IsNullOrWhiteSpace(item.CodeAlpha3))
+                {
+                    var actualItem = Langauges[item.CodeAlpha3];
+
+                    if (!Langauges.ContainsKey(item.CodeAlpha2Deprecated))
+                    {
+                        Langauges[item.CodeAlpha2Deprecated] = actualItem;
+                    }
+                }
+            }
         }
     }
 }

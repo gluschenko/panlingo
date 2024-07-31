@@ -113,9 +113,13 @@ namespace LanguageCode.Tests
         [InlineData("uk", "Ukrainian")]
         [InlineData("en", "English")]
         [InlineData("ro", "Romanian")]
-        [InlineData("mo", "Moldavian")]     // renamed
+        [InlineData("mo", "Moldavian")]     // legacy code for [ro]
         [InlineData("sr", "Serbian")]
+        [InlineData("sh", "Serbo-Croatian")]
         [InlineData("he", "Hebrew")]
+        [InlineData("iw", "Hebrew")]
+        [InlineData("in", "Indonesian")]
+        [InlineData("id", "Indonesian")]
         [InlineData("emo", "Emok")]         // extinct
         [InlineData("kxl", "Nepali Kurux")] // legacy code for [kru]
         [InlineData("kxu", "Kui (India)")]  // splitted for [dwk] and [uki]
@@ -123,6 +127,7 @@ namespace LanguageCode.Tests
         {
             var options = BasicResolver
                 .RemoveRule(LanguageCodeRule.ConvertFromDeprecatedCode)
+                .RemoveRule(LanguageCodeRule.ReduceToMacrolanguage)
                 .ConvertTo(LanguageCodeEntity.EnglishName);
 
             var code = LanguageCodeHelper.Resolve(code: source, options: options);
