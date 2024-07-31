@@ -18,7 +18,7 @@
       - Initial release
     </PackageReleaseNotes>
     <Description>
-      Helper library for ISO language codes
+      Helper library for ISO language codes (ISO 639-1, ISO 639-2, ISO 639-3)
     </Description>
     <Configurations>Debug;Release;CI</Configurations>
 

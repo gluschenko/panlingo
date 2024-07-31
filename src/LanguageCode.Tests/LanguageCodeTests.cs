@@ -5,6 +5,12 @@ namespace LanguageCode.Tests
 {
     public class LanguageCodeTests
     {
+        private static LanguageCodeResolver BasicResolver => new LanguageCodeResolver()
+            .ToLowerAndTrim()
+            .ConvertFromIETF()
+            .ConvertFromDeprecatedCode()
+            .ReduceToMacrolanguage();
+
         [Theory]
         [InlineData("ru", "ru")]
         [InlineData("rus", "ru")]
@@ -39,10 +45,7 @@ namespace LanguageCode.Tests
         [InlineData("he", "heb")]
         public void ResolveGeneral(string source, string target)
         {
-            var options = new LanguageCodeResolver()
-                .ToLowerAndTrim()
-                .ConvertFromIETF()
-                .ConvertFromDeprecatedCode()
+            var options = BasicResolver
                 .ConvertTo(LanguageCodeEntity.Alpha3);
 
             var code = LanguageCodeHelper.Resolve(code: source, options: options);
@@ -63,10 +66,26 @@ namespace LanguageCode.Tests
         [InlineData("scc", "srp")]
         public void ResolveLegacy(string source, string target)
         {
-            var options = new LanguageCodeResolver()
-                .ToLowerAndTrim()
-                .ConvertFromIETF()
-                .ConvertFromDeprecatedCode()
+            var options = BasicResolver
+                .ConvertTo(LanguageCodeEntity.Alpha3);
+
+            var code = LanguageCodeHelper.Resolve(code: source, options: options);
+            Assert.Equal(target, code);
+        }
+
+        [Theory]
+        [InlineData("mof", "xpq")]
+        [InlineData("rmr", "rmq")]
+        [InlineData("gio", "gqu")]
+        [InlineData("pgy", "pgy")] // extinct
+        [InlineData("emo", "emo")] // extinct
+        public void ResolveLegacyConflict(string source, string target)
+        {
+            var options = BasicResolver
+                .ConvertFromDeprecatedCode((x, y) =>
+                {
+                    return y.Any() ? y.First() : x;
+                })
                 .ConvertTo(LanguageCodeEntity.Alpha3);
 
             var code = LanguageCodeHelper.Resolve(code: source, options: options);
@@ -82,11 +101,7 @@ namespace LanguageCode.Tests
         [InlineData("ind", "msa")]
         public void ResolveMacrolanguage(string source, string target)
         {
-            var options = new LanguageCodeResolver()
-                .ToLowerAndTrim()
-                .ConvertFromIETF()
-                .ConvertFromDeprecatedCode()
-                .ReduceToMacrolanguage()
+            var options = BasicResolver
                 .ConvertTo(LanguageCodeEntity.Alpha3);
 
             var code = LanguageCodeHelper.Resolve(code: source, options: options);
@@ -98,14 +113,16 @@ namespace LanguageCode.Tests
         [InlineData("uk", "Ukrainian")]
         [InlineData("en", "English")]
         [InlineData("ro", "Romanian")]
+        [InlineData("mo", "Moldavian")]     // renamed
         [InlineData("sr", "Serbian")]
         [InlineData("he", "Hebrew")]
+        [InlineData("emo", "Emok")]         // extinct
+        [InlineData("kxl", "Nepali Kurux")] // legacy code for [kru]
+        [InlineData("kxu", "Kui (India)")]  // splitted for [dwk] and [uki]
         public void ResolveEnglishName(string source, string target)
         {
-            var options = new LanguageCodeResolver()
-                .ToLowerAndTrim()
-                .ConvertFromIETF()
-                .ConvertFromDeprecatedCode()
+            var options = BasicResolver
+                .RemoveRule(LanguageCodeRule.ConvertFromDeprecatedCode)
                 .ConvertTo(LanguageCodeEntity.EnglishName);
 
             var code = LanguageCodeHelper.Resolve(code: source, options: options);

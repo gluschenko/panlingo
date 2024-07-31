@@ -87,14 +87,24 @@ namespace Panlingo.LanguageCode
         /// <code>mo -> ro</code>
         /// <code>mol -> ron</code>
         /// </summary>
+        /// <param name="onConflict"></param>
         /// <returns></returns>
-        public LanguageCodeResolver ConvertFromDeprecatedCode()
+        public LanguageCodeResolver ConvertFromDeprecatedCode(
+            Func<string, IEnumerable<string>, string>? onConflict = null
+        )
         {
             _rules[LanguageCodeRule.ConvertFromDeprecatedCode] = x =>
             {
                 if (LanguageCodeSearchIndex.LegacyCodes.TryGetValue(x, out var value))
                 {
-                    return value;
+                    if (value.Count() == 1)
+                    {
+                        return value.First();
+                    }
+                    else if (onConflict != null)
+                    {
+                        return onConflict(x, value);
+                    }
                 }
 
                 return x;
@@ -177,6 +187,25 @@ namespace Panlingo.LanguageCode
             }
 
             throw new LanguageCodeException(code, $"Language code is unknown");
+        }
+
+        public bool HasRule(LanguageCodeRule rule)
+        {
+            return _rules.ContainsKey(rule);
+        }
+
+        public LanguageCodeResolver RemoveRule(LanguageCodeRule rule)
+        {
+            if (HasRule(rule))
+            {
+                _rules.Remove(rule);
+            }
+            else
+            {
+                throw new InvalidOperationException($"Rule '{rule}' is already removed or not used");
+            }
+
+            return this;
         }
     }
 }

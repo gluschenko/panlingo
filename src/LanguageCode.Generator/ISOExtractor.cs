@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using HtmlAgilityPack;
 using Panlingo.LanguageCode.Models;
 
@@ -296,14 +295,36 @@ namespace LanguageCode.Generator
                     continue;
                 }
 
+                var id = lineArray.Length > 0 ? lineArray[0].Trim() : string.Empty;
+                var refName = lineArray.Length > 1 ? lineArray[1].Trim() : string.Empty;
+                var retReason = lineArray.Length > 2 ? lineArray[2].Trim() : string.Empty;
+                var changeTo = lineArray.Length > 3 ? lineArray[3].Trim() : string.Empty;
+                var retRemedy = lineArray.Length > 4 ? lineArray[4].Trim() : string.Empty;
+                var effective = lineArray.Length > 5 ? lineArray[5].Trim() : string.Empty;
+
+                var changes = new List<string>();
+
+                if (!string.IsNullOrWhiteSpace(changeTo))
+                {
+                    changes.Add(changeTo);
+                }
+
+                var codesFromComment = retRemedy.Split('[')
+                    .Select(x => x.Split(']').First())
+                    .Select(x => x.Trim())
+                    .Where(x => x.Length == 3)
+                    .ToArray();
+
+                changes.AddRange(codesFromComment);
+
                 result.Add(new LegacyLanguageAlphaThreeDescriptor
                 {
-                    Id = lineArray.Length > 0 ? lineArray[0].Trim() : string.Empty,
-                    RefName = lineArray.Length > 1 ? lineArray[1].Trim() : string.Empty,
-                    RetReason = lineArray.Length > 2 ? lineArray[2].Trim() : string.Empty,
-                    ChangeTo = lineArray.Length > 3 ? lineArray[3].Trim() : string.Empty,
-                    RetRemedy = lineArray.Length > 4 ? lineArray[4].Trim() : string.Empty,
-                    Effective = lineArray.Length > 5 ? lineArray[5].Trim() : string.Empty,
+                    Id = id,
+                    RefName = refName,
+                    RetReason = retReason,
+                    ChangeTo = changes,
+                    RetRemedy = retRemedy,
+                    Effective = effective,
                 });
             }
 

@@ -116,23 +116,32 @@ namespace Panlingo.LanguageCode
 
         public static string GetTwoLetterISOCode(string code)
         {
-            return TryGetTwoLetterISOCode(code, out var value)
-                ? value
-                : throw new LanguageCodeException(code, $"Language code is unknown");
+            if (!TryGetTwoLetterISOCode(code, out var value))
+            {
+                throw new LanguageCodeException(code, $"Language code is unknown");
+            }
+
+            return value;
         }
 
         public static string GetThreeLetterISOCode(string code)
         {
-            return TryGetThreeLetterISOCode(code, out var value)
-                ? value
-                : throw new LanguageCodeException(code, $"Language code is unknown");
+            if (!TryGetThreeLetterISOCode(code, out var value))
+            {
+                throw new LanguageCodeException(code, $"Language code is unknown");
+            }
+
+            return value;
         }
 
         public static string GetLanguageEnglishName(string code)
         {
-            return TryGetLanguageEnglishName(code, out var value)
-                ? value
-                : throw new LanguageCodeException(code, $"Language code is unknown");
+            if (!TryGetLanguageEnglishName(code, out var value))
+            {
+                throw new LanguageCodeException(code, $"Language code is unknown");
+            }
+
+            return value;
         }
 
         public static bool TryGetTwoLetterISOCode(
@@ -140,7 +149,7 @@ namespace Panlingo.LanguageCode
             [MaybeNullWhen(false)] out string value
         )
         {
-            if (TryGetEntity(code, LanguageCodeEntity.Alpha2, out var x))
+            if (TryGetEntity(code: code, entity: LanguageCodeEntity.Alpha2, out var x))
             {
                 value = x;
                 return true;
@@ -157,7 +166,7 @@ namespace Panlingo.LanguageCode
             [MaybeNullWhen(false)] out string value
         )
         {
-            if (TryGetEntity(code, LanguageCodeEntity.Alpha3, out var x))
+            if (TryGetEntity(code: code, entity: LanguageCodeEntity.Alpha3, out var x))
             {
                 value = x;
                 return true;
@@ -174,7 +183,7 @@ namespace Panlingo.LanguageCode
             [MaybeNullWhen(false)] out string value
         )
         {
-            if (TryGetEntity(code, LanguageCodeEntity.EnglishName, out var x))
+            if (TryGetEntity(code: code, entity: LanguageCodeEntity.EnglishName, out var x))
             {
                 value = x;
                 return true;
@@ -191,12 +200,12 @@ namespace Panlingo.LanguageCode
             LanguageCodeEntity entity
         )
         {
-            if (TryGetEntity(code, entity, out var value))
+            if (!TryGetEntity(code, entity, out var value))
             {
-                return value;
+                throw new LanguageCodeException(code, $"Entity '{entity}' is not found for this code");
             }
 
-            throw new LanguageCodeException(code, $"Entity '{entity}' is not found for this code");
+            return value;
         }
 
         public static bool TryGetEntity(

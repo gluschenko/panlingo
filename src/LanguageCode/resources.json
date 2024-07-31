@@ -1,3415 +1,4 @@
 {
-  "SetTwoLanguageDescriptorList": [
-    {
-      "CodeAlpha3Bibliographic": "aar",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "aa",
-      "EnglishName": "Afar",
-      "FrenchName": "afar"
-    },
-    {
-      "CodeAlpha3Bibliographic": "abk",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ab",
-      "EnglishName": "Abkhazian",
-      "FrenchName": "abkhaze"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ace",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Achinese",
-      "FrenchName": "aceh"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ach",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Acoli",
-      "FrenchName": "acoli"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ada",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Adangme",
-      "FrenchName": "adangme"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ady",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Adyghe; Adygei",
-      "FrenchName": "adygh\u00E9"
-    },
-    {
-      "CodeAlpha3Bibliographic": "afa",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Afro-Asiatic languages",
-      "FrenchName": "afro-asiatiques, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "afh",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Afrihili",
-      "FrenchName": "afrihili"
-    },
-    {
-      "CodeAlpha3Bibliographic": "afr",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "af",
-      "EnglishName": "Afrikaans",
-      "FrenchName": "afrikaans"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ain",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Ainu",
-      "FrenchName": "a\u00EFnou"
-    },
-    {
-      "CodeAlpha3Bibliographic": "aka",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ak",
-      "EnglishName": "Akan",
-      "FrenchName": "akan"
-    },
-    {
-      "CodeAlpha3Bibliographic": "akk",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Akkadian",
-      "FrenchName": "akkadien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "alb",
-      "CodeAlpha3Terminologic": "sqi",
-      "CodeAlpha2": "sq",
-      "EnglishName": "Albanian",
-      "FrenchName": "albanais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ale",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Aleut",
-      "FrenchName": "al\u00E9oute"
-    },
-    {
-      "CodeAlpha3Bibliographic": "alg",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Algonquian languages",
-      "FrenchName": "algonquines, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "alt",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Southern Altai",
-      "FrenchName": "altai du Sud"
-    },
-    {
-      "CodeAlpha3Bibliographic": "amh",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "am",
-      "EnglishName": "Amharic",
-      "FrenchName": "amharique"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ang",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "English, Old (ca.450-1100)",
-      "FrenchName": "anglo-saxon (ca.450-1100)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "anp",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Angika",
-      "FrenchName": "angika"
-    },
-    {
-      "CodeAlpha3Bibliographic": "apa",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Apache languages",
-      "FrenchName": "apaches, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ara",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ar",
-      "EnglishName": "Arabic",
-      "FrenchName": "arabe"
-    },
-    {
-      "CodeAlpha3Bibliographic": "arc",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Official Aramaic (700-300 BCE); Imperial Aramaic (700-300 BCE)",
-      "FrenchName": "aram\u00E9en d\u0027empire (700-300 BCE)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "arg",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "an",
-      "EnglishName": "Aragonese",
-      "FrenchName": "aragonais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "arm",
-      "CodeAlpha3Terminologic": "hye",
-      "CodeAlpha2": "hy",
-      "EnglishName": "Armenian",
-      "FrenchName": "arm\u00E9nien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "arn",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Mapudungun; Mapuche",
-      "FrenchName": "mapudungun; mapuche; mapuce"
-    },
-    {
-      "CodeAlpha3Bibliographic": "arp",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Arapaho",
-      "FrenchName": "arapaho"
-    },
-    {
-      "CodeAlpha3Bibliographic": "art",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Artificial languages",
-      "FrenchName": "artificielles, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "arw",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Arawak",
-      "FrenchName": "arawak"
-    },
-    {
-      "CodeAlpha3Bibliographic": "asm",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "as",
-      "EnglishName": "Assamese",
-      "FrenchName": "assamais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ast",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Asturian; Bable; Leonese; Asturleonese",
-      "FrenchName": "asturien; bable; l\u00E9onais; asturol\u00E9onais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ath",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Athapascan languages",
-      "FrenchName": "athapascanes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "aus",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Australian languages",
-      "FrenchName": "australiennes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ava",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "av",
-      "EnglishName": "Avaric",
-      "FrenchName": "avar"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ave",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ae",
-      "EnglishName": "Avestan",
-      "FrenchName": "avestique"
-    },
-    {
-      "CodeAlpha3Bibliographic": "awa",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Awadhi",
-      "FrenchName": "awadhi"
-    },
-    {
-      "CodeAlpha3Bibliographic": "aym",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ay",
-      "EnglishName": "Aymara",
-      "FrenchName": "aymara"
-    },
-    {
-      "CodeAlpha3Bibliographic": "aze",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "az",
-      "EnglishName": "Azerbaijani",
-      "FrenchName": "az\u00E9ri"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bad",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Banda languages",
-      "FrenchName": "banda, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bai",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Bamileke languages",
-      "FrenchName": "bamil\u00E9k\u00E9, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bak",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ba",
-      "EnglishName": "Bashkir",
-      "FrenchName": "bachkir"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bal",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Baluchi",
-      "FrenchName": "baloutchi"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bam",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "bm",
-      "EnglishName": "Bambara",
-      "FrenchName": "bambara"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ban",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Balinese",
-      "FrenchName": "balinais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "baq",
-      "CodeAlpha3Terminologic": "eus",
-      "CodeAlpha2": "eu",
-      "EnglishName": "Basque",
-      "FrenchName": "basque"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bas",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Basa",
-      "FrenchName": "basa"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bat",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Baltic languages",
-      "FrenchName": "baltes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bej",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Beja; Bedawiyet",
-      "FrenchName": "bedja"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bel",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "be",
-      "EnglishName": "Belarusian",
-      "FrenchName": "bi\u00E9lorusse"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bem",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Bemba",
-      "FrenchName": "bemba"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ben",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "bn",
-      "EnglishName": "Bengali",
-      "FrenchName": "bengali"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ber",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Berber languages",
-      "FrenchName": "berb\u00E8res, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bho",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Bhojpuri",
-      "FrenchName": "bhojpuri"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bih",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "bh",
-      "EnglishName": "Bihari languages",
-      "FrenchName": "langues biharis"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bik",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Bikol",
-      "FrenchName": "bikol"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bin",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Bini; Edo",
-      "FrenchName": "bini; edo"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bis",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "bi",
-      "EnglishName": "Bislama",
-      "FrenchName": "bichlamar"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bla",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Siksika",
-      "FrenchName": "blackfoot"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bnt",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Bantu languages",
-      "FrenchName": "bantou, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bos",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "bs",
-      "EnglishName": "Bosnian",
-      "FrenchName": "bosniaque"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bra",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Braj",
-      "FrenchName": "braj"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bre",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "br",
-      "EnglishName": "Breton",
-      "FrenchName": "breton"
-    },
-    {
-      "CodeAlpha3Bibliographic": "btk",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Batak languages",
-      "FrenchName": "batak, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bua",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Buriat",
-      "FrenchName": "bouriate"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bug",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Buginese",
-      "FrenchName": "bugi"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bul",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "bg",
-      "EnglishName": "Bulgarian",
-      "FrenchName": "bulgare"
-    },
-    {
-      "CodeAlpha3Bibliographic": "bur",
-      "CodeAlpha3Terminologic": "mya",
-      "CodeAlpha2": "my",
-      "EnglishName": "Burmese",
-      "FrenchName": "birman"
-    },
-    {
-      "CodeAlpha3Bibliographic": "byn",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Blin; Bilin",
-      "FrenchName": "blin; bilen"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cad",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Caddo",
-      "FrenchName": "caddo"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cai",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Central American Indian languages",
-      "FrenchName": "am\u00E9rindiennes de l\u0027Am\u00E9rique centrale, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "car",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Galibi Carib",
-      "FrenchName": "karib; galibi; carib"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cat",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ca",
-      "EnglishName": "Catalan; Valencian",
-      "FrenchName": "catalan; valencien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cau",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Caucasian languages",
-      "FrenchName": "caucasiennes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ceb",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Cebuano",
-      "FrenchName": "cebuano"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cel",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Celtic languages",
-      "FrenchName": "celtiques, langues; celtes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cha",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ch",
-      "EnglishName": "Chamorro",
-      "FrenchName": "chamorro"
-    },
-    {
-      "CodeAlpha3Bibliographic": "chb",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Chibcha",
-      "FrenchName": "chibcha"
-    },
-    {
-      "CodeAlpha3Bibliographic": "che",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ce",
-      "EnglishName": "Chechen",
-      "FrenchName": "tch\u00E9tch\u00E8ne"
-    },
-    {
-      "CodeAlpha3Bibliographic": "chg",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Chagatai",
-      "FrenchName": "djaghata\u00EF"
-    },
-    {
-      "CodeAlpha3Bibliographic": "chi",
-      "CodeAlpha3Terminologic": "zho",
-      "CodeAlpha2": "zh",
-      "EnglishName": "Chinese",
-      "FrenchName": "chinois"
-    },
-    {
-      "CodeAlpha3Bibliographic": "chk",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Chuukese",
-      "FrenchName": "chuuk"
-    },
-    {
-      "CodeAlpha3Bibliographic": "chm",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Mari",
-      "FrenchName": "mari"
-    },
-    {
-      "CodeAlpha3Bibliographic": "chn",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Chinook jargon",
-      "FrenchName": "chinook, jargon"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cho",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Choctaw",
-      "FrenchName": "choctaw"
-    },
-    {
-      "CodeAlpha3Bibliographic": "chp",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Chipewyan; Dene Suline",
-      "FrenchName": "chipewyan"
-    },
-    {
-      "CodeAlpha3Bibliographic": "chr",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Cherokee",
-      "FrenchName": "cherokee"
-    },
-    {
-      "CodeAlpha3Bibliographic": "chu",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "cu",
-      "EnglishName": "Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic",
-      "FrenchName": "slavon d\u0027\u00E9glise; vieux slave; slavon liturgique; vieux bulgare"
-    },
-    {
-      "CodeAlpha3Bibliographic": "chv",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "cv",
-      "EnglishName": "Chuvash",
-      "FrenchName": "tchouvache"
-    },
-    {
-      "CodeAlpha3Bibliographic": "chy",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Cheyenne",
-      "FrenchName": "cheyenne"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cmc",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Chamic languages",
-      "FrenchName": "chames, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cnr",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Montenegrin",
-      "FrenchName": "mont\u00E9n\u00E9grin"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cop",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Coptic",
-      "FrenchName": "copte"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cor",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "kw",
-      "EnglishName": "Cornish",
-      "FrenchName": "cornique"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cos",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "co",
-      "EnglishName": "Corsican",
-      "FrenchName": "corse"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cpe",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Creoles and pidgins, English based",
-      "FrenchName": "cr\u00E9oles et pidgins bas\u00E9s sur l\u0027anglais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cpf",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Creoles and pidgins, French-based",
-      "FrenchName": "cr\u00E9oles et pidgins bas\u00E9s sur le fran\u00E7ais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cpp",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Creoles and pidgins, Portuguese-based",
-      "FrenchName": "cr\u00E9oles et pidgins bas\u00E9s sur le portugais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cre",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "cr",
-      "EnglishName": "Cree",
-      "FrenchName": "cree"
-    },
-    {
-      "CodeAlpha3Bibliographic": "crh",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Crimean Tatar; Crimean Turkish",
-      "FrenchName": "tatar de Crim\u00E9"
-    },
-    {
-      "CodeAlpha3Bibliographic": "crp",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Creoles and pidgins",
-      "FrenchName": "cr\u00E9oles et pidgins"
-    },
-    {
-      "CodeAlpha3Bibliographic": "csb",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Kashubian",
-      "FrenchName": "kachoube"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cus",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Cushitic languages",
-      "FrenchName": "couchitiques, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "cze",
-      "CodeAlpha3Terminologic": "ces",
-      "CodeAlpha2": "cs",
-      "EnglishName": "Czech",
-      "FrenchName": "tch\u00E8que"
-    },
-    {
-      "CodeAlpha3Bibliographic": "dak",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Dakota",
-      "FrenchName": "dakota"
-    },
-    {
-      "CodeAlpha3Bibliographic": "dan",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "da",
-      "EnglishName": "Danish",
-      "FrenchName": "danois"
-    },
-    {
-      "CodeAlpha3Bibliographic": "dar",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Dargwa",
-      "FrenchName": "dargwa"
-    },
-    {
-      "CodeAlpha3Bibliographic": "day",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Land Dayak languages",
-      "FrenchName": "dayak, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "del",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Delaware",
-      "FrenchName": "delaware"
-    },
-    {
-      "CodeAlpha3Bibliographic": "den",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Slave (Athapascan)",
-      "FrenchName": "esclave (athapascan)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "dgr",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Dogrib",
-      "FrenchName": "dogrib"
-    },
-    {
-      "CodeAlpha3Bibliographic": "din",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Dinka",
-      "FrenchName": "dinka"
-    },
-    {
-      "CodeAlpha3Bibliographic": "div",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "dv",
-      "EnglishName": "Divehi; Dhivehi; Maldivian",
-      "FrenchName": "maldivien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "doi",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Dogri",
-      "FrenchName": "dogri"
-    },
-    {
-      "CodeAlpha3Bibliographic": "dra",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Dravidian languages",
-      "FrenchName": "dravidiennes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "dsb",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Lower Sorbian",
-      "FrenchName": "bas-sorabe"
-    },
-    {
-      "CodeAlpha3Bibliographic": "dua",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Duala",
-      "FrenchName": "douala"
-    },
-    {
-      "CodeAlpha3Bibliographic": "dum",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Dutch, Middle (ca.1050-1350)",
-      "FrenchName": "n\u00E9erlandais moyen (ca. 1050-1350)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "dut",
-      "CodeAlpha3Terminologic": "nld",
-      "CodeAlpha2": "nl",
-      "EnglishName": "Dutch; Flemish",
-      "FrenchName": "n\u00E9erlandais; flamand"
-    },
-    {
-      "CodeAlpha3Bibliographic": "dyu",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Dyula",
-      "FrenchName": "dioula"
-    },
-    {
-      "CodeAlpha3Bibliographic": "dzo",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "dz",
-      "EnglishName": "Dzongkha",
-      "FrenchName": "dzongkha"
-    },
-    {
-      "CodeAlpha3Bibliographic": "efi",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Efik",
-      "FrenchName": "efik"
-    },
-    {
-      "CodeAlpha3Bibliographic": "egy",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Egyptian (Ancient)",
-      "FrenchName": "\u00E9gyptien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "eka",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Ekajuk",
-      "FrenchName": "ekajuk"
-    },
-    {
-      "CodeAlpha3Bibliographic": "elx",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Elamite",
-      "FrenchName": "\u00E9lamite"
-    },
-    {
-      "CodeAlpha3Bibliographic": "eng",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "en",
-      "EnglishName": "English",
-      "FrenchName": "anglais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "enm",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "English, Middle (1100-1500)",
-      "FrenchName": "anglais moyen (1100-1500)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "epo",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "eo",
-      "EnglishName": "Esperanto",
-      "FrenchName": "esp\u00E9ranto"
-    },
-    {
-      "CodeAlpha3Bibliographic": "est",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "et",
-      "EnglishName": "Estonian",
-      "FrenchName": "estonien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ewe",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ee",
-      "EnglishName": "Ewe",
-      "FrenchName": "\u00E9w\u00E9"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ewo",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Ewondo",
-      "FrenchName": "\u00E9wondo"
-    },
-    {
-      "CodeAlpha3Bibliographic": "fan",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Fang",
-      "FrenchName": "fang"
-    },
-    {
-      "CodeAlpha3Bibliographic": "fao",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "fo",
-      "EnglishName": "Faroese",
-      "FrenchName": "f\u00E9ro\u00EFen"
-    },
-    {
-      "CodeAlpha3Bibliographic": "fat",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Fanti",
-      "FrenchName": "fanti"
-    },
-    {
-      "CodeAlpha3Bibliographic": "fij",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "fj",
-      "EnglishName": "Fijian",
-      "FrenchName": "fidjien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "fil",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Filipino; Pilipino",
-      "FrenchName": "filipino; pilipino"
-    },
-    {
-      "CodeAlpha3Bibliographic": "fin",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "fi",
-      "EnglishName": "Finnish",
-      "FrenchName": "finnois"
-    },
-    {
-      "CodeAlpha3Bibliographic": "fiu",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Finno-Ugrian languages",
-      "FrenchName": "finno-ougriennes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "fon",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Fon",
-      "FrenchName": "fon"
-    },
-    {
-      "CodeAlpha3Bibliographic": "fre",
-      "CodeAlpha3Terminologic": "fra",
-      "CodeAlpha2": "fr",
-      "EnglishName": "French",
-      "FrenchName": "fran\u00E7ais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "frm",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "French, Middle (ca.1400-1600)",
-      "FrenchName": "fran\u00E7ais moyen (1400-1600)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "fro",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "French, Old (842-ca.1400)",
-      "FrenchName": "fran\u00E7ais ancien (842-ca.1400)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "frr",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Northern Frisian",
-      "FrenchName": "frison septentrional"
-    },
-    {
-      "CodeAlpha3Bibliographic": "frs",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Eastern Frisian",
-      "FrenchName": "frison oriental"
-    },
-    {
-      "CodeAlpha3Bibliographic": "fry",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "fy",
-      "EnglishName": "Western Frisian",
-      "FrenchName": "frison occidental"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ful",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ff",
-      "EnglishName": "Fulah",
-      "FrenchName": "peul"
-    },
-    {
-      "CodeAlpha3Bibliographic": "fur",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Friulian",
-      "FrenchName": "frioulan"
-    },
-    {
-      "CodeAlpha3Bibliographic": "gaa",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Ga",
-      "FrenchName": "ga"
-    },
-    {
-      "CodeAlpha3Bibliographic": "gay",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Gayo",
-      "FrenchName": "gayo"
-    },
-    {
-      "CodeAlpha3Bibliographic": "gba",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Gbaya",
-      "FrenchName": "gbaya"
-    },
-    {
-      "CodeAlpha3Bibliographic": "gem",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Germanic languages",
-      "FrenchName": "germaniques, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "geo",
-      "CodeAlpha3Terminologic": "kat",
-      "CodeAlpha2": "ka",
-      "EnglishName": "Georgian",
-      "FrenchName": "g\u00E9orgien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ger",
-      "CodeAlpha3Terminologic": "deu",
-      "CodeAlpha2": "de",
-      "EnglishName": "German",
-      "FrenchName": "allemand"
-    },
-    {
-      "CodeAlpha3Bibliographic": "gez",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Geez",
-      "FrenchName": "gu\u00E8ze"
-    },
-    {
-      "CodeAlpha3Bibliographic": "gil",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Gilbertese",
-      "FrenchName": "kiribati"
-    },
-    {
-      "CodeAlpha3Bibliographic": "gla",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "gd",
-      "EnglishName": "Gaelic; Scottish Gaelic",
-      "FrenchName": "ga\u00E9lique; ga\u00E9lique \u00E9cossais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "gle",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ga",
-      "EnglishName": "Irish",
-      "FrenchName": "irlandais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "glg",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "gl",
-      "EnglishName": "Galician",
-      "FrenchName": "galicien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "glv",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "gv",
-      "EnglishName": "Manx",
-      "FrenchName": "manx; mannois"
-    },
-    {
-      "CodeAlpha3Bibliographic": "gmh",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "German, Middle High (ca.1050-1500)",
-      "FrenchName": "allemand, moyen haut (ca. 1050-1500)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "goh",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "German, Old High (ca.750-1050)",
-      "FrenchName": "allemand, vieux haut (ca. 750-1050)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "gon",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Gondi",
-      "FrenchName": "gond"
-    },
-    {
-      "CodeAlpha3Bibliographic": "gor",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Gorontalo",
-      "FrenchName": "gorontalo"
-    },
-    {
-      "CodeAlpha3Bibliographic": "got",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Gothic",
-      "FrenchName": "gothique"
-    },
-    {
-      "CodeAlpha3Bibliographic": "grb",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Grebo",
-      "FrenchName": "grebo"
-    },
-    {
-      "CodeAlpha3Bibliographic": "grc",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Greek, Ancient (to 1453)",
-      "FrenchName": "grec ancien (jusqu\u0027\u00E0 1453)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "gre",
-      "CodeAlpha3Terminologic": "ell",
-      "CodeAlpha2": "el",
-      "EnglishName": "Greek, Modern (1453-)",
-      "FrenchName": "grec moderne (apr\u00E8s 1453)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "grn",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "gn",
-      "EnglishName": "Guarani",
-      "FrenchName": "guarani"
-    },
-    {
-      "CodeAlpha3Bibliographic": "gsw",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Swiss German; Alemannic; Alsatian",
-      "FrenchName": "suisse al\u00E9manique; al\u00E9manique; alsacien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "guj",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "gu",
-      "EnglishName": "Gujarati",
-      "FrenchName": "goudjrati"
-    },
-    {
-      "CodeAlpha3Bibliographic": "gwi",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Gwich\u0027in",
-      "FrenchName": "gwich\u0027in"
-    },
-    {
-      "CodeAlpha3Bibliographic": "hai",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Haida",
-      "FrenchName": "haida"
-    },
-    {
-      "CodeAlpha3Bibliographic": "hat",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ht",
-      "EnglishName": "Haitian; Haitian Creole",
-      "FrenchName": "ha\u00EFtien; cr\u00E9ole ha\u00EFtien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "hau",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ha",
-      "EnglishName": "Hausa",
-      "FrenchName": "haoussa"
-    },
-    {
-      "CodeAlpha3Bibliographic": "haw",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Hawaiian",
-      "FrenchName": "hawa\u00EFen"
-    },
-    {
-      "CodeAlpha3Bibliographic": "heb",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "he",
-      "EnglishName": "Hebrew",
-      "FrenchName": "h\u00E9breu"
-    },
-    {
-      "CodeAlpha3Bibliographic": "her",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "hz",
-      "EnglishName": "Herero",
-      "FrenchName": "herero"
-    },
-    {
-      "CodeAlpha3Bibliographic": "hil",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Hiligaynon",
-      "FrenchName": "hiligaynon"
-    },
-    {
-      "CodeAlpha3Bibliographic": "him",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Himachali languages; Western Pahari languages",
-      "FrenchName": "langues himachalis; langues paharis occidentales"
-    },
-    {
-      "CodeAlpha3Bibliographic": "hin",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "hi",
-      "EnglishName": "Hindi",
-      "FrenchName": "hindi"
-    },
-    {
-      "CodeAlpha3Bibliographic": "hit",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Hittite",
-      "FrenchName": "hittite"
-    },
-    {
-      "CodeAlpha3Bibliographic": "hmn",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Hmong; Mong",
-      "FrenchName": "hmong"
-    },
-    {
-      "CodeAlpha3Bibliographic": "hmo",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ho",
-      "EnglishName": "Hiri Motu",
-      "FrenchName": "hiri motu"
-    },
-    {
-      "CodeAlpha3Bibliographic": "hrv",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "hr",
-      "EnglishName": "Croatian",
-      "FrenchName": "croate"
-    },
-    {
-      "CodeAlpha3Bibliographic": "hsb",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Upper Sorbian",
-      "FrenchName": "haut-sorabe"
-    },
-    {
-      "CodeAlpha3Bibliographic": "hun",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "hu",
-      "EnglishName": "Hungarian",
-      "FrenchName": "hongrois"
-    },
-    {
-      "CodeAlpha3Bibliographic": "hup",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Hupa",
-      "FrenchName": "hupa"
-    },
-    {
-      "CodeAlpha3Bibliographic": "iba",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Iban",
-      "FrenchName": "iban"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ibo",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ig",
-      "EnglishName": "Igbo",
-      "FrenchName": "igbo"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ice",
-      "CodeAlpha3Terminologic": "isl",
-      "CodeAlpha2": "is",
-      "EnglishName": "Icelandic",
-      "FrenchName": "islandais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ido",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "io",
-      "EnglishName": "Ido",
-      "FrenchName": "ido"
-    },
-    {
-      "CodeAlpha3Bibliographic": "iii",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ii",
-      "EnglishName": "Sichuan Yi; Nuosu",
-      "FrenchName": "yi de Sichuan"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ijo",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Ijo languages",
-      "FrenchName": "ijo, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "iku",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "iu",
-      "EnglishName": "Inuktitut",
-      "FrenchName": "inuktitut"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ile",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ie",
-      "EnglishName": "Interlingue; Occidental",
-      "FrenchName": "interlingue"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ilo",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Iloko",
-      "FrenchName": "ilocano"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ina",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ia",
-      "EnglishName": "Interlingua (International Auxiliary Language Association)",
-      "FrenchName": "interlingua (langue auxiliaire internationale)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "inc",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Indic languages",
-      "FrenchName": "indo-aryennes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ind",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "id",
-      "EnglishName": "Indonesian",
-      "FrenchName": "indon\u00E9sien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ine",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Indo-European languages",
-      "FrenchName": "indo-europ\u00E9ennes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "inh",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Ingush",
-      "FrenchName": "ingouche"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ipk",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ik",
-      "EnglishName": "Inupiaq",
-      "FrenchName": "inupiaq"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ira",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Iranian languages",
-      "FrenchName": "iraniennes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "iro",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Iroquoian languages",
-      "FrenchName": "iroquoises, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ita",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "it",
-      "EnglishName": "Italian",
-      "FrenchName": "italien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "jav",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "jv",
-      "EnglishName": "Javanese",
-      "FrenchName": "javanais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "jbo",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Lojban",
-      "FrenchName": "lojban"
-    },
-    {
-      "CodeAlpha3Bibliographic": "jpn",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ja",
-      "EnglishName": "Japanese",
-      "FrenchName": "japonais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "jpr",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Judeo-Persian",
-      "FrenchName": "jud\u00E9o-persan"
-    },
-    {
-      "CodeAlpha3Bibliographic": "jrb",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Judeo-Arabic",
-      "FrenchName": "jud\u00E9o-arabe"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kaa",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Kara-Kalpak",
-      "FrenchName": "karakalpak"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kab",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Kabyle",
-      "FrenchName": "kabyle"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kac",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Kachin; Jingpho",
-      "FrenchName": "kachin; jingpho"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kal",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "kl",
-      "EnglishName": "Kalaallisut; Greenlandic",
-      "FrenchName": "groenlandais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kam",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Kamba",
-      "FrenchName": "kamba"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kan",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "kn",
-      "EnglishName": "Kannada",
-      "FrenchName": "kannada"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kar",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Karen languages",
-      "FrenchName": "karen, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kas",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ks",
-      "EnglishName": "Kashmiri",
-      "FrenchName": "kashmiri"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kau",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "kr",
-      "EnglishName": "Kanuri",
-      "FrenchName": "kanouri"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kaw",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Kawi",
-      "FrenchName": "kawi"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kaz",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "kk",
-      "EnglishName": "Kazakh",
-      "FrenchName": "kazakh"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kbd",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Kabardian",
-      "FrenchName": "kabardien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kha",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Khasi",
-      "FrenchName": "khasi"
-    },
-    {
-      "CodeAlpha3Bibliographic": "khi",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Khoisan languages",
-      "FrenchName": "kho\u00EFsan, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "khm",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "km",
-      "EnglishName": "Central Khmer",
-      "FrenchName": "khmer central"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kho",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Khotanese; Sakan",
-      "FrenchName": "khotanais; sakan"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kik",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ki",
-      "EnglishName": "Kikuyu; Gikuyu",
-      "FrenchName": "kikuyu"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kin",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "rw",
-      "EnglishName": "Kinyarwanda",
-      "FrenchName": "rwanda"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kir",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ky",
-      "EnglishName": "Kirghiz; Kyrgyz",
-      "FrenchName": "kirghiz"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kmb",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Kimbundu",
-      "FrenchName": "kimbundu"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kok",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Konkani",
-      "FrenchName": "konkani"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kom",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "kv",
-      "EnglishName": "Komi",
-      "FrenchName": "kom"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kon",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "kg",
-      "EnglishName": "Kongo",
-      "FrenchName": "kongo"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kor",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ko",
-      "EnglishName": "Korean",
-      "FrenchName": "cor\u00E9en"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kos",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Kosraean",
-      "FrenchName": "kosrae"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kpe",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Kpelle",
-      "FrenchName": "kpell\u00E9"
-    },
-    {
-      "CodeAlpha3Bibliographic": "krc",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Karachay-Balkar",
-      "FrenchName": "karatchai balkar"
-    },
-    {
-      "CodeAlpha3Bibliographic": "krl",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Karelian",
-      "FrenchName": "car\u00E9lien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kro",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Kru languages",
-      "FrenchName": "krou, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kru",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Kurukh",
-      "FrenchName": "kurukh"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kua",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "kj",
-      "EnglishName": "Kuanyama; Kwanyama",
-      "FrenchName": "kuanyama; kwanyama"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kum",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Kumyk",
-      "FrenchName": "koumyk"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kur",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ku",
-      "EnglishName": "Kurdish",
-      "FrenchName": "kurde"
-    },
-    {
-      "CodeAlpha3Bibliographic": "kut",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Kutenai",
-      "FrenchName": "kutenai"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lad",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Ladino",
-      "FrenchName": "jud\u00E9o-espagnol"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lah",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Lahnda",
-      "FrenchName": "lahnda"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lam",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Lamba",
-      "FrenchName": "lamba"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lao",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "lo",
-      "EnglishName": "Lao",
-      "FrenchName": "lao"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lat",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "la",
-      "EnglishName": "Latin",
-      "FrenchName": "latin"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lav",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "lv",
-      "EnglishName": "Latvian",
-      "FrenchName": "letton"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lez",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Lezghian",
-      "FrenchName": "lezghien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lim",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "li",
-      "EnglishName": "Limburgan; Limburger; Limburgish",
-      "FrenchName": "limbourgeois"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lin",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ln",
-      "EnglishName": "Lingala",
-      "FrenchName": "lingala"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lit",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "lt",
-      "EnglishName": "Lithuanian",
-      "FrenchName": "lituanien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lol",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Mongo",
-      "FrenchName": "mongo"
-    },
-    {
-      "CodeAlpha3Bibliographic": "loz",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Lozi",
-      "FrenchName": "lozi"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ltz",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "lb",
-      "EnglishName": "Luxembourgish; Letzeburgesch",
-      "FrenchName": "luxembourgeois"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lua",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Luba-Lulua",
-      "FrenchName": "luba-lulua"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lub",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "lu",
-      "EnglishName": "Luba-Katanga",
-      "FrenchName": "luba-katanga"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lug",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "lg",
-      "EnglishName": "Ganda",
-      "FrenchName": "ganda"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lui",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Luiseno",
-      "FrenchName": "luiseno"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lun",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Lunda",
-      "FrenchName": "lunda"
-    },
-    {
-      "CodeAlpha3Bibliographic": "luo",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Luo (Kenya and Tanzania)",
-      "FrenchName": "luo (Kenya et Tanzanie)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "lus",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Lushai",
-      "FrenchName": "lushai"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mac",
-      "CodeAlpha3Terminologic": "mkd",
-      "CodeAlpha2": "mk",
-      "EnglishName": "Macedonian",
-      "FrenchName": "mac\u00E9donien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mad",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Madurese",
-      "FrenchName": "madourais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mag",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Magahi",
-      "FrenchName": "magahi"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mah",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "mh",
-      "EnglishName": "Marshallese",
-      "FrenchName": "marshall"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mai",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Maithili",
-      "FrenchName": "maithili"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mak",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Makasar",
-      "FrenchName": "makassar"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mal",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ml",
-      "EnglishName": "Malayalam",
-      "FrenchName": "malayalam"
-    },
-    {
-      "CodeAlpha3Bibliographic": "man",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Mandingo",
-      "FrenchName": "mandingue"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mao",
-      "CodeAlpha3Terminologic": "mri",
-      "CodeAlpha2": "mi",
-      "EnglishName": "Maori",
-      "FrenchName": "maori"
-    },
-    {
-      "CodeAlpha3Bibliographic": "map",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Austronesian languages",
-      "FrenchName": "austron\u00E9siennes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mar",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "mr",
-      "EnglishName": "Marathi",
-      "FrenchName": "marathe"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mas",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Masai",
-      "FrenchName": "massa\u00EF"
-    },
-    {
-      "CodeAlpha3Bibliographic": "may",
-      "CodeAlpha3Terminologic": "msa",
-      "CodeAlpha2": "ms",
-      "EnglishName": "Malay",
-      "FrenchName": "malais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mdf",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Moksha",
-      "FrenchName": "moksa"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mdr",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Mandar",
-      "FrenchName": "mandar"
-    },
-    {
-      "CodeAlpha3Bibliographic": "men",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Mende",
-      "FrenchName": "mend\u00E9"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mga",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Irish, Middle (900-1200)",
-      "FrenchName": "irlandais moyen (900-1200)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mic",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Mi\u0027kmaq; Micmac",
-      "FrenchName": "mi\u0027kmaq; micmac"
-    },
-    {
-      "CodeAlpha3Bibliographic": "min",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Minangkabau",
-      "FrenchName": "minangkabau"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mis",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Uncoded languages",
-      "FrenchName": "langues non cod\u00E9es"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mkh",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Mon-Khmer languages",
-      "FrenchName": "m\u00F4n-khmer, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mlg",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "mg",
-      "EnglishName": "Malagasy",
-      "FrenchName": "malgache"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mlt",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "mt",
-      "EnglishName": "Maltese",
-      "FrenchName": "maltais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mnc",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Manchu",
-      "FrenchName": "mandchou"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mni",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Manipuri",
-      "FrenchName": "manipuri"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mno",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Manobo languages",
-      "FrenchName": "manobo, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "moh",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Mohawk",
-      "FrenchName": "mohawk"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mon",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "mn",
-      "EnglishName": "Mongolian",
-      "FrenchName": "mongol"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mos",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Mossi",
-      "FrenchName": "mor\u00E9"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mul",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Multiple languages",
-      "FrenchName": "multilingue"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mun",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Munda languages",
-      "FrenchName": "mounda, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mus",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Creek",
-      "FrenchName": "muskogee"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mwl",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Mirandese",
-      "FrenchName": "mirandais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "mwr",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Marwari",
-      "FrenchName": "marvari"
-    },
-    {
-      "CodeAlpha3Bibliographic": "myn",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Mayan languages",
-      "FrenchName": "maya, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "myv",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Erzya",
-      "FrenchName": "erza"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nah",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Nahuatl languages",
-      "FrenchName": "nahuatl, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nai",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "North American Indian languages",
-      "FrenchName": "nord-am\u00E9rindiennes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nap",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Neapolitan",
-      "FrenchName": "napolitain"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nau",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "na",
-      "EnglishName": "Nauru",
-      "FrenchName": "nauruan"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nav",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "nv",
-      "EnglishName": "Navajo; Navaho",
-      "FrenchName": "navaho"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nbl",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "nr",
-      "EnglishName": "Ndebele, South; South Ndebele",
-      "FrenchName": "nd\u00E9b\u00E9l\u00E9 du Sud"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nde",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "nd",
-      "EnglishName": "Ndebele, North; North Ndebele",
-      "FrenchName": "nd\u00E9b\u00E9l\u00E9 du Nord"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ndo",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ng",
-      "EnglishName": "Ndonga",
-      "FrenchName": "ndonga"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nds",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Low German; Low Saxon; German, Low; Saxon, Low",
-      "FrenchName": "bas allemand; bas saxon; allemand, bas; saxon, bas"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nep",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ne",
-      "EnglishName": "Nepali",
-      "FrenchName": "n\u00E9palais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "new",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Nepal Bhasa; Newari",
-      "FrenchName": "nepal bhasa; newari"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nia",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Nias",
-      "FrenchName": "nias"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nic",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Niger-Kordofanian languages",
-      "FrenchName": "nig\u00E9ro-kordofaniennes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "niu",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Niuean",
-      "FrenchName": "niu\u00E9"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nno",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "nn",
-      "EnglishName": "Norwegian Nynorsk; Nynorsk, Norwegian",
-      "FrenchName": "norv\u00E9gien nynorsk; nynorsk, norv\u00E9gien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nob",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "nb",
-      "EnglishName": "Bokm\u00E5l, Norwegian; Norwegian Bokm\u00E5l",
-      "FrenchName": "norv\u00E9gien bokm\u00E5l"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nog",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Nogai",
-      "FrenchName": "noga\u00EF; nogay"
-    },
-    {
-      "CodeAlpha3Bibliographic": "non",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Norse, Old",
-      "FrenchName": "norrois, vieux"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nor",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "no",
-      "EnglishName": "Norwegian",
-      "FrenchName": "norv\u00E9gien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nqo",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "N\u0027Ko",
-      "FrenchName": "n\u0027ko"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nso",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Pedi; Sepedi; Northern Sotho",
-      "FrenchName": "pedi; sepedi; sotho du Nord"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nub",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Nubian languages",
-      "FrenchName": "nubiennes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nwc",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Classical Newari; Old Newari; Classical Nepal Bhasa",
-      "FrenchName": "newari classique"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nya",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ny",
-      "EnglishName": "Chichewa; Chewa; Nyanja",
-      "FrenchName": "chichewa; chewa; nyanja"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nym",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Nyamwezi",
-      "FrenchName": "nyamwezi"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nyn",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Nyankole",
-      "FrenchName": "nyankol\u00E9"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nyo",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Nyoro",
-      "FrenchName": "nyoro"
-    },
-    {
-      "CodeAlpha3Bibliographic": "nzi",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Nzima",
-      "FrenchName": "nzema"
-    },
-    {
-      "CodeAlpha3Bibliographic": "oci",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "oc",
-      "EnglishName": "Occitan (post 1500)",
-      "FrenchName": "occitan (apr\u00E8s 1500)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "oji",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "oj",
-      "EnglishName": "Ojibwa",
-      "FrenchName": "ojibwa"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ori",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "or",
-      "EnglishName": "Oriya",
-      "FrenchName": "oriya"
-    },
-    {
-      "CodeAlpha3Bibliographic": "orm",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "om",
-      "EnglishName": "Oromo",
-      "FrenchName": "galla"
-    },
-    {
-      "CodeAlpha3Bibliographic": "osa",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Osage",
-      "FrenchName": "osage"
-    },
-    {
-      "CodeAlpha3Bibliographic": "oss",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "os",
-      "EnglishName": "Ossetian; Ossetic",
-      "FrenchName": "oss\u00E8te"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ota",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Turkish, Ottoman (1500-1928)",
-      "FrenchName": "turc ottoman (1500-1928)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "oto",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Otomian languages",
-      "FrenchName": "otomi, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "paa",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Papuan languages",
-      "FrenchName": "papoues, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "pag",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Pangasinan",
-      "FrenchName": "pangasinan"
-    },
-    {
-      "CodeAlpha3Bibliographic": "pal",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Pahlavi",
-      "FrenchName": "pahlavi"
-    },
-    {
-      "CodeAlpha3Bibliographic": "pam",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Pampanga; Kapampangan",
-      "FrenchName": "pampangan"
-    },
-    {
-      "CodeAlpha3Bibliographic": "pan",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "pa",
-      "EnglishName": "Panjabi; Punjabi",
-      "FrenchName": "pendjabi"
-    },
-    {
-      "CodeAlpha3Bibliographic": "pap",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Papiamento",
-      "FrenchName": "papiamento"
-    },
-    {
-      "CodeAlpha3Bibliographic": "pau",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Palauan",
-      "FrenchName": "palau"
-    },
-    {
-      "CodeAlpha3Bibliographic": "peo",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Persian, Old (ca.600-400 B.C.)",
-      "FrenchName": "perse, vieux (ca. 600-400 av. J.-C.)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "per",
-      "CodeAlpha3Terminologic": "fas",
-      "CodeAlpha2": "fa",
-      "EnglishName": "Persian",
-      "FrenchName": "persan"
-    },
-    {
-      "CodeAlpha3Bibliographic": "phi",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Philippine languages",
-      "FrenchName": "philippines, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "phn",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Phoenician",
-      "FrenchName": "ph\u00E9nicien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "pli",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "pi",
-      "EnglishName": "Pali",
-      "FrenchName": "pali"
-    },
-    {
-      "CodeAlpha3Bibliographic": "pol",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "pl",
-      "EnglishName": "Polish",
-      "FrenchName": "polonais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "pon",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Pohnpeian",
-      "FrenchName": "pohnpei"
-    },
-    {
-      "CodeAlpha3Bibliographic": "por",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "pt",
-      "EnglishName": "Portuguese",
-      "FrenchName": "portugais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "pra",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Prakrit languages",
-      "FrenchName": "pr\u00E2krit, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "pro",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Proven\u00E7al, Old (to 1500); Occitan, Old (to 1500)",
-      "FrenchName": "proven\u00E7al ancien (jusqu\u0027\u00E0 1500); occitan ancien (jusqu\u0027\u00E0 1500)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "pus",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ps",
-      "EnglishName": "Pushto; Pashto",
-      "FrenchName": "pachto"
-    },
-    {
-      "CodeAlpha3Bibliographic": "qaa-qtz",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Reserved for local use",
-      "FrenchName": "r\u00E9serv\u00E9e \u00E0 l\u0027usage local"
-    },
-    {
-      "CodeAlpha3Bibliographic": "que",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "qu",
-      "EnglishName": "Quechua",
-      "FrenchName": "quechua"
-    },
-    {
-      "CodeAlpha3Bibliographic": "raj",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Rajasthani",
-      "FrenchName": "rajasthani"
-    },
-    {
-      "CodeAlpha3Bibliographic": "rap",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Rapanui",
-      "FrenchName": "rapanui"
-    },
-    {
-      "CodeAlpha3Bibliographic": "rar",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Rarotongan; Cook Islands Maori",
-      "FrenchName": "rarotonga; maori des \u00EEles Cook"
-    },
-    {
-      "CodeAlpha3Bibliographic": "roa",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Romance languages",
-      "FrenchName": "romanes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "roh",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "rm",
-      "EnglishName": "Romansh",
-      "FrenchName": "romanche"
-    },
-    {
-      "CodeAlpha3Bibliographic": "rom",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Romany",
-      "FrenchName": "tsigane"
-    },
-    {
-      "CodeAlpha3Bibliographic": "rum",
-      "CodeAlpha3Terminologic": "ron",
-      "CodeAlpha2": "ro",
-      "EnglishName": "Romanian; Moldavian; Moldovan",
-      "FrenchName": "roumain; moldave"
-    },
-    {
-      "CodeAlpha3Bibliographic": "run",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "rn",
-      "EnglishName": "Rundi",
-      "FrenchName": "rundi"
-    },
-    {
-      "CodeAlpha3Bibliographic": "rup",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Aromanian; Arumanian; Macedo-Romanian",
-      "FrenchName": "aroumain; mac\u00E9do-roumain"
-    },
-    {
-      "CodeAlpha3Bibliographic": "rus",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ru",
-      "EnglishName": "Russian",
-      "FrenchName": "russe"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sad",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Sandawe",
-      "FrenchName": "sandawe"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sag",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "sg",
-      "EnglishName": "Sango",
-      "FrenchName": "sango"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sah",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Yakut",
-      "FrenchName": "iakoute"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sai",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "South American Indian languages",
-      "FrenchName": "sud-am\u00E9rindiennes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sal",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Salishan languages",
-      "FrenchName": "salishennes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sam",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Samaritan Aramaic",
-      "FrenchName": "samaritain"
-    },
-    {
-      "CodeAlpha3Bibliographic": "san",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "sa",
-      "EnglishName": "Sanskrit",
-      "FrenchName": "sanskrit"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sas",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Sasak",
-      "FrenchName": "sasak"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sat",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Santali",
-      "FrenchName": "santal"
-    },
-    {
-      "CodeAlpha3Bibliographic": "scn",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Sicilian",
-      "FrenchName": "sicilien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sco",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Scots",
-      "FrenchName": "\u00E9cossais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sel",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Selkup",
-      "FrenchName": "selkoupe"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sem",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Semitic languages",
-      "FrenchName": "s\u00E9mitiques, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sga",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Irish, Old (to 900)",
-      "FrenchName": "irlandais ancien (jusqu\u0027\u00E0 900)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sgn",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Sign Languages",
-      "FrenchName": "langues des signes"
-    },
-    {
-      "CodeAlpha3Bibliographic": "shn",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Shan",
-      "FrenchName": "chan"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sid",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Sidamo",
-      "FrenchName": "sidamo"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sin",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "si",
-      "EnglishName": "Sinhala; Sinhalese",
-      "FrenchName": "singhalais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sio",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Siouan languages",
-      "FrenchName": "sioux, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sit",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Sino-Tibetan languages",
-      "FrenchName": "sino-tib\u00E9taines, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sla",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Slavic languages",
-      "FrenchName": "slaves, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "slo",
-      "CodeAlpha3Terminologic": "slk",
-      "CodeAlpha2": "sk",
-      "EnglishName": "Slovak",
-      "FrenchName": "slovaque"
-    },
-    {
-      "CodeAlpha3Bibliographic": "slv",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "sl",
-      "EnglishName": "Slovenian",
-      "FrenchName": "slov\u00E8ne"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sma",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Southern Sami",
-      "FrenchName": "sami du Sud"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sme",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "se",
-      "EnglishName": "Northern Sami",
-      "FrenchName": "sami du Nord"
-    },
-    {
-      "CodeAlpha3Bibliographic": "smi",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Sami languages",
-      "FrenchName": "sames, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "smj",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Lule Sami",
-      "FrenchName": "sami de Lule"
-    },
-    {
-      "CodeAlpha3Bibliographic": "smn",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Inari Sami",
-      "FrenchName": "sami d\u0027Inari"
-    },
-    {
-      "CodeAlpha3Bibliographic": "smo",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "sm",
-      "EnglishName": "Samoan",
-      "FrenchName": "samoan"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sms",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Skolt Sami",
-      "FrenchName": "sami skolt"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sna",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "sn",
-      "EnglishName": "Shona",
-      "FrenchName": "shona"
-    },
-    {
-      "CodeAlpha3Bibliographic": "snd",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "sd",
-      "EnglishName": "Sindhi",
-      "FrenchName": "sindhi"
-    },
-    {
-      "CodeAlpha3Bibliographic": "snk",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Soninke",
-      "FrenchName": "sonink\u00E9"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sog",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Sogdian",
-      "FrenchName": "sogdien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "som",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "so",
-      "EnglishName": "Somali",
-      "FrenchName": "somali"
-    },
-    {
-      "CodeAlpha3Bibliographic": "son",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Songhai languages",
-      "FrenchName": "songhai, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sot",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "st",
-      "EnglishName": "Sotho, Southern",
-      "FrenchName": "sotho du Sud"
-    },
-    {
-      "CodeAlpha3Bibliographic": "spa",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "es",
-      "EnglishName": "Spanish; Castilian",
-      "FrenchName": "espagnol; castillan"
-    },
-    {
-      "CodeAlpha3Bibliographic": "srd",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "sc",
-      "EnglishName": "Sardinian",
-      "FrenchName": "sarde"
-    },
-    {
-      "CodeAlpha3Bibliographic": "srn",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Sranan Tongo",
-      "FrenchName": "sranan tongo"
-    },
-    {
-      "CodeAlpha3Bibliographic": "srp",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "sr",
-      "EnglishName": "Serbian",
-      "FrenchName": "serbe"
-    },
-    {
-      "CodeAlpha3Bibliographic": "srr",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Serer",
-      "FrenchName": "s\u00E9r\u00E8re"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ssa",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Nilo-Saharan languages",
-      "FrenchName": "nilo-sahariennes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ssw",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ss",
-      "EnglishName": "Swati",
-      "FrenchName": "swati"
-    },
-    {
-      "CodeAlpha3Bibliographic": "suk",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Sukuma",
-      "FrenchName": "sukuma"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sun",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "su",
-      "EnglishName": "Sundanese",
-      "FrenchName": "soundanais"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sus",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Susu",
-      "FrenchName": "soussou"
-    },
-    {
-      "CodeAlpha3Bibliographic": "sux",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Sumerian",
-      "FrenchName": "sum\u00E9rien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "swa",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "sw",
-      "EnglishName": "Swahili",
-      "FrenchName": "swahili"
-    },
-    {
-      "CodeAlpha3Bibliographic": "swe",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "sv",
-      "EnglishName": "Swedish",
-      "FrenchName": "su\u00E9dois"
-    },
-    {
-      "CodeAlpha3Bibliographic": "syc",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Classical Syriac",
-      "FrenchName": "syriaque classique"
-    },
-    {
-      "CodeAlpha3Bibliographic": "syr",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Syriac",
-      "FrenchName": "syriaque"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tah",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ty",
-      "EnglishName": "Tahitian",
-      "FrenchName": "tahitien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tai",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Tai languages",
-      "FrenchName": "tai, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tam",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ta",
-      "EnglishName": "Tamil",
-      "FrenchName": "tamoul"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tat",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "tt",
-      "EnglishName": "Tatar",
-      "FrenchName": "tatar"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tel",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "te",
-      "EnglishName": "Telugu",
-      "FrenchName": "t\u00E9lougou"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tem",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Timne",
-      "FrenchName": "temne"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ter",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Tereno",
-      "FrenchName": "tereno"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tet",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Tetum",
-      "FrenchName": "tetum"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tgk",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "tg",
-      "EnglishName": "Tajik",
-      "FrenchName": "tadjik"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tgl",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "tl",
-      "EnglishName": "Tagalog",
-      "FrenchName": "tagalog"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tha",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "th",
-      "EnglishName": "Thai",
-      "FrenchName": "tha\u00EF"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tib",
-      "CodeAlpha3Terminologic": "bod",
-      "CodeAlpha2": "bo",
-      "EnglishName": "Tibetan",
-      "FrenchName": "tib\u00E9tain"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tig",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Tigre",
-      "FrenchName": "tigr\u00E9"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tir",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ti",
-      "EnglishName": "Tigrinya",
-      "FrenchName": "tigrigna"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tiv",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Tiv",
-      "FrenchName": "tiv"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tkl",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Tokelau",
-      "FrenchName": "tokelau"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tlh",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Klingon; tlhIngan-Hol",
-      "FrenchName": "klingon"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tli",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Tlingit",
-      "FrenchName": "tlingit"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tmh",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Tamashek",
-      "FrenchName": "tamacheq"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tog",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Tonga (Nyasa)",
-      "FrenchName": "tonga (Nyasa)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ton",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "to",
-      "EnglishName": "Tonga (Tonga Islands)",
-      "FrenchName": "tongan (\u00CEles Tonga)"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tpi",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Tok Pisin",
-      "FrenchName": "tok pisin"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tsi",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Tsimshian",
-      "FrenchName": "tsimshian"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tsn",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "tn",
-      "EnglishName": "Tswana",
-      "FrenchName": "tswana"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tso",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ts",
-      "EnglishName": "Tsonga",
-      "FrenchName": "tsonga"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tuk",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "tk",
-      "EnglishName": "Turkmen",
-      "FrenchName": "turkm\u00E8ne"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tum",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Tumbuka",
-      "FrenchName": "tumbuka"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tup",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Tupi languages",
-      "FrenchName": "tupi, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tur",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "tr",
-      "EnglishName": "Turkish",
-      "FrenchName": "turc"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tut",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Altaic languages",
-      "FrenchName": "alta\u00EFques, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tvl",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Tuvalu",
-      "FrenchName": "tuvalu"
-    },
-    {
-      "CodeAlpha3Bibliographic": "twi",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "tw",
-      "EnglishName": "Twi",
-      "FrenchName": "twi"
-    },
-    {
-      "CodeAlpha3Bibliographic": "tyv",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Tuvinian",
-      "FrenchName": "touva"
-    },
-    {
-      "CodeAlpha3Bibliographic": "udm",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Udmurt",
-      "FrenchName": "oudmourte"
-    },
-    {
-      "CodeAlpha3Bibliographic": "uga",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Ugaritic",
-      "FrenchName": "ougaritique"
-    },
-    {
-      "CodeAlpha3Bibliographic": "uig",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ug",
-      "EnglishName": "Uighur; Uyghur",
-      "FrenchName": "ou\u00EFgour"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ukr",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "uk",
-      "EnglishName": "Ukrainian",
-      "FrenchName": "ukrainien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "umb",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Umbundu",
-      "FrenchName": "umbundu"
-    },
-    {
-      "CodeAlpha3Bibliographic": "und",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Undetermined",
-      "FrenchName": "ind\u00E9termin\u00E9e"
-    },
-    {
-      "CodeAlpha3Bibliographic": "urd",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ur",
-      "EnglishName": "Urdu",
-      "FrenchName": "ourdou"
-    },
-    {
-      "CodeAlpha3Bibliographic": "uzb",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "uz",
-      "EnglishName": "Uzbek",
-      "FrenchName": "ouszbek"
-    },
-    {
-      "CodeAlpha3Bibliographic": "vai",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Vai",
-      "FrenchName": "va\u00EF"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ven",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "ve",
-      "EnglishName": "Venda",
-      "FrenchName": "venda"
-    },
-    {
-      "CodeAlpha3Bibliographic": "vie",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "vi",
-      "EnglishName": "Vietnamese",
-      "FrenchName": "vietnamien"
-    },
-    {
-      "CodeAlpha3Bibliographic": "vol",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "vo",
-      "EnglishName": "Volap\u00FCk",
-      "FrenchName": "volap\u00FCk"
-    },
-    {
-      "CodeAlpha3Bibliographic": "vot",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Votic",
-      "FrenchName": "vote"
-    },
-    {
-      "CodeAlpha3Bibliographic": "wak",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Wakashan languages",
-      "FrenchName": "wakashanes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "wal",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Wolaitta; Wolaytta",
-      "FrenchName": "wolaitta; wolaytta"
-    },
-    {
-      "CodeAlpha3Bibliographic": "war",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Waray",
-      "FrenchName": "waray"
-    },
-    {
-      "CodeAlpha3Bibliographic": "was",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Washo",
-      "FrenchName": "washo"
-    },
-    {
-      "CodeAlpha3Bibliographic": "wel",
-      "CodeAlpha3Terminologic": "cym",
-      "CodeAlpha2": "cy",
-      "EnglishName": "Welsh",
-      "FrenchName": "gallois"
-    },
-    {
-      "CodeAlpha3Bibliographic": "wen",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Sorbian languages",
-      "FrenchName": "sorabes, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "wln",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "wa",
-      "EnglishName": "Walloon",
-      "FrenchName": "wallon"
-    },
-    {
-      "CodeAlpha3Bibliographic": "wol",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "wo",
-      "EnglishName": "Wolof",
-      "FrenchName": "wolof"
-    },
-    {
-      "CodeAlpha3Bibliographic": "xal",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Kalmyk; Oirat",
-      "FrenchName": "kalmouk; o\u00EFrat"
-    },
-    {
-      "CodeAlpha3Bibliographic": "xho",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "xh",
-      "EnglishName": "Xhosa",
-      "FrenchName": "xhosa"
-    },
-    {
-      "CodeAlpha3Bibliographic": "yao",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Yao",
-      "FrenchName": "yao"
-    },
-    {
-      "CodeAlpha3Bibliographic": "yap",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Yapese",
-      "FrenchName": "yapois"
-    },
-    {
-      "CodeAlpha3Bibliographic": "yid",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "yi",
-      "EnglishName": "Yiddish",
-      "FrenchName": "yiddish"
-    },
-    {
-      "CodeAlpha3Bibliographic": "yor",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "yo",
-      "EnglishName": "Yoruba",
-      "FrenchName": "yoruba"
-    },
-    {
-      "CodeAlpha3Bibliographic": "ypk",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Yupik languages",
-      "FrenchName": "yupik, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "zap",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Zapotec",
-      "FrenchName": "zapot\u00E8que"
-    },
-    {
-      "CodeAlpha3Bibliographic": "zbl",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Blissymbols; Blissymbolics; Bliss",
-      "FrenchName": "symboles Bliss; Bliss"
-    },
-    {
-      "CodeAlpha3Bibliographic": "zen",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Zenaga",
-      "FrenchName": "zenaga"
-    },
-    {
-      "CodeAlpha3Bibliographic": "zgh",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Standard Moroccan Tamazight",
-      "FrenchName": "amazighe standard marocain"
-    },
-    {
-      "CodeAlpha3Bibliographic": "zha",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "za",
-      "EnglishName": "Zhuang; Chuang",
-      "FrenchName": "zhuang; chuang"
-    },
-    {
-      "CodeAlpha3Bibliographic": "znd",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Zande languages",
-      "FrenchName": "zand\u00E9, langues"
-    },
-    {
-      "CodeAlpha3Bibliographic": "zul",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "zu",
-      "EnglishName": "Zulu",
-      "FrenchName": "zoulou"
-    },
-    {
-      "CodeAlpha3Bibliographic": "zun",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Zuni",
-      "FrenchName": "zuni"
-    },
-    {
-      "CodeAlpha3Bibliographic": "zxx",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "No linguistic content; Not applicable",
-      "FrenchName": "pas de contenu linguistique; non applicable"
-    },
-    {
-      "CodeAlpha3Bibliographic": "zza",
-      "CodeAlpha3Terminologic": "",
-      "CodeAlpha2": "",
-      "EnglishName": "Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki",
-      "FrenchName": "zaza; dimili; dimli; kirdki; kirmanjki; zazaki"
-    }
-  ],
   "SetThreeLanguageDescriptorList": [
     {
       "Id": "aaa",
@@ -85009,7 +81598,9 @@
       "Id": "fri",
       "RefName": "Western Frisian",
       "RetReason": "C",
-      "ChangeTo": "fry",
+      "ChangeTo": [
+        "fry"
+      ],
       "RetRemedy": "",
       "Effective": "2007-02-01"
     },
@@ -85017,7 +81608,9 @@
       "Id": "auv",
       "RefName": "Auvergnat",
       "RetReason": "M",
-      "ChangeTo": "oci",
+      "ChangeTo": [
+        "oci"
+      ],
       "RetRemedy": "",
       "Effective": "2007-03-14"
     },
@@ -85025,7 +81618,9 @@
       "Id": "gsc",
       "RefName": "Gascon",
       "RetReason": "M",
-      "ChangeTo": "oci",
+      "ChangeTo": [
+        "oci"
+      ],
       "RetRemedy": "",
       "Effective": "2007-03-14"
     },
@@ -85033,7 +81628,9 @@
       "Id": "lms",
       "RefName": "Limousin",
       "RetReason": "M",
-      "ChangeTo": "oci",
+      "ChangeTo": [
+        "oci"
+      ],
       "RetRemedy": "",
       "Effective": "2007-03-14"
     },
@@ -85041,7 +81638,9 @@
       "Id": "lnc",
       "RefName": "Languedocien",
       "RetReason": "M",
-      "ChangeTo": "oci",
+      "ChangeTo": [
+        "oci"
+      ],
       "RetRemedy": "",
       "Effective": "2007-03-14"
     },
@@ -85049,7 +81648,9 @@
       "Id": "prv",
       "RefName": "Proven\u00E7al",
       "RetReason": "M",
-      "ChangeTo": "oci",
+      "ChangeTo": [
+        "oci"
+      ],
       "RetRemedy": "",
       "Effective": "2007-03-14"
     },
@@ -85057,7 +81658,7 @@
       "Id": "amd",
       "RefName": "Amap\u00E1 Creole",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2007-07-18"
     },
@@ -85065,7 +81666,9 @@
       "Id": "bgh",
       "RefName": "Bogan",
       "RetReason": "D",
-      "ChangeTo": "bbh",
+      "ChangeTo": [
+        "bbh"
+      ],
       "RetRemedy": "",
       "Effective": "2007-07-18"
     },
@@ -85073,7 +81676,9 @@
       "Id": "bnh",
       "RefName": "Banaw\u00E1",
       "RetReason": "M",
-      "ChangeTo": "jaa",
+      "ChangeTo": [
+        "jaa"
+      ],
       "RetRemedy": "",
       "Effective": "2007-07-18"
     },
@@ -85081,7 +81686,10 @@
       "Id": "bvs",
       "RefName": "Belgian Sign Language",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "sfb",
+        "vgt"
+      ],
       "RetRemedy": "Split into Langue des signes de Belgique Francophone [sfb], and Vlaamse Gebarentaal [vgt]",
       "Effective": "2007-07-18"
     },
@@ -85089,7 +81697,13 @@
       "Id": "ccy",
       "RefName": "Southern Zhuang",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "zhn",
+        "zyg",
+        "zyn",
+        "zzj",
+        "zhd"
+      ],
       "RetRemedy": "Split into five languages: Nong Zhuang [zhn];  Yang Zhuang [zyg]; Yongnan Zhuang [zyn]; Zuojiang Zhuang [zzj]; Dai Zhuang [zhd].",
       "Effective": "2007-07-18"
     },
@@ -85097,7 +81711,10 @@
       "Id": "cit",
       "RefName": "Chittagonian",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "rhg",
+        "ctg"
+      ],
       "RetRemedy": "Split into Rohingya [rhg], and Chittagonian (new identifier [ctg])",
       "Effective": "2007-07-18"
     },
@@ -85105,7 +81722,10 @@
       "Id": "flm",
       "RefName": "Falam Chin",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "rnl",
+        "cfm"
+      ],
       "RetRemedy": "Split into Ranglong [rnl], and Falam Chin (new identifier [cfm]).",
       "Effective": "2007-07-18"
     },
@@ -85113,7 +81733,9 @@
       "Id": "jap",
       "RefName": "Jaru\u00E1ra",
       "RetReason": "M",
-      "ChangeTo": "jaa",
+      "ChangeTo": [
+        "jaa"
+      ],
       "RetRemedy": "",
       "Effective": "2007-07-18"
     },
@@ -85121,7 +81743,9 @@
       "Id": "kob",
       "RefName": "Kohoroxitari",
       "RetReason": "M",
-      "ChangeTo": "xsu",
+      "ChangeTo": [
+        "xsu"
+      ],
       "RetRemedy": "",
       "Effective": "2007-07-18"
     },
@@ -85129,7 +81753,13 @@
       "Id": "mob",
       "RefName": "Moinba",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "cvg",
+        "lsh",
+        "kkf",
+        "twm",
+        "onp"
+      ],
       "RetRemedy": "Split into five languages: Chug [cvg]; Lish [lsh];  Kalaktang Monpa [kkf]; Tawang Monpa [twm]; Sartang [onp]",
       "Effective": "2007-07-18"
     },
@@ -85137,7 +81767,12 @@
       "Id": "mzf",
       "RefName": "Aiku",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "aag",
+        "yde",
+        "ygl",
+        "ymo"
+      ],
       "RetRemedy": "Split into four languages: Ambrak [aag]; Yangum Dey [yde]; Yangum Gel [ygl]; Yangum Mon [ymo]",
       "Effective": "2007-07-18"
     },
@@ -85145,7 +81780,9 @@
       "Id": "nhj",
       "RefName": "Tlalitzlipa Nahuatl",
       "RetReason": "M",
-      "ChangeTo": "nhi",
+      "ChangeTo": [
+        "nhi"
+      ],
       "RetRemedy": "",
       "Effective": "2007-07-18"
     },
@@ -85153,7 +81790,10 @@
       "Id": "nhs",
       "RefName": "Southeastern Puebla Nahuatl",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "nsu",
+        "npl"
+      ],
       "RetRemedy": "Split into Sierra Negra Nahuatl [nsu] and Southeastern Puebla Nahuatl [npl]",
       "Effective": "2007-07-18"
     },
@@ -85161,7 +81801,9 @@
       "Id": "occ",
       "RefName": "Occidental",
       "RetReason": "D",
-      "ChangeTo": "ile",
+      "ChangeTo": [
+        "ile"
+      ],
       "RetRemedy": "",
       "Effective": "2007-07-18"
     },
@@ -85169,7 +81811,9 @@
       "Id": "tmx",
       "RefName": "Tomyang",
       "RetReason": "M",
-      "ChangeTo": "ybi",
+      "ChangeTo": [
+        "ybi"
+      ],
       "RetRemedy": "",
       "Effective": "2007-07-18"
     },
@@ -85177,7 +81821,10 @@
       "Id": "tot",
       "RefName": "Patla-Chicontla Totonac",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "tku",
+        "tcw"
+      ],
       "RetRemedy": "Split into Upper Necaxa Totonac [tku] and Tecpatl\u00E1n Totonac [tcw]",
       "Effective": "2007-07-18"
     },
@@ -85185,7 +81832,7 @@
       "Id": "xmi",
       "RefName": "Miarr\u00E3",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2007-07-18"
     },
@@ -85193,7 +81840,9 @@
       "Id": "yib",
       "RefName": "Yinglish",
       "RetReason": "M",
-      "ChangeTo": "eng",
+      "ChangeTo": [
+        "eng"
+      ],
       "RetRemedy": "",
       "Effective": "2007-07-18"
     },
@@ -85201,7 +81850,9 @@
       "Id": "ztc",
       "RefName": "Lachirioag Zapotec",
       "RetReason": "M",
-      "ChangeTo": "zty",
+      "ChangeTo": [
+        "zty"
+      ],
       "RetRemedy": "",
       "Effective": "2007-07-18"
     },
@@ -85209,7 +81860,7 @@
       "Id": "atf",
       "RefName": "Atuence",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2007-08-10"
     },
@@ -85217,7 +81868,9 @@
       "Id": "bqe",
       "RefName": "Navarro-Labourdin Basque",
       "RetReason": "M",
-      "ChangeTo": "eus",
+      "ChangeTo": [
+        "eus"
+      ],
       "RetRemedy": "",
       "Effective": "2007-08-10"
     },
@@ -85225,7 +81878,9 @@
       "Id": "bsz",
       "RefName": "Souletin Basque",
       "RetReason": "M",
-      "ChangeTo": "eus",
+      "ChangeTo": [
+        "eus"
+      ],
       "RetRemedy": "",
       "Effective": "2007-08-10"
     },
@@ -85233,7 +81888,9 @@
       "Id": "aex",
       "RefName": "Amerax",
       "RetReason": "M",
-      "ChangeTo": "eng",
+      "ChangeTo": [
+        "eng"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85241,7 +81898,9 @@
       "Id": "ahe",
       "RefName": "Ahe",
       "RetReason": "M",
-      "ChangeTo": "knx",
+      "ChangeTo": [
+        "knx"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85249,7 +81908,10 @@
       "Id": "aiz",
       "RefName": "Aari",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "aiw",
+        "gyl"
+      ],
       "RetRemedy": "Split into Aari [aiw] (new identifier) and Gayil [gyl]",
       "Effective": "2008-01-14"
     },
@@ -85257,7 +81919,7 @@
       "Id": "akn",
       "RefName": "Amikoana",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85265,7 +81927,11 @@
       "Id": "arf",
       "RefName": "Arafundi",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "afd",
+        "afk",
+        "afp"
+      ],
       "RetRemedy": "Split into three languages: Andai [afd]; Nanubae [afk]; Tapei [afp]",
       "Effective": "2008-01-14"
     },
@@ -85273,7 +81939,11 @@
       "Id": "azr",
       "RefName": "Adzera",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "adz",
+        "zsu",
+        "zsa"
+      ],
       "RetRemedy": "Split into three languages: Adzera [adz] (new identifier), Sukurum [zsu] and Sarasira [zsa]",
       "Effective": "2008-01-14"
     },
@@ -85281,7 +81951,10 @@
       "Id": "bcx",
       "RefName": "Pamona",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "pmf",
+        "zbt"
+      ],
       "RetRemedy": "Split into Pamona [pmf] (new identifier) and Batui [zbt]",
       "Effective": "2008-01-14"
     },
@@ -85289,7 +81962,10 @@
       "Id": "bii",
       "RefName": "Bisu",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "bzi",
+        "lwm"
+      ],
       "RetRemedy": "Split into Bisu [bzi] (new identifier) and Laomian [lwm]",
       "Effective": "2008-01-14"
     },
@@ -85297,7 +81973,9 @@
       "Id": "bke",
       "RefName": "Bengkulu",
       "RetReason": "M",
-      "ChangeTo": "pse",
+      "ChangeTo": [
+        "pse"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85305,7 +81983,12 @@
       "Id": "blu",
       "RefName": "Hmong Njua",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "hnj",
+        "cqd",
+        "hrm",
+        "sfm"
+      ],
       "RetRemedy": "Split into four languages: Hmong Njua [hnj] (new identifier); Chuanqiandian Cluster Miao [cqd]; Horned Miao [hrm]; Small Flowery Miao [sfm]",
       "Effective": "2008-01-14"
     },
@@ -85313,7 +81996,9 @@
       "Id": "boc",
       "RefName": "Bakung Kenyah",
       "RetReason": "M",
-      "ChangeTo": "xkl",
+      "ChangeTo": [
+        "xkl"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85321,7 +82006,9 @@
       "Id": "bsd",
       "RefName": "Sarawak Bisaya",
       "RetReason": "M",
-      "ChangeTo": "bsb",
+      "ChangeTo": [
+        "bsb"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85329,7 +82016,7 @@
       "Id": "bwv",
       "RefName": "Bahau River Kenyah",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85337,7 +82024,9 @@
       "Id": "bxt",
       "RefName": "Buxinhua",
       "RetReason": "D",
-      "ChangeTo": "bgk",
+      "ChangeTo": [
+        "bgk"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85345,7 +82034,11 @@
       "Id": "byu",
       "RefName": "Buyang",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "yzg",
+        "yln",
+        "yha"
+      ],
       "RetRemedy": "Split into three languages: E\u0027ma Buyang [yzg]; Langnian Buyang [yln]; Baha Buyang [yha]",
       "Effective": "2008-01-14"
     },
@@ -85353,7 +82046,18 @@
       "Id": "ccx",
       "RefName": "Northern Zhuang",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "zgn",
+        "zlj",
+        "zqe",
+        "zgb",
+        "zyj",
+        "zch",
+        "zeh",
+        "zlq",
+        "zyb",
+        "zln"
+      ],
       "RetRemedy": "Split into ten languages: Guibian Zh [zgn]; Liujiang Zh [zlj]; Qiubei Zh [zqe]; Guibei Zh [zgb]; Youjiang Zh [zyj]; Central Hongshuihe Zh [zch]; Eastern Hongshuihe Zh [zeh]; Liuqian Zh [zlq]; Yongbei Zh [zyb]; Lianshan Zh [zln].",
       "Effective": "2008-01-14"
     },
@@ -85361,7 +82065,9 @@
       "Id": "cru",
       "RefName": "Car\u00FAtana",
       "RetReason": "M",
-      "ChangeTo": "bwi",
+      "ChangeTo": [
+        "bwi"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85369,7 +82075,9 @@
       "Id": "dat",
       "RefName": "Darang Deng",
       "RetReason": "D",
-      "ChangeTo": "mhu",
+      "ChangeTo": [
+        "mhu"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85377,7 +82085,7 @@
       "Id": "dyk",
       "RefName": "Land Dayak",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85385,7 +82093,9 @@
       "Id": "eni",
       "RefName": "Enim",
       "RetReason": "M",
-      "ChangeTo": "pse",
+      "ChangeTo": [
+        "pse"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85393,7 +82103,10 @@
       "Id": "fiz",
       "RefName": "Izere",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "gne",
+        "izr"
+      ],
       "RetRemedy": "Split into Ganang [gne] and Izere [izr] (new identifier)",
       "Effective": "2008-01-14"
     },
@@ -85401,7 +82114,9 @@
       "Id": "gen",
       "RefName": "Geman Deng",
       "RetReason": "D",
-      "ChangeTo": "mxj",
+      "ChangeTo": [
+        "mxj"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85409,7 +82124,7 @@
       "Id": "ggh",
       "RefName": "Garreh-Ajuran",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85417,7 +82132,9 @@
       "Id": "itu",
       "RefName": "Itutang",
       "RetReason": "M",
-      "ChangeTo": "mzu",
+      "ChangeTo": [
+        "mzu"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85425,7 +82142,10 @@
       "Id": "kds",
       "RefName": "Lahu Shi",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "lkc",
+        "lhi"
+      ],
       "RetRemedy": "Split into Kucong [lkc] and Lahu Shi [lhi] (new identifier)",
       "Effective": "2008-01-14"
     },
@@ -85433,7 +82153,7 @@
       "Id": "knh",
       "RefName": "Kayan River Kenyah",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85441,7 +82161,9 @@
       "Id": "krg",
       "RefName": "North Korowai",
       "RetReason": "M",
-      "ChangeTo": "khe",
+      "ChangeTo": [
+        "khe"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85449,7 +82171,9 @@
       "Id": "krq",
       "RefName": "Krui",
       "RetReason": "M",
-      "ChangeTo": "ljp",
+      "ChangeTo": [
+        "ljp"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85457,7 +82181,9 @@
       "Id": "kxg",
       "RefName": "Katingan",
       "RetReason": "M",
-      "ChangeTo": "nij",
+      "ChangeTo": [
+        "nij"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85465,7 +82191,9 @@
       "Id": "lmt",
       "RefName": "Lematang",
       "RetReason": "M",
-      "ChangeTo": "mui",
+      "ChangeTo": [
+        "mui"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85473,7 +82201,9 @@
       "Id": "lnt",
       "RefName": "Lintang",
       "RetReason": "M",
-      "ChangeTo": "pse",
+      "ChangeTo": [
+        "pse"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85481,7 +82211,11 @@
       "Id": "lod",
       "RefName": "Berawan",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "zbw",
+        "zbc",
+        "zbe"
+      ],
       "RetRemedy": "Split into three languages: West Berawan [zbw], Central Berawan [zbc], and East Berawan [zbe]",
       "Effective": "2008-01-14"
     },
@@ -85489,7 +82223,14 @@
       "Id": "mbg",
       "RefName": "Northern Nambiku\u00E1ra",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "apv",
+        "lkd",
+        "ltn",
+        "wmd",
+        "xtw",
+        "xyl"
+      ],
       "RetRemedy": "Split into six languages: Alapmunte [apv]; Lakond\u00EA [lkd]; Latund\u00EA [ltn]; Mamaind\u00E9 [wmd]; Tawand\u00EA [xtw]; Yalakalore [xyl]",
       "Effective": "2008-01-14"
     },
@@ -85497,7 +82238,10 @@
       "Id": "mdo",
       "RefName": "Southwest Gbaya",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "gso",
+        "gmm"
+      ],
       "RetRemedy": "Split into Southwest Gbaya [gso] (new identifier) and Gbaya-Mbodomo [gmm]",
       "Effective": "2008-01-14"
     },
@@ -85505,7 +82249,10 @@
       "Id": "mhv",
       "RefName": "Arakanese",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "rmz",
+        "rki"
+      ],
       "RetRemedy": "Split into Marma [rmz] and Rakhine [rki]",
       "Effective": "2008-01-14"
     },
@@ -85513,7 +82260,9 @@
       "Id": "miv",
       "RefName": "Mimi",
       "RetReason": "M",
-      "ChangeTo": "amj",
+      "ChangeTo": [
+        "amj"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85521,7 +82270,9 @@
       "Id": "mqd",
       "RefName": "Madang",
       "RetReason": "M",
-      "ChangeTo": "xkl",
+      "ChangeTo": [
+        "xkl"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85529,7 +82280,11 @@
       "Id": "nky",
       "RefName": "Khiamniungan Naga",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "kix",
+        "pzn",
+        "jmn"
+      ],
       "RetRemedy": "Split into three languages: Khiamniungan Naga [kix] (new identifier); Para Naga [pzn]; Makuri Naga [jmn]",
       "Effective": "2008-01-14"
     },
@@ -85537,7 +82292,9 @@
       "Id": "nxj",
       "RefName": "Nyadu",
       "RetReason": "M",
-      "ChangeTo": "byd",
+      "ChangeTo": [
+        "byd"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85545,7 +82302,9 @@
       "Id": "ogn",
       "RefName": "Ogan",
       "RetReason": "M",
-      "ChangeTo": "pse",
+      "ChangeTo": [
+        "pse"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85553,7 +82312,11 @@
       "Id": "ork",
       "RefName": "Orokaiva",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "okv",
+        "aez",
+        "hkk"
+      ],
       "RetRemedy": "Split into Orokaiva [okv] (new identifier), Aeka [aez] and Hunjara-Kaina Ke [hkk]",
       "Effective": "2008-01-14"
     },
@@ -85561,7 +82324,9 @@
       "Id": "paj",
       "RefName": "Ipeka-Tapuia",
       "RetReason": "M",
-      "ChangeTo": "kpc",
+      "ChangeTo": [
+        "kpc"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85569,7 +82334,9 @@
       "Id": "pec",
       "RefName": "Southern Pesisir",
       "RetReason": "M",
-      "ChangeTo": "ljp",
+      "ChangeTo": [
+        "ljp"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85577,7 +82344,9 @@
       "Id": "pen",
       "RefName": "Penesak",
       "RetReason": "M",
-      "ChangeTo": "mui",
+      "ChangeTo": [
+        "mui"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85585,7 +82354,9 @@
       "Id": "plm",
       "RefName": "Palembang",
       "RetReason": "M",
-      "ChangeTo": "mui",
+      "ChangeTo": [
+        "mui"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85593,7 +82364,9 @@
       "Id": "poj",
       "RefName": "Lower Pokomo",
       "RetReason": "M",
-      "ChangeTo": "pkb",
+      "ChangeTo": [
+        "pkb"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85601,7 +82374,9 @@
       "Id": "pun",
       "RefName": "Pubian",
       "RetReason": "M",
-      "ChangeTo": "ljp",
+      "ChangeTo": [
+        "ljp"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85609,7 +82384,9 @@
       "Id": "rae",
       "RefName": "Ranau",
       "RetReason": "M",
-      "ChangeTo": "ljp",
+      "ChangeTo": [
+        "ljp"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85617,7 +82394,10 @@
       "Id": "rjb",
       "RefName": "Rajbanshi",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "rkt",
+        "rjs"
+      ],
       "RetRemedy": "Split into Kamta (India) / Rangpuri (Bangladesh) [rkt] and Rajbanshi (Nepal) [rjs]",
       "Effective": "2008-01-14"
     },
@@ -85625,7 +82405,9 @@
       "Id": "rws",
       "RefName": "Rawas",
       "RetReason": "M",
-      "ChangeTo": "mui",
+      "ChangeTo": [
+        "mui"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85633,7 +82415,9 @@
       "Id": "sdd",
       "RefName": "Semendo",
       "RetReason": "M",
-      "ChangeTo": "pse",
+      "ChangeTo": [
+        "pse"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85641,7 +82425,9 @@
       "Id": "sdi",
       "RefName": "Sindang Kelingi",
       "RetReason": "M",
-      "ChangeTo": "liw",
+      "ChangeTo": [
+        "liw"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85649,7 +82435,9 @@
       "Id": "skl",
       "RefName": "Selako",
       "RetReason": "M",
-      "ChangeTo": "knx",
+      "ChangeTo": [
+        "knx"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85657,7 +82445,9 @@
       "Id": "slb",
       "RefName": "Kahumamahon Saluan",
       "RetReason": "M",
-      "ChangeTo": "loe",
+      "ChangeTo": [
+        "loe"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85665,7 +82455,9 @@
       "Id": "srj",
       "RefName": "Serawai",
       "RetReason": "M",
-      "ChangeTo": "pse",
+      "ChangeTo": [
+        "pse"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85673,7 +82465,10 @@
       "Id": "suf",
       "RefName": "Tarpia",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "tpf",
+        "kbi"
+      ],
       "RetRemedy": "Split into Tarpia [tpf] (new identifier) and Kaptiau [kbi]",
       "Effective": "2008-01-14"
     },
@@ -85681,7 +82476,10 @@
       "Id": "suh",
       "RefName": "Suba",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "sxb",
+        "ssc"
+      ],
       "RetRemedy": "Split into Suba [sxb] (Kenya) and Suba-Simbita [ssc] (Tanzania)",
       "Effective": "2008-01-14"
     },
@@ -85689,7 +82487,9 @@
       "Id": "suu",
       "RefName": "Sungkai",
       "RetReason": "M",
-      "ChangeTo": "ljp",
+      "ChangeTo": [
+        "ljp"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85697,7 +82497,9 @@
       "Id": "szk",
       "RefName": "Sizaki",
       "RetReason": "M",
-      "ChangeTo": "ikz",
+      "ChangeTo": [
+        "ikz"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85705,7 +82507,9 @@
       "Id": "tle",
       "RefName": "Southern Marakwet",
       "RetReason": "D",
-      "ChangeTo": "enb",
+      "ChangeTo": [
+        "enb"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85713,7 +82517,9 @@
       "Id": "tnj",
       "RefName": "Tanjong",
       "RetReason": "M",
-      "ChangeTo": "kxn",
+      "ChangeTo": [
+        "kxn"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85721,7 +82527,9 @@
       "Id": "ttx",
       "RefName": "Tutong 1",
       "RetReason": "M",
-      "ChangeTo": "bsb",
+      "ChangeTo": [
+        "bsb"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85729,7 +82537,7 @@
       "Id": "ubm",
       "RefName": "Upper Baram Kenyah",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85737,7 +82545,9 @@
       "Id": "vky",
       "RefName": "Kayu Agung",
       "RetReason": "M",
-      "ChangeTo": "kge",
+      "ChangeTo": [
+        "kge"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85745,7 +82555,9 @@
       "Id": "vmo",
       "RefName": "Muko-Muko",
       "RetReason": "M",
-      "ChangeTo": "min",
+      "ChangeTo": [
+        "min"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85753,7 +82565,7 @@
       "Id": "wre",
       "RefName": "Ware",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85761,7 +82573,9 @@
       "Id": "xah",
       "RefName": "Kahayan",
       "RetReason": "M",
-      "ChangeTo": "nij",
+      "ChangeTo": [
+        "nij"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85769,7 +82583,7 @@
       "Id": "xkm",
       "RefName": "Mahakam Kenyah",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85777,7 +82591,9 @@
       "Id": "xuf",
       "RefName": "Kunfal",
       "RetReason": "M",
-      "ChangeTo": "awn",
+      "ChangeTo": [
+        "awn"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85785,7 +82601,9 @@
       "Id": "yio",
       "RefName": "Dayao Yi",
       "RetReason": "M",
-      "ChangeTo": "lpo",
+      "ChangeTo": [
+        "lpo"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85793,7 +82611,13 @@
       "Id": "ymj",
       "RefName": "Muji Yi",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "ymc",
+        "ymi",
+        "ymq",
+        "ymx",
+        "ymz"
+      ],
       "RetRemedy": "Split into five languages: Muji, Southern [ymc], Mojii [ymi], Qila Muji [ymq], Northern Muji [ymx], and Muzi [ymz]",
       "Effective": "2008-01-14"
     },
@@ -85801,7 +82625,11 @@
       "Id": "ypl",
       "RefName": "Pula Yi",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "ypg",
+        "ypa",
+        "ypo"
+      ],
       "RetRemedy": "Split into three languages: Phola [ypg], Phala [ypa] and Alo Phola [ypo]",
       "Effective": "2008-01-14"
     },
@@ -85809,7 +82637,11 @@
       "Id": "ypw",
       "RefName": "Puwa Yi",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "yhl",
+        "ypb",
+        "ypn"
+      ],
       "RetRemedy": "Split into three languages: Hlepho Phowa [yhl], Labo Phowa [ypb], and Ani Phowa [ypn]",
       "Effective": "2008-01-14"
     },
@@ -85817,7 +82649,9 @@
       "Id": "ywm",
       "RefName": "Wumeng Yi",
       "RetReason": "M",
-      "ChangeTo": "ywu",
+      "ChangeTo": [
+        "ywu"
+      ],
       "RetRemedy": "",
       "Effective": "2008-01-14"
     },
@@ -85825,7 +82659,10 @@
       "Id": "yym",
       "RefName": "Yuanjiang-Mojiang Yi",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "nsd",
+        "nsv"
+      ],
       "RetRemedy": "Split into Southern Nisu [nsd] and Southwestern Nisu [nsv]",
       "Effective": "2008-01-14"
     },
@@ -85833,7 +82670,12 @@
       "Id": "mly",
       "RefName": "Malay (individual language)",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "zsm",
+        "hji",
+        "pmy",
+        "zlm"
+      ],
       "RetRemedy": "Split into four languages: Standard Malay [zsm], Haji [hji], Papuan Malay [pmy] and Malay (individual language) [zlm]",
       "Effective": "2008-02-18"
     },
@@ -85841,7 +82683,10 @@
       "Id": "muw",
       "RefName": "Mundari",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "unx",
+        "unr"
+      ],
       "RetRemedy": "Split into Munda [unx] and Mundari [unr] (new identifier)",
       "Effective": "2008-02-18"
     },
@@ -85849,7 +82694,10 @@
       "Id": "xst",
       "RefName": "Silt\u0027e",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "wle",
+        "stv"
+      ],
       "RetRemedy": "Split into Wolane [wle] and Silt\u0027e [stv] (new identifier)",
       "Effective": "2008-02-28"
     },
@@ -85857,7 +82705,9 @@
       "Id": "ope",
       "RefName": "Old Persian",
       "RetReason": "D",
-      "ChangeTo": "peo",
+      "ChangeTo": [
+        "peo"
+      ],
       "RetRemedy": "",
       "Effective": "2008-04-18"
     },
@@ -85865,7 +82715,9 @@
       "Id": "scc",
       "RefName": "Serbian",
       "RetReason": "D",
-      "ChangeTo": "srp",
+      "ChangeTo": [
+        "srp"
+      ],
       "RetRemedy": "",
       "Effective": "2008-06-28"
     },
@@ -85873,7 +82725,9 @@
       "Id": "scr",
       "RefName": "Croatian",
       "RetReason": "D",
-      "ChangeTo": "hrv",
+      "ChangeTo": [
+        "hrv"
+      ],
       "RetRemedy": "",
       "Effective": "2008-06-28"
     },
@@ -85881,7 +82735,9 @@
       "Id": "xsk",
       "RefName": "Sakan",
       "RetReason": "D",
-      "ChangeTo": "kho",
+      "ChangeTo": [
+        "kho"
+      ],
       "RetRemedy": "",
       "Effective": "2008-10-23"
     },
@@ -85889,7 +82745,9 @@
       "Id": "mol",
       "RefName": "Moldavian",
       "RetReason": "M",
-      "ChangeTo": "ron",
+      "ChangeTo": [
+        "ron"
+      ],
       "RetRemedy": "",
       "Effective": "2008-11-03"
     },
@@ -85897,7 +82755,7 @@
       "Id": "aay",
       "RefName": "Aariya",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -85905,7 +82763,9 @@
       "Id": "acc",
       "RefName": "Cubulco Ach\u00ED",
       "RetReason": "M",
-      "ChangeTo": "acr",
+      "ChangeTo": [
+        "acr"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -85913,7 +82773,9 @@
       "Id": "cbm",
       "RefName": "Yepocapa Southwestern Cakchiquel",
       "RetReason": "M",
-      "ChangeTo": "cak",
+      "ChangeTo": [
+        "cak"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -85921,7 +82783,7 @@
       "Id": "chs",
       "RefName": "Chumash",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -85929,7 +82791,9 @@
       "Id": "ckc",
       "RefName": "Northern Cakchiquel",
       "RetReason": "M",
-      "ChangeTo": "cak",
+      "ChangeTo": [
+        "cak"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -85937,7 +82801,9 @@
       "Id": "ckd",
       "RefName": "South Central Cakchiquel",
       "RetReason": "M",
-      "ChangeTo": "cak",
+      "ChangeTo": [
+        "cak"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -85945,7 +82811,9 @@
       "Id": "cke",
       "RefName": "Eastern Cakchiquel",
       "RetReason": "M",
-      "ChangeTo": "cak",
+      "ChangeTo": [
+        "cak"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -85953,7 +82821,9 @@
       "Id": "ckf",
       "RefName": "Southern Cakchiquel",
       "RetReason": "M",
-      "ChangeTo": "cak",
+      "ChangeTo": [
+        "cak"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -85961,7 +82831,9 @@
       "Id": "cki",
       "RefName": "Santa Mar\u00EDa De Jes\u00FAs Cakchiquel",
       "RetReason": "M",
-      "ChangeTo": "cak",
+      "ChangeTo": [
+        "cak"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -85969,7 +82841,9 @@
       "Id": "ckj",
       "RefName": "Santo Domingo Xenacoj Cakchiquel",
       "RetReason": "M",
-      "ChangeTo": "cak",
+      "ChangeTo": [
+        "cak"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -85977,7 +82851,9 @@
       "Id": "ckk",
       "RefName": "Acatenango Southwestern Cakchiquel",
       "RetReason": "M",
-      "ChangeTo": "cak",
+      "ChangeTo": [
+        "cak"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -85985,7 +82861,9 @@
       "Id": "ckw",
       "RefName": "Western Cakchiquel",
       "RetReason": "M",
-      "ChangeTo": "cak",
+      "ChangeTo": [
+        "cak"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -85993,7 +82871,9 @@
       "Id": "cnm",
       "RefName": "Ixtat\u00E1n Chuj",
       "RetReason": "M",
-      "ChangeTo": "cac",
+      "ChangeTo": [
+        "cac"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86001,7 +82881,9 @@
       "Id": "cti",
       "RefName": "Tila Chol",
       "RetReason": "M",
-      "ChangeTo": "ctu",
+      "ChangeTo": [
+        "ctu"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86009,7 +82891,9 @@
       "Id": "cun",
       "RefName": "Cun\u00E9n Quich\u00E9",
       "RetReason": "M",
-      "ChangeTo": "quc",
+      "ChangeTo": [
+        "quc"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86017,7 +82901,10 @@
       "Id": "eml",
       "RefName": "Emiliano-Romagnolo",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "egl",
+        "rgn"
+      ],
       "RetRemedy": "Split into Emilian [egl] and Romagnol [rgn]",
       "Effective": "2009-01-16"
     },
@@ -86025,7 +82912,7 @@
       "Id": "eur",
       "RefName": "Europanto",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86033,7 +82920,11 @@
       "Id": "gmo",
       "RefName": "Gamo-Gofa-Dawro",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "gmv",
+        "gof",
+        "dwr"
+      ],
       "RetRemedy": "Split into three languages: Gamo [gmv], Gofa [gof], and Dawro [dwr]",
       "Effective": "2009-01-16"
     },
@@ -86041,7 +82932,9 @@
       "Id": "hsf",
       "RefName": "Southeastern Huastec",
       "RetReason": "M",
-      "ChangeTo": "hus",
+      "ChangeTo": [
+        "hus"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86049,7 +82942,9 @@
       "Id": "hva",
       "RefName": "San Lu\u00EDs Potos\u00ED Huastec",
       "RetReason": "M",
-      "ChangeTo": "hus",
+      "ChangeTo": [
+        "hus"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86057,7 +82952,9 @@
       "Id": "ixi",
       "RefName": "Nebaj Ixil",
       "RetReason": "M",
-      "ChangeTo": "ixl",
+      "ChangeTo": [
+        "ixl"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86065,7 +82962,9 @@
       "Id": "ixj",
       "RefName": "Chajul Ixil",
       "RetReason": "M",
-      "ChangeTo": "ixl",
+      "ChangeTo": [
+        "ixl"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86073,7 +82972,9 @@
       "Id": "jai",
       "RefName": "Western Jacalteco",
       "RetReason": "M",
-      "ChangeTo": "jac",
+      "ChangeTo": [
+        "jac"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86081,7 +82982,9 @@
       "Id": "mms",
       "RefName": "Southern Mam",
       "RetReason": "M",
-      "ChangeTo": "mam",
+      "ChangeTo": [
+        "mam"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86089,7 +82992,9 @@
       "Id": "mpf",
       "RefName": "Tajumulco Mam",
       "RetReason": "M",
-      "ChangeTo": "mam",
+      "ChangeTo": [
+        "mam"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86097,7 +83002,9 @@
       "Id": "mtz",
       "RefName": "Tacanec",
       "RetReason": "M",
-      "ChangeTo": "mam",
+      "ChangeTo": [
+        "mam"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86105,7 +83012,9 @@
       "Id": "mvc",
       "RefName": "Central Mam",
       "RetReason": "M",
-      "ChangeTo": "mam",
+      "ChangeTo": [
+        "mam"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86113,7 +83022,9 @@
       "Id": "mvj",
       "RefName": "Todos Santos Cuchumat\u00E1n Mam",
       "RetReason": "M",
-      "ChangeTo": "mam",
+      "ChangeTo": [
+        "mam"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86121,7 +83032,9 @@
       "Id": "poa",
       "RefName": "Eastern Pokomam",
       "RetReason": "M",
-      "ChangeTo": "poc",
+      "ChangeTo": [
+        "poc"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86129,7 +83042,9 @@
       "Id": "pob",
       "RefName": "Western Pokomch\u00ED",
       "RetReason": "M",
-      "ChangeTo": "poh",
+      "ChangeTo": [
+        "poh"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86137,7 +83052,9 @@
       "Id": "pou",
       "RefName": "Southern Pokomam",
       "RetReason": "M",
-      "ChangeTo": "poc",
+      "ChangeTo": [
+        "poc"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86145,7 +83062,7 @@
       "Id": "ppv",
       "RefName": "Papav\u00F4",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86153,7 +83070,9 @@
       "Id": "quj",
       "RefName": "Joyabaj Quich\u00E9",
       "RetReason": "M",
-      "ChangeTo": "quc",
+      "ChangeTo": [
+        "quc"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86161,7 +83080,9 @@
       "Id": "qut",
       "RefName": "West Central Quich\u00E9",
       "RetReason": "M",
-      "ChangeTo": "quc",
+      "ChangeTo": [
+        "quc"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86169,7 +83090,9 @@
       "Id": "quu",
       "RefName": "Eastern Quich\u00E9",
       "RetReason": "M",
-      "ChangeTo": "quc",
+      "ChangeTo": [
+        "quc"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86177,7 +83100,9 @@
       "Id": "qxi",
       "RefName": "San Andr\u00E9s Quich\u00E9",
       "RetReason": "M",
-      "ChangeTo": "quc",
+      "ChangeTo": [
+        "quc"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86185,7 +83110,10 @@
       "Id": "sic",
       "RefName": "Malinguat",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "keh",
+        "sdk"
+      ],
       "RetRemedy": "Split into Keak [keh] and Sos Kundi [sdk]",
       "Effective": "2009-01-16"
     },
@@ -86193,7 +83121,10 @@
       "Id": "stc",
       "RefName": "Santa Cruz",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "ntu",
+        "nlz"
+      ],
       "RetRemedy": "Split into Nat\u00FCgu [ntu] and Nal\u00F6go [nlz]",
       "Effective": "2009-01-16"
     },
@@ -86201,7 +83132,9 @@
       "Id": "tlz",
       "RefName": "Toala\u0027",
       "RetReason": "M",
-      "ChangeTo": "rob",
+      "ChangeTo": [
+        "rob"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86209,7 +83142,9 @@
       "Id": "tzb",
       "RefName": "Bachaj\u00F3n Tzeltal",
       "RetReason": "M",
-      "ChangeTo": "tzh",
+      "ChangeTo": [
+        "tzh"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86217,7 +83152,9 @@
       "Id": "tzc",
       "RefName": "Chamula Tzotzil",
       "RetReason": "M",
-      "ChangeTo": "tzo",
+      "ChangeTo": [
+        "tzo"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86225,7 +83162,9 @@
       "Id": "tze",
       "RefName": "Chenalh\u00F3 Tzotzil",
       "RetReason": "M",
-      "ChangeTo": "tzo",
+      "ChangeTo": [
+        "tzo"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86233,7 +83172,9 @@
       "Id": "tzs",
       "RefName": "San Andr\u00E9s Larrainzar Tzotzil",
       "RetReason": "M",
-      "ChangeTo": "tzo",
+      "ChangeTo": [
+        "tzo"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86241,7 +83182,9 @@
       "Id": "tzt",
       "RefName": "Western Tzutujil",
       "RetReason": "M",
-      "ChangeTo": "tzj",
+      "ChangeTo": [
+        "tzj"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86249,7 +83192,9 @@
       "Id": "tzu",
       "RefName": "Huixt\u00E1n Tzotzil",
       "RetReason": "M",
-      "ChangeTo": "tzo",
+      "ChangeTo": [
+        "tzo"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86257,7 +83202,9 @@
       "Id": "tzz",
       "RefName": "Zinacant\u00E1n Tzotzil",
       "RetReason": "M",
-      "ChangeTo": "tzo",
+      "ChangeTo": [
+        "tzo"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86265,7 +83212,10 @@
       "Id": "vlr",
       "RefName": "Vatrata",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "vra",
+        "lrz"
+      ],
       "RetRemedy": "Split into Vera\u0027a [vra] and Lemerig [lrz]",
       "Effective": "2009-01-16"
     },
@@ -86273,7 +83223,9 @@
       "Id": "yus",
       "RefName": "Chan Santa Cruz Maya",
       "RetReason": "M",
-      "ChangeTo": "yua",
+      "ChangeTo": [
+        "yua"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-16"
     },
@@ -86281,7 +83233,9 @@
       "Id": "nfg",
       "RefName": "Nyeng",
       "RetReason": "M",
-      "ChangeTo": "nfd",
+      "ChangeTo": [
+        "nfd"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-26"
     },
@@ -86289,7 +83243,9 @@
       "Id": "nfk",
       "RefName": "Shakara",
       "RetReason": "M",
-      "ChangeTo": "nfd",
+      "ChangeTo": [
+        "nfd"
+      ],
       "RetRemedy": "",
       "Effective": "2009-01-26"
     },
@@ -86297,7 +83253,10 @@
       "Id": "agp",
       "RefName": "Paranan",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "apf",
+        "prf"
+      ],
       "RetRemedy": "Split into Pahanan Agta [apf] and Paranan [prf] (new identifier)",
       "Effective": "2010-01-18"
     },
@@ -86305,7 +83264,12 @@
       "Id": "bhk",
       "RefName": "Albay Bicolano",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "ubl",
+        "lbl",
+        "rbl",
+        "fbl"
+      ],
       "RetRemedy": "Split into Buhi\u0027non Bikol [ubl]; Libon Bikol [lbl]; Miraya Bikol [rbl]; West Albay Bikol [fbl]",
       "Effective": "2010-01-18"
     },
@@ -86313,7 +83277,10 @@
       "Id": "bkb",
       "RefName": "Finallig",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "ebk",
+        "obk"
+      ],
       "RetRemedy": "Split into Eastern Bontok [ebk] and Southern Bontok [obk]",
       "Effective": "2010-01-18"
     },
@@ -86321,7 +83288,9 @@
       "Id": "btb",
       "RefName": "Beti (Cameroon)",
       "RetReason": "D",
-      "ChangeTo": "beb",
+      "ChangeTo": [
+        "beb"
+      ],
       "RetRemedy": "",
       "Effective": "2010-01-18"
     },
@@ -86329,7 +83298,9 @@
       "Id": "cjr",
       "RefName": "Chorotega",
       "RetReason": "M",
-      "ChangeTo": "mom",
+      "ChangeTo": [
+        "mom"
+      ],
       "RetRemedy": "",
       "Effective": "2010-01-18"
     },
@@ -86337,7 +83308,9 @@
       "Id": "cmk",
       "RefName": "Chimakum",
       "RetReason": "D",
-      "ChangeTo": "xch",
+      "ChangeTo": [
+        "xch"
+      ],
       "RetRemedy": "",
       "Effective": "2010-01-18"
     },
@@ -86345,7 +83318,9 @@
       "Id": "drh",
       "RefName": "Darkhat",
       "RetReason": "M",
-      "ChangeTo": "khk",
+      "ChangeTo": [
+        "khk"
+      ],
       "RetRemedy": "",
       "Effective": "2010-01-18"
     },
@@ -86353,7 +83328,9 @@
       "Id": "drw",
       "RefName": "Darwazi",
       "RetReason": "M",
-      "ChangeTo": "prs",
+      "ChangeTo": [
+        "prs"
+      ],
       "RetRemedy": "",
       "Effective": "2010-01-18"
     },
@@ -86361,7 +83338,9 @@
       "Id": "gav",
       "RefName": "Gabutamon",
       "RetReason": "M",
-      "ChangeTo": "dev",
+      "ChangeTo": [
+        "dev"
+      ],
       "RetRemedy": "",
       "Effective": "2010-01-18"
     },
@@ -86369,7 +83348,10 @@
       "Id": "mof",
       "RefName": "Mohegan-Montauk-Narragansett",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "xpq",
+        "xnt"
+      ],
       "RetRemedy": "split into Mohegan-Pequot [xpq] and Narragansett [xnt]",
       "Effective": "2010-01-18"
     },
@@ -86377,7 +83359,9 @@
       "Id": "mst",
       "RefName": "Cataelano Mandaya",
       "RetReason": "M",
-      "ChangeTo": "mry",
+      "ChangeTo": [
+        "mry"
+      ],
       "RetRemedy": "",
       "Effective": "2010-01-18"
     },
@@ -86385,7 +83369,9 @@
       "Id": "myt",
       "RefName": "Sangab Mandaya",
       "RetReason": "M",
-      "ChangeTo": "mry",
+      "ChangeTo": [
+        "mry"
+      ],
       "RetRemedy": "",
       "Effective": "2010-01-18"
     },
@@ -86393,7 +83379,10 @@
       "Id": "rmr",
       "RefName": "Cal\u00F3",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "rmq",
+        "emx"
+      ],
       "RetRemedy": "split into Cal\u00F3 [rmq] and Erromintxela [emx]",
       "Effective": "2010-01-18"
     },
@@ -86401,7 +83390,10 @@
       "Id": "sgl",
       "RefName": "Sanglechi-Ishkashimi",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "sgy",
+        "isk"
+      ],
       "RetRemedy": "split into Sanglechi [sgy] and Ishkashimi [isk]",
       "Effective": "2010-01-18"
     },
@@ -86409,7 +83401,10 @@
       "Id": "sul",
       "RefName": "Surigaonon",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "tgn",
+        "sgd"
+      ],
       "RetRemedy": "Split into Tandaganon [tgn] and Surigaonon [sgd] (new identifier)",
       "Effective": "2010-01-18"
     },
@@ -86417,7 +83412,10 @@
       "Id": "sum",
       "RefName": "Sumo-Mayangna",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "yan",
+        "ulw"
+      ],
       "RetRemedy": "Split into Mayangna [yan] and Ulwa [ulw]",
       "Effective": "2010-01-18"
     },
@@ -86425,7 +83423,9 @@
       "Id": "tnf",
       "RefName": "Tangshewi",
       "RetReason": "M",
-      "ChangeTo": "prs",
+      "ChangeTo": [
+        "prs"
+      ],
       "RetRemedy": "",
       "Effective": "2010-01-18"
     },
@@ -86433,7 +83433,10 @@
       "Id": "wgw",
       "RefName": "Wagawaga",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "ylb",
+        "wgb"
+      ],
       "RetRemedy": "Split into Yaleba [ylb] and Wagawaga [wgb] (new identifier)",
       "Effective": "2010-01-18"
     },
@@ -86441,7 +83444,9 @@
       "Id": "ayx",
       "RefName": "Ayi (China)",
       "RetReason": "D",
-      "ChangeTo": "nun",
+      "ChangeTo": [
+        "nun"
+      ],
       "RetRemedy": "",
       "Effective": "2011-05-18"
     },
@@ -86449,7 +83454,10 @@
       "Id": "bjq",
       "RefName": "Southern Betsimisaraka Malagasy",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "bzc",
+        "tkg"
+      ],
       "RetRemedy": "split into Southern Betsimisaraka [bzc] and Tesaka Malagasy [tkg]",
       "Effective": "2011-05-18"
     },
@@ -86457,7 +83465,7 @@
       "Id": "dha",
       "RefName": "Dhanwar (India)",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2011-05-18"
     },
@@ -86465,7 +83473,10 @@
       "Id": "dkl",
       "RefName": "Kolum So Dogon",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "aqd",
+        "dmb"
+      ],
       "RetRemedy": "split into Ampari Dogon [aqd] and Mombo Dogon [dmb]",
       "Effective": "2011-05-18"
     },
@@ -86473,7 +83484,7 @@
       "Id": "mja",
       "RefName": "Mahei",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2011-05-18"
     },
@@ -86481,7 +83492,10 @@
       "Id": "nbf",
       "RefName": "Naxi",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "nxq",
+        "nru"
+      ],
       "RetRemedy": "split into Naxi [nxq] and Narua [nru]",
       "Effective": "2011-05-18"
     },
@@ -86489,7 +83503,10 @@
       "Id": "noo",
       "RefName": "Nootka",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "dtd",
+        "nuk"
+      ],
       "RetRemedy": "Split into [dtd] Ditidaht and [nuk] Nuu-chah-nulth",
       "Effective": "2011-05-18"
     },
@@ -86497,7 +83514,9 @@
       "Id": "tie",
       "RefName": "Tingal",
       "RetReason": "M",
-      "ChangeTo": "ras",
+      "ChangeTo": [
+        "ras"
+      ],
       "RetRemedy": "",
       "Effective": "2011-05-18"
     },
@@ -86505,7 +83524,9 @@
       "Id": "tkk",
       "RefName": "Takpa",
       "RetReason": "D",
-      "ChangeTo": "twm",
+      "ChangeTo": [
+        "twm"
+      ],
       "RetRemedy": "",
       "Effective": "2011-05-18"
     },
@@ -86513,7 +83534,10 @@
       "Id": "baz",
       "RefName": "Tunen",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "tvu",
+        "nvo"
+      ],
       "RetRemedy": "Split into Tunen [tvu] and Nyokon [nvo]",
       "Effective": "2012-02-03"
     },
@@ -86521,7 +83545,9 @@
       "Id": "bjd",
       "RefName": "Bandjigali",
       "RetReason": "M",
-      "ChangeTo": "drl",
+      "ChangeTo": [
+        "drl"
+      ],
       "RetRemedy": "",
       "Effective": "2012-02-03"
     },
@@ -86529,7 +83555,9 @@
       "Id": "ccq",
       "RefName": "Chaungtha",
       "RetReason": "M",
-      "ChangeTo": "rki",
+      "ChangeTo": [
+        "rki"
+      ],
       "RetRemedy": "",
       "Effective": "2012-02-03"
     },
@@ -86537,7 +83565,9 @@
       "Id": "cka",
       "RefName": "Khumi Awa Chin",
       "RetReason": "M",
-      "ChangeTo": "cmr",
+      "ChangeTo": [
+        "cmr"
+      ],
       "RetRemedy": "",
       "Effective": "2012-02-03"
     },
@@ -86545,7 +83575,10 @@
       "Id": "dap",
       "RefName": "Nisi (India)",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "njz",
+        "tgj"
+      ],
       "RetRemedy": "Split into Nyishi [njz] and Tagin [tgj]",
       "Effective": "2012-02-03"
     },
@@ -86553,7 +83586,10 @@
       "Id": "dwl",
       "RefName": "Walo Kumbe Dogon",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "dbw",
+        "dbt"
+      ],
       "RetRemedy": "Split into Dogon, Bankan Tey (Walo) [dbw]  and Dogon, Ben Tey (Beni) [dbt]",
       "Effective": "2012-02-03"
     },
@@ -86561,7 +83597,7 @@
       "Id": "elp",
       "RefName": "Elpaputih",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2012-02-03"
     },
@@ -86569,7 +83605,10 @@
       "Id": "gbc",
       "RefName": "Garawa",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "wrk",
+        "wny"
+      ],
       "RetRemedy": "Split into Garrwa [wrk] and Wanyi [wny]",
       "Effective": "2012-02-03"
     },
@@ -86577,7 +83616,13 @@
       "Id": "gio",
       "RefName": "Gelao",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "gqu",
+        "aou",
+        "gig",
+        "gir",
+        "giw"
+      ],
       "RetRemedy": "Split into Qau [gqu] and A\u0027ou [aou] with some going to Green Gelao [gig], some to Red Gelao [gir], and some to White Gelao [giw]",
       "Effective": "2012-02-03"
     },
@@ -86585,7 +83630,9 @@
       "Id": "hrr",
       "RefName": "Horuru",
       "RetReason": "M",
-      "ChangeTo": "jal",
+      "ChangeTo": [
+        "jal"
+      ],
       "RetRemedy": "",
       "Effective": "2012-02-03"
     },
@@ -86593,7 +83640,9 @@
       "Id": "ibi",
       "RefName": "Ibilo",
       "RetReason": "M",
-      "ChangeTo": "opa",
+      "ChangeTo": [
+        "opa"
+      ],
       "RetRemedy": "",
       "Effective": "2012-02-03"
     },
@@ -86601,7 +83650,10 @@
       "Id": "jar",
       "RefName": "Jarawa (Nigeria)",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "jgk",
+        "jjr"
+      ],
       "RetRemedy": "split into Gwak [jgk] and Bankal [jjr]",
       "Effective": "2012-02-03"
     },
@@ -86609,7 +83661,10 @@
       "Id": "kdv",
       "RefName": "Kado",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "zkd",
+        "zkn"
+      ],
       "RetRemedy": "split into Kadu [zkd] and Kanan [zkn]",
       "Effective": "2012-02-03"
     },
@@ -86617,7 +83672,9 @@
       "Id": "kgh",
       "RefName": "Upper Tanudan Kalinga",
       "RetReason": "M",
-      "ChangeTo": "kml",
+      "ChangeTo": [
+        "kml"
+      ],
       "RetRemedy": "",
       "Effective": "2012-02-03"
     },
@@ -86625,7 +83682,10 @@
       "Id": "kpp",
       "RefName": "Paku Karen",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "jkp",
+        "jkm"
+      ],
       "RetRemedy": "Split into Paku Karen [jkp] and Mobwa Karen [jkm]",
       "Effective": "2012-02-03"
     },
@@ -86633,7 +83693,10 @@
       "Id": "kzh",
       "RefName": "Kenuzi-Dongola",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "dgl",
+        "xnz"
+      ],
       "RetRemedy": "Split into Andaandi (Dongolawi) [dgl] and Kenzi (Mattoki) [xnz]",
       "Effective": "2012-02-03"
     },
@@ -86641,7 +83704,9 @@
       "Id": "lcq",
       "RefName": "Luhu",
       "RetReason": "M",
-      "ChangeTo": "ppr",
+      "ChangeTo": [
+        "ppr"
+      ],
       "RetRemedy": "",
       "Effective": "2012-02-03"
     },
@@ -86649,7 +83714,10 @@
       "Id": "mgx",
       "RefName": "Omati",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "jbk",
+        "jmw"
+      ],
       "RetRemedy": "Split into Barikewa [jbk] and Mouwase [jmw]",
       "Effective": "2012-02-03"
     },
@@ -86657,7 +83725,10 @@
       "Id": "nln",
       "RefName": "Durango Nahuatl",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "azd",
+        "azn"
+      ],
       "RetRemedy": "Split into Eastern Durango Nahuatl [azd] and Western Durango Nahuatl [azn]",
       "Effective": "2012-02-03"
     },
@@ -86665,7 +83736,7 @@
       "Id": "pbz",
       "RefName": "Palu",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2012-02-03"
     },
@@ -86673,7 +83744,7 @@
       "Id": "pgy",
       "RefName": "Pongyong",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2012-02-03"
     },
@@ -86681,7 +83752,9 @@
       "Id": "sca",
       "RefName": "Sansu",
       "RetReason": "M",
-      "ChangeTo": "hle",
+      "ChangeTo": [
+        "hle"
+      ],
       "RetRemedy": "",
       "Effective": "2012-02-03"
     },
@@ -86689,7 +83762,9 @@
       "Id": "tlw",
       "RefName": "South Wemale",
       "RetReason": "M",
-      "ChangeTo": "weo",
+      "ChangeTo": [
+        "weo"
+      ],
       "RetRemedy": "",
       "Effective": "2012-02-03"
     },
@@ -86697,7 +83772,10 @@
       "Id": "unp",
       "RefName": "Worora",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "wro",
+        "xgu"
+      ],
       "RetRemedy": "Split into Worrorra [wro] and Unggumi [xgu].",
       "Effective": "2012-02-03"
     },
@@ -86705,7 +83783,10 @@
       "Id": "wiw",
       "RefName": "Wirangu",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "wgu",
+        "nwo"
+      ],
       "RetRemedy": "Split into Wirangu [wgu] and Nauo [nwo]",
       "Effective": "2012-02-03"
     },
@@ -86713,7 +83794,9 @@
       "Id": "ybd",
       "RefName": "Yangbye",
       "RetReason": "M",
-      "ChangeTo": "rki",
+      "ChangeTo": [
+        "rki"
+      ],
       "RetRemedy": "",
       "Effective": "2012-02-03"
     },
@@ -86721,7 +83804,10 @@
       "Id": "yen",
       "RefName": "Yendang",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "ynq",
+        "yot"
+      ],
       "RetRemedy": "Split into Yendang [ynq] and Yotti [yot]",
       "Effective": "2012-02-03"
     },
@@ -86729,7 +83815,9 @@
       "Id": "yma",
       "RefName": "Yamphe",
       "RetReason": "M",
-      "ChangeTo": "lrr",
+      "ChangeTo": [
+        "lrr"
+      ],
       "RetRemedy": "",
       "Effective": "2012-02-03"
     },
@@ -86737,7 +83825,10 @@
       "Id": "daf",
       "RefName": "Dan",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "dnj",
+        "lda"
+      ],
       "RetRemedy": "Split into Dan [dnj] and Kla-Dan [lda]",
       "Effective": "2013-01-23"
     },
@@ -86745,7 +83836,10 @@
       "Id": "djl",
       "RefName": "Djiwarli",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "dze",
+        "iin"
+      ],
       "RetRemedy": "Split into Djiwarli [dze] and Thiin [iin]",
       "Effective": "2013-01-23"
     },
@@ -86753,7 +83847,11 @@
       "Id": "ggr",
       "RefName": "Aghu Tharnggalu",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "gtu",
+        "ggm",
+        "ikr"
+      ],
       "RetRemedy": "Split into Aghu-Tharnggala [gtu], Gugu-Mini [ggm], and Ikarranggal [ikr]",
       "Effective": "2013-01-23"
     },
@@ -86761,7 +83859,9 @@
       "Id": "ilw",
       "RefName": "Talur",
       "RetReason": "M",
-      "ChangeTo": "gal",
+      "ChangeTo": [
+        "gal"
+      ],
       "RetRemedy": "",
       "Effective": "2013-01-23"
     },
@@ -86769,7 +83869,12 @@
       "Id": "izi",
       "RefName": "Izi-Ezaa-Ikwo-Mgbo",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "izz",
+        "eza",
+        "iqw",
+        "gmz"
+      ],
       "RetRemedy": "Split into Izii [izz], Ezaa [eza], Ikwo [iqw], Mgbolizhia [gmz]",
       "Effective": "2013-01-23"
     },
@@ -86777,7 +83882,9 @@
       "Id": "meg",
       "RefName": "Mea",
       "RetReason": "M",
-      "ChangeTo": "cir",
+      "ChangeTo": [
+        "cir"
+      ],
       "RetRemedy": "",
       "Effective": "2013-01-23"
     },
@@ -86785,7 +83892,7 @@
       "Id": "mld",
       "RefName": "Malakhel",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2013-01-23"
     },
@@ -86793,7 +83900,12 @@
       "Id": "mnt",
       "RefName": "Maykulan",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "xyk",
+        "xyt",
+        "xyj",
+        "wnn"
+      ],
       "RetRemedy": "Split into Mayi-Kulan [xyk], Mayi-Thakurti [xyt], Mayi-Yapi [xyj], and Wunumara [wnn]",
       "Effective": "2013-01-23"
     },
@@ -86801,7 +83913,10 @@
       "Id": "mwd",
       "RefName": "Mudbura",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "xrq",
+        "dmw"
+      ],
       "RetRemedy": "Split into Karranga [xrq] and Mudburra [dmw]",
       "Effective": "2013-01-23"
     },
@@ -86809,7 +83924,7 @@
       "Id": "myq",
       "RefName": "Forest Maninka",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2013-01-23"
     },
@@ -86817,7 +83932,13 @@
       "Id": "nbx",
       "RefName": "Ngura",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "ekc",
+        "gll",
+        "xpt",
+        "xwk",
+        "jbi"
+      ],
       "RetRemedy": "Split into Eastern Karnic [ekc], Garlali [gll], Punthamara [xpt], Wangkumara [xwk], and Badjiri [jbi]",
       "Effective": "2013-01-23"
     },
@@ -86825,7 +83946,10 @@
       "Id": "nlr",
       "RefName": "Ngarla",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "nrk",
+        "ywg"
+      ],
       "RetRemedy": "Split into Ngarla [nrk] and Yinhawangka [ywg]",
       "Effective": "2013-01-23"
     },
@@ -86833,7 +83957,9 @@
       "Id": "pcr",
       "RefName": "Panang",
       "RetReason": "M",
-      "ChangeTo": "adx",
+      "ChangeTo": [
+        "adx"
+      ],
       "RetRemedy": "",
       "Effective": "2013-01-23"
     },
@@ -86841,7 +83967,9 @@
       "Id": "ppr",
       "RefName": "Piru",
       "RetReason": "M",
-      "ChangeTo": "lcq",
+      "ChangeTo": [
+        "lcq"
+      ],
       "RetRemedy": "",
       "Effective": "2013-01-23"
     },
@@ -86849,7 +83977,11 @@
       "Id": "tgg",
       "RefName": "Tangga",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "bjp",
+        "hrc",
+        "hrw"
+      ],
       "RetRemedy": "Split into Fanamaket [bjp], Niwer Mil [hrc], and Warwar Feni [hrw]",
       "Effective": "2013-01-23"
     },
@@ -86857,7 +83989,11 @@
       "Id": "wit",
       "RefName": "Wintu",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "wnw",
+        "nol",
+        "pwi"
+      ],
       "RetRemedy": "Split into Wintu [wnw], Nomlaki [nol], and Patwin [pwi]",
       "Effective": "2013-01-23"
     },
@@ -86865,7 +84001,9 @@
       "Id": "xia",
       "RefName": "Xiandao",
       "RetReason": "M",
-      "ChangeTo": "acn",
+      "ChangeTo": [
+        "acn"
+      ],
       "RetRemedy": "",
       "Effective": "2013-01-23"
     },
@@ -86873,7 +84011,10 @@
       "Id": "yiy",
       "RefName": "Yir Yoront",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "yyr",
+        "yrm"
+      ],
       "RetRemedy": "Split into Yir Yoront [yyr] and Yirrk-Mel [yrm]",
       "Effective": "2013-01-23"
     },
@@ -86881,7 +84022,9 @@
       "Id": "yos",
       "RefName": "Yos",
       "RetReason": "M",
-      "ChangeTo": "zom",
+      "ChangeTo": [
+        "zom"
+      ],
       "RetRemedy": "",
       "Effective": "2013-01-23"
     },
@@ -86889,7 +84032,7 @@
       "Id": "emo",
       "RefName": "Emok",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2014-02-03"
     },
@@ -86897,7 +84040,7 @@
       "Id": "ggm",
       "RefName": "Gugu Mini",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2014-02-03"
     },
@@ -86905,7 +84048,10 @@
       "Id": "leg",
       "RefName": "Lengua",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "enl",
+        "enx"
+      ],
       "RetRemedy": "Split into Enlhet [enl] and Enxet [enx]",
       "Effective": "2014-02-03"
     },
@@ -86913,7 +84059,9 @@
       "Id": "lmm",
       "RefName": "Lamam",
       "RetReason": "D",
-      "ChangeTo": "rmx",
+      "ChangeTo": [
+        "rmx"
+      ],
       "RetRemedy": "",
       "Effective": "2014-02-03"
     },
@@ -86921,7 +84069,7 @@
       "Id": "mhh",
       "RefName": "Maskoy Pidgin",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2014-02-03"
     },
@@ -86929,7 +84077,9 @@
       "Id": "puz",
       "RefName": "Purum Naga",
       "RetReason": "M",
-      "ChangeTo": "pub",
+      "ChangeTo": [
+        "pub"
+      ],
       "RetRemedy": "",
       "Effective": "2014-02-03"
     },
@@ -86937,7 +84087,10 @@
       "Id": "sap",
       "RefName": "Sanapan\u00E1",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "spn",
+        "aqt"
+      ],
       "RetRemedy": "Split into Sanapan\u00E1 [spn] and Angait\u00E9 [aqt]",
       "Effective": "2014-02-03"
     },
@@ -86945,7 +84098,9 @@
       "Id": "yuu",
       "RefName": "Yugh",
       "RetReason": "D",
-      "ChangeTo": "yug",
+      "ChangeTo": [
+        "yug"
+      ],
       "RetRemedy": "",
       "Effective": "2014-02-03"
     },
@@ -86953,7 +84108,9 @@
       "Id": "aam",
       "RefName": "Aramanik",
       "RetReason": "M",
-      "ChangeTo": "aas",
+      "ChangeTo": [
+        "aas"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -86961,7 +84118,9 @@
       "Id": "adp",
       "RefName": "Adap",
       "RetReason": "M",
-      "ChangeTo": "dzo",
+      "ChangeTo": [
+        "dzo"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -86969,7 +84128,9 @@
       "Id": "aue",
       "RefName": "\u01C2Kx\u02BCau\u01C1\u02BCein",
       "RetReason": "D",
-      "ChangeTo": "ktz",
+      "ChangeTo": [
+        "ktz"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -86977,7 +84138,7 @@
       "Id": "bmy",
       "RefName": "Bemba (Democratic Republic of Congo)",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -86985,7 +84146,7 @@
       "Id": "bxx",
       "RefName": "Borna (Democratic Republic of Congo)",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -86993,7 +84154,7 @@
       "Id": "byy",
       "RefName": "Buya",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87001,7 +84162,7 @@
       "Id": "dzd",
       "RefName": "Daza",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87009,7 +84170,9 @@
       "Id": "gfx",
       "RefName": "Mangetti Dune \u01C3Xung",
       "RetReason": "M",
-      "ChangeTo": "vaj",
+      "ChangeTo": [
+        "vaj"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87017,7 +84180,9 @@
       "Id": "gti",
       "RefName": "Gbati-ri",
       "RetReason": "M",
-      "ChangeTo": "nyc",
+      "ChangeTo": [
+        "nyc"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87025,7 +84190,7 @@
       "Id": "ime",
       "RefName": "Imeraguen",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87033,7 +84198,7 @@
       "Id": "kbf",
       "RefName": "Kakauhua",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87041,7 +84206,9 @@
       "Id": "koj",
       "RefName": "Sara Dunjo",
       "RetReason": "M",
-      "ChangeTo": "kwv",
+      "ChangeTo": [
+        "kwv"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87049,7 +84216,9 @@
       "Id": "kwq",
       "RefName": "Kwak",
       "RetReason": "M",
-      "ChangeTo": "yam",
+      "ChangeTo": [
+        "yam"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87057,7 +84226,9 @@
       "Id": "kxe",
       "RefName": "Kakihum",
       "RetReason": "M",
-      "ChangeTo": "tvd",
+      "ChangeTo": [
+        "tvd"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87065,7 +84236,9 @@
       "Id": "lii",
       "RefName": "Lingkhim",
       "RetReason": "M",
-      "ChangeTo": "raq",
+      "ChangeTo": [
+        "raq"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87073,7 +84246,9 @@
       "Id": "mwj",
       "RefName": "Maligo",
       "RetReason": "M",
-      "ChangeTo": "vaj",
+      "ChangeTo": [
+        "vaj"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87081,7 +84256,9 @@
       "Id": "nnx",
       "RefName": "Ngong",
       "RetReason": "M",
-      "ChangeTo": "ngv",
+      "ChangeTo": [
+        "ngv"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87089,7 +84266,9 @@
       "Id": "oun",
       "RefName": "\u01C3O\u01C3ung",
       "RetReason": "M",
-      "ChangeTo": "vaj",
+      "ChangeTo": [
+        "vaj"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87097,7 +84276,9 @@
       "Id": "pmu",
       "RefName": "Mirpur Panjabi",
       "RetReason": "M",
-      "ChangeTo": "phr",
+      "ChangeTo": [
+        "phr"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87105,7 +84286,7 @@
       "Id": "sgo",
       "RefName": "Songa",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87113,7 +84294,9 @@
       "Id": "thx",
       "RefName": "The",
       "RetReason": "D",
-      "ChangeTo": "oyb",
+      "ChangeTo": [
+        "oyb"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87121,7 +84304,9 @@
       "Id": "tsf",
       "RefName": "Southwestern Tamang",
       "RetReason": "M",
-      "ChangeTo": "taj",
+      "ChangeTo": [
+        "taj"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87129,7 +84314,9 @@
       "Id": "uok",
       "RefName": "Uokha",
       "RetReason": "M",
-      "ChangeTo": "ema",
+      "ChangeTo": [
+        "ema"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87137,7 +84324,9 @@
       "Id": "xsj",
       "RefName": "Subi",
       "RetReason": "D",
-      "ChangeTo": "suj",
+      "ChangeTo": [
+        "suj"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87145,7 +84334,7 @@
       "Id": "yds",
       "RefName": "Yiddish Sign Language",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87153,7 +84342,9 @@
       "Id": "ymt",
       "RefName": "Mator-Taygi-Karagas",
       "RetReason": "D",
-      "ChangeTo": "mtm",
+      "ChangeTo": [
+        "mtm"
+      ],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87161,7 +84352,7 @@
       "Id": "ynh",
       "RefName": "Yangho",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2015-01-12"
     },
@@ -87169,7 +84360,9 @@
       "Id": "bgm",
       "RefName": "Baga Mboteni",
       "RetReason": "D",
-      "ChangeTo": "bcg",
+      "ChangeTo": [
+        "bcg"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87177,7 +84370,7 @@
       "Id": "btl",
       "RefName": "Bhatola",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87185,7 +84378,7 @@
       "Id": "cbe",
       "RefName": "Chipiajes",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87193,7 +84386,7 @@
       "Id": "cbh",
       "RefName": "Cagua",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87201,7 +84394,9 @@
       "Id": "coy",
       "RefName": "Coyaima",
       "RetReason": "M",
-      "ChangeTo": "pij",
+      "ChangeTo": [
+        "pij"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87209,7 +84404,9 @@
       "Id": "cqu",
       "RefName": "Chilean Quechua",
       "RetReason": "M",
-      "ChangeTo": "quh",
+      "ChangeTo": [
+        "quh"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87217,7 +84414,7 @@
       "Id": "cum",
       "RefName": "Cumeral",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87225,7 +84422,10 @@
       "Id": "duj",
       "RefName": "Dhuwal",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "dwu",
+        "dwy"
+      ],
       "RetRemedy": "split into [dwu] Dhuwal and [dwy] Dhuwaya",
       "Effective": "2016-01-15"
     },
@@ -87233,7 +84433,9 @@
       "Id": "ggn",
       "RefName": "Eastern Gurung",
       "RetReason": "M",
-      "ChangeTo": "gvr",
+      "ChangeTo": [
+        "gvr"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87241,7 +84443,10 @@
       "Id": "ggo",
       "RefName": "Southern Gondi",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "esg",
+        "wsg"
+      ],
       "RetRemedy": "split into [esg] Aheri Gondi and [wsg] Adilabad Gondi",
       "Effective": "2016-01-15"
     },
@@ -87249,7 +84454,9 @@
       "Id": "guv",
       "RefName": "Gey",
       "RetReason": "M",
-      "ChangeTo": "duz",
+      "ChangeTo": [
+        "duz"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87257,7 +84464,7 @@
       "Id": "iap",
       "RefName": "Iapama",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87265,7 +84472,10 @@
       "Id": "ill",
       "RefName": "Iranun",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "ilp",
+        "ilm"
+      ],
       "RetRemedy": "Split into Iranun (Philippines) [ilp] and Iranun (Malaysia) [ilm]",
       "Effective": "2016-01-15"
     },
@@ -87273,7 +84483,9 @@
       "Id": "kgc",
       "RefName": "Kasseng",
       "RetReason": "D",
-      "ChangeTo": "tdf",
+      "ChangeTo": [
+        "tdf"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87281,7 +84493,7 @@
       "Id": "kox",
       "RefName": "Coxima",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87289,7 +84501,9 @@
       "Id": "ktr",
       "RefName": "Kota Marudu Tinagas",
       "RetReason": "M",
-      "ChangeTo": "dtp",
+      "ChangeTo": [
+        "dtp"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87297,7 +84511,9 @@
       "Id": "kvs",
       "RefName": "Kunggara",
       "RetReason": "D",
-      "ChangeTo": "gdj",
+      "ChangeTo": [
+        "gdj"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87305,7 +84521,9 @@
       "Id": "kzj",
       "RefName": "Coastal Kadazan",
       "RetReason": "M",
-      "ChangeTo": "dtp",
+      "ChangeTo": [
+        "dtp"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87313,7 +84531,9 @@
       "Id": "kzt",
       "RefName": "Tambunan Dusun",
       "RetReason": "M",
-      "ChangeTo": "dtp",
+      "ChangeTo": [
+        "dtp"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87321,7 +84541,9 @@
       "Id": "nad",
       "RefName": "Nijadali",
       "RetReason": "D",
-      "ChangeTo": "xny",
+      "ChangeTo": [
+        "xny"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87329,7 +84551,9 @@
       "Id": "nts",
       "RefName": "Natagaimas",
       "RetReason": "M",
-      "ChangeTo": "pij",
+      "ChangeTo": [
+        "pij"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87337,7 +84561,7 @@
       "Id": "ome",
       "RefName": "Omejes",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87345,7 +84569,9 @@
       "Id": "pmc",
       "RefName": "Palumata",
       "RetReason": "D",
-      "ChangeTo": "huw",
+      "ChangeTo": [
+        "huw"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87353,7 +84579,7 @@
       "Id": "pod",
       "RefName": "Ponares",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87361,7 +84587,9 @@
       "Id": "ppa",
       "RefName": "Pao",
       "RetReason": "M",
-      "ChangeTo": "bfy",
+      "ChangeTo": [
+        "bfy"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87369,7 +84597,9 @@
       "Id": "pry",
       "RefName": "Pray 3",
       "RetReason": "D",
-      "ChangeTo": "prt",
+      "ChangeTo": [
+        "prt"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87377,7 +84607,7 @@
       "Id": "rna",
       "RefName": "Runa",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87385,7 +84615,7 @@
       "Id": "svr",
       "RefName": "Savara",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87393,7 +84623,9 @@
       "Id": "tdu",
       "RefName": "Tempasuk Dusun",
       "RetReason": "M",
-      "ChangeTo": "dtp",
+      "ChangeTo": [
+        "dtp"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87401,7 +84633,9 @@
       "Id": "thc",
       "RefName": "Tai Hang Tong",
       "RetReason": "M",
-      "ChangeTo": "tpo",
+      "ChangeTo": [
+        "tpo"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87409,7 +84643,10 @@
       "Id": "tid",
       "RefName": "Tidong",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "ntd",
+        "itd"
+      ],
       "RetRemedy": "Split into Northern Tidung [ntd] and Southern Tidung [itd]",
       "Effective": "2016-01-15"
     },
@@ -87417,7 +84654,9 @@
       "Id": "tmp",
       "RefName": "Tai M\u00E8ne",
       "RetReason": "M",
-      "ChangeTo": "tyj",
+      "ChangeTo": [
+        "tyj"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87425,7 +84664,9 @@
       "Id": "tne",
       "RefName": "Tinoc Kallahan",
       "RetReason": "M",
-      "ChangeTo": "kak",
+      "ChangeTo": [
+        "kak"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87433,7 +84674,7 @@
       "Id": "toe",
       "RefName": "Tomedes",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87441,7 +84682,9 @@
       "Id": "xba",
       "RefName": "Kamba (Brazil)",
       "RetReason": "D",
-      "ChangeTo": "cax",
+      "ChangeTo": [
+        "cax"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87449,7 +84692,7 @@
       "Id": "xbx",
       "RefName": "Kabix\u00ED",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87457,7 +84700,7 @@
       "Id": "xip",
       "RefName": "Xipin\u00E1wa",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87465,7 +84708,9 @@
       "Id": "xkh",
       "RefName": "Karahawyana",
       "RetReason": "D",
-      "ChangeTo": "waw",
+      "ChangeTo": [
+        "waw"
+      ],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87473,7 +84718,7 @@
       "Id": "yri",
       "RefName": "Yar\u00ED",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2016-01-15"
     },
@@ -87481,7 +84726,9 @@
       "Id": "jeg",
       "RefName": "Jeng",
       "RetReason": "M",
-      "ChangeTo": "oyb",
+      "ChangeTo": [
+        "oyb"
+      ],
       "RetRemedy": "",
       "Effective": "2017-01-31"
     },
@@ -87489,7 +84736,10 @@
       "Id": "kgd",
       "RefName": "Kataang",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "ncq",
+        "sct"
+      ],
       "RetRemedy": "Split into [ncq] Northern Katang and [sct] Southern Katang",
       "Effective": "2017-01-31"
     },
@@ -87497,7 +84747,9 @@
       "Id": "krm",
       "RefName": "Krim",
       "RetReason": "M",
-      "ChangeTo": "bmf",
+      "ChangeTo": [
+        "bmf"
+      ],
       "RetRemedy": "",
       "Effective": "2017-01-31"
     },
@@ -87505,7 +84757,7 @@
       "Id": "prb",
       "RefName": "Lua\u0027",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2017-01-31"
     },
@@ -87513,7 +84765,7 @@
       "Id": "puk",
       "RefName": "Pu Ko",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2017-01-31"
     },
@@ -87521,7 +84773,7 @@
       "Id": "rie",
       "RefName": "Rien",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2017-01-31"
     },
@@ -87529,7 +84781,7 @@
       "Id": "rsi",
       "RefName": "Rennellese Sign Language",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2017-01-31"
     },
@@ -87537,7 +84789,9 @@
       "Id": "skk",
       "RefName": "Sok",
       "RetReason": "M",
-      "ChangeTo": "oyb",
+      "ChangeTo": [
+        "oyb"
+      ],
       "RetRemedy": "",
       "Effective": "2017-01-31"
     },
@@ -87545,7 +84799,7 @@
       "Id": "snh",
       "RefName": "Shinabo",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2017-01-31"
     },
@@ -87553,7 +84807,7 @@
       "Id": "lsg",
       "RefName": "Lyons Sign Language",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2018-01-23"
     },
@@ -87561,7 +84815,7 @@
       "Id": "mwx",
       "RefName": "Mediak",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2018-01-23"
     },
@@ -87569,7 +84823,7 @@
       "Id": "mwy",
       "RefName": "Mosiro",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2018-01-23"
     },
@@ -87577,7 +84831,9 @@
       "Id": "ncp",
       "RefName": "Ndaktup",
       "RetReason": "M",
-      "ChangeTo": "kdz",
+      "ChangeTo": [
+        "kdz"
+      ],
       "RetRemedy": "",
       "Effective": "2018-01-23"
     },
@@ -87585,7 +84841,10 @@
       "Id": "ais",
       "RefName": "Nataoran Amis",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "ami",
+        "szy"
+      ],
       "RetRemedy": "Split into Amis [ami] and Sakizaya [szy]",
       "Effective": "2019-01-25"
     },
@@ -87593,7 +84852,9 @@
       "Id": "asd",
       "RefName": "Asas",
       "RetReason": "M",
-      "ChangeTo": "snz",
+      "ChangeTo": [
+        "snz"
+      ],
       "RetRemedy": "",
       "Effective": "2019-01-25"
     },
@@ -87601,7 +84862,9 @@
       "Id": "dit",
       "RefName": "Dirari",
       "RetReason": "M",
-      "ChangeTo": "dif",
+      "ChangeTo": [
+        "dif"
+      ],
       "RetRemedy": "",
       "Effective": "2019-01-25"
     },
@@ -87609,7 +84872,10 @@
       "Id": "dud",
       "RefName": "Hun-Saare",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "uth",
+        "uss"
+      ],
       "RetRemedy": "Split into ut-Hun [uth] and us-Saare [uss]",
       "Effective": "2019-01-25"
     },
@@ -87617,7 +84883,7 @@
       "Id": "lba",
       "RefName": "Lui",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2019-01-25"
     },
@@ -87625,7 +84891,9 @@
       "Id": "llo",
       "RefName": "Khlor",
       "RetReason": "D",
-      "ChangeTo": "ngt",
+      "ChangeTo": [
+        "ngt"
+      ],
       "RetRemedy": "",
       "Effective": "2019-01-25"
     },
@@ -87633,7 +84901,9 @@
       "Id": "myd",
       "RefName": "Maramba",
       "RetReason": "M",
-      "ChangeTo": "aog",
+      "ChangeTo": [
+        "aog"
+      ],
       "RetRemedy": "",
       "Effective": "2019-01-25"
     },
@@ -87641,7 +84911,7 @@
       "Id": "myi",
       "RefName": "Mina (India)",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2019-01-25"
     },
@@ -87649,7 +84919,9 @@
       "Id": "nns",
       "RefName": "Ningye",
       "RetReason": "M",
-      "ChangeTo": "nbr",
+      "ChangeTo": [
+        "nbr"
+      ],
       "RetRemedy": "",
       "Effective": "2019-01-25"
     },
@@ -87657,7 +84929,7 @@
       "Id": "aoh",
       "RefName": "Arma",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87665,7 +84937,7 @@
       "Id": "ayy",
       "RefName": "Tayabas Ayta",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87673,7 +84945,7 @@
       "Id": "bbz",
       "RefName": "Babalia Creole Arabic",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87681,7 +84953,7 @@
       "Id": "bpb",
       "RefName": "Barbacoas",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87689,7 +84961,7 @@
       "Id": "cca",
       "RefName": "Cauca",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87697,7 +84969,7 @@
       "Id": "cdg",
       "RefName": "Chamari",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87705,7 +84977,7 @@
       "Id": "dgu",
       "RefName": "Degaru",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87713,7 +84985,9 @@
       "Id": "drr",
       "RefName": "Dororo",
       "RetReason": "M",
-      "ChangeTo": "kzk",
+      "ChangeTo": [
+        "kzk"
+      ],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87721,7 +84995,7 @@
       "Id": "ekc",
       "RefName": "Eastern Karnic",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87729,7 +85003,9 @@
       "Id": "gli",
       "RefName": "Guliguli",
       "RetReason": "M",
-      "ChangeTo": "kzk",
+      "ChangeTo": [
+        "kzk"
+      ],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87737,7 +85013,7 @@
       "Id": "kjf",
       "RefName": "Khalaj",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87745,7 +85021,9 @@
       "Id": "kxl",
       "RefName": "Nepali Kurux",
       "RetReason": "M",
-      "ChangeTo": "kru",
+      "ChangeTo": [
+        "kru"
+      ],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87753,7 +85031,10 @@
       "Id": "kxu",
       "RefName": "Kui (India)",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "dwk",
+        "uki"
+      ],
       "RetRemedy": "Split into [dwk] Dawik Kui and [uki] Kui (India)",
       "Effective": "2020-01-23"
     },
@@ -87761,7 +85042,7 @@
       "Id": "lmz",
       "RefName": "Lumbee",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87769,7 +85050,9 @@
       "Id": "nxu",
       "RefName": "Narau",
       "RetReason": "M",
-      "ChangeTo": "bpp",
+      "ChangeTo": [
+        "bpp"
+      ],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87777,7 +85060,7 @@
       "Id": "plp",
       "RefName": "Palpa",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87785,7 +85068,11 @@
       "Id": "sdm",
       "RefName": "Semandang",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "sdq",
+        "ebc",
+        "gef"
+      ],
       "RetRemedy": "Split into Semandang [sdq], Beginci [ebc] and Gerai [gef]",
       "Effective": "2020-01-23"
     },
@@ -87793,7 +85080,7 @@
       "Id": "tbb",
       "RefName": "Tapeba",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87801,7 +85088,9 @@
       "Id": "xrq",
       "RefName": "Karranga",
       "RetReason": "M",
-      "ChangeTo": "dmw",
+      "ChangeTo": [
+        "dmw"
+      ],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87809,7 +85098,17 @@
       "Id": "xtz",
       "RefName": "Tasmanian",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "xpv",
+        "xph",
+        "xpb",
+        "xpd",
+        "xpf",
+        "xpx",
+        "xpw",
+        "xpl",
+        "xpz"
+      ],
       "RetRemedy": "Split into [xpv] Northern Tasman,  [xph] North Midlands Tasman, [xpb] Northeastern Tasman, [xpd] Oyster Bay Tasmanian, [xpf] Southeast Tasma, [xpx] Southwestern Tasman, [xpw] Northwestern Tasman., [xpl] Port Sorell Tasman. and [xpz] Bruny Island Tasman.",
       "Effective": "2020-01-23"
     },
@@ -87817,7 +85116,9 @@
       "Id": "zir",
       "RefName": "Ziriya",
       "RetReason": "D",
-      "ChangeTo": "scv",
+      "ChangeTo": [
+        "scv"
+      ],
       "RetRemedy": "",
       "Effective": "2020-01-23"
     },
@@ -87825,7 +85126,9 @@
       "Id": "thw",
       "RefName": "Thudam",
       "RetReason": "M",
-      "ChangeTo": "ola",
+      "ChangeTo": [
+        "ola"
+      ],
       "RetRemedy": "",
       "Effective": "2020-03-19"
     },
@@ -87833,7 +85136,9 @@
       "Id": "bic",
       "RefName": "Bikaru",
       "RetReason": "M",
-      "ChangeTo": "bir",
+      "ChangeTo": [
+        "bir"
+      ],
       "RetRemedy": "",
       "Effective": "2021-01-15"
     },
@@ -87841,7 +85146,11 @@
       "Id": "bij",
       "RefName": "Vaghat-Ya-Bijim-Legeri",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "tyy",
+        "jbm",
+        "dkg"
+      ],
       "RetRemedy": "Split into Tiyaa [tyy], Bijim [jbm] and Kadung [dkg].",
       "Effective": "2021-01-15"
     },
@@ -87849,7 +85158,9 @@
       "Id": "blg",
       "RefName": "Balau",
       "RetReason": "M",
-      "ChangeTo": "iba",
+      "ChangeTo": [
+        "iba"
+      ],
       "RetRemedy": "",
       "Effective": "2021-01-15"
     },
@@ -87857,7 +85168,10 @@
       "Id": "gji",
       "RefName": "Geji",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "gyz",
+        "zbu"
+      ],
       "RetRemedy": "Split into Gyaazi [gyz], and Bu (Bauchi State) [zbu]",
       "Effective": "2021-01-15"
     },
@@ -87865,7 +85179,10 @@
       "Id": "mvm",
       "RefName": "Muya",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "emq",
+        "wmg"
+      ],
       "RetRemedy": "Split into Eastern Minyag [emq] and Western Minyag [wmg]",
       "Effective": "2021-01-15"
     },
@@ -87873,7 +85190,10 @@
       "Id": "ngo",
       "RefName": "Ngoni",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "xnj",
+        "xnq"
+      ],
       "RetRemedy": "Split into Ngoni (Tanzania) [xnj] and Ngoni (Mozambique) [xnq]",
       "Effective": "2021-01-15"
     },
@@ -87881,7 +85201,9 @@
       "Id": "pat",
       "RefName": "Papitalai",
       "RetReason": "M",
-      "ChangeTo": "kxr",
+      "ChangeTo": [
+        "kxr"
+      ],
       "RetRemedy": "",
       "Effective": "2021-01-15"
     },
@@ -87889,7 +85211,10 @@
       "Id": "vki",
       "RefName": "Ija-Zuba",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "vkn",
+        "vkz"
+      ],
       "RetRemedy": "Split into Koro Nulu [vkn] and Koro Zuba [vkz]",
       "Effective": "2021-01-15"
     },
@@ -87897,7 +85222,11 @@
       "Id": "wra",
       "RefName": "Warapu",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "bpe",
+        "uni",
+        "suo"
+      ],
       "RetRemedy": "Split into Bauni [bpe], Uni [uni] and Bouni [suo]",
       "Effective": "2021-01-15"
     },
@@ -87905,7 +85234,9 @@
       "Id": "ajt",
       "RefName": "Judeo-Tunisian Arabic",
       "RetReason": "D",
-      "ChangeTo": "aeb",
+      "ChangeTo": [
+        "aeb"
+      ],
       "RetRemedy": "",
       "Effective": "2022-01-20"
     },
@@ -87913,7 +85244,10 @@
       "Id": "cug",
       "RefName": "Chungmboko",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "cnq",
+        "bpc"
+      ],
       "RetRemedy": "Split into Chung [cnq] and Mbuk [bpc]",
       "Effective": "2022-01-20"
     },
@@ -87921,7 +85255,9 @@
       "Id": "lak",
       "RefName": "Laka (Nigeria)",
       "RetReason": "M",
-      "ChangeTo": "ksp",
+      "ChangeTo": [
+        "ksp"
+      ],
       "RetRemedy": "",
       "Effective": "2022-01-20"
     },
@@ -87929,7 +85265,12 @@
       "Id": "lno",
       "RefName": "Lango (South Sudan)",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "lgo",
+        "imt",
+        "lqr",
+        "oie"
+      ],
       "RetRemedy": "Split into Lango [lgo], Imotong [imt], Logir [lqr] and Okolie [oie]",
       "Effective": "2022-01-20"
     },
@@ -87937,7 +85278,7 @@
       "Id": "pii",
       "RefName": "Pini",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2022-01-20"
     },
@@ -87945,7 +85286,9 @@
       "Id": "smd",
       "RefName": "Sama",
       "RetReason": "M",
-      "ChangeTo": "kmb",
+      "ChangeTo": [
+        "kmb"
+      ],
       "RetRemedy": "",
       "Effective": "2022-01-20"
     },
@@ -87953,7 +85296,9 @@
       "Id": "snb",
       "RefName": "Sebuyau",
       "RetReason": "M",
-      "ChangeTo": "iba",
+      "ChangeTo": [
+        "iba"
+      ],
       "RetRemedy": "",
       "Effective": "2022-01-20"
     },
@@ -87961,7 +85306,10 @@
       "Id": "uun",
       "RefName": "Kulon-Pazeh",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "uon",
+        "pzh"
+      ],
       "RetRemedy": "Split into Kulon [uon] and Pazeh [pzh]",
       "Effective": "2022-01-20"
     },
@@ -87969,7 +85317,7 @@
       "Id": "wrd",
       "RefName": "Warduji",
       "RetReason": "N",
-      "ChangeTo": "",
+      "ChangeTo": [],
       "RetRemedy": "",
       "Effective": "2022-01-20"
     },
@@ -87977,7 +85325,10 @@
       "Id": "wya",
       "RefName": "Wyandot",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "wyn",
+        "wdt"
+      ],
       "RetRemedy": "Split into Wyandot [wyn] and Wendat [wdt]",
       "Effective": "2022-01-20"
     },
@@ -87985,7 +85336,9 @@
       "Id": "ajp",
       "RefName": "South Levantine Arabic",
       "RetReason": "M",
-      "ChangeTo": "apc",
+      "ChangeTo": [
+        "apc"
+      ],
       "RetRemedy": "",
       "Effective": "2023-01-20"
     },
@@ -87993,7 +85346,9 @@
       "Id": "pmk",
       "RefName": "Pamlico",
       "RetReason": "M",
-      "ChangeTo": "crr",
+      "ChangeTo": [
+        "crr"
+      ],
       "RetRemedy": "",
       "Effective": "2023-01-20"
     },
@@ -88001,7 +85356,9 @@
       "Id": "prp",
       "RefName": "Parsi",
       "RetReason": "M",
-      "ChangeTo": "guj",
+      "ChangeTo": [
+        "guj"
+      ],
       "RetRemedy": "",
       "Effective": "2023-01-20"
     },
@@ -88009,7 +85366,13 @@
       "Id": "zua",
       "RefName": "Zeem",
       "RetReason": "S",
-      "ChangeTo": "",
+      "ChangeTo": [
+        "tvi",
+        "dyr",
+        "dsk",
+        "cxh",
+        "zem"
+      ],
       "RetRemedy": "Split into [tvi] Tulai, [dyr] Dyarim, [dsk] Dokshi, [cxh] Cha\u0027ari, and [zem] Zeem",
       "Effective": "2023-01-20"
     }
