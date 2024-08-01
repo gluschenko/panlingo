@@ -137,6 +137,11 @@ namespace Panlingo.LanguageCode
             return this;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public LanguageCodeResolver ConvertTo(LanguageCodeEntity entity)
         {
             _convert = x =>
@@ -155,21 +160,12 @@ namespace Panlingo.LanguageCode
             return this;
         }
 
-        public string Apply(string code)
-        {
-            foreach (var rule in _rules.OrderBy(x => x.Key))
-            {
-                code = rule.Value(code);
-            }
-
-            if (_convert != null)
-            {
-                code = _convert(code);
-            }
-
-            return code;
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        /// <exception cref="LanguageCodeException"></exception>
         private string ResolveUnknown(string code)
         {
             if (_resolveUnknown != null)
@@ -189,11 +185,22 @@ namespace Panlingo.LanguageCode
             throw new LanguageCodeException(code, $"Language code is unknown");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rule"></param>
+        /// <returns></returns>
         public bool HasRule(LanguageCodeRule rule)
         {
             return _rules.ContainsKey(rule);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rule"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException"></exception>
         public LanguageCodeResolver RemoveRule(LanguageCodeRule rule)
         {
             if (HasRule(rule))
@@ -206,6 +213,26 @@ namespace Panlingo.LanguageCode
             }
 
             return this;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        internal string Apply(string code)
+        {
+            foreach (var rule in _rules.OrderBy(x => x.Key))
+            {
+                code = rule.Value(code);
+            }
+
+            if (_convert != null)
+            {
+                code = _convert(code);
+            }
+
+            return code;
         }
     }
 }

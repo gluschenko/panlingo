@@ -95,13 +95,14 @@ namespace LanguageCode.Tests
         [Theory]
         [InlineData("azb", "aze")]
         [InlineData("azj", "aze")]
-        [InlineData("cmn", "zho")]
-        [InlineData("nan", "zho")]
         [InlineData("hji", "msa")]
         [InlineData("ind", "msa")]
+        [InlineData("nan", "zho")]
+        [InlineData("cmn", "zho")]
         public void ResolveMacrolanguage(string source, string target)
         {
             var options = BasicResolver
+                .ReduceToMacrolanguage()
                 .ConvertTo(LanguageCodeEntity.Alpha3);
 
             var code = LanguageCodeHelper.Resolve(code: source, options: options);
@@ -120,6 +121,8 @@ namespace LanguageCode.Tests
         [InlineData("iw", "Hebrew")]
         [InlineData("in", "Indonesian")]
         [InlineData("id", "Indonesian")]
+        [InlineData("cmn", "Mandarin Chinese")]
+        [InlineData("zho", "Chinese")]
         [InlineData("emo", "Emok")]         // extinct
         [InlineData("kxl", "Nepali Kurux")] // legacy code for [kru]
         [InlineData("kxu", "Kui (India)")]  // splitted for [dwk] and [uki]
@@ -154,6 +157,34 @@ namespace LanguageCode.Tests
             var options = new LanguageCodeResolver().ToLowerAndTrim();
             var code = LanguageCodeHelper.Resolve(code: source, options: options);
             Assert.Equal(target, code);
+        }
+
+        [Theory]
+        [InlineData("aaaa")]
+        [InlineData("bbbb")]
+        [InlineData("cccc")]
+        [InlineData("eeee")]
+        [InlineData("dddd")]
+        public void ResolveMissingWithException(string source)
+        {
+            Assert.Throws<LanguageCodeException>(() => 
+            {
+                var options = BasicResolver.ConvertTo(LanguageCodeEntity.Alpha3);
+                var code = LanguageCodeHelper.Resolve(code: source, options: options);
+            });
+        }
+
+        [Theory]
+        [InlineData("aaaa")]
+        [InlineData("bbbb")]
+        [InlineData("cccc")]
+        [InlineData("eeee")]
+        [InlineData("dddd")]
+        public void ResolveMissing(string source)
+        {
+            var options = BasicResolver;
+            var code = LanguageCodeHelper.Resolve(code: source, options: options);
+            Assert.Equal(source, code);
         }
     }
 }

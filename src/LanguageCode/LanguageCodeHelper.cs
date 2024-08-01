@@ -9,8 +9,7 @@ namespace Panlingo.LanguageCode
     {
         private static LanguageCodeResolver _defaultNormalizationOptions = new LanguageCodeResolver()
             .ToLowerAndTrim()
-            .ConvertFromIETF()
-            .ConvertFromDeprecatedCode();
+            .ConvertFromIETF();
 
         private readonly static Dictionary<LanguageCodeEntity, Func<LanguageDescriptor, string>> _langaugeVisitors;
 
@@ -114,6 +113,12 @@ namespace Panlingo.LanguageCode
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        /// <exception cref="LanguageCodeException"></exception>
         public static string GetTwoLetterISOCode(string code)
         {
             if (!TryGetTwoLetterISOCode(code, out var value))
@@ -124,6 +129,12 @@ namespace Panlingo.LanguageCode
             return value;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        /// <exception cref="LanguageCodeException"></exception>
         public static string GetThreeLetterISOCode(string code)
         {
             if (!TryGetThreeLetterISOCode(code, out var value))
@@ -134,6 +145,12 @@ namespace Panlingo.LanguageCode
             return value;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        /// <exception cref="LanguageCodeException"></exception>
         public static string GetLanguageEnglishName(string code)
         {
             if (!TryGetLanguageEnglishName(code, out var value))
@@ -144,6 +161,12 @@ namespace Panlingo.LanguageCode
             return value;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static bool TryGetTwoLetterISOCode(
             string code, 
             [MaybeNullWhen(false)] out string value
@@ -161,6 +184,12 @@ namespace Panlingo.LanguageCode
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static bool TryGetThreeLetterISOCode(
             string code, 
             [MaybeNullWhen(false)] out string value
@@ -178,6 +207,12 @@ namespace Panlingo.LanguageCode
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static bool TryGetLanguageEnglishName(
             string code, 
             [MaybeNullWhen(false)] out string value
@@ -195,6 +230,13 @@ namespace Panlingo.LanguageCode
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        /// <exception cref="LanguageCodeException"></exception>
         public static string GetEntity(
             string code, 
             LanguageCodeEntity entity
@@ -208,6 +250,14 @@ namespace Panlingo.LanguageCode
             return value;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="entity"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public static bool TryGetEntity(
             string code, 
             LanguageCodeEntity entity, 
