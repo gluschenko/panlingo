@@ -20,6 +20,7 @@ functionality into their applications.
 | [Panlingo.LanguageIdentification.CLD3](./README_CLD3.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.CLD3?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.CLD3/) |
 | [Panlingo.LanguageIdentification.FastText](./README_FASTTEXT.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.FastText?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.FastText/) |
 | [Panlingo.LanguageIdentification.Whatlang](./README_WHATLANG.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.Whatlang?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.Whatlang/) |
+| [Panlingo.LanguageCode](./README_LANGUAGE_CODE.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageCode?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageCode/) |
 
 ## Contents
 
