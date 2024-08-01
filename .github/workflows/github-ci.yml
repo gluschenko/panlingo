@@ -23,6 +23,7 @@ jobs:
           - LanguageIdentification.FastText
           - LanguageIdentification.Whatlang.Native
           - LanguageIdentification.Whatlang
+          - LanguageCode
     permissions:
       contents: read
       packages: write
@@ -89,9 +90,13 @@ jobs:
         docker build -f ./test.Dockerfile -t langunage-identification-test-runner:latest .
         docker build -f ./test-ci.Dockerfile -t langunage-identification-test-runner-ci:latest .
 
-    - name: 🧪 Test
+    - name: 🧪 Run Tests in Docker
       working-directory: ${{env.ROOT}}
       run: docker run --rm -v $(pwd):/src langunage-identification-test-runner-ci:latest
+
+    - name: 🧪 Run Test for LanguageCode
+      working-directory: ${{env.ROOT}}/LanguageCode.Tests
+      run: dotnet test -c CI
 
   deploy-nugets:
     name: 🚚 Push ${{matrix.projectName}}
@@ -110,6 +115,7 @@ jobs:
           - LanguageIdentification.FastText
           - LanguageIdentification.Whatlang.Native
           - LanguageIdentification.Whatlang
+          - LanguageCode
     permissions:
       contents: read
       packages: write

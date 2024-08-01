@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+    <Version>0.0.0.12</Version>
+    <PackageId>Panlingo.LanguageCode</PackageId>
+    <AssemblyName>Panlingo.LanguageCode</AssemblyName>
+    <RootNamespace>Panlingo.LanguageCode</RootNamespace>
+    <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Authors>Alexander Gluschenko</Authors>
+    <Copyright>Alexander Gluschenko © 2024</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>iso iso639 language-code</PackageTags>
+    <PackageReadmeFile>README_LANGUAGE_CODE.md</PackageReadmeFile>
+    <PackageReleaseNotes>
+      - Initial release
+    </PackageReleaseNotes>
+    <Description>
+      Helper library for ISO language codes (ISO 639-1, ISO 639-2, ISO 639-3)
+    </Description>
+    <Configurations>Debug;Release;CI</Configurations>
+
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591,1573</NoWarn>
+    <DocumentationFile>..\Panlingo.LanguageCode.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LanguageCode.Models\LanguageCode.Models.csproj" PrivateAssets="all" />
+    <ProjectReference Include="..\LanguageCode.SourceGenerator\LanguageCode.SourceGenerator.csproj" PrivateAssets="all" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <!-- 
+  Credit:
+  https://stackoverflow.com/questions/40396161/include-all-dependencies-using-dotnet-pack 
+  -->
+  <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="BuildOnlySettings;ResolveReferences">
+    <ItemGroup>
+      <!-- Filter out unnecessary files -->
+      <_ReferenceCopyLocalPaths Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')-&gt;WithMetadataValue('PrivateAssets', 'All'))" />
+    </ItemGroup>
+
+    <!-- Print batches for debug purposes -->
+    <Message Text="Batch for .nupkg: ReferenceCopyLocalPaths = @(_ReferenceCopyLocalPaths), ReferenceCopyLocalPaths.DestinationSubDirectory = %(_ReferenceCopyLocalPaths.DestinationSubDirectory) Filename = %(_ReferenceCopyLocalPaths.Filename) Extension = %(_ReferenceCopyLocalPaths.Extension)" Importance="High" Condition="'@(_ReferenceCopyLocalPaths)' != ''" />
+
+    <ItemGroup>
+      <!-- Add file to package with consideration of sub folder. If empty, the root folder is chosen. -->
+      <BuildOutputInPackage Include="@(_ReferenceCopyLocalPaths)" TargetPath="%(_ReferenceCopyLocalPaths.DestinationSubDirectory)" />
+    </ItemGroup>
+  </Target>
+
+  <ItemGroup>
+    <None Include="..\..\README_LANGUAGE_CODE.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="resources.json" />
+  </ItemGroup>
+
+</Project>

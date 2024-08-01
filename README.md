@@ -12,6 +12,16 @@ language identification models to the .NET ecosystem,
 allowing developers to seamlessly integrate language detection 
 functionality into their applications.
 
+## Libraries
+
+| Library | Nuget Release |
+| ------ | ------ |
+| [Panlingo.LanguageIdentification.CLD2](./README_CLD2.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.CLD2?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.CLD2/) |
+| [Panlingo.LanguageIdentification.CLD3](./README_CLD3.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.CLD3?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.CLD3/) |
+| [Panlingo.LanguageIdentification.FastText](./README_FASTTEXT.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.FastText?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.FastText/) |
+| [Panlingo.LanguageIdentification.Whatlang](./README_WHATLANG.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.Whatlang?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.Whatlang/) |
+| [Panlingo.LanguageCode](./README_LANGUAGE_CODE.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageCode?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageCode/) |
+
 ## Contents
 
 1. [Models](#models)
@@ -44,9 +54,9 @@ functionality into their applications.
 
 ## Key concerns
 
-- ❌ Avoid forks or modifications of the original code.
-- ✅ Extend the original code through wrappers.
-- ❌ Preserve the original library behavior without breaking changes.
+- Zero-dependency development. 
+- The original code of libraries (CLD2, CLD3, FastText, Whatlang) is used as submodules without additional modifications or improvements. Third-party code is not included into this repository.
+- Preserve the original library behavior without breaking changes.
 
 ## Features
 
@@ -75,9 +85,9 @@ functionality into their applications.
 
 ## TODO
 
-- [ ] Research support for additional platforms.
+- [ ] Research support for other platforms (Windows, macOS).
 - [ ] Enhance the suite of unit tests.
-- [ ] Introduce more native methods.
+- [ ] Introduce more native methods (FastText).
 
 ---
 
