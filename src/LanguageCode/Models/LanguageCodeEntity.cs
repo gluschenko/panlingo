@@ -1,5 +1,8 @@
 ﻿namespace Panlingo.LanguageCode.Models
 {
+    /// <summary>
+    /// Entity of langauge. It might be a langauge code or language name.
+    /// </summary>
     public enum LanguageCodeEntity
     {
         /// <summary>

@@ -11,6 +11,14 @@ namespace Panlingo.LanguageCode
         private Func<string, string>? _resolveUnknown;
         private Func<string, string>? _convert;
 
+        /// <summary>
+        /// Callback that returns one of candidates
+        /// </summary>
+        /// <param name="sourceCode">Initial code</param>
+        /// <param name="candidates">Potential candidates to resolve</param>
+        /// <returns>One of candidates</returns>
+        public delegate string ConflictCallback(string sourceCode, IEnumerable<string> candidates);
+
         public LanguageCodeResolver()
         {
             _rules = new Dictionary<LanguageCodeRule, Func<string, string>>();
@@ -87,10 +95,10 @@ namespace Panlingo.LanguageCode
         /// <code>mo -> ro</code>
         /// <code>mol -> ron</code>
         /// </summary>
-        /// <param name="onConflict"></param>
+        /// <param name="onConflict"><see cref="ConflictCallback"/></param>
         /// <returns></returns>
         public LanguageCodeResolver ConvertFromDeprecatedCode(
-            Func<string, IEnumerable<string>, string>? onConflict = null
+            ConflictCallback? onConflict = null
         )
         {
             _rules[LanguageCodeRule.ConvertFromDeprecatedCode] = x =>
@@ -138,11 +146,11 @@ namespace Panlingo.LanguageCode
         }
 
         /// <summary>
-        /// 
+        /// Selects the entity of langauge
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="entity">Entity of langauge (e.g. langauge code or langauge name)</param>
         /// <returns></returns>
-        public LanguageCodeResolver ConvertTo(LanguageCodeEntity entity)
+        public LanguageCodeResolver Select(LanguageCodeEntity entity)
         {
             _convert = x =>
             {

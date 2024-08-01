@@ -46,7 +46,7 @@ namespace LanguageCode.Tests
         public void ResolveGeneral(string source, string target)
         {
             var options = BasicResolver
-                .ConvertTo(LanguageCodeEntity.Alpha3);
+                .Select(LanguageCodeEntity.Alpha3);
 
             var code = LanguageCodeHelper.Resolve(code: source, options: options);
             Assert.Equal(target, code);
@@ -67,7 +67,7 @@ namespace LanguageCode.Tests
         public void ResolveLegacy(string source, string target)
         {
             var options = BasicResolver
-                .ConvertTo(LanguageCodeEntity.Alpha3);
+                .Select(LanguageCodeEntity.Alpha3);
 
             var code = LanguageCodeHelper.Resolve(code: source, options: options);
             Assert.Equal(target, code);
@@ -82,11 +82,11 @@ namespace LanguageCode.Tests
         public void ResolveLegacyConflict(string source, string target)
         {
             var options = BasicResolver
-                .ConvertFromDeprecatedCode((x, y) =>
+                .ConvertFromDeprecatedCode((sourceCode, candidates) =>
                 {
-                    return y.Any() ? y.First() : x;
+                    return candidates.Any() ? candidates.First() : sourceCode;
                 })
-                .ConvertTo(LanguageCodeEntity.Alpha3);
+                .Select(LanguageCodeEntity.Alpha3);
 
             var code = LanguageCodeHelper.Resolve(code: source, options: options);
             Assert.Equal(target, code);
@@ -103,7 +103,7 @@ namespace LanguageCode.Tests
         {
             var options = BasicResolver
                 .ReduceToMacrolanguage()
-                .ConvertTo(LanguageCodeEntity.Alpha3);
+                .Select(LanguageCodeEntity.Alpha3);
 
             var code = LanguageCodeHelper.Resolve(code: source, options: options);
             Assert.Equal(target, code);
@@ -131,7 +131,7 @@ namespace LanguageCode.Tests
             var options = BasicResolver
                 .RemoveRule(LanguageCodeRule.ConvertFromDeprecatedCode)
                 .RemoveRule(LanguageCodeRule.ReduceToMacrolanguage)
-                .ConvertTo(LanguageCodeEntity.EnglishName);
+                .Select(LanguageCodeEntity.EnglishName);
 
             var code = LanguageCodeHelper.Resolve(code: source, options: options);
             Assert.Equal(target, code);
@@ -169,7 +169,7 @@ namespace LanguageCode.Tests
         {
             Assert.Throws<LanguageCodeException>(() => 
             {
-                var options = BasicResolver.ConvertTo(LanguageCodeEntity.Alpha3);
+                var options = BasicResolver.Select(LanguageCodeEntity.Alpha3);
                 var code = LanguageCodeHelper.Resolve(code: source, options: options);
             });
         }
