@@ -36,31 +36,39 @@ namespace Panlingo.LanguageCode
             LanguageCodeResolver? options = null
         )
         {
-            options ??= _defaultNormalizationOptions;
-            return options.Apply(code);
+            if (TryResolve(code, out var newCode, options))
+            {
+                return newCode;
+            }
+            else
+            {
+                throw new LanguageCodeException(code, $"No entity for this code");
+            }
         }
 
         /// <summary>
         /// Tries to resolve code
         /// </summary>
         /// <param name="code">Any ISO langauge code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
-        /// <param name="value"></param>
+        /// <param name="newCode">An equivalent of initial code</param>
         /// <param name="options">Resolver options</param>
         /// <returns></returns>
         public static bool TryResolve(
             string code,
-            [MaybeNullWhen(false)] out string value,
+            [MaybeNullWhen(false)] out string newCode,
             LanguageCodeResolver? options = null
         )
         {
-            try
+            options ??= _defaultNormalizationOptions;
+
+            if (options.TryApply(code, out var value, out _))
             {
-                value = Resolve(code: code, options: options);
+                newCode = value;
                 return true;
             }
-            catch (LanguageCodeException)
+            else
             {
-                value = null;
+                newCode = null;
                 return false;
             }
         }
@@ -82,7 +90,14 @@ namespace Panlingo.LanguageCode
 
             foreach (var code in codes)
             {
-                result[code] = options.Apply(code);
+                if (options.TryApply(code, out var newCode, out var reason))
+                {
+                    result[code] = newCode;
+                }
+                else
+                {
+                    throw new LanguageCodeException(code, reason);
+                }
             }
 
             return result;
@@ -92,25 +107,34 @@ namespace Panlingo.LanguageCode
         /// Tries to resolve the codes collection
         /// </summary>
         /// <param name="codes">Any ISO langauge code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
-        /// <param name="value"></param>
+        /// <param name="newCodes"></param>
         /// <param name="options">Resolver options</param>
         /// <returns></returns>
         public static bool TryResolve(
             IEnumerable<string> codes,
-            [MaybeNullWhen(false)] out IDictionary<string, string> value,
+            [MaybeNullWhen(false)] out IDictionary<string, string> newCodes,
             LanguageCodeResolver? options = null
         )
         {
-            try
+            options ??= _defaultNormalizationOptions;
+
+            var result = new Dictionary<string, string>();
+
+            foreach (var code in codes)
             {
-                value = Resolve(codes: codes, options: options);
-                return true;
+                if (options.TryApply(code, out var newCode, out _))
+                {
+                    result[code] = newCode;
+                }
+                else
+                {
+                    newCodes = null;
+                    return false;
+                }
             }
-            catch (LanguageCodeException)
-            {
-                value = null;
-                return false;
-            }
+
+            newCodes = result;
+            return true;
         }
 
         /// <summary>
