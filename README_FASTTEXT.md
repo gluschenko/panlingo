@@ -2,13 +2,6 @@
 
 Welcome to **Panlingo.LanguageIdentification.FastText**, a .NET wrapper for the FastText library by Facebook AI Research (FAIR). This package seamlessly integrates language identification capabilities into .NET applications, leveraging the powerful and efficient FastText library to recognize and classify texts in multiple languages. Ideal for applications that require fast and accurate language detection.
 
-## Table of Contents
-
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Alternatives](#alternatives)
-
 ## Requirements
 
 - .NET >= 5.0

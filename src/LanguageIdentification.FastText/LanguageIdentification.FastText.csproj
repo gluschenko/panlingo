@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
-    <Version>0.0.0.13</Version>
+    <Version>0.0.0.14</Version>
     <PackageId>Panlingo.LanguageIdentification.FastText</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.FastText</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.FastText</RootNamespace>
