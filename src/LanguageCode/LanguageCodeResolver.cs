@@ -35,7 +35,7 @@ namespace Panlingo.LanguageCode
         /// <summary>
         /// Examples:
         /// <code>RU -> ru</code>
-        /// <code>eNg -> eng</code>
+        /// <code>Eng -> eng</code>
         /// </summary>
         /// <returns></returns>
         public LanguageCodeResolver ToLowerAndTrim()
