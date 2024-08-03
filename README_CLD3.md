@@ -2,13 +2,6 @@
 
 Welcome to **Panlingo.LanguageIdentification.CLD3**, a .NET wrapper for the Chrome Language Detection (CLD3) library by Google Inc. This package seamlessly integrates language identification capabilities into .NET applications, enabling accurate and efficient recognition of over 107 languages with minimal effort. Perfect for applications dealing with multilingual texts or requiring automatic language detection.
 
-## Table of Contents
-
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Alternatives](#alternatives)
-
 ## Requirements
 
 - .NET >= 5.0

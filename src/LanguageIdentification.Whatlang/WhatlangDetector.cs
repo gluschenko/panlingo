@@ -5,6 +5,9 @@ using Panlingo.LanguageIdentification.Whatlang.Internal;
 
 namespace Panlingo.LanguageIdentification.Whatlang
 {
+    /// <summary>
+    /// .NET wrapper for Whatlang
+    /// </summary>
     public class WhatlangDetector : IDisposable
     {
         public WhatlangDetector()
@@ -17,6 +20,12 @@ namespace Panlingo.LanguageIdentification.Whatlang
             }
         }
 
+        /// <summary>
+        /// Produces a prediction for 'text'
+        /// </summary>
+        /// <param name="text">Some text in natural language</param>
+        /// <returns>Language prediction</returns>
+        /// <exception cref="WhatlangDetectorException"></exception>
         public WhatlangPrediction? PredictLanguage(string text)
         {
             var status = WhatlangDetectorWrapper.WhatlangDetect(
@@ -31,22 +40,22 @@ namespace Panlingo.LanguageIdentification.Whatlang
 
             if (status == WhatlangStatus.BadTextPtr || status == WhatlangStatus.BadOutputPtr)
             {
-                throw new Exception($"Failed to detect langauge: {status}");
+                throw new WhatlangDetectorException($"Failed to detect langauge: {status}");
             }
 
             return new WhatlangPrediction(result);
         }
 
-        public string GetLangCode(WhatlangLanguage lang)
+        public string GetLanguageCode(WhatlangLanguage language)
         {
             var stringBuider = new StringBuilder(100);
 
             try
             {
-                var code = WhatlangDetectorWrapper.WhatlangLangCode(lang, stringBuider, (UIntPtr)stringBuider.Capacity);
+                var code = WhatlangDetectorWrapper.WhatlangLangCode(language, stringBuider, (UIntPtr)stringBuider.Capacity);
                 if (code < 0)
                 {
-                    throw new Exception($"Language code '{lang}' is not found");
+                    throw new Exception($"Language code '{language}' is not found");
                 }
 
                 var result = stringBuider.ToString();
@@ -58,16 +67,16 @@ namespace Panlingo.LanguageIdentification.Whatlang
             }
         }
 
-        public string GetLangName(WhatlangLanguage lang)
+        public string GetLanguageName(WhatlangLanguage language)
         {
             var stringBuider = new StringBuilder(100);
 
             try
             {
-                var code = WhatlangDetectorWrapper.WhatlangLangName(lang, stringBuider, (UIntPtr)stringBuider.Capacity);
+                var code = WhatlangDetectorWrapper.WhatlangLangName(language, stringBuider, (UIntPtr)stringBuider.Capacity);
                 if (code < 0)
                 {
-                    throw new Exception($"Language code '{lang}' is not found");
+                    throw new Exception($"Language code '{language}' is not found");
                 }
 
                 var result = stringBuider.ToString();
@@ -100,16 +109,16 @@ namespace Panlingo.LanguageIdentification.Whatlang
             }
         }
 
-        public string GetLangEngName(WhatlangLanguage lang)
+        public string GetLanguageEnglishName(WhatlangLanguage language)
         {
             var stringBuider = new StringBuilder(100);
 
             try
             {
-                var code = WhatlangDetectorWrapper.WhatlangLangEngName(lang, stringBuider, (UIntPtr)stringBuider.Capacity);
+                var code = WhatlangDetectorWrapper.WhatlangLangEngName(language, stringBuider, (UIntPtr)stringBuider.Capacity);
                 if (code < 0)
                 {
-                    throw new Exception($"Language code '{lang}' is not found");
+                    throw new Exception($"Language code '{language}' is not found");
                 }
 
                 var result = stringBuider.ToString();

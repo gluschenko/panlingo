@@ -6,6 +6,9 @@ using Panlingo.LanguageIdentification.CLD2.Internal;
 
 namespace Panlingo.LanguageIdentification.CLD2
 {
+    /// <summary>
+    /// .NET wrapper for CLD2
+    /// </summary>
     public class CLD2Detector : IDisposable
     {
         public CLD2Detector()
@@ -18,6 +21,11 @@ namespace Panlingo.LanguageIdentification.CLD2
             }
         }
 
+        /// <summary>
+        /// Produces a prediction for 'text'
+        /// </summary>
+        /// <param name="text">Some text in natural language</param>
+        /// <returns>List of language predictions</returns>
         public IEnumerable<CLD2Prediction> PredictLanguage(string text)
         {
             var resultPtr = CLD2DetectorWrapper.PredictLanguage(

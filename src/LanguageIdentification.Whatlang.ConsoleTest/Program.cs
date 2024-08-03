@@ -32,13 +32,13 @@
                 );
             }
 
-            var code1 = whatlang.GetLangCode(WhatlangLanguage.Ukr);
+            var code1 = whatlang.GetLanguageCode(WhatlangLanguage.Ukr);
 
-            var code2 = whatlang.GetLangName(WhatlangLanguage.Ukr);
+            var code2 = whatlang.GetLanguageName(WhatlangLanguage.Ukr);
 
             var code3 = whatlang.GetScriptName(WhatlangScript.Cyrl);
 
-            var code4 = whatlang.GetLangEngName(WhatlangLanguage.Ukr);
+            var code4 = whatlang.GetLanguageEnglishName(WhatlangLanguage.Ukr);
 
             ;
         }

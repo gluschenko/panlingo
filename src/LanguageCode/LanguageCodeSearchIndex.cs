@@ -121,6 +121,10 @@ namespace Panlingo.LanguageCode
                     }
                 }
             }
+
+            Langauges.TrimExcess();
+            LegacyCodes.TrimExcess();
+            MacrolanguageCodes.TrimExcess();
         }
     }
 }

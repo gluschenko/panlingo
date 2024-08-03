@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Panlingo.LanguageCode.Models;
 
@@ -7,10 +8,6 @@ namespace Panlingo.LanguageCode
 {
     public sealed class LanguageCodeResolver
     {
-        private Dictionary<LanguageCodeRule, Func<string, string>> _rules;
-        private Func<string, string>? _resolveUnknown;
-        private Func<string, string>? _convert;
-
         /// <summary>
         /// Callback that returns one of candidates
         /// </summary>
@@ -18,16 +15,27 @@ namespace Panlingo.LanguageCode
         /// <param name="candidates">Potential candidates to resolve</param>
         /// <returns>One of candidates</returns>
         public delegate string ConflictCallback(string sourceCode, IEnumerable<string> candidates);
+        public delegate string ResolveCallback(string sourceCode);
+
+        private delegate bool TryConvertCallback(
+            string code, 
+            [MaybeNullWhen(false)] out string newCode, 
+            [MaybeNullWhen(true)] out string reason
+        );
+
+        private Dictionary<LanguageCodeRule, ResolveCallback> _rules;
+        private ResolveCallback? _resolveUnknown;
+        private TryConvertCallback? _tryConvert;
 
         public LanguageCodeResolver()
         {
-            _rules = new Dictionary<LanguageCodeRule, Func<string, string>>();
+            _rules = new Dictionary<LanguageCodeRule, ResolveCallback>();
         }
 
         /// <summary>
         /// Examples:
         /// <code>RU -> ru</code>
-        /// <code>eNg -> eng</code>
+        /// <code>Eng -> eng</code>
         /// </summary>
         /// <returns></returns>
         public LanguageCodeResolver ToLowerAndTrim()
@@ -139,7 +147,7 @@ namespace Panlingo.LanguageCode
         /// </code>
         /// </summary>
         /// <returns></returns>
-        public LanguageCodeResolver ResolveUnknownCode(Func<string, string> resolver)
+        public LanguageCodeResolver ResolveUnknownCode(ResolveCallback resolver)
         {
             _resolveUnknown = resolver;
             return this;
@@ -152,29 +160,59 @@ namespace Panlingo.LanguageCode
         /// <returns></returns>
         public LanguageCodeResolver Select(LanguageCodeEntity entity)
         {
-            _convert = x =>
+            bool TryConvertInternal(
+                string code,
+#if NET5_0_OR_GREATER
+                [MaybeNullWhen(false)] out string newCode,
+#else
+                out string newCode,
+#endif
+#if NET5_0_OR_GREATER
+                [MaybeNullWhen(true)] out string reason
+#else
+                out string reason
+#endif
+            )
             {
-                if (LanguageCodeHelper.TryGetEntity(x, entity, out var value))
+                if (LanguageCodeHelper.TryGetEntity(code, entity, out var value))
                 {
-                    return value;
+                    newCode = value;
+                    reason = null!;
+                    return true;
                 }
                 else
                 {
-                    x = ResolveUnknown(x);
-                    return LanguageCodeHelper.GetEntity(x, entity);
-                }
-            };
+                    if (TryResolveUnknown(code, out var value2))
+                    {
+                        code = value2;
+                    }
+                    else
+                    {
+                        newCode = null!;
+                        reason = "Langauge code is unknown";
+                        return false;
+                    }
 
+                    if (LanguageCodeHelper.TryGetEntity(code, entity, out value))
+                    {
+                        newCode = value;
+                        reason = null!;
+                        return true;
+                    }
+                    else
+                    {
+                        newCode = null!;
+                        reason = $"Entity '{entity}' is not found for this code";
+                        return false;
+                    }
+                }
+            }
+
+            _tryConvert = TryConvertInternal;
             return this;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="code"></param>
-        /// <returns></returns>
-        /// <exception cref="LanguageCodeException"></exception>
-        private string ResolveUnknown(string code)
+        private bool TryResolveUnknown(string code, [MaybeNullWhen(false)] out string newCode)
         {
             if (_resolveUnknown != null)
             {
@@ -184,27 +222,25 @@ namespace Panlingo.LanguageCode
                 // If there is no changes after custom resolver
                 if (code.Equals(previousCode, StringComparison.OrdinalIgnoreCase))
                 {
-                    throw new LanguageCodeException(code, $"Language code is unknown");
+                    newCode = null;
+                    return false;
                 }
 
-                return code;
+                newCode = code;
+                return true;
             }
 
-            throw new LanguageCodeException(code, $"Language code is unknown");
+            newCode = null;
+            return false;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="rule"></param>
-        /// <returns></returns>
         public bool HasRule(LanguageCodeRule rule)
         {
             return _rules.ContainsKey(rule);
         }
 
         /// <summary>
-        /// 
+        /// Removes a previously added rule
         /// </summary>
         /// <param name="rule"></param>
         /// <returns></returns>
@@ -223,24 +259,36 @@ namespace Panlingo.LanguageCode
             return this;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="code"></param>
-        /// <returns></returns>
-        internal string Apply(string code)
+        internal bool TryApply(
+            string code, 
+            [MaybeNullWhen(false)] out string newCode, 
+            [MaybeNullWhen(true)] out string reason
+        )
         {
             foreach (var rule in _rules.OrderBy(x => x.Key))
             {
                 code = rule.Value(code);
             }
 
-            if (_convert != null)
+            if (_tryConvert != null)
             {
-                code = _convert(code);
+                if (_tryConvert(code, out var value, out reason))
+                {
+                    newCode = value;
+                    return true;
+                }
+                else
+                {
+                    newCode = null;
+                    return false;
+                }
             }
-
-            return code;
+            else
+            {
+                newCode = code;
+                reason = null;
+                return true;
+            }
         }
     }
 }

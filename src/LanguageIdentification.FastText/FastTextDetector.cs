@@ -7,6 +7,9 @@ using Panlingo.LanguageIdentification.FastText.Internal;
 
 namespace Panlingo.LanguageIdentification.FastText
 {
+    /// <summary>
+    /// .NET wrapper for FastText
+    /// </summary>
     public class FastTextDetector : IDisposable
     {
         private IntPtr _fastText;
@@ -69,6 +72,13 @@ namespace Panlingo.LanguageIdentification.FastText
             return result;
         }
 
+        /// <summary>
+        /// Produces a prediction for 'text'
+        /// </summary>
+        /// <param name="text">Some text in natural language</param>
+        /// <param name="count">Number of predictions</param>
+        /// <param name="threshold">An internal accuracy threshold</param>
+        /// <returns>List of language predictions</returns>
         public IEnumerable<FastTextPrediction> Predict(string text, int count, float threshold = 0.0f)
         {
             var errptr = IntPtr.Zero;

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -8,6 +7,9 @@ using Panlingo.LanguageIdentification.CLD3.Internal;
 
 namespace Panlingo.LanguageIdentification.CLD3
 {
+    /// <summary>
+    /// .NET wrapper for CLD3
+    /// </summary>
     public class CLD3Detector : IDisposable
     {
         private readonly IntPtr _identifier;
@@ -40,21 +42,32 @@ namespace Panlingo.LanguageIdentification.CLD3
             }
         }
 
+        /// <summary>
+        /// Produces a prediction for 'text'
+        /// </summary>
+        /// <param name="text">Some text in natural language</param>
+        /// <returns>List of language predictions</returns>
         public CLD3Prediction PredictLanguage(string text)
         {
             var result = CLD3DetectorWrapper.FindLanguage(_identifier, text);
             return new CLD3Prediction(result);
         }
 
+        /// <summary>
+        /// Produces a prediction for 'text'
+        /// </summary>
+        /// <param name="text">Some text in natural language</param>
+        /// <param name="count">Number of predictions</param>
+        /// <returns>List of language predictions</returns>
         public IEnumerable<CLD3Prediction> PredictLangauges(
             string text,
-            int numLangs
+            int count
         )
         {
             var resultPtr = CLD3DetectorWrapper.FindLanguages(
                 identifier: _identifier,
                 text: text,
-                numLangs: numLangs,
+                numLangs: count,
                 resultCount: out var resultCount
             );
 
