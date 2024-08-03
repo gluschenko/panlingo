@@ -2,6 +2,9 @@
 {
     public static class CLD3NativeLibrary
     {
+        /// <summary>
+        /// Name of native binary
+        /// </summary>
         public const string Name = "libcld3.so";
     }
 }

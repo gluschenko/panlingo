@@ -15,6 +15,7 @@ namespace Panlingo.LanguageCode
         /// <param name="candidates">Potential candidates to resolve</param>
         /// <returns>One of candidates</returns>
         public delegate string ConflictCallback(string sourceCode, IEnumerable<string> candidates);
+        public delegate string ResolveCallback(string sourceCode);
 
         private delegate bool TryConvertCallback(
             string code, 
@@ -22,13 +23,13 @@ namespace Panlingo.LanguageCode
             [MaybeNullWhen(true)] out string reason
         );
 
-        private Dictionary<LanguageCodeRule, Func<string, string>> _rules;
-        private Func<string, string>? _resolveUnknown;
+        private Dictionary<LanguageCodeRule, ResolveCallback> _rules;
+        private ResolveCallback? _resolveUnknown;
         private TryConvertCallback? _tryConvert;
 
         public LanguageCodeResolver()
         {
-            _rules = new Dictionary<LanguageCodeRule, Func<string, string>>();
+            _rules = new Dictionary<LanguageCodeRule, ResolveCallback>();
         }
 
         /// <summary>
@@ -146,7 +147,7 @@ namespace Panlingo.LanguageCode
         /// </code>
         /// </summary>
         /// <returns></returns>
-        public LanguageCodeResolver ResolveUnknownCode(Func<string, string> resolver)
+        public LanguageCodeResolver ResolveUnknownCode(ResolveCallback resolver)
         {
             _resolveUnknown = resolver;
             return this;
@@ -211,12 +212,6 @@ namespace Panlingo.LanguageCode
             return this;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="code"></param>
-        /// <returns></returns>
-        /// <exception cref="LanguageCodeException"></exception>
         private bool TryResolveUnknown(string code, [MaybeNullWhen(false)] out string newCode)
         {
             if (_resolveUnknown != null)
@@ -239,18 +234,13 @@ namespace Panlingo.LanguageCode
             return false;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="rule"></param>
-        /// <returns></returns>
         public bool HasRule(LanguageCodeRule rule)
         {
             return _rules.ContainsKey(rule);
         }
 
         /// <summary>
-        /// 
+        /// Removes a previously added rule
         /// </summary>
         /// <param name="rule"></param>
         /// <returns></returns>
