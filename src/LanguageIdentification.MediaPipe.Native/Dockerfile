@@ -13,9 +13,6 @@ RUN bash ./Scripts/setup-build.sh
 
 # https://github.com/google-ai-edge/mediapipe/blob/master/Dockerfile
 
-WORKDIR /io
-WORKDIR /mediapipe
-
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
