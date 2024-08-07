@@ -18,7 +18,7 @@
       - Initial release
     </PackageReleaseNotes>
     <Description>
-      This is a .NET wrapper for the MediaPipe library by Google AI.
+      This is a .NET wrapper for the MediaPipe library by Google AI Edge.
 
       This package facilitates the integration of language identification capabilities into .NET applications,
       leveraging the powerful and efficient MediaPipe library to recognize and classify texts in multiple languages.

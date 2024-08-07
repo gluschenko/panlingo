@@ -18,7 +18,7 @@
       - Initial release
     </PackageReleaseNotes>
     <Description>
-      This package provides the native resources required for the MediaPipe library by Facebook AI Research (FAIR).
+      This package provides the native resources required for the MediaPipe library by Google AI Edge.
       It includes the necessary native components to enable language recognition and classification capabilities
       in applications using the MediaPipeWrapper for .NET. This package is essential for the proper functioning
       of MediaPipe-based language identification features in your .NET projects.

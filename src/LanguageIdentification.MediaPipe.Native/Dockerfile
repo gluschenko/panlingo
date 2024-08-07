@@ -68,6 +68,8 @@ RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gp
 
 RUN apt-get update -y && apt-get install bazel-6.1.1 -y
 
+RUN apt-get update -y && apt-get install nodejs npm -y && npm install -g zx
+
 COPY . .
 
 ENTRYPOINT ["bash", "./Scripts/run-build.sh"]

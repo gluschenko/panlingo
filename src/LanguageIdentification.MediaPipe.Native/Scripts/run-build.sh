@@ -13,6 +13,8 @@ ls -R .
 
 cd "$workspace"
 
+zx ../Native/monkey-patch.mjs
+
 bazel-6.1.1 build -c opt \
 	--linkopt -s --strip always \
 	--define MEDIAPIPE_DISABLE_GPU=1 \
