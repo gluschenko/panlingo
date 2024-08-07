@@ -10,7 +10,7 @@ function a()
             console.log(file);
 
             const content = await fs.readFile(file, 'utf-8');
-            const newContent = content.replaceAll(oldText, newText);
+            const newContent = content.replace(new RegExp(oldText, "g"), newText);
 
             if (content !== newContent) {
                 console.log("Patch " + file);
@@ -30,7 +30,7 @@ function b()
             console.log(file);
 
             const content = await fs.readFile(file, 'utf-8');
-            const newContent = content.replaceAll(oldText, newText);
+            const newContent = content.replace(new RegExp(oldText, "g"), newText);
 
             if (content !== newContent) {
                 console.log("Patch " + file);
