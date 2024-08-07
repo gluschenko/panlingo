@@ -71,6 +71,6 @@ RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gp
 
 RUN apt-get update -y && apt-get install bazel-6.1.1 -y
 
-COPY . /mediapipe/
+COPY . .
 
 ENTRYPOINT ["bash", "./Scripts/run-build.sh"]
