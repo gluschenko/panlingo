@@ -1,0 +1,3 @@
+﻿# Panlingo.LanguageIdentification.MediaPipe
+
+TODO

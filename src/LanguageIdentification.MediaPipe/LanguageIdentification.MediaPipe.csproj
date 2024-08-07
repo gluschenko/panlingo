@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+    <Version>0.0.0.14</Version>
+    <PackageId>Panlingo.LanguageIdentification.MediaPipe</PackageId>
+    <AssemblyName>Panlingo.LanguageIdentification.MediaPipe</AssemblyName>
+    <RootNamespace>Panlingo.LanguageIdentification.MediaPipe</RootNamespace>
+    <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Authors>Alexander Gluschenko</Authors>
+    <Copyright>Alexander Gluschenko © 2024</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>nlp lid langauge-identification langauge-detection mediapipe</PackageTags>
+    <PackageReadmeFile>README_MEDIAPIPE.md</PackageReadmeFile>
+    <PackageReleaseNotes>
+      - Initial release
+    </PackageReleaseNotes>
+    <Description>
+      This is a .NET wrapper for the MediaPipe library by Google AI.
+
+      This package facilitates the integration of language identification capabilities into .NET applications,
+      leveraging the powerful and efficient MediaPipe library to recognize and classify texts in multiple languages.
+      Ideal for applications that require fast and accurate language detection.
+    </Description>
+    <Configurations>Debug;Release;CI</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591,1573</NoWarn>
+    <DocumentationFile>..\Panlingo.LanguageIdentification.MediaPipe.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LanguageIdentification.MediaPipe.Native\LanguageIdentification.MediaPipe.Native.csproj">
+      <IncludeAssets>All</IncludeAssets>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README_MEDIAPIPE.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>
