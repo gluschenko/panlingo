@@ -10,3 +10,7 @@
 [submodule "third_party/whatlang-ffi"]
 	path = third_party/whatlang-ffi
 	url = https://github.com/greyblake/whatlang-ffi.git
+[submodule "third_party/mediapipe"]
+	path = third_party/mediapipe
+	url = https://github.com/google-ai-edge/mediapipe.git
+	branch = release
