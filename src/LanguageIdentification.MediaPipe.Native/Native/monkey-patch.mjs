@@ -1,38 +1,47 @@
 ﻿#!/usr/bin/env zx
 
-import { find } from 'zx'
-
+function a()
 {
     const oldText = 'inline constexpr char kMetadataParserVersion[] = "{LATEST_METADATA_PARSER_VERSION}";';
     const newText = 'inline constexpr char kMetadataParserVersion[] = "1.5.0";';
 
-    const files = await find('**/*.cc');
+    fs.readdir(".", { recursive: true }, (err, files) => {
+        files.filter(x => x.endsWith(".h.template")).forEach(async file => {
+            console.log(file);
 
-    for (const file of files) {
-        const content = await fs.readFile(file, 'utf-8');
-        const newContent = content.replace(new RegExp(oldText, 'g'), newText);
+            const content = await fs.readFile(file, 'utf-8');
+            const newContent = content.replaceAll(oldText, newText);
 
-        if (content !== newContent) {
-            await fs.writeFile(file, content);
-        }
-    }
+            if (content !== newContent) {
+                console.log("Patch " + file);
+                await fs.writeFile(file, newContent);
+            }
+        });
+    });
 }
 
+function b()
 {
-    const oldText = 'build:linux --define=xnn_enable_avx512amx=false\n';
-    const newText = 'build:linux --define=xnn_enable_avx512amx=false\nbuild:linux --define=xnn_enable_avx512fp16=false\n';
+    const oldText = 'build:linux --define=xnn_enable_avx512amx=false\r\n\r\n';
+    const newText = 'build:linux --define=xnn_enable_avx512amx=false\r\nbuild:linux --define=xnn_enable_avx512fp16=false\r\n\r\n';
 
-    const files = await find('**/.bazelrc');
+    fs.readdir(".", { recursive: true }, (err, files) => {
+        files.filter(x => x.endsWith(".bazelrc")).forEach(async file => {
+            console.log(file);
 
-    for (const file of files) {
-        const content = await fs.readFile(file, 'utf-8');
-        const newContent = content.replace(new RegExp(oldText, 'g'), newText);
+            const content = await fs.readFile(file, 'utf-8');
+            const newContent = content.replaceAll(oldText, newText);
 
-        if (content !== newContent) {
-            await fs.writeFile(file, content);
-        }
-    }
+            if (content !== newContent) {
+                console.log("Patch " + file);
+                await fs.writeFile(file, newContent);
+            }
+        });
+    });
 }
+
+a();
+b();
 
 console.log('Monkey patching is done');
 
