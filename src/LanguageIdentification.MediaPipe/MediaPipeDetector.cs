@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Panlingo.LanguageIdentification.MediaPipe.Internal;
+using Panlingo.LanguageIdentification.MediaPipe.Native;
 
 namespace Panlingo.LanguageIdentification.MediaPipe
 {
@@ -25,9 +26,15 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                 );
             }
 
-            var path = Path.GetFullPath("language_detector.tflite");
-            // var modelBytes = File.ReadAllBytes("language_detector.tflite");
-            // var modelText = Encoding.ASCII.GetString(modelBytes);
+            var path = Path.GetFullPath(MediaPipeNativeLibrary.ModelName);
+
+            foreach (var file in Directory.EnumerateFiles(".", "*", SearchOption.AllDirectories))
+            {
+                if (Path.GetFileName(file) == MediaPipeNativeLibrary.ModelName)
+                {
+                    path = Path.GetFullPath(file);
+                }
+            }
 
             var options = new LanguageDetectorOptions(
                 baseOptions: new BaseOptions(

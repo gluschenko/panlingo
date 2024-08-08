@@ -26,7 +26,7 @@ rm -rf "$workspace"
 ldd liblanguage_detector.so
 
 # Download the TFLite model
-wget https://storage.googleapis.com/mediapipe-models/language_detector/language_detector/float32/1/language_detector.tflite
+wget -O mediapipe_language_detector.tflite https://storage.googleapis.com/mediapipe-models/language_detector/language_detector/float32/1/language_detector.tflite
 
 echo "Goodbye world";
 
