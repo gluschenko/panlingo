@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using Panlingo.LanguageIdentification.MediaPipe.Internal;
 
@@ -15,7 +16,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
         private IntPtr _mediaPipe;
         private readonly SemaphoreSlim _semaphore;
 
-        public MediaPipeDetector()
+        public MediaPipeDetector(int resultCount = -1, float scoreThreshold = 0.0f)
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
@@ -34,20 +35,48 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                     modelAssetBufferCount: 0, 
                     modelAssetPath: path
                 ), 
-                classifierOptions: new ClassifierOptions(maxResults: 10)
+                classifierOptions: new ClassifierOptions(
+                    resultCount: resultCount, 
+                    scoreThreshold: scoreThreshold
+                )
             );
+
+            _mediaPipe = MediaPipeDetectorWrapper.CreateLanguageDetector(ref options, out var errorMessage);
+            _semaphore = new SemaphoreSlim(1, 1);
+
+            CheckError(errorMessage);
+        }
+
+        public IEnumerable<MediaPipePrediction> PredictLanguages(string text)
+        {
+            var nativeResult = new LanguageDetectorResult();
+
+            MediaPipeDetectorWrapper.UseLanguageDetector(
+                handle: _mediaPipe,
+                text: text,
+                result: ref nativeResult,
+                errorMessage: out var errorMessage
+            );
+            CheckError(errorMessage);
 
             try
             {
-                var errorMessage = IntPtr.Zero;
-                _mediaPipe = MediaPipeDetectorWrapper.CreateLanguageDetector(options, ref errorMessage);
-                _semaphore = new SemaphoreSlim(1, 1);
+                var result = new LanguageDetectorPrediction[nativeResult.PredictionsCount];
+                var structSize = Marshal.SizeOf(typeof(LanguageDetectorPrediction));
 
-                CheckError(errorMessage);
+                for (var i = 0; i < nativeResult.PredictionsCount; i++)
+                {
+                    result[i] = Marshal.PtrToStructure<LanguageDetectorPrediction>(nativeResult.Predictions + i * structSize);
+                }
+
+                return result
+                    .OrderByDescending(x => x.Probability)
+                    .Select(x => new MediaPipePrediction(x))
+                    .ToArray();
             }
-            catch (Exception ex)
+            finally
             {
-                throw;
+                MediaPipeDetectorWrapper.FreeLanguageDetectorResult(ref nativeResult);
             }
         }
 
@@ -59,8 +88,9 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
                 if (_mediaPipe != IntPtr.Zero)
                 {
-                    MediaPipeDetectorWrapper.FreeLanguageDetector(_mediaPipe);
+                    MediaPipeDetectorWrapper.FreeLanguageDetector(_mediaPipe, out var errorMessage);
                     _mediaPipe = IntPtr.Zero;
+                    CheckError(errorMessage);
                 }
             }
             finally

@@ -23,6 +23,7 @@
     <ProjectReference Include="..\LanguageIdentification.CLD3\LanguageIdentification.CLD3.csproj" />
     <ProjectReference Include="..\LanguageIdentification.FastText\LanguageIdentification.FastText.csproj" />
     <ProjectReference Include="..\LanguageIdentification.Whatlang\LanguageIdentification.Whatlang.csproj" />
+    <ProjectReference Include="..\LanguageIdentification.MediaPipe\LanguageIdentification.MediaPipe.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'CI'">
@@ -30,6 +31,7 @@
     <PackageReference Include="Panlingo.LanguageIdentification.CLD3" Version="*" />
     <PackageReference Include="Panlingo.LanguageIdentification.FastText" Version="*" />
     <PackageReference Include="Panlingo.LanguageIdentification.Whatlang" Version="*" />
+    <PackageReference Include="Panlingo.LanguageIdentification.MediaPipe" Version="*" />
   </ItemGroup>
 
   <ItemGroup>
