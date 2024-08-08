@@ -40,7 +40,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
             try
             {
                 var errorMessage = IntPtr.Zero;
-                _mediaPipe = MediaPipeDetectorWrapper.CreateLangaugeDetector(options, ref errorMessage);
+                _mediaPipe = MediaPipeDetectorWrapper.CreateLanguageDetector(options, ref errorMessage);
                 _semaphore = new SemaphoreSlim(1, 1);
 
                 CheckError(errorMessage);
@@ -59,7 +59,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
                 if (_mediaPipe != IntPtr.Zero)
                 {
-                    MediaPipeDetectorWrapper.FreeLangaugeDetector(_mediaPipe);
+                    MediaPipeDetectorWrapper.FreeLanguageDetector(_mediaPipe);
                     _mediaPipe = IntPtr.Zero;
                 }
             }

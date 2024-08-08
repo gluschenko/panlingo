@@ -12,7 +12,7 @@
     <Authors>Alexander Gluschenko</Authors>
     <Copyright>Alexander Gluschenko © 2024</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>nlp lid langauge-identification langauge-detection mediapipe</PackageTags>
+    <PackageTags>nlp lid language-identification language-detection mediapipe</PackageTags>
     <PackageReadmeFile>README_MEDIAPIPE.md</PackageReadmeFile>
     <PackageReleaseNotes>
       - Initial release

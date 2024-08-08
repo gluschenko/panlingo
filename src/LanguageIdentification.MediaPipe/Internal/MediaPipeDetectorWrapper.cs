@@ -7,13 +7,13 @@ namespace Panlingo.LanguageIdentification.MediaPipe.Internal
     internal static class MediaPipeDetectorWrapper
     {
         [DllImport(MediaPipeNativeLibrary.Name, EntryPoint = "language_detector_create", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr CreateLangaugeDetector(
+        public static extern IntPtr CreateLanguageDetector(
             LanguageDetectorOptions options,
             ref IntPtr errorMessage
         );
 
         [DllImport(MediaPipeNativeLibrary.Name, EntryPoint = "language_detector_detect", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int UseLangaugeDetector(
+        public static extern int UseLanguageDetector(
             IntPtr handle,
             string text,
             ref LanguageDetectorResult result,
@@ -21,10 +21,10 @@ namespace Panlingo.LanguageIdentification.MediaPipe.Internal
         );
 
         [DllImport(MediaPipeNativeLibrary.Name, EntryPoint = "language_detector_close_result", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void FreeLangaugeDetectorResult(IntPtr handle);
+        public static extern void FreeLanguageDetectorResult(IntPtr handle);
 
         [DllImport(MediaPipeNativeLibrary.Name, EntryPoint = "language_detector_close", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void FreeLangaugeDetector(IntPtr handle);
+        public static extern void FreeLanguageDetector(IntPtr handle);
     }
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
