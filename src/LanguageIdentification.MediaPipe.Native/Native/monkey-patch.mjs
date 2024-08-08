@@ -1,23 +1,30 @@
 ﻿#!/usr/bin/env zx
 
+async function findAndPatch(endsWith, oldText, newText) {
+    const files = fs.readdirSync(".", { recursive: true });
+
+    for (const file of files.filter(x => x.endsWith(endsWith))) {
+        console.log("Found: " + file);
+
+        const content = await fs.readFile(file, 'utf-8');
+        const newContent = content.replace(oldText, newText);
+
+        if (content !== newContent) {
+            await fs.writeFile(file, newContent);
+            console.log("Patched: " + file + "\nContent:\n" + newContent);
+        }
+        else {
+            console.log("Nothing to patch: " + file);
+        }
+    }
+}
+
 function a()
 {
-    const oldText = 'inline constexpr char kMetadataParserVersion[] = "{LATEST_METADATA_PARSER_VERSION}";';
-    const newText = 'inline constexpr char kMetadataParserVersion[] = "1.5.0";';
+    const oldText = '\{LATEST_METADATA_PARSER_VERSION\}';
+    const newText = '1.5.0';
 
-    fs.readdir(".", { recursive: true }, (err, files) => {
-        files.filter(x => x.endsWith(".h.template")).forEach(async file => {
-            console.log(file);
-
-            const content = await fs.readFile(file, 'utf-8');
-            const newContent = content.replace(new RegExp(oldText, "g"), newText);
-
-            if (content !== newContent) {
-                console.log("Patch " + file);
-                await fs.writeFile(file, newContent);
-            }
-        });
-    });
+    findAndPatch(".h.template", oldText, newText);
 }
 
 function b()
@@ -25,23 +32,13 @@ function b()
     const oldText = 'build:linux --define=xnn_enable_avx512amx=false\r\n\r\n';
     const newText = 'build:linux --define=xnn_enable_avx512amx=false\r\nbuild:linux --define=xnn_enable_avx512fp16=false\r\n\r\n';
 
-    fs.readdir(".", { recursive: true }, (err, files) => {
-        files.filter(x => x.endsWith(".bazelrc")).forEach(async file => {
-            console.log(file);
-
-            const content = await fs.readFile(file, 'utf-8');
-            const newContent = content.replace(new RegExp(oldText, "g"), newText);
-
-            if (content !== newContent) {
-                console.log("Patch " + file);
-                await fs.writeFile(file, newContent);
-            }
-        });
-    });
+    findAndPatch(".bazelrc", oldText, newText);
 }
 
-a();
-b();
+console.log('[Monkey patching is started]');
 
-console.log('Monkey patching is done');
+await a();
+await b();
+
+console.log('[Monkey patching is done]');
 

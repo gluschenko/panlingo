@@ -61,7 +61,17 @@
       <Visible>false</Visible>
     </Content>
   </ItemGroup>
-
+  
+  <ItemGroup>
+    <Content Include="language_detector.tflite">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>assets</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+  
   <ItemGroup>
     <None Include="..\..\README_MEDIAPIPE.md" Pack="true" PackagePath="\" />
   </ItemGroup>

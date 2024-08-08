@@ -11,9 +11,14 @@ WORKDIR /repo/src/LanguageIdentification.MediaPipe.Native
 RUN bash ./Scripts/setup-runtime.sh
 RUN bash ./Scripts/setup-build.sh
 
-# https://github.com/google-ai-edge/mediapipe/blob/master/Dockerfile
+# Inspired by https://github.com/google-ai-edge/mediapipe/blob/master/Dockerfile
 
 ENV DEBIAN_FRONTEND=noninteractive
+
+# Install node.js source
+RUN apt-get update && apt-get install -y ca-certificates curl gnupg && \
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee -y /etc/apt/sources.list.d/nodesource.list
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
@@ -60,7 +65,7 @@ RUN pip3 install tf_slim
 
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
-# Install bazel
+# Install Bazel
 RUN apt install apt-transport-https curl gnupg -y
 RUN curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg
 RUN mv bazel-archive-keyring.gpg /usr/share/keyrings
@@ -68,14 +73,8 @@ RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gp
 
 RUN apt-get update -y && apt-get install bazel-6.1.1 -y
 
-# Install node.js
-RUN sudo apt-get update && sudo apt-get install -y ca-certificates curl gnupg && \
-    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
-    NODE_MAJOR=20 && \
-    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
-
-
-RUN apt-get update -y && apt-get install nodejs npm -y && npm install -g zx
+# Install ZX
+RUN npm install -g zx
 
 COPY . .
 

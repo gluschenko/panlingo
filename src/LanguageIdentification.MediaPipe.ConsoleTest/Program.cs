@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-            
+            using var mediaPipe = new MediaPipeDetector();
+
+            ;
         }
     }
 }

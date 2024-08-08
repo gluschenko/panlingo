@@ -1,2 +1,3 @@
 liblanguage_detector.so
+language_detector.tflite
 build_temp/**
