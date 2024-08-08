@@ -29,8 +29,8 @@ function a()
 
 function b()
 {
-    const oldText = 'build:linux --define=xnn_enable_avx512amx=false\r\n\r\n';
-    const newText = 'build:linux --define=xnn_enable_avx512amx=false\r\nbuild:linux --define=xnn_enable_avx512fp16=false\r\n\r\n';
+    const oldText = 'build:linux --define=xnn_enable_avx512amx=false\n\n';
+    const newText = 'build:linux --define=xnn_enable_avx512amx=false\nbuild:linux --define=xnn_enable_avx512fp16=false\n\n';
 
     findAndPatch(".bazelrc", oldText, newText);
 }
