@@ -76,6 +76,9 @@ RUN apt-get update -y && apt-get install bazel-6.1.1 -y
 # Install ZX
 RUN npm install -g zx
 
+# Download the TFLite model
+RUN wget https://storage.googleapis.com/mediapipe-models/language_detector/language_detector/float32/1/language_detector.tflite
+
 COPY . .
 
 ENTRYPOINT ["bash", "./Scripts/run-build.sh"]
