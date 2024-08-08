@@ -11,9 +11,6 @@ WORKDIR /repo/src/LanguageIdentification.MediaPipe.Native
 RUN bash ./Scripts/setup-runtime.sh
 RUN bash ./Scripts/setup-build.sh
 
-# Download the TFLite model
-RUN wget https://storage.googleapis.com/mediapipe-models/language_detector/language_detector/float32/1/language_detector.tflite
-
 # Inspired by https://github.com/google-ai-edge/mediapipe/blob/master/Dockerfile
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -78,6 +75,9 @@ RUN apt-get update -y && apt-get install bazel-6.1.1 -y
 
 # Install ZX
 RUN npm install -g zx
+
+# Download the TFLite model
+RUN wget https://storage.googleapis.com/mediapipe-models/language_detector/language_detector/float32/1/language_detector.tflite
 
 COPY . .
 
