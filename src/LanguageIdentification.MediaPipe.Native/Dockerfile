@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         wget \
         unzip \
         nodejs \
-        npm \
+        # npm \
         python3-dev \
         python3-opencv \
         python3-pip \
