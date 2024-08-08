@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
-    <Version>0.0.0.14</Version>
+    <Version>0.0.0.15</Version>
     <PackageId>Panlingo.LanguageIdentification.FastText</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.FastText</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.FastText</RootNamespace>
@@ -12,7 +12,7 @@
     <Authors>Alexander Gluschenko</Authors>
     <Copyright>Alexander Gluschenko © 2024</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>nlp lid langauge-identification langauge-detection fasttext</PackageTags>
+    <PackageTags>nlp lid language-identification language-detection fasttext</PackageTags>
     <PackageReadmeFile>README_FASTTEXT.md</PackageReadmeFile>
     <PackageReleaseNotes>
       - Initial release

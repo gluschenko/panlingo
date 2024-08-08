@@ -59,7 +59,7 @@ If you are exploring other options, here are some alternatives to consider:
 
 ## Supported languages
 
-| Langauge Name      | Output Code (ISO 639-1)    |
+| Language Name      | Output Code (ISO 639-1)    |
 |--------------------|----------------------------|
 | Afrikaans             | af        |
 | Albanian              | sq        |

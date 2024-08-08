@@ -64,7 +64,7 @@ functionality into their applications.
 | - | ---- | ---- | -------- | -------- |
 | Single language prediction | Yes | Yes | Yes | Yes |
 | Multi language prediction | Yes | Yes | Yes | No |
-| Supported langauges | 80 | 107 | 176 or 217 | 69 |
+| Supported languages | 80 | 107 | 176 or 217 | 69 |
 | Unknown language detection | Yes | Yes | No | No |
 | Algorithm | quadgrams | neural network | neural network | trigrams |
 

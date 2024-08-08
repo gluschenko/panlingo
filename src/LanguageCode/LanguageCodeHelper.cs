@@ -11,11 +11,11 @@ namespace Panlingo.LanguageCode
             .ToLowerAndTrim()
             .ConvertFromIETF();
 
-        private readonly static Dictionary<LanguageCodeEntity, Func<LanguageDescriptor, string>> _langaugeVisitors;
+        private readonly static Dictionary<LanguageCodeEntity, Func<LanguageDescriptor, string>> _languageVisitors;
 
         static LanguageCodeHelper()
         {
-            _langaugeVisitors = new Dictionary<LanguageCodeEntity, Func<LanguageDescriptor, string>>
+            _languageVisitors = new Dictionary<LanguageCodeEntity, Func<LanguageDescriptor, string>>
             {
                 [LanguageCodeEntity.Alpha2] = x => x.Part1,
                 [LanguageCodeEntity.Alpha3] = x => x.Id,
@@ -28,7 +28,7 @@ namespace Panlingo.LanguageCode
         /// <summary>
         /// Resoves code with resolver options
         /// </summary>
-        /// <param name="code">Any ISO langauge code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
+        /// <param name="code">Any ISO language code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
         /// <param name="options">Resolver options</param>
         /// <returns></returns>
         public static string Resolve(
@@ -49,7 +49,7 @@ namespace Panlingo.LanguageCode
         /// <summary>
         /// Tries to resolve code
         /// </summary>
-        /// <param name="code">Any ISO langauge code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
+        /// <param name="code">Any ISO language code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
         /// <param name="newCode">An equivalent of initial code</param>
         /// <param name="options">Resolver options</param>
         /// <returns></returns>
@@ -76,7 +76,7 @@ namespace Panlingo.LanguageCode
         /// <summary>
         /// Resoves codes collection with resolver options
         /// </summary>
-        /// <param name="codes">Any ISO langauge code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
+        /// <param name="codes">Any ISO language code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
         /// <param name="options">Resolver options</param>
         /// <returns></returns>
         public static IDictionary<string, string> Resolve(
@@ -106,7 +106,7 @@ namespace Panlingo.LanguageCode
         /// <summary>
         /// Tries to resolve the codes collection
         /// </summary>
-        /// <param name="codes">Any ISO langauge code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
+        /// <param name="codes">Any ISO language code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
         /// <param name="newCodes"></param>
         /// <param name="options">Resolver options</param>
         /// <returns></returns>
@@ -138,9 +138,9 @@ namespace Panlingo.LanguageCode
         }
 
         /// <summary>
-        /// Gets two letter ISO code by any langauge code
+        /// Gets two letter ISO code by any language code
         /// </summary>
-        /// <param name="code">Any ISO langauge code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
+        /// <param name="code">Any ISO language code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
         /// <returns></returns>
         /// <exception cref="LanguageCodeException"></exception>
         public static string GetTwoLetterISOCode(string code)
@@ -154,9 +154,9 @@ namespace Panlingo.LanguageCode
         }
 
         /// <summary>
-        /// Gets three letter ISO code by any langauge code
+        /// Gets three letter ISO code by any language code
         /// </summary>
-        /// <param name="code">Any ISO langauge code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
+        /// <param name="code">Any ISO language code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
         /// <returns></returns>
         /// <exception cref="LanguageCodeException"></exception>
         public static string GetThreeLetterISOCode(string code)
@@ -170,9 +170,9 @@ namespace Panlingo.LanguageCode
         }
 
         /// <summary>
-        /// Gets an English name of any langauge code
+        /// Gets an English name of any language code
         /// </summary>
-        /// <param name="code">Any ISO langauge code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
+        /// <param name="code">Any ISO language code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
         /// <returns></returns>
         /// <exception cref="LanguageCodeException"></exception>
         public static string GetLanguageEnglishName(string code)
@@ -186,9 +186,9 @@ namespace Panlingo.LanguageCode
         }
 
         /// <summary>
-        /// Gets two letter ISO code by any langauge code
+        /// Gets two letter ISO code by any language code
         /// </summary>
-        /// <param name="code">Any ISO langauge code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
+        /// <param name="code">Any ISO language code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
         /// <param name="value"></param>
         /// <returns></returns>
         public static bool TryGetTwoLetterISOCode(
@@ -209,9 +209,9 @@ namespace Panlingo.LanguageCode
         }
 
         /// <summary>
-        /// Gets three letter ISO code by any langauge code
+        /// Gets three letter ISO code by any language code
         /// </summary>
-        /// <param name="code">Any ISO langauge code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
+        /// <param name="code">Any ISO language code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
         /// <param name="value"></param>
         /// <returns></returns>
         public static bool TryGetThreeLetterISOCode(
@@ -232,9 +232,9 @@ namespace Panlingo.LanguageCode
         }
 
         /// <summary>
-        /// Gets an English name of any langauge code
+        /// Gets an English name of any language code
         /// </summary>
-        /// <param name="code">Any ISO langauge code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
+        /// <param name="code">Any ISO language code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
         /// <param name="value"></param>
         /// <returns></returns>
         public static bool TryGetLanguageEnglishName(
@@ -255,9 +255,9 @@ namespace Panlingo.LanguageCode
         }
 
         /// <summary>
-        /// Gets an entity of langauge
+        /// Gets an entity of language
         /// </summary>
-        /// <param name="code">Any ISO langauge code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
+        /// <param name="code">Any ISO language code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
         /// <param name="entity"></param>
         /// <returns></returns>
         /// <exception cref="LanguageCodeException"></exception>
@@ -275,9 +275,9 @@ namespace Panlingo.LanguageCode
         }
 
         /// <summary>
-        /// Gets an entity of langauge
+        /// Gets an entity of language
         /// </summary>
-        /// <param name="code">Any ISO langauge code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
+        /// <param name="code">Any ISO language code from ISO 639-1, ISO 639-2 or ISO 639-3</param>
         /// <param name="entity"></param>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -288,13 +288,13 @@ namespace Panlingo.LanguageCode
             [MaybeNullWhen(false)] out string value
         )
         {
-            if (!LanguageCodeSearchIndex.Langauges.TryGetValue(code, out var item))
+            if (!LanguageCodeSearchIndex.Languages.TryGetValue(code, out var item))
             {
                 value = null;
                 return false;
             }
 
-            if (_langaugeVisitors.TryGetValue(entity, out var visitor))
+            if (_languageVisitors.TryGetValue(entity, out var visitor))
             {
                 var visitorValue = visitor(item);
 

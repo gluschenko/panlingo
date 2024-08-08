@@ -59,7 +59,7 @@ namespace Panlingo.LanguageIdentification.CLD3
         /// <param name="text">Some text in natural language</param>
         /// <param name="count">Number of predictions</param>
         /// <returns>List of language predictions</returns>
-        public IEnumerable<CLD3Prediction> PredictLangauges(
+        public IEnumerable<CLD3Prediction> PredictLanguages(
             string text,
             int count
         )

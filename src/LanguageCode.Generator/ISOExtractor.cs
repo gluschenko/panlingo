@@ -111,7 +111,7 @@ namespace LanguageCode.Generator
             CancellationToken token = default
         )
         {
-            KeyValuePair<string, string> ParseLangaugePair(string text)
+            KeyValuePair<string, string> ParseLanguagePair(string text)
             {
                 text = text.Replace("&nbsp;", "").Trim();
 
@@ -190,8 +190,8 @@ namespace LanguageCode.Generator
                     continue;
                 }
 
-                var a = ParseLangaugePair(alpha2);
-                var b = ParseLangaugePair(alpha3);
+                var a = ParseLanguagePair(alpha2);
+                var b = ParseLanguagePair(alpha3);
 
                 result.Add(new LegacyLanguageAlphaTwoDescriptor
                 {

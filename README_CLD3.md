@@ -64,7 +64,7 @@ class Program
         Console.WriteLine($"IsReliable: {singlePrediction.IsReliable}");
         Console.WriteLine($"Proportion: {singlePrediction.Proportion}");
 
-        var predictions = cld3.PredictLangauges("Hello, how are you? Привіт, як справи? Привет, как дела?", 3);
+        var predictions = cld3.PredictLanguages("Hello, how are you? Привіт, як справи? Привет, как дела?", 3);
 
         foreach (var prediction in predictions)
         {
