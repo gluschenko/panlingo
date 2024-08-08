@@ -13,7 +13,7 @@ public class CLD3Tests
         using var cld3 = new CLD3Detector(0, 512);
 
         var prediction = cld3.PredictLanguage(text: text);
-        var predictions = cld3.PredictLangauges(text: text, count: 3);
+        var predictions = cld3.PredictLanguages(text: text, count: 3);
         var mainLanguage = predictions.FirstOrDefault();
 
         if (prediction is null || mainLanguage is null)

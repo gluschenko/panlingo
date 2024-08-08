@@ -40,7 +40,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
 
             if (status == WhatlangStatus.BadTextPtr || status == WhatlangStatus.BadOutputPtr)
             {
-                throw new WhatlangDetectorException($"Failed to detect langauge: {status}");
+                throw new WhatlangDetectorException($"Failed to detect language: {status}");
             }
 
             return new WhatlangPrediction(result);

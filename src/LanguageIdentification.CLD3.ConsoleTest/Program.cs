@@ -15,7 +15,7 @@
             Console.WriteLine($"IsReliable: {singlePrediction.IsReliable}");
             Console.WriteLine($"Proportion: {singlePrediction.Proportion}");
 
-            var predictions = cld3.PredictLangauges(text, 3);
+            var predictions = cld3.PredictLanguages(text, 3);
 
             foreach (var prediction in predictions)
             {

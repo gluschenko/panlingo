@@ -1,7 +1,7 @@
 ﻿namespace Panlingo.LanguageCode.Models
 {
     /// <summary>
-    /// Entity of langauge. It might be a langauge code or language name.
+    /// Entity of language. It might be a language code or language name.
     /// </summary>
     public enum LanguageCodeEntity
     {
@@ -22,7 +22,7 @@
         /// </summary>
         Alpha3B,
         /// <summary>
-        /// Langauge name in English
+        /// Language name in English
         /// </summary>
         EnglishName,
     }

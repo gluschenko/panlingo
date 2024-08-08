@@ -6,7 +6,7 @@ namespace UserAgentBetchmarks.Tests
     [MemoryDiagnoser(true)]
     public class LanguageCodeTest
     {
-        private readonly IEnumerable<string> _langaugeCodes;
+        private readonly IEnumerable<string> _languageCodes;
 
         private LanguageCodeResolver? _languageCodeResolverA;
         private LanguageCodeResolver? _languageCodeResolverB;
@@ -30,7 +30,7 @@ namespace UserAgentBetchmarks.Tests
                 codeList.Add(codeArray[i % codeArray.Length]);
             }
 
-            _langaugeCodes = codeList;
+            _languageCodes = codeList;
         }
 
         [Benchmark]
@@ -43,7 +43,7 @@ namespace UserAgentBetchmarks.Tests
                 .ReduceToMacrolanguage()
                 .Select(Panlingo.LanguageCode.Models.LanguageCodeEntity.Alpha3);
 
-            foreach (var code in _langaugeCodes)
+            foreach (var code in _languageCodes)
             {
                 LanguageCodeHelper.TryResolve(code, out var newCode, _languageCodeResolverA);
             }
@@ -55,7 +55,7 @@ namespace UserAgentBetchmarks.Tests
             _languageCodeResolverB ??= new LanguageCodeResolver()
                 .Select(Panlingo.LanguageCode.Models.LanguageCodeEntity.Alpha3);
 
-            foreach (var code in _langaugeCodes)
+            foreach (var code in _languageCodes)
             {
                 LanguageCodeHelper.TryResolve(code, out var newCode, _languageCodeResolverB);
             }
@@ -67,7 +67,7 @@ namespace UserAgentBetchmarks.Tests
             _languageCodeResolverC ??= new LanguageCodeResolver()
                 .Select(Panlingo.LanguageCode.Models.LanguageCodeEntity.Alpha2);
 
-            foreach (var code in _langaugeCodes)
+            foreach (var code in _languageCodes)
             {
                 LanguageCodeHelper.TryResolve(code, out var newCode, _languageCodeResolverC);
             }
@@ -79,7 +79,7 @@ namespace UserAgentBetchmarks.Tests
             _languageCodeResolverD ??= new LanguageCodeResolver()
                 .Select(Panlingo.LanguageCode.Models.LanguageCodeEntity.EnglishName);
 
-            foreach (var code in _langaugeCodes)
+            foreach (var code in _languageCodes)
             {
                 LanguageCodeHelper.TryResolve(code, out var newCode, _languageCodeResolverD);
             }
@@ -91,7 +91,7 @@ namespace UserAgentBetchmarks.Tests
             _languageCodeResolverE ??= new LanguageCodeResolver()
                 .ReduceToMacrolanguage();
 
-            foreach (var code in _langaugeCodes)
+            foreach (var code in _languageCodes)
             {
                 LanguageCodeHelper.TryResolve(code, out var newCode, _languageCodeResolverE);
             }
@@ -103,7 +103,7 @@ namespace UserAgentBetchmarks.Tests
             _languageCodeResolverF ??= new LanguageCodeResolver()
                 .ConvertFromDeprecatedCode();
 
-            foreach (var code in _langaugeCodes)
+            foreach (var code in _languageCodes)
             {
                 LanguageCodeHelper.TryResolve(code, out var newCode, _languageCodeResolverF);
             }
@@ -115,7 +115,7 @@ namespace UserAgentBetchmarks.Tests
             _languageCodeResolverG ??= new LanguageCodeResolver()
                 .ToLowerAndTrim();
 
-            foreach (var code in _langaugeCodes)
+            foreach (var code in _languageCodes)
             {
                 LanguageCodeHelper.TryResolve(code, out var newCode, _languageCodeResolverG);
             }
@@ -127,7 +127,7 @@ namespace UserAgentBetchmarks.Tests
             _languageCodeResolverH ??= new LanguageCodeResolver()
                 .ConvertFromIETF();
 
-            foreach (var code in _langaugeCodes)
+            foreach (var code in _languageCodes)
             {
                 LanguageCodeHelper.TryResolve(code, out var newCode, _languageCodeResolverH);
             }

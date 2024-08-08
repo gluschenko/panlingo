@@ -7,7 +7,7 @@ namespace Panlingo.LanguageCode
 {
     internal static class LanguageCodeSearchIndex
     {
-        public static readonly Dictionary<string, LanguageDescriptor> Langauges =
+        public static readonly Dictionary<string, LanguageDescriptor> Languages =
             new Dictionary<string, LanguageDescriptor>(StringComparer.InvariantCultureIgnoreCase);
 
         public static readonly Dictionary<string, IEnumerable<string>> LegacyCodes =
@@ -18,31 +18,31 @@ namespace Panlingo.LanguageCode
 
         static LanguageCodeSearchIndex()
         {
-            // Main langauge data
+            // Main language data
             foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.SetThreeLanguageDescriptorList)
             {
                 if (!string.IsNullOrWhiteSpace(item.Id))
                 {
-                    Langauges[item.Id] = item;
+                    Languages[item.Id] = item;
                 }
 
                 if (!string.IsNullOrWhiteSpace(item.Part1))
                 {
-                    Langauges[item.Part1] = item;
+                    Languages[item.Part1] = item;
                 }
 
                 if (!string.IsNullOrWhiteSpace(item.Part2t))
                 {
-                    Langauges[item.Part2t] = item;
+                    Languages[item.Part2t] = item;
                 }
 
                 if (!string.IsNullOrWhiteSpace(item.Part2b))
                 {
-                    Langauges[item.Part2b] = item;
+                    Languages[item.Part2b] = item;
                 }
             }
 
-            // Legacy langauges from ISO 639-1 & ISO 639-2
+            // Legacy languages from ISO 639-1 & ISO 639-2
             foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.LegacyLanguageAlphaTwoDescriptorList)
             {
                 if (!string.IsNullOrWhiteSpace(item.CodeAlpha2) && !string.IsNullOrWhiteSpace(item.CodeAlpha2Deprecated))
@@ -56,7 +56,7 @@ namespace Panlingo.LanguageCode
                 }
             }
 
-            // Legacy langauges from ISO 639-3
+            // Legacy languages from ISO 639-3
             foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.LegacyLanguageAlphaThreeDescriptorList)
             {
                 if (!string.IsNullOrWhiteSpace(item.Id) && item.ChangeTo.Any())
@@ -65,7 +65,7 @@ namespace Panlingo.LanguageCode
                 }
             }
 
-            // Macrolangauges from ISO 639-3 (small groups of dialects)
+            // Macrolanguages from ISO 639-3 (small groups of dialects)
             foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.MarcolanguageDescriptorList)
             {
                 if (!string.IsNullOrWhiteSpace(item.Target) && !string.IsNullOrWhiteSpace(item.Source))
@@ -89,9 +89,9 @@ namespace Panlingo.LanguageCode
 
             foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.LegacyLanguageAlphaThreeDescriptorList)
             {
-                if (!string.IsNullOrWhiteSpace(item.Id) && !Langauges.ContainsKey(item.Id))
+                if (!string.IsNullOrWhiteSpace(item.Id) && !Languages.ContainsKey(item.Id))
                 {
-                    Langauges[item.Id] = new LanguageDescriptor
+                    Languages[item.Id] = new LanguageDescriptor
                     {
                         Id = item.Id,
                         Part2b = string.Empty,
@@ -104,7 +104,7 @@ namespace Panlingo.LanguageCode
 
                     if (item.Id == "mol")
                     {
-                        Langauges["mo"] = Langauges[item.Id];
+                        Languages["mo"] = Languages[item.Id];
                     }
                 }
             }
@@ -113,16 +113,16 @@ namespace Panlingo.LanguageCode
             {
                 if (!string.IsNullOrWhiteSpace(item.CodeAlpha2Deprecated) && !string.IsNullOrWhiteSpace(item.CodeAlpha3))
                 {
-                    var actualItem = Langauges[item.CodeAlpha3];
+                    var actualItem = Languages[item.CodeAlpha3];
 
-                    if (!Langauges.ContainsKey(item.CodeAlpha2Deprecated))
+                    if (!Languages.ContainsKey(item.CodeAlpha2Deprecated))
                     {
-                        Langauges[item.CodeAlpha2Deprecated] = actualItem;
+                        Languages[item.CodeAlpha2Deprecated] = actualItem;
                     }
                 }
             }
 
-            Langauges.TrimExcess();
+            Languages.TrimExcess();
             LegacyCodes.TrimExcess();
             MacrolanguageCodes.TrimExcess();
         }

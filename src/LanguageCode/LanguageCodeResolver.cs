@@ -154,9 +154,9 @@ namespace Panlingo.LanguageCode
         }
 
         /// <summary>
-        /// Selects the entity of langauge
+        /// Selects the entity of language
         /// </summary>
-        /// <param name="entity">Entity of langauge (e.g. langauge code or langauge name)</param>
+        /// <param name="entity">Entity of language (e.g. language code or language name)</param>
         /// <returns></returns>
         public LanguageCodeResolver Select(LanguageCodeEntity entity)
         {
@@ -189,7 +189,7 @@ namespace Panlingo.LanguageCode
                     else
                     {
                         newCode = null!;
-                        reason = "Langauge code is unknown";
+                        reason = "Language code is unknown";
                         return false;
                     }
 
