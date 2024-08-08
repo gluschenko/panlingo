@@ -24,11 +24,16 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                 );
             }
 
-            var modelBytes = File.ReadAllBytes("language_detector.tflite");
-            var modelText = Encoding.ASCII.GetString(modelBytes);
+            var path = Path.GetFullPath("language_detector.tflite");
+            // var modelBytes = File.ReadAllBytes("language_detector.tflite");
+            // var modelText = Encoding.ASCII.GetString(modelBytes);
 
             var options = new LanguageDetectorOptions(
-                baseOptions: new BaseOptions(modelText, modelBytes.Length), 
+                baseOptions: new BaseOptions(
+                    modelAssetBuffer: null, 
+                    modelAssetBufferCount: 0, 
+                    modelAssetPath: path
+                ), 
                 classifierOptions: new ClassifierOptions(maxResults: 10)
             );
 

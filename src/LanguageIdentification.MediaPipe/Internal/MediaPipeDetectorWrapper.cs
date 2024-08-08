@@ -67,11 +67,11 @@ namespace Panlingo.LanguageIdentification.MediaPipe.Internal
         [MarshalAs(UnmanagedType.LPStr)]
         public readonly string? ModelAssetPath;
 
-        public BaseOptions(string unmanagedBuffer, int modelAssetBufferCount)
+        public BaseOptions(string? modelAssetBuffer, int modelAssetBufferCount, string? modelAssetPath)
         {
-            ModelAssetBuffer = unmanagedBuffer;
+            ModelAssetBuffer = modelAssetBuffer;
             ModelAssetBufferCount = (uint)modelAssetBufferCount;
-            ModelAssetPath = null;
+            ModelAssetPath = modelAssetPath;
         }
     }
     
