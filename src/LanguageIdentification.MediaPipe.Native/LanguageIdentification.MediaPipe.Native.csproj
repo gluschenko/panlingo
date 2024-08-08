@@ -66,7 +66,7 @@
     <Content Include="mediapipe_language_detector.tflite">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>assets</PackagePath>
+      <PackagePath>content</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
