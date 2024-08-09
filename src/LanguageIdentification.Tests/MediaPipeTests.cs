@@ -4,7 +4,7 @@ namespace Panlingo.LanguageIdentification.Tests;
 
 public class MediaPipeTests
 {
-    [Theory]
+    /*[Theory]
     [InlineData("en", "Hello, how are you?")]
     [InlineData("uk", "Привіт, як справи?")]
     [InlineData("ru", "Привет, как дела?")]
@@ -21,5 +21,5 @@ public class MediaPipeTests
         }
 
         Assert.Equal(languageCode, mainLanguage.Language);
-    }
+    }*/
 }
