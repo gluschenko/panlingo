@@ -10,7 +10,7 @@ public class MediaPipeTests
     [InlineData("ru", "Привет, как дела?")]
     public void MediaPipeSingleLanguage(string languageCode, string text)
     {
-        using var mediaPipe = new MediaPipeDetector();
+        using var mediaPipe = new MediaPipeDetector(resultCount: 10);
 
         var predictions = mediaPipe.PredictLanguages(text: text);
         var mainLanguage = predictions.FirstOrDefault();

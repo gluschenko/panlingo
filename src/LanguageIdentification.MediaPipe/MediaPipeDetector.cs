@@ -17,7 +17,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
         private IntPtr _mediaPipe;
         private readonly SemaphoreSlim _semaphore;
 
-        public MediaPipeDetector(int resultCount = -1, float scoreThreshold = 0.0f)
+        public MediaPipeDetector(int resultCount = -1, float scoreThreshold = 0.0f, string modelPath = "")
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
@@ -26,21 +26,24 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                 );
             }
 
-            var path = Path.GetFullPath(MediaPipeNativeLibrary.ModelName);
-
-            foreach (var file in Directory.EnumerateFiles(".", "*", SearchOption.AllDirectories))
+            if (string.IsNullOrWhiteSpace(modelPath))
             {
-                if (Path.GetFileName(file) == MediaPipeNativeLibrary.ModelName)
+                modelPath = Path.GetFullPath(MediaPipeNativeLibrary.ModelName);
+
+                foreach (var file in Directory.EnumerateFiles(".", "*", SearchOption.AllDirectories))
                 {
-                    path = Path.GetFullPath(file);
+                    if (Path.GetFileName(file) == MediaPipeNativeLibrary.ModelName)
+                    {
+                        modelPath = Path.GetFullPath(file);
+                    }
                 }
             }
-
+            
             var options = new LanguageDetectorOptions(
                 baseOptions: new BaseOptions(
                     modelAssetBuffer: null, 
                     modelAssetBufferCount: 0, 
-                    modelAssetPath: path
+                    modelAssetPath: modelPath
                 ), 
                 classifierOptions: new ClassifierOptions(
                     resultCount: resultCount, 
