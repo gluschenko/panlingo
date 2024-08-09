@@ -18,6 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{4F3FF1FF
 		..\README_CLD3.md = ..\README_CLD3.md
 		..\README_FASTTEXT.md = ..\README_FASTTEXT.md
 		..\README_LANGUAGE_CODE.md = ..\README_LANGUAGE_CODE.md
+		..\README_MEDIAPIPE.md = ..\README_MEDIAPIPE.md
 		..\README_WHATLANG.md = ..\README_WHATLANG.md
 	EndProjectSection
 EndProject
@@ -76,11 +77,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageCode.Benchmark", "L
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mediapipe", "mediapipe", "{48F2FA2B-23FF-4A08-A142-B1B0521D8AAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.MediaPipe", "LanguageIdentification.MediaPipe\LanguageIdentification.MediaPipe.csproj", "{73A660C4-394E-4221-B0F0-379B1F62A160}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.MediaPipe", "LanguageIdentification.MediaPipe\LanguageIdentification.MediaPipe.csproj", "{73A660C4-394E-4221-B0F0-379B1F62A160}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.MediaPipe.ConsoleTest", "LanguageIdentification.MediaPipe.ConsoleTest\LanguageIdentification.MediaPipe.ConsoleTest.csproj", "{7E084639-B1E9-4A20-AC8A-8260BCEE4BC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.MediaPipe.ConsoleTest", "LanguageIdentification.MediaPipe.ConsoleTest\LanguageIdentification.MediaPipe.ConsoleTest.csproj", "{7E084639-B1E9-4A20-AC8A-8260BCEE4BC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.MediaPipe.Native", "LanguageIdentification.MediaPipe.Native\LanguageIdentification.MediaPipe.Native.csproj", "{B793833C-3FC9-490F-8223-456AED0DC16E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.MediaPipe.Native", "LanguageIdentification.MediaPipe.Native\LanguageIdentification.MediaPipe.Native.csproj", "{B793833C-3FC9-490F-8223-456AED0DC16E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

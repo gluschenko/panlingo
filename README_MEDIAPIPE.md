@@ -1,3 +1,3 @@
 ﻿# Panlingo.LanguageIdentification.MediaPipe
 
-TODO
+TBD
