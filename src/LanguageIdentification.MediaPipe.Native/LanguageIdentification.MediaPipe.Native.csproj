@@ -54,7 +54,7 @@
 
   <ItemGroup>
     <Content Include="liblanguage_detector.so">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/linux-x64/native</PackagePath>
       <pack>true</pack>
@@ -64,9 +64,9 @@
   
   <ItemGroup>
     <Content Include="mediapipe_language_detector.tflite">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>content</PackagePath>
+      <PackagePath>contentFiles</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
