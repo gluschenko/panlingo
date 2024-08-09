@@ -35,7 +35,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LanguageIdentification.MediaPipe.Native\LanguageIdentification.MediaPipe.Native.csproj">
-      <IncludeAssets>All</IncludeAssets>
+      <IncludeAssets>all</IncludeAssets>
+      <PrivateAssets>analyzers;build</PrivateAssets>
     </ProjectReference>
   </ItemGroup>
 
