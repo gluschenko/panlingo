@@ -20,6 +20,7 @@ functionality into their applications.
 | [Panlingo.LanguageIdentification.CLD3](./README_CLD3.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.CLD3?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.CLD3/) |
 | [Panlingo.LanguageIdentification.FastText](./README_FASTTEXT.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.FastText?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.FastText/) |
 | [Panlingo.LanguageIdentification.Whatlang](./README_WHATLANG.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.Whatlang?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.Whatlang/) |
+| [Panlingo.LanguageIdentification.MediaPipe](./README_MEDIAPIPE.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.MediaPipe?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.MediaPipe/) |
 | [Panlingo.LanguageCode](./README_LANGUAGE_CODE.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageCode?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageCode/) |
 
 ## Contents
@@ -29,6 +30,7 @@ functionality into their applications.
     2. [CLD3](#cld3)
     3. [FastText](#fasttext)
     4. [Whatlang](#whatlang)
+    5. [MediaPipe](#mediapipe)
 2. [Features](#features)
 3. [Platform Support](#platform-support)
 4. [Key Concerns](#key-concerns)
@@ -52,6 +54,10 @@ functionality into their applications.
 - **Wrapper docs**: [Documentation](./README_WHATLANG.md)
 - **Original source code**: [Whatlang Repository](https://github.com/greyblake/whatlang-rs)
 
+### MediaPipe
+- **Wrapper docs**: [Documentation](./README_MEDIAPIPE.md)
+- **Original source code**: [MediaPipe Repository](https://github.com/google-ai-edge/mediapipe)
+
 ## Key concerns
 
 - Zero-dependency development. 
@@ -60,13 +66,13 @@ functionality into their applications.
 
 ## Features
 
-| # | CLD2 | CLD3 | FastText* | Whatlang |
-| - | ---- | ---- | -------- | -------- |
-| Single language prediction | Yes | Yes | Yes | Yes |
-| Multi language prediction | Yes | Yes | Yes | No |
-| Supported languages | 80 | 107 | 176 or 217 | 69 |
-| Unknown language detection | Yes | Yes | No | No |
-| Algorithm | quadgrams | neural network | neural network | trigrams |
+| # | CLD2 | CLD3 | FastText* | Whatlang | MediaPipe |
+| - | ---: | ---: | --------: | -------: | --------: |
+| Single language prediction | Yes | Yes | Yes | Yes | Yes |
+| Multi language prediction | Yes | Yes | Yes | No | Yes |
+| Supported languages | 80 | 107 | 176 or 217 | 69 | 110 |
+| Unknown language detection | Yes | Yes | No | No | Yes |
+| Algorithm | quadgrams | neural network | neural network | trigrams | neural network |
 
 \* When using these models: 
 [lid176](https://fasttext.cc/docs/en/language-identification.html), 
@@ -74,12 +80,13 @@ functionality into their applications.
 
 ## Platform support
 
-| Model    | Linux | Windows | macOS | WASM |
-| -------- | ----- | ------- | ----- | ---- |
-| CLD2     | ✅   | ❌ *   | ❌    | ❌ * |
-| CLD3     | ✅   | ❌ *   | ❌    | ❌   |
-| FastText | ✅   | ❌ *   | ❌    | ❌   |
-| Whatlang | ✅   | ❌ *   | ❌    | ❌ * |
+| Model     | Linux | Windows | macOS | WASM |
+| :-------- | ----: | ------: | ----: | ---: |
+| CLD2      | ✅   | ❌ *   | ❌    | ❌ * |
+| CLD3      | ✅   | ❌ *   | ❌    | ❌   |
+| FastText  | ✅   | ❌ *   | ❌    | ❌   |
+| Whatlang  | ✅   | ❌ *   | ❌    | ❌ * |
+| MediaPipe | ✅   | ❌     | ❌    | ❌ * |
 
 \* Ports for another platforms are planned
 

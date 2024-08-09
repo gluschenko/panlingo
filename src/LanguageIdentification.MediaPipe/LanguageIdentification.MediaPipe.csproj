@@ -3,25 +3,25 @@
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
     <Version>0.0.0.16</Version>
-    <PackageId>Panlingo.LanguageIdentification.FastText</PackageId>
-    <AssemblyName>Panlingo.LanguageIdentification.FastText</AssemblyName>
-    <RootNamespace>Panlingo.LanguageIdentification.FastText</RootNamespace>
+    <PackageId>Panlingo.LanguageIdentification.MediaPipe</PackageId>
+    <AssemblyName>Panlingo.LanguageIdentification.MediaPipe</AssemblyName>
+    <RootNamespace>Panlingo.LanguageIdentification.MediaPipe</RootNamespace>
     <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
     <Copyright>Alexander Gluschenko © 2024</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>nlp lid language-identification language-detection fasttext</PackageTags>
-    <PackageReadmeFile>README_FASTTEXT.md</PackageReadmeFile>
+    <PackageTags>nlp lid language-identification language-detection mediapipe</PackageTags>
+    <PackageReadmeFile>README_MEDIAPIPE.md</PackageReadmeFile>
     <PackageReleaseNotes>
       - Initial release
     </PackageReleaseNotes>
     <Description>
-      This is a .NET wrapper for the FastText library by Facebook AI Research (FAIR).
-      
+      This is a .NET wrapper for the MediaPipe library by Google AI Edge.
+
       This package facilitates the integration of language identification capabilities into .NET applications,
-      leveraging the powerful and efficient FastText library to recognize and classify texts in multiple languages.
+      leveraging the powerful and efficient MediaPipe library to recognize and classify texts in multiple languages.
       Ideal for applications that require fast and accurate language detection.
     </Description>
     <Configurations>Debug;Release;CI</Configurations>
@@ -30,17 +30,18 @@
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
-    <DocumentationFile>..\Panlingo.LanguageIdentification.FastText.xml</DocumentationFile>
+    <DocumentationFile>..\Panlingo.LanguageIdentification.MediaPipe.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LanguageIdentification.FastText.Native\LanguageIdentification.FastText.Native.csproj">
-      <IncludeAssets>All</IncludeAssets>
+    <ProjectReference Include="..\LanguageIdentification.MediaPipe.Native\LanguageIdentification.MediaPipe.Native.csproj">
+      <IncludeAssets>all</IncludeAssets>
+      <PrivateAssets>analyzers;build</PrivateAssets>
     </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\README_FASTTEXT.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\README_MEDIAPIPE.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

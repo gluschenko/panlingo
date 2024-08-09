@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>Panlingo.LanguageIdentification.CLD3.ConsoleTest</RootNamespace>
+    <RootNamespace>Panlingo.LanguageIdentification.MediaPipe.ConsoleTest</RootNamespace>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -9,7 +9,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <ContainerDevelopmentMode>Regular</ContainerDevelopmentMode>
     <DockerfileContext>..\..</DockerfileContext>
-    <DockerfileRunArguments>--name language-identification-cld3</DockerfileRunArguments>
+    <DockerfileRunArguments>--name language-identification-mediapipe</DockerfileRunArguments>
     <Configurations>Debug;Release;CI</Configurations>
   </PropertyGroup>
 
@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LanguageIdentification.CLD3\LanguageIdentification.CLD3.csproj" />
+    <ProjectReference Include="..\LanguageIdentification.MediaPipe\LanguageIdentification.MediaPipe.csproj" />
   </ItemGroup>
 
 </Project>

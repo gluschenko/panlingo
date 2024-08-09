@@ -23,6 +23,8 @@ jobs:
           - LanguageIdentification.FastText
           - LanguageIdentification.Whatlang.Native
           - LanguageIdentification.Whatlang
+          - LanguageIdentification.MediaPipe.Native
+          - LanguageIdentification.MediaPipe
           - LanguageCode
     permissions:
       contents: read
@@ -115,6 +117,8 @@ jobs:
           - LanguageIdentification.FastText
           - LanguageIdentification.Whatlang.Native
           - LanguageIdentification.Whatlang
+          - LanguageIdentification.MediaPipe.Native
+          - LanguageIdentification.MediaPipe
           - LanguageCode
     permissions:
       contents: read

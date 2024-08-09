@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Version>0.0.0.16</Version>
+    <PackageId>Panlingo.LanguageIdentification.MediaPipe.Native</PackageId>
+    <AssemblyName>Panlingo.LanguageIdentification.MediaPipe.Native</AssemblyName>
+    <RootNamespace>Panlingo.LanguageIdentification.MediaPipe.Native</RootNamespace>
+    <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Authors>Alexander Gluschenko</Authors>
+    <Copyright>Alexander Gluschenko © 2024</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>nlp lid language-identification language-detection mediapipe</PackageTags>
+    <PackageReadmeFile>README_MEDIAPIPE.md</PackageReadmeFile>
+    <PackageReleaseNotes>
+      - Initial release
+    </PackageReleaseNotes>
+    <Description>
+      This package provides the native resources required for the MediaPipe library by Google AI Edge.
+      It includes the necessary native components to enable language recognition and classification capabilities
+      in applications using the MediaPipeWrapper for .NET. This package is essential for the proper functioning
+      of MediaPipe-based language identification features in your .NET projects.
+    </Description>
+    <Configurations>Debug;Release;CI</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591,1573</NoWarn>
+    <DocumentationFile>..\Panlingo.LanguageIdentification.MediaPipe.Native.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DockerImageName>mediapipe-builder</DockerImageName>
+    <DockerContainerName>mediapipe-builder</DockerContainerName>
+    <CurrentAbsolutePath>$(MSBuildThisFileDirectory)</CurrentAbsolutePath>
+    <ThirdPartyAbsolutePath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', '../../third_party/mediapipe/'))</ThirdPartyAbsolutePath>
+    <NativeFileAbsolutePath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', 'liblanguage_detector.so'))</NativeFileAbsolutePath>
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="!Exists('$(NativeFileAbsolutePath)')">
+    <Exec Command="docker build --file ./Dockerfile -t $(DockerImageName) ../.." />
+    <Exec Command="docker run --name $(DockerContainerName) -v $(ThirdPartyAbsolutePath):/repo/third_party/mediapipe/ -v $(CurrentAbsolutePath):/repo/src/LanguageIdentification.MediaPipe.Native $(DockerImageName)" />
+    <Exec Command="docker rm $(DockerContainerName) --force" />
+  </Target>
+
+  <ItemGroup>
+    <None Include="..\.dockerignore" Link=".dockerignore">
+      <DependentUpon>$(DockerDefaultDockerfile)</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="liblanguage_detector.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/linux-x64/native</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="mediapipe_language_detector.tflite">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>contentFiles</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="..\..\README_MEDIAPIPE.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

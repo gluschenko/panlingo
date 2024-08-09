@@ -7,7 +7,6 @@ workspace="build_temp"
 
 mkdir "$workspace" -p
 cp -a ../../third_party/whatlang-ffi/. $workspace/.
-cp -a Native/. $workspace
 
 ls -R .
 
