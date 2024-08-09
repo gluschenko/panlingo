@@ -23,4 +23,7 @@ RUN dotnet publish "./LanguageIdentification.MediaPipe.ConsoleTest.csproj" -c $B
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+RUN ls -R
+
 ENTRYPOINT ["dotnet", "LanguageIdentification.MediaPipe.ConsoleTest.dll"]
