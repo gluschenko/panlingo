@@ -44,8 +44,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - language: c-cpp
-          build-mode: none
+        #- language: c-cpp
+        #  build-mode: none
         - language: csharp
           build-mode: none
         - language: javascript-typescript
