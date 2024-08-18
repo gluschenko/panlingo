@@ -1,13 +1,52 @@
-#include <stdint.h>
-#include <stdlib.h>
+#ifndef LINGUA_H
+#define LINGUA_H
 
+#ifndef EXPORT
+#   if defined(_WIN32) || defined(_WIN64)
+#       define EXPORT __declspec(dllimport)
+#   else
+#       define EXPORT extern
+#   endif
+#endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-struct detection_result {
-  int language;
-  double confidence;
-};
+#include <stddef.h>
 
-int lingua_detect_single(const char* text, size_t len, struct detection_result* info);
+typedef enum LinguaStatus {
+    LINGUA_OK = 0,
+    LINGUA_DETECT_FAILURE = 1,
+    LINGUA_BAD_TEXT_PTR = 2,
+    LINGUA_BAD_OUTPUT_PTR = 3
+} LinguaStatus;
 
+typedef struct DetectionResult {
+    int language;
+    double confidence;
+} DetectionResult;
 
+typedef struct LanguageDetector LanguageDetector;
+typedef struct LanguageDetectorBuilder LanguageDetectorBuilder;
+
+EXPORT LanguageDetectorBuilder* lingua_language_detector_builder_create(const int* languages, size_t language_count);
+
+EXPORT LanguageDetector* lingua_language_detector_create(LanguageDetectorBuilder *builder);
+
+EXPORT void lingua_language_detector_builder_destroy(LanguageDetectorBuilder *builder);
+
+EXPORT void lingua_language_detector_destroy(LanguageDetector *detector);
+
+EXPORT LinguaStatus lingua_detect_single(
+    const LanguageDetector *detector,
+    const char *text_ptr,
+    size_t text_len,
+    DetectionResult *result
+);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* LINGUA_H */

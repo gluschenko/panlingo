@@ -23,6 +23,42 @@ pub struct DetectionResult {
 }
 
 #[no_mangle]
+pub unsafe extern "C" fn lingua_language_detector_builder_create(languages: *const Language, language_count: size_t) -> *mut LanguageDetectorBuilder {
+    if !languages.is_null() {
+        let languages_slice = std::slice::from_raw_parts(languages, language_count);
+        let builder = LanguageDetectorBuilder::from_languages(&languages_slice);
+        Box::into_raw(Box::new(builder))
+    } else {
+        ptr::null_mut()
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn lingua_language_detector_create(builder: *mut LanguageDetectorBuilder) -> *mut LanguageDetector {
+    if !builder.is_null() {
+        let mut builder = Box::from_raw(builder);
+        let detector = builder.build();
+        Box::into_raw(Box::new(detector))
+    } else {
+        ptr::null_mut()
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn lingua_language_detector_builder_destroy(builder: *mut LanguageDetectorBuilder) {
+    if !builder.is_null() {
+        let _ = Box::from_raw(builder); // Box drops here, freeing the memory
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn lingua_language_detector_destroy(detector: *mut LanguageDetector) {
+    if !detector.is_null() {
+        let _ = Box::from_raw(detector); // Box drops here, freeing the memory
+    }
+}
+
+#[no_mangle]
 pub unsafe extern "C" fn lingua_detect_single(
     detector: &LanguageDetector,
     text_ptr: *const c_char,

@@ -6,7 +6,7 @@ echo "Hello world";
 workspace="build_temp"
 
 mkdir "$workspace" -p
-cp -a Native/. $workspace/.
+cp -a Native/lingua-ffi/. $workspace/.
 
 ls -R .
 
