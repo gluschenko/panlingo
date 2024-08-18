@@ -137,7 +137,7 @@ fn detect_multiple_internal(
                 for (i, value) in res.into_iter().enumerate() {
                     slice[i] = DetectionResult {
                         language: value.language(),
-                        confidence: detector.compute_language_confidence(text_str, value.language()),
+                        confidence: detector.compute_language_confidence(text, value.language()),
                     };
                 }
             }
