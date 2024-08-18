@@ -14,10 +14,11 @@ cd "$workspace"
 zx ../Native/monkey-patch.mjs
 
 bazel-6.1.1 build -c opt \
-	--linkopt -s --strip always \
-	--define MEDIAPIPE_DISABLE_GPU=1 \
-    --sandbox_debug --verbose_failures \
-	//mediapipe/tasks/c/text/language_detector:liblanguage_detector.so
+    --linkopt -s --strip always \
+    --define MEDIAPIPE_DISABLE_GPU=1 \
+    # --sandbox_debug \
+    --verbose_failures \
+    //mediapipe/tasks/c/text/language_detector:liblanguage_detector.so
 
 cd ..
 
