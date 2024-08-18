@@ -4,13 +4,14 @@ namespace Panlingo.LanguageIdentification.Tests;
 
 public class MediaPipeTests
 {
-    /*[Theory]
+    [Theory]
     [InlineData("en", "Hello, how are you?")]
     [InlineData("uk", "Привіт, як справи?")]
     [InlineData("ru", "Привет, как дела?")]
     public void MediaPipeSingleLanguage(string languageCode, string text)
     {
-        using var mediaPipe = new MediaPipeDetector(resultCount: 10);
+        var modelPath = "/models/mediapipe_language_detector.tflite";
+        using var mediaPipe = new MediaPipeDetector(resultCount: 10, modelPath: modelPath);
 
         var predictions = mediaPipe.PredictLanguages(text: text);
         var mainLanguage = predictions.FirstOrDefault();
@@ -21,5 +22,5 @@ public class MediaPipeTests
         }
 
         Assert.Equal(languageCode, mainLanguage.Language);
-    }*/
+    }
 }
