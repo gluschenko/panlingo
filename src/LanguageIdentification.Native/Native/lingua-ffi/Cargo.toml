@@ -1,0 +1,12 @@
+[package]
+name = "lingua-ffi"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+lingua = "1.6.2"
+libc = "0.2.157"
+
+[lib]
+name = "lingua"
+crate-type = ["staticlib", "cdylib"]
