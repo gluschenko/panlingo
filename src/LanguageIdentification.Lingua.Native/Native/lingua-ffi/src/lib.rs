@@ -74,6 +74,16 @@ pub unsafe extern "C" fn lingua_detect_single(
     detect_single_internal(&detector, text.to_bytes(), result)
 }
 
+#[no_mangle]
+pub unsafe extern "C" fn lingua_detect_multiple(
+    detector: &LanguageDetector,
+    text: *const c_char,
+    result: *mut DetectionResult,
+) -> LinguaStatus {
+    let text = CStr::from_ptr(text);
+    detect_multiple_internal(&detector, text.to_bytes(), result)
+}
+
 fn detect_single_internal(
     detector: &LanguageDetector,
     text: &[u8],
@@ -100,6 +110,39 @@ fn detect_single_internal(
                     LinguaStatus::DetectFailure
                 }
             }
+        }
+        Err(_) => {
+            // Bad string pointer
+            LinguaStatus::BadTextPtr
+        }
+    }
+}
+
+fn detect_multiple_internal(
+    detector: &LanguageDetector,
+    text: &[u8],
+    result: *mut DetectionResult,
+) -> LinguaStatus {
+    if result == ptr::null_mut() {
+        return LinguaStatus::BadOutputPtr;
+    }
+
+    match std::str::from_utf8(text) {
+        Ok(text) => {
+            let res = detector.detect_multiple_languages_of(text);
+
+            unsafe {
+                let slice = std::slice::from_raw_parts_mut(result, res.len());
+
+                for (i, value) in res.into_iter().enumerate() {
+                    slice[i] = DetectionResult {
+                        language: value.language(),
+                        confidence: detector.compute_language_confidence(text_str, value.language()),
+                    };
+                }
+            }
+
+            LinguaStatus::Ok
         }
         Err(_) => {
             // Bad string pointer

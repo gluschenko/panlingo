@@ -46,6 +46,12 @@ EXPORT LinguaStatus lingua_detect_single(
     DetectionResult *result
 );
 
+EXPORT LinguaStatus lingua_detect_multiple(
+    const LanguageDetector *detector,
+    const char *text,
+    DetectionResult *result
+);
+
 #ifdef __cplusplus
 }
 #endif

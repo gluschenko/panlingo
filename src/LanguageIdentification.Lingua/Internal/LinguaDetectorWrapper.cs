@@ -27,6 +27,13 @@ namespace Panlingo.LanguageIdentification.Lingua.Internal
             out LinguaPredictionResult result
         );
 
+        [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_detect_multiple", CallingConvention = CallingConvention.Cdecl)]
+        public static extern LinguaStatus LinguaDetectMultiple(
+            IntPtr detector,
+            string text,
+            out LinguaPredictionResult[] result
+        );
+
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_language_code", CallingConvention = CallingConvention.Cdecl)]
         public static extern int LinguaLangCode(
             LinguaLanguage lang,

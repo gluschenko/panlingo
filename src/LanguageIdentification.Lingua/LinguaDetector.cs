@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Panlingo.LanguageIdentification.Lingua.Internal;
@@ -65,6 +66,36 @@ namespace Panlingo.LanguageIdentification.Lingua
             }
 
             return new LinguaPrediction(result);
+        }
+
+        /// <summary>
+        /// Produces a prediction for 'text'
+        /// </summary>
+        /// <param name="text">Some text in natural language</param>
+        /// <returns>Language prediction</returns>
+        /// <exception cref="LinguaDetectorException"></exception>
+        public IEnumerable<LinguaPrediction> PredictLanguages(string text)
+        {
+            var status = LinguaDetectorWrapper.LinguaDetectMultiple(
+                detector: _detector,
+                text: text,
+                result: out var result
+            );
+
+            if (status == LinguaStatus.DetectFailure)
+            {
+                return Array.Empty<LinguaPrediction>();
+            }
+
+            if (status == LinguaStatus.BadTextPtr || status == LinguaStatus.BadOutputPtr)
+            {
+                throw new LinguaDetectorException($"Failed to detect language: {status}");
+            }
+
+            return result
+                .Select(x => new LinguaPrediction(x))
+                .OrderByDescending(x => x.Confidence)
+                .ToArray();
         }
 
         public string GetLanguageCode(LinguaLanguage language)
