@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            using var whatlang = new LinguaDetector(Enum.GetValues<LinguaLanguage>());
+            using var lingua = new LinguaDetector(Enum.GetValues<LinguaLanguage>());
 
             var texts = new[]
             {
@@ -17,7 +17,7 @@
                 .Select(x => new
                 {
                     Text = x,
-                    Prediction = whatlang.PredictLanguage(x),
+                    Prediction = lingua.PredictLanguage(x),
                 })
                 .ToArray();
 
@@ -30,7 +30,11 @@
                 );
             }
 
-            var code1 = whatlang.GetLanguageCode(LinguaLanguage.Ukrainian);
+            var predictionsMultiple = lingua.PredictLanguages(string.Join("", texts));
+
+
+
+            var code1 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian);
 
             ;
         }
