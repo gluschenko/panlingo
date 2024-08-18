@@ -30,6 +30,8 @@ typedef struct DetectionResult {
 typedef struct LanguageDetector LanguageDetector;
 typedef struct LanguageDetectorBuilder LanguageDetectorBuilder;
 
+EXPORT size_t lingua_language_code(size_t language, char* buffer);
+
 EXPORT LanguageDetectorBuilder* lingua_language_detector_builder_create(const int* languages, size_t language_count);
 
 EXPORT LanguageDetector* lingua_language_detector_create(LanguageDetectorBuilder *builder);
@@ -40,8 +42,7 @@ EXPORT void lingua_language_detector_destroy(LanguageDetector *detector);
 
 EXPORT LinguaStatus lingua_detect_single(
     const LanguageDetector *detector,
-    const char *text_ptr,
-    size_t text_len,
+    const char *text,
     DetectionResult *result
 );
 

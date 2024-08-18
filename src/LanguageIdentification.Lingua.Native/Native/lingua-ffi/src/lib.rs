@@ -23,6 +23,12 @@ pub struct DetectionResult {
 }
 
 #[no_mangle]
+pub unsafe extern "C" fn lingua_language_code(language: Language, buffer_ptr: *mut c_char) -> size_t {
+    let code = language.iso_code_639_3().to_string();
+    copy_cstr(&code, buffer_ptr)
+}
+
+#[no_mangle]
 pub unsafe extern "C" fn lingua_language_detector_builder_create(languages: *const Language, language_count: size_t) -> *mut LanguageDetectorBuilder {
     if !languages.is_null() {
         let languages_slice = std::slice::from_raw_parts(languages, language_count);
@@ -61,12 +67,11 @@ pub unsafe extern "C" fn lingua_language_detector_destroy(detector: *mut Languag
 #[no_mangle]
 pub unsafe extern "C" fn lingua_detect_single(
     detector: &LanguageDetector,
-    text_ptr: *const c_char,
-    text_len: size_t,
+    text: *const c_char,
     result: *mut DetectionResult,
 ) -> LinguaStatus {
-    let text = core::slice::from_raw_parts(text_ptr as *const u8, text_len);
-    detect_single_internal(&detector, &text, result)
+    let text = CStr::from_ptr(text);
+    detect_single_internal(&detector, text.to_bytes(), result)
 }
 
 fn detect_single_internal(
