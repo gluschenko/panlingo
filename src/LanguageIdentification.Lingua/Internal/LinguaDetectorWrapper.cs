@@ -31,7 +31,7 @@ namespace Panlingo.LanguageIdentification.Lingua.Internal
         public static extern LinguaStatus LinguaDetectMultiple(
             IntPtr detector,
             string text,
-            out LinguaPredictionResult[] result
+            out IntPtr result
         );
 
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_language_code", CallingConvention = CallingConvention.Cdecl)]

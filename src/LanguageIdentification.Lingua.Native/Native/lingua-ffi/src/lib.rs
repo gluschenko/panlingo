@@ -22,6 +22,11 @@ pub struct DetectionResult {
     confidence: f64,
 }
 
+pub struct LanguageDetectorListResult {
+    predictions: [DetectionResult],
+    predictions_count: usize,
+}
+
 #[no_mangle]
 pub unsafe extern "C" fn lingua_language_code(language: Language, buffer_ptr: *mut c_char) -> size_t {
     let code = language.iso_code_639_3().to_string();
@@ -121,7 +126,7 @@ fn detect_single_internal(
 fn detect_multiple_internal(
     detector: &LanguageDetector,
     text: &[u8],
-    result: *mut DetectionResult,
+    result: *mut LanguageDetectorListResult,
 ) -> LinguaStatus {
     if result == ptr::null_mut() {
         return LinguaStatus::BadOutputPtr;
@@ -129,17 +134,11 @@ fn detect_multiple_internal(
 
     match std::str::from_utf8(text) {
         Ok(text) => {
-            let res = detector.detect_multiple_languages_of(text);
+            let res = detector.detect_multiple_languages_of(text).iter().collect();
 
             unsafe {
-                let slice = std::slice::from_raw_parts_mut(result, res.len());
-
-                for (i, value) in res.into_iter().enumerate() {
-                    slice[i] = DetectionResult {
-                        language: value.language(),
-                        confidence: detector.compute_language_confidence(text, value.language()),
-                    };
-                }
+                (*result).predictions = res;
+                (*result).predictions_count = res.len();
             }
 
             LinguaStatus::Ok

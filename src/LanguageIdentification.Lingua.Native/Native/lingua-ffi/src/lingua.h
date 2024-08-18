@@ -27,6 +27,11 @@ typedef struct DetectionResult {
     double confidence;
 } DetectionResult;
 
+typedef struct LanguageDetectorListResult {
+    DetectionResult* predictions;
+    size_t predictionsCount;
+} LanguageDetectorListResult;
+
 typedef struct LanguageDetector LanguageDetector;
 typedef struct LanguageDetectorBuilder LanguageDetectorBuilder;
 

@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Panlingo.LanguageIdentification.Lingua.Internal
 {
@@ -9,5 +10,12 @@ namespace Panlingo.LanguageIdentification.Lingua.Internal
 
         [MarshalAs(UnmanagedType.R8)]
         public readonly double Confidence;
+    }
+
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    internal readonly struct LanguageDetectorListResult
+    {
+        public readonly IntPtr Predictions;
+        public readonly uint PredictionsCount;
     }
 }
