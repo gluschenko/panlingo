@@ -24,7 +24,7 @@ pub struct DetectionResult {
 
 #[no_mangle]
 pub unsafe extern "C" fn lingua_detect_single(
-    detector: *const LanguageDetector,
+    detector: &LanguageDetector,
     text_ptr: *const c_char,
     text_len: size_t,
     result: *mut DetectionResult,
@@ -77,18 +77,31 @@ unsafe fn copy_cstr(src: &str, dst: *mut c_char) -> size_t {
     return len;
 }
 
-
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+    fn test() {
+        let mut languages = vec![];
+
+        for x in Language::all() {
+            languages.push(x);
+        }
+
+        let detector: LanguageDetector = LanguageDetectorBuilder::from_languages(&languages).build();
+
+        let text = "Привет, как дела?";
+
+        let predictions = detector.detect_multiple_languages_of(text);
+
+        for x in predictions {
+            let language_confidence = detector.compute_language_confidence(text, x.language());
+            println!("{}: {}", x.language().to_string(), language_confidence);
+        }
+
+        println!("Hello, world!");
+
+        assert_eq!(1, 1);
     }
 }

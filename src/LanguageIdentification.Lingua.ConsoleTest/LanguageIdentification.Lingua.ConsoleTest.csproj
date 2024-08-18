@@ -1,10 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <RootNamespace>Panlingo.LanguageIdentification.Lingua.ConsoleTest</RootNamespace>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <ContainerDevelopmentMode>Regular</ContainerDevelopmentMode>
+    <DockerfileContext>..\..</DockerfileContext>
+    <DockerfileRunArguments>--name language-identification-lingua</DockerfileRunArguments>
+    <Configurations>Debug;Release;CI</Configurations>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LanguageIdentification.Lingua\LanguageIdentification.Lingua.csproj" />
+  </ItemGroup>
 
 </Project>
