@@ -1,6 +1,8 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+
+
 struct detection_result {
   int language;
   double confidence;
