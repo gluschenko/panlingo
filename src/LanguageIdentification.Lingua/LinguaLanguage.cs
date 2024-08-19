@@ -3,7 +3,7 @@
     /// <summary>
     /// Language supported by Lingua
     /// </summary>
-    public enum LinguaLanguage : byte
+    public enum LinguaLanguage : int
     {
         Afrikaans = 0,
         Albanian = 1,

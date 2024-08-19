@@ -18,6 +18,7 @@
                 {
                     Text = x,
                     Prediction = lingua.PredictLanguage(x),
+                    Predictions = lingua.PredictLanguages(x),
                 })
                 .ToArray();
 

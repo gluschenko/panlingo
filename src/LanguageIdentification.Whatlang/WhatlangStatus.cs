@@ -1,6 +1,6 @@
 ﻿namespace Panlingo.LanguageIdentification.Whatlang
 {
-    public enum WhatlangStatus : byte
+    public enum WhatlangStatus : int
     {
         OK = 0,
         DetectFailure = 1,

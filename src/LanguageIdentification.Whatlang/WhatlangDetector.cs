@@ -30,7 +30,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
         {
             var status = WhatlangDetectorWrapper.WhatlangDetect(
                 text: text,
-                info: out var result
+                result: out var result
             );
 
             if (status == WhatlangStatus.DetectFailure)

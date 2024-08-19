@@ -15,29 +15,129 @@ pub enum LinguaStatus {
     BadOutputPtr = 3,
 }
 
+#[repr(u8)]
+#[derive(Debug, Copy, Clone)]
+pub enum LinguaLanguage {
+    Afrikaans = 0,
+    Albanian = 1,
+    Arabic = 2,
+    Armenian = 3,
+    Azerbaijani = 4,
+    Basque = 5,
+    Belarusian = 6,
+    Bengali = 7,
+    Bokmal = 8,
+    Bosnian = 9,
+    Bulgarian = 10,
+    Catalan = 11,
+    Chinese = 12,
+    Croatian = 13,
+    Czech = 14,
+    Danish = 15,
+    Dutch = 16,
+    English = 17,
+    Esperanto = 18,
+    Estonian = 19,
+    Finnish = 20,
+    French = 21,
+    Ganda = 22,
+    Georgian = 23,
+    German = 24,
+    Greek = 25,
+    Gujarati = 26,
+    Hebrew = 27,
+    Hindi = 28,
+    Hungarian = 29,
+    Icelandic = 30,
+    Indonesian = 31,
+    Irish = 32,
+    Italian = 33,
+    Japanese = 34,
+    Kazakh = 35,
+    Korean = 36,
+    Latin = 37,
+    Latvian = 38,
+    Lithuanian = 39,
+    Macedonian = 40,
+    Malay = 41,
+    Maori = 42,
+    Marathi = 43,
+    Mongolian = 44,
+    Nynorsk = 45,
+    Persian = 46,
+    Polish = 47,
+    Portuguese = 48,
+    Punjabi = 49,
+    Romanian = 50,
+    Russian = 51,
+    Serbian = 52,
+    Shona = 53,
+    Slovak = 54,
+    Slovene = 55,
+    Somali = 56,
+    Sotho = 57,
+    Spanish = 58,
+    Swahili = 59,
+    Swedish = 60,
+    Tagalog = 61,
+    Tamil = 62,
+    Telugu = 63,
+    Thai = 64,
+    Tsonga = 65,
+    Tswana = 66,
+    Turkish = 67,
+    Ukrainian = 68,
+    Urdu = 69,
+    Vietnamese = 70,
+    Welsh = 71,
+    Xhosa = 72,
+    Yoruba = 73,
+    Zulu = 74,
+}
+
+impl From<Language> for LinguaLanguage {
+    fn from(language: Language) -> Self {
+        unsafe { std::mem::transmute(language as u8) }
+    }
+}
+
+impl From<LinguaLanguage> for Language {
+    fn from(ffi_language: LinguaLanguage) -> Self {
+        unsafe { std::mem::transmute(ffi_language as u8) }
+    }
+}
+
 #[repr(C)]
 #[derive(Debug)]
-pub struct DetectionResult {
-    language: Language,
+pub struct LinguaPredictionResult {
+    language: LinguaLanguage,
     confidence: f64,
 }
 
-pub struct LanguageDetectorListResult {
-    predictions: [DetectionResult],
+pub struct LinguaPredictionListResult {
+    predictions: *const LinguaPredictionResult,
     predictions_count: usize,
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn lingua_language_code(language: Language, buffer_ptr: *mut c_char) -> size_t {
-    let code = language.iso_code_639_3().to_string();
+pub unsafe extern "C" fn lingua_language_code(
+    language: LinguaLanguage,
+    buffer_ptr: *mut c_char
+) -> size_t {
+    let x: Language = language.into();
+    let code = x.iso_code_639_3().to_string();
     copy_cstr(&code, buffer_ptr)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn lingua_language_detector_builder_create(languages: *const Language, language_count: size_t) -> *mut LanguageDetectorBuilder {
+pub unsafe extern "C" fn lingua_language_detector_builder_create(
+    languages: *const LinguaLanguage,
+    language_count: size_t
+) -> *mut LanguageDetectorBuilder {
     if !languages.is_null() {
         let languages_slice = std::slice::from_raw_parts(languages, language_count);
-        let builder = LanguageDetectorBuilder::from_languages(&languages_slice);
+        let languages: Vec<Language> = languages_slice.iter().map(|x| (*x).into()).collect();
+        let builder = LanguageDetectorBuilder::from_languages(&languages);
         Box::into_raw(Box::new(builder))
     } else {
         ptr::null_mut()
@@ -73,7 +173,7 @@ pub unsafe extern "C" fn lingua_language_detector_destroy(detector: *mut Languag
 pub unsafe extern "C" fn lingua_detect_single(
     detector: &LanguageDetector,
     text: *const c_char,
-    result: *mut DetectionResult,
+    result: *mut LinguaPredictionResult,
 ) -> LinguaStatus {
     let text = CStr::from_ptr(text);
     detect_single_internal(&detector, text.to_bytes(), result)
@@ -83,7 +183,7 @@ pub unsafe extern "C" fn lingua_detect_single(
 pub unsafe extern "C" fn lingua_detect_multiple(
     detector: &LanguageDetector,
     text: *const c_char,
-    result: *mut DetectionResult,
+    result: *mut LinguaPredictionListResult,
 ) -> LinguaStatus {
     let text = CStr::from_ptr(text);
     detect_multiple_internal(&detector, text.to_bytes(), result)
@@ -92,7 +192,7 @@ pub unsafe extern "C" fn lingua_detect_multiple(
 fn detect_single_internal(
     detector: &LanguageDetector,
     text: &[u8],
-    result: *mut DetectionResult,
+    result: *mut LinguaPredictionResult,
 ) -> LinguaStatus {
     if result == ptr::null_mut() {
         return LinguaStatus::BadOutputPtr;
@@ -105,7 +205,7 @@ fn detect_single_internal(
             match res {
                 Some(value) => {
                     unsafe {
-                        (*result).language = value;
+                        (*result).language = value.into();
                         (*result).confidence = detector.compute_language_confidence(text, value);
                     }
                     LinguaStatus::Ok
@@ -126,7 +226,7 @@ fn detect_single_internal(
 fn detect_multiple_internal(
     detector: &LanguageDetector,
     text: &[u8],
-    result: *mut LanguageDetectorListResult,
+    result: *mut LinguaPredictionListResult,
 ) -> LinguaStatus {
     if result == ptr::null_mut() {
         return LinguaStatus::BadOutputPtr;
@@ -134,11 +234,20 @@ fn detect_multiple_internal(
 
     match std::str::from_utf8(text) {
         Ok(text) => {
-            let res = detector.detect_multiple_languages_of(text).iter().collect();
+            let predictions: Vec<LinguaPredictionResult> = detector
+                .detect_multiple_languages_of(text)
+                .iter()
+                .map(|x| LinguaPredictionResult {
+                    language: x.language().into(),
+                    confidence: detector.compute_language_confidence(text, x.language())
+                })
+                .collect();
+
+            let predictions_array = predictions.as_ptr();
 
             unsafe {
-                (*result).predictions = res;
-                (*result).predictions_count = res.len();
+                (*result).predictions = predictions_array;
+                (*result).predictions_count = predictions.len();
             }
 
             LinguaStatus::Ok

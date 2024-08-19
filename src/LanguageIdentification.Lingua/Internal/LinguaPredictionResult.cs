@@ -6,6 +6,7 @@ namespace Panlingo.LanguageIdentification.Lingua.Internal
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
     internal readonly struct LinguaPredictionResult
     {
+        [MarshalAs(UnmanagedType.I4)]
         public readonly LinguaLanguage Language;
 
         [MarshalAs(UnmanagedType.R8)]
@@ -13,7 +14,7 @@ namespace Panlingo.LanguageIdentification.Lingua.Internal
     }
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    internal readonly struct LanguageDetectorListResult
+    internal readonly struct LinguaPredictionListResult
     {
         public readonly IntPtr Predictions;
         public readonly uint PredictionsCount;

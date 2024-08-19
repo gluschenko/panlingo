@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -27,16 +28,16 @@ namespace Panlingo.LanguageIdentification.Lingua
 
             _languages = languages;
 
-            _builder = LinguaDetectorWrapper.lingua_language_detector_builder_create(languages, (UIntPtr)languages.Length);
+            _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderCreate(languages, (UIntPtr)languages.Length);
             if (_builder == IntPtr.Zero)
             {
                 throw new LinguaDetectorException("Failed to create LanguageDetectorBuilder");
             }
 
-            _detector = LinguaDetectorWrapper.lingua_language_detector_create(_builder);
+            _detector = LinguaDetectorWrapper.LinguaLanguageDetectorCreate(_builder);
             if (_detector == IntPtr.Zero)
             {
-                LinguaDetectorWrapper.lingua_language_detector_builder_destroy(_builder);
+                LinguaDetectorWrapper.LinguaLanguageDetectorBuilderDestroy(_builder);
                 throw new LinguaDetectorException("Failed to create LanguageDetector");
             }
         }
@@ -79,7 +80,7 @@ namespace Panlingo.LanguageIdentification.Lingua
             var status = LinguaDetectorWrapper.LinguaDetectMultiple(
                 detector: _detector,
                 text: text,
-                result: out var result
+                result: out var nativeResult
             );
 
             if (status == LinguaStatus.DetectFailure)
@@ -92,9 +93,25 @@ namespace Panlingo.LanguageIdentification.Lingua
                 throw new LinguaDetectorException($"Failed to detect language: {status}");
             }
 
+            var result = new LinguaPredictionResult[nativeResult.PredictionsCount];
+            var structSize = Marshal.SizeOf(typeof(LinguaPredictionResult));
+
+            for (var i = 0; i < nativeResult.PredictionsCount; i++)
+            {
+                result[i] = Marshal.PtrToStructure<LinguaPredictionResult>(nativeResult.Predictions + i * structSize);
+            }
+
+            var bytes = new byte[(int)nativeResult.PredictionsCount * structSize];
+            Marshal.Copy(
+                source: nativeResult.Predictions, 
+                destination: bytes, 
+                startIndex: 0, 
+                length: (int)nativeResult.PredictionsCount * structSize
+            );
+
             return result
-                .Select(x => new LinguaPrediction(x))
                 .OrderByDescending(x => x.Confidence)
+                .Select(x => new LinguaPrediction(x))
                 .ToArray();
         }
 
@@ -125,13 +142,13 @@ namespace Panlingo.LanguageIdentification.Lingua
 
             if (_detector != IntPtr.Zero)
             {
-                LinguaDetectorWrapper.lingua_language_detector_destroy(_detector);
+                LinguaDetectorWrapper.LinguaLanguageDetectorDestroy(_detector);
                 _detector = IntPtr.Zero;
             }
 
             if (_builder != IntPtr.Zero)
             {
-                LinguaDetectorWrapper.lingua_language_detector_builder_destroy(_builder);
+                LinguaDetectorWrapper.LinguaLanguageDetectorBuilderDestroy(_builder);
                 _builder = IntPtr.Zero;
             }
         }

@@ -9,16 +9,16 @@ namespace Panlingo.LanguageIdentification.Lingua.Internal
     internal static class LinguaDetectorWrapper
     {
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_language_detector_builder_create", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr lingua_language_detector_builder_create(LinguaLanguage[] languages, UIntPtr languageCount);
+        public static extern IntPtr LinguaLanguageDetectorBuilderCreate(LinguaLanguage[] languages, UIntPtr languageCount);
 
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_language_detector_create", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr lingua_language_detector_create(IntPtr builder);
+        public static extern IntPtr LinguaLanguageDetectorCreate(IntPtr builder);
 
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_language_detector_builder_destroy", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void lingua_language_detector_builder_destroy(IntPtr builder);
+        public static extern void LinguaLanguageDetectorBuilderDestroy(IntPtr builder);
 
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_language_detector_destroy", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void lingua_language_detector_destroy(IntPtr detector);
+        public static extern void LinguaLanguageDetectorDestroy(IntPtr detector);
 
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_detect_single", CallingConvention = CallingConvention.Cdecl)]
         public static extern LinguaStatus LinguaDetectSingle(
@@ -31,7 +31,7 @@ namespace Panlingo.LanguageIdentification.Lingua.Internal
         public static extern LinguaStatus LinguaDetectMultiple(
             IntPtr detector,
             string text,
-            out IntPtr result
+            out LinguaPredictionListResult result
         );
 
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_language_code", CallingConvention = CallingConvention.Cdecl)]

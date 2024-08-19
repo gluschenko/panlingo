@@ -22,39 +22,41 @@ typedef enum LinguaStatus {
     LINGUA_BAD_OUTPUT_PTR = 3
 } LinguaStatus;
 
-typedef struct DetectionResult {
-    int language;
+typedef enum LinguaLanguage LinguaLanguage;
+
+typedef struct LinguaPredictionResult {
+    LinguaLanguage language;
     double confidence;
-} DetectionResult;
+} LinguaPredictionResult;
 
-typedef struct LanguageDetectorListResult {
-    DetectionResult* predictions;
+typedef struct LinguaPredictionListResult {
+    LinguaPredictionResult* predictions;
     size_t predictionsCount;
-} LanguageDetectorListResult;
+} LinguaPredictionListResult;
 
-typedef struct LanguageDetector LanguageDetector;
-typedef struct LanguageDetectorBuilder LanguageDetectorBuilder;
+typedef struct LinguaPrediction LinguaPrediction;
+typedef struct LinguaPredictionBuilder LinguaPredictionBuilder;
 
 EXPORT size_t lingua_language_code(size_t language, char* buffer);
 
-EXPORT LanguageDetectorBuilder* lingua_language_detector_builder_create(const int* languages, size_t language_count);
+EXPORT LinguaPredictionBuilder* lingua_language_detector_builder_create(const int* languages, size_t language_count);
 
-EXPORT LanguageDetector* lingua_language_detector_create(LanguageDetectorBuilder *builder);
+EXPORT LinguaPrediction* lingua_language_detector_create(LinguaPredictionBuilder *builder);
 
-EXPORT void lingua_language_detector_builder_destroy(LanguageDetectorBuilder *builder);
+EXPORT void lingua_language_detector_builder_destroy(LinguaPredictionBuilder *builder);
 
-EXPORT void lingua_language_detector_destroy(LanguageDetector *detector);
+EXPORT void lingua_language_detector_destroy(LinguaPrediction *detector);
 
 EXPORT LinguaStatus lingua_detect_single(
-    const LanguageDetector *detector,
+    const LinguaPrediction *detector,
     const char *text,
-    DetectionResult *result
+    LinguaPredictionResult *result
 );
 
 EXPORT LinguaStatus lingua_detect_multiple(
-    const LanguageDetector *detector,
+    const LinguaPrediction *detector,
     const char *text,
-    DetectionResult *result
+    LinguaPredictionResult *result
 );
 
 #ifdef __cplusplus

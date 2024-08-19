@@ -12,5 +12,10 @@ namespace Panlingo.LanguageIdentification.Lingua
             Language = item.Language;
             Confidence = item.Confidence;
         }
+
+        public override string ToString()
+        {
+            return $"{Language}: {Confidence}";
+        }
     }
 }
