@@ -137,7 +137,7 @@ namespace Panlingo.LanguageIdentification.Lingua
 
                 if (status < 0)
                 {
-                    throw new Exception($"Language code '{language}' is not found");
+                    throw new LinguaDetectorException($"Language code '{language}' is not found");
                 }
 
                 var result = stringBuider.ToString();
