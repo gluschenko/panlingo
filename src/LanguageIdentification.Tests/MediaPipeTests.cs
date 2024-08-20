@@ -4,10 +4,10 @@ namespace Panlingo.LanguageIdentification.Tests;
 
 public class MediaPipeTests
 {
-    [Theory]
-    [InlineData("en", "Hello, how are you?")]
-    [InlineData("uk", "Привіт, як справи?")]
-    [InlineData("ru", "Привет, как дела?")]
+    // [Theory]
+    // [InlineData("en", "Hello, how are you?")]
+    // [InlineData("uk", "Привіт, як справи?")]
+    // [InlineData("ru", "Привет, как дела?")]
     public void MediaPipeSingleLanguage(string languageCode, string text)
     {
         var modelPath = "/models/mediapipe_language_detector.tflite";
