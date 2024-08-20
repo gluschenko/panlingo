@@ -23,6 +23,7 @@ typedef enum LinguaStatus {
 } LinguaStatus;
 
 typedef enum LinguaLanguage LinguaLanguage;
+typedef enum LinguaLanguageCode LinguaLanguageCode;
 
 typedef struct LinguaPredictionResult {
     LinguaLanguage language;
@@ -37,9 +38,9 @@ typedef struct LinguaPredictionListResult {
 typedef struct LinguaPrediction LinguaPrediction;
 typedef struct LinguaPredictionBuilder LinguaPredictionBuilder;
 
-EXPORT size_t lingua_language_code(size_t language, char* buffer);
+EXPORT size_t lingua_language_code(LinguaLanguage language, LinguaLanguageCode code, char* buffer);
 
-EXPORT LinguaPredictionBuilder* lingua_language_detector_builder_create(const int* languages, size_t language_count);
+EXPORT LinguaPredictionBuilder* lingua_language_detector_builder_create(const LinguaLanguage* languages, size_t language_count);
 
 EXPORT LinguaPrediction* lingua_language_detector_create(LinguaPredictionBuilder *builder);
 

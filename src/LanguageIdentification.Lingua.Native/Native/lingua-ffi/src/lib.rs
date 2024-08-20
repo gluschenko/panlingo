@@ -95,6 +95,13 @@ pub enum LinguaLanguage {
     Zulu = 74,
 }
 
+#[repr(u8)]
+#[derive(Debug, Copy, Clone)]
+pub enum LinguaLanguageCode {
+    Alpha2 = 2,
+    Alpha3 = 3,
+}
+
 impl From<Language> for LinguaLanguage {
     fn from(language: Language) -> Self {
         unsafe { std::mem::transmute(language as u8) }
@@ -110,22 +117,32 @@ impl From<LinguaLanguage> for Language {
 #[repr(C)]
 #[derive(Debug)]
 pub struct LinguaPredictionResult {
-    language: LinguaLanguage,
-    confidence: f64,
+    pub language: LinguaLanguage,
+    pub confidence: f64,
 }
 
 pub struct LinguaPredictionListResult {
-    predictions: *const LinguaPredictionResult,
-    predictions_count: usize,
+    pub predictions: *const LinguaPredictionResult,
+    pub predictions_count: usize,
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn lingua_language_code(
     language: LinguaLanguage,
+    code: LinguaLanguageCode,
     buffer_ptr: *mut c_char
 ) -> size_t {
     let x: Language = language.into();
-    let code = x.iso_code_639_3().to_string();
+
+    let code = match code {
+        LinguaLanguageCode::Alpha2 => {
+            x.iso_code_639_1().to_string()
+        },
+        LinguaLanguageCode::Alpha3 => {
+            x.iso_code_639_3().to_string()
+        },
+    };
+
     copy_cstr(&code, buffer_ptr)
 }
 
@@ -149,6 +166,7 @@ pub unsafe extern "C" fn lingua_language_detector_create(builder: *mut LanguageD
     if !builder.is_null() {
         let mut builder = Box::from_raw(builder);
         let detector = builder.build();
+        Box::into_raw(builder);
         Box::into_raw(Box::new(detector))
     } else {
         ptr::null_mut()

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -123,14 +122,20 @@ namespace Panlingo.LanguageIdentification.Lingua
             }
         }
 
-        public string GetLanguageCode(LinguaLanguage language)
+        public string GetLanguageCode(LinguaLanguage language, LinguaLanguageCode code)
         {
             var stringBuider = new StringBuilder(10);
 
             try
             {
-                var code = LinguaDetectorWrapper.LinguaLangCode(language, stringBuider, (UIntPtr)stringBuider.Capacity);
-                if (code < 0)
+                var status = LinguaDetectorWrapper.LinguaLangCode(
+                    lang: language, 
+                    code: code, 
+                    buffer: stringBuider, 
+                    bufferSize: (UIntPtr)stringBuider.Capacity
+                );
+
+                if (status < 0)
                 {
                     throw new Exception($"Language code '{language}' is not found");
                 }

@@ -36,7 +36,8 @@
 
 
 
-            var code1 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian);
+            var code1 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, LinguaLanguageCode.Alpha2);
+            var code2 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, LinguaLanguageCode.Alpha3);
 
             ;
         }

@@ -40,6 +40,7 @@ namespace Panlingo.LanguageIdentification.Lingua.Internal
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_language_code", CallingConvention = CallingConvention.Cdecl)]
         public static extern int LinguaLangCode(
             LinguaLanguage lang,
+            LinguaLanguageCode code,
             [MarshalAs(UnmanagedType.LPStr)] StringBuilder buffer,
             UIntPtr bufferSize
         );
