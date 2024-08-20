@@ -12,11 +12,9 @@ namespace Panlingo.LanguageIdentification.Lingua
     /// </summary>
     public class LinguaDetector : IDisposable
     {
-        private readonly IEnumerable<LinguaLanguage> _languages;
-        private IntPtr _builder;
         private IntPtr _detector;
 
-        public LinguaDetector(LinguaLanguage[] languages)
+        internal LinguaDetector(LinguaDetectorBuilder builder)
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
@@ -25,18 +23,9 @@ namespace Panlingo.LanguageIdentification.Lingua
                 );
             }
 
-            _languages = languages;
-
-            _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderCreate(languages, (UIntPtr)languages.Length);
-            if (_builder == IntPtr.Zero)
-            {
-                throw new LinguaDetectorException("Failed to create LanguageDetectorBuilder");
-            }
-
-            _detector = LinguaDetectorWrapper.LinguaLanguageDetectorCreate(_builder);
+            _detector = LinguaDetectorWrapper.LinguaLanguageDetectorCreate(builder.GetNativePointer());
             if (_detector == IntPtr.Zero)
             {
-                LinguaDetectorWrapper.LinguaLanguageDetectorBuilderDestroy(_builder);
                 throw new LinguaDetectorException("Failed to create LanguageDetector");
             }
         }
@@ -102,15 +91,6 @@ namespace Panlingo.LanguageIdentification.Lingua
                     result[i] = Marshal.PtrToStructure<LinguaPredictionResult>(nativeResult.Predictions + i * structSize);
                 }
 
-                /*var bytesNum = (int)nativeResult.PredictionsCount * structSize * 4;
-                var bytes = new byte[bytesNum];
-                Marshal.Copy(
-                    source: nativeResult.Predictions,
-                    destination: bytes,
-                    startIndex: 0,
-                    length: bytesNum
-                );*/
-
                 return result
                     .OrderByDescending(x => x.Confidence)
                     .Select(x => new LinguaPrediction(x))
@@ -157,12 +137,6 @@ namespace Panlingo.LanguageIdentification.Lingua
             {
                 LinguaDetectorWrapper.LinguaLanguageDetectorDestroy(_detector);
                 _detector = IntPtr.Zero;
-            }
-
-            if (_builder != IntPtr.Zero)
-            {
-                LinguaDetectorWrapper.LinguaLanguageDetectorBuilderDestroy(_builder);
-                _builder = IntPtr.Zero;
             }
         }
     }
