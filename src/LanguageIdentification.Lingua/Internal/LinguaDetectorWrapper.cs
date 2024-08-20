@@ -20,6 +20,9 @@ namespace Panlingo.LanguageIdentification.Lingua.Internal
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_language_detector_destroy", CallingConvention = CallingConvention.Cdecl)]
         public static extern void LinguaLanguageDetectorDestroy(IntPtr detector);
 
+        [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_prediction_result_destroy", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void LinguaPredictionResultDestroy(IntPtr detector);
+
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_detect_single", CallingConvention = CallingConvention.Cdecl)]
         public static extern LinguaStatus LinguaDetectSingle(
             IntPtr detector,

@@ -158,14 +158,21 @@ pub unsafe extern "C" fn lingua_language_detector_create(builder: *mut LanguageD
 #[no_mangle]
 pub unsafe extern "C" fn lingua_language_detector_builder_destroy(builder: *mut LanguageDetectorBuilder) {
     if !builder.is_null() {
-        let _ = Box::from_raw(builder); // Box drops here, freeing the memory
+        let _ = Box::from_raw(builder);
     }
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn lingua_language_detector_destroy(detector: *mut LanguageDetector) {
     if !detector.is_null() {
-        let _ = Box::from_raw(detector); // Box drops here, freeing the memory
+        let _ = Box::from_raw(detector);
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn lingua_prediction_result_destroy(result: *mut LinguaPredictionResult) {
+    if !result.is_null() {
+        let _ = Box::from_raw(result);
     }
 }
 
@@ -234,7 +241,7 @@ fn detect_multiple_internal(
 
     match std::str::from_utf8(text) {
         Ok(text) => {
-            let predictions: Vec<LinguaPredictionResult> = detector
+            let predictions_vec: Vec<LinguaPredictionResult> = detector
                 .detect_multiple_languages_of(text)
                 .iter()
                 .map(|x| LinguaPredictionResult {
@@ -243,12 +250,20 @@ fn detect_multiple_internal(
                 })
                 .collect();
 
-            let predictions_array = predictions.as_ptr();
+            let predictions_count= predictions_vec.len();
+            let predictions_slice = predictions_vec.into_boxed_slice();
+            let predictions = predictions_slice.as_ptr();
+
+            let new_result = LinguaPredictionListResult {
+                predictions,
+                predictions_count,
+            };
 
             unsafe {
-                (*result).predictions = predictions_array;
-                (*result).predictions_count = predictions.len();
+                ptr::write(result, new_result);
             }
+
+            std::mem::forget(predictions_slice);
 
             LinguaStatus::Ok
         }
@@ -283,7 +298,7 @@ mod tests {
 
         let detector: LanguageDetector = LanguageDetectorBuilder::from_languages(&languages).build();
 
-        let text = "Привет, как дела?";
+        let text = "Привіт, як справи?";
 
         let predictions = detector.detect_multiple_languages_of(text);
 

@@ -93,26 +93,34 @@ namespace Panlingo.LanguageIdentification.Lingua
                 throw new LinguaDetectorException($"Failed to detect language: {status}");
             }
 
-            var result = new LinguaPredictionResult[nativeResult.PredictionsCount];
-            var structSize = Marshal.SizeOf(typeof(LinguaPredictionResult));
-
-            for (var i = 0; i < nativeResult.PredictionsCount; i++)
+            try
             {
-                result[i] = Marshal.PtrToStructure<LinguaPredictionResult>(nativeResult.Predictions + i * structSize);
+                var result = new LinguaPredictionResult[nativeResult.PredictionsCount];
+                var structSize = Marshal.SizeOf(typeof(LinguaPredictionResult));
+
+                for (var i = 0; i < nativeResult.PredictionsCount; i++)
+                {
+                    result[i] = Marshal.PtrToStructure<LinguaPredictionResult>(nativeResult.Predictions + i * structSize);
+                }
+
+                /*var bytesNum = (int)nativeResult.PredictionsCount * structSize * 4;
+                var bytes = new byte[bytesNum];
+                Marshal.Copy(
+                    source: nativeResult.Predictions,
+                    destination: bytes,
+                    startIndex: 0,
+                    length: bytesNum
+                );*/
+
+                return result
+                    .OrderByDescending(x => x.Confidence)
+                    .Select(x => new LinguaPrediction(x))
+                    .ToArray();
             }
-
-            var bytes = new byte[(int)nativeResult.PredictionsCount * structSize];
-            Marshal.Copy(
-                source: nativeResult.Predictions, 
-                destination: bytes, 
-                startIndex: 0, 
-                length: (int)nativeResult.PredictionsCount * structSize
-            );
-
-            return result
-                .OrderByDescending(x => x.Confidence)
-                .Select(x => new LinguaPrediction(x))
-                .ToArray();
+            finally
+            {
+                LinguaDetectorWrapper.LinguaPredictionResultDestroy(nativeResult.Predictions);
+            }
         }
 
         public string GetLanguageCode(LinguaLanguage language)

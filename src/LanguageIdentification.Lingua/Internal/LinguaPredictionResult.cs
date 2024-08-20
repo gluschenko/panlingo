@@ -6,7 +6,7 @@ namespace Panlingo.LanguageIdentification.Lingua.Internal
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
     internal readonly struct LinguaPredictionResult
     {
-        [MarshalAs(UnmanagedType.I4)]
+        [MarshalAs(UnmanagedType.U1)]
         public readonly LinguaLanguage Language;
 
         [MarshalAs(UnmanagedType.R8)]
