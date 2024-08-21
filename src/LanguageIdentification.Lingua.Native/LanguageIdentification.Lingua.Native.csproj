@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Version>0.0.0.17</Version>
+    <PackageId>Panlingo.LanguageIdentification.Lingua.Native</PackageId>
+    <AssemblyName>Panlingo.LanguageIdentification.Lingua.Native</AssemblyName>
+    <RootNamespace>Panlingo.LanguageIdentification.Lingua.Native</RootNamespace>
+    <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Authors>Alexander Gluschenko</Authors>
+    <Copyright>Alexander Gluschenko © 2024</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>nlp lid language-identification language-detection lingua</PackageTags>
+    <PackageReadmeFile>README_LINGUA.md</PackageReadmeFile>
+    <PackageReleaseNotes>
+      - Initial release
+    </PackageReleaseNotes>
+    <Description>
+      This package provides the native resources required for the Lingua library.
+      It includes the necessary native components to enable language recognition capabilities
+      in applications using the LinguaWrapper for .NET. This package is essential for the
+      proper functioning of Lingua-based language identification features in your .NET projects.
+    </Description>
+    <Configurations>Debug;Release;CI</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591,1573</NoWarn>
+    <DocumentationFile>..\Panlingo.LanguageIdentification.Lingua.Native.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DockerImageName>lingua-builder</DockerImageName>
+    <DockerContainerName>lingua-builder</DockerContainerName>
+    <CurrentAbsolutePath>$(MSBuildThisFileDirectory)</CurrentAbsolutePath>
+    <NativeFileAbsolutePath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', 'liblingua.so'))</NativeFileAbsolutePath>
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="!Exists('$(NativeFileAbsolutePath)')">
+    <Exec Command="docker build --file ./Dockerfile -t $(DockerImageName) ../.." />
+    <Exec Command="docker run --name $(DockerContainerName) -v $(CurrentAbsolutePath):/repo/src/LanguageIdentification.Lingua.Native $(DockerImageName)" />
+    <Exec Command="docker rm $(DockerContainerName) --force" />
+  </Target>
+
+  <ItemGroup>
+    <None Include="..\.dockerignore" Link=".dockerignore">
+      <DependentUpon>$(DockerDefaultDockerfile)</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="liblingua.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/linux-x64/native</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README_LINGUA.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

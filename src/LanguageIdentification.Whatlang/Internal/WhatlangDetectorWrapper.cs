@@ -11,7 +11,7 @@ namespace Panlingo.LanguageIdentification.Whatlang.Internal
         [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_detect", CallingConvention = CallingConvention.Cdecl)]
         public static extern WhatlangStatus WhatlangDetect(
             string text,
-            out WhatlangPredictionResult info
+            out WhatlangPredictionResult result
         );
 
         [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_detectn", CallingConvention = CallingConvention.Cdecl)]

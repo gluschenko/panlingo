@@ -8,6 +8,8 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
 
+    <RootNamespace>Panlingo.LanguageIdentification.Tests</RootNamespace>
+
     <Configurations>Debug;Release;CI</Configurations>
   </PropertyGroup>
 
@@ -24,6 +26,7 @@
     <ProjectReference Include="..\LanguageIdentification.FastText\LanguageIdentification.FastText.csproj" />
     <ProjectReference Include="..\LanguageIdentification.Whatlang\LanguageIdentification.Whatlang.csproj" />
     <ProjectReference Include="..\LanguageIdentification.MediaPipe\LanguageIdentification.MediaPipe.csproj" />
+    <ProjectReference Include="..\LanguageIdentification.Lingua\LanguageIdentification.Lingua.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'CI'">
@@ -32,6 +35,7 @@
     <PackageReference Include="Panlingo.LanguageIdentification.FastText" Version="*" />
     <PackageReference Include="Panlingo.LanguageIdentification.Whatlang" Version="*" />
     <PackageReference Include="Panlingo.LanguageIdentification.MediaPipe" Version="*" />
+    <PackageReference Include="Panlingo.LanguageIdentification.Lingua" Version="*" />
   </ItemGroup>
 
   <ItemGroup>

@@ -30,7 +30,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
         {
             var status = WhatlangDetectorWrapper.WhatlangDetect(
                 text: text,
-                info: out var result
+                result: out var result
             );
 
             if (status == WhatlangStatus.DetectFailure)
@@ -55,7 +55,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
                 var code = WhatlangDetectorWrapper.WhatlangLangCode(language, stringBuider, (UIntPtr)stringBuider.Capacity);
                 if (code < 0)
                 {
-                    throw new Exception($"Language code '{language}' is not found");
+                    throw new WhatlangDetectorException($"Language code '{language}' is not found");
                 }
 
                 var result = stringBuider.ToString();
@@ -76,7 +76,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
                 var code = WhatlangDetectorWrapper.WhatlangLangName(language, stringBuider, (UIntPtr)stringBuider.Capacity);
                 if (code < 0)
                 {
-                    throw new Exception($"Language code '{language}' is not found");
+                    throw new WhatlangDetectorException($"Language code '{language}' is not found");
                 }
 
                 var result = stringBuider.ToString();
@@ -97,7 +97,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
                 var code = WhatlangDetectorWrapper.WhatlangScriptName(script, stringBuider, (UIntPtr)stringBuider.Capacity);
                 if (code < 0)
                 {
-                    throw new Exception($"Language script '{script}' is not found");
+                    throw new WhatlangDetectorException($"Language script '{script}' is not found");
                 }
 
                 var result = stringBuider.ToString();
@@ -118,7 +118,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
                 var code = WhatlangDetectorWrapper.WhatlangLangEngName(language, stringBuider, (UIntPtr)stringBuider.Capacity);
                 if (code < 0)
                 {
-                    throw new Exception($"Language code '{language}' is not found");
+                    throw new WhatlangDetectorException($"Language code '{language}' is not found");
                 }
 
                 var result = stringBuider.ToString();

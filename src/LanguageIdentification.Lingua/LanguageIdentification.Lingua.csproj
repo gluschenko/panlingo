@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+    <Version>0.0.0.17</Version>
+    <PackageId>Panlingo.LanguageIdentification.Lingua</PackageId>
+    <AssemblyName>Panlingo.LanguageIdentification.Lingua</AssemblyName>
+    <RootNamespace>Panlingo.LanguageIdentification.Lingua</RootNamespace>
+    <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Authors>Alexander Gluschenko</Authors>
+    <Copyright>Alexander Gluschenko © 2024</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>nlp lid language-identification language-detection lingua</PackageTags>
+    <PackageReadmeFile>README_LINGUA.md</PackageReadmeFile>
+    <PackageReleaseNotes>
+      - Initial release
+    </PackageReleaseNotes>
+    <Description>
+      This is a .NET wrapper for the Lingua library, which is an efficient and easy-to-use language detection library.
+      
+      This package simplifies the integration of language identification capabilities into .NET applications, utilizing the Lingua
+      library to accurately and quickly recognize the languages of given texts. Perfect for projects that require lightweight yet
+      reliable language detection.
+    </Description>
+    <Configurations>Debug;Release;CI</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591,1573</NoWarn>
+    <DocumentationFile>..\Panlingo.LanguageIdentification.Lingua.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LanguageIdentification.Lingua.Native\LanguageIdentification.Lingua.Native.csproj">
+      <IncludeAssets>All</IncludeAssets>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README_LINGUA.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

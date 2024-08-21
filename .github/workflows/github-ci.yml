@@ -25,6 +25,8 @@ jobs:
           - LanguageIdentification.Whatlang
           - LanguageIdentification.MediaPipe.Native
           - LanguageIdentification.MediaPipe
+          - LanguageIdentification.Lingua.Native
+          - LanguageIdentification.Lingua
           - LanguageCode
     permissions:
       contents: read
@@ -119,6 +121,8 @@ jobs:
           - LanguageIdentification.Whatlang
           - LanguageIdentification.MediaPipe.Native
           - LanguageIdentification.MediaPipe
+          - LanguageIdentification.Lingua.Native
+          - LanguageIdentification.Lingua
           - LanguageCode
     permissions:
       contents: read

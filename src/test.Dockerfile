@@ -19,7 +19,7 @@ RUN curl --location -o /models/fasttext176.bin https://dl.fbaipublicfiles.com/fa
 ### MediaPipe 
 RUN apt -y update
 RUN apt -y install curl
-RUN curl --location -o mediapipe_language_detector.tflite https://storage.googleapis.com/mediapipe-models/language_detector/language_detector/float32/1/language_detector.tflite
+RUN curl --location -o /models/mediapipe_language_detector.tflite https://storage.googleapis.com/mediapipe-models/language_detector/language_detector/float32/1/language_detector.tflite
 ###
 
 
