@@ -36,17 +36,17 @@ namespace Panlingo.LanguageIdentification.Lingua
         /// <param name="text">Some text in natural language</param>
         /// <returns>Language prediction</returns>
         /// <exception cref="LinguaDetectorException"></exception>
-        public LinguaPrediction? PredictLanguage(string text)
+        public IEnumerable<LinguaPrediction> PredictLanguages(string text, int count = 10)
         {
             var status = LinguaDetectorWrapper.LinguaDetectSingle(
                 detector: _detector,
                 text: text,
-                result: out var result
+                result: out var nativeResult
             );
 
             if (status == LinguaStatus.DetectFailure)
             {
-                return null;
+                return Array.Empty<LinguaPrediction>();
             }
 
             if (status == LinguaStatus.BadTextPtr || status == LinguaStatus.BadOutputPtr)
@@ -54,7 +54,27 @@ namespace Panlingo.LanguageIdentification.Lingua
                 throw new LinguaDetectorException($"Failed to detect language: {status}");
             }
 
-            return new LinguaPrediction(result);
+            try
+            {
+                var result = new LinguaPredictionResult[nativeResult.PredictionsCount];
+                var structSize = Marshal.SizeOf(typeof(LinguaPredictionResult));
+
+                for (var i = 0; i < nativeResult.PredictionsCount; i++)
+                {
+                    result[i] = Marshal.PtrToStructure<LinguaPredictionResult>(nativeResult.Predictions + i * structSize);
+                }
+
+                return result
+                    .Take(count)
+                    .Where(x => x.Confidence > 0)
+                    .OrderByDescending(x => x.Confidence)
+                    .Select(x => new LinguaPrediction(x))
+                    .ToArray();
+            }
+            finally
+            {
+                LinguaDetectorWrapper.LinguaPredictionResultDestroy(nativeResult.Predictions);
+            }
         }
 
         /// <summary>
@@ -63,9 +83,9 @@ namespace Panlingo.LanguageIdentification.Lingua
         /// <param name="text">Some text in natural language</param>
         /// <returns>List of language predictions</returns>
         /// <exception cref="LinguaDetectorException"></exception>
-        public IEnumerable<LinguaPredictionRange> PredictLanguages(string text)
+        public IEnumerable<LinguaPredictionRange> PredictMixedLanguages(string text)
         {
-            var status = LinguaDetectorWrapper.LinguaDetectMultiple(
+            var status = LinguaDetectorWrapper.LinguaDetectMixed(
                 detector: _detector,
                 text: text,
                 result: out var nativeResult
@@ -91,7 +111,7 @@ namespace Panlingo.LanguageIdentification.Lingua
                     result[i] = Marshal.PtrToStructure<LinguaPredictionRangeResult>(nativeResult.Predictions + i * structSize);
                 }
 
-                var textBytes = System.Text.Encoding.UTF8.GetBytes(text);
+                var textBytes = Encoding.UTF8.GetBytes(text);
 
                 return result
                     .OrderByDescending(x => x.Confidence)
@@ -100,7 +120,7 @@ namespace Panlingo.LanguageIdentification.Lingua
             }
             finally
             {
-                LinguaDetectorWrapper.LinguaPredictionResultDestroy(nativeResult.Predictions);
+                LinguaDetectorWrapper.LinguaPredictionRangeResultDestroy(nativeResult.Predictions);
             }
         }
 

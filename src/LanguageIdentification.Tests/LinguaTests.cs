@@ -14,7 +14,8 @@ public class LinguaTests
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua = linguaBuilder.Build();
 
-        var prediction = lingua.PredictLanguage(text: text);
+        var predictions = lingua.PredictLanguages(text: text);
+        var prediction = predictions.FirstOrDefault();
 
         if (prediction is null)
         {
@@ -28,12 +29,12 @@ public class LinguaTests
     [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1)]
     [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1)]
     [InlineData(LinguaLanguage.Russian, Constants.PHRASE_RUS_1)]
-    public void LinguaMultiLanguage(LinguaLanguage languageCode, string text)
+    public void LinguaMixedLanguage(LinguaLanguage languageCode, string text)
     {
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua = linguaBuilder.Build();
 
-        var predictions = lingua.PredictLanguages(text: text);
+        var predictions = lingua.PredictMixedLanguages(text: text);
         var prediction = predictions.FirstOrDefault();
 
         if (prediction is null)

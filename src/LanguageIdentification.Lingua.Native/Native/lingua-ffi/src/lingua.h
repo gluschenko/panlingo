@@ -39,9 +39,14 @@ typedef struct LinguaPredictionRangeResult {
 } LinguaPredictionRangeResult;
 
 typedef struct LinguaPredictionListResult {
+    LinguaPredictionResult* predictions;
+    size_t predictionsCount;
+} LinguaPredictionRangeListResult;
+
+typedef struct LinguaPredictionRangeListResult {
     LinguaPredictionRangeResult* predictions;
     size_t predictionsCount;
-} LinguaPredictionListResult;
+} LinguaPredictionRangeListResult;
 
 typedef struct LanguageDetector LanguageDetector;
 typedef struct LinguaPredictionBuilder LinguaPredictionBuilder;
@@ -56,7 +61,9 @@ EXPORT void lingua_language_detector_builder_destroy(LinguaPredictionBuilder *bu
 
 EXPORT void lingua_language_detector_destroy(LanguageDetector *detector);
 
-EXPORT void lingua_prediction_result_destroy(LinguaPredictionRangeResult *result);
+EXPORT void lingua_prediction_result_destroy(LinguaPredictionResult *result);
+
+EXPORT void lingua_prediction_range_result_destroy(LinguaPredictionRangeResult *result);
 
 EXPORT LinguaStatus lingua_detect_single(
     const LanguageDetector *detector,
@@ -64,10 +71,10 @@ EXPORT LinguaStatus lingua_detect_single(
     LinguaPredictionResult *result
 );
 
-EXPORT LinguaStatus lingua_detect_multiple(
+EXPORT LinguaStatus lingua_detect_mixed(
     const LanguageDetector *detector,
     const char *text,
-    LinguaPredictionListResult *result
+    LinguaPredictionRangeListResult *result
 );
 
 #ifdef __cplusplus

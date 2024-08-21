@@ -46,4 +46,11 @@ namespace Panlingo.LanguageIdentification.Lingua.Internal
         public readonly IntPtr Predictions;
         public readonly uint PredictionsCount;
     }
+
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    internal readonly struct LinguaPredictionRangeListResult
+    {
+        public readonly IntPtr Predictions;
+        public readonly uint PredictionsCount;
+    }
 }

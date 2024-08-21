@@ -21,20 +21,23 @@ namespace Panlingo.LanguageIdentification.Lingua.Internal
         public static extern void LinguaLanguageDetectorDestroy(IntPtr detector);
 
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_prediction_result_destroy", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void LinguaPredictionResultDestroy(IntPtr detector);
+        public static extern void LinguaPredictionResultDestroy(IntPtr result);
+
+        [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_prediction_range_result_destroy", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void LinguaPredictionRangeResultDestroy(IntPtr result);
 
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_detect_single", CallingConvention = CallingConvention.Cdecl)]
         public static extern LinguaStatus LinguaDetectSingle(
             IntPtr detector,
             string text,
-            out LinguaPredictionResult result
+            out LinguaPredictionListResult result
         );
 
-        [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_detect_multiple", CallingConvention = CallingConvention.Cdecl)]
-        public static extern LinguaStatus LinguaDetectMultiple(
+        [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_detect_mixed", CallingConvention = CallingConvention.Cdecl)]
+        public static extern LinguaStatus LinguaDetectMixed(
             IntPtr detector,
             string text,
-            out LinguaPredictionListResult result
+            out LinguaPredictionRangeListResult result
         );
 
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_language_code", CallingConvention = CallingConvention.Cdecl)]

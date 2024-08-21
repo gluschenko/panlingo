@@ -22,21 +22,22 @@
                 .Select(x => new
                 {
                     Text = x,
-                    Prediction = lingua.PredictLanguage(x),
                     Predictions = lingua.PredictLanguages(x),
                 })
                 .ToArray();
 
             foreach (var x in predictions)
             {
+                var prediction = x.Predictions.FirstOrDefault();
+
                 Console.WriteLine(
                     $"Text: {x.Text}, " +
-                    $"Language: {x.Prediction?.Language.ToString() ?? "NULL"}, " +
-                    $"Probability: {x.Prediction?.Confidence.ToString() ?? "NULL"}"
+                    $"Language: {prediction?.Language.ToString() ?? "NULL"}, " +
+                    $"Probability: {prediction?.Confidence.ToString() ?? "NULL"}"
                 );
             }
 
-            var predictionsMultiple = lingua.PredictLanguages(string.Join(" ", texts));
+            var predictionsMultiple = lingua.PredictMixedLanguages(string.Join(" ", texts));
 
             var code1 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, LinguaLanguageCode.Alpha2);
             var code2 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, LinguaLanguageCode.Alpha3);

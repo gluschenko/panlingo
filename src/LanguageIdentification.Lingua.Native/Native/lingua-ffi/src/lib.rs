@@ -132,6 +132,11 @@ pub struct LinguaPredictionRangeResult {
 }
 
 pub struct LinguaPredictionListResult {
+    pub predictions: *const LinguaPredictionResult,
+    pub predictions_count: u32,
+}
+
+pub struct LinguaPredictionRangeListResult {
     pub predictions: *const LinguaPredictionRangeResult,
     pub predictions_count: u32,
 }
@@ -198,7 +203,14 @@ pub unsafe extern "C" fn lingua_language_detector_destroy(detector: *mut Languag
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn lingua_prediction_result_destroy(result: *mut LinguaPredictionRangeResult) {
+pub unsafe extern "C" fn lingua_prediction_result_destroy(result: *mut LinguaPredictionResult) {
+    if !result.is_null() {
+        let _ = Box::from_raw(result);
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn lingua_prediction_range_result_destroy(result: *mut LinguaPredictionRangeResult) {
     if !result.is_null() {
         let _ = Box::from_raw(result);
     }
@@ -208,26 +220,26 @@ pub unsafe extern "C" fn lingua_prediction_result_destroy(result: *mut LinguaPre
 pub unsafe extern "C" fn lingua_detect_single(
     detector: &LanguageDetector,
     text: *const c_char,
-    result: *mut LinguaPredictionResult,
+    result: *mut LinguaPredictionListResult,
 ) -> LinguaStatus {
     let text = CStr::from_ptr(text);
     detect_single_internal(&detector, text.to_bytes(), result)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn lingua_detect_multiple(
+pub unsafe extern "C" fn lingua_detect_mixed(
     detector: &LanguageDetector,
     text: *const c_char,
-    result: *mut LinguaPredictionListResult,
+    result: *mut LinguaPredictionRangeListResult,
 ) -> LinguaStatus {
     let text = CStr::from_ptr(text);
-    detect_multiple_internal(&detector, text.to_bytes(), result)
+    detect_mixed_internal(&detector, text.to_bytes(), result)
 }
 
 fn detect_single_internal(
     detector: &LanguageDetector,
     text: &[u8],
-    result: *mut LinguaPredictionResult,
+    result: *mut LinguaPredictionListResult,
 ) -> LinguaStatus {
     if result == ptr::null_mut() {
         return LinguaStatus::BadOutputPtr;
@@ -235,21 +247,31 @@ fn detect_single_internal(
 
     match std::str::from_utf8(text) {
         Ok(text) => {
-            let res = detector.detect_language_of(text);
+            let predictions_vec: Vec<LinguaPredictionResult> = detector
+                .compute_language_confidence_values(text)
+                .iter()
+                .map(|(language, value)| LinguaPredictionResult {
+                    language: (*language).into(),
+                    confidence: *value,
+                })
+                .collect();
 
-            match res {
-                Some(value) => {
-                    unsafe {
-                        (*result).language = value.into();
-                        (*result).confidence = detector.compute_language_confidence(text, value);
-                    }
-                    LinguaStatus::Ok
-                }
-                None => {
-                    // Could not detect language
-                    LinguaStatus::DetectFailure
-                }
+            let predictions_count = predictions_vec.len() as u32;
+            let predictions_slice = predictions_vec.into_boxed_slice();
+            let predictions = predictions_slice.as_ptr();
+
+            let new_result = LinguaPredictionListResult {
+                predictions,
+                predictions_count,
+            };
+
+            unsafe {
+                ptr::write(result, new_result);
             }
+
+            std::mem::forget(predictions_slice);
+
+            LinguaStatus::Ok
         }
         Err(_) => {
             // Bad string pointer
@@ -258,10 +280,10 @@ fn detect_single_internal(
     }
 }
 
-fn detect_multiple_internal(
+fn detect_mixed_internal(
     detector: &LanguageDetector,
     text: &[u8],
-    result: *mut LinguaPredictionListResult,
+    result: *mut LinguaPredictionRangeListResult,
 ) -> LinguaStatus {
     if result == ptr::null_mut() {
         return LinguaStatus::BadOutputPtr;
@@ -281,11 +303,11 @@ fn detect_multiple_internal(
                 })
                 .collect();
 
-            let predictions_count= predictions_vec.len() as u32;
+            let predictions_count = predictions_vec.len() as u32;
             let predictions_slice = predictions_vec.into_boxed_slice();
             let predictions = predictions_slice.as_ptr();
 
-            let new_result = LinguaPredictionListResult {
+            let new_result = LinguaPredictionRangeListResult {
                 predictions,
                 predictions_count,
             };
@@ -330,19 +352,16 @@ mod tests {
         let mut builder = LanguageDetectorBuilder::from_languages(&languages);
         builder.with_preloaded_language_models();
         builder.with_minimum_relative_distance(0.9);
+        builder.with_low_accuracy_mode();
 
         let detector: LanguageDetector = builder.build();
 
         let text = "Привіт, як справи?";
 
-        let predictions = detector.detect_multiple_languages_of(text);
+        let language_confidence_values = detector.compute_language_confidence_values(text);
 
-        for prediction in predictions {
-            let language_confidence_values = detector.compute_language_confidence_values(text);
-
-            for (language, confidence) in language_confidence_values {
-                println!("{}: {}", language.to_string(), confidence);
-            }
+        for (language, confidence) in language_confidence_values {
+            println!("{}: {}", language.to_string(), confidence);
         }
 
         println!("Hello, world!");
