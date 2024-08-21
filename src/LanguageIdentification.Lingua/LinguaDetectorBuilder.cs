@@ -45,6 +45,24 @@ namespace Panlingo.LanguageIdentification.Lingua
             return new LinguaDetector(this);
         }
 
+        public LinguaDetectorBuilder WithLowAccuracyMode()
+        {
+            _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderWithLowAccuracyMode(_builder);
+            return this;
+        }
+        
+        public LinguaDetectorBuilder WithPreloadedLanguageModels()
+        {
+            _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderWithPreloadedLanguageModels(_builder);
+            return this;
+        }
+        
+        public LinguaDetectorBuilder WithMinimumRelativeDistance(double distance)
+        {
+            _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderWithMinimumRelativeDistance(_builder, distance);
+            return this;
+        }
+
         public void Dispose()
         {
             GC.SuppressFinalize(this);

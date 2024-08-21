@@ -11,6 +11,15 @@ namespace Panlingo.LanguageIdentification.Lingua.Internal
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_language_detector_builder_create", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr LinguaLanguageDetectorBuilderCreate(LinguaLanguage[] languages, UIntPtr languageCount);
 
+        [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_language_detector_builder_with_low_accuracy_mode", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr LinguaLanguageDetectorBuilderWithLowAccuracyMode(IntPtr builder);
+
+        [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_language_detector_builder_with_preloaded_language_models", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr LinguaLanguageDetectorBuilderWithPreloadedLanguageModels(IntPtr builder);
+
+        [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_language_detector_builder_with_minimum_relative_distance", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr LinguaLanguageDetectorBuilderWithMinimumRelativeDistance(IntPtr builder, double distance);
+
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_language_detector_create", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr LinguaLanguageDetectorCreate(IntPtr builder);
 

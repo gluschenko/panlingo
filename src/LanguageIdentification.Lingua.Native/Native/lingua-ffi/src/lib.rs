@@ -177,6 +177,46 @@ pub unsafe extern "C" fn lingua_language_detector_builder_create(
 }
 
 #[no_mangle]
+pub unsafe extern "C" fn lingua_language_detector_builder_with_low_accuracy_mode(
+    builder: *mut LanguageDetectorBuilder
+) -> *mut LanguageDetectorBuilder {
+    if !builder.is_null() {
+        let mut builder = Box::from_raw(builder);
+        builder.with_low_accuracy_mode();
+        Box::into_raw(builder)
+    } else {
+        ptr::null_mut()
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn lingua_language_detector_builder_with_preloaded_language_models(
+    builder: *mut LanguageDetectorBuilder
+) -> *mut LanguageDetectorBuilder {
+    if !builder.is_null() {
+        let mut builder = Box::from_raw(builder);
+        builder.with_preloaded_language_models();
+        Box::into_raw(builder)
+    } else {
+        ptr::null_mut()
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn lingua_language_detector_builder_with_minimum_relative_distance(
+    builder: *mut LanguageDetectorBuilder,
+    distance: f64
+) -> *mut LanguageDetectorBuilder {
+    if !builder.is_null() {
+        let mut builder = Box::from_raw(builder);
+        builder.with_minimum_relative_distance(distance);
+        Box::into_raw(builder)
+    } else {
+        ptr::null_mut()
+    }
+}
+
+#[no_mangle]
 pub unsafe extern "C" fn lingua_language_detector_create(builder: *mut LanguageDetectorBuilder) -> *mut LanguageDetector {
     if !builder.is_null() {
         let mut builder = Box::from_raw(builder);

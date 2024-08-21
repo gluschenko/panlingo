@@ -55,6 +55,17 @@ EXPORT size_t lingua_language_code(LinguaLanguage language, LinguaLanguageCode c
 
 EXPORT LinguaPredictionBuilder* lingua_language_detector_builder_create(const LinguaLanguage* languages, size_t language_count);
 
+EXPORT LinguaPredictionBuilder* lingua_language_detector_builder_with_low_accuracy_mode(
+    const LinguaPredictionBuilder* builder
+);
+EXPORT LinguaPredictionBuilder* lingua_language_detector_builder_with_preloaded_language_models(
+    const LinguaPredictionBuilder* builder
+);
+EXPORT LinguaPredictionBuilder* lingua_language_detector_builder_with_minimum_relative_distance(
+    const LinguaPredictionBuilder* builder,
+    double distance
+);
+
 EXPORT LinguaPrediction* lingua_language_detector_create(LinguaPredictionBuilder *builder);
 
 EXPORT void lingua_language_detector_builder_destroy(LinguaPredictionBuilder *builder);

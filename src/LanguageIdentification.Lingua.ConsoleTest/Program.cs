@@ -5,6 +5,10 @@
         static void Main(string[] args)
         {
             using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
+            linguaBuilder.WithPreloadedLanguageModels();
+            linguaBuilder.WithMinimumRelativeDistance(0.5);
+            linguaBuilder.WithLowAccuracyMode();
+
             using var lingua = linguaBuilder.Build();
 
             var texts = new[]
