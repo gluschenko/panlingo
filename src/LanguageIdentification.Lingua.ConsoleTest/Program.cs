@@ -9,7 +9,10 @@
 
             var texts = new[]
             {
-                "Hello, how are you? Привіт, як справи? Привет, как дела?",
+                "Привіт",
+                "Привет",
+                "Hello",
+                "Hello, how are you? Привіт, як справи? Hello, how are you? Привет, как дела?",
                 "Hello, how are you?",
                 "Привіт, як справи?",
                 "Привет, как дела?",
@@ -33,7 +36,7 @@
                 );
             }
 
-            var predictionsMultiple = lingua.PredictLanguages(string.Join("", texts));
+            var predictionsMultiple = lingua.PredictLanguages(string.Join(" ", texts));
 
             var code1 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, LinguaLanguageCode.Alpha2);
             var code2 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, LinguaLanguageCode.Alpha3);

@@ -121,9 +121,19 @@ pub struct LinguaPredictionResult {
     pub confidence: f64,
 }
 
+#[repr(C)]
+#[derive(Debug)]
+pub struct LinguaPredictionRangeResult {
+    pub language: LinguaLanguage,
+    pub confidence: f64,
+    pub start_index: u32,
+    pub end_index: u32,
+    pub word_count: u32,
+}
+
 pub struct LinguaPredictionListResult {
-    pub predictions: *const LinguaPredictionResult,
-    pub predictions_count: usize,
+    pub predictions: *const LinguaPredictionRangeResult,
+    pub predictions_count: u32,
 }
 
 #[no_mangle]
@@ -188,7 +198,7 @@ pub unsafe extern "C" fn lingua_language_detector_destroy(detector: *mut Languag
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn lingua_prediction_result_destroy(result: *mut LinguaPredictionResult) {
+pub unsafe extern "C" fn lingua_prediction_result_destroy(result: *mut LinguaPredictionRangeResult) {
     if !result.is_null() {
         let _ = Box::from_raw(result);
     }
@@ -259,16 +269,19 @@ fn detect_multiple_internal(
 
     match std::str::from_utf8(text) {
         Ok(text) => {
-            let predictions_vec: Vec<LinguaPredictionResult> = detector
+            let predictions_vec: Vec<LinguaPredictionRangeResult> = detector
                 .detect_multiple_languages_of(text)
                 .iter()
-                .map(|x| LinguaPredictionResult {
+                .map(|x| LinguaPredictionRangeResult {
                     language: x.language().into(),
-                    confidence: detector.compute_language_confidence(text, x.language())
+                    confidence: detector.compute_language_confidence(text, x.language()),
+                    start_index: x.start_index() as u32,
+                    end_index: x.end_index() as u32,
+                    word_count: x.word_count() as u32,
                 })
                 .collect();
 
-            let predictions_count= predictions_vec.len();
+            let predictions_count= predictions_vec.len() as u32;
             let predictions_slice = predictions_vec.into_boxed_slice();
             let predictions = predictions_slice.as_ptr();
 
@@ -314,15 +327,22 @@ mod tests {
             languages.push(x);
         }
 
-        let detector: LanguageDetector = LanguageDetectorBuilder::from_languages(&languages).build();
+        let mut builder = LanguageDetectorBuilder::from_languages(&languages);
+        builder.with_preloaded_language_models();
+        builder.with_minimum_relative_distance(0.9);
+
+        let detector: LanguageDetector = builder.build();
 
         let text = "Привіт, як справи?";
 
         let predictions = detector.detect_multiple_languages_of(text);
 
-        for x in predictions {
-            let language_confidence = detector.compute_language_confidence(text, x.language());
-            println!("{}: {}", x.language().to_string(), language_confidence);
+        for prediction in predictions {
+            let language_confidence_values = detector.compute_language_confidence_values(text);
+
+            for (language, confidence) in language_confidence_values {
+                println!("{}: {}", language.to_string(), confidence);
+            }
         }
 
         println!("Hello, world!");

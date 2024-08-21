@@ -61,9 +61,9 @@ namespace Panlingo.LanguageIdentification.Lingua
         /// Produces a prediction for 'text'
         /// </summary>
         /// <param name="text">Some text in natural language</param>
-        /// <returns>Language prediction</returns>
+        /// <returns>List of language predictions</returns>
         /// <exception cref="LinguaDetectorException"></exception>
-        public IEnumerable<LinguaPrediction> PredictLanguages(string text)
+        public IEnumerable<LinguaPredictionRange> PredictLanguages(string text)
         {
             var status = LinguaDetectorWrapper.LinguaDetectMultiple(
                 detector: _detector,
@@ -73,7 +73,7 @@ namespace Panlingo.LanguageIdentification.Lingua
 
             if (status == LinguaStatus.DetectFailure)
             {
-                return Array.Empty<LinguaPrediction>();
+                return Array.Empty<LinguaPredictionRange>();
             }
 
             if (status == LinguaStatus.BadTextPtr || status == LinguaStatus.BadOutputPtr)
@@ -83,17 +83,19 @@ namespace Panlingo.LanguageIdentification.Lingua
 
             try
             {
-                var result = new LinguaPredictionResult[nativeResult.PredictionsCount];
-                var structSize = Marshal.SizeOf(typeof(LinguaPredictionResult));
+                var result = new LinguaPredictionRangeResult[nativeResult.PredictionsCount];
+                var structSize = Marshal.SizeOf(typeof(LinguaPredictionRangeResult));
 
                 for (var i = 0; i < nativeResult.PredictionsCount; i++)
                 {
-                    result[i] = Marshal.PtrToStructure<LinguaPredictionResult>(nativeResult.Predictions + i * structSize);
+                    result[i] = Marshal.PtrToStructure<LinguaPredictionRangeResult>(nativeResult.Predictions + i * structSize);
                 }
+
+                var textBytes = System.Text.Encoding.UTF8.GetBytes(text);
 
                 return result
                     .OrderByDescending(x => x.Confidence)
-                    .Select(x => new LinguaPrediction(x))
+                    .Select(x => new LinguaPredictionRange(x, textBytes))
                     .ToArray();
             }
             finally
