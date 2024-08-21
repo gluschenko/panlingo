@@ -26,7 +26,7 @@ namespace Panlingo.LanguageIdentification.Lingua
             _detector = LinguaDetectorWrapper.LinguaLanguageDetectorCreate(builder.GetNativePointer());
             if (_detector == IntPtr.Zero)
             {
-                throw new LinguaDetectorException("Failed to create LanguageDetector");
+                throw new LinguaDetectorException($"Failed to create {nameof(LinguaDetector)}");
             }
         }
 

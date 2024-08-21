@@ -8,6 +8,8 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
 
+    <RootNamespace>Panlingo.LanguageIdentification.Tests</RootNamespace>
+
     <Configurations>Debug;Release;CI</Configurations>
   </PropertyGroup>
 
