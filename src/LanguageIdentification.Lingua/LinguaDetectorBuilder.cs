@@ -59,6 +59,11 @@ namespace Panlingo.LanguageIdentification.Lingua
         
         public LinguaDetectorBuilder WithMinimumRelativeDistance(double distance)
         {
+            if (distance < 0.0 || distance > 0.99)
+            {
+                throw new ArgumentOutOfRangeException(nameof(distance), distance, "[0.00, 0.99]");
+            }
+
             _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderWithMinimumRelativeDistance(_builder, distance);
             return this;
         }
