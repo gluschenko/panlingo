@@ -35,7 +35,7 @@ namespace Panlingo.LanguageIdentification.Lingua
             return _builder;
         }
 
-        public static LinguaDetectorBuilder FromLangauges(LinguaLanguage[] languages)
+        public static LinguaDetectorBuilder FromLanguages(LinguaLanguage[] languages)
         {
             return new LinguaDetectorBuilder(languages);
         }

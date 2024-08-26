@@ -52,13 +52,13 @@ public class LinguaTests
     [InlineData(LinguaLanguage.Hebrew, LinguaLanguageCode.Alpha3, "heb")]
     [InlineData(LinguaLanguage.Serbian, LinguaLanguageCode.Alpha2, "sr")]
     [InlineData(LinguaLanguage.Serbian, LinguaLanguageCode.Alpha3, "srp")]
-    public void LinguaLangaugeCode(LinguaLanguage langauge, LinguaLanguageCode type, string code)
+    public void LinguaLanguageCode(LinguaLanguage language, LinguaLanguageCode type, string code)
     {
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua = linguaBuilder.Build();
 
-        var langaugeCode = lingua.GetLanguageCode(langauge, type);
-        Assert.Equal(code, langaugeCode);
+        var languageCode = lingua.GetLanguageCode(language, type);
+        Assert.Equal(code, languageCode);
     }
 
     [Fact]
