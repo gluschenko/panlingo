@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.0.0.17</Version>
+    <Version>0.0.0.18</Version>
     <PackageId>Panlingo.LanguageIdentification.CLD3.Native</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.CLD3.Native</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.CLD3.Native</RootNamespace>
