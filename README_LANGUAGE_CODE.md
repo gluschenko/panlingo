@@ -5,9 +5,9 @@ Panlingo.LanguageCode is a comprehensive .NET library designed for managing and 
 ## What are Language Codes?
 
 Language codes are standardized codes used to identify languages. The ISO 639 standard defines sets of codes for the representation of names of languages. There are several parts to the ISO 639 standard:
-- **ISO 639-1**: Defines two-letter codes (e.g., "en" for English, "ru" for Russian).
-- **ISO 639-2**: Defines three-letter codes (e.g., "eng" for English, "rus" for Russian).
-- **ISO 639-3**: Extends the code set to cover all known languages.
+- **ISO 639-1**: Defines two-letter codes (e.g., "en" for English, "uz" for Uzbek);
+- **ISO 639-2**: Defines three-letter codes (e.g., "eng" for English, "uzb" for Uzbek);
+- **ISO 639-3**: Extends the code set to cover all known languages (e.g., "en" for English, "ru" for Russian).
 
 These codes are essential in various applications, including software localization, data exchange between systems, and linguistic research.
 

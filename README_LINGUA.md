@@ -148,6 +148,11 @@ class Program
 | Yoruba        | yor | `LinguaLanguage.Yoruba`      |
 | Zulu          | zul | `LinguaLanguage.Zulu`        |
 
+## Alternatives
+
+If you are exploring other options, here are some alternatives to consider:
+
+- **[searchpioneer/lingua-dotnet](https://github.com/searchpioneer/lingua-dotnet)**: An alternative port for .NET.
 
 ---
 
