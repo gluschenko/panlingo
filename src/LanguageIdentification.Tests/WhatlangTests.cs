@@ -21,4 +21,17 @@ public class WhatlangTests
 
         Assert.Equal(languageCode, prediction.Language);
     }
+
+    [Theory]
+    [InlineData(WhatlangLanguage.Ukr, "ukr")]
+    [InlineData(WhatlangLanguage.Uzb, "uzb")]
+    [InlineData(WhatlangLanguage.Heb, "heb")]
+    [InlineData(WhatlangLanguage.Srp, "srp")]
+    public void WhatlangGetLanguageCode(WhatlangLanguage language, string code)
+    {
+        using var whatlang = new WhatlangDetector();
+
+        var languageCode = whatlang.GetLanguageCode(language);
+        Assert.Equal(code, languageCode);
+    }
 }
