@@ -174,6 +174,9 @@ namespace LanguageCode.Tests
             });
         }
 
+        /// <summary>
+        /// GIGO: garbage in, garbage out
+        /// </summary>
         [Theory]
         [InlineData("aaaa")]
         [InlineData("bbbb")]

@@ -23,7 +23,7 @@ namespace Panlingo.LanguageCode
             [MaybeNullWhen(true)] out string reason
         );
 
-        private Dictionary<LanguageCodeRule, ResolveCallback> _rules;
+        private readonly Dictionary<LanguageCodeRule, ResolveCallback> _rules;
         private ResolveCallback? _resolveUnknown;
         private TryConvertCallback? _tryConvert;
 
@@ -130,7 +130,9 @@ namespace Panlingo.LanguageCode
         }
 
         /// <summary>
+        /// <para>
         /// Allows you to manually resolve unknown or conflicting codes.
+        /// </para>
         /// 
         /// Example:
         /// <code>
