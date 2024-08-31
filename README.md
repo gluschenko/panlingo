@@ -16,13 +16,13 @@ functionality into their applications.
 
 | Library | Nuget Release |
 | :------ | :------------ |
-| [Panlingo.LanguageIdentification.CLD2](./README_CLD2.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.CLD2?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.CLD2/) |
-| [Panlingo.LanguageIdentification.CLD3](./README_CLD3.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.CLD3?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.CLD3/) |
-| [Panlingo.LanguageIdentification.FastText](./README_FASTTEXT.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.FastText?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.FastText/) |
-| [Panlingo.LanguageIdentification.Whatlang](./README_WHATLANG.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.Whatlang?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.Whatlang/) |
-| [Panlingo.LanguageIdentification.MediaPipe](./README_MEDIAPIPE.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.MediaPipe?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.MediaPipe/) |
-| [Panlingo.LanguageIdentification.Lingua](./README_LINGUA.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.Lingua?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.Lingua/) |
-| [Panlingo.LanguageCode](./README_LANGUAGE_CODE.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageCode?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageCode/) |
+| [Panlingo.LanguageIdentification.CLD2](./README_CLD2.md) |  [![NuGet Version](https://img.shields.io/nuget/vpre/Panlingo.LanguageIdentification.CLD2)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.CLD2/) |
+| [Panlingo.LanguageIdentification.CLD3](./README_CLD3.md) |  [![NuGet Version](https://img.shields.io/nuget/vpre/Panlingo.LanguageIdentification.CLD3)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.CLD3/) |
+| [Panlingo.LanguageIdentification.FastText](./README_FASTTEXT.md) |  [![NuGet Version](https://img.shields.io/nuget/vpre/Panlingo.LanguageIdentification.FastText)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.FastText/) |
+| [Panlingo.LanguageIdentification.Whatlang](./README_WHATLANG.md) |  [![NuGet Version](https://img.shields.io/nuget/vpre/Panlingo.LanguageIdentification.Whatlang)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.Whatlang/) |
+| [Panlingo.LanguageIdentification.MediaPipe](./README_MEDIAPIPE.md) |  [![NuGet Version](https://img.shields.io/nuget/vpre/Panlingo.LanguageIdentification.MediaPipe)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.MediaPipe/) |
+| [Panlingo.LanguageIdentification.Lingua](./README_LINGUA.md) |  [![NuGet Version](https://img.shields.io/nuget/vpre/Panlingo.LanguageIdentification.Lingua)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.Lingua/) |
+| [Panlingo.LanguageCode](./README_LANGUAGE_CODE.md) |  [![NuGet Version](https://img.shields.io/nuget/vpre/Panlingo.LanguageCode)](https://www.nuget.org/packages/Panlingo.LanguageCode/) |
 
 ## Contents
 
