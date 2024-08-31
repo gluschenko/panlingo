@@ -35,9 +35,9 @@ namespace Panlingo.LanguageIdentification.FastText
             _semaphore.Wait();
             try
             {
-                var errptr = IntPtr.Zero;
-                FastTextDetectorWrapper.FastTextLoadModel(_fastText, path, ref errptr);
-                CheckError(errptr);
+                var errPtr = IntPtr.Zero;
+                FastTextDetectorWrapper.FastTextLoadModel(_fastText, path, ref errPtr);
+                CheckError(errPtr);
 
                 ModelPath = path;
             }
@@ -81,16 +81,16 @@ namespace Panlingo.LanguageIdentification.FastText
         /// <returns>List of language predictions</returns>
         public IEnumerable<FastTextPrediction> Predict(string text, int count, float threshold = 0.0f)
         {
-            var errptr = IntPtr.Zero;
+            var errPtr = IntPtr.Zero;
             var predictionPtr = FastTextDetectorWrapper.FastTextPredict(
                 handle: _fastText,
                 text: text,
                 k: count,
                 threshold: threshold,
-                ref errptr
+                ref errPtr
             );
 
-            CheckError(errptr);
+            CheckError(errPtr);
 
             if (predictionPtr == IntPtr.Zero)
             {
