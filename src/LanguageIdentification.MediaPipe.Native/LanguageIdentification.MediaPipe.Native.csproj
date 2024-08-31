@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.0.0.18</Version>
+    <Version>0.0.0.19</Version>
     <PackageId>Panlingo.LanguageIdentification.MediaPipe.Native</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.MediaPipe.Native</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.MediaPipe.Native</RootNamespace>
