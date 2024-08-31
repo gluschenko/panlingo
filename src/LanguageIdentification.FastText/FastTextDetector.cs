@@ -83,7 +83,7 @@ namespace Panlingo.LanguageIdentification.FastText
         {
             var errptr = IntPtr.Zero;
             var predictionPtr = FastTextDetectorWrapper.FastTextPredict(
-                handle: _fastText, 
+                handle: _fastText,
                 text: text,
                 k: count,
                 threshold: threshold,

@@ -1,6 +1,4 @@
-﻿using Panlingo.LanguageIdentification.FastText.Internal;
-
-namespace Panlingo.LanguageIdentification.FastText
+﻿namespace Panlingo.LanguageIdentification.FastText
 {
     public class FastTextLabel
     {

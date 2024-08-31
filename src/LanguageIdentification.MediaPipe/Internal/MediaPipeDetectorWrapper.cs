@@ -78,7 +78,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe.Internal
             ModelAssetPath = modelAssetPath;
         }
     }
-    
+
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
     internal readonly struct ClassifierOptions
     {

@@ -18,8 +18,8 @@ namespace Panlingo.LanguageCode
         public delegate string ResolveCallback(string sourceCode);
 
         private delegate bool TryConvertCallback(
-            string code, 
-            [MaybeNullWhen(false)] out string newCode, 
+            string code,
+            [MaybeNullWhen(false)] out string newCode,
             [MaybeNullWhen(true)] out string reason
         );
 
@@ -262,8 +262,8 @@ namespace Panlingo.LanguageCode
         }
 
         internal bool TryApply(
-            string code, 
-            [MaybeNullWhen(false)] out string newCode, 
+            string code,
+            [MaybeNullWhen(false)] out string newCode,
             [MaybeNullWhen(true)] out string reason
         )
         {

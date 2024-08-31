@@ -50,13 +50,13 @@ namespace Panlingo.LanguageIdentification.Lingua
             _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderWithLowAccuracyMode(_builder);
             return this;
         }
-        
+
         public LinguaDetectorBuilder WithPreloadedLanguageModels()
         {
             _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderWithPreloadedLanguageModels(_builder);
             return this;
         }
-        
+
         public LinguaDetectorBuilder WithMinimumRelativeDistance(double distance)
         {
             if (distance < 0.0 || distance > 0.99)
