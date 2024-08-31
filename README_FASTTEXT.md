@@ -4,8 +4,9 @@ Welcome to **Panlingo.LanguageIdentification.FastText**, a .NET wrapper for the 
 
 ## Requirements
 
-- .NET >= 5.0
-- Linux
+- Runtime: **.NET >= 5.0**
+- OS: **Linux**
+- Arch: **AMD64**
 
 ## Installation
 

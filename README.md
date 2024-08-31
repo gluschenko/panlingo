@@ -15,7 +15,7 @@ functionality into their applications.
 ## Libraries
 
 | Library | Nuget Release |
-| ------ | ------ |
+| :------ | :------------ |
 | [Panlingo.LanguageIdentification.CLD2](./README_CLD2.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.CLD2?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.CLD2/) |
 | [Panlingo.LanguageIdentification.CLD3](./README_CLD3.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.CLD3?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.CLD3/) |
 | [Panlingo.LanguageIdentification.FastText](./README_FASTTEXT.md) |  [![NuGet Version](https://buildstats.info/nuget/Panlingo.LanguageIdentification.FastText?includePreReleases=true)](https://www.nuget.org/packages/Panlingo.LanguageIdentification.FastText/) |
@@ -72,30 +72,35 @@ functionality into their applications.
 
 ## Features
 
-| # | CLD2 | CLD3 | FastText* | Whatlang | MediaPipe | Lingua   |
-| - | ---: | ---: | --------: | -------: | --------: |--------: |
-| Single language prediction | Yes | Yes | Yes | Yes | Yes | Yes |
-| Multi language prediction | Yes | Yes | Yes | No | Yes | Yes |
-| Supported languages | 80 | 107 | 176 or 217 | 69 | 110 | 75 |
-| Unknown language detection | Yes | Yes | No | No | Yes | No |
-| Algorithm | quadgrams | neural network | neural network | trigrams | neural network | trigrams |
+| Feature                    | CLD2      | CLD3           | FastText*          | Whatlang | MediaPipe**    | Lingua   |
+| :------------------------- | :-------: | :------------: | :----------------: | :------: | :------------: | :------: |
+| Single language prediction | Yes       | Yes            | Yes                | Yes      | Yes            | Yes      |
+| Multi language prediction  | Yes       | Yes            | Yes                | No       | Yes            | Yes      |
+| Supported languages        | 80        | 107            | 176 or 217         | 69       | 110            | 75       |
+| Unknown language detection | Yes       | Yes            | No                 | No       | Yes            | No       |
+| Algorithm                  | quadgrams | neural network | neural network     | trigrams | neural network | trigrams |
+| Script detection           | No        | No             | Yes (only lid218e) | Yes      | No             | No       |
 
 \* When using these models: 
 [lid176](https://fasttext.cc/docs/en/language-identification.html), 
 [lid218e](https://huggingface.co/facebook/fasttext-language-identification)
 
+\*\* When using [MediaPipe Language Detector](https://storage.googleapis.com/mediapipe-assets/LanguageDetector%20Model%20Card.pdf)
+
 ## Platform support
 
-| Model     | Linux | Windows | macOS | WASM |
-| :-------- | ----: | ------: | ----: | ---: |
-| CLD2      | ✅   | ❌ *   | ❌    | ❌ * |
-| CLD3      | ✅   | ❌ *   | ❌    | ❌   |
-| FastText  | ✅   | ❌ *   | ❌    | ❌   |
-| Whatlang  | ✅   | ❌ *   | ❌    | ❌ * |
-| MediaPipe | ✅   | ❌     | ❌    | ❌ * |
-| Lingua    | ✅   | ❌     | ❌    | ❌ * |
+| Model     |        Linux       |     Windows      |  macOS |  Blazor WASM   |
+| :-------- | :----------------: | :--------------: | :----: | :------------: |
+| CLD2      | :white_check_mark: | :construction:   | :x:    | :x:            |
+| CLD3      | :white_check_mark: | :construction:   | :x:    | :x:            |
+| FastText  | :white_check_mark: | :construction:   | :x:    | :x:            |
+| Whatlang  | :white_check_mark: | :construction:   | :x:    | :x:            |
+| MediaPipe | :white_check_mark: | :construction:   | :x:    | :x:            |
+| Lingua    | :white_check_mark: | :construction:   | :x:    | :x:            |
 
-\* Ports for another platforms are planned
+:white_check_mark: — Full support |
+:x: — No support |
+:construction: — Under research
 
 ## TODO
 

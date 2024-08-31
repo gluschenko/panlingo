@@ -4,8 +4,9 @@ Welcome to **Panlingo.LanguageIdentification.CLD3**, a .NET wrapper for the Chro
 
 ## Requirements
 
-- .NET >= 5.0
-- Linux
+- Runtime: **.NET >= 5.0**
+- OS: **Linux**
+- Arch: **AMD64**
 
 ## Installation
 

@@ -7,7 +7,7 @@ Panlingo.LanguageCode is a comprehensive .NET library designed for managing and 
 Language codes are standardized codes used to identify languages. The ISO 639 standard defines sets of codes for the representation of names of languages. There are several parts to the ISO 639 standard:
 - **ISO 639-1**: Defines two-letter codes (e.g., "en" for English, "uz" for Uzbek); [more](https://en.wikipedia.org/wiki/ISO_639-1).
 - **ISO 639-2**: Defines three-letter codes (e.g., "eng" for English, "uzb" for Uzbek); [more](https://en.wikipedia.org/wiki/ISO_639-2).
-- **ISO 639-3**: Extends the code set to cover all known languages and their [macrolanguages](https://en.wikipedia.org/wiki/ISO_639_macrolanguage) (e.g., "zho" is macrolangauge of "cmn"); [more](https://en.wikipedia.org/wiki/ISO_639-3).
+- **ISO 639-3**: Extends the code set to cover all known languages and their [macrolanguages](https://en.wikipedia.org/wiki/ISO_639_macrolanguage) (e.g., "zho" is macrolanguage of "cmn"); [more](https://en.wikipedia.org/wiki/ISO_639-3).
 
 These codes are essential in various applications, including software localization, data exchange between systems, and linguistic research.
 
@@ -61,7 +61,7 @@ string result = LanguageCodeHelper.Resolve("uk", options);
 // result => "ukr"
 ```
 
-#### Resolve Langauge Code to it's English Name
+#### Resolve Language Code to it's English Name
 
 This code demonstrates how to resolve a given language code to its corresponding English name using similar resolver configuration techniques:
 

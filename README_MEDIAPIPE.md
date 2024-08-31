@@ -4,8 +4,9 @@ Welcome to **Panlingo.LanguageIdentification.MediaPipe**, a .NET wrapper for the
 
 ## Requirements
 
-- .NET >= 5.0
-- Linux
+- Runtime: **.NET >= 5.0**
+- OS: **Linux**
+- Arch: **AMD64**
 
 ## Installation
 
@@ -43,7 +44,8 @@ class Program
 {
     static void Main()
     {
-        using var mediaPipe = new MediaPipeDetector(resultCount: 10);
+        var modelPath = "/models/mediapipe_language_detector.tflite";
+        using var mediaPipe = new MediaPipeDetector(resultCount: 10, modelPath: modelPath);
 
         var text = "Привіт, як справи?";
 
