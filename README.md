@@ -107,6 +107,7 @@ functionality into their applications.
 - [ ] Research support for other platforms (Windows, macOS).
 - [ ] Enhance the suite of unit tests.
 - [ ] Introduce more native methods (FastText).
+- [ ] Self-contained models (FastText + MediaPipe).
 
 ---
 

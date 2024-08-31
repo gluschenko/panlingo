@@ -62,6 +62,13 @@ class Program
 }
 ```
 
+## Sources
+
+1. [Original MediaPipe Repository](https://github.com/google-ai-edge/mediapipe)
+2. [Language detection guide](https://ai.google.dev/edge/mediapipe/solutions/text/language_detector)
+3. [Language detector (model card)](https://storage.googleapis.com/mediapipe-assets/LanguageDetector%20Model%20Card.pdf)
+4. [Language identification at Wikipedia](https://en.wikipedia.org/wiki/Language_identification)
+
 ---
 
 We value your feedback. Feel free to open issues or contribute to the repository. Let’s make language detection in .NET even more powerful and versatile! 🌍📝

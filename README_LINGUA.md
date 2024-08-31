@@ -69,6 +69,17 @@ class Program
 }
 ```
 
+## Alternatives
+
+If you are exploring other options, here are some alternatives to consider:
+
+- **[searchpioneer/lingua-dotnet](https://github.com/searchpioneer/lingua-dotnet)**: An alternative port for .NET.
+
+## Sources
+
+1. [Original Lingua Repository](https://github.com/pemistahl/lingua-rs)
+2. [Language identification at Wikipedia](https://en.wikipedia.org/wiki/Language_identification)
+
 ## Supported languages
 
 | Language    | ISO 639-3 | Enum        |
@@ -148,12 +159,6 @@ class Program
 | Xhosa         | xho | `LinguaLanguage.Xhosa`       |
 | Yoruba        | yor | `LinguaLanguage.Yoruba`      |
 | Zulu          | zul | `LinguaLanguage.Zulu`        |
-
-## Alternatives
-
-If you are exploring other options, here are some alternatives to consider:
-
-- **[searchpioneer/lingua-dotnet](https://github.com/searchpioneer/lingua-dotnet)**: An alternative port for .NET.
 
 ---
 

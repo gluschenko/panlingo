@@ -146,6 +146,12 @@ If you are exploring other options, here are some alternatives to consider:
 | Welsh                 | cy        |
 | Yiddish               | yi        |
 
+## Sources
+
+1. [Original CLD2 Repository](https://github.com/CLD2Owners/cld2)
+2. [Computation and Language](https://arxiv.org/abs/1608.08515)
+3. [Language identification at Wikipedia](https://en.wikipedia.org/wiki/Language_identification)
+
 ---
 
 We value your feedback. Feel free to open issues or contribute to the repository. Let’s make language detection in .NET even more powerful and versatile! 🌍📝

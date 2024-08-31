@@ -87,6 +87,12 @@ If you are exploring other options, here are some alternatives to consider:
 - **[NikulovE/cld3.net](https://github.com/NikulovE/cld3.net)**: An unmaintained wrapper for .NET.
 - **[uranium62/cld3-net](https://github.com/uranium62/cld3-net)**: Another unmaintained wrapper for .NET.
 
+## Sources
+
+1. [Original CLD3 Repository](https://github.com/google/cld3)
+2. [Evaluation of Off-the-Shelf Language Identification Tools on Bulgarian Social Media Posts](https://aclanthology.org/2022.clib-1.18.pdf)
+3. [Language identification at Wikipedia](https://en.wikipedia.org/wiki/Language_identification)
+
 ## Supported languages
 
 Output Code | Language Name   | Script Name

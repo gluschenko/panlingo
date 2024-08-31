@@ -77,6 +77,12 @@ If you are exploring other options, here are some alternatives to consider:
 - **[theolivenbaum/fastText](https://github.com/theolivenbaum/fastText)**: An unmaintained wrapper for .NET.
 - **[olegtarasov/FastText.NetWrapper](https://github.com/olegtarasov/FastText.NetWrapper)**: Another unmaintained wrapper for .NET.
 
+## Sources
+
+1. [Original FastText Repository](https://github.com/facebookresearch/fastText)
+2. [Enriching Word Vectors with Subword Information](https://arxiv.org/abs/1607.04606v2)
+3. [Language identification at Wikipedia](https://en.wikipedia.org/wiki/Language_identification)
+
 ---
 
 We value your feedback. Feel free to open issues or contribute to the repository. Let’s make language detection in .NET even more powerful and versatile! 🌍📝

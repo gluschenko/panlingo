@@ -64,6 +64,12 @@ class Program
 }
 ```
 
+## Sources
+
+1. [Original Whatlang Repository](https://github.com/greyblake/whatlang-rs)
+2. [N-Gram-Based Text Categorization](https://www.researchgate.net/publication/2375544_N-Gram-Based_Text_Categorization)
+3. [Language identification at Wikipedia](https://en.wikipedia.org/wiki/Language_identification)
+
 ## Supported languages
 
 | Language    | ISO 639-3 | Enum        |
