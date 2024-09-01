@@ -126,6 +126,8 @@ namespace Panlingo.LanguageIdentification.FastText
 
         public void Dispose()
         {
+            GC.SuppressFinalize(this);
+
             try
             {
                 _semaphore.Wait();
@@ -142,7 +144,7 @@ namespace Panlingo.LanguageIdentification.FastText
             }
         }
 
-        private void CheckError(IntPtr errorPtr)
+        private static void CheckError(IntPtr errorPtr)
         {
             if (errorPtr != IntPtr.Zero)
             {
@@ -150,14 +152,20 @@ namespace Panlingo.LanguageIdentification.FastText
             }
         }
 
-        private void ThrowNativeException(IntPtr errorPtr)
+        private static void ThrowNativeException(IntPtr errorPtr)
         {
-            var error = DecodeString(errorPtr);
-            FastTextDetectorWrapper.DestroyString(errorPtr);
-            throw new NativeLibraryException(error);
+            try
+            {
+                var error = DecodeString(errorPtr);
+                throw new NativeLibraryException(error);
+            }
+            finally
+            {
+                FastTextDetectorWrapper.DestroyString(errorPtr);
+            }
         }
 
-        private string DecodeString(IntPtr ptr)
+        private static string DecodeString(IntPtr ptr)
         {
             return Marshal.PtrToStringUTF8(ptr) ?? throw new NullReferenceException("Failed to decode non-nullable string");
         }

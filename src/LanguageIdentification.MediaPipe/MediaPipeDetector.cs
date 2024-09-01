@@ -92,6 +92,8 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
         public void Dispose()
         {
+            GC.SuppressFinalize(this);
+
             try
             {
                 _semaphore.Wait();

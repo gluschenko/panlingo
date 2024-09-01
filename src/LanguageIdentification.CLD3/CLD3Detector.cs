@@ -30,10 +30,11 @@ namespace Panlingo.LanguageIdentification.CLD3
 
         public void Dispose()
         {
+            GC.SuppressFinalize(this);
+
             try
             {
                 _semaphore.Wait();
-                GC.SuppressFinalize(this);
                 CLD3DetectorWrapper.FreeIdentifier(_identifier);
             }
             finally
