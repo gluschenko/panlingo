@@ -6,10 +6,10 @@ namespace Panlingo.LanguageIdentification.Tests;
 public class LinguaTests
 {
     [Theory]
-    [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1)]
-    [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1)]
-    [InlineData(LinguaLanguage.Russian, Constants.PHRASE_RUS_1)]
-    public void LinguaSingleLanguage(LinguaLanguage languageCode, string text)
+    [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1, 0.999)]
+    [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1, 0.999)]
+    [InlineData(LinguaLanguage.Russian, Constants.PHRASE_RUS_1, 0.999)]
+    public void LinguaSingleLanguage(LinguaLanguage languageCode, string text, double score)
     {
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua = linguaBuilder.Build();
@@ -23,13 +23,14 @@ public class LinguaTests
         }
 
         Assert.Equal(languageCode, prediction.Language);
+        Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
     }
 
     [Theory]
-    [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1)]
-    [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1)]
-    [InlineData(LinguaLanguage.Russian, Constants.PHRASE_RUS_1)]
-    public void LinguaMixedLanguage(LinguaLanguage languageCode, string text)
+    [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1, 0.999)]
+    [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1, 0.999)]
+    [InlineData(LinguaLanguage.Russian, Constants.PHRASE_RUS_1, 0.999)]
+    public void LinguaMixedLanguage(LinguaLanguage languageCode, string text, double score)
     {
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua = linguaBuilder.Build();
@@ -43,6 +44,7 @@ public class LinguaTests
         }
 
         Assert.Equal(languageCode, prediction.Language);
+        Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
     }
 
     [Theory]

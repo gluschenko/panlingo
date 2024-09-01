@@ -1,14 +1,15 @@
 ﻿using Panlingo.LanguageIdentification.FastText;
+using Panlingo.LanguageIdentification.Tests.Helpers;
 
 namespace Panlingo.LanguageIdentification.Tests;
 
 public class FastTextTests
 {
     [Theory]
-    [InlineData("__label__en", "Hello, how are you?")]
-    [InlineData("__label__uk", "Привіт, як справи?")]
-    [InlineData("__label__ru", "Привет, как дела?")]
-    public void FastTextSingleLanguage(string languageCode, string text)
+    [InlineData("__label__en", Constants.PHRASE_ENG_1, 0.999)]
+    [InlineData("__label__uk", Constants.PHRASE_UKR_1, 0.999)]
+    [InlineData("__label__ru", Constants.PHRASE_RUS_1, 0.999)]
+    public void FastTextSingleLanguage(string languageCode, string text, double score)
     {
         using var fastText = new FastTextDetector();
 
@@ -24,6 +25,7 @@ public class FastTextTests
         }
 
         Assert.Equal(languageCode, mainLanguage.Label);
+        Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
     }
 
     [Fact]

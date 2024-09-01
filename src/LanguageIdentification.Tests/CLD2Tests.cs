@@ -1,14 +1,15 @@
 ﻿using Panlingo.LanguageIdentification.CLD2;
+using Panlingo.LanguageIdentification.Tests.Helpers;
 
 namespace Panlingo.LanguageIdentification.Tests;
 
 public class CLD2Tests
 {
     [Theory]
-    [InlineData("en", "Hello, how are you?")]
-    [InlineData("uk", "Привіт, як справи?")]
-    [InlineData("un", "Привет, как дела?")]
-    public void CLD2SingleLanguage(string languageCode, string text)
+    [InlineData("en", Constants.PHRASE_ENG_1, 0.999)]
+    [InlineData("uk", Constants.PHRASE_UKR_1, 0.999)]
+    [InlineData("un", Constants.PHRASE_RUS_1, 0.999)]
+    public void CLD2SingleLanguage(string languageCode, string text, double score)
     {
         using var cld2 = new CLD2Detector();
 
@@ -21,5 +22,6 @@ public class CLD2Tests
         }
 
         Assert.Equal(languageCode, mainLanguage.Language);
+        Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
     }
 }
