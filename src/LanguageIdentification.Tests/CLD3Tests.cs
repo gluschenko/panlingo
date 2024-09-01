@@ -6,9 +6,9 @@ namespace Panlingo.LanguageIdentification.Tests;
 public class CLD3Tests
 {
     [Theory]
-    [InlineData("en", Constants.PHRASE_ENG_1, 0.999)]
-    [InlineData("uk", Constants.PHRASE_UKR_1, 0.999)]
-    [InlineData("ru", Constants.PHRASE_RUS_1, 0.999)]
+    [InlineData("en", Constants.PHRASE_ENG_1, 0.9999)]
+    [InlineData("uk", Constants.PHRASE_UKR_1, 0.9999)]
+    [InlineData("ru", Constants.PHRASE_RUS_1, 0.9999)]
     public void CLD3SingleLanguage(string languageCode, string text, double score)
     {
         using var cld3 = new CLD3Detector(0, 512);

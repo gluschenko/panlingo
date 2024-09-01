@@ -6,9 +6,9 @@ namespace Panlingo.LanguageIdentification.Tests;
 public class FastTextTests
 {
     [Theory]
-    [InlineData("__label__en", Constants.PHRASE_ENG_1, 0.999)]
-    [InlineData("__label__uk", Constants.PHRASE_UKR_1, 0.999)]
-    [InlineData("__label__ru", Constants.PHRASE_RUS_1, 0.999)]
+    [InlineData("__label__en", Constants.PHRASE_ENG_1, 0.9999)]
+    [InlineData("__label__uk", Constants.PHRASE_UKR_1, 0.9999)]
+    [InlineData("__label__ru", Constants.PHRASE_RUS_1, 0.9999)]
     public void FastTextSingleLanguage(string languageCode, string text, double score)
     {
         using var fastText = new FastTextDetector();

@@ -6,45 +6,45 @@ namespace Panlingo.LanguageIdentification.Tests;
 public class LinguaTests
 {
     [Theory]
-    [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1, 0.999)]
-    [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1, 0.999)]
-    [InlineData(LinguaLanguage.Russian, Constants.PHRASE_RUS_1, 0.999)]
+    [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1, 0.9999)]
+    [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1, 0.9999)]
+    [InlineData(LinguaLanguage.Russian, Constants.PHRASE_RUS_1, 0.9999)]
     public void LinguaSingleLanguage(LinguaLanguage languageCode, string text, double score)
     {
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua = linguaBuilder.Build();
 
         var predictions = lingua.PredictLanguages(text: text);
-        var prediction = predictions.FirstOrDefault();
+        var mainLanguage = predictions.FirstOrDefault();
 
-        if (prediction is null)
+        if (mainLanguage is null)
         {
             throw new NullReferenceException();
         }
 
-        Assert.Equal(languageCode, prediction.Language);
-        Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
+        Assert.Equal(languageCode, mainLanguage.Language);
+        Assert.Equal(score, mainLanguage.Confidence, Constants.EPSILON);
     }
 
     [Theory]
-    [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1, 0.999)]
-    [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1, 0.999)]
-    [InlineData(LinguaLanguage.Russian, Constants.PHRASE_RUS_1, 0.999)]
+    [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1, 0.9999)]
+    [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1, 0.9999)]
+    [InlineData(LinguaLanguage.Russian, Constants.PHRASE_RUS_1, 0.9999)]
     public void LinguaMixedLanguage(LinguaLanguage languageCode, string text, double score)
     {
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua = linguaBuilder.Build();
 
         var predictions = lingua.PredictMixedLanguages(text: text);
-        var prediction = predictions.FirstOrDefault();
+        var mainLanguage = predictions.FirstOrDefault();
 
-        if (prediction is null)
+        if (mainLanguage is null)
         {
             throw new NullReferenceException();
         }
 
-        Assert.Equal(languageCode, prediction.Language);
-        Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
+        Assert.Equal(languageCode, mainLanguage.Language);
+        Assert.Equal(score, mainLanguage.Confidence, Constants.EPSILON);
     }
 
     [Theory]

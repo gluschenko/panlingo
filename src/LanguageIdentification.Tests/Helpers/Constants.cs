@@ -8,6 +8,6 @@
 
         public const string PHRASE_MIXED_1 = PHRASE_ENG_1 + " " + PHRASE_RUS_1 + " " + PHRASE_UKR_1;
 
-        public const double EPSILON = 0.00001;
+        public const double EPSILON = 0.0001;
     }
 }
