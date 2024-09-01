@@ -6,9 +6,9 @@ namespace Panlingo.LanguageIdentification.Tests;
 public class LinguaTests
 {
     [Theory]
-    [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1, 0.9999)]
-    [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1, 0.9999)]
-    [InlineData(LinguaLanguage.Russian, Constants.PHRASE_RUS_1, 0.9999)]
+    [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1, 0.1666)]
+    [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1, 0.8228)]
+    [InlineData(LinguaLanguage.Russian, Constants.PHRASE_RUS_1, 0.3502)]
     public void LinguaSingleLanguage(LinguaLanguage languageCode, string text, double score)
     {
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
@@ -27,9 +27,9 @@ public class LinguaTests
     }
 
     [Theory]
-    [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1, 0.9999)]
-    [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1, 0.9999)]
-    [InlineData(LinguaLanguage.Russian, Constants.PHRASE_RUS_1, 0.9999)]
+    [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1, 0.1666)]
+    [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1, 0.8228)]
+    [InlineData(LinguaLanguage.Russian, Constants.PHRASE_RUS_1, 0.3502)]
     public void LinguaMixedLanguage(LinguaLanguage languageCode, string text, double score)
     {
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());

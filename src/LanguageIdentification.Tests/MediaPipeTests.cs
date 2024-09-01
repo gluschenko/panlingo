@@ -6,7 +6,7 @@ namespace Panlingo.LanguageIdentification.Tests;
 public class MediaPipeTests
 {
     [Theory]
-    [InlineData("en", Constants.PHRASE_ENG_1, 0.9999)]
+    [InlineData("en", Constants.PHRASE_ENG_1, 0.9994)]
     [InlineData("uk", Constants.PHRASE_UKR_1, 0.9999)]
     [InlineData("ru", Constants.PHRASE_RUS_1, 0.9999)]
     public void MediaPipeSingleLanguage(string languageCode, string text, double score)

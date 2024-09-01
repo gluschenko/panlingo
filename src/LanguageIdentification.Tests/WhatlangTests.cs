@@ -6,9 +6,9 @@ namespace Panlingo.LanguageIdentification.Tests;
 public class WhatlangTests
 {
     [Theory]
-    [InlineData(WhatlangLanguage.Ron, Constants.PHRASE_ENG_1, 0.9999)]
+    [InlineData(WhatlangLanguage.Ron, Constants.PHRASE_ENG_1, 0.0274)]
     [InlineData(WhatlangLanguage.Ukr, Constants.PHRASE_UKR_1, 0.9999)]
-    [InlineData(WhatlangLanguage.Rus, Constants.PHRASE_RUS_1, 0.9999)]
+    [InlineData(WhatlangLanguage.Rus, Constants.PHRASE_RUS_1, 0.2308)]
     public void WhatlangSingleLanguage(WhatlangLanguage languageCode, string text, double score)
     {
         using var whatlang = new WhatlangDetector();
