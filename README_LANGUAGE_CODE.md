@@ -5,9 +5,9 @@ Panlingo.LanguageCode is a comprehensive .NET library designed for managing and 
 ## What are Language Codes?
 
 Language codes are standardized codes used to identify languages. The ISO 639 standard defines sets of codes for the representation of names of languages. There are several parts to the ISO 639 standard:
-- **ISO 639-1**: Defines two-letter codes (e.g., "en" for English, "ru" for Russian).
-- **ISO 639-2**: Defines three-letter codes (e.g., "eng" for English, "rus" for Russian).
-- **ISO 639-3**: Extends the code set to cover all known languages.
+- **ISO 639-1**: Defines two-letter codes (e.g., "en" for English, "uz" for Uzbek); [more](https://en.wikipedia.org/wiki/ISO_639-1).
+- **ISO 639-2**: Defines three-letter codes (e.g., "eng" for English, "uzb" for Uzbek); [more](https://en.wikipedia.org/wiki/ISO_639-2).
+- **ISO 639-3**: Extends the code set to cover all known languages and their [macrolanguages](https://en.wikipedia.org/wiki/ISO_639_macrolanguage) (e.g., "zho" is macrolanguage of "cmn"); [more](https://en.wikipedia.org/wiki/ISO_639-3).
 
 These codes are essential in various applications, including software localization, data exchange between systems, and linguistic research.
 
@@ -31,30 +31,122 @@ dotnet add package Panlingo.LanguageCode
 
 ## Usage
 
-You can use the library to convert and resolve language codes. Below are some examples to illustrate how to use the provided functionalities.
+### Language Code Resolver
 
-### Basic Configuration
+You can use the library to convert and resolve language codes. 
+Below are some examples to illustrate how to use the provided functionalities.
 
-Before using the library, set up a basic resolver with your desired rules:
+#### Basic Configuration
+
+Before using the library, set up a basic resolver with your desired rules. 
+Resolver is called `LanguageCodeResolver` and uses [Fluent Builder](https://en.wikipedia.org/wiki/Fluent_interface) design pattern:
 
 ```csharp
 var resolver = new LanguageCodeResolver()
-    .ToLowerAndTrim()
-    .ConvertFromIETF()
-    .ConvertFromDeprecatedCode()
-    .ReduceToMacrolanguage();
+    .ToLowerAndTrim()            // optional
+    .ConvertFromIETF()           // optional
+    .ConvertFromDeprecatedCode() // optional
+    .ReduceToMacrolanguage();    // optional
 ```
 
-### Convert a Single Language Code
+#### ISO 639-1 to ISO 639-2 or ISO 639-3 
+
+In this code, we see how to convert a language code from the ISO 639-1 format (which uses two-letter codes) to the ISO 639-2 or ISO 639-3 format (which uses three-letter codes). Here’s the breakdown:
+
+```csharp
+var options = new LanguageCodeResolver()
+    .Select(LanguageCodeEntity.Alpha3);
+
+string result = LanguageCodeHelper.Resolve("uk", options);
+// result => "ukr"
+```
+
+#### Resolve Language Code to it's English Name
+
+This code demonstrates how to resolve a given language code to its corresponding English name using similar resolver configuration techniques:
+
+```csharp
+var options = new LanguageCodeResolver()
+    .Select(LanguageCodeEntity.EnglishName);
+
+string result = LanguageCodeHelper.Resolve("uk", options);
+// result => "Ukrainian"
+```
+
+#### Resolve Dialect Language to it's Macrolanguage
+
+The resolver is used to map a dialect language code to its corresponding macrolanguage code, then convert it to the Alpha-3 format:
+
+```csharp
+var options = new LanguageCodeResolver()
+    .ReduceToMacrolanguage()
+    .Select(LanguageCodeEntity.Alpha3);
+
+string result = LanguageCodeHelper.Resolve("cmn", options);
+// result => "zho"
+```
+
+#### Handle Legacy Codes with Conflicts
+
+For resolving legacy codes that may have conflicts, you can specify how to handle such conflicts:
+
+```csharp
+var options = new LanguageCodeResolver()
+    .ConvertFromDeprecatedCode((sourceCode, candidates) =>
+    {
+        return candidates.Any() ? candidates.First() : sourceCode;
+    })
+    .Select(LanguageCodeEntity.Alpha3);
+
+string result = LanguageCodeHelper.Resolve("mof", options);
+// result => "xpq"
+```
+
+#### Handle IETF Language Tags
+
+You can resolve language codes from IETF language tags like "en-US":
+
+```csharp
+var options = new LanguageCodeResolver().ConvertFromIETF();
+
+string result = LanguageCodeHelper.Resolve("en-US", options);
+// result => "en"
+```
+
+#### Normalize Input by Converting to Lowercase and Trimming Spaces
+
+You can normalize inputs by converting to lowercase and trimming spaces:
+
+```csharp
+var options = new LanguageCodeResolver().ToLowerAndTrim();
+
+string result = LanguageCodeHelper.Resolve(" UK  ", options);
+// result => "uk"
+```
+
+### Basic Methods
+
+You can use these methods without any resolver configuration.
+
+#### Convert a Single Language Code
 
 You can convert a single language code to its two-letter or three-letter ISO equivalent:
 
 ```csharp
-string twoLetterCode = LanguageCodeHelper.GetTwoLetterISOCode("rus");
-// twoLetterCode => "ru"
+string result = LanguageCodeHelper.GetTwoLetterISOCode("rus");
+// result => "ru"
 
-string threeLetterCode = LanguageCodeHelper.GetThreeLetterISOCode("en");
-// threeLetterCode => "eng"
+string result = LanguageCodeHelper.GetThreeLetterISOCode("en");
+// result => "eng"
+```
+
+#### Retrieve English Names for Language Codes
+
+You can also get the English names for language codes:
+
+```csharp
+string result = LanguageCodeHelper.GetLanguageEnglishName("uk");
+// result => "Ukrainian"
 ```
 
 ### Resolve Language Codes with Options
@@ -62,54 +154,16 @@ string threeLetterCode = LanguageCodeHelper.GetThreeLetterISOCode("en");
 You can resolve language codes using specific options, such as converting deprecated codes or reducing to macrolanguages:
 
 ```csharp
-string resolvedCode = LanguageCodeHelper.Resolve("iw", resolver);
-// resolvedCode => "heb"
+string result = LanguageCodeHelper.Resolve("iw", resolver);
+// result => "heb"
 ```
 
-### Handle Legacy Codes with Conflicts
+## Sources
 
-For resolving legacy codes that may have conflicts, you can specify how to handle such conflicts:
-
-```csharp
-var options = resolver
-    .ConvertFromDeprecatedCode((sourceCode, candidates) =>
-    {
-        return candidates.Any() ? candidates.First() : sourceCode;
-    })
-    .Select(LanguageCodeEntity.Alpha3);
-
-string resolvedLegacyCode = LanguageCodeHelper.Resolve("mof", options);
-// resolvedLegacyCode => "xpq"
-```
-
-### Retrieve English Names for Language Codes
-
-You can also get the English names for language codes:
-
-```csharp
-string englishName = LanguageCodeHelper.GetLanguageEnglishName("ru");
-// englishName => "Russian"
-```
-
-### Handle IETF Language Tags
-
-You can resolve language codes from IETF language tags like "en-US":
-
-```csharp
-var options = new LanguageCodeResolver().ConvertFromIETF();
-string resolvedIETFCode = LanguageCodeHelper.Resolve("en-US", options);
-// resolvedIETFCode => "en"
-```
-
-### Normalize Input by Converting to Lowercase and Trimming Spaces
-
-You can normalize inputs by converting to lowercase and trimming spaces:
-
-```csharp
-var options = new LanguageCodeResolver().ToLowerAndTrim();
-string normalizedCode = LanguageCodeHelper.Resolve(" UK  ", options);
-// normalizedCode => "uk"
-```
+ * [ISO 639 Home](https://www.iso.org/iso-639-language-code)
+ * [ISO 639-2](https://www.loc.gov/standards/iso639-2/langhome.html)
+ * [ISO 639-1 vs ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_changes.php)
+ * [ISO 639-3](https://iso639-3.sil.org/code_tables/download_tables#639-3%20Code%20Set)
 
 ## Contributing
 

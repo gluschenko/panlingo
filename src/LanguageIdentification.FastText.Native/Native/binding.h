@@ -40,9 +40,9 @@ extern "C" {
     EXPORT void DestroyString(char* s);
     EXPORT fasttext_t* CreateFastText(void);
     EXPORT void DestroyFastText(fasttext_t* handle);
-    EXPORT void FastTextLoadModel(fasttext_t* handle, const char* filename, char** errptr);
+    EXPORT void FastTextLoadModel(fasttext_t* handle, const char* filename, char** err_ptr);
     EXPORT int FastTextGetModelDimensions(fasttext_t* handle);
-    EXPORT fasttext_predictions_t* FastTextPredict(fasttext_t* handle, const char* text, int32_t k, float threshold, char** errptr);
+    EXPORT fasttext_predictions_t* FastTextPredict(fasttext_t* handle, const char* text, int32_t k, float threshold, char** err_ptr);
     EXPORT void DestroyPredictions(fasttext_predictions_t* predictions);
     EXPORT fasttext_labels_t* FastTextGetLabels(fasttext_t* handle);
     EXPORT void DestroyLabels(fasttext_labels_t* labels);

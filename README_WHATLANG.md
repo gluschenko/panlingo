@@ -4,8 +4,9 @@ Welcome to **Panlingo.LanguageIdentification.Whatlang**, a .NET wrapper for the 
 
 ## Requirements
 
-- .NET >= 5.0
-- Linux
+- Runtime: **.NET >= 5.0**
+- OS: **Linux**
+- Arch: **AMD64**
 
 ## Installation
 
@@ -62,6 +63,12 @@ class Program
     }
 }
 ```
+
+## Sources
+
+1. [Original Whatlang Repository](https://github.com/greyblake/whatlang-rs)
+2. [N-Gram-Based Text Categorization](https://www.researchgate.net/publication/2375544_N-Gram-Based_Text_Categorization)
+3. [Language identification at Wikipedia](https://en.wikipedia.org/wiki/Language_identification)
 
 ## Supported languages
 

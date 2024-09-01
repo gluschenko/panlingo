@@ -35,9 +35,9 @@ namespace Panlingo.LanguageIdentification.FastText
             _semaphore.Wait();
             try
             {
-                var errptr = IntPtr.Zero;
-                FastTextDetectorWrapper.FastTextLoadModel(_fastText, path, ref errptr);
-                CheckError(errptr);
+                var errPtr = IntPtr.Zero;
+                FastTextDetectorWrapper.FastTextLoadModel(_fastText, path, ref errPtr);
+                CheckError(errPtr);
 
                 ModelPath = path;
             }
@@ -81,16 +81,16 @@ namespace Panlingo.LanguageIdentification.FastText
         /// <returns>List of language predictions</returns>
         public IEnumerable<FastTextPrediction> Predict(string text, int count, float threshold = 0.0f)
         {
-            var errptr = IntPtr.Zero;
+            var errPtr = IntPtr.Zero;
             var predictionPtr = FastTextDetectorWrapper.FastTextPredict(
-                handle: _fastText, 
+                handle: _fastText,
                 text: text,
                 k: count,
                 threshold: threshold,
-                ref errptr
+                ref errPtr
             );
 
-            CheckError(errptr);
+            CheckError(errPtr);
 
             if (predictionPtr == IntPtr.Zero)
             {
@@ -126,6 +126,8 @@ namespace Panlingo.LanguageIdentification.FastText
 
         public void Dispose()
         {
+            GC.SuppressFinalize(this);
+
             try
             {
                 _semaphore.Wait();
@@ -142,7 +144,7 @@ namespace Panlingo.LanguageIdentification.FastText
             }
         }
 
-        private void CheckError(IntPtr errorPtr)
+        private static void CheckError(IntPtr errorPtr)
         {
             if (errorPtr != IntPtr.Zero)
             {
@@ -150,14 +152,20 @@ namespace Panlingo.LanguageIdentification.FastText
             }
         }
 
-        private void ThrowNativeException(IntPtr errorPtr)
+        private static void ThrowNativeException(IntPtr errorPtr)
         {
-            var error = DecodeString(errorPtr);
-            FastTextDetectorWrapper.DestroyString(errorPtr);
-            throw new NativeLibraryException(error);
+            try
+            {
+                var error = DecodeString(errorPtr);
+                throw new NativeLibraryException(error);
+            }
+            finally
+            {
+                FastTextDetectorWrapper.DestroyString(errorPtr);
+            }
         }
 
-        private string DecodeString(IntPtr ptr)
+        private static string DecodeString(IntPtr ptr)
         {
             return Marshal.PtrToStringUTF8(ptr) ?? throw new NullReferenceException("Failed to decode non-nullable string");
         }

@@ -38,15 +38,15 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                     }
                 }
             }
-            
+
             var options = new LanguageDetectorOptions(
                 baseOptions: new BaseOptions(
-                    modelAssetBuffer: null, 
-                    modelAssetBufferCount: 0, 
+                    modelAssetBuffer: null,
+                    modelAssetBufferCount: 0,
                     modelAssetPath: modelPath
-                ), 
+                ),
                 classifierOptions: new ClassifierOptions(
-                    resultCount: resultCount, 
+                    resultCount: resultCount,
                     scoreThreshold: scoreThreshold
                 )
             );
@@ -92,6 +92,8 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
         public void Dispose()
         {
+            GC.SuppressFinalize(this);
+
             try
             {
                 _semaphore.Wait();

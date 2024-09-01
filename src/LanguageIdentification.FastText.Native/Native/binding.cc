@@ -13,9 +13,9 @@ using namespace fasttext;
 
 extern "C" {
 
-    static void save_error(char** errptr, const std::exception& e) {
-        assert(errptr != nullptr);
-        *errptr = strdup(e.what());
+    static void save_error(char** err_ptr, const std::exception& e) {
+        assert(err_ptr != nullptr);
+        *err_ptr = strdup(e.what());
     }
 
     void DestroyString(char* s) {
@@ -33,11 +33,11 @@ extern "C" {
         delete x;
     }
 
-    void FastTextLoadModel(fasttext_t* handle, const char* filename, char** errptr) {
+    void FastTextLoadModel(fasttext_t* handle, const char* filename, char** err_ptr) {
         try {
             ((FastText*)handle)->loadModel(filename);
         } catch (const std::invalid_argument& e) {
-            save_error(errptr, e);
+            save_error(err_ptr, e);
         }
     }
 
@@ -45,13 +45,13 @@ extern "C" {
         return ((FastText*)handle)->getDimension();
     }
 
-    fasttext_predictions_t* FastTextPredict(fasttext_t* handle, const char* text, int32_t k, float threshold, char** errptr) {
+    fasttext_predictions_t* FastTextPredict(fasttext_t* handle, const char* text, int32_t k, float threshold, char** err_ptr) {
         std::vector<std::pair<fasttext::real, std::string>> predictions;
         std::stringstream ioss(text);
         try {
             ((FastText*)handle)->predictLine(ioss, predictions, k, threshold);
         } catch (const std::invalid_argument& e) {
-            save_error(errptr, e);
+            save_error(err_ptr, e);
             return nullptr;
         }
         size_t len = predictions.size();

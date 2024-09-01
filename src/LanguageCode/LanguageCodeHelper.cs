@@ -192,7 +192,7 @@ namespace Panlingo.LanguageCode
         /// <param name="value"></param>
         /// <returns></returns>
         public static bool TryGetTwoLetterISOCode(
-            string code, 
+            string code,
             [MaybeNullWhen(false)] out string value
         )
         {
@@ -215,7 +215,7 @@ namespace Panlingo.LanguageCode
         /// <param name="value"></param>
         /// <returns></returns>
         public static bool TryGetThreeLetterISOCode(
-            string code, 
+            string code,
             [MaybeNullWhen(false)] out string value
         )
         {
@@ -238,7 +238,7 @@ namespace Panlingo.LanguageCode
         /// <param name="value"></param>
         /// <returns></returns>
         public static bool TryGetLanguageEnglishName(
-            string code, 
+            string code,
             [MaybeNullWhen(false)] out string value
         )
         {
@@ -262,7 +262,7 @@ namespace Panlingo.LanguageCode
         /// <returns></returns>
         /// <exception cref="LanguageCodeException"></exception>
         public static string GetEntity(
-            string code, 
+            string code,
             LanguageCodeEntity entity
         )
         {
@@ -283,8 +283,8 @@ namespace Panlingo.LanguageCode
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
         public static bool TryGetEntity(
-            string code, 
-            LanguageCodeEntity entity, 
+            string code,
+            LanguageCodeEntity entity,
             [MaybeNullWhen(false)] out string value
         )
         {

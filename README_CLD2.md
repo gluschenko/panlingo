@@ -4,8 +4,9 @@ Welcome to **Panlingo.LanguageIdentification.CLD2**, a .NET wrapper for the Chro
 
 ## Requirements
 
-- .NET >= 5.0
-- Linux
+- Runtime: **.NET >= 5.0**
+- OS: **Linux**
+- Arch: **AMD64**
 
 ## Installation
 
@@ -59,7 +60,7 @@ If you are exploring other options, here are some alternatives to consider:
 
 ## Supported languages
 
-| Language Name      | Output Code (ISO 639-1)    |
+| Language Name      | ISO 639-1                  |
 |--------------------|----------------------------|
 | Afrikaans             | af        |
 | Albanian              | sq        |
@@ -144,6 +145,12 @@ If you are exploring other options, here are some alternatives to consider:
 | Vietnamese            | vi        |
 | Welsh                 | cy        |
 | Yiddish               | yi        |
+
+## Sources
+
+1. [Original CLD2 Repository](https://github.com/CLD2Owners/cld2)
+2. [Computation and Language](https://arxiv.org/abs/1608.08515)
+3. [Language identification at Wikipedia](https://en.wikipedia.org/wiki/Language_identification)
 
 ---
 

@@ -167,13 +167,16 @@ namespace LanguageCode.Tests
         [InlineData("dddd")]
         public void ResolveMissingWithException(string source)
         {
-            Assert.Throws<LanguageCodeException>(() => 
+            Assert.Throws<LanguageCodeException>(() =>
             {
                 var options = BasicResolver.Select(LanguageCodeEntity.Alpha3);
                 var code = LanguageCodeHelper.Resolve(code: source, options: options);
             });
         }
 
+        /// <summary>
+        /// GIGO: garbage in, garbage out
+        /// </summary>
         [Theory]
         [InlineData("aaaa")]
         [InlineData("bbbb")]

@@ -131,9 +131,9 @@ namespace Panlingo.LanguageIdentification.Lingua
             try
             {
                 var status = LinguaDetectorWrapper.LinguaLangCode(
-                    lang: language, 
-                    code: code, 
-                    buffer: stringBuider, 
+                    lang: language,
+                    code: code,
+                    buffer: stringBuider,
                     bufferSize: (UIntPtr)stringBuider.Capacity
                 );
 

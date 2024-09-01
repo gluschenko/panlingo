@@ -18,12 +18,12 @@ namespace Panlingo.LanguageCode
         public delegate string ResolveCallback(string sourceCode);
 
         private delegate bool TryConvertCallback(
-            string code, 
-            [MaybeNullWhen(false)] out string newCode, 
+            string code,
+            [MaybeNullWhen(false)] out string newCode,
             [MaybeNullWhen(true)] out string reason
         );
 
-        private Dictionary<LanguageCodeRule, ResolveCallback> _rules;
+        private readonly Dictionary<LanguageCodeRule, ResolveCallback> _rules;
         private ResolveCallback? _resolveUnknown;
         private TryConvertCallback? _tryConvert;
 
@@ -130,7 +130,9 @@ namespace Panlingo.LanguageCode
         }
 
         /// <summary>
+        /// <para>
         /// Allows you to manually resolve unknown or conflicting codes.
+        /// </para>
         /// 
         /// Example:
         /// <code>
@@ -260,8 +262,8 @@ namespace Panlingo.LanguageCode
         }
 
         internal bool TryApply(
-            string code, 
-            [MaybeNullWhen(false)] out string newCode, 
+            string code,
+            [MaybeNullWhen(false)] out string newCode,
             [MaybeNullWhen(true)] out string reason
         )
         {

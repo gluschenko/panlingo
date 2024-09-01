@@ -2,7 +2,7 @@
 using HtmlAgilityPack;
 using Panlingo.LanguageCode.Models;
 
-namespace LanguageCode.Generator
+namespace Panlingo.LanguageCode.Generator
 {
     /// <summary>
     /// # ISO Home: 

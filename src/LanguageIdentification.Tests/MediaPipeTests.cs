@@ -1,14 +1,15 @@
 ﻿using Panlingo.LanguageIdentification.MediaPipe;
+using Panlingo.LanguageIdentification.Tests.Helpers;
 
 namespace Panlingo.LanguageIdentification.Tests;
 
 public class MediaPipeTests
 {
     [Theory]
-    [InlineData("en", "Hello, how are you?")]
-    [InlineData("uk", "Привіт, як справи?")]
-    [InlineData("ru", "Привет, как дела?")]
-    public void MediaPipeSingleLanguage(string languageCode, string text)
+    [InlineData("en", Constants.PHRASE_ENG_1, 0.9994)]
+    [InlineData("uk", Constants.PHRASE_UKR_1, 0.9999)]
+    [InlineData("ru", Constants.PHRASE_RUS_1, 0.9999)]
+    public void MediaPipeSingleLanguage(string languageCode, string text, double score)
     {
         var modelPath = "/models/mediapipe_language_detector.tflite";
         using var mediaPipe = new MediaPipeDetector(resultCount: 10, modelPath: modelPath);
@@ -22,5 +23,6 @@ public class MediaPipeTests
         }
 
         Assert.Equal(languageCode, mainLanguage.Language);
+        Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
     }
 }

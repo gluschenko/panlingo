@@ -4,10 +4,10 @@
     {
         static void Main(string[] args)
         {
-            using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
-            linguaBuilder.WithPreloadedLanguageModels();
-            linguaBuilder.WithMinimumRelativeDistance(0.5);
-            linguaBuilder.WithLowAccuracyMode();
+            using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>())
+                .WithPreloadedLanguageModels()
+                .WithMinimumRelativeDistance(0.95)
+                .WithLowAccuracyMode();
 
             using var lingua = linguaBuilder.Build();
 
@@ -47,7 +47,7 @@
             var code2 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, LinguaLanguageCode.Alpha3);
             var code3 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, (LinguaLanguageCode)99);
             var code4 = lingua.GetLanguageCode((LinguaLanguage)255, LinguaLanguageCode.Alpha3);
-            
+
 
             ;
         }

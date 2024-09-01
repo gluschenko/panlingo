@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Immutable;
-using System.IO;
-using System.Linq;
-using System.Reflection;
+﻿using System.Linq;
 using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
@@ -20,11 +16,11 @@ namespace Panlingo.LanguageCode.SourceGenerator
             var combined = texts.Combine(assemblyName);
 
             context.RegisterSourceOutput(
-                combined, 
+                combined,
                 (productionContext, sourceContext) =>
                 {
                     Generate(
-                        context: productionContext, 
+                        context: productionContext,
                         file: sourceContext.Left
                     );
                 }
@@ -32,7 +28,7 @@ namespace Panlingo.LanguageCode.SourceGenerator
         }
 
         void Generate(
-            SourceProductionContext context, 
+            SourceProductionContext context,
             AdditionalText file
         )
         {

@@ -13,7 +13,7 @@ namespace Panlingo.LanguageIdentification.Lingua
         {
             WordCount = (int)item.WordCount;
 
-            var start = (int)item.StartIndex; 
+            var start = (int)item.StartIndex;
             var end = (int)item.EndIndex;
             if (start == 0 && end == 0)
             {

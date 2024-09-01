@@ -1,7 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using Panlingo.LanguageCode;
 
-namespace UserAgentBetchmarks.Tests
+namespace LanguageCode.Benchmark.Tests
 {
     [MemoryDiagnoser(true)]
     public class LanguageCodeTest

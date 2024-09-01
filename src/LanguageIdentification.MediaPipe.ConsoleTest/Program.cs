@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            using var mediaPipe = new MediaPipeDetector(resultCount: 10);
+            var modelPath = "/models/mediapipe_language_detector.tflite";
+            using var mediaPipe = new MediaPipeDetector(resultCount: 10, modelPath: modelPath);
 
             var text = "Hello, how are you? Привіт, як справи? Привет, как дела?";
 

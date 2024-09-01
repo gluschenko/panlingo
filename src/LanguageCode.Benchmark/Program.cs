@@ -1,5 +1,5 @@
 ﻿using BenchmarkDotNet.Running;
-using UserAgentBetchmarks.Tests;
+using LanguageCode.Benchmark.Tests;
 
 namespace LanguageCode.Benchmark
 {
