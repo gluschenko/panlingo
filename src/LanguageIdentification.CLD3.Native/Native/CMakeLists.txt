@@ -65,15 +65,15 @@ add_library(${PROJECT_NAME} SHARED
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "src/binding.h")
 
 # Link the static Protobuf libraries into the shared library
-target_link_libraries(${PROJECT_NAME} ${Protobuf_LIBRARIES})
-target_link_libraries(${PROJECT_NAME} ${Protobuf_LITE_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${Protobuf_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${Protobuf_LITE_LIBRARIES})
 
 # unit tests exec:
-add_executable(language_identifier_main src/language_identifier_main.cc)
-target_link_libraries(language_identifier_main cld3 ${Protobuf_LITE_LIBRARIES})
+# add_executable(language_identifier_main src/language_identifier_main.cc)
+# target_link_libraries(language_identifier_main cld3 ${Protobuf_LITE_LIBRARIES})
 
-add_executable(getonescriptspan_test src/script_span/getonescriptspan_test.cc)
-target_link_libraries(getonescriptspan_test cld3 ${Protobuf_LITE_LIBRARIES})
+# add_executable(getonescriptspan_test src/script_span/getonescriptspan_test.cc)
+# target_link_libraries(getonescriptspan_test cld3 ${Protobuf_LITE_LIBRARIES})
 
-add_executable(language_identifier_features_test src/language_identifier_features_test.cc)
-target_link_libraries(language_identifier_features_test cld3 ${Protobuf_LITE_LIBRARIES})
+# add_executable(language_identifier_features_test src/language_identifier_features_test.cc)
+# target_link_libraries(language_identifier_features_test cld3 ${Protobuf_LITE_LIBRARIES})
