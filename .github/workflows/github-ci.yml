@@ -39,7 +39,15 @@ jobs:
       with: 
         submodules: 'true'
 
+    - uses: dorny/paths-filter@v3
+      id: changes
+      with:
+        filters: |
+          src:
+            - '${{env.ROOT}}/**'
+
     - name: 📂 Setup .NET Core
+      if: steps.changes.outputs.src == 'true'
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: |
@@ -49,15 +57,13 @@ jobs:
           8.0.x
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
-    - name: 📂 Files
-      working-directory: ${{env.ROOT}}
-      run: ls -R
-
     - name: 🚀 Pack ${{matrix.projectName}}
+      if: steps.changes.outputs.src == 'true'
       working-directory: ${{env.ROOT}}/${{matrix.projectName}}
       run: dotnet pack -c Release -o out 
 
     - uses: actions/upload-artifact@v4
+      if: steps.changes.outputs.src == 'true'
       with:
         name: build-${{matrix.projectName}}
         path: ${{env.ROOT}}/${{matrix.projectName}}/out
