@@ -31,7 +31,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/misc/myprotobuf.cmake)
 my_protobuf_generate_cpp(cld_3/protos PROTO_SRCS PROTO_HDRS src/feature_extractor.proto src/sentence.proto src/task_spec.proto)
 message(STATUS "PROTO_HDRS= ${PROTO_HDRS}")
 
-add_definitions(-fPIC) # Position Independant Code
+# add_definitions(-fPIC) # Position Independant Code
 add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
 add_definitions(-std=c++11) # Needed for std::to_string(), ...
 
