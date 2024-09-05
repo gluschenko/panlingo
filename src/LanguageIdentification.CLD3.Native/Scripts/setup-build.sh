@@ -23,7 +23,7 @@ git clone --recurse-submodules --depth 1 --branch v28.0 https://github.com/proto
 cd protobuf
 mkdir build
 cd build
-cmake -DCMAKE_POSITION_INDEPENDENT_CODE=ON -Dprotobuf_BUILD_SHARED_LIBS=OFF -Dprotobuf_BUILD_TESTS=OFF ..
+cmake -DCMAKE_POSITION_INDEPENDENT_CODE=ON -Dprotobuf_BUILD_TESTS=OFF ..
 make -j $(nproc)
 make install  
 
