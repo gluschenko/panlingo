@@ -64,6 +64,8 @@ add_library(${PROJECT_NAME} SHARED
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "src/binding.h")
 
+# Link the static Protobuf libraries into the shared library
+target_link_libraries(${PROJECT_NAME} ${Protobuf_LIBRARIES})
 # unit tests exec:
 add_executable(language_identifier_main src/language_identifier_main.cc)
 target_link_libraries(language_identifier_main cld3 ${Protobuf_LITE_LIBRARIES})
