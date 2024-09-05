@@ -10,7 +10,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(Protobuf REQUIRED)
-find_package(absl REQUIRED)
 message(STATUS "Protobuf_FOUND = ${Protobuf_FOUND}")
 message(STATUS "Protobuf_VERSION = ${Protobuf_VERSION}")
 message(WARNING "Protobuf 2.5 and CLD3 seems happy together. This script does NOT check if your verison of protobuf is compatible.")
@@ -31,13 +30,16 @@ else()
     message(FATAL_ERROR "Static Protobuf libraries not found")
 endif()
 
+# Find and link against abseil
+find_package(absl REQUIRED)
+
 # By default, protobuf_generate_cpp generates pb.* files directy in the cmake build dir. 
 # But CLD3 sources have been coded using hard coded pathes to cld_3/protos/*.pb.h. 
 # So *.pb.h must be output to cld_3/protos.
 # For that, let's use a custom my_protobuf_generate_cpp:
 include(${CMAKE_CURRENT_SOURCE_DIR}/misc/myprotobuf.cmake)
 my_protobuf_generate_cpp(cld_3/protos PROTO_SRCS PROTO_HDRS src/feature_extractor.proto src/sentence.proto src/task_spec.proto)
-message(STATUS "PROTO_HDRS = ${PROTO_HDRS}")
+message(STATUS "PROTO_HDRS= ${PROTO_HDRS}")
 
 add_definitions(-fPIC) # Position Independent Code
 add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
@@ -47,7 +49,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR} ${Protobuf_INCLUDE_DIRS} ${absl_
 
 # Add static Protobuf libraries to target link libraries
 set(PROTOBUF_LIBS ${PROTOBUF_LIBRARIES_STATIC} ${PROTOBUF_LITE_LIBRARIES_STATIC})
-set(ABSEIL_LIBS ${absl_LIBRARIES_STATIC})
+set(ABSEIL_LIBS absl::base absl::strings)
 
 add_library(${PROJECT_NAME} SHARED 
 	${PROTO_SRCS} ${PROTO_HDRS}
@@ -95,7 +97,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "src/binding.h")
 
 # Ensure Protobuf and Abseil static libs are linked properly
-target_link_libraries(cld3 PRIVATE ${Protobuf_LIBRARIES} ${PROTOBUF_LIBS} ${ABSEIL_LIBS})
+target_link_libraries(cld3 PRIVATE ${PROTOBUF_LIBS} ${ABSEIL_LIBS})
 
 # unit tests exec:
 # add_executable(language_identifier_main src/language_identifier_main.cc)
