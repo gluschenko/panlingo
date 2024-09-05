@@ -6,15 +6,18 @@ project(cld3)
 cmake_minimum_required(VERSION 3.9)
 
 find_package(Protobuf REQUIRED)
-message(STATUS "Protobuf_FOUND= ${Protobuf_FOUND}")
-message(STATUS "Protobuf_VERSION= ${Protobuf_VERSION}")
+message(STATUS "Protobuf_FOUND = ${Protobuf_FOUND}")
+message(STATUS "Protobuf_VERSION = ${Protobuf_VERSION}")
 message(WARNING "Protobuf 2.5 and CLD3 seems happy together. This script does NOT check if your verison of protobuf is compatible.")
-message(STATUS "Protobuf_LIBRARIES= ${Protobuf_LIBRARIES}")
-message(STATUS "Protobuf_LITE_LIBRARIES= ${Protobuf_LITE_LIBRARIES}") # Usually /usr/lib64/libprotobuf-lite.so
+message(STATUS "Protobuf_LIBRARIES = ${Protobuf_LIBRARIES}")
+message(STATUS "Protobuf_LITE_LIBRARIES = ${Protobuf_LITE_LIBRARIES}") # Usually /usr/lib64/libprotobuf-lite.so
 
 # If using static libraries, find them manually
 find_library(PROTOBUF_LIBRARIES_STATIC NAMES libprotobuf.a)
 find_library(PROTOBUF_LITE_LIBRARIES_STATIC NAMES libprotobuf-lite.a)
+
+message(STATUS "PROTOBUF_LIBRARIES_STATIC = ${PROTOBUF_LIBRARIES_STATIC}")
+message(STATUS "PROTOBUF_LITE_LIBRARIES_STATIC = ${PROTOBUF_LITE_LIBRARIES_STATIC}") 
 
 # Ensure the static libraries are found
 if(PROTOBUF_LIBRARIES_STATIC AND PROTOBUF_LITE_LIBRARIES_STATIC)
