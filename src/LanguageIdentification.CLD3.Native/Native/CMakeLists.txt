@@ -78,6 +78,8 @@ add_library(${PROJECT_NAME} SHARED
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "src/binding.h")
 
+# Link the shared Protobuf libraries into the shared library
+target_link_libraries(${PROJECT_NAME} PRIVATE ${Protobuf_LIBRARIES})
 # Link the static Protobuf libraries into the shared library
 target_link_libraries(${PROJECT_NAME} ${PROTOBUF_LIBS})
 
