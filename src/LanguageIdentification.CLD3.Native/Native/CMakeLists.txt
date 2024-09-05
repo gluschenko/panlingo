@@ -5,6 +5,8 @@ project(cld3)
 # Old versions of cmake dont search/find protobuf lite
 cmake_minimum_required(VERSION 3.9)
 
+set(CMAKE_CXX_STANDARD 14)
+
 find_package(Protobuf REQUIRED)
 message(STATUS "Protobuf_FOUND = ${Protobuf_FOUND}")
 message(STATUS "Protobuf_VERSION = ${Protobuf_VERSION}")
