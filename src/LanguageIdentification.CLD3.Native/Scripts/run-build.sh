@@ -6,23 +6,23 @@ echo "Hello world";
 workspace="build_temp"
 
 mkdir "$workspace" -p
-cp -a ../../third_party/cld3/. $workspace
+cp -a ../../third_party/cld3/. $workspace/cld3
+cp -a Native/. $workspace
+
 ls -R .
 
-rm "$workspace/setup.py"
-cp Native/setup.py "$workspace/setup.py"
-cp Native/binding.cc "$workspace/src/binding.cc"
-cp Native/binding.h "$workspace/src/binding.h"
-
 cd "$workspace"
-export PYTHONPATH=$(pwd)/site-packages
-echo "$PYTHONPATH"
-python3 -m pip install -r requirements.txt --break-system-packages --target="$PYTHONPATH"
-python3 setup.py build_ext
 
+mkdir build
+cd build
+cmake ..
+make -j $(nproc) # make
+cd ..
+
+echo $(pwd)
 ls -R build
+cd ..
 
-cd -
 find "$workspace/build" -name "libcld3.so" -exec cp {} libcld3.so \;
 rm -rf "$workspace"
 ldd libcld3.so
