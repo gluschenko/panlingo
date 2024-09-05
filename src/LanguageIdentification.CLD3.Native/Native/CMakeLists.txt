@@ -13,8 +13,8 @@ message(STATUS "Protobuf_LIBRARIES = ${Protobuf_LIBRARIES}")
 message(STATUS "Protobuf_LITE_LIBRARIES = ${Protobuf_LITE_LIBRARIES}") # Usually /usr/lib64/libprotobuf-lite.so
 
 # If using static libraries, find them manually
-find_library(PROTOBUF_LIBRARIES_STATIC NAMES libprotobuf.a)
-find_library(PROTOBUF_LITE_LIBRARIES_STATIC NAMES libprotobuf-lite.a)
+find_library(PROTOBUF_LIBRARIES_STATIC NAMES libprotobuf.a HINTS ${Protobuf_LIBRARY_DIRS})
+find_library(PROTOBUF_LITE_LIBRARIES_STATIC NAMES libprotobuf-lite.a HINTS ${Protobuf_LIBRARY_DIRS})
 
 message(STATUS "PROTOBUF_LIBRARIES_STATIC = ${PROTOBUF_LIBRARIES_STATIC}")
 message(STATUS "PROTOBUF_LITE_LIBRARIES_STATIC = ${PROTOBUF_LITE_LIBRARIES_STATIC}") 
