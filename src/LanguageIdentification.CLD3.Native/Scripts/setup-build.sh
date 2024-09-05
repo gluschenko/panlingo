@@ -9,7 +9,7 @@ sudo apt -y install g++ | apt -y install g++
 sudo apt -y install git | apt -y install git
 # sudo apt -y install protobuf-compiler libprotobuf-dev | apt -y install protobuf-compiler libprotobuf-dev
 
-git clone --recurse-submodules --branch v28.x https://github.com/protocolbuffers/protobuf.git
+git clone --recurse-submodules --branch 28.x https://github.com/protocolbuffers/protobuf.git
 cd protobuf
 mkdir build
 cd build
