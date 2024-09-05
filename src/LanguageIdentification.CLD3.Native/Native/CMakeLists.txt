@@ -30,9 +30,6 @@ else()
     message(FATAL_ERROR "Static Protobuf libraries not found")
 endif()
 
-# Find and link against abseil
-find_package(absl REQUIRED)
-
 # By default, protobuf_generate_cpp generates pb.* files directy in the cmake build dir. 
 # But CLD3 sources have been coded using hard coded pathes to cld_3/protos/*.pb.h. 
 # So *.pb.h must be output to cld_3/protos.
@@ -44,12 +41,10 @@ message(STATUS "PROTO_HDRS= ${PROTO_HDRS}")
 add_definitions(-fPIC) # Position Independent Code
 add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
 
-# Include directories for Protobuf and Abseil headers
-include_directories(${CMAKE_CURRENT_BINARY_DIR} ${Protobuf_INCLUDE_DIRS} ${absl_INCLUDE_DIRS})
+include_directories(${CMAKE_CURRENT_BINARY_DIR} ${Protobuf_INCLUDE_DIRS}) # needed to include generated pb headers
 
 # Add static Protobuf libraries to target link libraries
 set(PROTOBUF_LIBS ${PROTOBUF_LIBRARIES_STATIC} ${PROTOBUF_LITE_LIBRARIES_STATIC})
-set(ABSEIL_LIBS absl::base absl::strings)
 
 add_library(${PROJECT_NAME} SHARED 
 	${PROTO_SRCS} ${PROTO_HDRS}
@@ -87,17 +82,9 @@ add_library(${PROJECT_NAME} SHARED
     src/binding.h
 )
 
-# Ensure that standard C++14 is set for the target
-set_target_properties(${PROJECT_NAME} PROPERTIES
-    CXX_STANDARD 14
-    CXX_STANDARD_REQUIRED ON
-    CXX_EXTENSIONS OFF
-)
-
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "src/binding.h")
 
-# Ensure Protobuf and Abseil static libs are linked properly
-target_link_libraries(cld3 PRIVATE ${PROTOBUF_LIBS} ${ABSEIL_LIBS})
+target_link_libraries(${PROJECT_NAME} ${Protobuf_LIBRARIES} ${PROTOBUF_LIBS})
 
 # unit tests exec:
 # add_executable(language_identifier_main src/language_identifier_main.cc)
