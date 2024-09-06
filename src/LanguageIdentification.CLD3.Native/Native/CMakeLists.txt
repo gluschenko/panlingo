@@ -44,7 +44,7 @@ add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
 include_directories(${CMAKE_CURRENT_BINARY_DIR} ${Protobuf_INCLUDE_DIRS}) # needed to include generated pb headers
 
 # Add static Protobuf libraries to target link libraries
-set(PROTOBUF_LIBS ${PROTOBUF_LIBRARIES_STATIC} ${PROTOBUF_LITE_LIBRARIES_STATIC})
+set(PROTOBUF_LIBS ${PROTOBUF_LIBRARIES_STATIC})
 
 add_library(${PROJECT_NAME} SHARED 
 	${PROTO_SRCS} ${PROTO_HDRS}
@@ -84,7 +84,7 @@ add_library(${PROJECT_NAME} SHARED
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "src/binding.h")
 
-target_link_libraries(${PROJECT_NAME} ${Protobuf_LIBRARIES} ${PROTOBUF_LIBS})
+target_link_libraries(${PROJECT_NAME} ${PROTOBUF_LIBS})
 
 # unit tests exec:
 # add_executable(language_identifier_main src/language_identifier_main.cc)
