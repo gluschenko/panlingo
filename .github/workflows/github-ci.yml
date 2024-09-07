@@ -15,17 +15,11 @@ jobs:
       fail-fast: false
       matrix:
         projectName: 
-          - LanguageIdentification.CLD2.Native
           - LanguageIdentification.CLD2
-          - LanguageIdentification.CLD3.Native
           - LanguageIdentification.CLD3
-          - LanguageIdentification.FastText.Native
           - LanguageIdentification.FastText
-          - LanguageIdentification.Whatlang.Native
           - LanguageIdentification.Whatlang
-          - LanguageIdentification.MediaPipe.Native
           - LanguageIdentification.MediaPipe
-          - LanguageIdentification.Lingua.Native
           - LanguageIdentification.Lingua
           - LanguageCode
     permissions:
@@ -44,7 +38,8 @@ jobs:
       with:
         filters: |
           src:
-            - '${{env.ROOT}}/**'
+            - '${{env.ROOT}}/${{matrix.projectName}}.Native/**'
+            - '${{env.ROOT}}/${{matrix.projectName}}/**'
 
     - name: 📂 Setup .NET Core
       if: steps.changes.outputs.src == 'true'
@@ -56,6 +51,11 @@ jobs:
           7.0.x
           8.0.x
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
+
+    - name: 🚀 Pack ${{matrix.projectName}}.Native
+      if: steps.changes.outputs.src == 'true'
+      working-directory: ${{env.ROOT}}/${{matrix.projectName}}.Native
+      run: dotnet pack -c Release -o out 
 
     - name: 🚀 Pack ${{matrix.projectName}}
       if: steps.changes.outputs.src == 'true'
