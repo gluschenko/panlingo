@@ -42,7 +42,7 @@ jobs:
             - '${{env.ROOT}}/${{matrix.projectName}}/**'
 
     - name: 📂 Setup .NET Core
-      if: steps.changes.outputs.src == 'true'
+      #if: steps.changes.outputs.src == 'true'
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: |
@@ -53,17 +53,17 @@ jobs:
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
     - name: 🚀 Pack ${{matrix.projectName}}.Native
-      if: steps.changes.outputs.src == 'true'
+      #if: steps.changes.outputs.src == 'true'
       working-directory: ${{env.ROOT}}/${{matrix.projectName}}.Native
       run: dotnet pack -c Release -o out 
 
     - name: 🚀 Pack ${{matrix.projectName}}
-      if: steps.changes.outputs.src == 'true'
+      #if: steps.changes.outputs.src == 'true'
       working-directory: ${{env.ROOT}}/${{matrix.projectName}}
       run: dotnet pack -c Release -o out 
 
     - uses: actions/upload-artifact@v4
-      if: steps.changes.outputs.src == 'true'
+      #if: steps.changes.outputs.src == 'true'
       with:
         name: build-${{matrix.projectName}}
         path: ${{env.ROOT}}/${{matrix.projectName}}/out
