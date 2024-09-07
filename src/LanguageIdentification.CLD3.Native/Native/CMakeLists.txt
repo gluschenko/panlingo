@@ -1,55 +1,15 @@
-# This cmake scripts only builds a static cld3 lib and the unittests.
-
 project(cld3)
 
-# Old versions of cmake dont search/find protobuf lite
 cmake_minimum_required(VERSION 3.9)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
-
-find_package(Protobuf REQUIRED)
-message(STATUS "Protobuf_FOUND = ${Protobuf_FOUND}")
-message(STATUS "Protobuf_VERSION = ${Protobuf_VERSION}")
-message(WARNING "Protobuf 2.5 and CLD3 seems happy together. This script does NOT check if your verison of protobuf is compatible.")
-message(STATUS "Protobuf_LIBRARIES = ${Protobuf_LIBRARIES}")
-message(STATUS "Protobuf_LITE_LIBRARIES = ${Protobuf_LITE_LIBRARIES}") # Usually /usr/lib64/libprotobuf-lite.so
-
-# If using static libraries, find them manually
-find_library(PROTOBUF_LIBRARIES_STATIC NAMES libprotobuf.a HINTS ${Protobuf_LIBRARY_DIRS})
-find_library(PROTOBUF_LITE_LIBRARIES_STATIC NAMES libprotobuf-lite.a HINTS ${Protobuf_LIBRARY_DIRS})
-
-message(STATUS "PROTOBUF_LIBRARIES_STATIC = ${PROTOBUF_LIBRARIES_STATIC}")
-message(STATUS "PROTOBUF_LITE_LIBRARIES_STATIC = ${PROTOBUF_LITE_LIBRARIES_STATIC}") 
-
-# Ensure the static libraries are found
-if(PROTOBUF_LIBRARIES_STATIC AND PROTOBUF_LITE_LIBRARIES_STATIC)
-    message(STATUS "Using static Protobuf libraries")
-else()
-    message(FATAL_ERROR "Static Protobuf libraries not found")
-endif()
-
-# By default, protobuf_generate_cpp generates pb.* files directy in the cmake build dir. 
-# But CLD3 sources have been coded using hard coded pathes to cld_3/protos/*.pb.h. 
-# So *.pb.h must be output to cld_3/protos.
-# For that, let's use a custom my_protobuf_generate_cpp:
-include(${CMAKE_CURRENT_SOURCE_DIR}/misc/myprotobuf.cmake)
-my_protobuf_generate_cpp(cld_3/protos PROTO_SRCS PROTO_HDRS src/feature_extractor.proto src/sentence.proto src/task_spec.proto)
-message(STATUS "PROTO_HDRS= ${PROTO_HDRS}")
 
 add_definitions(-fPIC) # Position Independent Code
 add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
 
-include_directories(${CMAKE_CURRENT_BINARY_DIR} ${Protobuf_INCLUDE_DIRS}) # needed to include generated pb headers
-
-# Add static Protobuf libraries to target link libraries
-# set(PROTOBUF_LIBS ${PROTOBUF_LIBRARIES_STATIC} ${PROTOBUF_LITE_LIBRARIES_STATIC})
-
 add_library(${PROJECT_NAME} SHARED 
-	# ${PROTO_SRCS} ${PROTO_HDRS}
 	src/base.cc
 	src/embedding_feature_extractor.cc
 	src/embedding_network.cc
@@ -86,8 +46,6 @@ add_library(${PROJECT_NAME} SHARED
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "src/binding.h")
-
-# target_link_libraries(${PROJECT_NAME} ${Protobuf_LIBRARIES} ${PROTOBUF_LIBS})
 
 # unit tests exec:
 add_executable(language_identifier_main src/language_identifier_main.cc)

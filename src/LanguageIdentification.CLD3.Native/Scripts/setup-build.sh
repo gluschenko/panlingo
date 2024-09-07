@@ -10,7 +10,6 @@ apt-get update && apt-get install -y ca-certificates curl gnupg && \
 apt -y update
 apt -y install cmake
 apt -y install g++
-apt -y install protobuf-compiler libprotobuf-dev
 apt -y install nodejs
 
 npm install -g zx
