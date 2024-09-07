@@ -15,17 +15,11 @@ jobs:
       fail-fast: false
       matrix:
         projectName: 
-          - LanguageIdentification.CLD2.Native
           - LanguageIdentification.CLD2
-          - LanguageIdentification.CLD3.Native
           - LanguageIdentification.CLD3
-          - LanguageIdentification.FastText.Native
           - LanguageIdentification.FastText
-          - LanguageIdentification.Whatlang.Native
           - LanguageIdentification.Whatlang
-          - LanguageIdentification.MediaPipe.Native
           - LanguageIdentification.MediaPipe
-          - LanguageIdentification.Lingua.Native
           - LanguageIdentification.Lingua
           - LanguageCode
     permissions:
@@ -39,6 +33,20 @@ jobs:
       with: 
         submodules: 'true'
 
+    - uses: dorny/paths-filter@v3
+      id: changes
+      with:
+        filters: |
+          src:
+            - '${{env.ROOT}}/${{matrix.projectName}}/**'
+
+    - uses: dorny/paths-filter@v3
+      id: changes-native
+      with:
+        filters: |
+          src:
+            - '${{env.ROOT}}/${{matrix.projectName}}.Native/**'
+
     - name: 📂 Setup .NET Core
       uses: actions/setup-dotnet@v4
       with:
@@ -49,15 +57,27 @@ jobs:
           8.0.x
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
-    - name: 📂 Files
-      working-directory: ${{env.ROOT}}
-      run: ls -R
+    - name: 🚀 Pack ${{matrix.projectName}}.Native
+      if: steps.changes-native.outputs.src == 'true'
+      working-directory: ${{env.ROOT}}/${{matrix.projectName}}.Native
+      run: dotnet pack -c Release -o out 
 
     - name: 🚀 Pack ${{matrix.projectName}}
+      if: steps.changes.outputs.src == 'true'
       working-directory: ${{env.ROOT}}/${{matrix.projectName}}
       run: dotnet pack -c Release -o out 
 
     - uses: actions/upload-artifact@v4
+      if: steps.changes-native.outputs.src == 'true'
+      with:
+        name: build-${{matrix.projectName}}.Native
+        path: ${{env.ROOT}}/${{matrix.projectName}}.Native/out
+        retention-days: 1
+        overwrite: 'true'
+        compression-level: 0
+
+    - uses: actions/upload-artifact@v4
+      if: steps.changes.outputs.src == 'true'
       with:
         name: build-${{matrix.projectName}}
         path: ${{env.ROOT}}/${{matrix.projectName}}/out
@@ -77,6 +97,10 @@ jobs:
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
     steps:
     - uses: actions/checkout@v4
+  
+    - name: 📂 Files
+      working-directory: ${{env.ROOT}}
+      run: mkdir -p local-nugets
 
     - uses: actions/download-artifact@v4
       with:
@@ -133,8 +157,16 @@ jobs:
       MICROSOFT_NUGET_AUTH_TOKEN: ${{ secrets.PACKAGES_WRITE_TOKEN }} 
     steps:
     - uses: actions/checkout@v4
+  
+    - uses: dorny/paths-filter@v3
+      id: changes
+      with:
+        filters: |
+          src:
+            - '${{env.ROOT}}/${{matrix.projectName}}/**'
 
     - uses: actions/download-artifact@v4
+      if: steps.changes.outputs.src == 'true'
       with:
         pattern: build-${{matrix.projectName}}
         path: ${{env.ROOT}}/${{matrix.projectName}}/out
@@ -153,14 +185,23 @@ jobs:
       working-directory: ${{env.ROOT}}
       run: ls -R
 
-    - name: 🚚 Push ${{matrix.projectName}} to GitHub registry
+    - name: 🚚 [GitHub] Push ${{matrix.projectName}} to registry
+      if: steps.changes.outputs.src == 'true'
       working-directory: ${{env.ROOT}}/${{matrix.projectName}}
-      run: dotnet nuget push ./out/**/*.nupkg --skip-duplicate -k ${{env.NUGET_AUTH_TOKEN}} --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
+      run: |
+        dotnet nuget push ./out/**/*.nupkg \
+        --skip-duplicate -k ${{env.NUGET_AUTH_TOKEN}} \
+        --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
-    - name: 🚚 Push ${{matrix.projectName}} to Microsoft registry
+    - name: 🚚 [Microsoft] Push ${{matrix.projectName}} to registry
+      if: steps.changes.outputs.src == 'true'
       working-directory: ${{env.ROOT}}/${{matrix.projectName}}
-      run: dotnet nuget push ./out/**/*.nupkg --skip-duplicate -k ${{env.MICROSOFT_NUGET_AUTH_TOKEN}} --source https://api.nuget.org/v3/index.json
+      run: |
+        dotnet nuget push ./out/**/*.nupkg \
+        --skip-duplicate -k ${{env.MICROSOFT_NUGET_AUTH_TOKEN}} \
+        --source https://api.nuget.org/v3/index.json
 
     - uses: geekyeggo/delete-artifact@v5
+      if: steps.changes.outputs.src == 'true'
       with:
         name: build-${{matrix.projectName}}
