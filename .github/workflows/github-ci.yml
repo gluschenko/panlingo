@@ -15,19 +15,19 @@ jobs:
       fail-fast: false
       matrix:
         projectName: 
-          #- LanguageIdentification.CLD2.Native
-          #- LanguageIdentification.CLD2
+          - LanguageIdentification.CLD2.Native
+          - LanguageIdentification.CLD2
           - LanguageIdentification.CLD3.Native
           - LanguageIdentification.CLD3
-          #- LanguageIdentification.FastText.Native
-          #- LanguageIdentification.FastText
-          #- LanguageIdentification.Whatlang.Native
-          #- LanguageIdentification.Whatlang
-          #- LanguageIdentification.MediaPipe.Native
-          #- LanguageIdentification.MediaPipe
-          #- LanguageIdentification.Lingua.Native
-          #- LanguageIdentification.Lingua
-          #- LanguageCode
+          - LanguageIdentification.FastText.Native
+          - LanguageIdentification.FastText
+          - LanguageIdentification.Whatlang.Native
+          - LanguageIdentification.Whatlang
+          - LanguageIdentification.MediaPipe.Native
+          - LanguageIdentification.MediaPipe
+          - LanguageIdentification.Lingua.Native
+          - LanguageIdentification.Lingua
+          - LanguageCode
     permissions:
       contents: read
       packages: write
