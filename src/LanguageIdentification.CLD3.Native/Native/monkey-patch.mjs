@@ -33,7 +33,7 @@ function b()
     const oldText = '#include <vector>\n';
     const newText = '#include <vector>\n#include "fake_protobuf.h"\n';
 
-    findAndPatch("main.h", oldText, newText);
+    findAndPatch("base.h", oldText, newText);
 }
 
 console.log('[Monkey patching is started]');
