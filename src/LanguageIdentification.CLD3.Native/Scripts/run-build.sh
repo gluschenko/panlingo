@@ -13,6 +13,8 @@ ls -R .
 
 cd "$workspace"
 
+zx ../Native/monkey-patch.mjs
+
 mkdir build
 cd build
 cmake ..
