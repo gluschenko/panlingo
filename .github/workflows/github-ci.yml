@@ -88,6 +88,10 @@ jobs:
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
     steps:
     - uses: actions/checkout@v4
+  
+    - name: 📂 Files
+      working-directory: ${{env.ROOT}}
+      run: mkdir -p local-nugets
 
     - uses: actions/download-artifact@v4
       with:
