@@ -130,7 +130,7 @@ jobs:
     name: 🚚 Push ${{matrix.projectName}}
     runs-on: ubuntu-latest
     needs: test-nugets
-    if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/eco-deploy' }}
+    if: github.ref == 'refs/heads/master'
     strategy:
       fail-fast: false
       matrix:
@@ -185,9 +185,8 @@ jobs:
       working-directory: ${{env.ROOT}}
       run: ls -R
 
-    # RELEASE
     - name: 🚚 [GitHub] Push ${{matrix.projectName}} to registry
-      if: ${{ github.ref == 'refs/heads/master' && steps.changes.outputs.src == 'true' }}
+      if: steps.changes.outputs.src == 'true'
       working-directory: ${{env.ROOT}}/${{matrix.projectName}}
       run: |
         dotnet nuget push ./out/**/*.nupkg \
@@ -195,31 +194,12 @@ jobs:
         --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
     - name: 🚚 [Microsoft] Push ${{matrix.projectName}} to registry
-      if: ${{ github.ref == 'refs/heads/master' && steps.changes.outputs.src == 'true' }}
+      if: steps.changes.outputs.src == 'true'
       working-directory: ${{env.ROOT}}/${{matrix.projectName}}
       run: |
         dotnet nuget push ./out/**/*.nupkg \
         --skip-duplicate -k ${{env.MICROSOFT_NUGET_AUTH_TOKEN}} \
         --source https://api.nuget.org/v3/index.json
-
-    # CANARY
-    - name: 🚚 [GitHub] Push ${{matrix.projectName}} to registry
-      if: ${{ github.ref == 'refs/heads/eco-deploy' && steps.changes.outputs.src == 'true' }}
-      working-directory: ${{env.ROOT}}/${{matrix.projectName}}
-      run: |
-        dotnet nuget push ./out/**/*.nupkg \
-        --skip-duplicate -k ${{env.NUGET_AUTH_TOKEN}} \
-        --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
-        --version-suffix ${{github.sha}}
-
-    - name: 🚚 [Microsoft] Push ${{matrix.projectName}} to registry
-      if: ${{ github.ref == 'refs/heads/eco-deploy' && steps.changes.outputs.src == 'true' }}
-      working-directory: ${{env.ROOT}}/${{matrix.projectName}}
-      run: |
-        dotnet nuget push ./out/**/*.nupkg \
-        --skip-duplicate -k ${{env.MICROSOFT_NUGET_AUTH_TOKEN}} \
-        --source https://api.nuget.org/v3/index.json
-        --version-suffix ${{github.sha}}
 
     - uses: geekyeggo/delete-artifact@v5
       if: steps.changes.outputs.src == 'true'
