@@ -7,7 +7,7 @@ async function findAndPatch(endsWith, oldText, newText) {
         console.log("Found: " + file);
 
         const content = await fs.readFile(file, 'utf-8');
-        const newContent = content.replace(oldText, newText);
+        const newContent = content.replaceAll(oldText, newText);
 
         if (content !== newContent) {
             await fs.writeFile(file, newContent);

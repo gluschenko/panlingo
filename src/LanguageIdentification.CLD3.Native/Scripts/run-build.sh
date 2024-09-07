@@ -19,6 +19,10 @@ mkdir build
 cd build
 cmake ..
 make -j $(nproc) # make
+
+./language_identifier_main           # run tests
+./language_identifier_features_test  # run tests
+
 cd ..
 
 echo $(pwd)
