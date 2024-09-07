@@ -8,6 +8,8 @@ cmake_minimum_required(VERSION 3.9)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
 
 find_package(Protobuf REQUIRED)
 message(STATUS "Protobuf_FOUND = ${Protobuf_FOUND}")
@@ -44,10 +46,10 @@ add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
 include_directories(${CMAKE_CURRENT_BINARY_DIR} ${Protobuf_INCLUDE_DIRS}) # needed to include generated pb headers
 
 # Add static Protobuf libraries to target link libraries
-set(PROTOBUF_LIBS ${PROTOBUF_LIBRARIES_STATIC})
+# set(PROTOBUF_LIBS ${PROTOBUF_LIBRARIES_STATIC} ${PROTOBUF_LITE_LIBRARIES_STATIC})
 
 add_library(${PROJECT_NAME} SHARED 
-	${PROTO_SRCS} ${PROTO_HDRS}
+	# ${PROTO_SRCS} ${PROTO_HDRS}
 	src/base.cc
 	src/embedding_feature_extractor.cc
 	src/embedding_network.cc
@@ -80,18 +82,19 @@ add_library(${PROJECT_NAME} SHARED
 	# bindings
     src/binding.cc
     src/binding.h
+    src/fake_protobuf.h
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "src/binding.h")
 
-target_link_libraries(${PROJECT_NAME} ${PROTOBUF_LIBS})
+# target_link_libraries(${PROJECT_NAME} ${Protobuf_LIBRARIES} ${PROTOBUF_LIBS})
 
 # unit tests exec:
-# add_executable(language_identifier_main src/language_identifier_main.cc)
-# target_link_libraries(language_identifier_main cld3 ${Protobuf_LITE_LIBRARIES})
+add_executable(language_identifier_main src/language_identifier_main.cc)
+target_link_libraries(language_identifier_main cld3)
 
-# add_executable(getonescriptspan_test src/script_span/getonescriptspan_test.cc)
-# target_link_libraries(getonescriptspan_test cld3 ${Protobuf_LITE_LIBRARIES})
+add_executable(getonescriptspan_test src/script_span/getonescriptspan_test.cc)
+target_link_libraries(getonescriptspan_test cld3)
 
-# add_executable(language_identifier_features_test src/language_identifier_features_test.cc)
-# target_link_libraries(language_identifier_features_test cld3 ${Protobuf_LITE_LIBRARIES})
+add_executable(language_identifier_features_test src/language_identifier_features_test.cc)
+target_link_libraries(language_identifier_features_test cld3)
