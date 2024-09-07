@@ -1,11 +1,6 @@
 FROM mcr.microsoft.com/dotnet/runtime:8.0 AS base
 WORKDIR /app
 
-### CLD3
-RUN apt -y update
-RUN apt -y install protobuf-compiler libprotobuf-dev
-###
-
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /repo

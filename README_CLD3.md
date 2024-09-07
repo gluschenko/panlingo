@@ -18,27 +18,6 @@ To integrate the CLD3 functionality, follow these steps:
    dotnet add package Panlingo.LanguageIdentification.CLD3
    ```
 
-2. **Install Protobuf**:
-
-   Depending on your Linux distribution, use the appropriate command to install Protobuf:
-
-   - **Ubuntu/Debian**:
-     ```sh
-     sudo apt -y update
-     sudo apt -y install protobuf-compiler libprotobuf-dev
-     ```
-
-   - **Fedora**:
-     ```sh
-     sudo yum install protobuf-devel
-     ```
-
-   - **CentOS**:
-     ```sh
-     sudo yum install epel-release
-     sudo yum install protobuf-devel
-     ```
-
 ## Usage
 
 Integrating the CLD3 library into your .NET application is straightforward. Here’s a quick guide to get you started:
