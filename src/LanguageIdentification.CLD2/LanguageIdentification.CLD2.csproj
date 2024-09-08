@@ -6,7 +6,7 @@
     <PackageId>Panlingo.LanguageIdentification.CLD2</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.CLD2</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.CLD2</RootNamespace>
-    <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
+    <RepositoryUrl>https://github.com/gluschenko/panlingo</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>

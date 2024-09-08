@@ -160,4 +160,4 @@ Happy coding! 👩‍💻👨‍💻
 
 ---
 
-Stay updated by following our repository. For any inquiries or support, reach out through the [issues page](https://github.com/gluschenko/language-identification/issues).
+Stay updated by following our repository. For any inquiries or support, reach out through the [issues page](https://github.com/gluschenko/panlingo/issues).

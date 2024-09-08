@@ -1,6 +1,6 @@
 ﻿# Language Identification
 
-[![GitHub CI](https://github.com/gluschenko/language-identification/actions/workflows/github-ci.yml/badge.svg)](https://github.com/gluschenko/language-identification/actions/workflows/github-ci.yml)
+[![GitHub CI](https://github.com/gluschenko/panlingo/actions/workflows/github-ci.yml/badge.svg)](https://github.com/gluschenko/panlingo/actions/workflows/github-ci.yml)
 
 ## Overview
 

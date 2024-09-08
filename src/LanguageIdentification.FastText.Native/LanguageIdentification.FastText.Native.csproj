@@ -6,7 +6,7 @@
     <PackageId>Panlingo.LanguageIdentification.FastText.Native</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.FastText.Native</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.FastText.Native</RootNamespace>
-    <RepositoryUrl>https://github.com/gluschenko/language-identification</RepositoryUrl>
+    <RepositoryUrl>https://github.com/gluschenko/panlingo</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
