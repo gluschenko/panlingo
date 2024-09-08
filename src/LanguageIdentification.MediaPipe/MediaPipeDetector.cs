@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Panlingo.LanguageIdentification.MediaPipe.Internal;
-using Panlingo.LanguageIdentification.MediaPipe.Native;
 
 namespace Panlingo.LanguageIdentification.MediaPipe
 {
@@ -17,7 +16,14 @@ namespace Panlingo.LanguageIdentification.MediaPipe
         private IntPtr _mediaPipe;
         private readonly SemaphoreSlim _semaphore;
 
-        public MediaPipeDetector(int resultCount = -1, float scoreThreshold = 0.0f, string modelPath = "")
+        [Obsolete]
+        public MediaPipeDetector(int resultCount = -1, float scoreThreshold = 0.0f, string modelPath = "") : this(
+            MediaPipeOptions.FromFile(modelPath)
+                .WithResultCount(resultCount)
+                .WithScoreThreshold(scoreThreshold)
+        ) { }
+
+        public MediaPipeDetector(MediaPipeOptions options)
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
@@ -26,35 +32,56 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                 );
             }
 
-            if (string.IsNullOrWhiteSpace(modelPath))
-            {
-                modelPath = Path.GetFullPath(MediaPipeNativeLibrary.ModelName);
+            var modelAssetBuffer = IntPtr.Zero;
+            uint modelAssetBufferCount = 0;
+            GCHandle? modelDataHandle = null;
 
-                foreach (var file in Directory.EnumerateFiles(".", "*", SearchOption.AllDirectories))
+            if (options.ModelStream is not null)
+            {
+                using var memoryStream = new MemoryStream();
+                options.ModelStream.CopyTo(memoryStream);
+                
+                var modelData = memoryStream.ToArray();
+                modelDataHandle = GCHandle.Alloc(modelData, GCHandleType.Pinned);
+                modelAssetBuffer = modelDataHandle.Value.AddrOfPinnedObject();
+                modelAssetBufferCount = (uint)modelData.Length;
+            }
+            else if(options.ModelPath is not null)
+            {
+                if (!File.Exists(options.ModelPath))
                 {
-                    if (Path.GetFileName(file) == MediaPipeNativeLibrary.ModelName)
-                    {
-                        modelPath = Path.GetFullPath(file);
-                    }
+                    throw new FileNotFoundException("File is not found", options.ModelPath);
                 }
             }
+            else
+            {
+                throw new InvalidOperationException("Model data not specified");
+            }
 
-            var options = new LanguageDetectorOptions(
-                baseOptions: new BaseOptions(
-                    modelAssetBuffer: null,
-                    modelAssetBufferCount: 0,
-                    modelAssetPath: modelPath
-                ),
-                classifierOptions: new ClassifierOptions(
-                    resultCount: resultCount,
-                    scoreThreshold: scoreThreshold
-                )
-            );
+            try
+            {
+                var nativeOptions = new LanguageDetectorOptions(
+                    baseOptions: new BaseOptions(
+                        modelAssetBuffer: modelAssetBuffer,
+                        modelAssetBufferCount: modelAssetBufferCount,
+                        modelAssetPath: options.ModelPath
+                    ),
+                    classifierOptions: new ClassifierOptions(
+                        resultCount: options.ResultCount,
+                        scoreThreshold: options.ScoreThreshold
+                    )
+                );
 
-            _mediaPipe = MediaPipeDetectorWrapper.CreateLanguageDetector(ref options, out var errorMessage);
+                _mediaPipe = MediaPipeDetectorWrapper.CreateLanguageDetector(ref nativeOptions, out var errorMessage);
+
+                CheckError(errorMessage);
+            }
+            finally
+            {
+                modelDataHandle?.Free();
+            }
+
             _semaphore = new SemaphoreSlim(1, 1);
-
-            CheckError(errorMessage);
         }
 
         public IEnumerable<MediaPipePrediction> PredictLanguages(string text)

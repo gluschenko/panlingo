@@ -63,18 +63,21 @@ namespace Panlingo.LanguageIdentification.MediaPipe.Internal
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
     internal readonly struct BaseOptions
     {
-        [MarshalAs(UnmanagedType.LPStr)]
-        public readonly string? ModelAssetBuffer;
+        public readonly IntPtr ModelAssetBuffer;
 
         public readonly uint ModelAssetBufferCount;
 
         [MarshalAs(UnmanagedType.LPStr)]
         public readonly string? ModelAssetPath;
 
-        public BaseOptions(string? modelAssetBuffer, int modelAssetBufferCount, string? modelAssetPath)
+        public BaseOptions(
+            IntPtr modelAssetBuffer, 
+            uint modelAssetBufferCount, 
+            string? modelAssetPath
+        )
         {
             ModelAssetBuffer = modelAssetBuffer;
-            ModelAssetBufferCount = (uint)modelAssetBufferCount;
+            ModelAssetBufferCount = modelAssetBufferCount;
             ModelAssetPath = modelAssetPath;
         }
     }
