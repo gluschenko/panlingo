@@ -3,11 +3,6 @@
 RUN wget https://aka.ms/getvsdbgsh && \
     sh getvsdbgsh -v latest  -l /vsdbg
 
-### CLD3
-RUN apt -y update
-RUN apt -y install protobuf-compiler libprotobuf-dev
-###
-
 ### FastText
 RUN apt -y update
 RUN apt -y install curl

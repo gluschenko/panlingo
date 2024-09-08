@@ -1,0 +1,58 @@
+project(cld3)
+
+cmake_minimum_required(VERSION 3.9)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+add_definitions(-fPIC) # Position Independent Code
+add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
+
+add_library(${PROJECT_NAME} SHARED 
+	src/base.cc
+	src/embedding_feature_extractor.cc
+	src/embedding_network.cc
+	src/feature_extractor.cc
+	src/feature_extractor.h
+	src/feature_types.cc
+	src/fml_parser.cc
+	src/language_identifier_features.cc
+	src/lang_id_nn_params.cc 
+	src/nnet_language_identifier.cc
+	src/registry.cc
+	src/relevant_script_feature.cc
+	src/sentence_features.cc
+	src/task_context.cc
+	src/task_context_params.cc
+	src/unicodetext.cc
+	src/utils.cc
+	src/workspace.cc
+	
+	src/script_span/generated_entities.cc
+	src/script_span/getonescriptspan.cc
+	src/script_span/getonescriptspan.h
+	src/script_span/getonescriptspan_test.cc
+	src/script_span/utf8statetable.cc
+	src/script_span/offsetmap.cc
+	src/script_span/text_processing.cc
+	src/script_span/text_processing.h
+	src/script_span/fixunicodevalue.cc
+	
+	# bindings
+    src/binding.cc
+    src/binding.h
+    src/fake_protobuf.h
+)
+
+set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "src/binding.h")
+
+# unit tests exec:
+add_executable(language_identifier_main src/language_identifier_main.cc)
+target_link_libraries(language_identifier_main cld3)
+
+add_executable(getonescriptspan_test src/script_span/getonescriptspan_test.cc)
+target_link_libraries(getonescriptspan_test cld3)
+
+add_executable(language_identifier_features_test src/language_identifier_features_test.cc)
+target_link_libraries(language_identifier_features_test cld3)
