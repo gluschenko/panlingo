@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <sstream>
 #include <string.h>
 
@@ -10,6 +10,14 @@
 
 using namespace std;
 using namespace fasttext;
+
+class membuf : public std::streambuf {
+public:
+    membuf(const uint8_t* base, std::size_t size) {
+        char* p = (char*)base;
+        this->setg(p, p, p + size);
+    }
+};
 
 extern "C" {
 
@@ -37,6 +45,18 @@ extern "C" {
         try {
             ((FastText*)handle)->loadModel(filename);
         } catch (const std::invalid_argument& e) {
+            save_error(err_ptr, e);
+        }
+    }
+
+    void FastTextLoadModelData(fasttext_t* handle, const uint8_t* buffer, unsigned int buffer_length, char** err_ptr) {
+        try {
+            membuf sbuf(buffer, buffer_length);
+            std::istream stream(&sbuf);
+
+            ((FastText*)handle)->loadModel(stream);
+        }
+        catch (const std::invalid_argument& e) {
             save_error(err_ptr, e);
         }
     }

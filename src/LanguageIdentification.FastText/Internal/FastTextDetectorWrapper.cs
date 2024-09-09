@@ -17,6 +17,9 @@ namespace Panlingo.LanguageIdentification.FastText.Internal
         public static extern void FastTextLoadModel(IntPtr handle, string filename, ref IntPtr errptr);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void FastTextLoadModelData(IntPtr handle, IntPtr buffer, uint bufferLength, ref IntPtr errptr);
+
+        [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         public static extern int FastTextGetModelDimensions(IntPtr handle);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
