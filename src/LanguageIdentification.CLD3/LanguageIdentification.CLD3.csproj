@@ -15,11 +15,11 @@
     <PackageTags>nlp lid language-identification language-detection cld3</PackageTags>
     <PackageReadmeFile>README_CLD3.md</PackageReadmeFile>
     <PackageReleaseNotes>
-      **0.0.0.20**
-      - Protobuf is not required now!
+0.0.0.20:
+- Protobuf is not required now!
       
-      **0.0.0.10**
-      - Initial release
+0.0.0.10:
+- Initial release
     </PackageReleaseNotes>
     <Description>
       This is a .NET wrapper for the Chrome Language Detection (CLD3) library by Google Inc.

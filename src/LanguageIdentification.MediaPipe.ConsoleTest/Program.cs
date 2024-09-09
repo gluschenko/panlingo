@@ -4,11 +4,19 @@
     {
         static void Main(string[] args)
         {
-            var modelPath = "/models/mediapipe_language_detector.tflite";
-            using var stream = File.Open(modelPath, FileMode.Open);
+            // var modelPath = "/models/mediapipe_language_detector.tflite";
+            // using var stream = File.Open(modelPath, FileMode.Open);
+
+            // using var mediaPipe = new MediaPipeDetector(
+            //     options: MediaPipeOptions.FromStream(stream)
+            // );
+
+            // using var mediaPipe = new MediaPipeDetector(
+            //     options: MediaPipeOptions.FromFile(stream)
+            // );
 
             using var mediaPipe = new MediaPipeDetector(
-                options: MediaPipeOptions.FromStream(stream)
+                options: MediaPipeOptions.FromDefault()
             );
 
             var text = "Hello, how are you? Привіт, як справи? Привет, как дела?";

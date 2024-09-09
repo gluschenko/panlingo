@@ -86,11 +86,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.Medi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lingua", "lingua", "{64F96420-4DA1-4BBC-8F57-E51872809E3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.Lingua", "LanguageIdentification.Lingua\LanguageIdentification.Lingua.csproj", "{81E9FD71-513E-4DF7-B896-39956A0EA9B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.Lingua", "LanguageIdentification.Lingua\LanguageIdentification.Lingua.csproj", "{81E9FD71-513E-4DF7-B896-39956A0EA9B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.Lingua.ConsoleTest", "LanguageIdentification.Lingua.ConsoleTest\LanguageIdentification.Lingua.ConsoleTest.csproj", "{75A68435-0304-4CF0-9C2B-EDA888A6B99E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.Lingua.ConsoleTest", "LanguageIdentification.Lingua.ConsoleTest\LanguageIdentification.Lingua.ConsoleTest.csproj", "{75A68435-0304-4CF0-9C2B-EDA888A6B99E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.Lingua.Native", "LanguageIdentification.Lingua.Native\LanguageIdentification.Lingua.Native.csproj", "{4041839F-7194-49A7-9A0E-87FCA5045BE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.Lingua.Native", "LanguageIdentification.Lingua.Native\LanguageIdentification.Lingua.Native.csproj", "{4041839F-7194-49A7-9A0E-87FCA5045BE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageIdentification.MediaPipe.SourceGenerator", "LanguageIdentification.MediaPipe.SourceGenerator\LanguageIdentification.MediaPipe.SourceGenerator.csproj", "{05E45DA8-7910-483B-B04A-9514BD157EE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -198,6 +200,10 @@ Global
 		{4041839F-7194-49A7-9A0E-87FCA5045BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4041839F-7194-49A7-9A0E-87FCA5045BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4041839F-7194-49A7-9A0E-87FCA5045BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05E45DA8-7910-483B-B04A-9514BD157EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05E45DA8-7910-483B-B04A-9514BD157EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05E45DA8-7910-483B-B04A-9514BD157EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05E45DA8-7910-483B-B04A-9514BD157EE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -227,6 +233,7 @@ Global
 		{81E9FD71-513E-4DF7-B896-39956A0EA9B3} = {64F96420-4DA1-4BBC-8F57-E51872809E3F}
 		{75A68435-0304-4CF0-9C2B-EDA888A6B99E} = {64F96420-4DA1-4BBC-8F57-E51872809E3F}
 		{4041839F-7194-49A7-9A0E-87FCA5045BE5} = {64F96420-4DA1-4BBC-8F57-E51872809E3F}
+		{05E45DA8-7910-483B-B04A-9514BD157EE8} = {48F2FA2B-23FF-4A08-A142-B1B0521D8AAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C9437BCA-E720-4E50-AD1B-6AC91C4A4E5C}

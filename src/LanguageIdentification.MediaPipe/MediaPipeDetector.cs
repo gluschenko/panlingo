@@ -46,6 +46,13 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                 modelAssetBuffer = modelDataHandle.Value.AddrOfPinnedObject();
                 modelAssetBufferCount = (uint)modelData.Length;
             }
+            else if (options.ModelData is not null)
+            {
+                var modelData = options.ModelData;
+                modelDataHandle = GCHandle.Alloc(modelData, GCHandleType.Pinned);
+                modelAssetBuffer = modelDataHandle.Value.AddrOfPinnedObject();
+                modelAssetBufferCount = (uint)modelData.Length;
+            }
             else if(options.ModelPath is not null)
             {
                 if (!File.Exists(options.ModelPath))

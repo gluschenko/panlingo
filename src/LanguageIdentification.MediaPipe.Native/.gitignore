@@ -1,3 +1,2 @@
 liblanguage_detector.so
-mediapipe_language_detector.tflite
 build_temp/**

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
-    <Version>0.0.0.20</Version>
+    <Version>0.0.0.21</Version>
     <PackageId>Panlingo.LanguageIdentification.MediaPipe</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.MediaPipe</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.MediaPipe</RootNamespace>
@@ -15,7 +15,11 @@
     <PackageTags>nlp lid language-identification language-detection mediapipe</PackageTags>
     <PackageReadmeFile>README_MEDIAPIPE.md</PackageReadmeFile>
     <PackageReleaseNotes>
-      - Initial release
+0.0.0.21:
+- Default MediaPipe model is included in NuGet package
+
+0.0.0.10:
+- Initial release
     </PackageReleaseNotes>
     <Description>
       This is a .NET wrapper for the MediaPipe library by Google AI Edge.
@@ -38,6 +42,12 @@
       <IncludeAssets>all</IncludeAssets>
       <PrivateAssets>analyzers;build</PrivateAssets>
     </ProjectReference>
+    <ProjectReference 
+      Include="..\LanguageIdentification.MediaPipe.SourceGenerator\LanguageIdentification.MediaPipe.SourceGenerator.csproj" 
+      PrivateAssets="all" 
+      OutputItemType="Analyzer" 
+      ReferenceOutputAssembly="false" 
+    />
   </ItemGroup>
 
   <ItemGroup>
