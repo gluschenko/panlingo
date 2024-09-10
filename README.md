@@ -1,10 +1,10 @@
-﻿# Language Identification
+﻿# Panlingo
 
 [![GitHub CI](https://github.com/gluschenko/panlingo/actions/workflows/github-ci.yml/badge.svg)](https://github.com/gluschenko/panlingo/actions/workflows/github-ci.yml)
 
 ## Overview
 
-Welcome to the **Language Identification** repository! 🚀
+Welcome to the **Panlingo** repository! 🚀
 
 This project presents a comprehensive collection of language identification 
 libraries for .NET. Its primary purpose is to bring popular 
@@ -105,9 +105,10 @@ functionality into their applications.
 ## TODO
 
 - [ ] Research support for other platforms (Windows, macOS).
-- [ ] Enhance the suite of unit tests.
-- [ ] Introduce more native methods (FastText).
-- [ ] Self-contained models (FastText + MediaPipe).
+- [ ] Add more unit tests.
+- [ ] Implement more native methods (FastText).
+- [x] Self-contained models (FastText + MediaPipe).
+- [x] Remove protobuf dependency (CLD3).
 
 ---
 
