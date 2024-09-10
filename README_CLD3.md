@@ -12,11 +12,11 @@ Welcome to **Panlingo.LanguageIdentification.CLD3**, a .NET wrapper for the Chro
 
 To integrate the CLD3 functionality, follow these steps:
 
-1. **Install the NuGet package**:
+**Install the NuGet package**:
 
-   ```sh
-   dotnet add package Panlingo.LanguageIdentification.CLD3
-   ```
+```sh
+dotnet add package Panlingo.LanguageIdentification.CLD3
+```
 
 ## Usage
 

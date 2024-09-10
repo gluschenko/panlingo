@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.0.0.20</Version>
+    <Version>0.0.0.21</Version>
     <PackageId>Panlingo.LanguageIdentification.MediaPipe.Native</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.MediaPipe.Native</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.MediaPipe.Native</RootNamespace>
@@ -57,16 +57,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/linux-x64/native</PackagePath>
-      <pack>true</pack>
-      <Visible>false</Visible>
-    </Content>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Content Include="mediapipe_language_detector.tflite">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>contentFiles</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>

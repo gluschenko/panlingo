@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
-    <Version>0.0.0.20</Version>
+    <Version>0.0.0.21</Version>
     <PackageId>Panlingo.LanguageIdentification.FastText</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.FastText</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.FastText</RootNamespace>
@@ -15,7 +15,11 @@
     <PackageTags>nlp lid language-identification language-detection fasttext</PackageTags>
     <PackageReadmeFile>README_FASTTEXT.md</PackageReadmeFile>
     <PackageReleaseNotes>
-      - Initial release
+0.0.0.21:
+- Default FastText model is included in NuGet package
+
+0.0.0.10:
+- Initial release
     </PackageReleaseNotes>
     <Description>
       This is a .NET wrapper for the FastText library by Facebook AI Research (FAIR).
@@ -37,6 +41,12 @@
     <ProjectReference Include="..\LanguageIdentification.FastText.Native\LanguageIdentification.FastText.Native.csproj">
       <IncludeAssets>All</IncludeAssets>
     </ProjectReference>
+    <ProjectReference
+      Include="..\LanguageIdentification.FastText.SourceGenerator\LanguageIdentification.FastText.SourceGenerator.csproj"
+      PrivateAssets="all"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false"
+    />
   </ItemGroup>
 
   <ItemGroup>

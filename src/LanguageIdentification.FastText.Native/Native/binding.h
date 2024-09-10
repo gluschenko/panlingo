@@ -51,3 +51,28 @@ extern "C" {
     EXPORT void FastTextAbort(fasttext_t* handle);
 }
 
+struct membuf : std::streambuf {
+    membuf(char const* base, size_t size) {
+        char* p(const_cast<char*>(base));
+        this->setg(p, p, p + size);
+    }
+};
+
+struct imemstream : virtual membuf, std::istream {
+    imemstream(char const* base, size_t size) : membuf(base, size), std::istream(static_cast<std::streambuf*>(this)) {
+    }
+};
+
+class FastTextExtension : public fasttext::FastText {
+public:
+    void loadModelData(const char* modelBytes, size_t size) {
+        imemstream stream(modelBytes, size);
+
+        if (!this->checkModel(stream)) {
+            throw std::invalid_argument("Invalid file format!");
+        }
+
+        this->loadModel(stream);
+    }
+};
+

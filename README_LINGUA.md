@@ -1,6 +1,6 @@
 ﻿# Panlingo.LanguageIdentification.Lingua
 
-Welcome to **Panlingo.LanguageIdentification.Lingua**, a .NET wrapper for the Lingua library, which is an efficient and easy-to-use language detection library. This package simplifies the integration of language identification capabilities into .NET applications, leveraging the Whatlang library to accurately and quickly recognize the languages of given texts. Perfect for projects that require lightweight yet reliable language detection.
+Welcome to **Panlingo.LanguageIdentification.Lingua**, a .NET wrapper for the Lingua library, which is an efficient and easy-to-use language detection library. This package simplifies the integration of language identification capabilities into .NET applications, leveraging the Lingua library to accurately and quickly recognize the languages of given texts. Perfect for projects that require lightweight yet reliable language detection.
 
 ## Requirements
 
