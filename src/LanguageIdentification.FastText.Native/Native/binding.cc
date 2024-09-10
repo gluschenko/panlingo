@@ -11,11 +11,15 @@
 using namespace std;
 using namespace fasttext;
 
-class membuf : public std::streambuf {
-public:
-    membuf(const uint8_t* base, std::size_t size) {
-        char* p = (char*)base;
+struct membuf : std::streambuf {
+    membuf(char const* base, size_t size) {
+        char* p(const_cast<char*>(base));
         this->setg(p, p, p + size);
+    }
+};
+
+struct imemstream : virtual membuf, std::istream {
+    imemstream(char const* base, size_t size) : membuf(base, size), std::istream(static_cast<std::streambuf*>(this)) {
     }
 };
 
@@ -49,10 +53,9 @@ extern "C" {
         }
     }
 
-    void FastTextLoadModelData(fasttext_t* handle, const uint8_t* buffer, unsigned int buffer_length, char** err_ptr) {
+    void FastTextLoadModelData(fasttext_t* handle, const char* buffer, size_t buffer_length, char** err_ptr) {
         try {
-            membuf sbuf(buffer, buffer_length);
-            std::istream stream(&sbuf);
+            imemstream stream(buffer, buffer_length);
 
             ((FastText*)handle)->loadModel(stream);
         }

@@ -5,11 +5,13 @@
         static void Main(string[] args)
         {
             var text = "Hello, how are you? Привіт, як справи? Привет, как дела?";
-            var modelPath = "/models/fasttext217.bin";
+            var modelPath = "/models/fasttext176.ftz";
+            using var stream = File.Open(modelPath, FileMode.Open);
 
             using var fastText = new FastTextDetector();
 
-            fastText.LoadModel(modelPath);
+            // fastText.LoadModel(modelPath);
+            fastText.LoadModel(stream);
 
             var dimensions = fastText.GetModelDimensions();
 

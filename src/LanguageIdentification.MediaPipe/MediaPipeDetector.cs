@@ -18,7 +18,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
         [Obsolete]
         public MediaPipeDetector(int resultCount = -1, float scoreThreshold = 0.0f, string modelPath = "") : this(
-            MediaPipeOptions.FromFile(modelPath)
+            (modelPath != "" ? MediaPipeOptions.FromFile(modelPath) : MediaPipeOptions.FromDefault())
                 .WithResultCount(resultCount)
                 .WithScoreThreshold(scoreThreshold)
         ) { }

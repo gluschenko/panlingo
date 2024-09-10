@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -40,6 +41,36 @@ namespace Panlingo.LanguageIdentification.FastText
                 CheckError(errPtr);
 
                 ModelPath = path;
+            }
+            finally
+            {
+                _semaphore.Release();
+            }
+        }
+
+        public void LoadModel(Stream stream)
+        {
+            _semaphore.Wait();
+            try
+            {
+                using var memoryStream = new MemoryStream();
+                stream.CopyTo(memoryStream);
+
+                var modelData = memoryStream.ToArray();
+                var modelDataHandle = GCHandle.Alloc(modelData, GCHandleType.Pinned);
+                var modelAssetBuffer = modelDataHandle.AddrOfPinnedObject();
+                var modelAssetBufferCount = (uint)modelData.Length;
+
+                try
+                {
+                    var errPtr = IntPtr.Zero;
+                    FastTextDetectorWrapper.FastTextLoadModelData(_fastText, modelAssetBuffer, modelAssetBufferCount, ref errPtr);
+                    CheckError(errPtr);
+                }
+                finally
+                {
+                    modelDataHandle.Free();
+                }
             }
             finally
             {
