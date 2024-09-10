@@ -12,7 +12,7 @@
             // );
 
             // using var mediaPipe = new MediaPipeDetector(
-            //     options: MediaPipeOptions.FromFile(stream)
+            //     options: MediaPipeOptions.FromFile(modelPath)
             // );
 
             using var mediaPipe = new MediaPipeDetector(

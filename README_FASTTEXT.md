@@ -12,29 +12,11 @@ Welcome to **Panlingo.LanguageIdentification.FastText**, a .NET wrapper for the 
 
 To integrate the FastText functionality, follow these steps:
 
-1. **Install the NuGet package**:
+**Install the NuGet package**:
 
-   ```sh
-   dotnet add package Panlingo.LanguageIdentification.FastText
-   ```
-
-2. **Download the Pretrained Models**:
-
-   Depending on your needs, download one of the pretrained language identification (LID) models provided by Facebook:
-
-   - For the LID model with 176 languages:
-     ```sh
-     curl --location -o /models/fasttext176.bin https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin
-     ```
-
-   - For the LID model with 217 languages:
-     ```sh
-     curl --location -o /models/fasttext217.bin https://huggingface.co/facebook/fasttext-language-identification/resolve/main/model.bin?download=true
-     ```
-
-   Learn more about these models here:
-   - [176 languages](https://fasttext.cc/docs/en/language-identification.html)
-   - [217 languages + script](https://huggingface.co/facebook/fasttext-language-identification)
+```sh
+dotnet add package Panlingo.LanguageIdentification.FastText
+```
 
 ## Usage
 
@@ -52,7 +34,7 @@ class Program
     static void Main()
     {
         using var fastText = new FastTextDetector();
-        fastText.LoadModel("/models/fasttext217.bin");
+        fastText.LoadDefaultModel();
 
         var predictions = fastText.Predict(
             text: "Привіт, як справи?", 
@@ -68,6 +50,42 @@ class Program
         var labels = fastText.GetLabels();
     }
 }
+```
+
+### Custom models
+
+#### Download the Pretrained Models
+
+Depending on your needs, download one of the pretrained language identification (LID) models provided by Facebook:
+
+- For the LID model with 176 languages:
+    ```sh
+    curl --location -o /models/fasttext176.bin https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin
+    ```
+
+- For the LID model with 217 languages:
+    ```sh
+    curl --location -o /models/fasttext217.bin https://huggingface.co/facebook/fasttext-language-identification/resolve/main/model.bin?download=true
+    ```
+
+Learn more about these models here:
+- [176 languages](https://fasttext.cc/docs/en/language-identification.html)
+- [217 languages + script](https://huggingface.co/facebook/fasttext-language-identification)
+
+#### Use custom model in code
+```
+using var fastText = new FastTextDetector();
+
+var modelPath = "/models/fasttext176.bin";
+fastText.LoadModel(modelPath);
+```
+OR
+```
+using var fastText = new FastTextDetector();
+
+var modelPath = "/models/fasttext176.bin";
+using var stream = File.Open(modelPath, FileMode.Open);
+fastText.LoadModel(stream);
 ```
 
 ## Alternatives
