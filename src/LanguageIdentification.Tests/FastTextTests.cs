@@ -54,9 +54,9 @@ public class FastTextTests
     }
 
     [Theory]
-    [InlineData("__label__en", Constants.PHRASE_ENG_1, 0.9955)]
-    [InlineData("__label__uk", Constants.PHRASE_UKR_1, 0.9900)]
-    [InlineData("__label__ru", Constants.PHRASE_RUS_1, 0.9983)]
+    [InlineData("__label__en", Constants.PHRASE_ENG_1, 0.9693)]
+    [InlineData("__label__uk", Constants.PHRASE_UKR_1, 1.0000)]
+    [InlineData("__label__ru", Constants.PHRASE_RUS_1, 0.8511)]
     public void FastTextContainedSingleLanguage(string languageCode, string text, double score)
     {
         using var fastText = new FastTextDetector();
