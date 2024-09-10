@@ -78,6 +78,12 @@ namespace Panlingo.LanguageIdentification.FastText
             }
         }
 
+        public void LoadDefaultModel()
+        {
+            using var memoryStream = new MemoryStream(FastTextResourceProvider.DefaultModel);
+            LoadModel(memoryStream);
+        }
+
         public IEnumerable<FastTextLabel> GetLabels()
         {
             var labelsPtr = FastTextDetectorWrapper.FastTextGetLabels(_fastText);

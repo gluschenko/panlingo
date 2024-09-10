@@ -11,18 +11,6 @@
 using namespace std;
 using namespace fasttext;
 
-struct membuf : std::streambuf {
-    membuf(char const* base, size_t size) {
-        char* p(const_cast<char*>(base));
-        this->setg(p, p, p + size);
-    }
-};
-
-struct imemstream : virtual membuf, std::istream {
-    imemstream(char const* base, size_t size) : membuf(base, size), std::istream(static_cast<std::streambuf*>(this)) {
-    }
-};
-
 extern "C" {
 
     static void save_error(char** err_ptr, const std::exception& e) {
@@ -37,17 +25,17 @@ extern "C" {
     }
 
     fasttext_t* CreateFastText(void) {
-        return (fasttext_t*)(new FastText());
+        return (fasttext_t*)(new FastTextExtension());
     }
 
     void DestroyFastText(fasttext_t* handle) {
-        FastText* x = (FastText*)handle;
+        FastTextExtension* x = (FastTextExtension*)handle;
         delete x;
     }
 
     void FastTextLoadModel(fasttext_t* handle, const char* filename, char** err_ptr) {
         try {
-            ((FastText*)handle)->loadModel(filename);
+            ((FastTextExtension*)handle)->loadModel(filename);
         } catch (const std::invalid_argument& e) {
             save_error(err_ptr, e);
         }
@@ -55,9 +43,7 @@ extern "C" {
 
     void FastTextLoadModelData(fasttext_t* handle, const char* buffer, size_t buffer_length, char** err_ptr) {
         try {
-            imemstream stream(buffer, buffer_length);
-
-            ((FastText*)handle)->loadModel(stream);
+            ((FastTextExtension*)handle)->loadModelData(buffer, buffer_length);
         }
         catch (const std::invalid_argument& e) {
             save_error(err_ptr, e);
@@ -65,14 +51,14 @@ extern "C" {
     }
 
     int FastTextGetModelDimensions(fasttext_t* handle) {
-        return ((FastText*)handle)->getDimension();
+        return ((FastTextExtension*)handle)->getDimension();
     }
 
     fasttext_predictions_t* FastTextPredict(fasttext_t* handle, const char* text, int32_t k, float threshold, char** err_ptr) {
         std::vector<std::pair<fasttext::real, std::string>> predictions;
         std::stringstream ioss(text);
         try {
-            ((FastText*)handle)->predictLine(ioss, predictions, k, threshold);
+            ((FastTextExtension*)handle)->predictLine(ioss, predictions, k, threshold);
         } catch (const std::invalid_argument& e) {
             save_error(err_ptr, e);
             return nullptr;
@@ -102,7 +88,7 @@ extern "C" {
     }
 
     fasttext_labels_t* FastTextGetLabels(fasttext_t* handle) {
-        std::shared_ptr<const fasttext::Dictionary> d = ((FastText*)handle)->getDictionary();
+        std::shared_ptr<const fasttext::Dictionary> d = ((FastTextExtension*)handle)->getDictionary();
         std::vector<int64_t> labels_freq = d->getCounts(fasttext::entry_type::label);
         size_t len = labels_freq.size();
 
@@ -133,12 +119,12 @@ extern "C" {
     }
 
     void FastTextAbort(fasttext_t* handle) {
-        ((FastText*)handle)->abort();
+        ((FastTextExtension*)handle)->abort();
     }
 
     fasttext_tokens_t* FastTextTokenize(fasttext_t* handle, const char* text) {
         std::vector<std::string> text_split;
-        std::shared_ptr<const fasttext::Dictionary> d = ((FastText*)handle)->getDictionary();
+        std::shared_ptr<const fasttext::Dictionary> d = ((FastTextExtension*)handle)->getDictionary();
         std::stringstream ioss(text);
         std::string token;
         while (!ioss.eof()) {

@@ -60,9 +60,7 @@ public class FastTextTests
     public void FastTextContainedSingleLanguage(string languageCode, string text, double score)
     {
         using var fastText = new FastTextDetector();
-
-        var modelPath = "/models/fasttext176.bin";
-        fastText.LoadModel(modelPath);
+        fastText.LoadDefaultModel();
 
         var predictions = fastText.Predict(text: text, count: 10);
         var mainLanguage = predictions.FirstOrDefault();
