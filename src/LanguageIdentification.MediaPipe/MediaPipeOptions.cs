@@ -30,7 +30,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
         /// <summary>
         /// Creates MediaPipe options with model from stream
         /// </summary>
-        /// <param name="stream">Stream to *.tflite model</param>
+        /// <param name="stream">Stream of *.tflite model</param>
         /// <returns></returns>
         public static MediaPipeOptions FromStream(Stream stream)
         {
@@ -41,16 +41,26 @@ namespace Panlingo.LanguageIdentification.MediaPipe
         }
 
         /// <summary>
-        /// <para>Creates MediaPipe options with self-contained model located in package.</para>
+        /// Creates MediaPipe options with model from byte array
+        /// </summary>
+        /// <param name="data">Bytes of *.tflite model</param>
+        /// <returns></returns>
+        public static MediaPipeOptions FromData(byte[] data)
+        {
+            return new MediaPipeOptions
+            {
+                ModelData = data,
+            };
+        }
+
+        /// <summary>
+        /// <para>Creates MediaPipe options with self-contained model located in the package.</para>
         /// <para>Original file: https://storage.googleapis.com/mediapipe-models/language_detector/language_detector/float32/1/language_detector.tflite</para>
         /// </summary>
         /// <returns></returns>
         public static MediaPipeOptions FromDefault()
         {
-            return new MediaPipeOptions 
-            {
-                ModelData = MediaPipeResourceProvider.DefaultModel,
-            };
+            return FromData(MediaPipeResourceProvider.DefaultModel);
         }
 
         public MediaPipeOptions WithResultCount(int resultCount)

@@ -31,6 +31,10 @@ namespace Panlingo.LanguageIdentification.FastText
 
         public string ModelPath { get; private set; } = string.Empty;
 
+        /// <summary>
+        /// Loads model file located on path
+        /// </summary>
+        /// <param name="path">Path to *.bin or *.ftz model file</param>
         public void LoadModel(string path)
         {
             _semaphore.Wait();
@@ -48,6 +52,10 @@ namespace Panlingo.LanguageIdentification.FastText
             }
         }
 
+        /// <summary>
+        /// Loads model file from binary stream
+        /// </summary>
+        /// <param name="stream">Stream of *.bin or *.ftz model file</param>
         public void LoadModel(Stream stream)
         {
             _semaphore.Wait();
@@ -78,12 +86,20 @@ namespace Panlingo.LanguageIdentification.FastText
             }
         }
 
+        /// <summary>
+        /// <para>Loads self-contained model located in the package.</para>
+        /// <para>Original file: https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz</para>
+        /// </summary>
         public void LoadDefaultModel()
         {
             using var memoryStream = new MemoryStream(FastTextResourceProvider.DefaultModel);
             LoadModel(memoryStream);
         }
 
+        /// <summary>
+        /// Returns all labels in current model
+        /// </summary>
+        /// <returns>Array of label objects</returns>
         public IEnumerable<FastTextLabel> GetLabels()
         {
             var labelsPtr = FastTextDetectorWrapper.FastTextGetLabels(_fastText);
