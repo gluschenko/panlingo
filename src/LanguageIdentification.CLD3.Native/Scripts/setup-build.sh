@@ -11,6 +11,7 @@ apt -y update
 apt -y install cmake
 apt -y install g++
 apt -y install nodejs
+apt -y install gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64
 
 npm install -g zx
 

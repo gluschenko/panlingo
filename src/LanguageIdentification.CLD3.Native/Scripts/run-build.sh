@@ -17,21 +17,32 @@ zx ../Native/monkey-patch.mjs
 
 mkdir build
 cd build
+
+# Build for Linux
 cmake ..
 make -j $(nproc) # make
 
 ./language_identifier_main           # run tests
 ./language_identifier_features_test  # run tests
 
-cd ..
+ls -R
 
-echo $(pwd)
-ls -R build
-cd ..
-
-find "$workspace/build" -name "libcld3.so" -exec cp {} libcld3.so \;
-rm -rf "$workspace"
 ldd libcld3.so
+cp libcld3.so ../../libcld3.so
 
+make clean
+
+# Build for Windows
+cmake .. -DCMAKE_TOOLCHAIN_FILE=./toolchain-mingw.cmake
+make -j $(nproc) # make
+
+ls -R
+
+cp libcld3.dll ../../libcld3.dll
+
+make clean
+
+# Clean up
+rm -rf "$workspace"
 echo "Goodbye world";
 
