@@ -1,2 +1,4 @@
 libcld3.so
+libcld3.dll
+libcld3.dylib
 build_temp/**
