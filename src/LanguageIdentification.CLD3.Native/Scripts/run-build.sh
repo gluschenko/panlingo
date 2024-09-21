@@ -30,7 +30,7 @@ ls -R
 ldd libcld3.so
 cp libcld3.so ../../libcld3.so
 
-make clean
+rm -rf *
 
 # Build for Windows
 cmake .. -DCMAKE_TOOLCHAIN_FILE=./toolchain-mingw.cmake
@@ -40,7 +40,7 @@ ls -R
 
 cp libcld3.dll ../../libcld3.dll
 
-make clean
+rm -rf *
 
 # Clean up
 rm -rf "$workspace"
