@@ -85,14 +85,9 @@ jobs:
         overwrite: 'true'
         compression-level: 0
 
-  test-nugets:
-    name: 🧪 Test ${{matrix.os}}
-    runs-on: ${{matrix.os}}
-    strategy:
-      matrix:
-        os: 
-          - ubuntu-latest
-          - windows-latest
+  test-nugets-linux:
+    name: 🧪 Test on Linux
+    runs-on: ubuntu-latest
     needs: build-nugets
     permissions:
       contents: read
@@ -113,6 +108,29 @@ jobs:
         merge-multiple: true
         path: ${{env.ROOT}}/local-nugets
 
+    - name: 📂 Files
+      working-directory: ${{env.ROOT}}
+      run: ls -R
+
+    - name: 📂 Build Docker Image
+      working-directory: ${{env.ROOT}}
+      run: |
+        docker build -f ./test.Dockerfile -t langunage-identification-test-runner:latest .
+        docker build -f ./test-ci.Dockerfile -t langunage-identification-test-runner-ci:latest .
+
+  test-nugets-windows:
+    name: 🧪 Test on Windows
+    runs-on: windows-latest
+    needs: build-nugets
+    permissions:
+      contents: read
+      packages: write
+    env:
+      ROOT: ./src
+      NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+    steps:
+    - uses: actions/checkout@v4
+  
     - name: 📂 Setup .NET Core
       uses: actions/setup-dotnet@v4
       with:
@@ -123,12 +141,21 @@ jobs:
           8.0.x
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
-    - name: 📂 Use local NuGet
-      run: dotnet nuget add source ${{env.ROOT}}/local-nugets
+    - name: 📂 Files
+      run: mkdir -p ${{env.ROOT}}/local-nugets
+
+    - uses: actions/download-artifact@v4
+      with:
+        pattern: build-*
+        merge-multiple: true
+        path: ${{env.ROOT}}/local-nugets
 
     - name: 📂 Files
       working-directory: ${{env.ROOT}}
       run: ls -R
+
+    - name: 📂 Use local NuGet
+      run: dotnet nuget add source ${{env.ROOT}}/local-nugets
 
     - name: 🧪 Run Tests for LanguageIdentification
       working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
@@ -141,7 +168,9 @@ jobs:
   deploy-nugets:
     name: 🚚 Push ${{matrix.projectName}}
     runs-on: ubuntu-latest
-    needs: test-nugets
+    needs: 
+      - test-nugets-linux
+      - test-nugets-windows
     if: github.ref == 'refs/heads/master'
     strategy:
       fail-fast: false
