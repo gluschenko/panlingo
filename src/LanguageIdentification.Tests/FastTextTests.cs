@@ -5,12 +5,14 @@ namespace Panlingo.LanguageIdentification.Tests;
 
 public class FastTextTests
 {
-    [Theory]
+    [SkippableTheory]
     [InlineData("__label__en", Constants.PHRASE_ENG_1, 0.9955)]
     [InlineData("__label__uk", Constants.PHRASE_UKR_1, 0.9900)]
     [InlineData("__label__ru", Constants.PHRASE_RUS_1, 0.9983)]
     public void FastTextFileSingleLanguage(string languageCode, string text, double score)
     {
+        Skip.IfNot(FastTextDetector.IsSupported());
+
         using var fastText = new FastTextDetector();
 
         var modelPath = "/models/fasttext176.bin";
@@ -28,12 +30,14 @@ public class FastTextTests
         Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
     }
 
-    [Theory]
+    [SkippableTheory]
     [InlineData("__label__en", Constants.PHRASE_ENG_1, 0.9955)]
     [InlineData("__label__uk", Constants.PHRASE_UKR_1, 0.9900)]
     [InlineData("__label__ru", Constants.PHRASE_RUS_1, 0.9983)]
     public void FastTextStreamSingleLanguage(string languageCode, string text, double score)
     {
+        Skip.IfNot(FastTextDetector.IsSupported());
+
         using var fastText = new FastTextDetector();
 
         var modelPath = "/models/fasttext176.bin";
@@ -53,12 +57,14 @@ public class FastTextTests
         Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
     }
 
-    [Theory]
+    [SkippableTheory]
     [InlineData("__label__en", Constants.PHRASE_ENG_1, 1.0000)]
     [InlineData("__label__uk", Constants.PHRASE_UKR_1, 0.8511)]
     [InlineData("__label__ru", Constants.PHRASE_RUS_1, 0.9693)]
     public void FastTextContainedSingleLanguage(string languageCode, string text, double score)
     {
+        Skip.IfNot(FastTextDetector.IsSupported());
+
         using var fastText = new FastTextDetector();
         fastText.LoadDefaultModel();
 
@@ -74,9 +80,11 @@ public class FastTextTests
         Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
     }
 
-    [Fact]
+    [SkippableFact]
     public void FastTextLabels()
     {
+        Skip.IfNot(FastTextDetector.IsSupported());
+
         using var fastText = new FastTextDetector();
 
         var modelPath = "/models/fasttext176.bin";

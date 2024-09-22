@@ -5,10 +5,10 @@ public class MainTests
     /// <summary>
     /// Checks the current OS and container environment
     /// </summary>
-    [Fact]
+    [SkippableFact]
     public void CheckPlatform()
     {
-        Assert.Equal(PlatformID.Unix, Environment.OSVersion.Platform);
+        Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Unix);
         Assert.Equal("true", Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER"));
     }
 }

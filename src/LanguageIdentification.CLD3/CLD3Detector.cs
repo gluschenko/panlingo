@@ -17,7 +17,7 @@ namespace Panlingo.LanguageIdentification.CLD3
 
         public CLD3Detector(int minNumBytes, int maxNumBytes)
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (!IsSupported())
             {
                 throw new NotSupportedException(
                     $"{nameof(CLD3Detector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
@@ -26,6 +26,11 @@ namespace Panlingo.LanguageIdentification.CLD3
 
             _identifier = CLD3DetectorWrapper.CreateIdentifier(minNumBytes, maxNumBytes);
             _semaphore = new(1, 1);
+        }
+
+        public static bool IsSupported()
+        {
+            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
         }
 
         public void Dispose()
