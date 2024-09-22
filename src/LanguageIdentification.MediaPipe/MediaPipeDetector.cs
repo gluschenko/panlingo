@@ -25,7 +25,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
         public MediaPipeDetector(MediaPipeOptions options)
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (!IsSupported())
             {
                 throw new NotSupportedException(
                     $"{nameof(MediaPipeDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
@@ -89,6 +89,11 @@ namespace Panlingo.LanguageIdentification.MediaPipe
             }
 
             _semaphore = new SemaphoreSlim(1, 1);
+        }
+
+        public static bool IsSupported()
+        {
+            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
         }
 
         public IEnumerable<MediaPipePrediction> PredictLanguages(string text)

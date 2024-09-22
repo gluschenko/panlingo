@@ -5,12 +5,14 @@ namespace Panlingo.LanguageIdentification.Tests;
 
 public class LinguaTests
 {
-    [Theory]
+    [SkippableTheory]
     [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1, 0.1666)]
     [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1, 0.8228)]
     [InlineData(LinguaLanguage.Russian, Constants.PHRASE_RUS_1, 0.3502)]
     public void LinguaSingleLanguage(LinguaLanguage languageCode, string text, double score)
     {
+        Skip.IfNot(LinguaDetector.IsSupported());
+
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua = linguaBuilder.Build();
 
@@ -26,12 +28,14 @@ public class LinguaTests
         Assert.Equal(score, mainLanguage.Confidence, Constants.EPSILON);
     }
 
-    [Theory]
+    [SkippableTheory]
     [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1, 0.1666)]
     [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1, 0.8228)]
     [InlineData(LinguaLanguage.Russian, Constants.PHRASE_RUS_1, 0.3502)]
     public void LinguaMixedLanguage(LinguaLanguage languageCode, string text, double score)
     {
+        Skip.IfNot(LinguaDetector.IsSupported());
+
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua = linguaBuilder.Build();
 
@@ -47,7 +51,7 @@ public class LinguaTests
         Assert.Equal(score, mainLanguage.Confidence, Constants.EPSILON);
     }
 
-    [Theory]
+    [SkippableTheory]
     [InlineData(LinguaLanguage.Ukrainian, LinguaLanguageCode.Alpha2, "uk")]
     [InlineData(LinguaLanguage.Ukrainian, LinguaLanguageCode.Alpha3, "ukr")]
     [InlineData(LinguaLanguage.Hebrew, LinguaLanguageCode.Alpha2, "he")]
@@ -56,6 +60,8 @@ public class LinguaTests
     [InlineData(LinguaLanguage.Serbian, LinguaLanguageCode.Alpha3, "srp")]
     public void LinguaGetLanguageCode(LinguaLanguage language, LinguaLanguageCode type, string code)
     {
+        Skip.IfNot(LinguaDetector.IsSupported());
+
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua = linguaBuilder.Build();
 
@@ -63,9 +69,11 @@ public class LinguaTests
         Assert.Equal(code, languageCode);
     }
 
-    [Fact]
+    [SkippableFact]
     public void LinguaBuilderReuse()
     {
+        Skip.IfNot(LinguaDetector.IsSupported());
+
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua1 = linguaBuilder.Build();
         using var lingua2 = linguaBuilder.Build();

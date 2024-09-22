@@ -18,7 +18,7 @@ namespace Panlingo.LanguageIdentification.FastText
 
         public FastTextDetector()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (!IsSupported())
             {
                 throw new NotSupportedException(
                     $"{nameof(FastTextDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
@@ -27,6 +27,11 @@ namespace Panlingo.LanguageIdentification.FastText
 
             _fastText = FastTextDetectorWrapper.CreateFastText();
             _semaphore = new SemaphoreSlim(1, 1);
+        }
+
+        public static bool IsSupported()
+        {
+            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
         }
 
         public string ModelPath { get; private set; } = string.Empty;

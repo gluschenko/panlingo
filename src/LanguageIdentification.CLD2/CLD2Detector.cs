@@ -13,12 +13,17 @@ namespace Panlingo.LanguageIdentification.CLD2
     {
         public CLD2Detector()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (!IsSupported())
             {
                 throw new NotSupportedException(
                     $"{nameof(CLD2Detector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
                 );
             }
+        }
+
+        public static bool IsSupported()
+        {
+            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
         }
 
         /// <summary>
