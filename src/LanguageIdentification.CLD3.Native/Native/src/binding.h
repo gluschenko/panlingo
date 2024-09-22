@@ -9,14 +9,10 @@ using namespace std;
 #   ifdef __linux__
 #       define EXPORT __attribute__((visibility("default")))
 #   else
-#       if defined(__GNUC__) // MinGW also uses GCC
+#       if defined(_MSC_VER)
 #           define EXPORT __declspec(dllexport)
 #       else
-#           if defined(_MSC_VER)
-#               define EXPORT __declspec(dllexport)
-#           else
-#               define EXPORT __attribute__((visibility("default")))
-#           endif
+#           define EXPORT __attribute__((visibility("default")))
 #       endif
 #   endif
 #endif
