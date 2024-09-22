@@ -87,7 +87,10 @@ jobs:
 
   test-nugets:
     name: 🧪 Test ${{matrix.projectName}}
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
     needs: build-nugets
     permissions:
       contents: read
