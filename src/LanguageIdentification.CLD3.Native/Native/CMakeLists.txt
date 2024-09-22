@@ -1,4 +1,4 @@
-project(cld3)
+﻿project(cld3)
 
 cmake_minimum_required(VERSION 3.9)
 
@@ -6,7 +6,19 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++")
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -fno-exceptions -fno-rtti")
+elseif (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+    # nop
+endif()
+
+if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++ -Wl,--start-group -lgcc -lgcc_eh -Wl,--end-group -lmsvcrt")
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    # nop
+else()
+    # nop
+endif()
 
 add_definitions(-fPIC) # Position Independent Code
 add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
