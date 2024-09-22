@@ -6,12 +6,14 @@ namespace Panlingo.LanguageIdentification.Tests;
 
 public class MediaPipeTests
 {
-    [Theory]
+    [SkippableTheory]
     [InlineData("en", Constants.PHRASE_ENG_1, 0.9994)]
     [InlineData("uk", Constants.PHRASE_UKR_1, 0.9999)]
     [InlineData("ru", Constants.PHRASE_RUS_1, 0.9999)]
     public void MediaPipeFileSingleLanguage(string languageCode, string text, double score)
     {
+        Skip.IfNot(MediaPipeDetector.IsSupported());
+
         var modelPath = "/models/mediapipe_language_detector.tflite";
         using var mediaPipe = new MediaPipeDetector(
             options: MediaPipeOptions.FromFile(modelPath).WithResultCount(10)
@@ -28,13 +30,15 @@ public class MediaPipeTests
         Assert.Equal(languageCode, mainLanguage.Language);
         Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
     }
-    
-    [Theory]
+
+    [SkippableTheory]
     [InlineData("en", Constants.PHRASE_ENG_1, 0.9994)]
     [InlineData("uk", Constants.PHRASE_UKR_1, 0.9999)]
     [InlineData("ru", Constants.PHRASE_RUS_1, 0.9999)]
     public void MediaPipeStreamSingleLanguage(string languageCode, string text, double score)
     {
+        Skip.IfNot(MediaPipeDetector.IsSupported());
+
         var modelPath = "/models/mediapipe_language_detector.tflite";
         using var stream = File.Open(modelPath, FileMode.Open);
 
@@ -54,12 +58,14 @@ public class MediaPipeTests
         Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
     }
 
-    [Theory]
+    [SkippableTheory]
     [InlineData("en", Constants.PHRASE_ENG_1, 0.9994)]
     [InlineData("uk", Constants.PHRASE_UKR_1, 0.9999)]
     [InlineData("ru", Constants.PHRASE_RUS_1, 0.9999)]
     public void MediaPipeContainedSingleLanguage(string languageCode, string text, double score)
     {
+        Skip.IfNot(MediaPipeDetector.IsSupported());
+
         var modelPath = "/models/mediapipe_language_detector.tflite";
         using var stream = File.Open(modelPath, FileMode.Open);
 

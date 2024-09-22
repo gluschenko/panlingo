@@ -16,7 +16,7 @@ namespace Panlingo.LanguageIdentification.Lingua
 
         internal LinguaDetector(LinguaDetectorBuilder builder)
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (!IsSupported())
             {
                 throw new NotSupportedException(
                     $"{nameof(LinguaDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
@@ -28,6 +28,11 @@ namespace Panlingo.LanguageIdentification.Lingua
             {
                 throw new LinguaDetectorException($"Failed to create {nameof(LinguaDetector)}");
             }
+        }
+
+        public static bool IsSupported()
+        {
+            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
         }
 
         /// <summary>

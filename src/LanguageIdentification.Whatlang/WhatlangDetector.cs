@@ -12,12 +12,17 @@ namespace Panlingo.LanguageIdentification.Whatlang
     {
         public WhatlangDetector()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (!IsSupported())
             {
                 throw new NotSupportedException(
                     $"{nameof(WhatlangDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
                 );
             }
+        }
+
+        public static bool IsSupported()
+        {
+            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
         }
 
         /// <summary>
