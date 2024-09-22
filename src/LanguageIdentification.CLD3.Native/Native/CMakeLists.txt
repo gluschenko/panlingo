@@ -63,10 +63,10 @@ set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "src/binding.h")
 
 # unit tests exec:
 add_executable(language_identifier_main src/language_identifier_main.cc)
-target_link_libraries(language_identifier_main cld3)
+target_link_libraries(language_identifier_main PRIVATE cld3)
 
 add_executable(getonescriptspan_test src/script_span/getonescriptspan_test.cc)
-target_link_libraries(getonescriptspan_test cld3)
+target_link_libraries(getonescriptspan_test PRIVATE cld3)
 
 add_executable(language_identifier_features_test src/language_identifier_features_test.cc)
-target_link_libraries(language_identifier_features_test cld3)
+target_link_libraries(language_identifier_features_test PRIVATE cld3)

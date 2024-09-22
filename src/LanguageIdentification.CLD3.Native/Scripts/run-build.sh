@@ -19,6 +19,7 @@ mkdir build
 cd build
 
 # Build for Linux
+rm -rf *
 cmake ..
 make -j $(nproc) # make
 
@@ -30,17 +31,14 @@ ls -R
 ldd libcld3.so
 cp libcld3.so ../../libcld3.so
 
-rm -rf *
-
 # Build for Windows
+rm -rf *
 cmake .. -DCMAKE_TOOLCHAIN_FILE=./toolchain-mingw.cmake
 make -j $(nproc) # make
 
 ls -R
 
 cp libcld3.dll ../../libcld3.dll
-
-rm -rf *
 
 # Clean up
 rm -rf "$workspace"
