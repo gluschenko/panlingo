@@ -13,7 +13,7 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 endif()
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++ -Wl,--start-group -lgcc -lgcc_eh -Wl,--end-group -lmsvcrt -lpthread")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++ -Wl,--start-group -lgcc -lgcc_eh -Wl,--end-group -lmsvcrt -lpthread -lwinpthread")
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     # nop
 else()
