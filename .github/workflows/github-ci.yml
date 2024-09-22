@@ -15,13 +15,13 @@ jobs:
       fail-fast: false
       matrix:
         projectName: 
-          - LanguageIdentification.CLD2
+          # - LanguageIdentification.CLD2
           - LanguageIdentification.CLD3
-          - LanguageIdentification.FastText
-          - LanguageIdentification.Whatlang
-          - LanguageIdentification.MediaPipe
-          - LanguageIdentification.Lingua
-          - LanguageCode
+          # - LanguageIdentification.FastText
+          # - LanguageIdentification.Whatlang
+          # - LanguageIdentification.MediaPipe
+          # - LanguageIdentification.Lingua
+          # - LanguageCode
     permissions:
       contents: read
       packages: write
