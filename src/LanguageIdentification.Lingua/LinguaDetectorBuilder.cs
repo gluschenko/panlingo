@@ -14,7 +14,7 @@ namespace Panlingo.LanguageIdentification.Lingua
 
         public LinguaDetectorBuilder(LinguaLanguage[] languages)
         {
-            if (!IsSupported())
+            if (!LinguaDetector.IsSupported())
             {
                 throw new NotSupportedException(
                     $"{nameof(LinguaDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
