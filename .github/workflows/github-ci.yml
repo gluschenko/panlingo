@@ -155,7 +155,9 @@ jobs:
       run: ls -R
 
     - name: 📂 Use local NuGet
-      run: dotnet nuget add source [System.IO.Path]::GetFullPath(${{env.ROOT}}/local-nugets)
+      run: |
+          $path = [System.IO.Path]::GetFullPath('${{env.ROOT}}/local-nugets')
+          dotnet nuget add source $path
 
     - name: 🧪 Run Tests for LanguageIdentification
       working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
