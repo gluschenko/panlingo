@@ -24,7 +24,7 @@ namespace Panlingo.LanguageIdentification.CLD3
                 );
             }
 
-            _identifier = CLD3DetectorWrapper.CreateIdentifier(minNumBytes, maxNumBytes);
+            _identifier = CLD3DetectorWrapper.CreateCLD3(minNumBytes, maxNumBytes);
             _semaphore = new(1, 1);
         }
 
@@ -35,7 +35,7 @@ namespace Panlingo.LanguageIdentification.CLD3
             try
             {
                 _semaphore.Wait();
-                CLD3DetectorWrapper.FreeIdentifier(_identifier);
+                CLD3DetectorWrapper.DestroyCLD3(_identifier);
             }
             finally
             {
@@ -89,7 +89,7 @@ namespace Panlingo.LanguageIdentification.CLD3
             }
             finally
             {
-                CLD3DetectorWrapper.FreeResults(resultPtr, resultCount);
+                CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
             }
         }
     }

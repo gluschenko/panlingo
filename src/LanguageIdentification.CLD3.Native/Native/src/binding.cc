@@ -3,15 +3,15 @@
 
 using namespace chrome_lang_id;
 
-void* CreateIdentifier(int minNumBytes, int maxNumBytes) {
+void* create_cld3(int minNumBytes, int maxNumBytes) {
     return new NNetLanguageIdentifier(minNumBytes, maxNumBytes);
 }
 
-void FreeIdentifier(void* identifier) {
+void destroy_cld3(void* identifier) {
     delete static_cast<NNetLanguageIdentifier*>(identifier);
 }
 
-PredictionResult FindLanguage(void* identifier, const char* text) {
+PredictionResult cld3_find_language(void* identifier, const char* text) {
     NNetLanguageIdentifier* nativeIdentifier = static_cast<NNetLanguageIdentifier*>(identifier);
     auto nativeResult = nativeIdentifier->FindLanguage(text);
 
@@ -23,7 +23,7 @@ PredictionResult FindLanguage(void* identifier, const char* text) {
     return result;
 }
 
-PredictionResult* FindLanguages(void* identifier, const char* text, int numLangs, int* resultCount) {
+PredictionResult* cld3_find_languages(void* identifier, const char* text, int numLangs, int* resultCount) {
     NNetLanguageIdentifier* nativeIdentifier = static_cast<NNetLanguageIdentifier*>(identifier);
     auto nativeResults = nativeIdentifier->FindTopNMostFreqLangs(text, numLangs);
 
@@ -38,7 +38,7 @@ PredictionResult* FindLanguages(void* identifier, const char* text, int numLangs
     return result;
 }
 
-void FreeResults(PredictionResult* results, int count) {
+void cld3_destroy_prediction_result(PredictionResult* results, int count) {
     for (int i = 0; i < count; ++i) {
         free((void*)results[i].language);
     }

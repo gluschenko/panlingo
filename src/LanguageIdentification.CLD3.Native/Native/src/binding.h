@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "base.h"
 #include "nnet_language_identifier.h"
@@ -25,9 +25,9 @@ extern "C" {
         double proportion;
     };
 
-    EXPORT void* CreateIdentifier(int minNumBytes, int maxNumBytes);
-    EXPORT void FreeIdentifier(void* identifier);
-    EXPORT PredictionResult FindLanguage(void* identifier, const char* text);
-    EXPORT PredictionResult* FindLanguages(void* identifier, const char* text, int numLangs, int* resultCount);
-    EXPORT void FreeResults(PredictionResult* results, int count);
+    EXPORT void* create_cld3(int minNumBytes, int maxNumBytes);
+    EXPORT void destroy_cld3(void* identifier);
+    EXPORT PredictionResult cld3_find_language(void* identifier, const char* text);
+    EXPORT PredictionResult* cld3_find_languages(void* identifier, const char* text, int numLangs, int* resultCount);
+    EXPORT void cld3_destroy_prediction_result(PredictionResult* results, int count);
 }
