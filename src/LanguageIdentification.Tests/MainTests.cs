@@ -1,4 +1,6 @@
-﻿namespace Panlingo.LanguageIdentification.Tests;
+﻿using System.Runtime.InteropServices;
+
+namespace Panlingo.LanguageIdentification.Tests;
 
 public class MainTests
 {
@@ -8,7 +10,7 @@ public class MainTests
     [SkippableFact]
     public void CheckPlatform()
     {
-        Skip.IfNot(Environment.OSVersion.Platform == PlatformID.Unix);
+        Skip.IfNot(RuntimeInformation.IsOSPlatform(OSPlatform.Linux));
         Assert.Equal("true", Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER"));
     }
 }
