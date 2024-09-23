@@ -2,6 +2,9 @@ project(fasttext)
 
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -11,15 +14,6 @@ endif()
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -fno-rtti -lpthread")
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    # nop
-endif()
-
-if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++ -Wl,--start-group -fpermissive -lpthread -Wl,--end-group")
-    add_definitions(-D_USE_ALIGNED_MALLOC -D__USE_MINGW_ANSI_STDIO=1)
-elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
-    # nop
-else()
     # nop
 endif()
 
