@@ -167,12 +167,62 @@ jobs:
       working-directory: ${{env.ROOT}}/LanguageCode.Tests
       run: dotnet test -c CI
 
+  test-nugets-macos:
+    name: 🧪 Test on macOS
+    runs-on: macos-latest
+    needs: build-nugets
+    permissions:
+      contents: read
+      packages: write
+    env:
+      ROOT: ./src
+      NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+    steps:
+    - uses: actions/checkout@v4
+  
+    - name: 📂 Setup .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: |
+          5.0.x
+          6.0.x
+          7.0.x
+          8.0.x
+        source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
+
+    - name: 📂 Files
+      run: mkdir -p ${{env.ROOT}}/local-nugets
+
+    - uses: actions/download-artifact@v4
+      with:
+        pattern: build-*
+        merge-multiple: true
+        path: ${{env.ROOT}}/local-nugets
+
+    - name: 📂 Files
+      working-directory: ${{env.ROOT}}
+      run: ls -R
+
+    - name: 📂 Use local NuGet
+      run: |
+          path=$(realpath "${{env.ROOT}}/local-nugets")
+          dotnet nuget add source $path
+
+    - name: 🧪 Run Tests for LanguageIdentification
+      working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
+      run: dotnet test -c CI
+
+    - name: 🧪 Run Tests for LanguageCode
+      working-directory: ${{env.ROOT}}/LanguageCode.Tests
+      run: dotnet test -c CI
+
   deploy-nugets:
     name: 🚚 Push ${{matrix.projectName}}
     runs-on: ubuntu-latest
     needs: 
       - test-nugets-linux
       - test-nugets-windows
+      - test-nugets-macos
     if: github.ref == 'refs/heads/master'
     strategy:
       fail-fast: false
