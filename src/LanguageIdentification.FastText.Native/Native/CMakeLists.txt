@@ -15,16 +15,12 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 endif()
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++ -Wl,--start-group -lpthread -lwinpthread -Wl,--end-group")
-    add_definitions(-D_USE_ALIGNED_MALLOC) 
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++ -Wl,--start-group -fpermissive -lpthread -lwinpthread -Wl,--end-group")
+    add_definitions(-D_USE_ALIGNED_MALLOC -D__USE_MINGW_ANSI_STDIO=1)
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     # nop
 else()
     # nop
-endif()
-
-if (WIN32)
-    add_definitions(-D_USE_ALIGNED_MALLOC -D__USE_MINGW_ANSI_STDIO=1)
 endif()
 
 set(CMAKE_MACOSX_RPATH 1)
