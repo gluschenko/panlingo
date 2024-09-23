@@ -5,7 +5,7 @@
         /// <summary>
         /// Name of native binary
         /// </summary>
-        public const string Name = "libfasttext.so";
+        public const string Name = "libfasttext";
     }
 }
 

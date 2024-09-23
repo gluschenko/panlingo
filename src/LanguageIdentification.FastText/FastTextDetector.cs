@@ -31,7 +31,7 @@ namespace Panlingo.LanguageIdentification.FastText
 
         public static bool IsSupported()
         {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         }
 
         public string ModelPath { get; private set; } = string.Empty;
