@@ -63,6 +63,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="libcld2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/win-x64/native</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\..\README_CLD2.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 

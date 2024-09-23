@@ -1,5 +1,6 @@
+project(cld2)
+
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
-project(cld2_bridge)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -10,6 +11,20 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-narrowing")
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4244 /wd4267")
+endif()
+
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -fno-exceptions -fno-rtti")
+elseif (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+    # nop
+endif()
+
+if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++ -Wl,--start-group -lwinpthread -Wl,--end-group")
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    # nop
+else()
+    # nop
 endif()
 
 
@@ -101,6 +116,6 @@ set(CLD2_SOURCES
 
 add_library(objlib OBJECT ${CLD2_SOURCES})
 
-add_library(cld2 SHARED $<TARGET_OBJECTS:objlib>)
+add_library(${PROJECT_NAME} SHARED $<TARGET_OBJECTS:objlib>)
 
-set_target_properties(cld2 PROPERTIES PUBLIC_HEADER "${PROJECT_SOURCE_DIR}/cld2/binding.h")
+set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "${PROJECT_SOURCE_DIR}/cld2/binding.h")

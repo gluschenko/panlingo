@@ -23,7 +23,7 @@ namespace Panlingo.LanguageIdentification.CLD2
 
         public static bool IsSupported()
         {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         }
 
         /// <summary>

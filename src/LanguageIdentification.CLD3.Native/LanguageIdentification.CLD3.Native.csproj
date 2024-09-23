@@ -61,7 +61,7 @@
       <Visible>false</Visible>
     </Content>
   </ItemGroup>
-
+  
   <ItemGroup>
     <Content Include="libcld3.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

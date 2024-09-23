@@ -15,17 +15,27 @@ cd "$workspace"
 
 mkdir build
 cd build
+
+# Build for Linux
+rm -rf *
 cmake ..
 make -j $(nproc) # make
-cd ..
 
-echo $(pwd)
-ls -R build
-cd ..
+ls -R
 
-find "$workspace/build" -name "libcld2.so" -exec cp {} libcld2.so \;
-rm -rf "$workspace"
 ldd libcld2.so
+cp libcld2.so ../../libcld2.so
 
+# Build for Windows
+rm -rf *
+cmake .. -DCMAKE_TOOLCHAIN_FILE=./toolchain-mingw.cmake
+make -j $(nproc) # make
+
+ls -R
+
+cp libcld2.dll ../../libcld2.dll
+
+# Clean up
+rm -rf "$workspace"
 echo "Goodbye world";
 

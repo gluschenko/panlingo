@@ -62,7 +62,7 @@ extern "C"
         for (int i = 0; i < predictionCount; ++i) {
 
             CLD2::Language language = languages[i];
-            double probability = scoreTotal > 0 ? scores[i] / (double)scoreTotal : 1.0;
+            double probability = scoreTotal > 0 ? scores[i] / (double)scoreTotal : 0;
             double proportion = percents[i] / 100.0;
 
             result[i].language = strdup(CLD2::LanguageCode(language));
