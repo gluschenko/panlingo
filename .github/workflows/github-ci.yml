@@ -56,17 +56,19 @@ jobs:
         DOCKERFILE: ./Dockerfile
       working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}
       run: |
+        TAG="${${{env.TAG}}//\//_}" # "16/merge" => "16_merge"
         IMAGE_URL="ghcr.io/${{github.repository_owner}}/${{env.IMAGE}}"
         docker build --pull --file ${{env.DOCKERFILE}} --tag ${{env.IMAGE}} --no-cache ../.. \
         --build-arg REPO_OWNER=${{github.repository_owner}} \
         --build-arg PACKAGES_WRITE_TOKEN=${{secrets.PACKAGES_WRITE_TOKEN}} 
         
-        docker tag ${{env.IMAGE}} $IMAGE_URL:${{env.TAG}}
-        docker push $IMAGE_URL:${{env.TAG}}
+        docker tag ${{env.IMAGE}} $IMAGE_URL:${{TAG}}
+        docker push $IMAGE_URL:${{TAG}}
   
   build-nugets:
     name: 🚀 Pack ${{matrix.projectName}}
     runs-on: ubuntu-latest
+    needs: build-docker-images
     strategy:
       fail-fast: false
       matrix:
