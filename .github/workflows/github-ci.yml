@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         task: 
-          - { projectName: LanguageIdentification.CLD2, imageName: panlingo-builder-base-cld2 }
+          - { projectName: LanguageIdentification.CLD2.Native, imageName: panlingo-builder-base-cld2 }
           # - LanguageIdentification.CLD3
           # - LanguageIdentification.FastText
           # - LanguageIdentification.Whatlang
