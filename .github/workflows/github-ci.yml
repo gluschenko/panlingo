@@ -63,8 +63,8 @@ jobs:
         --build-arg REPO_OWNER=${{github.repository_owner}} \
         --build-arg PACKAGES_WRITE_TOKEN=${{secrets.PACKAGES_WRITE_TOKEN}} 
         
-        docker tag ${{env.IMAGE}} $IMAGE_URL:${{TAG}}
-        docker push $IMAGE_URL:${{TAG}}
+        docker tag ${{env.IMAGE}} $IMAGE_URL:$TAG
+        docker push $IMAGE_URL:$TAG
   
   build-nugets:
     name: 🚀 Pack ${{matrix.projectName}}
