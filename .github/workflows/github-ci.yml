@@ -52,12 +52,10 @@ jobs:
     - name: Docker build and push
       env:
         IMAGE: ${{matrix.task.imageName}}
-        TAG: ${{github.ref_name}}
         DOCKERFILE: ./Dockerfile
       working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}
       run: |
-        TAG_RAW="${{env.TAG}}" \
-        TAG=$(echo $TAG_RAW | tr '/' '_') \
+        TAG="${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}" \
         IMAGE_URL="ghcr.io/${{github.repository_owner}}/${{env.IMAGE}}" \
         docker build --pull --file ${{env.DOCKERFILE}} --tag ${{env.IMAGE}} --no-cache ../.. \
         --build-arg REPO_OWNER=${{github.repository_owner}} \
