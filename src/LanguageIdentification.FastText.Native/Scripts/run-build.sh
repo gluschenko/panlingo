@@ -28,8 +28,8 @@ cp libfasttext.so ../../libfasttext.so
 
 # Build for Windows
 rm -rf *
-cmake .. -DCMAKE_TOOLCHAIN_FILE=./toolchain-mingw.cmake
-make -j $(nproc) # make
+wine cmake ..
+wine cmake --build .
 
 ls -R
 
