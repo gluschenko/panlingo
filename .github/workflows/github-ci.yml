@@ -52,32 +52,31 @@ jobs:
     - name: Docker build and push
       env:
         IMAGE: ${{matrix.task.imageName}}
+        TAG: latest # TODO: use branch name
         DOCKERFILE: ./Dockerfile
       working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}
       run: |
-        SHA=$(git rev-parse --short "$GITHUB_SHA") \
-        TAG="${GITHUB_REF#refs/heads/}" \
         IMAGE_URL="ghcr.io/${{github.repository_owner}}/${{env.IMAGE}}" \
         docker build --pull --file ${{env.DOCKERFILE}} --tag ${{env.IMAGE}} --no-cache ../.. \
         
-        docker tag ${{env.IMAGE}} $IMAGE_URL:$SHA
-        docker push $IMAGE_URL:$SHA
+        docker tag ${{env.IMAGE}} $IMAGE_URL:${{env.TAG}}
+        docker push $IMAGE_URL:${{env.TAG}}
   
   build-nugets:
     name: 🚀 Pack ${{matrix.projectName}}
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.task.os}}
     needs: build-docker-images
     strategy:
       fail-fast: false
       matrix:
-        projectName: 
-          - LanguageIdentification.CLD2
-          - LanguageIdentification.CLD3
-          # - LanguageIdentification.FastText
-          # - LanguageIdentification.Whatlang
-          # - LanguageIdentification.MediaPipe
-          # - LanguageIdentification.Lingua
-          # - LanguageCode
+        task: 
+          - { projectName: LanguageIdentification.CLD2, os: ubuntu-latest }
+          - { projectName: LanguageIdentification.CLD3, os: ubuntu-latest }
+          - { projectName: LanguageIdentification.FastText, os: windows-latest }
+          # - { projectName: LanguageIdentification.Whatlang, os: ubuntu-latest }
+          # - { projectName: LanguageIdentification.MediaPipe, os: ubuntu-latest }
+          # - { projectName: LanguageIdentification.Lingua, os: ubuntu-latest }
+          # - { projectName: LanguageCode, os: ubuntu-latest }
     permissions:
       contents: read
       packages: write
@@ -94,14 +93,14 @@ jobs:
       with:
         filters: |
           src:
-            - '${{env.ROOT}}/${{matrix.projectName}}/**'
+            - '${{env.ROOT}}/${{matrix.task.projectName}}/**'
 
     - uses: dorny/paths-filter@v3
       id: changes-native
       with:
         filters: |
           src:
-            - '${{env.ROOT}}/${{matrix.projectName}}.Native/**'
+            - '${{env.ROOT}}/${{matrix.task.projectName}}.Native/**'
 
     - name: 📂 Setup .NET Core
       uses: actions/setup-dotnet@v4
@@ -113,21 +112,21 @@ jobs:
           8.0.x
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
-    - name: 🚀 Pack ${{matrix.projectName}}.Native
+    - name: 🚀 Pack ${{matrix.task.projectName}}.Native
       if: steps.changes-native.outputs.src == 'true'
-      working-directory: ${{env.ROOT}}/${{matrix.projectName}}.Native
+      working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}.Native
       run: dotnet pack -c Release -o out 
 
-    - name: 🚀 Pack ${{matrix.projectName}}
+    - name: 🚀 Pack ${{matrix.task.projectName}}
       if: steps.changes.outputs.src == 'true'
-      working-directory: ${{env.ROOT}}/${{matrix.projectName}}
+      working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}
       run: dotnet pack -c Release -o out 
 
     - uses: actions/upload-artifact@v4
       if: steps.changes-native.outputs.src == 'true'
       with:
-        name: build-${{matrix.projectName}}.Native
-        path: ${{env.ROOT}}/${{matrix.projectName}}.Native/out
+        name: build-${{matrix.task.projectName}}.Native
+        path: ${{env.ROOT}}/${{matrix.task.projectName}}.Native/out
         retention-days: 1
         overwrite: 'true'
         compression-level: 0
@@ -135,8 +134,8 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: steps.changes.outputs.src == 'true'
       with:
-        name: build-${{matrix.projectName}}
-        path: ${{env.ROOT}}/${{matrix.projectName}}/out
+        name: build-${{matrix.task.projectName}}
+        path: ${{env.ROOT}}/${{matrix.task.projectName}}/out
         retention-days: 1
         overwrite: 'true'
         compression-level: 0
