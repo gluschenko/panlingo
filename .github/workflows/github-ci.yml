@@ -88,6 +88,19 @@ jobs:
       with: 
         submodules: 'true'
 
+    - name: Ensure Docker is installed
+      run: |
+        echo "Docker version:"
+        docker --version
+
+    - name: Run a Linux container
+      run: |
+        echo "Pulling a Linux container image..."
+        docker pull ubuntu:latest
+
+        echo "Running a Linux container..."
+        docker run --rm ubuntu:latest echo "Hello from Ubuntu container!"
+
     - uses: dorny/paths-filter@v3
       id: changes
       with:
