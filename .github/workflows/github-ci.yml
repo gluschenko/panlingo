@@ -65,7 +65,7 @@ jobs:
   build-nugets:
     name: 🚀 Pack ${{matrix.projectName}}
     runs-on: ${{matrix.task.os}}
-    needs: build-docker-images
+    # needs: build-docker-images
     strategy:
       fail-fast: false
       matrix:
