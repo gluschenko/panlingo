@@ -63,7 +63,7 @@ jobs:
         docker push $IMAGE_URL:${{env.TAG}}
   
   build-nugets:
-    name: 🚀 Pack ${{matrix.projectName}}
+    name: 🚀 Pack ${{matrix.task.projectName}}
     runs-on: ${{matrix.task.os}}
     # needs: build-docker-images
     strategy:
