@@ -5,7 +5,7 @@
         /// <summary>
         /// Name of native binary
         /// </summary>
-        public const string Name = "liblanguage_detector.so";
+        public const string Name = "language_detector";
         /// <summary>
         /// Name of model
         /// </summary>

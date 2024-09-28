@@ -5,6 +5,6 @@
         /// <summary>
         /// Name of native binary
         /// </summary>
-        public const string Name = "liblingua.so";
+        public const string Name = "lingua";
     }
 }

@@ -63,7 +63,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="libfasttext.dll">
+    <Content Include="fasttext.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/win-x64/native</PackagePath>

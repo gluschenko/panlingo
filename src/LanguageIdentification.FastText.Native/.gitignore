@@ -1,3 +1,3 @@
 libfasttext.so
-libfasttext.dll
+fasttext.dll
 build_temp/**
