@@ -35,7 +35,10 @@ cmake --build .
 Get-ChildItem -Recurse -Path .
 
 # Display shared library dependencies
-Copy-Item -Path "fasttext.so" -Destination "../../fasttext.so"
+Copy-Item -Path "fasttext.dll" -Destination "../../fasttext.dll"
+
+# List directory contents recursively
+Get-ChildItem -Recurse -Path .
 
 # Clean up
 Remove-Item -Recurse -Force ("../" + $workspace)
