@@ -12,8 +12,8 @@ if (-Not (Test-Path $workspace)) {
 }
 
 # Copy directories
-Copy-Item -Path "../../third_party/fastText" -Destination "$workspace/fasttext" -Recurse -Force
-Copy-Item -Path "Native" -Destination $workspace -Recurse -Force
+Copy-Item -Path "../../third_party/fastText/*" -Destination "$workspace/fasttext" -Recurse -Force
+Copy-Item -Path "Native/*" -Destination $workspace -Recurse -Force
 
 # List directory contents recursively
 Get-ChildItem -Recurse -Path .
@@ -40,5 +40,4 @@ Copy-Item -Path ".\Debug\fasttext.dll" -Destination "../../fasttext.dll"
 Get-ChildItem -Recurse -Path .
 
 # Clean up
-Remove-Item -Recurse -Force ("../" + $workspace)
 Write-Output "Goodbye world"
