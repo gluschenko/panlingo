@@ -27,7 +27,6 @@ if (-Not (Test-Path "build")) {
 Set-Location "build"
 
 # Build for Windows
-Remove-Item -Recurse -Force *
 cmake ..
 cmake --build .
 
