@@ -16,6 +16,7 @@ jobs:
       matrix:
         task: 
           - { projectName: LanguageIdentification.FastText.Native, os: windows-latest, script: ./Scripts/run-build.ps1 }
+          - { projectName: LanguageIdentification.FastText.Native, os: macos-latest, script: ./Scripts/run-build.sh }
     permissions:
       contents: read
       packages: write
@@ -49,6 +50,7 @@ jobs:
   build-nugets:
     name: 🚀 Pack ${{matrix.task.projectName}}
     runs-on: ${{matrix.task.os}}
+    needs: build-native
     strategy:
       fail-fast: false
       matrix:

@@ -9,6 +9,7 @@ $workspace = "build_temp"
 # Create directory if it doesn't exist
 if (-Not (Test-Path $workspace)) {
     New-Item -Path $workspace -ItemType Directory
+    New-Item -Path "$workspace/fasttext" -ItemType Directory
 }
 
 # Copy directories
@@ -40,4 +41,5 @@ Copy-Item -Path ".\Debug\fasttext.dll" -Destination "../../fasttext.dll"
 Get-ChildItem -Recurse -Path .
 
 # Clean up
+cd ../..
 Write-Output "Goodbye world"
