@@ -17,7 +17,7 @@ PredictionResult cld3_find_language(void* identifier, const char* text) {
 
 
     PredictionResult x = {};
-    PredictionResult* result = static_cast<PredictionResult*>();
+    PredictionResult* result = static_cast<PredictionResult*>(x);
     result.language = strdup(nativeResult.language.c_str());
     result.probability = nativeResult.probability;
     result.is_reliable = nativeResult.is_reliable;
