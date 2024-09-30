@@ -12,7 +12,7 @@ void destroy_cld3(void* identifier) {
     delete static_cast<NNetLanguageIdentifier*>(identifier);
 }
 
-PredictionResult cld3_find_language(void* identifier, const char* text) {
+PredictionResult* cld3_find_language(void* identifier, const char* text) {
     NNetLanguageIdentifier* nativeIdentifier = static_cast<NNetLanguageIdentifier*>(identifier);
     auto nativeResult = nativeIdentifier->FindLanguage(text);
 
