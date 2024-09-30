@@ -17,7 +17,7 @@ jobs:
         task: 
           - { projectName: LanguageIdentification.CLD2, os: ubuntu-latest }
           - { projectName: LanguageIdentification.CLD3, os: ubuntu-latest }
-          - { projectName: LanguageIdentification.FastText, os: ubuntu-latest }
+          # - { projectName: LanguageIdentification.FastText, os: ubuntu-latest }
           # - { projectName: LanguageIdentification.Whatlang, os: ubuntu-latest }
           # - { projectName: LanguageIdentification.MediaPipe, os: ubuntu-latest }
           # - { projectName: LanguageIdentification.Lingua, os: ubuntu-latest }
