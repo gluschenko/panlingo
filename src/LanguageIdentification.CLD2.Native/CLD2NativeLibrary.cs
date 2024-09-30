@@ -5,6 +5,6 @@
         /// <summary>
         /// Name of native binary
         /// </summary>
-        public const string Name = "cld2";
+        public const string Name = "libcld2";
     }
 }

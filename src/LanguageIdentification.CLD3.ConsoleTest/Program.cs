@@ -6,7 +6,7 @@
         {
             using var cld3 = new CLD3Detector(minNumBytes: 0, maxNumBytes: 512);
 
-            var text = "Hello, how are you? Привіт, як справи? Привет, как дела?";
+            var text = "Привіт, як справи?";
 
             var singlePrediction = cld3.PredictLanguage(text);
 

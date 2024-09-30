@@ -13,10 +13,18 @@ namespace Panlingo.LanguageIdentification.CLD3.Internal
         public static extern void DestroyCLD3(IntPtr identifier);
 
         [DllImport(CLD3NativeLibrary.Name, EntryPoint = "cld3_find_language", CallingConvention = CallingConvention.Cdecl)]
-        public static extern CLD3PredictionResult FindLanguage(IntPtr identifier, string text);
+        public static extern CLD3PredictionResult FindLanguage(
+            IntPtr identifier, 
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string text
+        );
 
         [DllImport(CLD3NativeLibrary.Name, EntryPoint = "cld3_find_languages", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr FindLanguages(IntPtr identifier, string text, int numLangs, out int resultCount);
+        public static extern IntPtr FindLanguages(
+            IntPtr identifier, 
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string text, 
+            int numLangs, 
+            out int resultCount
+        );
 
         [DllImport(CLD3NativeLibrary.Name, EntryPoint = "cld3_destroy_prediction_result", CallingConvention = CallingConvention.Cdecl)]
         public static extern void DestroyPredictionResult(IntPtr results, int count);
