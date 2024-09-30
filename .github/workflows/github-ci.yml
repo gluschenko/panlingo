@@ -8,64 +8,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-docker-images:
-    name: 🚀 Pack ${{matrix.task.projectName}}
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        task: 
-          - { projectName: LanguageIdentification.CLD2.Native, imageName: panlingo-builder-base-cld2 }
-          # - LanguageIdentification.CLD3
-          # - LanguageIdentification.FastText
-          # - LanguageIdentification.Whatlang
-          # - LanguageIdentification.MediaPipe
-          # - LanguageIdentification.Lingua
-    permissions:
-      contents: read
-      packages: write
-    env:
-      ROOT: ./src
-      NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
-    steps:
-    - uses: actions/checkout@v4
-      with: 
-        submodules: 'true'
-
-    - uses: dorny/paths-filter@v3
-      id: changes
-      with:
-        filters: |
-          src:
-            - '${{env.ROOT}}/${{matrix.task.projectName}}/**'
-
-    - name: Docker context
-      working-directory: .
-      run: docker context use default
-
-    - name: Docker login
-      working-directory: .
-      run: |
-        echo ${{secrets.GITHUB_TOKEN}} | docker login ghcr.io \
-        --username ${{github.repository_owner}} --password-stdin
-
-    - name: Docker build and push
-      env:
-        IMAGE: ${{matrix.task.imageName}}
-        TAG: latest # TODO: use branch name
-        DOCKERFILE: ./Dockerfile
-      working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}
-      run: |
-        IMAGE_URL="ghcr.io/${{github.repository_owner}}/${{env.IMAGE}}" \
-        docker build --pull --file ${{env.DOCKERFILE}} --tag ${{env.IMAGE}} --no-cache ../.. \
-        
-        docker tag ${{env.IMAGE}} $IMAGE_URL:${{env.TAG}}
-        docker push $IMAGE_URL:${{env.TAG}}
-  
   build-nugets:
     name: 🚀 Pack ${{matrix.task.projectName}}
     runs-on: ${{matrix.task.os}}
-    # needs: build-docker-images
     strategy:
       fail-fast: false
       matrix:
