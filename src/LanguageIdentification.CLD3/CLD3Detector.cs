@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -55,8 +56,29 @@ namespace Panlingo.LanguageIdentification.CLD3
         /// <returns>List of language predictions</returns>
         public CLD3Prediction PredictLanguage(string text)
         {
-            var result = CLD3DetectorWrapper.FindLanguage(_identifier, text);
-            return new CLD3Prediction(result);
+            var resultPtr = CLD3DetectorWrapper.PredictLanguage(
+                identifier: _identifier,
+                text: text,
+                resultCount: out var resultCount
+            );
+
+            try
+            {
+                var nativeResult = new CLD3PredictionResult[resultCount];
+                var structSize = Marshal.SizeOf(typeof(CLD3PredictionResult));
+
+                for (var i = 0; i < resultCount; i++)
+                {
+                    nativeResult[i] = Marshal.PtrToStructure<CLD3PredictionResult>(resultPtr + i * structSize);
+                }
+
+                var firstItem = nativeResult.First();
+                return new CLD3Prediction(firstItem);
+            }
+            finally
+            {
+                CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
+            }
         }
 
         /// <summary>
@@ -70,7 +92,7 @@ namespace Panlingo.LanguageIdentification.CLD3
             int count
         )
         {
-            var resultPtr = CLD3DetectorWrapper.FindLanguages(
+            var resultPtr = CLD3DetectorWrapper.PredictLanguages(
                 identifier: _identifier,
                 text: text,
                 numLangs: count,
@@ -79,15 +101,15 @@ namespace Panlingo.LanguageIdentification.CLD3
 
             try
             {
-                var result = new CLD3PredictionResult[resultCount];
+                var nativeResult = new CLD3PredictionResult[resultCount];
                 var structSize = Marshal.SizeOf(typeof(CLD3PredictionResult));
 
                 for (var i = 0; i < resultCount; i++)
                 {
-                    result[i] = Marshal.PtrToStructure<CLD3PredictionResult>(resultPtr + i * structSize);
+                    nativeResult[i] = Marshal.PtrToStructure<CLD3PredictionResult>(resultPtr + i * structSize);
                 }
 
-                return result
+                return nativeResult
                     .OrderByDescending(x => x.Probability)
                     .Select(x => new CLD3Prediction(x))
                     .ToArray();
