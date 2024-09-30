@@ -8,6 +8,44 @@ on:
   workflow_dispatch:
 
 jobs:
+  build-native:
+    name: 🚀 Build ${{matrix.task.projectName}} for (${{matrix.task.os}})
+    runs-on: ${{matrix.task.os}}
+    strategy:
+      fail-fast: false
+      matrix:
+        task: 
+          - { projectName: LanguageIdentification.FastText.Native, os: windows-latest, script: ./Scripts/run-build.ps1 }
+    permissions:
+      contents: read
+      packages: write
+    env:
+      ROOT: ./src
+      NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+    steps:
+    - uses: actions/checkout@v4
+      with: 
+        submodules: 'true'
+
+    - uses: dorny/paths-filter@v3
+      id: changes
+      with:
+        filters: |
+          src:
+            - '${{env.ROOT}}/${{matrix.task.projectName}}/**'
+
+    - uses: dorny/paths-filter@v3
+      id: changes-native
+      with:
+        filters: |
+          src:
+            - '${{env.ROOT}}/${{matrix.task.projectName}}.Native/**'
+
+    - name: 🚀 Build ${{matrix.task.projectName}}
+      if: steps.changes.outputs.src == 'true'
+      working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}
+      run: ${{matrix.task.script}}
+
   build-nugets:
     name: 🚀 Pack ${{matrix.task.projectName}}
     runs-on: ${{matrix.task.os}}
@@ -17,7 +55,7 @@ jobs:
         task: 
           - { projectName: LanguageIdentification.CLD2, os: ubuntu-latest }
           - { projectName: LanguageIdentification.CLD3, os: ubuntu-latest }
-          # - { projectName: LanguageIdentification.FastText, os: ubuntu-latest }
+          - { projectName: LanguageIdentification.FastText, os: ubuntu-latest }
           # - { projectName: LanguageIdentification.Whatlang, os: ubuntu-latest }
           # - { projectName: LanguageIdentification.MediaPipe, os: ubuntu-latest }
           # - { projectName: LanguageIdentification.Lingua, os: ubuntu-latest }

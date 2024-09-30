@@ -26,15 +26,6 @@ ls -R
 ldd libfasttext.so
 cp libfasttext.so ../../libfasttext.so
 
-# Build for Windows
-rm -rf *
-wine cmake ..
-wine cmake --build .
-
-ls -R
-
-cp libfasttext.dll ../../libfasttext.dll
-
 # Clean up
 rm -rf "$workspace"
 echo "Goodbye world";
