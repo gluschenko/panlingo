@@ -18,7 +18,7 @@ PredictionResult cld3_find_language(void* identifier, const char* text) {
 
 
     PredictionResult* result = static_cast<PredictionResult*>(std::malloc(sizeof(PredictionResult)));
-    result->language = _strdup(nativeResult.language.c_str());
+    result->language = strdup(nativeResult.language.c_str());
     result->probability = nativeResult.probability;
     result->is_reliable = nativeResult.is_reliable;
     result->proportion = nativeResult.proportion;
@@ -32,7 +32,7 @@ PredictionResult* cld3_find_languages(void* identifier, const char* text, int nu
     *resultCount = static_cast<int>(nativeResults.size());
     PredictionResult* result = new PredictionResult[*resultCount];
     for (int i = 0; i < *resultCount; ++i) {
-        result[i].language = _strdup(nativeResults[i].language.c_str());
+        result[i].language = strdup(nativeResults[i].language.c_str());
         result[i].probability = nativeResults[i].probability;
         result[i].is_reliable = nativeResults[i].is_reliable;
         result[i].proportion = nativeResults[i].proportion;
