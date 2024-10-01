@@ -16,7 +16,7 @@ jobs:
       matrix:
         task: 
           - { projectName: LanguageIdentification.FastText.Native, os: windows-latest, script: ./Scripts/run-build.ps1, artifact: fasttext.dll }
-          - { projectName: LanguageIdentification.FastText.Native, os: macos-latest, script: ./Scripts/run-build.sh, artifact: libfasttext.dylib }
+          # - { projectName: LanguageIdentification.FastText.Native, os: macos-latest, script: ./Scripts/run-build.sh, artifact: libfasttext.dylib }
     permissions:
       contents: read
       packages: write
@@ -50,7 +50,7 @@ jobs:
         ${{matrix.task.script}}
 
     - uses: actions/upload-artifact@v4
-      if: steps.changes-native.outputs.src == 'true'
+      if: steps.changes.outputs.src == 'true'
       with:
         name: build-${{matrix.task.projectName}}:${{matrix.task.os}}
         path: ${{env.ROOT}}/${{matrix.task.projectName}}/${{matrix.task.artifact}}
