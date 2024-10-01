@@ -71,7 +71,17 @@
       <Visible>false</Visible>
     </Content>
   </ItemGroup>
-
+  
+  <ItemGroup>
+    <Content Include="libfasttext.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/osx-x64/native</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+  
   <ItemGroup>
     <None Include="..\..\README_FASTTEXT.md" Pack="true" PackagePath="\" />
   </ItemGroup>

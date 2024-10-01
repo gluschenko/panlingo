@@ -23,7 +23,7 @@ make -j $(nproc) # make
 
 ls -R
 
-ldd libfasttext.dylib
+otool -L libfasttext.dylib
 cp libfasttext.dylib ../../libfasttext.dylib
 
 # Clean up
