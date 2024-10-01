@@ -52,7 +52,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: steps.changes.outputs.src == 'true'
       with:
-        name: build-${{matrix.task.projectName}}__${{matrix.task.os}}
+        name: build-${{matrix.task.projectName}}-${{matrix.task.os}}
         path: ${{env.ROOT}}/${{matrix.task.projectName}}/${{matrix.task.artifact}}
         retention-days: 1
         overwrite: 'true'
@@ -84,6 +84,12 @@ jobs:
     - uses: actions/checkout@v4
       with: 
         submodules: 'true'
+
+    - uses: actions/download-artifact@v4
+      with:
+        pattern: build-${{matrix.task.projectName}}-*
+        merge-multiple: true
+        path: ${{env.ROOT}}/${{matrix.task.projectName}}/
 
     - uses: dorny/paths-filter@v3
       id: changes
