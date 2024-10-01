@@ -48,6 +48,7 @@ jobs:
       run: |
         echo $(pwd)
         git update-index --chmod=+x ${{matrix.task.script}}
+        chmod +x ${{matrix.task.script}}
         ${{matrix.task.script}}
 
     - uses: actions/upload-artifact@v4
