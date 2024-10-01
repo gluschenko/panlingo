@@ -42,6 +42,20 @@ jobs:
           src:
             - '${{env.ROOT}}/${{matrix.task.projectName}}.Native/**'
 
+    - name: Test
+      if: steps.changes.outputs.src == 'true'
+      working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}
+      run: |
+        echo "1"
+        ls /opt/homebrew/opt/llvm/lib -r | grep libc++.a
+        ls /opt/homebrew/opt/llvm/lib -r | grep libc++abi.a
+        echo "2"
+        ls /usr/bin -r | grep libc++.a
+        ls /usr/bin -r | grep libc++abi.a
+        echo "3"
+        ls /usr/lib -r | grep libc++.a
+        ls /usr/lib -r | grep libc++abi.a
+
     - name: 🚀 Build ${{matrix.task.projectName}}
       if: steps.changes.outputs.src == 'true'
       working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}
