@@ -23,6 +23,12 @@ endif()
 add_definitions(-fPIC) # Position Independent Code
 add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
 
+message(STATUS "CMake version: ${CMAKE_VERSION}")
+message(STATUS "C++ compiler: ${CMAKE_CXX_COMPILER_ID}")
+message(STATUS "C compiler: ${CMAKE_C_COMPILER_ID}")
+message(STATUS "CXX flags: ${CMAKE_CXX_FLAGS}")
+message(STATUS "C flags: ${CMAKE_C_FLAGS}")
+
 add_library(${PROJECT_NAME} SHARED 
 	src/base.cc
 	src/embedding_feature_extractor.cc

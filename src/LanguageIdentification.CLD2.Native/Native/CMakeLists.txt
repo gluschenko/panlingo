@@ -31,6 +31,12 @@ endif()
 set(CMAKE_MACOSX_RPATH 1)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+message(STATUS "CMake version: ${CMAKE_VERSION}")
+message(STATUS "C++ compiler: ${CMAKE_CXX_COMPILER_ID}")
+message(STATUS "C compiler: ${CMAKE_C_COMPILER_ID}")
+message(STATUS "CXX flags: ${CMAKE_CXX_FLAGS}")
+message(STATUS "C flags: ${CMAKE_C_FLAGS}")
+
 include_directories(
     ${PROJECT_SOURCE_DIR}/cld2/internal
     ${PROJECT_SOURCE_DIR}/cld2/public
