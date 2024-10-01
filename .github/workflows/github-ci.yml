@@ -9,14 +9,14 @@ on:
 
 jobs:
   build-native:
-    name: 🚀 Build ${{matrix.task.projectName}} for (${{matrix.task.os}})
+    name: 🚀 Build ${{matrix.task.projectName}} for ${{matrix.task.os}}
     runs-on: ${{matrix.task.os}}
     strategy:
       fail-fast: false
       matrix:
         task: 
-          - { projectName: LanguageIdentification.FastText.Native, os: windows-latest, script: ./Scripts/run-build.ps1 }
-          - { projectName: LanguageIdentification.FastText.Native, os: macos-latest, script: ./Scripts/run-build.sh }
+          - { projectName: LanguageIdentification.FastText.Native, os: windows-latest, script: ./Scripts/run-build.ps1, artifact: fasttext.dll }
+          - { projectName: LanguageIdentification.FastText.Native, os: macos-latest, script: ./Scripts/run-build.sh, artifact: libfasttext.dylib }
     permissions:
       contents: read
       packages: write
@@ -45,7 +45,19 @@ jobs:
     - name: 🚀 Build ${{matrix.task.projectName}}
       if: steps.changes.outputs.src == 'true'
       working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}
-      run: ${{matrix.task.script}}
+      run: |
+        git update-index --chmod=+x ${{matrix.task.script}}
+        ${{matrix.task.script}}
+
+    - uses: actions/upload-artifact@v4
+      if: steps.changes-native.outputs.src == 'true'
+      with:
+        name: build-${{matrix.task.projectName}}:${{matrix.task.os}}
+        path: ${{env.ROOT}}/${{matrix.task.projectName}}/${{matrix.task.artifact}}
+        retention-days: 1
+        overwrite: 'true'
+        compression-level: 0
+        if-no-files-found: 'error'
 
   build-nugets:
     name: 🚀 Pack ${{matrix.task.projectName}}
