@@ -9,19 +9,19 @@ on:
 
 jobs:
   build-native:
-    name: 🚀 Build ${{matrix.task.projectName}} for ${{matrix.task.os}}
+    name: 💾 Build ${{matrix.task.title}} for ${{matrix.task.os}}
     runs-on: ${{matrix.task.os}}
     strategy:
       fail-fast: false
       matrix:
         task: 
-          - { projectName: LanguageIdentification.FastText.Native, os: windows-latest, script: ./Scripts/run-build.ps1, artifact: fasttext.dll }
-          # - { projectName: LanguageIdentification.FastText.Native, os: macos-latest, script: ./Scripts/run-build.sh, artifact: libfasttext.dylib }
+          - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: windows-latest, script: ./Scripts/run-build.ps1, artifact: fasttext.dll }
+          - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: macos-latest, script: ./Scripts/run-build.sh, artifact: libfasttext.dylib }
     permissions:
       contents: read
       packages: write
     env:
-      ROOT: ./src
+      ROOT: ${{runner.temp}}/src
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
     steps:
     - uses: actions/checkout@v4
@@ -60,20 +60,20 @@ jobs:
         if-no-files-found: 'error'
 
   build-nugets:
-    name: 🚀 Pack ${{matrix.task.projectName}}
+    name: 🚀 Pack ${{matrix.task.title}}
     runs-on: ${{matrix.task.os}}
     needs: build-native
     strategy:
       fail-fast: false
       matrix:
         task: 
-          - { projectName: LanguageIdentification.CLD2, os: ubuntu-latest }
-          - { projectName: LanguageIdentification.CLD3, os: ubuntu-latest }
-          - { projectName: LanguageIdentification.FastText, os: ubuntu-latest }
-          # - { projectName: LanguageIdentification.Whatlang, os: ubuntu-latest }
-          # - { projectName: LanguageIdentification.MediaPipe, os: ubuntu-latest }
-          # - { projectName: LanguageIdentification.Lingua, os: ubuntu-latest }
-          # - { projectName: LanguageCode, os: ubuntu-latest }
+          - { title: CLD2, projectName: LanguageIdentification.CLD2, os: ubuntu-latest }
+          - { title: CLD3, projectName: LanguageIdentification.CLD3, os: ubuntu-latest }
+          - { title: FastText, projectName: LanguageIdentification.FastText, os: ubuntu-latest }
+          # - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: ubuntu-latest }
+          # - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: ubuntu-latest }
+          # - { title: Lingua, projectName: LanguageIdentification.Lingua, os: ubuntu-latest }
+          # - { title: LanguageCode, projectName: LanguageCode, os: ubuntu-latest }
     permissions:
       contents: read
       packages: write
