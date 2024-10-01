@@ -87,7 +87,7 @@ jobs:
 
     - uses: actions/download-artifact@v4
       with:
-        pattern: build-${{matrix.task.projectName}}-*
+        pattern: build-${{matrix.task.projectName}}.Native-*
         merge-multiple: true
         path: ${{env.ROOT}}/${{matrix.task.projectName}}.Native/
 
