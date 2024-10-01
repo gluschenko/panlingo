@@ -89,7 +89,7 @@ jobs:
       with:
         pattern: build-${{matrix.task.projectName}}-*
         merge-multiple: true
-        path: ${{env.ROOT}}/${{matrix.task.projectName}}/
+        path: ${{env.ROOT}}/${{matrix.task.projectName}}.Native/
 
     - uses: dorny/paths-filter@v3
       id: changes
