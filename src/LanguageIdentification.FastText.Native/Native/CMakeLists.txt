@@ -44,10 +44,12 @@ add_library(${PROJECT_NAME} SHARED $<TARGET_OBJECTS:objlib>)
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER ${PROJECT_SOURCE_DIR}/binding.h)
 
 if (APPLE)
+    set(CLANG_LIB_DIR /usr/lib)
+
     target_link_libraries(${PROJECT_NAME} fasttext-static_pic
         -nostdlib++
-        -Wl,/usr/lib/libc++.a
-        -Wl,/usr/lib/libc++abi.a)
+        -Wl,${CLANG_LIB_DIR}/libc++.a
+        -Wl,${CLANG_LIB_DIR}/libc++abi.a)
 else()
     target_link_libraries(${PROJECT_NAME} fasttext-static_pic -static-libgcc -static-libstdc++)
 endif()
