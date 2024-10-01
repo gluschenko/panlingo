@@ -21,7 +21,7 @@ jobs:
       contents: read
       packages: write
     env:
-      ROOT: ~/src
+      ROOT: $GITHUB_WORKSPACE/src
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
     steps:
     - uses: actions/checkout@v4
