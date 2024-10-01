@@ -14,6 +14,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -pthread -funroll-loops -O3 -march=native")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -pthread -funroll-loops -O3 -march=native")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -nostdlib++ -Wl,/usr/lib/libc++.a -Wl,/usr/lib/libc++abi.a")
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc /W3 /O2 /fp:precise /arch:AVX2")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W3 /O2 /fp:precise /arch:AVX2")
@@ -46,9 +47,7 @@ if (APPLE)
     target_link_libraries(${PROJECT_NAME} fasttext-static_pic
         -nostdlib++
         -Wl,/usr/lib/libc++.a
-        -Wl,/usr/lib/libc++abi.a
-        -Wl,-framework -Wl,Foundation
-        -Wl,-framework -Wl,Security)
+        -Wl,/usr/lib/libc++abi.a)
 else()
     target_link_libraries(${PROJECT_NAME} fasttext-static_pic -static-libgcc -static-libstdc++)
 endif()
