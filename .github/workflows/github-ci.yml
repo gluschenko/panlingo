@@ -52,7 +52,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: steps.changes.outputs.src == 'true'
       with:
-        name: build-${{matrix.task.projectName}}:${{matrix.task.os}}
+        name: build-${{matrix.task.projectName}}__${{matrix.task.os}}
         path: ${{env.ROOT}}/${{matrix.task.projectName}}/${{matrix.task.artifact}}
         retention-days: 1
         overwrite: 'true'
