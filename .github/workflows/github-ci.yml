@@ -46,6 +46,7 @@ jobs:
       if: steps.changes.outputs.src == 'true'
       working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}
       run: |
+        echo $(pwd)
         git update-index --chmod=+x ${{matrix.task.script}}
         ${{matrix.task.script}}
 
