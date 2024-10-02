@@ -31,6 +31,8 @@ namespace Panlingo.LanguageIdentification.FastText
 
         public static bool IsSupported()
         {
+            throw new Exception(RuntimeInformation.OSArchitecture.ToString());
+
             return RuntimeInformation.OSArchitecture switch
             {
                 Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
