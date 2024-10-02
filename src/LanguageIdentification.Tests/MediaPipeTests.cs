@@ -9,12 +9,14 @@ public class MediaPipeTests
 {
     private static string GetModelPath()
     {
+        var root = "/";
+
         if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
-            return "~/models/mediapipe_language_detector.tflite";
+            root = Environment.GetEnvironmentVariable("HOME") ?? "/";
         }
 
-        return "/models/mediapipe_language_detector.tflite";
+        return Path.Combine(root, "/models/mediapipe_language_detector.tflite");
     }
 
     [SkippableTheory]

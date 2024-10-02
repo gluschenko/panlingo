@@ -8,12 +8,14 @@ public class FastTextTests
 {
     private static string GetModelPath()
     {
+        var root = "/";
+
         if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
-            return "~/models/fasttext176.bin";
+            root = Environment.GetEnvironmentVariable("HOME") ?? "/";
         }
 
-        return "/models/fasttext176.bin";
+        return Path.Combine(root, "/models/fasttext176.bin");
     }
 
     [SkippableTheory]
