@@ -51,7 +51,11 @@ add_library(${PROJECT_NAME} SHARED $<TARGET_OBJECTS:objlib>)
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER ${PROJECT_SOURCE_DIR}/binding.h)
 
 if (APPLE)
-    set(CLANG_LIB_DIR /opt/homebrew/opt/llvm/lib/c++)
+    if (CMAKE_OSX_ARCHITECTURES MATCHES "arm64")
+        set(CLANG_LIB_DIR /opt/homebrew/opt/llvm/lib/c++)
+    elseif (CMAKE_OSX_ARCHITECTURES MATCHES "x86_64")
+        set(CLANG_LIB_DIR /usr/local/opt/llvm/lib/c++)
+    endif()
 
     target_link_libraries(${PROJECT_NAME} fasttext-static_pic
         -nostdlib++
