@@ -17,7 +17,7 @@ jobs:
         task: 
           - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: windows-latest, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: fasttext.dll }
           - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libfasttext.arm64.dylib }
-          - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: macos-12, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libfasttext.x86_64.dylib }
+          - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libfasttext.x86_64.dylib }
     permissions:
       contents: read
       packages: write
