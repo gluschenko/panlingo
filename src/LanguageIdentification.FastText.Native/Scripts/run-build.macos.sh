@@ -3,6 +3,10 @@ set -e
 
 echo "Hello world";
 
+brew install llvm
+find /opt/homebrew/opt/llvm/lib -type f -name '*.a'
+find /opt/homebrew/opt/llvm/lib -type f -name '*.dylib'
+
 workspace="build_temp"
 
 mkdir "$workspace" -p
