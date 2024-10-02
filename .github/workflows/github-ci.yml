@@ -47,8 +47,8 @@ jobs:
       working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}
       run: |
         brew install llvm
-        brew install libc++ --with-static
-        brew install libc++abi --with-static
+        brew install libc++
+        brew install libc++abi
         echo "1"
         ls /opt/homebrew/opt/llvm/lib -r | grep libc++.a
         ls /opt/homebrew/opt/llvm/lib -r | grep libc++abi.a
