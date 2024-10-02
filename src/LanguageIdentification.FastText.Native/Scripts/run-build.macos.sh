@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 set -e
 
 echo "Hello world";
@@ -6,6 +6,10 @@ echo "Hello world";
 brew install llvm
 find /opt/homebrew/opt/llvm/lib -type f -name '*.a'
 find /opt/homebrew/opt/llvm/lib -type f -name '*.dylib'
+
+arch -x86_64 /usr/local/bin/brew install llvm
+find /usr/local/opt/llvm/lib -type f -name '*.a'
+find /usr/local/opt/llvm/lib -type f -name '*.dylib'
 
 workspace="build_temp"
 
@@ -32,7 +36,7 @@ cp libfasttext.dylib ../../libfasttext.x86_64.dylib
 
 echo "Build for MacOS on M1";
 rm -rf *
-cmake -D CMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=arm64 ..
+cmake -DCMAKE_OSX_ARCHITECTURES=arm64 ..
 make -j $(sysctl -n hw.logicalcpu) 
 
 ls -R
