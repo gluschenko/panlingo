@@ -235,12 +235,12 @@ jobs:
       run: dotnet test -c CI
 
   test-nugets-macos:
-    name: 🧪 Test on macOS (${{matrix.task.os}})
-    runs-on: ${{matrix.task.os}}
+    name: 🧪 Test on macOS (${{matrix.os}})
+    runs-on: ${{matrix.os}}
     strategy:
       fail-fast: false
       matrix:
-        task: 
+        os: 
           - macos-14
           - macos-13
     needs: build-nugets

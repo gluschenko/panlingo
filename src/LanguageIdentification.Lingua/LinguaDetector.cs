@@ -32,7 +32,11 @@ namespace Panlingo.LanguageIdentification.Lingua
 
         public static bool IsSupported()
         {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+            return RuntimeInformation.OSArchitecture switch
+            {
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
+                _ => false,
+            };
         }
 
         /// <summary>
