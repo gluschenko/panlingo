@@ -7,7 +7,7 @@ brew install llvm
 find /opt/homebrew/opt/llvm/lib -type f -name '*.a'
 find /opt/homebrew/opt/llvm/lib -type f -name '*.dylib'
 
-arch -x86_64 /usr/local/bin/brew install llvm
+arch -x86_64 /bin/bash -c "brew install llvm"
 find /usr/local/opt/llvm/lib -type f -name '*.a'
 find /usr/local/opt/llvm/lib -type f -name '*.dylib'
 
