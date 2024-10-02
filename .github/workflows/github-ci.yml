@@ -48,14 +48,8 @@ jobs:
       run: |
         brew install llvm
         echo "1"
-        ls /opt/homebrew/opt/llvm/bin -r | grep libc++.a
-        ls /opt/homebrew/opt/llvm/bin -r | grep libc++abi.a
-        echo "2"
-        ls /usr/bin -r | grep libc++.a
-        ls /usr/bin -r | grep libc++abi.a
-        echo "3"
-        ls /usr/lib -r | grep libc++.a
-        ls /usr/lib -r | grep libc++abi.a
+        ls /opt/homebrew/opt/llvm/lib | grep libc++.a
+        ls /opt/homebrew/opt/llvm/lib | grep libc++abi.a
 
     - name: 🚀 Build ${{matrix.task.projectName}}
       if: steps.changes.outputs.src == 'true'
