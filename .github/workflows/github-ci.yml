@@ -15,9 +15,9 @@ jobs:
       fail-fast: false
       matrix:
         task: 
-          - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: windows-latest, script: ./Scripts/run-build.ps1, artifact: fasttext.dll }
-          - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: macos-14, script: ./Scripts/run-build.macos.sh arm64, artifact: libfasttext.arm64.dylib }
-          - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: macos-12, script: ./Scripts/run-build.macos.sh x86_64, artifact: libfasttext.x86_64.dylib }
+          - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: windows-latest, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: fasttext.dll }
+          - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libfasttext.arm64.dylib }
+          - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: macos-12, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libfasttext.x86_64.dylib }
     permissions:
       contents: read
       packages: write
@@ -50,7 +50,7 @@ jobs:
         echo $(pwd)
         git update-index --chmod=+x ${{matrix.task.script}}
         chmod +x ${{matrix.task.script}}
-        ${{matrix.task.script}}
+        ${{matrix.task.script}} ${{matrix.task.arch}}
 
     - uses: actions/upload-artifact@v4
       if: steps.changes.outputs.src == 'true'
