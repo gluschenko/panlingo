@@ -20,16 +20,6 @@ cd "$workspace"
 mkdir build
 cd build
 
-echo "Build for MacOS on x86";
-rm -rf *
-cmake -DCMAKE_OSX_ARCHITECTURES=x86_64 ..
-make -j $(nproc) # make
-
-ls -R
-
-otool -L libfasttext.dylib
-cp libfasttext.dylib ../../libfasttext.x86_64.dylib
-
 echo "Build for MacOS on M1";
 rm -rf *
 cmake -DCMAKE_OSX_ARCHITECTURES=arm64 ..
@@ -39,6 +29,16 @@ ls -R
 
 otool -L libfasttext.dylib
 cp libfasttext.dylib ../../libfasttext.arm64.dylib
+
+echo "Build for MacOS on x86";
+rm -rf *
+cmake -DCMAKE_OSX_ARCHITECTURES=x86_64 ..
+make -j $(nproc) # make
+
+ls -R
+
+otool -L libfasttext.dylib
+cp libfasttext.dylib ../../libfasttext.x86_64.dylib
 
 echo "Make universal binary";
 lipo -create ../../libfasttext.x86_64.dylib ../../libfasttext.arm64.dylib -output ../../libfasttext.dylib
