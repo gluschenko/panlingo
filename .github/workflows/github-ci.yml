@@ -235,7 +235,9 @@ jobs:
 
   test-nugets-macos:
     name: 🧪 Test on macOS
-    runs-on: macos-latest
+    runs-on: |
+      - macos-latest
+      - macos-12
     needs: build-nugets
     permissions:
       contents: read
@@ -282,12 +284,7 @@ jobs:
 
     - name: 🧪 Run Tests for LanguageIdentification
       working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
-      run: |
-        export DYLD_PRINT_LIBRARIES=1
-        export DYLD_LIBRARY_PATH=./bin/CI/net8.0/runtimes/osx-x64/native
-        dotnet build -c CI
-        find . -type f -name '*.dylib'
-        dotnet test -c CI
+      run: dotnet test -c CI
 
     - name: 🧪 Run Tests for LanguageCode
       working-directory: ${{env.ROOT}}/LanguageCode.Tests

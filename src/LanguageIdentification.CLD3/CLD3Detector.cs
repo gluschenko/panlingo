@@ -31,7 +31,12 @@ namespace Panlingo.LanguageIdentification.CLD3
 
         public static bool IsSupported()
         {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+            return RuntimeInformation.OSArchitecture switch
+            {
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
+                _ => false,
+            };
         }
 
         public void Dispose()
