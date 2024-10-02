@@ -1,10 +1,21 @@
-﻿using Panlingo.LanguageIdentification.FastText;
+﻿using System.Runtime.InteropServices;
+using Panlingo.LanguageIdentification.FastText;
 using Panlingo.LanguageIdentification.Tests.Helpers;
 
 namespace Panlingo.LanguageIdentification.Tests;
 
 public class FastTextTests
 {
+    private static string GetModelPath()
+    {
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            return "~/models/fasttext176.bin";
+        }
+
+        return "/models/fasttext176.bin";
+    }
+
     [SkippableTheory]
     [InlineData("__label__en", Constants.PHRASE_ENG_1, 0.9955)]
     [InlineData("__label__uk", Constants.PHRASE_UKR_1, 0.9900)]
@@ -15,7 +26,7 @@ public class FastTextTests
 
         using var fastText = new FastTextDetector();
 
-        var modelPath = "/models/fasttext176.bin";
+        var modelPath = GetModelPath();
         fastText.LoadModel(modelPath);
 
         var predictions = fastText.Predict(text: text, count: 10);
@@ -40,7 +51,7 @@ public class FastTextTests
 
         using var fastText = new FastTextDetector();
 
-        var modelPath = "/models/fasttext176.bin";
+        var modelPath = GetModelPath();
         using var stream = File.Open(modelPath, FileMode.Open);
 
         fastText.LoadModel(stream);
@@ -87,7 +98,7 @@ public class FastTextTests
 
         using var fastText = new FastTextDetector();
 
-        var modelPath = "/models/fasttext176.bin";
+        var modelPath = GetModelPath();
         fastText.LoadModel(modelPath);
 
         var labels = fastText.GetLabels();

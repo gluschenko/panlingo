@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Runtime.InteropServices;
 using Panlingo.LanguageIdentification.MediaPipe;
 using Panlingo.LanguageIdentification.Tests.Helpers;
 
@@ -6,6 +7,16 @@ namespace Panlingo.LanguageIdentification.Tests;
 
 public class MediaPipeTests
 {
+    private static string GetModelPath()
+    {
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            return "~/models/mediapipe_language_detector.tflite";
+        }
+
+        return "/models/mediapipe_language_detector.tflite";
+    }
+
     [SkippableTheory]
     [InlineData("en", Constants.PHRASE_ENG_1, 0.9994)]
     [InlineData("uk", Constants.PHRASE_UKR_1, 0.9999)]
@@ -14,7 +25,7 @@ public class MediaPipeTests
     {
         Skip.IfNot(MediaPipeDetector.IsSupported());
 
-        var modelPath = "/models/mediapipe_language_detector.tflite";
+        var modelPath = GetModelPath();
         using var mediaPipe = new MediaPipeDetector(
             options: MediaPipeOptions.FromFile(modelPath).WithResultCount(10)
         );
@@ -39,7 +50,7 @@ public class MediaPipeTests
     {
         Skip.IfNot(MediaPipeDetector.IsSupported());
 
-        var modelPath = "/models/mediapipe_language_detector.tflite";
+        var modelPath = GetModelPath();
         using var stream = File.Open(modelPath, FileMode.Open);
 
         using var mediaPipe = new MediaPipeDetector(
@@ -66,7 +77,7 @@ public class MediaPipeTests
     {
         Skip.IfNot(MediaPipeDetector.IsSupported());
 
-        var modelPath = "/models/mediapipe_language_detector.tflite";
+        var modelPath = GetModelPath();
         using var stream = File.Open(modelPath, FileMode.Open);
 
         using var mediaPipe = new MediaPipeDetector(
