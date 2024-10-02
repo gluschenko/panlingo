@@ -289,7 +289,9 @@ jobs:
 
     - name: 🧪 Run Tests for LanguageIdentification
       working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
-      run: dotnet test -c CI
+      run: |
+        export HOME=${{runner.temp}}
+        dotnet test -c CI
 
     - name: 🧪 Run Tests for LanguageCode
       working-directory: ${{env.ROOT}}/LanguageCode.Tests
