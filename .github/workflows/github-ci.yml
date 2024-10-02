@@ -47,7 +47,8 @@ jobs:
       working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}
       run: |
         brew install llvm
-        ls /opt/homebrew/opt/llvm/lib
+        find /opt/homebrew/opt/llvm/lib -type f -name '*.a'
+        find /opt/homebrew/opt/llvm/lib -type f -name '*.dylib'
 
     - name: 🚀 Build ${{matrix.task.projectName}}
       if: steps.changes.outputs.src == 'true'
