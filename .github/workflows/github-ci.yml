@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-native:
-    name: 💾 Build ${{matrix.task.title}} for ${{matrix.task.os}}
+    name: 💾 Build ${{matrix.task.title}} for ${{matrix.task.os}} (${{matrix.task.arch}})
     runs-on: ${{matrix.task.os}}
     strategy:
       fail-fast: false
@@ -235,10 +235,14 @@ jobs:
       run: dotnet test -c CI
 
   test-nugets-macos:
-    name: 🧪 Test on macOS
-    runs-on: |
-      - macos-latest
-      - macos-12
+    name: 🧪 Test on macOS (${{matrix.task.os}})
+    runs-on: ${{matrix.task.os}}
+    strategy:
+      fail-fast: false
+      matrix:
+        task: 
+          - macos-14
+          - macos-13
     needs: build-nugets
     permissions:
       contents: read
