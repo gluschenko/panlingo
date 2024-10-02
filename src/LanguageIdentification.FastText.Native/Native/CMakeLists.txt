@@ -47,7 +47,6 @@ if (APPLE)
 
     target_link_libraries(${PROJECT_NAME} fasttext-static_pic
         -nostdlib++
-        -nodefaultlibs
         -Wl,${CLANG_LIB_DIR}/libc++.a
         -Wl,${CLANG_LIB_DIR}/libc++abi.a)
 else()
