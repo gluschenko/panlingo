@@ -76,7 +76,7 @@
     <Content Include="libfasttext.x86_64.dylib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>runtimes/osx-x64/native</PackagePath>
+      <PackagePath>runtimes/osx-x64/native/libfasttext.dylib</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
@@ -86,7 +86,7 @@
     <Content Include="libfasttext.arm64.dylib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>runtimes/osx-arm64/native</PackagePath>
+      <PackagePath>runtimes/osx-arm64/native/libfasttext.dylib</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
