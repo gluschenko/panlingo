@@ -32,8 +32,8 @@ cp libfasttext.dylib ../../libfasttext.arm64.dylib
 
 echo "Build for MacOS on x86";
 rm -rf *
-cmake -D CMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=x86_64 ..
-make -j $(sysctl -n hw.logicalcpu) 
+arch -x86_64 /bin/bash -c "cmake -DCMAKE_OSX_ARCHITECTURES=x86_64 .."
+arch -x86_64 /bin/bash -c "make -j $(sysctl -n hw.logicalcpu)"
 
 ls -R
 
