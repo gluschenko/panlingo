@@ -11,8 +11,6 @@ cp -a Native/. $workspace
 
 ls -R .
 
-ls /usr/lib
-
 cd "$workspace"
 
 mkdir build
