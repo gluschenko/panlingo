@@ -22,8 +22,8 @@ cd build
 
 echo "Build for MacOS on M1";
 rm -rf *
-cmake -DCMAKE_OSX_ARCHITECTURES=arm64 ..
-make -j $(nproc) # make
+cmake -D CMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=arm64 ..
+make -j $(sysctl -n hw.logicalcpu) 
 
 ls -R
 
@@ -32,8 +32,8 @@ cp libfasttext.dylib ../../libfasttext.arm64.dylib
 
 echo "Build for MacOS on x86";
 rm -rf *
-cmake -DCMAKE_OSX_ARCHITECTURES=x86_64 ..
-make -j $(nproc) # make
+cmake -D CMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=x86_64 ..
+make -j $(sysctl -n hw.logicalcpu) 
 
 ls -R
 
