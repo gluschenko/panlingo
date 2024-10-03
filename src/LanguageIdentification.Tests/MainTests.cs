@@ -88,7 +88,15 @@ public class MainTests
             assemblyNames.Add($"{assemblyName.Name} {assemblyName.Version}");
             if (assemblyName.Name != null && packageProjects.TryGetValue(assemblyName.Name, out var packageVersion))
             {
-                packageNames.Add($"{assemblyName.Name} {packageVersion}");
+                var a = Version.Parse(packageVersion);
+                var b = new Version(
+                    major: a.Major != -1 ? a.Major : 0,
+                    minor: a.Minor != -1 ? a.Minor : 0, 
+                    build: a.Build != -1 ? a.Build : 0, 
+                    revision: a.Revision != -1 ? a.Revision : 0
+                );
+
+                packageNames.Add($"{assemblyName.Name} {b}");
             }
         }
 
