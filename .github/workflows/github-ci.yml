@@ -178,12 +178,6 @@ jobs:
         path=$(realpath "${{env.ROOT}}/local-packages")
         dotnet nuget add source $path
 
-    - name: 📂 Download pretrained models
-      run: |
-        mkdir ~/models -p
-        curl --location -o ~/models/fasttext176.bin https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin
-        curl --location -o ~/models/mediapipe_language_detector.tflite https://storage.googleapis.com/mediapipe-models/language_detector/language_detector/float32/1/language_detector.tflite
-
     - name: 🧪 Run Tests for LanguageIdentification
       working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
       run: |
@@ -236,12 +230,6 @@ jobs:
       run: |
         $path = [System.IO.Path]::GetFullPath('${{env.ROOT}}/local-packages')
         dotnet nuget add source $path
-
-    - name: 📂 Download pretrained models
-      run: |
-        mkdir /models
-        Invoke-WebRequest -OutFile /models/fasttext176.bin https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin
-        Invoke-WebRequest -OutFile /models/mediapipe_language_detector.tflite https://storage.googleapis.com/mediapipe-models/language_detector/language_detector/float32/1/language_detector.tflite
 
     - name: 🧪 Run Tests for LanguageIdentification
       working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
@@ -297,12 +285,6 @@ jobs:
       run: |
         path=$(realpath "${{env.ROOT}}/local-packages")
         dotnet nuget add source $path
-
-    - name: 📂 Download pretrained models
-      run: |
-        mkdir ~/models -p
-        curl --location -o ~/models/fasttext176.bin https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin
-        curl --location -o ~/models/mediapipe_language_detector.tflite https://storage.googleapis.com/mediapipe-models/language_detector/language_detector/float32/1/language_detector.tflite
 
     - name: 🧪 Run Tests for LanguageIdentification
       working-directory: ${{env.ROOT}}/LanguageIdentification.Tests

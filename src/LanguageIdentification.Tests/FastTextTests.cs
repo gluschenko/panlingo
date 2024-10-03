@@ -4,13 +4,9 @@ using Panlingo.LanguageIdentification.Tests.Helpers;
 
 namespace Panlingo.LanguageIdentification.Tests;
 
-public class FastTextTests
+public class FastTextTests : IAsyncLifetime
 {
-    private static string GetModelPath()
-    {
-        var root = Environment.GetEnvironmentVariable("HOME") ?? "/";
-        return Path.Combine(root, "/models/fasttext176.bin");
-    }
+    private readonly string _modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "/models/fasttext176.bin");
 
     [SkippableTheory]
     [InlineData("__label__en", Constants.PHRASE_ENG_1, 0.9955)]
@@ -22,8 +18,7 @@ public class FastTextTests
 
         using var fastText = new FastTextDetector();
 
-        var modelPath = GetModelPath();
-        fastText.LoadModel(modelPath);
+        fastText.LoadModel(_modelPath);
 
         var predictions = fastText.Predict(text: text, count: 10);
         var mainLanguage = predictions.FirstOrDefault();
@@ -47,8 +42,7 @@ public class FastTextTests
 
         using var fastText = new FastTextDetector();
 
-        var modelPath = GetModelPath();
-        using var stream = File.Open(modelPath, FileMode.Open);
+        using var stream = File.Open(_modelPath, FileMode.Open);
 
         fastText.LoadModel(stream);
 
@@ -94,13 +88,31 @@ public class FastTextTests
 
         using var fastText = new FastTextDetector();
 
-        var modelPath = GetModelPath();
-        fastText.LoadModel(modelPath);
+        fastText.LoadModel(_modelPath);
 
         var labels = fastText.GetLabels();
 
         Assert.Contains(labels, x => x.Label == "__label__en");
         Assert.Contains(labels, x => x.Label == "__label__uk");
         Assert.Contains(labels, x => x.Label == "__label__ru");
+    }
+
+    public async Task InitializeAsync()
+    {
+        var url = "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin";
+        await FileHelper.DownloadAsync(
+            path: _modelPath,
+            url: url
+        );
+    }
+
+    public async Task DisposeAsync()
+    {
+        if (File.Exists(_modelPath))
+        {
+            File.Delete(_modelPath);
+        }
+
+        await Task.CompletedTask;
     }
 }
