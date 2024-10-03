@@ -1,7 +1,7 @@
 ﻿using Panlingo.LanguageCode;
 using Panlingo.LanguageCode.Models;
 
-namespace LanguageCode.Tests
+namespace Panlingo.LanguageCode.Tests
 {
     public class LanguageCodeTests
     {
