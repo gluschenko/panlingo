@@ -188,7 +188,7 @@ jobs:
       working-directory: ${{env.ROOT}}/LanguageCode.Tests
       run: 
         export HOME=${{runner.temp}}
-        dotnet test -c CI
+        dotnet test
 
   test-package-windows:
     name: 🧪 Test on Windows
@@ -237,7 +237,7 @@ jobs:
 
     - name: 🧪 Run Tests for LanguageCode
       working-directory: ${{env.ROOT}}/LanguageCode.Tests
-      run: dotnet test -c CI
+      run: dotnet test
 
   test-package-macos:
     name: 🧪 Test on macOS (${{matrix.os}})
@@ -296,7 +296,7 @@ jobs:
       working-directory: ${{env.ROOT}}/LanguageCode.Tests
       run: 
         export HOME=${{runner.temp}}
-        dotnet test -c CI
+        dotnet test
 
   deploy-package:
     name: 🚚 Push ${{matrix.projectName}}
