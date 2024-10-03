@@ -8,13 +8,7 @@ public class FastTextTests
 {
     private static string GetModelPath()
     {
-        var root = "/";
-
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-        {
-            root = Environment.GetEnvironmentVariable("HOME") ?? "/";
-        }
-
+        var root = Environment.GetEnvironmentVariable("HOME") ?? "/";
         return Path.Combine(root, "/models/fasttext176.bin");
     }
 
