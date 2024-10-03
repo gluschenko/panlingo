@@ -4,6 +4,11 @@ public class FileHelper
 {
     public static async Task DownloadAsync(string path, string url)
     {
+        if (File.Exists(path))
+        {
+            return;
+        }
+
         using var client = new HttpClient();
         using var stream = await client.GetStreamAsync(url);
 
