@@ -55,7 +55,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: steps.changes.outputs.src == 'true'
       with:
-        name: build-${{matrix.task.projectName}}-${{matrix.task.os}}
+        name: native-${{matrix.task.projectName}}-${{matrix.task.os}}
         path: ${{env.ROOT}}/${{matrix.task.projectName}}/${{matrix.task.artifact}}
         retention-days: 1
         overwrite: 'true'
@@ -90,7 +90,7 @@ jobs:
 
     - uses: actions/download-artifact@v4
       with:
-        pattern: build-${{matrix.task.projectName}}.Native-*
+        pattern: native-${{matrix.task.projectName}}.Native-*
         merge-multiple: true
         path: ${{env.ROOT}}/${{matrix.task.projectName}}.Native/
 
