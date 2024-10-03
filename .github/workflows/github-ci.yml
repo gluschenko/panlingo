@@ -146,10 +146,18 @@ jobs:
         overwrite: 'true'
         compression-level: 0
 
-  test-package-linux:
-    name: 🧪 Test on Linux
-    runs-on: ubuntu-latest
+  test-package:
+    name: 🧪 Test on ${{matrix.task.os}}
+    runs-on: ${{matrix.task.os}}
     needs: build-package
+    strategy:
+      fail-fast: false
+      matrix:
+        task: 
+          - { title: CLD2, projectName: LanguageIdentification.CLD2, os: ubuntu-latest }
+          - { title: CLD3, projectName: LanguageIdentification.CLD3, os: windows-latest }
+          - { title: FastText, projectName: LanguageIdentification.FastText, os: macos-13 }
+          - { title: FastText, projectName: LanguageIdentification.FastText, os: macos-14 }
     permissions:
       contents: read
       packages: write
@@ -170,65 +178,25 @@ jobs:
         path: ${{env.ROOT}}/local-packages
 
     - name: 📂 Files
-      working-directory: ${{env.ROOT}}
+      working-directory: ${{env.ROOT}}/local-packages
       run: ls -R
 
-    - name: 📂 Use local NuGet
+    - name: 📂 Use local NuGet (Linux)
+      if: matrix.task.os == 'ubuntu-latest'
       run: |
         path=$(realpath "${{env.ROOT}}/local-packages")
         dotnet nuget add source $path
 
-    - name: 🧪 Run Tests for LanguageIdentification
-      working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
-      run: |
-        export HOME=${{runner.temp}}
-        dotnet test -c CI
-
-    - name: 🧪 Run Tests for LanguageCode
-      working-directory: ${{env.ROOT}}/LanguageCode.Tests
-      run: 
-        export HOME=${{runner.temp}}
-        dotnet test
-
-  test-package-windows:
-    name: 🧪 Test on Windows
-    runs-on: windows-latest
-    needs: build-package
-    permissions:
-      contents: read
-      packages: write
-    env:
-      ROOT: ./src
-      NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
-    steps:
-    - uses: actions/checkout@v4
-  
-    - name: 📂 Setup .NET Core
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: |
-          5.0.x
-          6.0.x
-          7.0.x
-          8.0.x
-        source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
-
-    - name: 📂 Files
-      run: mkdir -p ${{env.ROOT}}/local-packages
-
-    - uses: actions/download-artifact@v4
-      with:
-        pattern: build-*
-        merge-multiple: true
-        path: ${{env.ROOT}}/local-packages
-
-    - name: 📂 Files
-      working-directory: ${{env.ROOT}}
-      run: ls -R
-
-    - name: 📂 Use local NuGet
+    - name: 📂 Use local NuGet (Windows)
+      if: matrix.task.os == 'windows-latest'
       run: |
         $path = [System.IO.Path]::GetFullPath('${{env.ROOT}}/local-packages')
+        dotnet nuget add source $path
+
+    - name: 📂 Use local NuGet (OSX)
+      if: matrix.task.os == 'macos-13' || matrix.task.os == 'macos-14'
+      run: |
+        path=$(realpath "${{env.ROOT}}/local-packages")
         dotnet nuget add source $path
 
     - name: 🧪 Run Tests for LanguageIdentification
@@ -239,72 +207,10 @@ jobs:
       working-directory: ${{env.ROOT}}/LanguageCode.Tests
       run: dotnet test
 
-  test-package-macos:
-    name: 🧪 Test on macOS (${{matrix.os}})
-    runs-on: ${{matrix.os}}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: 
-          - macos-14
-          - macos-13
-    needs: build-package
-    permissions:
-      contents: read
-      packages: write
-    env:
-      ROOT: ./src
-      NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
-    steps:
-    - uses: actions/checkout@v4
-  
-    - name: 📂 Setup .NET Core
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: |
-          5.0.x
-          6.0.x
-          7.0.x
-          8.0.x
-        source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
-
-    - name: 📂 Files
-      run: mkdir -p ${{env.ROOT}}/local-packages
-
-    - uses: actions/download-artifact@v4
-      with:
-        pattern: build-*
-        merge-multiple: true
-        path: ${{env.ROOT}}/local-packages
-
-    - name: 📂 Files
-      working-directory: ${{env.ROOT}}
-      run: ls -R
-
-    - name: 📂 Use local NuGet
-      run: |
-        path=$(realpath "${{env.ROOT}}/local-packages")
-        dotnet nuget add source $path
-
-    - name: 🧪 Run Tests for LanguageIdentification
-      working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
-      run: |
-        export HOME=${{runner.temp}}
-        dotnet test -c CI
-
-    - name: 🧪 Run Tests for LanguageCode
-      working-directory: ${{env.ROOT}}/LanguageCode.Tests
-      run: 
-        export HOME=${{runner.temp}}
-        dotnet test
-
   deploy-package:
     name: 🚚 Push ${{matrix.projectName}}
     runs-on: ubuntu-latest
-    needs: 
-      - test-package-linux
-      - test-package-windows
-      - test-package-macos
+    needs: test-package
     if: github.ref == 'refs/heads/master'
     strategy:
       fail-fast: false

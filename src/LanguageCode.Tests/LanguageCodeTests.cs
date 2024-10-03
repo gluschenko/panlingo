@@ -1,5 +1,4 @@
-﻿using Panlingo.LanguageCode;
-using Panlingo.LanguageCode.Models;
+﻿using Panlingo.LanguageCode.Models;
 
 namespace Panlingo.LanguageCode.Tests
 {
