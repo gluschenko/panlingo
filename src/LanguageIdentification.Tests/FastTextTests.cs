@@ -6,7 +6,7 @@ namespace Panlingo.LanguageIdentification.Tests;
 
 public class FastTextTests : IAsyncLifetime
 {
-    private readonly string _modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "/models/fasttext176.bin");
+    private readonly string _modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models/fasttext176.bin");
 
     [SkippableTheory]
     [InlineData("__label__en", Constants.PHRASE_ENG_1, 0.9955)]
@@ -99,8 +99,6 @@ public class FastTextTests : IAsyncLifetime
 
     public async Task InitializeAsync()
     {
-        throw new Exception($"Root: '{_modelPath}'");
-
         var url = "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin";
         await FileHelper.DownloadAsync(
             path: _modelPath,

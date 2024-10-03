@@ -5,7 +5,7 @@ namespace Panlingo.LanguageIdentification.Tests;
 
 public class MediaPipeTests : IAsyncLifetime
 {
-    private readonly string _modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "/models/mediapipe_language_detector.tflite");
+    private readonly string _modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models/mediapipe_language_detector.tflite");
 
     [SkippableTheory]
     [InlineData("en", Constants.PHRASE_ENG_1, 0.9994)]
