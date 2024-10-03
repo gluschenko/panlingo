@@ -14,6 +14,12 @@ public class MainTests
             typeof(Panlingo.LanguageIdentification.Lingua.LinguaDetector),
             typeof(Panlingo.LanguageIdentification.MediaPipe.MediaPipeDetector),
             typeof(Panlingo.LanguageIdentification.Whatlang.WhatlangDetector),
+            typeof(Panlingo.LanguageIdentification.CLD2.Native.CLD2NativeLibrary),
+            typeof(Panlingo.LanguageIdentification.CLD3.Native.CLD3NativeLibrary),
+            typeof(Panlingo.LanguageIdentification.FastText.Native.FastTextNativeLibrary),
+            typeof(Panlingo.LanguageIdentification.Lingua.Native.LinguaNativeLibrary),
+            typeof(Panlingo.LanguageIdentification.MediaPipe.Native.MediaPipeNativeLibrary),
+            typeof(Panlingo.LanguageIdentification.Whatlang.Native.WhatlangNativeLibrary),
         ];
 
         var root = AppDomain.CurrentDomain.BaseDirectory;
