@@ -99,7 +99,7 @@ public class FastTextTests : IAsyncLifetime
 
     public async Task InitializeAsync()
     {
-        throw new Exception($"Root: '{AppDomain.CurrentDomain.BaseDirectory}'");
+        throw new Exception($"Root: '{_modelPath}'");
 
         var url = "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin";
         await FileHelper.DownloadAsync(
