@@ -152,12 +152,17 @@ jobs:
     needs: build-package
     strategy:
       fail-fast: false
+      # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#standard-github-hosted-runners-for--private-repositories
       matrix:
         task: 
-          - { title: CLD2, projectName: LanguageIdentification.CLD2, os: ubuntu-latest }
-          - { title: CLD3, projectName: LanguageIdentification.CLD3, os: windows-latest }
-          - { title: FastText, projectName: LanguageIdentification.FastText, os: macos-13 }
-          - { title: FastText, projectName: LanguageIdentification.FastText, os: macos-14 }
+          - { os: ubuntu-24.04 }
+          - { os: ubuntu-22.04 }
+          - { os: ubuntu-20.04 }
+          - { os: windows-2022 }
+          - { os: windows-2019 }
+          - { os: macos-13 }
+          - { os: macos-14 }
+          - { os: macos-15 }
     permissions:
       contents: read
       packages: write
@@ -182,19 +187,19 @@ jobs:
       run: ls -R
 
     - name: 📂 Use local NuGet (Linux)
-      if: matrix.task.os == 'ubuntu-latest'
+      if: ${{ startsWith(matrix.task.os, 'ubuntu') }}
       run: |
         path=$(realpath "${{env.ROOT}}/local-packages")
         dotnet nuget add source $path
 
     - name: 📂 Use local NuGet (Windows)
-      if: matrix.task.os == 'windows-latest'
+      if: ${{ startsWith(matrix.task.os, 'windows') }}
       run: |
         $path = [System.IO.Path]::GetFullPath('${{env.ROOT}}/local-packages')
         dotnet nuget add source $path
 
     - name: 📂 Use local NuGet (OSX)
-      if: matrix.task.os == 'macos-13' || matrix.task.os == 'macos-14'
+      if: ${{ startsWith(matrix.task.os, 'macos') }}
       run: |
         path=$(realpath "${{env.ROOT}}/local-packages")
         dotnet nuget add source $path
