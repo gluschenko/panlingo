@@ -7,6 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -O3")
+
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -fno-exceptions -fno-rtti")
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
@@ -24,6 +26,7 @@ endif()
 set(CMAKE_MACOSX_RPATH 1)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+message(STATUS "System name: ${CMAKE_SYSTEM_NAME}")
 message(STATUS "CMake version: ${CMAKE_VERSION}")
 message(STATUS "C++ compiler: ${CMAKE_CXX_COMPILER_ID}")
 message(STATUS "C compiler: ${CMAKE_C_COMPILER_ID}")
