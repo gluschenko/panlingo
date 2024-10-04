@@ -1,10 +1,11 @@
-﻿project(cld3)
+﻿cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
-cmake_minimum_required(VERSION 3.9)
+project(cld3)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED ON)
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -fno-exceptions -fno-rtti")

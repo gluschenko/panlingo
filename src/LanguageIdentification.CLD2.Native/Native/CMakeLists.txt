@@ -1,6 +1,11 @@
+cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+
 project(cld2)
 
-cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED ON)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -14,9 +19,9 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 endif()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -fno-exceptions -fno-rtti")
-    set(BUILD_SHARED_LIBS OFF)
-    set(CMAKE_EXE_LINKER_FLAGS "-static")
+    # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -fno-exceptions -fno-rtti")
+    # set(BUILD_SHARED_LIBS OFF)
+    # set(CMAKE_EXE_LINKER_FLAGS "-static")
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     # nop
 endif()
@@ -62,28 +67,28 @@ set(CLD2_SOURCES
     ${PROJECT_SOURCE_DIR}/cld2/internal/tote.cc
     ${PROJECT_SOURCE_DIR}/cld2/internal/utf8statetable.cc
     ${PROJECT_SOURCE_DIR}/cld2/internal/generated_distinct_bi_0.cc
-	
-	### Chrome (less perfect predictions)
-	# ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_cjk_uni_prop_80.cc
-	# ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_cjk_compatible.cc
+    
+    ### Chrome (less perfect predictions)
+    # ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_cjk_uni_prop_80.cc
+    # ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_cjk_compatible.cc
     # ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_cjk_delta_bi_4.cc
-	# ${PROJECT_SOURCE_DIR}/cld2/internal/generated_distinct_bi_0.cc
+    # ${PROJECT_SOURCE_DIR}/cld2/internal/generated_distinct_bi_0.cc
     # ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_quadchrome_2.cc
-	# ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_deltaoctachrome.cc
+    # ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_deltaoctachrome.cc
     # ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_distinctoctachrome.cc
-	# ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_score_quad_octa_2.cc
-	###
+    # ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_score_quad_octa_2.cc
+    ###
 
-	### Full
-	${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_cjk_uni_prop_80.cc
-	${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_cjk_compatible.cc
+    ### Full
+    ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_cjk_uni_prop_80.cc
+    ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_cjk_compatible.cc
     ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_cjk_delta_bi_32.cc
-	${PROJECT_SOURCE_DIR}/cld2/internal/generated_distinct_bi_0.cc
+    ${PROJECT_SOURCE_DIR}/cld2/internal/generated_distinct_bi_0.cc
     ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_quad0122.cc
-	${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_deltaocta0122.cc
+    ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_deltaocta0122.cc
     ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_distinctocta0122.cc
-	${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_score_quad_octa_0122.cc
-	###
+    ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_score_quad_octa_0122.cc
+    ###
 
     ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_dynamic_compat.h
     ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_dynamic_data_extractor.h
