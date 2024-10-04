@@ -34,7 +34,6 @@ else()
     # nop
 endif()
 
-
 set(CMAKE_MACOSX_RPATH 1)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
