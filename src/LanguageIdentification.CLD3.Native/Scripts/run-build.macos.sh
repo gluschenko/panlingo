@@ -16,6 +16,7 @@ fi
 
 echo "Hello world $ARCH";
 
+brew install llvm
 npm install -g zx
 
 workspace="build_temp"

@@ -16,6 +16,8 @@ fi
 
 echo "Hello world $ARCH";
 
+brew install llvm
+
 workspace="build_temp"
 
 mkdir "$workspace" -p
