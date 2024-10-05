@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim AS build
+FROM debian:bookworm-slim AS build
 ARG BUILD_CONFIGURATION=Release
 
 WORKDIR /repo
