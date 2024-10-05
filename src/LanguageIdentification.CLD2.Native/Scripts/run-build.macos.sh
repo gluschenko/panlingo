@@ -16,19 +16,15 @@ fi
 
 echo "Hello world $ARCH";
 
-brew install llvm
-
 workspace="build_temp"
 
 mkdir "$workspace" -p
-cp -a ../../third_party/cld3/. $workspace/.
+cp -a ../../third_party/cld2/. $workspace/cld2
 cp -a Native/. $workspace
 
 ls -R .
 
 cd "$workspace"
-
-zx ../Native/monkey-patch.mjs
 
 mkdir build
 cd build
