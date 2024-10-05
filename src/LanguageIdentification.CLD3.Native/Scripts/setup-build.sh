@@ -5,7 +5,7 @@ echo "Installing build packages";
 
 apt -y update
 apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
-curl -sL https://deb.nodesource.com/setup_22.x | bash -
+curl -sL https://deb.nodesource.com/setup_18.x | bash -
 
 apt -y update
 apt -y install cmake
