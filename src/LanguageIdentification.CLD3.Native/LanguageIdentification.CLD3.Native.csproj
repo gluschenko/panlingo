@@ -73,6 +73,26 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="libcld3.x86_64.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/osx-x64/native/libcld3.dylib</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="libcld3.arm64.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/osx-arm64/native/libcld3.dylib</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\..\README_CLD3.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
