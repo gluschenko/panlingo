@@ -4,7 +4,7 @@ set -e
 echo "Installing build packages";
 
 apt -y update
-apt -y install curl
+apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 curl -sL https://deb.nodesource.com/setup_20.x | bash -
 
 apt -y update
