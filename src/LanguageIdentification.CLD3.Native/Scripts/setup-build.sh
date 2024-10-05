@@ -11,7 +11,7 @@ apt -y install g++
 apt -y install gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64
 
 apt -y install curl
-curl -sL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_22.x | bash -
 apt -y install nodejs
 apt -y install npm 
 
