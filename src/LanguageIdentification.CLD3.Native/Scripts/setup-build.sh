@@ -5,17 +5,17 @@ echo "Installing build packages";
 
 apt -y update
 apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
-curl -sL https://deb.nodesource.com/setup_18.x | bash -
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+source ~/.bashrc
+nvm install 22
 
 apt -y update
 apt -y install cmake
 apt -y install g++
 apt -y install gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64
 
-apt -y install nodejs
-apt -y install npm 
-
 node --version
+npm --version
 
 npm install -g zx
 
