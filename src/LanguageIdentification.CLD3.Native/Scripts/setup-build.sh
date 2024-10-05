@@ -10,8 +10,9 @@ apt-get update && apt-get install -y ca-certificates curl gnupg && \
 apt -y update
 apt -y install cmake
 apt -y install g++
-apt -y install nodejs
 apt -y install gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64
+apt -y install nodejs
+apt -y install npm 
 
 npm install -g zx
 
