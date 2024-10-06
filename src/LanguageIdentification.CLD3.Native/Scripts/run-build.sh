@@ -13,6 +13,11 @@ ls -R .
 
 cd "$workspace"
 
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+nvm install 22
+nvm use 22
+npm install -g zx
+
 zx ../Native/monkey-patch.mjs
 
 mkdir build
