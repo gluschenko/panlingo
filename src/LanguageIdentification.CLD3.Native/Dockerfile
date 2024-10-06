@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim AS build
+FROM debian:bullseye-slim AS build
 
 WORKDIR /repo
 COPY ["src/LanguageIdentification.CLD3.Native/LanguageIdentification.CLD3.Native.csproj", "src/LanguageIdentification.CLD3.Native/"]
