@@ -9,7 +9,7 @@
 
 extern "C"
 {
-    PredictionResult* PredictLanguage(char *text, int* resultCount)
+    EXPORT PredictionResult* PredictLanguage(char *text, int* resultCount)
     {
         int textLength = strlen(text);
 
@@ -75,7 +75,7 @@ extern "C"
         return result;
     }
 
-    void FreeResults(PredictionResult* results, int count)
+    EXPORT void FreeResults(PredictionResult* results, int count)
     {
         for (int i = 0; i < count; ++i) {
             free((void*)results[i].language);

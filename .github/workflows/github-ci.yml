@@ -16,12 +16,12 @@ jobs:
       matrix:
         task: 
           - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: windows-latest, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: fasttext.dll }
-          - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libfasttext.arm64.dylib }
           - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libfasttext.x86_64.dylib }
-          - { title: CLD2, projectName: LanguageIdentification.CLD2.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libcld2.arm64.dylib }
+          - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libfasttext.arm64.dylib }
           - { title: CLD2, projectName: LanguageIdentification.CLD2.Native, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libcld2.x86_64.dylib }
-          - { title: CLD3, projectName: LanguageIdentification.CLD3.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libcld3.arm64.dylib }
+          - { title: CLD2, projectName: LanguageIdentification.CLD2.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libcld2.arm64.dylib }
           - { title: CLD3, projectName: LanguageIdentification.CLD3.Native, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libcld3.x86_64.dylib }
+          - { title: CLD3, projectName: LanguageIdentification.CLD3.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libcld3.arm64.dylib }
     permissions:
       contents: read
       packages: write
