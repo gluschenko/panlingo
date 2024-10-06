@@ -91,7 +91,7 @@ functionality into their applications.
 
 | Model     |        Linux       |     Windows        |  macOS             |  Blazor WASM   |
 | :-------- | :----------------: | :----------------: | :----------------: | :------------: |
-| CLD2      | :white_check_mark: | :white_check_mark: | :construction:     | :x:            |
+| CLD2      | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:            |
 | CLD3      | :white_check_mark: | :white_check_mark: | :construction:     | :x:            |
 | FastText  | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:            |
 | Whatlang  | :white_check_mark: | :construction:     | :construction:     | :x:            |
