@@ -67,5 +67,4 @@ else()
     elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
         target_link_libraries(${PROJECT_NAME} fasttext-static_pic -static-libgcc -static-libstdc++)
     endif()
-
 endif()
