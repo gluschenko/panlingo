@@ -6,14 +6,10 @@
 using namespace std;
 
 #ifndef EXPORT
-#   ifdef __linux__
-#       define EXPORT __attribute__((visibility("default")))
+#   if defined(_WIN32) || defined(_WIN64)
+#       define EXPORT __declspec(dllexport)
 #   else
-#       if defined(_MSC_VER)
-#           define EXPORT __declspec(dllexport)
-#       else
-#           define EXPORT __attribute__((visibility("default")))
-#       endif
+#       define EXPORT extern
 #   endif
 #endif
 

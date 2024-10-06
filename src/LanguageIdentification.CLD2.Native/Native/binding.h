@@ -5,11 +5,11 @@
 #include "./cld2/public/compact_lang_det.h"
 
 #ifndef EXPORT
-#if defined(_WIN32) || defined(_WIN64)
-#define EXPORT __declspec(dllimport)
-#else
-#define EXPORT extern
-#endif
+#   if defined(_WIN32) || defined(_WIN64)
+#       define EXPORT __declspec(dllexport)
+#   else
+#       define EXPORT extern
+#   endif
 #endif
 
 extern "C"
