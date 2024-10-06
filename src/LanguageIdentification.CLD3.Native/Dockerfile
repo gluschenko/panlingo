@@ -11,6 +11,8 @@ WORKDIR /repo/src/LanguageIdentification.CLD3.Native
 RUN bash ./Scripts/setup-runtime.sh
 RUN bash ./Scripts/setup-build.sh
 
+ENV PATH="/root/.nvm/versions/node/v22/bin:${PATH}"
+
 COPY . .
 
 ENTRYPOINT ["bash", "./Scripts/run-build.sh"]
