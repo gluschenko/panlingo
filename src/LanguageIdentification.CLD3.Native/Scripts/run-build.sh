@@ -13,8 +13,7 @@ ls -R .
 
 cd "$workspace"
 
-npm install -g zx
-npx zx ../Native/monkey-patch.mjs
+zx ../Native/monkey-patch.mjs
 
 mkdir build
 cd build

@@ -1,5 +1,4 @@
 FROM debian:bookworm-slim AS build
-ARG BUILD_CONFIGURATION=Release
 
 WORKDIR /repo
 COPY ["src/LanguageIdentification.FastText.Native/LanguageIdentification.FastText.Native.csproj", "src/LanguageIdentification.FastText.Native/"]

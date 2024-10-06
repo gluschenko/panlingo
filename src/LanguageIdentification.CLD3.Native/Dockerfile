@@ -1,5 +1,4 @@
 FROM debian:bookworm-slim AS build
-ARG BUILD_CONFIGURATION=Release
 
 WORKDIR /repo
 COPY ["src/LanguageIdentification.CLD3.Native/LanguageIdentification.CLD3.Native.csproj", "src/LanguageIdentification.CLD3.Native/"]
