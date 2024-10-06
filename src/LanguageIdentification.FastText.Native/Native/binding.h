@@ -7,13 +7,15 @@
 #ifndef EXPORT
 #   if defined(_WIN32) || defined(_WIN64)
 #       define EXPORT __declspec(dllexport)
+#   elif defined(__GNUC__) || defined(__clang__)
+#       define EXPORT __attribute__((visibility("default")))
 #   else
-#       define EXPORT extern
+#       define EXPORT
 #   endif
 #endif
 
-extern "C" {
-
+extern "C" 
+{
     typedef struct fasttext_t fasttext_t;
 
     typedef struct {
