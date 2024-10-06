@@ -27,8 +27,8 @@ namespace Panlingo.LanguageIdentification.CLD2
             {
                 Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
                 Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
-                //Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
-                //Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+                Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
                 _ => false,
             };
         }
