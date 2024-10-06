@@ -101,12 +101,16 @@ else()
     endif()
 endif()
 
-# unit tests exec:
-add_executable(language_identifier_main src/language_identifier_main.cc)
-target_link_libraries(language_identifier_main PRIVATE cld3)
+# Build unit tests
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+    if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+        add_executable(language_identifier_main src/language_identifier_main.cc)
+        target_link_libraries(language_identifier_main PRIVATE cld3)
 
-add_executable(getonescriptspan_test src/script_span/getonescriptspan_test.cc)
-target_link_libraries(getonescriptspan_test PRIVATE cld3)
+        add_executable(getonescriptspan_test src/script_span/getonescriptspan_test.cc)
+        target_link_libraries(getonescriptspan_test PRIVATE cld3)
 
-add_executable(language_identifier_features_test src/language_identifier_features_test.cc)
-target_link_libraries(language_identifier_features_test PRIVATE cld3)
+        add_executable(language_identifier_features_test src/language_identifier_features_test.cc)
+        target_link_libraries(language_identifier_features_test PRIVATE cld3)
+    endif()
+endif()
