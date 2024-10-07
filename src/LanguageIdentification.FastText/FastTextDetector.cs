@@ -31,7 +31,14 @@ namespace Panlingo.LanguageIdentification.FastText
 
         public static bool IsSupported()
         {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+            return RuntimeInformation.OSArchitecture switch
+            {
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+                Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+                _ => false,
+            };
         }
 
         public string ModelPath { get; private set; } = string.Empty;
@@ -158,10 +165,11 @@ namespace Panlingo.LanguageIdentification.FastText
             var predictions = Marshal.PtrToStructure<FastTextPredictionListNativeResult>(predictionPtr);
             var result = new List<FastTextPrediction>();
 
-            for (ulong i = 0; i < predictions.Length; i++)
+            var structSize = Marshal.SizeOf<FastTextPredictionNativeResult>();
+
+            for (var i = 0; i < (int)predictions.Length; i++)
             {
-                IntPtr elementPtr = new IntPtr(predictions.Predictions.ToInt64() + (long)(i * (uint)Marshal.SizeOf<FastTextPredictionNativeResult>()));
-                var prediction = Marshal.PtrToStructure<FastTextPredictionNativeResult>(elementPtr);
+                var prediction = Marshal.PtrToStructure<FastTextPredictionNativeResult>(predictions.Predictions + i * structSize);
                 var label = DecodeString(prediction.Label);
 
                 result.Add(new FastTextPrediction(

@@ -7,7 +7,10 @@ namespace Panlingo.LanguageIdentification.CLD2.Internal
     internal static class CLD2DetectorWrapper
     {
         [DllImport(CLD2NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr PredictLanguage(string text, out int resultCount);
+        public static extern IntPtr PredictLanguage(
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string text, 
+            out int resultCount
+        );
 
         [DllImport(CLD2NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         public static extern void FreeResults(IntPtr results, int count);

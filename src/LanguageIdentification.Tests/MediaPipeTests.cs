@@ -1,11 +1,12 @@
-﻿using System.IO;
-using Panlingo.LanguageIdentification.MediaPipe;
+﻿using Panlingo.LanguageIdentification.MediaPipe;
 using Panlingo.LanguageIdentification.Tests.Helpers;
 
 namespace Panlingo.LanguageIdentification.Tests;
 
-public class MediaPipeTests
+public class MediaPipeTests : IAsyncLifetime
 {
+    private readonly string _modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models/mediapipe_language_detector.tflite");
+
     [SkippableTheory]
     [InlineData("en", Constants.PHRASE_ENG_1, 0.9994)]
     [InlineData("uk", Constants.PHRASE_UKR_1, 0.9999)]
@@ -14,9 +15,8 @@ public class MediaPipeTests
     {
         Skip.IfNot(MediaPipeDetector.IsSupported());
 
-        var modelPath = "/models/mediapipe_language_detector.tflite";
         using var mediaPipe = new MediaPipeDetector(
-            options: MediaPipeOptions.FromFile(modelPath).WithResultCount(10)
+            options: MediaPipeOptions.FromFile(_modelPath).WithResultCount(10)
         );
 
         var predictions = mediaPipe.PredictLanguages(text: text);
@@ -39,8 +39,7 @@ public class MediaPipeTests
     {
         Skip.IfNot(MediaPipeDetector.IsSupported());
 
-        var modelPath = "/models/mediapipe_language_detector.tflite";
-        using var stream = File.Open(modelPath, FileMode.Open);
+        using var stream = File.Open(_modelPath, FileMode.Open);
 
         using var mediaPipe = new MediaPipeDetector(
             options: MediaPipeOptions.FromStream(stream).WithResultCount(10)
@@ -66,8 +65,7 @@ public class MediaPipeTests
     {
         Skip.IfNot(MediaPipeDetector.IsSupported());
 
-        var modelPath = "/models/mediapipe_language_detector.tflite";
-        using var stream = File.Open(modelPath, FileMode.Open);
+        using var stream = File.Open(_modelPath, FileMode.Open);
 
         using var mediaPipe = new MediaPipeDetector(
             options: MediaPipeOptions.FromDefault().WithResultCount(10)
@@ -83,5 +81,24 @@ public class MediaPipeTests
 
         Assert.Equal(languageCode, mainLanguage.Language);
         Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
+    }
+
+    public async Task InitializeAsync()
+    {
+        var url = "https://storage.googleapis.com/mediapipe-models/language_detector/language_detector/float32/1/language_detector.tflite";
+        await FileHelper.DownloadAsync(
+            path: _modelPath,
+            url: url
+        );
+    }
+
+    public async Task DisposeAsync()
+    {
+        if (File.Exists(_modelPath))
+        {
+            File.Delete(_modelPath);
+        }
+
+        await Task.CompletedTask;
     }
 }

@@ -15,17 +15,17 @@ cd "$workspace"
 
 mkdir build
 cd build
+
+# Build for Linux
+rm -rf *
 cmake ..
 make -j $(nproc) # make
-cd ..
 
-echo $(pwd)
-ls -R build
-cd ..
+ls -R
 
-find "$workspace/build" -name "libfasttext.so" -exec cp {} libfasttext.so \;
-rm -rf "$workspace"
 ldd libfasttext.so
+cp libfasttext.so ../../libfasttext.so
 
+# Clean up
+rm -rf "$workspace"
 echo "Goodbye world";
-

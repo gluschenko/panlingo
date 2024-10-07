@@ -6,7 +6,7 @@
         {
             using var cld2 = new CLD2Detector();
 
-            var text = "Hello, how are you? Привіт, як справи? Привет, как дела?";
+            var text = "Привіт, як справи?";
 
             var predictions = cld2.PredictLanguage(text);
 

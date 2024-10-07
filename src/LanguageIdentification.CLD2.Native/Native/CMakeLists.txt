@@ -1,20 +1,47 @@
-cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
-project(cld2_bridge)
+cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
-if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
-endif()
+project(cld2)
 
-if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+    if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -pthread -funroll-loops -O3")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -pthread -funroll-loops -O3")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti -lpthread")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-narrowing")
+    elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -O3")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,--start-group -lwinpthread -Wl,--end-group")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-narrowing")
+    endif()
+elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -pthread -funroll-loops -O3")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -pthread -funroll-loops -O3")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-narrowing")
-elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4244 /wd4267")
-endif()
 
+    if (CMAKE_OSX_ARCHITECTURES MATCHES "arm64")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -arch arm64 -target arm64-apple-macos11")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -arch arm64 -target arm64-apple-macos11")
+    elseif (CMAKE_OSX_ARCHITECTURES MATCHES "x86_64")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -arch x86_64 -target x86_64-apple-macos10.15")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -arch x86_64 -target x86_64-apple-macos10.15")
+    endif()
+endif()
 
 set(CMAKE_MACOSX_RPATH 1)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+message(STATUS "System name: ${CMAKE_SYSTEM_NAME}")
+message(STATUS "CMake version: ${CMAKE_VERSION}")
+message(STATUS "C++ compiler: ${CMAKE_CXX_COMPILER_ID}")
+message(STATUS "C compiler: ${CMAKE_C_COMPILER_ID}")
+message(STATUS "CXX flags: ${CMAKE_CXX_FLAGS}")
+message(STATUS "C flags: ${CMAKE_C_FLAGS}")
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/cld2/internal
@@ -39,28 +66,28 @@ set(CLD2_SOURCES
     ${PROJECT_SOURCE_DIR}/cld2/internal/tote.cc
     ${PROJECT_SOURCE_DIR}/cld2/internal/utf8statetable.cc
     ${PROJECT_SOURCE_DIR}/cld2/internal/generated_distinct_bi_0.cc
-	
-	### Chrome (less perfect predictions)
-	# ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_cjk_uni_prop_80.cc
-	# ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_cjk_compatible.cc
+    
+    ### Chrome (less perfect predictions)
+    # ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_cjk_uni_prop_80.cc
+    # ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_cjk_compatible.cc
     # ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_cjk_delta_bi_4.cc
-	# ${PROJECT_SOURCE_DIR}/cld2/internal/generated_distinct_bi_0.cc
+    # ${PROJECT_SOURCE_DIR}/cld2/internal/generated_distinct_bi_0.cc
     # ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_quadchrome_2.cc
-	# ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_deltaoctachrome.cc
+    # ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_deltaoctachrome.cc
     # ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_distinctoctachrome.cc
-	# ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_score_quad_octa_2.cc
-	###
+    # ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_score_quad_octa_2.cc
+    ###
 
-	### Full
-	${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_cjk_uni_prop_80.cc
-	${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_cjk_compatible.cc
+    ### Full
+    ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_cjk_uni_prop_80.cc
+    ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_cjk_compatible.cc
     ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_cjk_delta_bi_32.cc
-	${PROJECT_SOURCE_DIR}/cld2/internal/generated_distinct_bi_0.cc
+    ${PROJECT_SOURCE_DIR}/cld2/internal/generated_distinct_bi_0.cc
     ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_quad0122.cc
-	${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_deltaocta0122.cc
+    ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_deltaocta0122.cc
     ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_generated_distinctocta0122.cc
-	${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_score_quad_octa_0122.cc
-	###
+    ${PROJECT_SOURCE_DIR}/cld2/internal/cld_generated_score_quad_octa_0122.cc
+    ###
 
     ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_dynamic_compat.h
     ${PROJECT_SOURCE_DIR}/cld2/internal/cld2_dynamic_data_extractor.h
@@ -101,6 +128,25 @@ set(CLD2_SOURCES
 
 add_library(objlib OBJECT ${CLD2_SOURCES})
 
-add_library(cld2 SHARED $<TARGET_OBJECTS:objlib>)
+add_library(${PROJECT_NAME} SHARED $<TARGET_OBJECTS:objlib>)
 
-set_target_properties(cld2 PROPERTIES PUBLIC_HEADER "${PROJECT_SOURCE_DIR}/cld2/binding.h")
+set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "${PROJECT_SOURCE_DIR}/cld2/binding.h")
+
+if (APPLE)
+    if (CMAKE_OSX_ARCHITECTURES MATCHES "arm64")
+        set(CLANG_LIB_DIR /opt/homebrew/opt/llvm/lib/c++)
+    elseif (CMAKE_OSX_ARCHITECTURES MATCHES "x86_64")
+        set(CLANG_LIB_DIR /usr/local/opt/llvm/lib/c++)
+    endif()
+
+    target_link_libraries(${PROJECT_NAME}
+        -nostdlib++
+        -Wl,${CLANG_LIB_DIR}/libc++.a
+        -Wl,${CLANG_LIB_DIR}/libc++abi.a)
+else()
+    if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+        # nop
+    elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+        target_link_libraries(${PROJECT_NAME} -static-libgcc -static-libstdc++)
+    endif()
+endif()

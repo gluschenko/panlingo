@@ -9,7 +9,7 @@
 
 extern "C"
 {
-    PredictionResult* PredictLanguage(char *text, int* resultCount)
+    EXPORT PredictionResult* PredictLanguage(char *text, int* resultCount)
     {
         int textLength = strlen(text);
 
@@ -62,7 +62,7 @@ extern "C"
         for (int i = 0; i < predictionCount; ++i) {
 
             CLD2::Language language = languages[i];
-            double probability = scoreTotal > 0 ? scores[i] / (double)scoreTotal : 1.0;
+            double probability = scoreTotal > 0 ? scores[i] / (double)scoreTotal : 0;
             double proportion = percents[i] / 100.0;
 
             result[i].language = strdup(CLD2::LanguageCode(language));
@@ -75,7 +75,7 @@ extern "C"
         return result;
     }
 
-    void FreeResults(PredictionResult* results, int count)
+    EXPORT void FreeResults(PredictionResult* results, int count)
     {
         for (int i = 0; i < count; ++i) {
             free((void*)results[i].language);

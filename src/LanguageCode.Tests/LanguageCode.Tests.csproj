@@ -7,6 +7,10 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+
+    <RootNamespace>Panlingo.LanguageCode.Tests</RootNamespace>
+
+    <Configurations>Debug;Release;CI</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

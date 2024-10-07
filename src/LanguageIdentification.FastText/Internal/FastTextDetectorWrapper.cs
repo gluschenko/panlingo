@@ -14,16 +14,22 @@ namespace Panlingo.LanguageIdentification.FastText.Internal
         public static extern void DestroyFastText(IntPtr handle);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void FastTextLoadModel(IntPtr handle, string filename, ref IntPtr errptr);
+        public static extern void FastTextLoadModel(IntPtr handle, string filename, ref IntPtr errPtr);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void FastTextLoadModelData(IntPtr handle, IntPtr buffer, uint bufferLength, ref IntPtr errptr);
+        public static extern void FastTextLoadModelData(IntPtr handle, IntPtr buffer, uint bufferLength, ref IntPtr errPtr);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         public static extern int FastTextGetModelDimensions(IntPtr handle);
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr FastTextPredict(IntPtr handle, string text, int k, float threshold, ref IntPtr errptr);
+        public static extern IntPtr FastTextPredict(
+            IntPtr handle, 
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string text, 
+            int k, 
+            float threshold, 
+            ref IntPtr errPtr
+        );
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         public static extern void DestroyPredictions(IntPtr predictions);

@@ -1,5 +1,4 @@
 FROM ubuntu:22.04 AS build
-ARG BUILD_CONFIGURATION=Release
 
 WORKDIR /repo
 COPY ["src/LanguageIdentification.MediaPipe.Native/LanguageIdentification.MediaPipe.Native.csproj", "src/LanguageIdentification.MediaPipe.Native/"]

@@ -93,7 +93,11 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
         public static bool IsSupported()
         {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+            return RuntimeInformation.OSArchitecture switch
+            {
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
+                _ => false,
+            };
         }
 
         public IEnumerable<MediaPipePrediction> PredictLanguages(string text)

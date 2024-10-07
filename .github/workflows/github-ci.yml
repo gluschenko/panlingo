@@ -8,20 +8,20 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-nugets:
-    name: 🚀 Pack ${{matrix.projectName}}
-    runs-on: ubuntu-latest
+  build-native:
+    name: 💾 Build ${{matrix.task.title}} for ${{matrix.task.os}} (${{matrix.task.arch}})
+    runs-on: ${{matrix.task.os}}
     strategy:
       fail-fast: false
       matrix:
-        projectName: 
-          - LanguageIdentification.CLD2
-          - LanguageIdentification.CLD3
-          - LanguageIdentification.FastText
-          - LanguageIdentification.Whatlang
-          - LanguageIdentification.MediaPipe
-          - LanguageIdentification.Lingua
-          - LanguageCode
+        task: 
+          - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: windows-latest, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: fasttext.dll }
+          - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libfasttext.x86_64.dylib }
+          - { title: FastText, projectName: LanguageIdentification.FastText.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libfasttext.arm64.dylib }
+          - { title: CLD2, projectName: LanguageIdentification.CLD2.Native, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libcld2.x86_64.dylib }
+          - { title: CLD2, projectName: LanguageIdentification.CLD2.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libcld2.arm64.dylib }
+          - { title: CLD3, projectName: LanguageIdentification.CLD3.Native, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libcld3.x86_64.dylib }
+          - { title: CLD3, projectName: LanguageIdentification.CLD3.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libcld3.arm64.dylib }
     permissions:
       contents: read
       packages: write
@@ -38,14 +38,79 @@ jobs:
       with:
         filters: |
           src:
-            - '${{env.ROOT}}/${{matrix.projectName}}/**'
+            - '${{env.ROOT}}/${{matrix.task.projectName}}/**'
 
     - uses: dorny/paths-filter@v3
       id: changes-native
       with:
         filters: |
           src:
-            - '${{env.ROOT}}/${{matrix.projectName}}.Native/**'
+            - '${{env.ROOT}}/${{matrix.task.projectName}}.Native/**'
+
+    - name: 🚀 Build ${{matrix.task.projectName}}
+      if: steps.changes.outputs.src == 'true'
+      working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}
+      run: |
+        echo $(pwd)
+        git update-index --chmod=+x ${{matrix.task.script}}
+        chmod +x ${{matrix.task.script}}
+        ${{matrix.task.script}} ${{matrix.task.arch}}
+
+    - uses: actions/upload-artifact@v4
+      if: steps.changes.outputs.src == 'true'
+      with:
+        name: native-${{matrix.task.projectName}}-${{matrix.task.os}}
+        path: ${{env.ROOT}}/${{matrix.task.projectName}}/${{matrix.task.artifact}}
+        retention-days: 1
+        overwrite: 'true'
+        compression-level: 0
+        if-no-files-found: 'error'
+
+  build-package:
+    name: 🚀 Pack ${{matrix.task.title}}
+    runs-on: ${{matrix.task.os}}
+    needs: build-native
+    strategy:
+      fail-fast: false
+      matrix:
+        task: 
+          - { title: CLD2, projectName: LanguageIdentification.CLD2, os: ubuntu-latest }
+          - { title: CLD3, projectName: LanguageIdentification.CLD3, os: ubuntu-latest }
+          - { title: FastText, projectName: LanguageIdentification.FastText, os: ubuntu-latest }
+          - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: ubuntu-latest }
+          - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: ubuntu-latest }
+          - { title: Lingua, projectName: LanguageIdentification.Lingua, os: ubuntu-latest }
+          - { title: LanguageCode, projectName: LanguageCode, os: ubuntu-latest }
+    permissions:
+      contents: read
+      packages: write
+    env:
+      ROOT: ./src
+      NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+    steps:
+    - uses: actions/checkout@v4
+      with: 
+        submodules: 'true'
+
+    - uses: actions/download-artifact@v4
+      with:
+        pattern: native-${{matrix.task.projectName}}.Native-*
+        merge-multiple: true
+        path: ${{env.ROOT}}/${{matrix.task.projectName}}.Native/
+
+    - uses: dorny/paths-filter@v3
+      id: changes
+      with:
+        filters: |
+          src:
+            - '${{env.ROOT}}/${{matrix.task.projectName}}/**'
+
+    - uses: dorny/paths-filter@v3
+      id: changes-native
+      with:
+        filters: |
+          src:
+            - '${{env.ROOT}}/${{matrix.task.projectName}}.Native/**'
 
     - name: 📂 Setup .NET Core
       uses: actions/setup-dotnet@v4
@@ -57,21 +122,21 @@ jobs:
           8.0.x
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
-    - name: 🚀 Pack ${{matrix.projectName}}.Native
+    - name: 🚀 Pack ${{matrix.task.projectName}}.Native
       if: steps.changes-native.outputs.src == 'true'
-      working-directory: ${{env.ROOT}}/${{matrix.projectName}}.Native
+      working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}.Native
       run: dotnet pack -c Release -o out 
 
-    - name: 🚀 Pack ${{matrix.projectName}}
+    - name: 🚀 Pack ${{matrix.task.projectName}}
       if: steps.changes.outputs.src == 'true'
-      working-directory: ${{env.ROOT}}/${{matrix.projectName}}
+      working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}
       run: dotnet pack -c Release -o out 
 
     - uses: actions/upload-artifact@v4
       if: steps.changes-native.outputs.src == 'true'
       with:
-        name: build-${{matrix.projectName}}.Native
-        path: ${{env.ROOT}}/${{matrix.projectName}}.Native/out
+        name: build-${{matrix.task.projectName}}.Native
+        path: ${{env.ROOT}}/${{matrix.task.projectName}}.Native/out
         retention-days: 1
         overwrite: 'true'
         compression-level: 0
@@ -79,16 +144,29 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: steps.changes.outputs.src == 'true'
       with:
-        name: build-${{matrix.projectName}}
-        path: ${{env.ROOT}}/${{matrix.projectName}}/out
+        name: build-${{matrix.task.projectName}}
+        path: ${{env.ROOT}}/${{matrix.task.projectName}}/out
         retention-days: 1
         overwrite: 'true'
         compression-level: 0
 
-  test-nugets:
-    name: 🧪 Test ${{matrix.projectName}}
-    runs-on: ubuntu-latest
-    needs: build-nugets
+  test-package:
+    name: 🧪 Test on ${{matrix.task.os}}
+    runs-on: ${{matrix.task.os}}
+    needs: build-package
+    strategy:
+      fail-fast: false
+      # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#standard-github-hosted-runners-for--private-repositories
+      matrix:
+        task: 
+          - { os: ubuntu-24.04 }
+          - { os: ubuntu-22.04 }
+          # - { os: ubuntu-20.04 }
+          - { os: windows-2022 }
+          - { os: windows-2019 }
+          - { os: macos-13 }
+          - { os: macos-14 }
+          - { os: macos-15 }
     permissions:
       contents: read
       packages: write
@@ -100,36 +178,48 @@ jobs:
   
     - name: 📂 Files
       working-directory: ${{env.ROOT}}
-      run: mkdir -p local-nugets
+      run: mkdir -p local-packages
 
     - uses: actions/download-artifact@v4
       with:
         pattern: build-*
         merge-multiple: true
-        path: ${{env.ROOT}}/local-nugets
+        path: ${{env.ROOT}}/local-packages
 
     - name: 📂 Files
-      working-directory: ${{env.ROOT}}
+      working-directory: ${{env.ROOT}}/local-packages
       run: ls -R
 
-    - name: 📂 Build Docker Image
-      working-directory: ${{env.ROOT}}
+    - name: 📂 Use local NuGet (Linux)
+      if: ${{ startsWith(matrix.task.os, 'ubuntu') }}
       run: |
-        docker build -f ./test.Dockerfile -t langunage-identification-test-runner:latest .
-        docker build -f ./test-ci.Dockerfile -t langunage-identification-test-runner-ci:latest .
+        path=$(realpath "${{env.ROOT}}/local-packages")
+        dotnet nuget add source $path
 
-    - name: 🧪 Run Tests in Docker
-      working-directory: ${{env.ROOT}}
-      run: docker run --rm -v $(pwd):/src langunage-identification-test-runner-ci:latest
+    - name: 📂 Use local NuGet (Windows)
+      if: ${{ startsWith(matrix.task.os, 'windows') }}
+      run: |
+        $path = [System.IO.Path]::GetFullPath('${{env.ROOT}}/local-packages')
+        dotnet nuget add source $path
 
-    - name: 🧪 Run Test for LanguageCode
-      working-directory: ${{env.ROOT}}/LanguageCode.Tests
+    - name: 📂 Use local NuGet (OSX)
+      if: ${{ startsWith(matrix.task.os, 'macos') }}
+      run: |
+        path=$(realpath "${{env.ROOT}}/local-packages")
+        dotnet nuget add source $path
+
+    - name: 🧪 Run Tests for LanguageIdentification
+      working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
       run: dotnet test -c CI
 
-  deploy-nugets:
+    - name: 🧪 Run Tests for LanguageCode
+      working-directory: ${{env.ROOT}}/LanguageCode.Tests
+      run: dotnet test
+
+  deploy-package:
     name: 🚚 Push ${{matrix.projectName}}
     runs-on: ubuntu-latest
-    needs: test-nugets
+    needs: test-package
     if: github.ref == 'refs/heads/master'
     strategy:
       fail-fast: false

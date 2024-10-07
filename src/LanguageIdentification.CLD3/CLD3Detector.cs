@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -24,13 +25,20 @@ namespace Panlingo.LanguageIdentification.CLD3
                 );
             }
 
-            _identifier = CLD3DetectorWrapper.CreateIdentifier(minNumBytes, maxNumBytes);
+            _identifier = CLD3DetectorWrapper.CreateCLD3(minNumBytes, maxNumBytes);
             _semaphore = new(1, 1);
         }
 
         public static bool IsSupported()
         {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+            return RuntimeInformation.OSArchitecture switch
+            {
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
+                //Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+                //Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+                _ => false,
+            };
         }
 
         public void Dispose()
@@ -40,7 +48,7 @@ namespace Panlingo.LanguageIdentification.CLD3
             try
             {
                 _semaphore.Wait();
-                CLD3DetectorWrapper.FreeIdentifier(_identifier);
+                CLD3DetectorWrapper.DestroyCLD3(_identifier);
             }
             finally
             {
@@ -55,8 +63,29 @@ namespace Panlingo.LanguageIdentification.CLD3
         /// <returns>List of language predictions</returns>
         public CLD3Prediction PredictLanguage(string text)
         {
-            var result = CLD3DetectorWrapper.FindLanguage(_identifier, text);
-            return new CLD3Prediction(result);
+            var resultPtr = CLD3DetectorWrapper.PredictLanguage(
+                identifier: _identifier,
+                text: text,
+                resultCount: out var resultCount
+            );
+
+            try
+            {
+                var nativeResult = new CLD3PredictionResult[resultCount];
+                var structSize = Marshal.SizeOf(typeof(CLD3PredictionResult));
+
+                for (var i = 0; i < resultCount; i++)
+                {
+                    nativeResult[i] = Marshal.PtrToStructure<CLD3PredictionResult>(resultPtr + i * structSize);
+                }
+
+                var firstItem = nativeResult.First();
+                return new CLD3Prediction(firstItem);
+            }
+            finally
+            {
+                CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
+            }
         }
 
         /// <summary>
@@ -70,7 +99,7 @@ namespace Panlingo.LanguageIdentification.CLD3
             int count
         )
         {
-            var resultPtr = CLD3DetectorWrapper.FindLanguages(
+            var resultPtr = CLD3DetectorWrapper.PredictLanguages(
                 identifier: _identifier,
                 text: text,
                 numLangs: count,
@@ -79,22 +108,22 @@ namespace Panlingo.LanguageIdentification.CLD3
 
             try
             {
-                var result = new CLD3PredictionResult[resultCount];
+                var nativeResult = new CLD3PredictionResult[resultCount];
                 var structSize = Marshal.SizeOf(typeof(CLD3PredictionResult));
 
                 for (var i = 0; i < resultCount; i++)
                 {
-                    result[i] = Marshal.PtrToStructure<CLD3PredictionResult>(resultPtr + i * structSize);
+                    nativeResult[i] = Marshal.PtrToStructure<CLD3PredictionResult>(resultPtr + i * structSize);
                 }
 
-                return result
+                return nativeResult
                     .OrderByDescending(x => x.Probability)
                     .Select(x => new CLD3Prediction(x))
                     .ToArray();
             }
             finally
             {
-                CLD3DetectorWrapper.FreeResults(resultPtr, resultCount);
+                CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
             }
         }
     }

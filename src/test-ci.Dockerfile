@@ -3,7 +3,7 @@
 WORKDIR /src
 COPY . .
 
-RUN dotnet nuget add source /src/local-nugets
+RUN dotnet nuget add source /src/local-packages
 
 RUN ls -R
 

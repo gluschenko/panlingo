@@ -1,2 +1,5 @@
 libfasttext.so
+fasttext.dll
+libfasttext.arm64.dylib
+libfasttext.x86_64.dylib
 build_temp/**

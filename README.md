@@ -89,14 +89,14 @@ functionality into their applications.
 
 ## Platform support
 
-| Model     |        Linux       |     Windows      |  macOS |  Blazor WASM   |
-| :-------- | :----------------: | :--------------: | :----: | :------------: |
-| CLD2      | :white_check_mark: | :construction:   | :x:    | :x:            |
-| CLD3      | :white_check_mark: | :construction:   | :x:    | :x:            |
-| FastText  | :white_check_mark: | :construction:   | :x:    | :x:            |
-| Whatlang  | :white_check_mark: | :construction:   | :x:    | :x:            |
-| MediaPipe | :white_check_mark: | :construction:   | :x:    | :x:            |
-| Lingua    | :white_check_mark: | :construction:   | :x:    | :x:            |
+| Model     |        Linux       |     Windows        |  macOS             |  Blazor WASM   |
+| :-------- | :----------------: | :----------------: | :----------------: | :------------: |
+| CLD2      | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:            |
+| CLD3      | :white_check_mark: | :white_check_mark: | :construction:     | :x:            |
+| FastText  | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:            |
+| Whatlang  | :white_check_mark: | :construction:     | :construction:     | :x:            |
+| MediaPipe | :white_check_mark: | :construction:     | :construction:     | :x:            |
+| Lingua    | :white_check_mark: | :construction:     | :construction:     | :x:            |
 
 :white_check_mark: — Full support |
 :x: — No support |

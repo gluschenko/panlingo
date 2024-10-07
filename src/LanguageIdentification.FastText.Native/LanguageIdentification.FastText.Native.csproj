@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.0.0.22</Version>
+    <Version>0.1.0</Version>
     <PackageId>Panlingo.LanguageIdentification.FastText.Native</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.FastText.Native</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.FastText.Native</RootNamespace>
@@ -57,6 +57,36 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/linux-x64/native</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="fasttext.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/win-x64/native</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="libfasttext.x86_64.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/osx-x64/native/libfasttext.dylib</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="libfasttext.arm64.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/osx-arm64/native/libfasttext.dylib</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>

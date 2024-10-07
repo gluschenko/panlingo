@@ -1,5 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG BUILD_CONFIGURATION=Release
+FROM ubuntu:22.04 AS build
 
 WORKDIR /repo
 COPY ["src/LanguageIdentification.Whatlang.Native/LanguageIdentification.Whatlang.Native.csproj", "src/LanguageIdentification.Whatlang.Native/"]

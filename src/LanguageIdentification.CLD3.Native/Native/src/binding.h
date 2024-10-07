@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "base.h"
 #include "nnet_language_identifier.h"
@@ -6,18 +6,17 @@
 using namespace std;
 
 #ifndef EXPORT
-#   ifdef __linux__
+#   if defined(_WIN32) || defined(_WIN64)
+#       define EXPORT __declspec(dllexport)
+#   elif defined(__GNUC__) || defined(__clang__)
 #       define EXPORT __attribute__((visibility("default")))
 #   else
-#       if defined(_MSC_VER)
-#           define EXPORT __declspec(dllexport)
-#       else
-#           define EXPORT __attribute__((visibility("default")))
-#       endif
+#       define EXPORT
 #   endif
 #endif
 
-extern "C" {
+extern "C" 
+{
     struct PredictionResult {
         const char* language;
         double probability;
@@ -25,9 +24,9 @@ extern "C" {
         double proportion;
     };
 
-    EXPORT void* CreateIdentifier(int minNumBytes, int maxNumBytes);
-    EXPORT void FreeIdentifier(void* identifier);
-    EXPORT PredictionResult FindLanguage(void* identifier, const char* text);
-    EXPORT PredictionResult* FindLanguages(void* identifier, const char* text, int numLangs, int* resultCount);
-    EXPORT void FreeResults(PredictionResult* results, int count);
+    EXPORT void* create_cld3(int minNumBytes, int maxNumBytes);
+    EXPORT void destroy_cld3(void* identifier);
+    EXPORT PredictionResult* cld3_find_language(void* identifier, const char* text, int* resultCount);
+    EXPORT PredictionResult* cld3_find_languages(void* identifier, const char* text, int numLangs, int* resultCount);
+    EXPORT void cld3_destroy_prediction_result(PredictionResult* results, int count);
 }

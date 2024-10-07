@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
-    <Version>0.0.0.22</Version>
+    <Version>0.1.0</Version>
     <PackageId>Panlingo.LanguageIdentification.CLD3</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.CLD3</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.CLD3</RootNamespace>
@@ -15,6 +15,9 @@
     <PackageTags>nlp lid language-identification language-detection cld3</PackageTags>
     <PackageReadmeFile>README_CLD3.md</PackageReadmeFile>
     <PackageReleaseNotes>
+0.1.0.0
+- Windows support
+      
 0.0.0.20:
 - Protobuf is not required now!
       
