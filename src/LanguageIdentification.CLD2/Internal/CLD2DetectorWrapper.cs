@@ -8,7 +8,7 @@ namespace Panlingo.LanguageIdentification.CLD2.Internal
     {
         [DllImport(CLD2NativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr PredictLanguage(
-            [MarshalAs(UnmanagedType.LPUTF8Str)] string text, 
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string text,
             out int resultCount
         );
 

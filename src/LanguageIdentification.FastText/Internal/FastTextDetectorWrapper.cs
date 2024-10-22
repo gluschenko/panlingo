@@ -24,10 +24,10 @@ namespace Panlingo.LanguageIdentification.FastText.Internal
 
         [DllImport(FastTextNativeLibrary.Name, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr FastTextPredict(
-            IntPtr handle, 
-            [MarshalAs(UnmanagedType.LPUTF8Str)] string text, 
-            int k, 
-            float threshold, 
+            IntPtr handle,
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string text,
+            int k,
+            float threshold,
             ref IntPtr errPtr
         );
 

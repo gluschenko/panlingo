@@ -71,8 +71,8 @@ namespace Panlingo.LanguageIdentification.MediaPipe.Internal
         public readonly string? ModelAssetPath;
 
         public BaseOptions(
-            IntPtr modelAssetBuffer, 
-            uint modelAssetBufferCount, 
+            IntPtr modelAssetBuffer,
+            uint modelAssetBufferCount,
             string? modelAssetPath
         )
         {

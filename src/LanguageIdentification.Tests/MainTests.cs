@@ -91,8 +91,8 @@ public class MainTests
                 var a = Version.Parse(packageVersion);
                 var b = new Version(
                     major: a.Major != -1 ? a.Major : 0,
-                    minor: a.Minor != -1 ? a.Minor : 0, 
-                    build: a.Build != -1 ? a.Build : 0, 
+                    minor: a.Minor != -1 ? a.Minor : 0,
+                    build: a.Build != -1 ? a.Build : 0,
                     revision: a.Revision != -1 ? a.Revision : 0
                 );
 

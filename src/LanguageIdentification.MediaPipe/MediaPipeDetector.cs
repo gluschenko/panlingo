@@ -21,7 +21,8 @@ namespace Panlingo.LanguageIdentification.MediaPipe
             (modelPath != "" ? MediaPipeOptions.FromFile(modelPath) : MediaPipeOptions.FromDefault())
                 .WithResultCount(resultCount)
                 .WithScoreThreshold(scoreThreshold)
-        ) { }
+        )
+        { }
 
         public MediaPipeDetector(MediaPipeOptions options)
         {
@@ -40,7 +41,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
             {
                 using var memoryStream = new MemoryStream();
                 options.ModelStream.CopyTo(memoryStream);
-                
+
                 var modelData = memoryStream.ToArray();
                 modelDataHandle = GCHandle.Alloc(modelData, GCHandleType.Pinned);
                 modelAssetBuffer = modelDataHandle.Value.AddrOfPinnedObject();
@@ -53,7 +54,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                 modelAssetBuffer = modelDataHandle.Value.AddrOfPinnedObject();
                 modelAssetBufferCount = (uint)modelData.Length;
             }
-            else if(options.ModelPath is not null)
+            else if (options.ModelPath is not null)
             {
                 if (!File.Exists(options.ModelPath))
                 {

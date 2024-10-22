@@ -1,5 +1,5 @@
-﻿using Panlingo.LanguageIdentification.Whatlang;
-using Panlingo.LanguageIdentification.Tests.Helpers;
+﻿using Panlingo.LanguageIdentification.Tests.Helpers;
+using Panlingo.LanguageIdentification.Whatlang;
 
 namespace Panlingo.LanguageIdentification.Tests;
 

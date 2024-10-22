@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using Panlingo.LanguageIdentification.FastText;
+﻿using Panlingo.LanguageIdentification.FastText;
 using Panlingo.LanguageIdentification.Tests.Helpers;
 
 namespace Panlingo.LanguageIdentification.Tests;
