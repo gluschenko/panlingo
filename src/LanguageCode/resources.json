@@ -1,5 +1,5 @@
 {
-  "SetThreeLanguageDescriptorList": [
+  "LanguageDescriptorList": [
     {
       "Id": "aaa",
       "Part2b": "",
@@ -79198,6 +79198,676 @@
       "Scope": "I",
       "LanguageType": "L",
       "RefName": "Zuojiang Zhuang",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "afa",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Afro-Asiatic languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "alg",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Algonquian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "apa",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Apache languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "art",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Artificial languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "ath",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Athapascan languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "aus",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Australian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "bad",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Banda languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "bai",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Bamileke languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "bat",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Baltic languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "ber",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Berber languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "bih",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Bihari languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "bnt",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Bantu languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "btk",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Batak languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "cai",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Central American Indian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "cau",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Caucasian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "cel",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Celtic languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "cmc",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Chamic languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "cpe",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Creoles and pidgins, English based",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "cpf",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Creoles and pidgins, French-based",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "cpp",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Creoles and pidgins, Portuguese-based",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "crp",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Creoles and pidgins",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "cus",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Cushitic languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "day",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Land Dayak languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "dra",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Dravidian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "fiu",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Finno-Ugrian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "gem",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Germanic languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "him",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Himachali languages; Western Pahari languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "ijo",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Ijo languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "inc",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Indic languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "ine",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Indo-European languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "ira",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Iranian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "iro",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Iroquoian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "kar",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Karen languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "khi",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Khoisan languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "kro",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Kru languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "map",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Austronesian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "mkh",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Mon-Khmer languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "mno",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Manobo languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "mun",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Munda languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "myn",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Mayan languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "nah",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Nahuatl languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "nai",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "North American Indian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "nic",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Niger-Kordofanian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "nub",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Nubian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "oto",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Otomian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "paa",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Papuan languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "phi",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Philippine languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "pra",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Prakrit languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "qaa-qtz",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Reserved for local use",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "roa",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Romance languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "sai",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "South American Indian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "sal",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Salishan languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "sem",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Semitic languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "sgn",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Sign Languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "sio",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Siouan languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "sit",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Sino-Tibetan languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "sla",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Slavic languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "smi",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Sami languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "son",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Songhai languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "ssa",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Nilo-Saharan languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "tai",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Tai languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "tup",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Tupi languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "tut",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Altaic languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "wak",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Wakashan languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "wen",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Sorbian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "ypk",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Yupik languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "znd",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Zande languages",
       "Comment": ""
     }
   ],

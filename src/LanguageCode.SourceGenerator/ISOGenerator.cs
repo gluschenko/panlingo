@@ -27,7 +27,7 @@ namespace Panlingo.LanguageCode.SourceGenerator
             );
         }
 
-        void Generate(
+        public void Generate(
             SourceProductionContext context,
             AdditionalText file
         )

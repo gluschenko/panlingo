@@ -13,7 +13,7 @@
 
         public override string ToString()
         {
-            return $"{Id}; {Part2b}; {Part2t}; {Part1}; {Scope}";
+            return $"{Id}; {Part2b}; {Part2t}; {Part1}; {Scope}; {RefName}";
         }
     }
 }

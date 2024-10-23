@@ -19,7 +19,7 @@ namespace Panlingo.LanguageCode
         static LanguageCodeSearchIndex()
         {
             // Main language data
-            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.SetThreeLanguageDescriptorList)
+            foreach (var item in ISOGeneratorResourceProvider.ISOGeneratorResources.LanguageDescriptorList)
             {
                 if (!string.IsNullOrWhiteSpace(item.Id))
                 {
