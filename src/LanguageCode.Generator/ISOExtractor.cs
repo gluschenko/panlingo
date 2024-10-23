@@ -35,6 +35,54 @@ namespace Panlingo.LanguageCode.Generator
         }
 
         /// <summary>
+        /// Source: https://www.loc.gov/standards/iso639-2/ascii_8bits.html
+        /// 
+        /// Format:
+        /// <code>
+        /// An alpha-3 (bibliographic) code, an alpha-3 (terminologic) code (when given), 
+        /// an alpha-2 code (when given), an English name, and a French name of a language 
+        /// are all separated by pipe (|) characters. If one of these elements is not applicable 
+        /// to the entry, the field is left empty, i.e., a pipe (|) character immediately 
+        /// follows the preceding entry. The Line terminator is the LF character.
+        /// </code>
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IEnumerable<LanguageDescriptor>> ExtractLanguageCodesSetTwoAsync(
+            string baseUrl = "https://www.loc.gov/standards/iso639-2/ISO-639-2_8859-1.txt",
+            CancellationToken token = default
+        )
+        {
+            var result = new List<LanguageDescriptor>();
+
+            var response = await _httpClient.GetStringAsync(baseUrl, token);
+            response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
+
+            var lines = response.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => x.Trim())
+                .Where(x => x.Length > 0)
+                .ToArray();
+
+            foreach (var line in lines)
+            {
+                var lineArray = line.Split(new[] { '|' });
+
+                result.Add(new LanguageDescriptor
+                {
+                    Id = lineArray.Length > 1 ? lineArray[1].Trim() : string.Empty,
+                    Part2b = lineArray.Length > 0 ? lineArray[0].Trim() : string.Empty,
+                    Part2t = lineArray.Length > 1 ? lineArray[1].Trim() : string.Empty,
+                    Part1 = lineArray.Length > 2 ? lineArray[2].Trim() : string.Empty,
+                    Scope = string.Empty,
+                    LanguageType = string.Empty,
+                    RefName = lineArray.Length > 3 ? lineArray[3].Trim() : string.Empty,
+                    Comment = string.Empty,
+                });
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Source: https://iso639-3.sil.org/code_tables/download_tables
         /// 
         /// Format:

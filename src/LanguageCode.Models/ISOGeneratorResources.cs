@@ -6,7 +6,7 @@ namespace Panlingo.LanguageCode.Models
 {
     public class ISOGeneratorResources
     {
-        public IEnumerable<LanguageDescriptor> SetThreeLanguageDescriptorList { get; set; }
+        public IEnumerable<LanguageDescriptor> LanguageDescriptorList { get; set; }
         public IEnumerable<MarcolanguageDescriptor> MarcolanguageDescriptorList { get; set; }
         public IEnumerable<LegacyLanguageAlphaTwoDescriptor> LegacyLanguageAlphaTwoDescriptorList { get; set; }
         public IEnumerable<LegacyLanguageAlphaThreeDescriptor> LegacyLanguageAlphaThreeDescriptorList { get; set; }
