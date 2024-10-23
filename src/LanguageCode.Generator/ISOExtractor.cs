@@ -118,17 +118,17 @@ namespace Panlingo.LanguageCode.Generator
                 var actual = "";
                 var deprecated = "";
 
-                var words = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                var words = text.Split(new[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
 
                 foreach (var word in words)
                 {
-                    if (word.StartsWith("[-") && word.EndsWith("]"))
+                    if (word.StartsWith('-'))
                     {
-                        deprecated = word.Replace("[", "").Replace("]", "").Replace("-", "");
+                        deprecated = word.TrimStart('-').Trim();
                     }
                     else
                     {
-                        actual = word;
+                        actual = word.Trim();
                     }
                 }
 

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
-    <Version>0.1.1</Version>
+    <Version>0.1.2</Version>
     <PackageId>Panlingo.LanguageCode</PackageId>
     <AssemblyName>Panlingo.LanguageCode</AssemblyName>
     <RootNamespace>Panlingo.LanguageCode</RootNamespace>
@@ -15,7 +15,11 @@
     <PackageTags>iso iso639 language-code</PackageTags>
     <PackageReadmeFile>README_LANGUAGE_CODE.md</PackageReadmeFile>
     <PackageReleaseNotes>
-      - Initial release
+0.1.2:
+- "bh" is deprecated
+    
+0.0.0.1:
+- Initial release
     </PackageReleaseNotes>
     <Description>
       Helper library for ISO language codes (ISO 639-1, ISO 639-2, ISO 639-3)
