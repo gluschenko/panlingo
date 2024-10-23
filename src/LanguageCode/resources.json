@@ -81486,6 +81486,15 @@
   "LegacyLanguageAlphaTwoDescriptorList": [
     {
       "CodeAlpha2": "",
+      "CodeAlpha2Deprecated": "bh",
+      "CodeAlpha3": "bih",
+      "CodeAlpha3Deprecated": "",
+      "CategoryOfChange": "Dep",
+      "EnglishName": "Bihari languages",
+      "Comment": "Two-letter identifier bh deprecated in ISO 639-1; use of three-letter identifier bih for Bihari languages is favored."
+    },
+    {
+      "CodeAlpha2": "",
       "CodeAlpha2Deprecated": "mo",
       "CodeAlpha3": "",
       "CodeAlpha3Deprecated": "mol",
