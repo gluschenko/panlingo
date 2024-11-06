@@ -18,9 +18,8 @@ ls -R .
 
 cd ..
 
-find "$workspace/target/release" -name "liblingua.so" -exec cp {} liblingua.so \;
-rm -rf "$workspace"
-ldd liblingua.so
+cp $workspace/target/release/liblingua.so libfasttext.so
+ldd libfasttext.so
 
 echo "Goodbye world";
 
