@@ -10,3 +10,6 @@ libc = "0.2.157"
 [lib]
 name = "lingua"
 crate-type = ["staticlib", "cdylib"]
+
+[profile.release]
+strip = true
