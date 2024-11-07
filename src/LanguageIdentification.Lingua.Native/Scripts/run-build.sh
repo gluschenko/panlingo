@@ -16,9 +16,7 @@ cargo build --release
 
 ls -R .
 
-cd ..
-
-cd $workspace/target/release
+cd ./target/release
 ldd liblingua.so
 cp liblingua.so ../../liblingua.so
 
