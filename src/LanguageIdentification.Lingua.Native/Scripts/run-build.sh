@@ -18,8 +18,9 @@ ls -R .
 
 cd ..
 
-cp $workspace/target/release/liblingua.so libfasttext.so
-ldd libfasttext.so
+cd $workspace/target/release
+ldd liblingua.so
+cp liblingua.so ../../liblingua.so
 
 echo "Goodbye world";
 
