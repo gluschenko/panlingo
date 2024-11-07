@@ -20,5 +20,7 @@ cd ./target/release
 ldd liblingua.so
 cp liblingua.so ../../../liblingua.so
 
+# Clean up
+rm -rf "$workspace"
 echo "Goodbye world";
 
