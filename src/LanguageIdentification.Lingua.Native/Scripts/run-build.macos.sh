@@ -27,12 +27,8 @@ ls -R .
 
 cd "$workspace"
 
-cargo build --release
-
 echo "Build for MacOS on $ARCH";
-rm -rf *
-cmake -DCMAKE_OSX_ARCHITECTURES=$ARCH ..
-make -j $(sysctl -n hw.logicalcpu) 
+cargo build --release
 
 ls -R
 
