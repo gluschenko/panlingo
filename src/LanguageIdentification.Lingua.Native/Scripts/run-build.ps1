@@ -21,7 +21,7 @@ cargo build --release
 Get-ChildItem -Recurse -Path .
 
 # Display shared library dependencies
-Copy-Item -Path ".\target\release\liblingua.dll" -Destination "../../../liblingua.dll"
+Copy-Item -Path ".\target\release\lingua.dll" -Destination "../../../lingua.dll"
 
 # List directory contents recursively
 Get-ChildItem -Recurse -Path .
