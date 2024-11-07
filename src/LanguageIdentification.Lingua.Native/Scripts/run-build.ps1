@@ -24,8 +24,8 @@ Get-ChildItem -Recurse -Path .
 Copy-Item -Path ".\target\release\lingua.dll" -Destination "..\..\..\lingua.dll"
 
 # List directory contents recursively
+cd ..\..\..
 Get-ChildItem -Recurse -Path .
 
 # Clean up
-cd ../..
 Write-Output "Goodbye world"
