@@ -24,6 +24,9 @@ jobs:
           - { title: CLD3, projectName: LanguageIdentification.CLD3.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libcld3.arm64.dylib }
           - { title: Lingua, projectName: LanguageIdentification.Lingua.Native, os: windows-latest, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: lingua.dll }
           - { title: Lingua, projectName: LanguageIdentification.Lingua.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: liblingua.arm64.dylib }
+          - { title: Whatlang, projectName: LanguageIdentification.Whatlang.Native, os: windows-latest, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: lingua.dll }
+          - { title: Whatlang, projectName: LanguageIdentification.Whatlang.Native, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: liblingua.x86_64.dylib }
+          - { title: Whatlang, projectName: LanguageIdentification.Whatlang.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: liblingua.arm64.dylib }
     permissions:
       contents: read
       packages: write

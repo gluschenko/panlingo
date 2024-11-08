@@ -1,2 +1,4 @@
 libwhatlang.so
+libwhatlang.arm64.dylib
+whatlang.dll
 build_temp/**
