@@ -10,13 +10,13 @@ namespace Panlingo.LanguageIdentification.Whatlang.Internal
     {
         [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_detect", CallingConvention = CallingConvention.Cdecl)]
         public static extern WhatlangStatus WhatlangDetect(
-            string text,
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string text,
             out WhatlangPredictionResult result
         );
 
         [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_detectn", CallingConvention = CallingConvention.Cdecl)]
         public static extern WhatlangStatus WhatlangDetectN(
-            string text,
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string text,
             int len,
             out WhatlangPredictionResult info
         );
@@ -24,28 +24,28 @@ namespace Panlingo.LanguageIdentification.Whatlang.Internal
         [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_lang_code", CallingConvention = CallingConvention.Cdecl)]
         public static extern int WhatlangLangCode(
             WhatlangLanguage lang,
-            [MarshalAs(UnmanagedType.LPStr)] StringBuilder buffer,
+            [MarshalAs(UnmanagedType.LPUTF8Str)] StringBuilder buffer,
             UIntPtr bufferSize
         );
 
         [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_lang_eng_name", CallingConvention = CallingConvention.Cdecl)]
         public static extern int WhatlangLangEngName(
             WhatlangLanguage lang,
-            [MarshalAs(UnmanagedType.LPStr)] StringBuilder buffer,
+            [MarshalAs(UnmanagedType.LPUTF8Str)] StringBuilder buffer,
             UIntPtr bufferSize
         );
 
         [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_lang_name", CallingConvention = CallingConvention.Cdecl)]
         public static extern int WhatlangLangName(
             WhatlangLanguage lang,
-            [MarshalAs(UnmanagedType.LPStr)] StringBuilder buffer,
+            [MarshalAs(UnmanagedType.LPUTF8Str)] StringBuilder buffer,
             UIntPtr bufferSize
         );
 
         [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_script_name", CallingConvention = CallingConvention.Cdecl)]
         public static extern int WhatlangScriptName(
             WhatlangScript script,
-            [MarshalAs(UnmanagedType.LPStr)] StringBuilder buffer,
+            [MarshalAs(UnmanagedType.LPUTF8Str)] StringBuilder buffer,
             UIntPtr bufferSize
         );
     }
