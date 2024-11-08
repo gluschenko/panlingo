@@ -17,11 +17,11 @@ cargo build --release
 
 ls -R .
 
-cd ..
-
 cd ./target/release
 ldd libwhatlang.so
 cp libwhatlang.so ../../../libwhatlang.so
 
+# Clean up
+rm -rf "$workspace"
 echo "Goodbye world";
 
