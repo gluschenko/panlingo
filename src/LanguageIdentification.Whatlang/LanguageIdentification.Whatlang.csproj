@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
-    <Version>0.1.1</Version>
+    <Version>0.2.0</Version>
     <PackageId>Panlingo.LanguageIdentification.Whatlang</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.Whatlang</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.Whatlang</RootNamespace>
@@ -15,7 +15,12 @@
     <PackageTags>nlp lid language-identification language-detection whatlang</PackageTags>
     <PackageReadmeFile>README_WHATLANG.md</PackageReadmeFile>
     <PackageReleaseNotes>
-      - Initial release
+0.2.0.0
+- Windows and MacOS support
+- Armenian support
+      
+0.0.0.10:
+- Initial release
     </PackageReleaseNotes>
     <Description>
       This is a .NET wrapper for the Whatlang library, which is an efficient and easy-to-use language detection library.
