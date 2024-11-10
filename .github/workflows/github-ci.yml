@@ -125,6 +125,7 @@ jobs:
           6.0.x
           7.0.x
           8.0.x
+          9.0.x
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
     - name: 🚀 Pack ${{matrix.task.projectName}}.Native
@@ -274,6 +275,7 @@ jobs:
           6.0.x
           7.0.x
           8.0.x
+          9.0.x
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
     - name: 📂 Files
