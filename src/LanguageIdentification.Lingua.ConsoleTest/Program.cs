@@ -16,7 +16,6 @@
                 "Привіт",
                 "Привет",
                 "Hello",
-                "Hello, how are you? Привіт, як справи? Hello, how are you? Привет, как дела?",
                 "Hello, how are you?",
                 "Привіт, як справи?",
                 "Привет, как дела?",
@@ -45,8 +44,8 @@
 
             var code1 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, LinguaLanguageCode.Alpha2);
             var code2 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, LinguaLanguageCode.Alpha3);
-            var code3 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, (LinguaLanguageCode)99);
-            var code4 = lingua.GetLanguageCode((LinguaLanguage)255, LinguaLanguageCode.Alpha3);
+            // var code3 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, (LinguaLanguageCode)99);
+            // var code4 = lingua.GetLanguageCode((LinguaLanguage)255, LinguaLanguageCode.Alpha3);
 
 
             ;

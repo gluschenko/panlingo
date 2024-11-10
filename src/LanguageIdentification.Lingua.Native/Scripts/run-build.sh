@@ -16,11 +16,11 @@ cargo build --release
 
 ls -R .
 
-cd ..
-
-find "$workspace/target/release" -name "liblingua.so" -exec cp {} liblingua.so \;
-rm -rf "$workspace"
+cd ./target/release
 ldd liblingua.so
+cp liblingua.so ../../../liblingua.so
 
+# Clean up
+rm -rf "$workspace"
 echo "Goodbye world";
 

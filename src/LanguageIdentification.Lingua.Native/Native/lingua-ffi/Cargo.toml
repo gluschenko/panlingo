@@ -9,4 +9,13 @@ libc = "0.2.157"
 
 [lib]
 name = "lingua"
+crate-type = ["cdylib"]
+
+[target.'cfg(target_os = "linux")'.lib]
+crate-type = ["cdylib"]
+
+[target.'cfg(target_os = "windows")'.lib]
+crate-type = ["staticlib"]
+
+[target.'cfg(target_os = "macos")'.lib]
 crate-type = ["staticlib", "cdylib"]

@@ -1,2 +1,4 @@
 liblingua.so
+liblingua.arm64.dylib
+lingua.dll
 build_temp/**

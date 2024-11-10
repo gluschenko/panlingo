@@ -35,6 +35,8 @@ namespace Panlingo.LanguageIdentification.Lingua
             return RuntimeInformation.OSArchitecture switch
             {
                 Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
+                Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
                 _ => false,
             };
         }
@@ -135,6 +137,16 @@ namespace Panlingo.LanguageIdentification.Lingua
 
         public string GetLanguageCode(LinguaLanguage language, LinguaLanguageCode code)
         {
+            if (!Enum.IsDefined(typeof(LinguaLanguage), language))
+            {
+                throw new LinguaDetectorException($"Language code '{language}' is not found");
+            }
+
+            if (!Enum.IsDefined(typeof(LinguaLanguageCode), code))
+            {
+                throw new LinguaDetectorException($"Language code type '{code}' is not found");
+            }
+
             var stringBuider = new StringBuilder(10);
 
             try

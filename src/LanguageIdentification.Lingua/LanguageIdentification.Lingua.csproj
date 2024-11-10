@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
-    <Version>0.1.1</Version>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+    <Version>0.2.0</Version>
     <PackageId>Panlingo.LanguageIdentification.Lingua</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.Lingua</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.Lingua</RootNamespace>
@@ -15,7 +15,11 @@
     <PackageTags>nlp lid language-identification language-detection lingua</PackageTags>
     <PackageReadmeFile>README_LINGUA.md</PackageReadmeFile>
     <PackageReleaseNotes>
-      - Initial release
+0.2.0.0
+- Windows and MacOS support
+      
+0.0.0.10:
+- Initial release
     </PackageReleaseNotes>
     <Description>
       This is a .NET wrapper for the Lingua library, which is an efficient and easy-to-use language detection library.

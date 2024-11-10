@@ -20,9 +20,8 @@ bazel-6.1.1 build -c opt \
     --sandbox_debug --verbose_failures \
     //mediapipe/tasks/c/text/language_detector:liblanguage_detector.so
 
+cp ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.so ../liblanguage_detector.so
 cd ..
-
-find "$workspace/bazel-bin/mediapipe/tasks/c/text/language_detector" -name "liblanguage_detector.so" -exec cp {} liblanguage_detector.so \;
 rm -rf "$workspace"
 ldd liblanguage_detector.so
 

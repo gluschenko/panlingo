@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
-    <Version>0.1.1</Version>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+    <Version>0.2.0</Version>
     <PackageId>Panlingo.LanguageIdentification.MediaPipe</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.MediaPipe</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.MediaPipe</RootNamespace>

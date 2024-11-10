@@ -22,6 +22,11 @@ jobs:
           - { title: CLD2, projectName: LanguageIdentification.CLD2.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libcld2.arm64.dylib }
           - { title: CLD3, projectName: LanguageIdentification.CLD3.Native, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libcld3.x86_64.dylib }
           - { title: CLD3, projectName: LanguageIdentification.CLD3.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libcld3.arm64.dylib }
+          - { title: Lingua, projectName: LanguageIdentification.Lingua.Native, os: windows-latest, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: lingua.dll }
+          - { title: Lingua, projectName: LanguageIdentification.Lingua.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: liblingua.arm64.dylib }
+          - { title: Whatlang, projectName: LanguageIdentification.Whatlang.Native, os: windows-latest, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: whatlang.dll }
+          - { title: Whatlang, projectName: LanguageIdentification.Whatlang.Native, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libwhatlang.x86_64.dylib }
+          - { title: Whatlang, projectName: LanguageIdentification.Whatlang.Native, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libwhatlang.arm64.dylib }
     permissions:
       contents: read
       packages: write
@@ -120,6 +125,7 @@ jobs:
           6.0.x
           7.0.x
           8.0.x
+          9.0.x
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
     - name: 🚀 Pack ${{matrix.task.projectName}}.Native
@@ -269,6 +275,7 @@ jobs:
           6.0.x
           7.0.x
           8.0.x
+          9.0.x
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
     - name: 📂 Files
