@@ -1,3 +1,5 @@
 libcld2.so
 libcld2.dll
+libcld2.arm64.dylib
+libcld2.x86_64.dylib
 build_temp/**
