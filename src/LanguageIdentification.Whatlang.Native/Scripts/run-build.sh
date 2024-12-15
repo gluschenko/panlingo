@@ -6,7 +6,6 @@ echo "Hello world";
 workspace="build_temp"
 
 mkdir "$workspace" -p
-cp -a ../../third_party/whatlang-ffi/. $workspace/.
 cp -a Native/whatlang-ffi/. $workspace/.
 
 ls -R .

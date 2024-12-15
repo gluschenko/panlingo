@@ -7,7 +7,6 @@ Write-Output "Hello world"
 $workspace = "build_temp"
 
 # Copy directories
-Copy-Item -Path "..\..\third_party\whatlang-ffi\." -Destination $workspace -Recurse -Force
 Copy-Item -Path "Native\whatlang-ffi\." -Destination $workspace -Recurse -Force
 
 # List directory contents recursively

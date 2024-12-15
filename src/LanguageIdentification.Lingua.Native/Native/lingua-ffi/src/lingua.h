@@ -1,5 +1,6 @@
 #ifndef LINGUA_H
 #define LINGUA_H
+#endif
 
 #ifndef EXPORT
 #   if defined(_WIN32) || defined(_WIN64)
