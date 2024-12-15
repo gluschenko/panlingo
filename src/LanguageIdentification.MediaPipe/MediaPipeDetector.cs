@@ -12,13 +12,6 @@ namespace Panlingo.LanguageIdentification.MediaPipe
     /// </summary>
     public class MediaPipeDetector : IDisposable
     {
-        [Obsolete]
-        public MediaPipeDetector(int resultCount = -1, float scoreThreshold = 0.0f, string modelPath = "") : this(
-            (modelPath != "" ? MediaPipeOptions.FromFile(modelPath) : MediaPipeOptions.FromDefault())
-                .WithResultCount(resultCount)
-                .WithScoreThreshold(scoreThreshold)
-        )
-        { }
         private IntPtr _detector;
         private bool _disposed = false;
 
