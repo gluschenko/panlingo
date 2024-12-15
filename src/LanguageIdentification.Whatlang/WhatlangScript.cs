@@ -12,97 +12,101 @@
         /// </summary>
         Arab = 0,
         /// <summary>
+        /// Armenian
+        /// </summary>
+        Armn = 1,
+        /// <summary>
         /// Bengali
         /// </summary>
-        Beng = 1,
+        Beng = 2,
         /// <summary>
         /// Cyrillic
         /// </summary>
-        Cyrl = 2,
+        Cyrl = 3,
         /// <summary>
         /// Devanagari
         /// </summary>
-        Deva = 3,
+        Deva = 4,
         /// <summary>
         /// Ethiopic
         /// </summary>
-        Ethi = 4,
+        Ethi = 5,
         /// <summary>
         /// Georgian
         /// </summary>
-        Geor = 5,
+        Geor = 6,
         /// <summary>
         /// Greek
         /// </summary>
-        Grek = 6,
+        Grek = 7,
         /// <summary>
         /// Gujarati
         /// </summary>
-        Gujr = 7,
+        Gujr = 8,
         /// <summary>
         /// Gurmukhi
         /// </summary>
-        Guru = 8,
+        Guru = 9,
         /// <summary>
         /// Hangul
         /// </summary>
-        Hang = 9,
+        Hang = 10,
         /// <summary>
         /// Hebrew
         /// </summary>
-        Hebr = 10,
+        Hebr = 11,
         /// <summary>
         /// Hiragana
         /// </summary>
-        Hira = 11,
+        Hira = 12,
         /// <summary>
         /// Kannada
         /// </summary>
-        Knda = 12,
+        Knda = 13,
         /// <summary>
         /// Katakana
         /// </summary>
-        Kana = 13,
+        Kana = 14,
         /// <summary>
         /// Khmer
         /// </summary>
-        Khmr = 14,
+        Khmr = 15,
         /// <summary>
         /// Latin
         /// </summary>
-        Latn = 15,
+        Latn = 16,
         /// <summary>
         /// Malayalam
         /// </summary>
-        Mlym = 16,
+        Mlym = 17,
         /// <summary>
         /// Mandarin
         /// </summary>
-        Mand = 17,
+        Mand = 18,
         /// <summary>
         /// Myanmar
         /// </summary>
-        Mymr = 18,
+        Mymr = 19,
         /// <summary>
         /// Oriya (now officially Odia)
         /// </summary>
-        Orya = 19,
+        Orya = 20,
         /// <summary>
         /// Sinhala
         /// </summary>
-        Sinh = 20,
+        Sinh = 21,
         /// <summary>
         /// Tamil
         /// </summary>
-        Taml = 21,
+        Taml = 22,
         /// <summary>
         /// Telugu
         /// </summary>
-        Telu = 22,
+        Telu = 23,
         /// <summary>
         /// Thai
         /// </summary>
-        Thai = 23,
+        Thai = 24,
     }
 }
 

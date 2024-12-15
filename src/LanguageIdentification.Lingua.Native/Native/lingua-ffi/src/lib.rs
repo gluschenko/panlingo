@@ -404,8 +404,6 @@ mod tests {
             println!("{}: {}", language.to_string(), confidence);
         }
 
-        println!("Hello, world!");
-
         assert_eq!(1, 1);
     }
 }

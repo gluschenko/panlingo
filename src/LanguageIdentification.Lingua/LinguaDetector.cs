@@ -13,6 +13,7 @@ namespace Panlingo.LanguageIdentification.Lingua
     public class LinguaDetector : IDisposable
     {
         private IntPtr _detector;
+        private bool _disposed = false;
 
         internal LinguaDetector(LinguaDetectorBuilder builder)
         {
@@ -49,6 +50,8 @@ namespace Panlingo.LanguageIdentification.Lingua
         /// <exception cref="LinguaDetectorException"></exception>
         public IEnumerable<LinguaPrediction> PredictLanguages(string text, int count = 10)
         {
+            CheckDisposed();
+
             var status = LinguaDetectorWrapper.LinguaDetectSingle(
                 detector: _detector,
                 text: text,
@@ -96,6 +99,8 @@ namespace Panlingo.LanguageIdentification.Lingua
         /// <exception cref="LinguaDetectorException"></exception>
         public IEnumerable<LinguaPredictionRange> PredictMixedLanguages(string text)
         {
+            CheckDisposed();
+
             var status = LinguaDetectorWrapper.LinguaDetectMixed(
                 detector: _detector,
                 text: text,
@@ -137,6 +142,8 @@ namespace Panlingo.LanguageIdentification.Lingua
 
         public string GetLanguageCode(LinguaLanguage language, LinguaLanguageCode code)
         {
+            CheckDisposed();
+
             if (!Enum.IsDefined(typeof(LinguaLanguage), language))
             {
                 throw new LinguaDetectorException($"Language code '{language}' is not found");
@@ -172,15 +179,42 @@ namespace Panlingo.LanguageIdentification.Lingua
             }
         }
 
+        private void CheckDisposed()
+        {
+            if (_disposed)
+            {
+                throw new ObjectDisposedException(nameof(LinguaDetector), "This instance has already been disposed");
+            }
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    // Dispose managed resources if any
+                }
+
+                if (_detector != IntPtr.Zero)
+                {
+                    LinguaDetectorWrapper.LinguaLanguageDetectorDestroy(_detector);
+                    _detector = IntPtr.Zero;
+                }
+
+                _disposed = true;
+            }
+        }
+
         public void Dispose()
         {
+            Dispose(true);
             GC.SuppressFinalize(this);
+        }
 
-            if (_detector != IntPtr.Zero)
-            {
-                LinguaDetectorWrapper.LinguaLanguageDetectorDestroy(_detector);
-                _detector = IntPtr.Zero;
-            }
+        ~LinguaDetector()
+        {
+            Dispose(false);
         }
     }
 
