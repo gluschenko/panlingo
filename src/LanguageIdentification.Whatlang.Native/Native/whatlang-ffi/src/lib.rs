@@ -153,13 +153,13 @@ pub struct WhatlangPredictionResult {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_detectn(
+pub unsafe extern "C" fn whatlang_detect_n(
     ptr: *const c_char,
     len: libc::size_t,
-    cinfo: *mut WhatlangPredictionResult,
+    info: *mut WhatlangPredictionResult,
 ) -> WhatlangStatus {
     let text = core::slice::from_raw_parts(ptr as *const u8, len);
-    detect_internal(&text, cinfo)
+    detect_internal(&text, info)
 }
 
 #[no_mangle]
