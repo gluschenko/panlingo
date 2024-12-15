@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Threading;
 using Panlingo.LanguageIdentification.MediaPipe.Internal;
 
 namespace Panlingo.LanguageIdentification.MediaPipe
@@ -13,9 +12,6 @@ namespace Panlingo.LanguageIdentification.MediaPipe
     /// </summary>
     public class MediaPipeDetector : IDisposable
     {
-        private IntPtr _mediaPipe;
-        private readonly SemaphoreSlim _semaphore;
-
         [Obsolete]
         public MediaPipeDetector(int resultCount = -1, float scoreThreshold = 0.0f, string modelPath = "") : this(
             (modelPath != "" ? MediaPipeOptions.FromFile(modelPath) : MediaPipeOptions.FromDefault())
@@ -23,6 +19,8 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                 .WithScoreThreshold(scoreThreshold)
         )
         { }
+        private IntPtr _detector;
+        private bool _disposed = false;
 
         public MediaPipeDetector(MediaPipeOptions options)
         {
@@ -80,7 +78,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                     )
                 );
 
-                _mediaPipe = MediaPipeDetectorWrapper.CreateLanguageDetector(ref nativeOptions, out var errorMessage);
+                _detector = MediaPipeDetectorWrapper.CreateLanguageDetector(ref nativeOptions, out var errorMessage);
 
                 CheckError(errorMessage);
             }
@@ -88,8 +86,6 @@ namespace Panlingo.LanguageIdentification.MediaPipe
             {
                 modelDataHandle?.Free();
             }
-
-            _semaphore = new SemaphoreSlim(1, 1);
         }
 
         public static bool IsSupported()
@@ -103,10 +99,12 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
         public IEnumerable<MediaPipePrediction> PredictLanguages(string text)
         {
+            CheckDisposed();
+
             var nativeResult = new LanguageDetectorResult();
 
             MediaPipeDetectorWrapper.UseLanguageDetector(
-                handle: _mediaPipe,
+                handle: _detector,
                 text: text,
                 result: ref nativeResult,
                 errorMessage: out var errorMessage
@@ -134,27 +132,6 @@ namespace Panlingo.LanguageIdentification.MediaPipe
             }
         }
 
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-
-            try
-            {
-                _semaphore.Wait();
-
-                if (_mediaPipe != IntPtr.Zero)
-                {
-                    MediaPipeDetectorWrapper.FreeLanguageDetector(_mediaPipe, out var errorMessage);
-                    _mediaPipe = IntPtr.Zero;
-                    CheckError(errorMessage);
-                }
-            }
-            finally
-            {
-                _semaphore.Release();
-            }
-        }
-
         private void CheckError(IntPtr errorPtr)
         {
             if (errorPtr != IntPtr.Zero)
@@ -172,6 +149,45 @@ namespace Panlingo.LanguageIdentification.MediaPipe
         private string DecodeString(IntPtr ptr)
         {
             return Marshal.PtrToStringUTF8(ptr) ?? throw new NullReferenceException("Failed to decode non-nullable string");
+        }
+
+        private void CheckDisposed()
+        {
+            if (_disposed)
+            {
+                throw new ObjectDisposedException(nameof(MediaPipeDetector), "This instance has already been disposed");
+            }
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    // Dispose managed resources if any
+                }
+
+                if (_detector != IntPtr.Zero)
+                {
+                    MediaPipeDetectorWrapper.FreeLanguageDetector(_detector, out var errorMessage);
+                    _detector = IntPtr.Zero;
+                    CheckError(errorMessage);
+                }
+
+                _disposed = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~MediaPipeDetector()
+        {
+            Dispose(false);
         }
     }
 }
