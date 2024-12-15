@@ -7,9 +7,6 @@
 [submodule "third_party/cld2"]
 	path = third_party/cld2
 	url = https://github.com/CLD2Owners/cld2.git
-[submodule "third_party/whatlang-ffi"]
-	path = third_party/whatlang-ffi
-	url = https://github.com/greyblake/whatlang-ffi.git
 [submodule "third_party/mediapipe"]
 	path = third_party/mediapipe
 	url = https://github.com/google-ai-edge/mediapipe.git
