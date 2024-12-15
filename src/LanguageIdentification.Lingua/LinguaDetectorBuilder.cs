@@ -11,6 +11,7 @@ namespace Panlingo.LanguageIdentification.Lingua
     {
         private readonly LinguaLanguage[] _languages;
         private IntPtr _builder;
+        private bool _disposed = false;
 
         public LinguaDetectorBuilder(LinguaLanguage[] languages)
         {
@@ -42,23 +43,31 @@ namespace Panlingo.LanguageIdentification.Lingua
 
         public LinguaDetector Build()
         {
+            CheckDisposed();
+
             return new LinguaDetector(this);
         }
 
         public LinguaDetectorBuilder WithLowAccuracyMode()
         {
+            CheckDisposed();
+
             _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderWithLowAccuracyMode(_builder);
             return this;
         }
 
         public LinguaDetectorBuilder WithPreloadedLanguageModels()
         {
+            CheckDisposed();
+
             _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderWithPreloadedLanguageModels(_builder);
             return this;
         }
 
         public LinguaDetectorBuilder WithMinimumRelativeDistance(double distance)
         {
+            CheckDisposed();
+
             if (distance < 0.0 || distance > 0.99)
             {
                 throw new ArgumentOutOfRangeException(nameof(distance), distance, "[0.00, 0.99]");
@@ -68,15 +77,42 @@ namespace Panlingo.LanguageIdentification.Lingua
             return this;
         }
 
+        private void CheckDisposed()
+        {
+            if (_disposed)
+            {
+                throw new ObjectDisposedException(nameof(LinguaDetectorBuilder), "This instance has already been disposed");
+            }
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    // Dispose managed resources if any
+                }
+
+                if (_builder != IntPtr.Zero)
+                {
+                    LinguaDetectorWrapper.LinguaLanguageDetectorBuilderDestroy(_builder);
+                    _builder = IntPtr.Zero;
+                }
+
+                _disposed = true;
+            }
+        }
+
         public void Dispose()
         {
+            Dispose(true);
             GC.SuppressFinalize(this);
+        }
 
-            if (_builder != IntPtr.Zero)
-            {
-                LinguaDetectorWrapper.LinguaLanguageDetectorBuilderDestroy(_builder);
-                _builder = IntPtr.Zero;
-            }
+        ~LinguaDetectorBuilder()
+        {
+            Dispose(false);
         }
     }
 
