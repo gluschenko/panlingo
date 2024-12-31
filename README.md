@@ -92,9 +92,63 @@ functionality into their applications.
 - [x] Self-contained models (FastText + MediaPipe).
 - [x] Remove protobuf dependency (CLD3).
 
----
 
-Feel free to open issues or contribute to the repository. Together, let's enhance the .NET language identification capabilities! 🌐
+## Contributing
+
+We welcome contributions from developers of all skill levels. Whether you're fixing a bug, adding a new feature, or improving documentation, we appreciate your help in making this project better.
+
+### Getting Started
+
+To get started with contributing, follow these simple steps:
+
+1. **Clone the Repository**
+
+   First, clone the repository to your local machine with the following command:
+
+   ```bash
+   git clone --recurse-submodules --remote-submodules https://github.com/gluschenko/panlingo.git
+   ```
+
+2. **Create a Branch**
+
+   Before you start making changes, create a new branch to keep your work organized. Use a descriptive name for your branch to make it easy to understand its purpose:
+
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+3. **Make Changes**
+
+   Now, you can make changes to the codebase. Please ensure your code follows our project's coding standards and includes relevant tests if applicable.
+
+4. **Commit Your Changes**
+
+   Once you've made your changes, commit them with a clear and informative commit message:
+
+   ```bash
+   git add .
+   git commit -m "Add description of your changes"
+   ```
+
+5. **Push Your Changes**
+
+   Push your branch to the remote repository:
+
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+6. **Open a Pull Request**
+
+   Navigate to the repository on GitHub and open a pull request. Provide a detailed description of your changes and any additional information that might help reviewers understand your contribution.
+
+### Review Process
+
+After opening a pull request, it will be reviewed by one of the project maintainers. Feedback and suggestions might be provided to ensure the code meets our quality standards. Once approved, your changes will be merged into the main branch.
+
+### Code of Conduct
+
+Please note that this project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 
 ---
 
