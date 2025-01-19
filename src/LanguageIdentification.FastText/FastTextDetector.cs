@@ -118,7 +118,7 @@ namespace Panlingo.LanguageIdentification.FastText
         /// <summary>
         /// Returns all labels in current model
         /// </summary>
-        /// <returns>Array of label objects</returns>
+        /// <returns>Collection of label objects</returns>
         public IEnumerable<FastTextLabel> GetLabels()
         {
             CheckDisposed();

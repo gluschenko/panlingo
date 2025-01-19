@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Panlingo.LanguageIdentification.MediaPipe.Internal;
@@ -12,8 +14,13 @@ namespace Panlingo.LanguageIdentification.MediaPipe
     /// </summary>
     public class MediaPipeDetector : IDisposable
     {
+        private readonly MediaPipeOptions _options;
+        private readonly Lazy<ImmutableHashSet<string>> _labels;
+
         private IntPtr _detector;
         private bool _disposed = false;
+
+        private const string LABEL_FILE_NAME = "labels.txt";
 
         public MediaPipeDetector(MediaPipeOptions options)
         {
@@ -23,6 +30,8 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                     $"{nameof(MediaPipeDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
                 );
             }
+
+            _options = options;
 
             var modelAssetBuffer = IntPtr.Zero;
             uint modelAssetBufferCount = 0;
@@ -56,6 +65,44 @@ namespace Panlingo.LanguageIdentification.MediaPipe
             {
                 throw new InvalidOperationException("Model data not specified");
             }
+
+            _labels = new Lazy<ImmutableHashSet<string>>(
+                () =>
+                {
+                    var modelData = ReadModelData();
+
+                    using var stream = new MemoryStream(modelData);
+                    using var zip = new ZipArchive(stream, ZipArchiveMode.Read);
+
+                    var labelFile = zip.Entries.FirstOrDefault(x =>
+                    {
+                        return x.Name.Equals(LABEL_FILE_NAME, StringComparison.InvariantCultureIgnoreCase);
+                    });
+
+                    if (labelFile is null)
+                    {
+                        throw new Exception($"File '{LABEL_FILE_NAME}' not found inside model file");
+                    }
+
+                    using var labelStream = labelFile.Open();
+                    using var labelReader = new StreamReader(labelStream);
+
+                    var result = ImmutableHashSet.CreateBuilder<string>();
+
+                    while (true)
+                    {
+                        var label = labelReader.ReadLine();
+                        if (string.IsNullOrEmpty(label))
+                        {
+                            break;
+                        }
+
+                        result.Add(label);
+                    }
+
+                    return result.ToImmutableHashSet<string>();
+                }
+            );
 
             try
             {
@@ -96,7 +143,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
             var nativeResult = new LanguageDetectorResult();
 
-            MediaPipeDetectorWrapper.UseLanguageDetector(
+            _ = MediaPipeDetectorWrapper.UseLanguageDetector(
                 handle: _detector,
                 text: text,
                 result: ref nativeResult,
@@ -107,7 +154,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
             try
             {
                 var result = new LanguageDetectorPrediction[nativeResult.PredictionsCount];
-                var structSize = Marshal.SizeOf(typeof(LanguageDetectorPrediction));
+                var structSize = Marshal.SizeOf<LanguageDetectorPrediction>();
 
                 for (var i = 0; i < nativeResult.PredictionsCount; i++)
                 {
@@ -125,7 +172,42 @@ namespace Panlingo.LanguageIdentification.MediaPipe
             }
         }
 
-        private void CheckError(IntPtr errorPtr)
+        /// <summary>
+        /// Returns all labels in current model
+        /// </summary>
+        /// <returns>Collection of label strings</returns>
+        public IEnumerable<string> GetLabels()
+        {
+            return _labels.Value;
+        }
+
+        private byte[] ReadModelData()
+        {
+            if (_options.ModelStream is not null)
+            {
+                using var memoryStream = new MemoryStream();
+                return memoryStream.ToArray();
+            }
+            else if (_options.ModelData is not null)
+            {
+                return _options.ModelData;
+            }
+            else if (_options.ModelPath is not null)
+            {
+                if (!File.Exists(_options.ModelPath))
+                {
+                    throw new FileNotFoundException("File is not found", _options.ModelPath);
+                }
+
+                return File.ReadAllBytes(_options.ModelPath);
+            }
+            else
+            {
+                throw new InvalidOperationException("Model data not specified");
+            }
+        }
+
+        private static void CheckError(IntPtr errorPtr)
         {
             if (errorPtr != IntPtr.Zero)
             {
@@ -133,13 +215,13 @@ namespace Panlingo.LanguageIdentification.MediaPipe
             }
         }
 
-        private void ThrowNativeException(IntPtr errorPtr)
+        private static void ThrowNativeException(IntPtr errorPtr)
         {
             var error = DecodeString(errorPtr);
             throw new NativeLibraryException(error);
         }
 
-        private string DecodeString(IntPtr ptr)
+        private static string DecodeString(IntPtr ptr)
         {
             return Marshal.PtrToStringUTF8(ptr) ?? throw new NullReferenceException("Failed to decode non-nullable string");
         }
@@ -163,7 +245,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
                 if (_detector != IntPtr.Zero)
                 {
-                    MediaPipeDetectorWrapper.FreeLanguageDetector(_detector, out var errorMessage);
+                    _ = MediaPipeDetectorWrapper.FreeLanguageDetector(_detector, out var errorMessage);
                     _detector = IntPtr.Zero;
                     CheckError(errorMessage);
                 }
