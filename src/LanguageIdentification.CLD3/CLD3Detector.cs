@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.IO.Compression;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Threading;
 using Panlingo.LanguageIdentification.CLD3.Internal;
 
 namespace Panlingo.LanguageIdentification.CLD3
@@ -12,8 +14,9 @@ namespace Panlingo.LanguageIdentification.CLD3
     /// </summary>
     public class CLD3Detector : IDisposable
     {
-        private readonly IntPtr _detector;
-        private readonly SemaphoreSlim _semaphore;
+        private readonly Lazy<ImmutableHashSet<string>> _labels;
+
+        private IntPtr _detector;
         private bool _disposed = false;
 
         public CLD3Detector(int minNumBytes, int maxNumBytes)
@@ -26,7 +29,28 @@ namespace Panlingo.LanguageIdentification.CLD3
             }
 
             _detector = CLD3DetectorWrapper.CreateCLD3(minNumBytes, maxNumBytes);
-            _semaphore = new(1, 1);
+
+            _labels = new Lazy<ImmutableHashSet<string>>(
+                () =>
+                {
+                    var result = ImmutableHashSet.CreateRange<string>(new string[]
+                    {
+                        "af", "am", "ar", "bg", "bg-Latn", "bn", "bs", "ca", "ceb", "co", 
+                        "cs", "cy", "da", "de", "el", "el-Latn", "en", "eo", "es", "et", 
+                        "eu", "fa", "fi", "fil",  "fr", "fy", "ga", "gd", "gl", "gu", 
+                        "ha", "haw", "hi", "hi-Latn", "hmn", "hr", "ht", "hu", "hy", "id", 
+                        "ig", "is", "it", "iw", "ja", "ja-Latn", "jv", "ka", "kk", "km", 
+                        "kn", "ko", "ku", "ky", "la", "lb", "lo", "lt", "lv", "mg", 
+                        "mi", "mk", "ml", "mn", "mr", "ms", "mt", "my", "ne", "nl", 
+                        "no", "ny", "pa", "pl", "ps", "pt", "ro", "ru", "ru-Latn", "sd", 
+                        "si", "sk", "sl", "sm", "sn", "so", "sq", "sr", "st", "su", 
+                        "sv", "sw", "ta", "te", "tg", "th", "tr", "uk", "ur", "uz", 
+                        "vi", "xh", "yi", "yo", "zh", "zh-Latn", "zu",
+                    });
+
+                    return result;
+                }
+            );
         }
 
         public static bool IsSupported()
@@ -35,6 +59,7 @@ namespace Panlingo.LanguageIdentification.CLD3
             {
                 Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
                 Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
+                // TODO: Find out why CLD3 is crashing on macOS
                 // Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
                 // Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
                 _ => false,
@@ -116,6 +141,11 @@ namespace Panlingo.LanguageIdentification.CLD3
             }
         }
 
+        public IEnumerable<string> GetLanguages()
+        {
+            return _labels.Value;
+        }
+
         private void CheckDisposed()
         {
             if (_disposed)
@@ -135,15 +165,8 @@ namespace Panlingo.LanguageIdentification.CLD3
 
                 if (_detector != IntPtr.Zero)
                 {
-                    try
-                    {
-                        _semaphore.Wait();
-                        CLD3DetectorWrapper.DestroyCLD3(_detector);
-                    }
-                    finally
-                    {
-                        _semaphore.Release();
-                    }
+                    CLD3DetectorWrapper.DestroyCLD3(_detector);
+                    _detector = IntPtr.Zero;
                 }
 
                 _disposed = true;

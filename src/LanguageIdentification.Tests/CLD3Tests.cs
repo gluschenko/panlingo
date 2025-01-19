@@ -48,4 +48,19 @@ public class CLD3Tests
         Assert.Equal(languageCode, mainLanguage.Language);
         Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
     }
+
+    [SkippableFact]
+    public void CLD3GetLanguages()
+    {
+        Skip.IfNot(CLD3Detector.IsSupported());
+
+        using var cld3 = new CLD3Detector(0, 512);
+
+        var labels = cld3.GetLanguages();
+        Assert.Equal(107, labels.Count());
+        Assert.Contains("uz", labels);
+        Assert.Contains("uk", labels);
+        Assert.Contains("en", labels);
+        Assert.Contains("zh-Latn", labels);
+    }
 }
