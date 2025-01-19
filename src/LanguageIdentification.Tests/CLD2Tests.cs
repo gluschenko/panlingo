@@ -26,4 +26,19 @@ public class CLD2Tests
         Assert.Equal(languageCode, mainLanguage.Language);
         Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
     }
+
+    [SkippableFact]
+    public void CLD2GetLanguages()
+    {
+        Skip.IfNot(CLD2Detector.IsSupported());
+
+        using var cld2 = new CLD2Detector();
+
+        var labels = cld2.GetLanguages();
+        Assert.Equal(83, labels.Count());
+        Assert.Contains("iw", labels);
+        Assert.Contains("uk", labels);
+        Assert.Contains("en", labels);
+        Assert.Contains("zh-Hant", labels);
+    }
 }

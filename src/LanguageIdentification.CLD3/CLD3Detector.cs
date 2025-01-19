@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.IO.Compression;
-using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Panlingo.LanguageIdentification.CLD3.Internal;
@@ -141,6 +139,10 @@ namespace Panlingo.LanguageIdentification.CLD3
             }
         }
 
+        /// <summary>
+        /// Gets all languages supported by CLD3
+        /// </summary>
+        /// <returns>Collection of strings</returns>
         public IEnumerable<string> GetLanguages()
         {
             return _labels.Value;

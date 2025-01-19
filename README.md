@@ -55,7 +55,7 @@ functionality into their applications.
 | :------------------------- | :-------: | :------------: | :----------------: | :------: | :------------: | :------: |
 | Single language prediction | Yes       | Yes            | Yes                | Yes      | Yes            | Yes      |
 | Multi language prediction  | Yes       | Yes            | Yes                | No       | Yes            | Yes      |
-| Supported languages        | 80        | 107            | 176 or 217         | 69       | 110            | 75       |
+| Supported languages        | 83        | 107            | 176 or 217         | 69       | 110            | 75       |
 | Unknown language detection | Yes       | Yes            | No                 | No       | Yes            | No       |
 | Algorithm                  | quadgrams | neural network | neural network     | trigrams | neural network | trigrams |
 | Script detection           | No        | No             | Yes (only lid218e) | Yes      | No             | No       |
