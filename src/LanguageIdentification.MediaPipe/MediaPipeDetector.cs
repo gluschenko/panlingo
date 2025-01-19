@@ -27,7 +27,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
             if (!IsSupported())
             {
                 throw new NotSupportedException(
-                    $"{nameof(MediaPipeDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
+                    $"{nameof(MediaPipeDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier} ({RuntimeInformation.OSArchitecture})"
                 );
             }
 

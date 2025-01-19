@@ -15,7 +15,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
             if (!IsSupported())
             {
                 throw new NotSupportedException(
-                    $"{nameof(WhatlangDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
+                    $"{nameof(WhatlangDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier} ({RuntimeInformation.OSArchitecture})"
                 );
             }
         }

@@ -19,7 +19,7 @@ namespace Panlingo.LanguageIdentification.CLD2
             if (!IsSupported())
             {
                 throw new NotSupportedException(
-                    $"{nameof(CLD2Detector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
+                    $"{nameof(CLD2Detector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier} ({RuntimeInformation.OSArchitecture})"
                 );
             }
 

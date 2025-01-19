@@ -18,7 +18,7 @@ namespace Panlingo.LanguageIdentification.Lingua
             if (!LinguaDetector.IsSupported())
             {
                 throw new NotSupportedException(
-                    $"{nameof(LinguaDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
+                    $"{nameof(LinguaDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier} ({RuntimeInformation.OSArchitecture})"
                 );
             }
 

@@ -22,7 +22,7 @@ namespace Panlingo.LanguageIdentification.CLD3
             if (!IsSupported())
             {
                 throw new NotSupportedException(
-                    $"{nameof(CLD3Detector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
+                    $"{nameof(CLD3Detector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier} ({RuntimeInformation.OSArchitecture})"
                 );
             }
 
