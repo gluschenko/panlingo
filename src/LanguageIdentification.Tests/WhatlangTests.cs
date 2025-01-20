@@ -40,4 +40,19 @@ public class WhatlangTests
         var languageCode = whatlang.GetLanguageCode(language);
         Assert.Equal(code, languageCode);
     }
+
+    [SkippableFact]
+    public void WhatlangGetLanguages()
+    {
+        Skip.IfNot(WhatlangDetector.IsSupported());
+
+        using var whatlang = new WhatlangDetector();
+
+        var labels = whatlang.GetLanguages();
+        Assert.Equal(75, labels.Count());
+        Assert.Contains(WhatlangLanguage.Heb, labels);
+        Assert.Contains(WhatlangLanguage.Ukr, labels);
+        Assert.Contains(WhatlangLanguage.Eng, labels);
+        Assert.Contains(WhatlangLanguage.Cmn, labels);
+    }
 }
