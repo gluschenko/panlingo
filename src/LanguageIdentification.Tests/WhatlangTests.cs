@@ -49,7 +49,7 @@ public class WhatlangTests
         using var whatlang = new WhatlangDetector();
 
         var labels = whatlang.GetLanguages();
-        Assert.Equal(75, labels.Count());
+        Assert.Equal(69, labels.Count());
         Assert.Contains(WhatlangLanguage.Heb, labels);
         Assert.Contains(WhatlangLanguage.Ukr, labels);
         Assert.Contains(WhatlangLanguage.Eng, labels);

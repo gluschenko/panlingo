@@ -91,6 +91,7 @@ public class FastTextTests : IAsyncLifetime
 
         var labels = fastText.GetLabels();
 
+        Assert.Equal(176, labels.Count());
         Assert.Contains(labels, x => x.Label == "__label__en");
         Assert.Contains(labels, x => x.Label == "__label__uk");
         Assert.Contains(labels, x => x.Label == "__label__ru");
