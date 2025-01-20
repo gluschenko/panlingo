@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <PackageId>Panlingo.LanguageIdentification.Whatlang.Native</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.Whatlang.Native</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.Whatlang.Native</RootNamespace>
