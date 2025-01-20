@@ -22,7 +22,7 @@ namespace Panlingo.LanguageIdentification.FastText
             if (!IsSupported())
             {
                 throw new NotSupportedException(
-                    $"{nameof(FastTextDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
+                    $"{nameof(FastTextDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier} ({RuntimeInformation.OSArchitecture})"
                 );
             }
 
@@ -118,7 +118,7 @@ namespace Panlingo.LanguageIdentification.FastText
         /// <summary>
         /// Returns all labels in current model
         /// </summary>
-        /// <returns>Array of label objects</returns>
+        /// <returns>Collection of label objects</returns>
         public IEnumerable<FastTextLabel> GetLabels()
         {
             CheckDisposed();

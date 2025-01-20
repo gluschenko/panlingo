@@ -80,4 +80,20 @@ public class LinguaTests
 
         Assert.NotEqual(lingua1, lingua2);
     }
+
+    [SkippableFact]
+    public void LinguaGetLanguages()
+    {
+        Skip.IfNot(LinguaDetector.IsSupported());
+
+        using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
+        using var lingua = linguaBuilder.Build();
+
+        var labels = lingua.GetLanguages();
+        Assert.Equal(75, labels.Count());
+        Assert.Contains(LinguaLanguage.Hebrew, labels);
+        Assert.Contains(LinguaLanguage.Ukrainian, labels);
+        Assert.Contains(LinguaLanguage.English, labels);
+        Assert.Contains(LinguaLanguage.Chinese, labels);
+    }
 }

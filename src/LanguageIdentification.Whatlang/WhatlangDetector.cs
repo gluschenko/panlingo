@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Runtime.InteropServices;
 using System.Text;
 using Panlingo.LanguageIdentification.Whatlang.Internal;
@@ -10,14 +12,24 @@ namespace Panlingo.LanguageIdentification.Whatlang
     /// </summary>
     public class WhatlangDetector : IDisposable
     {
+        private readonly Lazy<ImmutableHashSet<WhatlangLanguage>> _labels;
+
         public WhatlangDetector()
         {
             if (!IsSupported())
             {
                 throw new NotSupportedException(
-                    $"{nameof(WhatlangDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
+                    $"{nameof(WhatlangDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier} ({RuntimeInformation.OSArchitecture})"
                 );
             }
+
+            _labels = new Lazy<ImmutableHashSet<WhatlangLanguage>>(
+                () =>
+                {
+                    var result = ImmutableHashSet.CreateRange(Enum.GetValues<WhatlangLanguage>());
+                    return result;
+                }
+            );
         }
 
         public static bool IsSupported()
@@ -140,6 +152,15 @@ namespace Panlingo.LanguageIdentification.Whatlang
             {
                 stringBuider.Clear();
             }
+        }
+
+        /// <summary>
+        /// Gets all languages supported by Whatlang
+        /// </summary>
+        /// <returns>Collection of strings</returns>
+        public IEnumerable<WhatlangLanguage> GetLanguages()
+        {
+            return _labels.Value;
         }
 
         public void Dispose()

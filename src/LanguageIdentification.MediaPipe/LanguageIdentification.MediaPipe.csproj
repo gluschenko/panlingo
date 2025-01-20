@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <PackageId>Panlingo.LanguageIdentification.MediaPipe</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.MediaPipe</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.MediaPipe</RootNamespace>
@@ -10,11 +10,14 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2024</Copyright>
+    <Copyright>Alexander Gluschenko © 2025</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection mediapipe</PackageTags>
     <PackageReadmeFile>README_MEDIAPIPE.md</PackageReadmeFile>
     <PackageReleaseNotes>
+0.4.0.0
+- Add GetLabels method
+      
 0.0.0.21:
 - Default MediaPipe model is included in NuGet package
 

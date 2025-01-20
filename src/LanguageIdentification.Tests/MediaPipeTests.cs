@@ -65,8 +65,6 @@ public class MediaPipeTests : IAsyncLifetime
     {
         Skip.IfNot(MediaPipeDetector.IsSupported());
 
-        using var stream = File.Open(_modelPath, FileMode.Open);
-
         using var mediaPipe = new MediaPipeDetector(
             options: MediaPipeOptions.FromDefault().WithResultCount(10)
         );
@@ -81,6 +79,23 @@ public class MediaPipeTests : IAsyncLifetime
 
         Assert.Equal(languageCode, mainLanguage.Language);
         Assert.Equal(score, mainLanguage.Probability, Constants.EPSILON);
+    }
+
+    [SkippableFact]
+    public void MediaPipeGetLables()
+    {
+        Skip.IfNot(MediaPipeDetector.IsSupported());
+
+        using var mediaPipe = new MediaPipeDetector(
+            options: MediaPipeOptions.FromDefault().WithResultCount(10)
+        );
+
+        var labels = mediaPipe.GetLabels();
+        Assert.Equal(111, labels.Count());
+        Assert.Contains("uz", labels);
+        Assert.Contains("uk", labels);
+        Assert.Contains("en", labels);
+        Assert.Contains("zh-Latn", labels);
     }
 
     public async Task InitializeAsync()

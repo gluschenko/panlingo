@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <PackageId>Panlingo.LanguageCode</PackageId>
     <AssemblyName>Panlingo.LanguageCode</AssemblyName>
     <RootNamespace>Panlingo.LanguageCode</RootNamespace>
@@ -10,7 +10,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2024</Copyright>
+    <Copyright>Alexander Gluschenko © 2025</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>iso iso639 language-code</PackageTags>
     <PackageReadmeFile>README_LANGUAGE_CODE.md</PackageReadmeFile>

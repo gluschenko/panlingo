@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -12,6 +13,8 @@ namespace Panlingo.LanguageIdentification.Lingua
     /// </summary>
     public class LinguaDetector : IDisposable
     {
+        private readonly Lazy<ImmutableHashSet<LinguaLanguage>> _labels;
+
         private IntPtr _detector;
         private bool _disposed = false;
 
@@ -20,7 +23,7 @@ namespace Panlingo.LanguageIdentification.Lingua
             if (!IsSupported())
             {
                 throw new NotSupportedException(
-                    $"{nameof(LinguaDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier}"
+                    $"{nameof(LinguaDetector)} is not yet supported on {RuntimeInformation.RuntimeIdentifier} ({RuntimeInformation.OSArchitecture})"
                 );
             }
 
@@ -29,6 +32,14 @@ namespace Panlingo.LanguageIdentification.Lingua
             {
                 throw new LinguaDetectorException($"Failed to create {nameof(LinguaDetector)}");
             }
+
+            _labels = new Lazy<ImmutableHashSet<LinguaLanguage>>(
+                () =>
+                {
+                    var result = ImmutableHashSet.CreateRange(Enum.GetValues<LinguaLanguage>());
+                    return result;
+                }
+            );
         }
 
         public static bool IsSupported()
@@ -177,6 +188,15 @@ namespace Panlingo.LanguageIdentification.Lingua
             {
                 stringBuider.Clear();
             }
+        }
+
+        /// <summary>
+        /// Gets all languages supported by Lingua
+        /// </summary>
+        /// <returns>Collection of strings</returns>
+        public IEnumerable<LinguaLanguage> GetLanguages()
+        {
+            return _labels.Value;
         }
 
         private void CheckDisposed()

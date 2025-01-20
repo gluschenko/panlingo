@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <PackageId>Panlingo.LanguageIdentification.CLD3.Native</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.CLD3.Native</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.CLD3.Native</RootNamespace>
@@ -10,7 +10,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2024</Copyright>
+    <Copyright>Alexander Gluschenko © 2025</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection cld3</PackageTags>
     <PackageReadmeFile>README_CLD3.md</PackageReadmeFile>

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <PackageId>Panlingo.LanguageIdentification.CLD2</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.CLD2</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.CLD2</RootNamespace>
@@ -10,11 +10,14 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2024</Copyright>
+    <Copyright>Alexander Gluschenko © 2025</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection cld2</PackageTags>
     <PackageReadmeFile>README_CLD2.md</PackageReadmeFile>
     <PackageReleaseNotes>
+0.4.0.0
+- Add GetLanguages method
+      
 0.1.0.0
 - Windows and MacOS support
       

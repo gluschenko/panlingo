@@ -19,6 +19,8 @@
                 options: MediaPipeOptions.FromDefault()
             );
 
+            var labels = mediaPipe.GetLabels();
+
             var text = "Hello, how are you? Привіт, як справи? Привет, как дела?";
 
             var predictions = mediaPipe.PredictLanguages(text);
