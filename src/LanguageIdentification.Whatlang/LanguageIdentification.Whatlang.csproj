@@ -10,11 +10,14 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2024</Copyright>
+    <Copyright>Alexander Gluschenko © 2025</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection whatlang</PackageTags>
     <PackageReadmeFile>README_WHATLANG.md</PackageReadmeFile>
     <PackageReleaseNotes>
+0.4.0.0
+- Add GetLanguages method
+      
 0.2.0.0
 - Windows and MacOS support
 - Armenian support
