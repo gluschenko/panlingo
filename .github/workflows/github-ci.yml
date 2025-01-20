@@ -52,9 +52,9 @@ jobs:
           src:
             - '${{env.ROOT}}/${{matrix.task.projectName}}.Native/**'
 
-    - name: 🚀 Build ${{matrix.task.projectName}}
+    - name: 🚀 Build ${{matrix.task.projectName}}.Native
       if: steps.changes.outputs.src == 'true'
-      working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}
+      working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}.Native
       run: |
         echo $(pwd)
         git update-index --chmod=+x ${{matrix.task.script}}
@@ -64,8 +64,8 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: steps.changes.outputs.src == 'true'
       with:
-        name: native-${{matrix.task.projectName}}-${{matrix.task.os}}
-        path: ${{env.ROOT}}/${{matrix.task.projectName}}/${{matrix.task.artifact}}
+        name: native-${{matrix.task.projectName}}.Native-${{matrix.task.os}}
+        path: ${{env.ROOT}}/${{matrix.task.projectName}}.Native/${{matrix.task.artifact}}
         retention-days: 1
         overwrite: 'true'
         compression-level: 0
