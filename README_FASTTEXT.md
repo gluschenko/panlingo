@@ -54,36 +54,40 @@ class Program
 
 ### Custom models
 
-#### Download the Pretrained Models
+The default model for this package is [quantized](https://fasttext.cc/docs/en/language-identification.html#:~:text=size%20of%20126MB%20%3B-,lid.176.ftz,-%2C%20which%20is%20the) `lid.176.ftz` (see below). 
+You can use the default model by calling the `LoadDefaultModel()` method.
 
-Depending on your needs, download one of the pretrained language identification (LID) models provided by Facebook:
+We recommend using the following models, but you can use any model depending on your needs. 
+It could even be a model for another text classinfiction tasks, e.g: 
+[supervised models](https://fasttext.cc/docs/en/supervised-tutorial.html)
 
-- For the LID model with 176 languages:
-    ```sh
-    curl --location -o /models/fasttext176.bin https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin
-    ```
+| Model       | Vendor          | Languages | Label format | Learn more | Download |
+| :---------- | :-------------: | :-------: | :--------- | :--------- | :------- |
+| **lid.176** | Meta Inc.       | 176       | `__label__en` `__label__uk` `__label__hi` | [fasttext.cc](https://fasttext.cc/docs/en/language-identification.html) | [lid.176.bin](https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin) |
+| **lid218e** | Meta Inc.       | 217       | `__label__eng_Latn` `__label__ukr_Cyrl` `__label__hin_Deva` | [@facebook/fasttext-language-identification](https://huggingface.co/facebook/fasttext-language-identification) | [model.bin](https://huggingface.co/facebook/fasttext-language-identification/resolve/main/model.bin?download=true) |
+| **GlotLID** | CIS, LMU Munich | 2155(?)   | `__label__eng_Latn` `__label__ukr_Cyrl` `__label__hin_Deva` | [@cis-lmu/glotlid](https://huggingface.co/cis-lmu/glotlid) | [model_v3.bin](https://huggingface.co/cis-lmu/glotlid/resolve/main/model_v3.bin?download=true) |
 
-- For the LID model with 217 languages:
-    ```sh
-    curl --location -o /models/fasttext217.bin https://huggingface.co/facebook/fasttext-language-identification/resolve/main/model.bin?download=true
-    ```
+#### Use custom model in codes
 
-Learn more about these models here:
-- [176 languages](https://fasttext.cc/docs/en/language-identification.html)
-- [217 languages + script](https://huggingface.co/facebook/fasttext-language-identification)
+**You can use the model included in this NuGet package:**
+```
+using var fastText = new FastTextDetector();
+fastText.LoadDefaultModel();
+```
 
-#### Use custom model in code
+**You can specify the path to the model file:**
 ```
 using var fastText = new FastTextDetector();
 
-var modelPath = "/models/fasttext176.bin";
+var modelPath = "/path/to/model/fasttext176.bin";
 fastText.LoadModel(modelPath);
 ```
-OR
+
+**Also you can also load the model as a memory stream:**
 ```
 using var fastText = new FastTextDetector();
 
-var modelPath = "/models/fasttext176.bin";
+var modelPath = "/path/to/model/fasttext176.bin";
 using var stream = File.Open(modelPath, FileMode.Open);
 fastText.LoadModel(stream);
 ```
