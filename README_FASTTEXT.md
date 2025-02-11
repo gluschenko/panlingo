@@ -61,11 +61,11 @@ We recommend using the following models, but you can use any model depending on 
 It could even be a model for another text classinfiction tasks, e.g: 
 [supervised models](https://fasttext.cc/docs/en/supervised-tutorial.html)
 
-| Model       | Vendor          | Languages | Label format | Learn more | Download |
-| :---------- | :-------------: | :-------: | :--------- | :--------- | :------- |
-| **lid.176** | Meta Inc.       | 176       | `__label__en` `__label__uk` `__label__hi` | [fasttext.cc](https://fasttext.cc/docs/en/language-identification.html) | [lid.176.bin](https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin) |
-| **lid218e** | Meta Inc.       | 217       | `__label__eng_Latn` `__label__ukr_Cyrl` `__label__hin_Deva` | [@facebook/fasttext-language-identification](https://huggingface.co/facebook/fasttext-language-identification) | [model.bin](https://huggingface.co/facebook/fasttext-language-identification/resolve/main/model.bin?download=true) |
-| **GlotLID** | CIS, LMU Munich | 2155(?)   | `__label__eng_Latn` `__label__ukr_Cyrl` `__label__hin_Deva` | [@cis-lmu/glotlid](https://huggingface.co/cis-lmu/glotlid) | [model_v3.bin](https://huggingface.co/cis-lmu/glotlid/resolve/main/model_v3.bin?download=true) |
+| Model       | Vendor               | Languages | Label format | Learn more | Download |
+| :---------- | :------------------- | :-------: | :----------- | :--------- | :------: |
+| **lid.176** | Meta Platforms, Inc. | 176       | `__label__en` `__label__uk` `__label__hi` | [fasttext.cc](https://fasttext.cc/docs/en/language-identification.html) | [lid.176.bin](https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin) |
+| **lid218e** | Meta Platforms, Inc. | 217       | `__label__eng_Latn` `__label__ukr_Cyrl` `__label__hin_Deva` | [@facebook/fasttext-language-identification](https://huggingface.co/facebook/fasttext-language-identification) | [model.bin](https://huggingface.co/facebook/fasttext-language-identification/resolve/main/model.bin?download=true) |
+| **GlotLID** | CIS, LMU Munich      | 2155(?)   | `__label__eng_Latn` `__label__ukr_Cyrl` `__label__hin_Deva` | [@cis-lmu/glotlid](https://huggingface.co/cis-lmu/glotlid) | [model_v3.bin](https://huggingface.co/cis-lmu/glotlid/resolve/main/model_v3.bin?download=true) |
 
 #### Use custom model in codes
 
