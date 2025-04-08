@@ -70,6 +70,31 @@ namespace Panlingo.LanguageIdentification.Whatlang
             return new WhatlangPrediction(result);
         }
 
+        /// <summary>
+        /// Makes script detection for 'text'
+        /// </summary>
+        /// <param name="text">Some text in natural language</param>
+        /// <exception cref="WhatlangDetectorException"></exception>
+        public WhatlangScript? DetectScript(string text)
+        {
+            var status = WhatlangDetectorWrapper.WhatlangDetectScript(
+                text: text,
+                result: out var result
+            );
+
+            if (status == WhatlangStatus.DetectFailure)
+            {
+                return null;
+            }
+
+            if (status == WhatlangStatus.BadTextPtr || status == WhatlangStatus.BadOutputPtr)
+            {
+                throw new WhatlangDetectorException($"Failed to detect language: {status}");
+            }
+
+            return result;
+        }
+
         public string GetLanguageCode(WhatlangLanguage language)
         {
             var stringBuider = new StringBuilder(100);
