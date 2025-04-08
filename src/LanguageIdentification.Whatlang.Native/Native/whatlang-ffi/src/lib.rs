@@ -159,15 +159,15 @@ pub unsafe extern "C" fn whatlang_detect(ptr: *const c_char, result: *mut Whatla
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_detect_lang(ptr: *const c_char, result: WhatlangLanguage) -> WhatlangStatus {
+pub unsafe extern "C" fn whatlang_detect_lang(ptr: *const c_char, result: *mut WhatlangLanguage) -> WhatlangStatus {
     let cs = CStr::from_ptr(ptr);
-    detect_lang_internal(cs.to_bytes(), *result)
+    detect_lang_internal(cs.to_bytes(), result)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_detect_script(ptr: *const c_char, result: WhatlangScript) -> WhatlangStatus {
+pub unsafe extern "C" fn whatlang_detect_script(ptr: *const c_char, result: *mut WhatlangScript) -> WhatlangStatus {
     let cs = CStr::from_ptr(ptr);
-    detect_script_internal(cs.to_bytes(), *result)
+    detect_script_internal(cs.to_bytes(), result)
 }
 
 #[no_mangle]
