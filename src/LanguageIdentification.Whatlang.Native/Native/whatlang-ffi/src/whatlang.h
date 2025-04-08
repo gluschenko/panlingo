@@ -32,8 +32,9 @@ struct WhatlangPredictionResult {
   bool is_reliable;
 };
 
-EXPORT WhatlangStatus whatlang_detect(const char* text, struct WhatlangPredictionResult* info);
-EXPORT WhatlangStatus whatlang_detect_n(const char* text, size_t len, struct WhatlangPredictionResult* info);
+EXPORT WhatlangStatus whatlang_detect(const char* text, struct WhatlangPredictionResult* result);
+EXPORT WhatlangStatus whatlang_lang_detect(const char* text, struct WhatlangLanguage* result);
+EXPORT WhatlangStatus whatlang_script_detect(const char* text, struct WhatlangScript* result);
 EXPORT size_t whatlang_lang_code(WhatlangLanguage lang, char* buffer);
 EXPORT size_t whatlang_lang_eng_name(WhatlangLanguage lang, char* buffer);
 EXPORT size_t whatlang_lang_name(WhatlangLanguage lang, char* buffer);
