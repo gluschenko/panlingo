@@ -217,7 +217,11 @@ jobs:
     - name: 🧪 Run Tests for LanguageIdentification
       working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
       run: |
-        export DYLD_PRINT_LIBRARIES=1
+        lldb --batch \
+          -o "process launch -- dotnet test -c CI --no-build" \
+          -o "bt all" \
+          -o "quit"
+
         dotnet test -c CI --blame-crash
 
     - name: 🧪 Run Tests for LanguageCode
