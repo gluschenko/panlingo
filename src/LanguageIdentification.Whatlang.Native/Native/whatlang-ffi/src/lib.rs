@@ -159,12 +159,6 @@ pub unsafe extern "C" fn whatlang_detect(ptr: *const c_char, result: *mut Whatla
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_detect_lang(ptr: *const c_char, result: *mut WhatlangLanguage) -> WhatlangStatus {
-    let cs = CStr::from_ptr(ptr);
-    detect_lang_internal(cs.to_bytes(), result)
-}
-
-#[no_mangle]
 pub unsafe extern "C" fn whatlang_detect_script(ptr: *const c_char, result: *mut WhatlangScript) -> WhatlangStatus {
     let cs = CStr::from_ptr(ptr);
     detect_script_internal(cs.to_bytes(), result)
@@ -209,35 +203,6 @@ fn detect_internal(text: &[u8], result: *mut WhatlangPredictionResult) -> Whatla
                         (*result).script = info.script();
                         (*result).confidence = info.confidence();
                         (*result).is_reliable = info.is_reliable();
-                    }
-                    WhatlangStatus::Ok
-                }
-                None => {
-                    // Could not detect language
-                    WhatlangStatus::DetectFailure
-                }
-            }
-        }
-        Err(_) => {
-            // Bad string pointer
-            WhatlangStatus::BadTextPtr
-        }
-    }
-}
-
-fn detect_lang_internal(text: &[u8], result: *mut WhatlangLanguage) -> WhatlangStatus {
-    if result == ptr::null_mut() {
-        return WhatlangStatus::BadOutputPtr;
-    }
-
-    match std::str::from_utf8(text) {
-        Ok(s) => {
-            let res = detect_lang(s);
-            match res {
-                Some(info) => {
-                    let x: WhatlangLanguage = info.to_owned().into();
-                    unsafe {
-                        *result = x;
                     }
                     WhatlangStatus::Ok
                 }
