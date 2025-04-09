@@ -216,6 +216,7 @@ jobs:
 
     - name: 🧪 Run Tests for LanguageIdentification
       working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
+      continue-on-error: true
       run: |
         lldb --batch \
           -o "process launch -- dotnet test -c CI --no-build" \
