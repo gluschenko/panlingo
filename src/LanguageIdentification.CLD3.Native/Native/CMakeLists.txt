@@ -85,16 +85,7 @@ add_library(${PROJECT_NAME} SHARED
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "src/binding.h")
 
 if (APPLE)
-    if (CMAKE_OSX_ARCHITECTURES MATCHES "arm64")
-        set(CLANG_LIB_DIR /opt/homebrew/opt/llvm/lib/c++)
-    elseif (CMAKE_OSX_ARCHITECTURES MATCHES "x86_64")
-        set(CLANG_LIB_DIR /usr/local/opt/llvm/lib/c++)
-    endif()
-
-    target_link_libraries(${PROJECT_NAME}
-        -nostdlib++
-        -Wl,${CLANG_LIB_DIR}/libc++.a
-        -Wl,${CLANG_LIB_DIR}/libc++abi.a)
+    # nop
 else()
     if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
         # nop
