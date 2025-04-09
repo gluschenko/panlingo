@@ -218,11 +218,6 @@ jobs:
       working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
       continue-on-error: true
       run: |
-        lldb --batch \
-          -o "process launch -- dotnet test -c CI --no-build" \
-          -o "bt all" \
-          -o "quit"
-
         dotnet test -c CI --blame-crash
 
     - name: 🧪 Run Tests for LanguageCode
