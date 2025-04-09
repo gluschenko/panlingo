@@ -33,8 +33,7 @@ struct WhatlangPredictionResult {
 };
 
 EXPORT WhatlangStatus whatlang_detect(const char* text, struct WhatlangPredictionResult* result);
-EXPORT WhatlangStatus whatlang_lang_detect(const char* text, struct WhatlangLanguage* result);
-EXPORT WhatlangStatus whatlang_script_detect(const char* text, struct WhatlangScript* result);
+EXPORT WhatlangStatus whatlang_detect_script(const char* text, struct WhatlangScript* result);
 EXPORT size_t whatlang_lang_code(WhatlangLanguage lang, char* buffer);
 EXPORT size_t whatlang_lang_eng_name(WhatlangLanguage lang, char* buffer);
 EXPORT size_t whatlang_lang_name(WhatlangLanguage lang, char* buffer);

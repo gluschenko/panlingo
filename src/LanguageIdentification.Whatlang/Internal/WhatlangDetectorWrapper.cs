@@ -14,12 +14,6 @@ namespace Panlingo.LanguageIdentification.Whatlang.Internal
             out WhatlangPredictionResult result
         );
 
-        [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_detect_lang", CallingConvention = CallingConvention.Cdecl)]
-        public static extern WhatlangStatus WhatlangDetectLang(
-            [MarshalAs(UnmanagedType.LPUTF8Str)] string text,
-            out WhatlangLanguage result
-        );
-
         [DllImport(WhatlangNativeLibrary.Name, EntryPoint = "whatlang_detect_script", CallingConvention = CallingConvention.Cdecl)]
         public static extern WhatlangStatus WhatlangDetectScript(
             [MarshalAs(UnmanagedType.LPUTF8Str)] string text,
