@@ -154,38 +154,38 @@ pub struct WhatlangPredictionResult {
 
 #[no_mangle]
 pub unsafe extern "C" fn whatlang_detect(ptr: *const c_char, result: *mut WhatlangPredictionResult) -> WhatlangStatus {
-    let cs = CStr::from_ptr(ptr);
-    detect_internal(cs.to_bytes(), result)
+    let x = CStr::from_ptr(ptr);
+    detect_internal(x.to_bytes(), result)
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn whatlang_detect_script(ptr: *const c_char, result: *mut WhatlangScript) -> WhatlangStatus {
-    let cs = CStr::from_ptr(ptr);
-    detect_script_internal(cs.to_bytes(), result)
+    let x = CStr::from_ptr(ptr);
+    detect_script_internal(x.to_bytes(), result)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_lang_eng_name(lang: WhatlangLanguage, buffer_ptr: *mut c_char) -> size_t {
+pub unsafe extern "C" fn whatlang_lang_eng_name(lang: WhatlangLanguage, result: *mut c_char) -> size_t {
     let x: Lang = lang.into();
-    copy_cstr(x.eng_name(), buffer_ptr)
+    copy_string(x.eng_name(), result)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_lang_code(lang: WhatlangLanguage, buffer_ptr: *mut c_char) -> size_t {
+pub unsafe extern "C" fn whatlang_lang_code(lang: WhatlangLanguage, result: *mut c_char) -> size_t {
     let x: Lang = lang.into();
-    copy_cstr(x.code(), buffer_ptr)
+    copy_string(x.code(), result)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_lang_name(lang: WhatlangLanguage, buffer_ptr: *mut c_char) -> size_t {
+pub unsafe extern "C" fn whatlang_lang_name(lang: WhatlangLanguage, result: *mut c_char) -> size_t {
     let x: Lang = lang.into();
-    copy_cstr(x.name(), buffer_ptr)
+    copy_string(x.name(), result)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_script_name(script: WhatlangScript, buffer_ptr: *mut c_char) -> size_t {
+pub unsafe extern "C" fn whatlang_script_name(script: WhatlangScript, result: *mut c_char) -> size_t {
     let x: Script = script.into();
-    copy_cstr(x.name(), buffer_ptr)
+    copy_string(x.name(), result)
 }
 
 fn detect_internal(text: &[u8], result: *mut WhatlangPredictionResult) -> WhatlangStatus {
@@ -248,12 +248,12 @@ fn detect_script_internal(text: &[u8], result: *mut WhatlangScript) -> WhatlangS
     }
 }
 
-unsafe fn copy_cstr(src: &str, dst: *mut c_char) -> size_t {
-    let len = src.len();
-    if dst != ptr::null_mut() {
-        let src = src.as_ptr().cast::<c_char>();
-        src.copy_to_nonoverlapping(dst, len);
-        *dst.add(len) = 0;
+unsafe fn copy_string(source: &str, destination: *mut c_char) -> size_t {
+    let len = source.len();
+    if destination != ptr::null_mut() {
+        let src = source.as_ptr().cast::<c_char>();
+        src.copy_to_nonoverlapping(destination, len);
+        *destination.add(len) = 0;
     }
     len
 }
