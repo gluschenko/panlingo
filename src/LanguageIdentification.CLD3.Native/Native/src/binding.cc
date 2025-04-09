@@ -41,10 +41,10 @@ extern "C" {
     }
 
     EXPORT void cld3_destroy_prediction_result(PredictionResult* results, int count) {
-        for (int i = 0; i < count; ++i) {
+        /*for (int i = 0; i < count; ++i) {
             free((void*)results[i].language);
         }
-        delete[] results;
+        delete[] results;*/
     }
 }
 
