@@ -7,6 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
+add_definitions(-fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++11)
+
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -pthread -funroll-loops -O3")

@@ -93,7 +93,7 @@ namespace Panlingo.LanguageIdentification.CLD3
             }
             finally
             {
-                // CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
+                CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
             }
         }
 
@@ -134,7 +134,7 @@ namespace Panlingo.LanguageIdentification.CLD3
             }
             finally
             {
-                // CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
+                CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
             }
         }
 
