@@ -93,7 +93,7 @@ namespace Panlingo.LanguageIdentification.CLD3
             }
             finally
             {
-                // CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
+                CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
             }
         }
 
@@ -110,12 +110,16 @@ namespace Panlingo.LanguageIdentification.CLD3
         {
             CheckDisposed();
 
+            Console.WriteLine($"[CRASH TEST] Pre-method");
+
             var resultPtr = CLD3DetectorWrapper.PredictLanguages(
                 identifier: _detector,
                 text: text,
                 numLangs: count,
                 resultCount: out var resultCount
             );
+
+            Console.WriteLine($"[CRASH TEST] Create pointer {resultPtr}");
 
             try
             {
@@ -127,14 +131,18 @@ namespace Panlingo.LanguageIdentification.CLD3
                     nativeResult[i] = Marshal.PtrToStructure<CLD3PredictionResult>(resultPtr + i * structSize);
                 }
 
-                return nativeResult
+                var result = nativeResult
                     .OrderByDescending(x => x.Probability)
                     .Select(x => new CLD3Prediction(x))
                     .ToArray();
+
+                return result;
             }
             finally
             {
-                // CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
+                Console.WriteLine($"[CRASH TEST] Pre-destroy {resultPtr} / {resultCount}");
+                CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
+                Console.WriteLine($"[CRASH TEST] Post-destroy {resultPtr} / {resultCount}");
             }
         }
 
