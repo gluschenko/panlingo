@@ -75,7 +75,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// </summary>
         /// <param name="text">Some text in natural language</param>
         /// <exception cref="WhatlangDetectorException"></exception>
-        public WhatlangScript? DetectScript(string text)
+        public WhatlangScript? PredictScript(string text)
         {
             var status = WhatlangDetectorWrapper.WhatlangDetectScript(
                 text: text,
