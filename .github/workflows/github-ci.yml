@@ -216,11 +216,14 @@ jobs:
 
     - name: 🔍 Inspect native deps of test host
       run: |
-        TEST_DLL=$(find ${{ env.ROOT }}/LanguageIdentification.Tests/bin/CI/net8.0 -name '*.dll' | head -n1)
-        echo "Dependencies of $TEST_DLL:"
+        TEST_DLL=$(find ./bin/CI/net8.0 -maxdepth 1 -name '*.dll' | head -n1)
+        echo "Found test assembly: $TEST_DLL"
+
+        echo "Dependencies of test assembly:"
         otool -L "$TEST_DLL"
-        echo "Dependencies of cld3.dylib:"
-        otool -L ${{ env.ROOT }}/LanguageIdentification.Tests/libcld3.dylib
+
+        echo "Dependencies of libcld3.arm64.dylib:"
+        otool -L ./libcld3.arm64.dylib
 
     - name: 🐛 Run tests under LLDB (batch mode)
       working-directory: ${{ env.ROOT }}/LanguageIdentification.Tests
