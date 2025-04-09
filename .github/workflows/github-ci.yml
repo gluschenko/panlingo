@@ -214,9 +214,35 @@ jobs:
         path=$(realpath "${{env.ROOT}}/local-packages")
         dotnet nuget add source $path
 
+    - name: 🔍 Inspect native deps of test host
+      run: |
+        TEST_DLL=$(find ${{ env.ROOT }}/LanguageIdentification.Tests/bin/CI/net8.0 -name '*.dll' | head -n1)
+        echo "Dependencies of $TEST_DLL:"
+        otool -L "$TEST_DLL"
+        echo "Dependencies of cld3.dylib:"
+        otool -L ${{ env.ROOT }}/LanguageIdentification.Tests/libcld3.dylib
+
+    - name: 🐛 Run tests under LLDB (batch mode)
+      working-directory: ${{ env.ROOT }}/LanguageIdentification.Tests
+      env:
+        # Лог загрузки .dylib
+        DYLD_PRINT_LIBRARIES: 1
+      run: |
+        # Собираем тесты без запуска
+        dotnet build -c CI
+
+        # Разрешаем генерацию core dump
+        ulimit -c unlimited
+
+        # Запускаем под lldb в batch-режиме
+        lldb --batch \
+          -o "process launch -- dotnet test -c CI --no-build" \
+          -o "bt all" \
+          -o "quit"
+      continue-on-error: true
+
     - name: 🧪 Run Tests for LanguageIdentification
       working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
-      continue-on-error: true
       run: |
         dotnet test -c CI --blame-crash
 
