@@ -30,7 +30,7 @@ functionality into their applications.
 2. [Features](#features)
 3. [Platform Support](#platform-support)
 4. [Key Concerns](#key-concerns)
-5. [TODO](#todo)
+5. [Contributing](#contributing)
 
 ## Models
 
@@ -83,15 +83,6 @@ functionality into their applications.
 :construction: — Under research
 
 \* **arm64** CPU only (Apple silicon M series)
-
-## TODO
-
-- [x] Research support for other platforms (Windows, macOS).
-- [ ] Increase unit testing coverage.
-- [ ] Implement more native methods (FastText).
-- [x] Self-contained models (FastText + MediaPipe).
-- [x] Remove protobuf dependency (CLD3).
-
 
 ## Contributing
 
