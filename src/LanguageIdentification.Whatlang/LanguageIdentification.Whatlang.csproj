@@ -9,9 +9,10 @@
     <RepositoryUrl>https://github.com/gluschenko/panlingo</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2025</Copyright>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Authors>Alexander Gluschenko, Serhii Potapov</Authors>
+    <Copyright>© 2025 Alexander Gluschenko; © 2019 Serhii Potapov</Copyright>
+    <PackageLicenseExpression>MIT AND Apache-2.0</PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE_WHATLANG</PackageLicenseFile>
     <PackageTags>nlp lid language-identification language-detection whatlang</PackageTags>
     <PackageReadmeFile>README_WHATLANG.md</PackageReadmeFile>
     <PackageReleaseNotes>
@@ -49,6 +50,7 @@
 
   <ItemGroup>
     <None Include="..\..\README_WHATLANG.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE_WHATLANG" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

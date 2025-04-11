@@ -9,9 +9,10 @@
     <RepositoryUrl>https://github.com/gluschenko/panlingo</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2025</Copyright>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Authors>Alexander Gluschenko, Google, Inc.</Authors>
+    <Copyright>© 2025 Alexander Gluschenko; © 2023-2025 Google, Inc.</Copyright>
+    <PackageLicenseExpression>MIT AND Apache-2.0</PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE_MEDIAPIPE</PackageLicenseFile>
     <PackageTags>nlp lid language-identification language-detection mediapipe</PackageTags>
     <PackageReadmeFile>README_MEDIAPIPE.md</PackageReadmeFile>
     <PackageReleaseNotes>
@@ -54,6 +55,7 @@
 
   <ItemGroup>
     <None Include="..\..\README_MEDIAPIPE.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE_MEDIAPIPE" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
