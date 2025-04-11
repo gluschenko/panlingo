@@ -159,7 +159,7 @@ namespace Panlingo.LanguageIdentification.Lingua
         /// </summary>
         /// <param name="language"></param>
         /// <returns>Language code according to ISO 639-1 or ISO 639-3</returns>
-        /// <exception cref="WhatlangDetectorException"></exception>
+        /// <exception cref="LinguaDetectorException"></exception>
         public string GetLanguageCode(LinguaLanguage language, LinguaLanguageCode code)
         {
             CheckDisposed();
