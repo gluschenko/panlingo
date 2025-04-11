@@ -11,8 +11,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko, Serhii Potapov</Authors>
     <Copyright>© 2025 Alexander Gluschenko; © 2019 Serhii Potapov</Copyright>
-    <PackageLicenseExpression>MIT AND Apache-2.0</PackageLicenseExpression>
-    <PackageLicenseFile>LICENSE_WHATLANG</PackageLicenseFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection whatlang</PackageTags>
     <PackageReadmeFile>README_WHATLANG.md</PackageReadmeFile>
     <PackageReleaseNotes>

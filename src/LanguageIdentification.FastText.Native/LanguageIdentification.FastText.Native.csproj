@@ -12,7 +12,6 @@
     <Authors>Alexander Gluschenko, Meta Platforms, Inc.</Authors>
     <Copyright>© 2025 Alexander Gluschenko; © 2016 Meta Platforms, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageLicenseFile>LICENSE_FASTTEXT</PackageLicenseFile>
     <PackageTags>nlp lid language-identification language-detection fasttext</PackageTags>
     <PackageReadmeFile>README_FASTTEXT.md</PackageReadmeFile>
     <PackageReleaseNotes>

@@ -12,7 +12,6 @@
     <Authors>Alexander Gluschenko, Peter M. Stahl</Authors>
     <Copyright>© 2025 Alexander Gluschenko; © 2020–2023 Peter M. Stahl</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageLicenseFile>LICENSE_LINGUA</PackageLicenseFile>
     <PackageTags>nlp lid language-identification language-detection lingua</PackageTags>
     <PackageReadmeFile>README_LINGUA.md</PackageReadmeFile>
     <PackageReleaseNotes>
