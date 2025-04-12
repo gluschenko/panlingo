@@ -9,7 +9,7 @@
     <RepositoryUrl>https://github.com/gluschenko/panlingo</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Authors>Alexander Gluschenko, Serhii Potapov, Titus Wormer, Kent S Johnson, Jacob R Rideout, Maciej Ceglowski</Authors>
+    <Authors>Alexander Gluschenko</Authors>
     <Copyright>© 2025 Alexander Gluschenko; © 2017 Serhii Potapov; © 2014 Titus Wormer; © 2008 Kent S Johnson; © 2006 Jacob R Rideout; © 2004 Maciej Ceglowski</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection whatlang</PackageTags>

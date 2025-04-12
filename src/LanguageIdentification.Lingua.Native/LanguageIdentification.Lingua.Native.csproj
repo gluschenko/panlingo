@@ -9,7 +9,7 @@
     <RepositoryUrl>https://github.com/gluschenko/panlingo</RepositoryUrl>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Authors>Alexander Gluschenko, Peter M. Stahl</Authors>
+    <Authors>Alexander Gluschenko</Authors>
     <Copyright>© 2025 Alexander Gluschenko; © 2020–2023 Peter M. Stahl</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection lingua</PackageTags>
