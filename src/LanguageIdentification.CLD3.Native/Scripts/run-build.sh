@@ -3,7 +3,7 @@ set -e
 
 echo "Hello world";
 
-workspace="build_temp"
+workspace="obj/native_build_temp"
 
 mkdir "$workspace" -p
 cp -a ../../third_party/cld3/. $workspace/.

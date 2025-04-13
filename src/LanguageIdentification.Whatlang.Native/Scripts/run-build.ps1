@@ -4,7 +4,7 @@ $ErrorActionPreference = "Stop"
 
 Write-Output "Hello world"
 
-$workspace = "build_temp"
+$workspace = "obj/native_build_temp"
 
 # Copy directories
 Copy-Item -Path "Native\whatlang-ffi\." -Destination $workspace -Recurse -Force

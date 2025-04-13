@@ -18,7 +18,7 @@ echo "Hello world $ARCH";
 
 brew install llvm
 
-workspace="build_temp"
+workspace="obj/native_build_temp"
 
 mkdir "$workspace" -p
 cp -a ../../third_party/cld2/. $workspace/cld2

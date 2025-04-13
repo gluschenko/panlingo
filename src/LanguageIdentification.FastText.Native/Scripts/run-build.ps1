@@ -4,7 +4,7 @@ $ErrorActionPreference = "Stop"
 
 Write-Output "Hello world"
 
-$workspace = "build_temp"
+$workspace = "obj/native_build_temp"
 
 # Create directory if it doesn't exist
 if (-Not (Test-Path $workspace)) {
