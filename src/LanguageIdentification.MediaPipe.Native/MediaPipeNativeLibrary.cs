@@ -1,4 +1,6 @@
-﻿namespace Panlingo.LanguageIdentification.MediaPipe.Native
+﻿using System.Runtime.InteropServices;
+
+namespace Panlingo.LanguageIdentification.MediaPipe.Native
 {
     public class MediaPipeNativeLibrary
     {
@@ -10,6 +12,15 @@
         /// Name of model
         /// </summary>
         public const string ModelName = "mediapipe_language_detector.tflite";
+
+        public static bool IsSupported()
+        {
+            return RuntimeInformation.OSArchitecture switch
+            {
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
+                _ => false,
+            };
+        }
     }
 }
 

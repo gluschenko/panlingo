@@ -6,6 +6,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Panlingo.LanguageIdentification.MediaPipe.Internal;
+using Panlingo.LanguageIdentification.MediaPipe.Native;
 
 namespace Panlingo.LanguageIdentification.MediaPipe
 {
@@ -130,11 +131,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
         public static bool IsSupported()
         {
-            return RuntimeInformation.OSArchitecture switch
-            {
-                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
-                _ => false,
-            };
+            return MediaPipeNativeLibrary.IsSupported();
         }
 
         public IEnumerable<MediaPipePrediction> PredictLanguages(string text)

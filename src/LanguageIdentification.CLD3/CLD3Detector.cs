@@ -4,6 +4,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Panlingo.LanguageIdentification.CLD3.Internal;
+using Panlingo.LanguageIdentification.CLD3.Native;
 
 namespace Panlingo.LanguageIdentification.CLD3
 {
@@ -53,17 +54,7 @@ namespace Panlingo.LanguageIdentification.CLD3
 
         public static bool IsSupported()
         {
-            return RuntimeInformation.OSArchitecture switch
-            {
-                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
-#if ALL_TARGETS
-                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
-                // TODO: Find out why CLD3 is crashing on macOS
-                // Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
-                // Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
-#endif
-                _ => false,
-            };
+            return CLD3NativeLibrary.IsSupported();
         }
 
         /// <summary>

@@ -4,6 +4,7 @@ using System.Collections.Immutable;
 using System.Runtime.InteropServices;
 using System.Text;
 using Panlingo.LanguageIdentification.Whatlang.Internal;
+using Panlingo.LanguageIdentification.Whatlang.Native;
 
 namespace Panlingo.LanguageIdentification.Whatlang
 {
@@ -34,16 +35,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
 
         public static bool IsSupported()
         {
-            return RuntimeInformation.OSArchitecture switch
-            {
-                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
-#if ALL_TARGETS
-                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
-                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
-                Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
-#endif
-                _ => false,
-            };
+            return WhatlangNativeLibrary.IsSupported();
         }
 
         /// <summary>

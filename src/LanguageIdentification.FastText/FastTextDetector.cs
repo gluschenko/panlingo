@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Panlingo.LanguageIdentification.FastText.Internal;
+using Panlingo.LanguageIdentification.FastText.Native;
 
 namespace Panlingo.LanguageIdentification.FastText
 {
@@ -32,16 +33,7 @@ namespace Panlingo.LanguageIdentification.FastText
 
         public static bool IsSupported()
         {
-            return RuntimeInformation.OSArchitecture switch
-            {
-                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
-#if ALL_TARGETS
-                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
-                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
-                Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
-#endif
-                _ => false,
-            };
+            return FastTextNativeLibrary.IsSupported();
         }
 
         public string ModelPath { get; private set; } = string.Empty;
