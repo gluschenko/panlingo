@@ -47,8 +47,10 @@ namespace Panlingo.LanguageIdentification.Lingua
             return RuntimeInformation.OSArchitecture switch
             {
                 Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
+#if ALL_TARGETS
                 Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
                 Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+#endif
                 _ => false,
             };
         }

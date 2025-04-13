@@ -138,7 +138,13 @@ To get started with contributing, follow these simple steps:
    git push origin feature/your-feature-name
    ```
 
-6. **Open a Pull Request**
+6. **Build**
+
+   ```bash
+   dotnet build -c ReleaseLinuxOnly -o out
+   ```
+
+7. **Open a Pull Request**
 
    Navigate to the repository on GitHub and open a pull request. Provide a detailed description of your changes and any additional information that might help reviewers understand your contribution.
 

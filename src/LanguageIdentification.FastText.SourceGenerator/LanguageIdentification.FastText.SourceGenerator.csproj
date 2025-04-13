@@ -9,6 +9,7 @@
     <IsRoslynComponent>true</IsRoslynComponent>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
+    <Configurations>Debug;Release;DebugLinuxOnly;ReleaseLinuxOnly;CI</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
