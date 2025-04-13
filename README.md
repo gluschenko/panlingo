@@ -139,9 +139,25 @@ To get started with contributing, follow these simple steps:
    ```
 
 6. **Build**
-
+   
    ```bash
-   dotnet build -c ReleaseLinuxOnly -o out
+   cd src/LanguageIdentification.FastText.Native
+   dotnet build -c ReleaseLinuxOnly
+
+   cd src/LanguageIdentification.FastText
+   dotnet build -c ReleaseLinuxOnly
+   ```
+
+7. **Run**
+
+   **Lunux:**
+   ```bash
+   dotnet run -c ReleaseLinuxOnly
+   ```
+
+   **Windows:**
+   ```bash
+   wsl -d Ubuntu -e bash -c "dotnet run -c ReleaseLinuxOnly"
    ```
 
 7. **Open a Pull Request**
