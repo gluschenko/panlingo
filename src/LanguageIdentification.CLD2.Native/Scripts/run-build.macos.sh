@@ -39,7 +39,7 @@ make -j $(sysctl -n hw.logicalcpu)
 ls -R
 
 otool -L libcld2.dylib
-cp libcld2.dylib ../../libcld2.$ARCH.dylib
+cp libcld2.dylib ../../../libcld2.$ARCH.dylib
 
 # Clean up
 rm -rf "$workspace"

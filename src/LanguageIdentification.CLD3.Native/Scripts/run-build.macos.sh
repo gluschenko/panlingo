@@ -29,7 +29,7 @@ ls -R .
 
 cd "$workspace"
 
-zx ../Native/monkey-patch.mjs
+zx ./monkey-patch.mjs
 
 mkdir build
 cd build
@@ -42,7 +42,7 @@ make -j $(sysctl -n hw.logicalcpu)
 ls -R
 
 otool -L libcld3.dylib
-cp libcld3.dylib ../../libcld3.$ARCH.dylib
+cp libcld3.dylib ../../../libcld3.$ARCH.dylib
 
 # Clean up
 rm -rf "$workspace"

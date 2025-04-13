@@ -32,7 +32,7 @@ function b()
     const lineEnding = "\\r?\\n";
 
     const oldText = new RegExp(`build:linux --define=xnn_enable_avx512amx=false${lineEnding}${lineEnding}`, 'g');
-    const newText = `build:linux --define=xnn_enable_avx512amx=false${lineEnding}build:linux --define=xnn_enable_avx512fp16=false${lineEnding}${lineEnding}`;
+    const newText = `build:linux --define=xnn_enable_avx512amx=false\nbuild:linux --define=xnn_enable_avx512fp16=false\n\n`;
 
     findAndPatch(".bazelrc", oldText, newText);
 }

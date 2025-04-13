@@ -24,7 +24,7 @@ make -j $(nproc) # make
 ls -R
 
 ldd libcld2.so
-cp libcld2.so ../../libcld2.so
+cp libcld2.so ../../../libcld2.so
 
 # Build for Windows
 rm -rf *
@@ -33,7 +33,7 @@ make -j $(nproc) # make
 
 ls -R
 
-cp libcld2.dll ../../libcld2.dll
+cp libcld2.dll ../../../libcld2.dll
 
 # Clean up
 rm -rf "$workspace"

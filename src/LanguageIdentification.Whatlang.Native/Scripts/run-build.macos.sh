@@ -34,7 +34,7 @@ ls -R
 
 cd ./target/release
 otool -L libwhatlang.dylib
-cp libwhatlang.dylib ../../../libwhatlang.$ARCH.dylib
+cp libwhatlang.dylib ../../../../libwhatlang.$ARCH.dylib
 
 # Clean up
 rm -rf "$workspace"

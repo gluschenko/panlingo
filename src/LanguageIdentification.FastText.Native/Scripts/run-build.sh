@@ -24,7 +24,7 @@ make -j $(nproc) # make
 ls -R
 
 ldd libfasttext.so
-cp libfasttext.so ../../libfasttext.so
+cp libfasttext.so ../../../libfasttext.so
 
 # Clean up
 rm -rf "$workspace"

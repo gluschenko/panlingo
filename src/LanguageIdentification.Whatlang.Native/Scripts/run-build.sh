@@ -18,7 +18,7 @@ ls -R .
 
 cd ./target/release
 ldd libwhatlang.so
-cp libwhatlang.so ../../../libwhatlang.so
+cp libwhatlang.so ../../../../libwhatlang.so
 
 # Clean up
 rm -rf "$workspace"

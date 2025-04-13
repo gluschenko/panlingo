@@ -39,7 +39,7 @@ make -j $(sysctl -n hw.logicalcpu)
 ls -R
 
 otool -L libfasttext.dylib
-cp libfasttext.dylib ../../libfasttext.$ARCH.dylib
+cp libfasttext.dylib ../../../libfasttext.$ARCH.dylib
 
 # Clean up
 rm -rf "$workspace"

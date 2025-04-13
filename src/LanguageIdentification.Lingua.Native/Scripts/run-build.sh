@@ -18,7 +18,7 @@ ls -R .
 
 cd ./target/release
 ldd liblingua.so
-cp liblingua.so ../../../liblingua.so
+cp liblingua.so ../../../../liblingua.so
 
 # Clean up
 rm -rf "$workspace"
