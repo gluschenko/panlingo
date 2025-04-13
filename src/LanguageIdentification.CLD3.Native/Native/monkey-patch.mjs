@@ -30,8 +30,10 @@ function a()
 
 function b()
 {
-    const oldText = '#include <vector>\n';
-    const newText = '#include <vector>\n#include "fake_protobuf.h"\n';
+    const lineEnding = "\\r?\\n";
+
+    const oldText = new RegExp(`#include <vector>${lineEnding}`, 'g');
+    const newText = `#include <vector>${lineEnding}#include "fake_protobuf.h"${lineEnding}`;
 
     findAndPatch("base.h", oldText, newText);
 }
