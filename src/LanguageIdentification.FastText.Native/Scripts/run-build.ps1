@@ -35,7 +35,7 @@ cmake --build .
 Get-ChildItem -Recurse -Path .
 
 # Display shared library dependencies
-Copy-Item -Path ".\Debug\fasttext.dll" -Destination "..\..\fasttext.dll"
+Copy-Item -Path ".\Debug\fasttext.dll" -Destination "..\..\..\fasttext.dll"
 
 # List directory contents recursively
 Get-ChildItem -Recurse -Path .

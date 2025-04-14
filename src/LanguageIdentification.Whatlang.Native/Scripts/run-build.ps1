@@ -21,7 +21,7 @@ cargo build --release
 Get-ChildItem -Recurse -Path .
 
 # Display shared library dependencies
-Copy-Item -Path ".\target\release\whatlang.dll" -Destination "..\whatlang.dll"
+Copy-Item -Path ".\target\release\whatlang.dll" -Destination "..\..\whatlang.dll"
 
 # Clean up
 Write-Output "Goodbye world"
