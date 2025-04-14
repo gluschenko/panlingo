@@ -20,7 +20,7 @@ brew install llvm
 
 workspace="obj/native_build_temp"
 
-mkdir "$workspace" -p
+mkdir -p "$workspace"
 cp -a Native/whatlang-ffi/. $workspace/.
 
 ls -R .

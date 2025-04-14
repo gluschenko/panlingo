@@ -5,7 +5,7 @@ echo "Hello world";
 
 workspace="obj/native_build_temp"
 
-mkdir "$workspace" -p
+mkdir -p "$workspace"
 cp -a ../../third_party/cld2/. $workspace/cld2
 cp -a Native/. $workspace
 

@@ -20,7 +20,7 @@ brew install llvm
 
 workspace="obj/native_build_temp"
 
-mkdir "$workspace" -p
+mkdir -p "$workspace"
 cp -a ../../third_party/fastText/. $workspace/fasttext
 cp -a Native/. $workspace
 
