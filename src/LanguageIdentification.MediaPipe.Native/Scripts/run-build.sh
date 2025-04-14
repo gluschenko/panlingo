@@ -22,6 +22,7 @@ bazel-6.1.1 build -c opt \
 
 cp ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.so ../../liblanguage_detector.so
 cd ..
+cd ..
 rm -rf "$workspace"
 ldd liblanguage_detector.so
 
