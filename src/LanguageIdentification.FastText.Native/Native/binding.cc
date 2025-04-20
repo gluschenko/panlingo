@@ -18,22 +18,22 @@ extern "C" {
         *err_ptr = strdup(e.what());
     }
 
-    EXPORT void DestroyString(char* s) {
+    EXPORT void destroy_string(char* s) {
         if (s != nullptr) {
             free(s);
         }
     }
 
-    EXPORT fasttext_t* CreateFastText(void) {
+    EXPORT fasttext_t* create_fasttext(void) {
         return (fasttext_t*)(new FastTextExtension());
     }
 
-    EXPORT void DestroyFastText(fasttext_t* handle) {
+    EXPORT void destroy_fasttext(fasttext_t* handle) {
         FastTextExtension* x = (FastTextExtension*)handle;
         delete x;
     }
 
-    EXPORT void FastTextLoadModel(fasttext_t* handle, const char* filename, char** err_ptr) {
+    EXPORT void fasttext_load_model(fasttext_t* handle, const char* filename, char** err_ptr) {
         try {
             ((FastTextExtension*)handle)->loadModel(filename);
         }
@@ -42,7 +42,7 @@ extern "C" {
         }
     }
 
-    EXPORT void FastTextLoadModelData(fasttext_t* handle, const char* buffer, size_t buffer_length, char** err_ptr) {
+    EXPORT void fasttext_load_model_data(fasttext_t* handle, const char* buffer, size_t buffer_length, char** err_ptr) {
         try {
             ((FastTextExtension*)handle)->loadModelData(buffer, buffer_length);
         }
@@ -51,11 +51,11 @@ extern "C" {
         }
     }
 
-    EXPORT int FastTextGetModelDimensions(fasttext_t* handle) {
+    EXPORT int fasttext_get_model_dimensions(fasttext_t* handle) {
         return ((FastTextExtension*)handle)->getDimension();
     }
 
-    EXPORT fasttext_predictions_t* FastTextPredict(fasttext_t* handle, const char* text, int32_t k, float threshold, char** err_ptr) {
+    EXPORT fasttext_predictions_t* fasttext_predict(fasttext_t* handle, const char* text, int32_t k, float threshold, char** err_ptr) {
         std::vector<std::pair<fasttext::real, std::string>> predictions;
         std::stringstream ioss(text);
         try {
@@ -77,7 +77,7 @@ extern "C" {
         return ret;
     }
 
-    EXPORT void DestroyPredictions(fasttext_predictions_t* predictions) {
+    EXPORT void destroy_predictions(fasttext_predictions_t* predictions) {
         if (predictions == nullptr) {
             return;
         }
@@ -89,7 +89,7 @@ extern "C" {
         free(predictions);
     }
 
-    EXPORT fasttext_labels_t* FastTextGetLabels(fasttext_t* handle) {
+    EXPORT fasttext_labels_t* fasttext_get_labels(fasttext_t* handle) {
         std::shared_ptr<const fasttext::Dictionary> d = ((FastTextExtension*)handle)->getDictionary();
         std::vector<int64_t> labels_freq = d->getCounts(fasttext::entry_type::label);
         size_t len = labels_freq.size();
@@ -108,7 +108,7 @@ extern "C" {
         return ret;
     }
 
-    EXPORT void DestroyLabels(fasttext_labels_t* labels) {
+    EXPORT void destroy_labels(fasttext_labels_t* labels) {
         if (labels == nullptr) {
             return;
         }
@@ -120,11 +120,7 @@ extern "C" {
         free(labels);
     }
 
-    EXPORT void FastTextAbort(fasttext_t* handle) {
-        ((FastTextExtension*)handle)->abort();
-    }
-
-    EXPORT fasttext_tokens_t* FastTextTokenize(fasttext_t* handle, const char* text) {
+    EXPORT fasttext_tokens_t* fasttext_tokenize(fasttext_t* handle, const char* text) {
         std::vector<std::string> text_split;
         std::shared_ptr<const fasttext::Dictionary> d = ((FastTextExtension*)handle)->getDictionary();
         std::stringstream ioss(text);
@@ -145,11 +141,15 @@ extern "C" {
         return ret;
     }
 
-    EXPORT void DestroyTokens(fasttext_tokens_t* tokens) {
+    EXPORT void destroy_tokens(fasttext_tokens_t* tokens) {
         for (size_t i = 0; i < tokens->length; i++) {
             free(tokens->tokens[i]);
         }
         free(tokens->tokens);
         free(tokens);
+    }
+
+    EXPORT void fasttext_abort(fasttext_t* handle) {
+        ((FastTextExtension*)handle)->abort();
     }
 }

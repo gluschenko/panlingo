@@ -9,7 +9,7 @@ using Panlingo.LanguageIdentification.Lingua.Internal;
 namespace Panlingo.LanguageIdentification.Lingua
 {
     /// <summary>
-    /// .NET wrapper for Lingua
+    /// <inheritdoc cref="LinguaDetectorBuilder"/>
     /// </summary>
     public class LinguaDetector : IDisposable
     {
@@ -42,6 +42,9 @@ namespace Panlingo.LanguageIdentification.Lingua
             );
         }
 
+        /// <summary>
+        /// Checks the suitability of the current platform for use. Key criteria are the operating system and processor architecture
+        /// </summary>
         public static bool IsSupported()
         {
             return RuntimeInformation.OSArchitecture switch
@@ -151,6 +154,12 @@ namespace Panlingo.LanguageIdentification.Lingua
             }
         }
 
+        /// <summary>
+        /// Converts <see cref="LinguaLanguage"/> to ISO 639-1 or ISO 639-3 string.
+        /// </summary>
+        /// <param name="language"></param>
+        /// <returns>Language code according to ISO 639-1 or ISO 639-3</returns>
+        /// <exception cref="LinguaDetectorException"></exception>
         public string GetLanguageCode(LinguaLanguage language, LinguaLanguageCode code)
         {
             CheckDisposed();

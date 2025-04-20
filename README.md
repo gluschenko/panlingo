@@ -30,18 +30,18 @@ functionality into their applications.
 2. [Features](#features)
 3. [Platform Support](#platform-support)
 4. [Key Concerns](#key-concerns)
-5. [TODO](#todo)
+5. [Contributing](#contributing)
 
 ## Models
 
-| Model     | Authors              | Original source code | Wrapper docs         |
-| :-------- | :------------------- | :------------------- | :------------------- |
-| CLD2      | Google, Inc.         | [@CLD2Owners/cld2](https://github.com/CLD2Owners/cld2) | [link](./README_CLD2.md) |
-| CLD3      | Google, Inc.         | [@google/cld3](https://github.com/google/cld3) | [link](./README_CLD3.md) |
-| FastText  | Meta Platforms, Inc. | [@facebookresearch/fastText](https://github.com/facebookresearch/fastText) | [link](./README_FASTTEXT.md) |
-| Whatlang  | Serhii Potapov       | [@greyblake/whatlang-rs](https://github.com/greyblake/whatlang-rs) | [link](./README_WHATLANG.md) |
-| MediaPipe | Google, Inc.         | [@google-ai-edge/mediapipe](https://github.com/google-ai-edge/mediapipe) | [link](./README_MEDIAPIPE.md) |
-| Lingua    | Peter M. Stahl       | [@pemistahl/lingua-rs](https://github.com/pemistahl/lingua-rs) | [link](./README_LINGUA.md) |
+| Model         | Authors              | License    | Original source code | Wrapper docs         |
+| :------------ | :------------------- | :--------- | :------------------- | :------------------- |
+| **CLD2**      | Google, Inc.         | Apache-2.0 | [@CLD2Owners/cld2](https://github.com/CLD2Owners/cld2) | [link](./README_CLD2.md) |
+| **CLD3**      | Google, Inc.         | Apache-2.0 | [@google/cld3](https://github.com/google/cld3) | [link](./README_CLD3.md) |
+| **FastText**  | Meta Platforms, Inc. | MIT        | [@facebookresearch/fastText](https://github.com/facebookresearch/fastText) | [link](./README_FASTTEXT.md) |
+| **Whatlang**  | Serhii Potapov       | MIT        | [@greyblake/whatlang-rs](https://github.com/greyblake/whatlang-rs) | [link](./README_WHATLANG.md) |
+| **MediaPipe** | Google, Inc.         | Apache-2.0 | [@google-ai-edge/mediapipe](https://github.com/google-ai-edge/mediapipe) | [link](./README_MEDIAPIPE.md) |
+| **Lingua**    | Peter M. Stahl       | Apache-2.0 | [@pemistahl/lingua-rs](https://github.com/pemistahl/lingua-rs) | [link](./README_LINGUA.md) |
 
 ## Key concerns
 
@@ -51,15 +51,15 @@ functionality into their applications.
 
 ## Features
 
-| Feature                    | CLD2      | CLD3           | FastText*          | Whatlang | MediaPipe**    | Lingua   |
-| :------------------------- | :-------: | :------------: | :----------------: | :------: | :------------: | :------: |
-| Single language prediction | Yes       | Yes            | Yes                | Yes      | Yes            | Yes      |
-| Multi language prediction  | Yes       | Yes            | Yes                | No       | Yes            | Yes      |
-| Supported languages        | 83        | 107            | 176 or 217         | 69       | 110            | 75       |
-| Unknown language detection | Yes       | Yes            | No                 | No       | Yes            | No       |
-| Algorithm                  | quadgrams | neural network | neural network     | trigrams | neural network | trigrams |
-| Script detection           | No        | No             | Yes (only lid218e) | Yes      | No             | No       |
-| Written in                 | C++       | C++            | C++                | Rust     | C++            | Rust     |
+| Feature                        | CLD2      | CLD3           | FastText*          | Whatlang | MediaPipe**    | Lingua   |
+| :----------------------------- | :-------: | :------------: | :----------------: | :------: | :------------: | :------: |
+| **Single language prediction** | Yes       | Yes            | Yes                | Yes      | Yes            | Yes      |
+| **Multi language prediction**  | Yes       | Yes            | Yes                | No       | Yes            | Yes      |
+| **Supported languages**        | 83        | 107            | 176 or 217         | 69       | 110            | 75       |
+| **Unknown language detection** | Yes       | Yes            | No                 | No       | Yes            | No       |
+| **Algorithm**                  | quadgrams | neural network | neural network     | trigrams | neural network | trigrams |
+| **Script detection**           | No        | No             | Yes (only lid218e) | Yes      | No             | No       |
+| **Written in**                 | C++       | C++            | C++                | Rust     | C++            | Rust     |
 
 \* When using these models: 
 [lid176](https://fasttext.cc/docs/en/language-identification.html), 
@@ -69,29 +69,20 @@ functionality into their applications.
 
 ## Platform support
 
-| Model     |  Linux             | Windows            |  macOS             |
-| :-------- | :----------------: | :----------------: | :----------------: |
-| CLD2      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| CLD3      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| FastText  | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Whatlang  | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| MediaPipe | :white_check_mark: | :x:                | :x:                |
-| Lingua    | :white_check_mark: | :white_check_mark: | :white_check_mark:\* |
+| Model         |  Linux             | Windows            |  macOS             |
+| :------------ | :----------------: | :----------------: | :----------------: |
+| **CLD2**      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| **CLD3**      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| **FastText**  | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| **Whatlang**  | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| **MediaPipe** | :white_check_mark: | :x:                | :x:                |
+| **Lingua**    | :white_check_mark: | :white_check_mark: | :white_check_mark:\* |
 
 :white_check_mark: — Full support |
 :x: — No support |
 :construction: — Under research
 
 \* **arm64** CPU only (Apple silicon M series)
-
-## TODO
-
-- [x] Research support for other platforms (Windows, macOS).
-- [ ] Increase unit testing coverage.
-- [ ] Implement more native methods (FastText).
-- [x] Self-contained models (FastText + MediaPipe).
-- [x] Remove protobuf dependency (CLD3).
-
 
 ## Contributing
 

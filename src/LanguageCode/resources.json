@@ -9077,7 +9077,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Bilakura",
+      "RefName": "Karian",
       "Comment": ""
     },
     {
@@ -14907,7 +14907,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Dao",
+      "RefName": "Moi-Wadea",
       "Comment": ""
     },
     {
@@ -15308,16 +15308,6 @@
       "Scope": "I",
       "LanguageType": "L",
       "RefName": "Demisa",
-      "Comment": ""
-    },
-    {
-      "Id": "dek",
-      "Part2b": "",
-      "Part2t": "",
-      "Part1": "",
-      "Scope": "I",
-      "LanguageType": "L",
-      "RefName": "Dek",
       "Comment": ""
     },
     {
@@ -21036,7 +21026,7 @@
       "Part2t": "",
       "Part1": "",
       "Scope": "I",
-      "LanguageType": "E",
+      "LanguageType": "L",
       "RefName": "Ghomara",
       "Comment": ""
     },
@@ -24378,6 +24368,16 @@
       "Scope": "I",
       "LanguageType": "L",
       "RefName": "Hmong Njua",
+      "Comment": ""
+    },
+    {
+      "Id": "hnm",
+      "Part2b": "",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "I",
+      "LanguageType": "L",
+      "RefName": "Hainanese",
       "Comment": ""
     },
     {
@@ -37841,6 +37841,16 @@
       "Comment": ""
     },
     {
+      "Id": "luh",
+      "Part2b": "",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "I",
+      "LanguageType": "L",
+      "RefName": "Leizhou Chinese",
+      "Comment": ""
+    },
+    {
       "Id": "lui",
       "Part2b": "lui",
       "Part2t": "lui",
@@ -41297,7 +41307,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Musar",
+      "RefName": "Hember Avu",
       "Comment": ""
     },
     {
@@ -48498,16 +48508,6 @@
       "Scope": "I",
       "LanguageType": "L",
       "RefName": "Northern Tidung",
-      "Comment": ""
-    },
-    {
-      "Id": "nte",
-      "Part2b": "",
-      "Part2t": "",
-      "Part1": "",
-      "Scope": "I",
-      "LanguageType": "L",
-      "RefName": "Nathembo",
       "Comment": ""
     },
     {
@@ -58778,6 +58778,16 @@
       "Scope": "I",
       "LanguageType": "L",
       "RefName": "Sajau Basap",
+      "Comment": ""
+    },
+    {
+      "Id": "sjc",
+      "Part2b": "",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "I",
+      "LanguageType": "L",
+      "RefName": "Shaojiang Chinese",
       "Comment": ""
     },
     {
@@ -76361,6 +76371,16 @@
       "Comment": ""
     },
     {
+      "Id": "ynb",
+      "Part2b": "",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "I",
+      "LanguageType": "L",
+      "RefName": "Yamben",
+      "Comment": ""
+    },
+    {
       "Id": "ynd",
       "Part2b": "",
       "Part2t": "",
@@ -82114,7 +82134,17 @@
     },
     {
       "Source": "zho",
+      "Target": "hnm",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
       "Target": "hsn",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "luh",
       "Status": "A"
     },
     {
@@ -82130,6 +82160,11 @@
     {
       "Source": "zho",
       "Target": "nan",
+      "Status": "A"
+    },
+    {
+      "Source": "zho",
+      "Target": "sjc",
       "Status": "A"
     },
     {
@@ -86022,6 +86057,26 @@
       "Effective": "2023-01-20"
     },
     {
+      "Id": "kgm",
+      "RefName": "Karip\u00FAna",
+      "RetReason": "D",
+      "ChangeTo": [
+        "plu"
+      ],
+      "RetRemedy": "",
+      "Effective": "2023-01-20"
+    },
+    {
+      "Id": "nom",
+      "RefName": "Nocam\u00E1n",
+      "RetReason": "M",
+      "ChangeTo": [
+        "cbr"
+      ],
+      "RetRemedy": "",
+      "Effective": "2023-01-20"
+    },
+    {
       "Id": "pmk",
       "RefName": "Pamlico",
       "RetReason": "M",
@@ -86042,6 +86097,64 @@
       "Effective": "2023-01-20"
     },
     {
+      "Id": "slq",
+      "RefName": "Salchuq",
+      "RetReason": "N",
+      "ChangeTo": [],
+      "RetRemedy": "",
+      "Effective": "2023-01-20"
+    },
+    {
+      "Id": "szd",
+      "RefName": "Seru",
+      "RetReason": "M",
+      "ChangeTo": [
+        "umi"
+      ],
+      "RetRemedy": "",
+      "Effective": "2023-01-20"
+    },
+    {
+      "Id": "tmk",
+      "RefName": "Northwestern Tamang",
+      "RetReason": "M",
+      "ChangeTo": [
+        "tdg"
+      ],
+      "RetRemedy": "",
+      "Effective": "2023-01-20"
+    },
+    {
+      "Id": "tpw",
+      "RefName": "Tup\u00ED",
+      "RetReason": "D",
+      "ChangeTo": [
+        "tpn"
+      ],
+      "RetRemedy": "",
+      "Effective": "2023-01-20"
+    },
+    {
+      "Id": "xss",
+      "RefName": "Assan",
+      "RetReason": "M",
+      "ChangeTo": [
+        "zko"
+      ],
+      "RetRemedy": "",
+      "Effective": "2023-01-20"
+    },
+    {
+      "Id": "zkb",
+      "RefName": "Koibal",
+      "RetReason": "D",
+      "ChangeTo": [
+        "kjh"
+      ],
+      "RetRemedy": "",
+      "Effective": "2023-01-20"
+    },
+    {
       "Id": "zua",
       "RefName": "Zeem",
       "RetReason": "S",
@@ -86054,6 +86167,50 @@
       ],
       "RetRemedy": "Split into [tvi] Tulai, [dyr] Dyarim, [dsk] Dokshi, [cxh] Cha\u0027ari, and [zem] Zeem",
       "Effective": "2023-01-20"
+    },
+    {
+      "Id": "ksa",
+      "RefName": "Shuwa-Zamani",
+      "RetReason": "S",
+      "ChangeTo": [
+        "rsw",
+        "izm"
+      ],
+      "RetRemedy": "Split into [rsw] Rishiwa and [izm] Kizamani",
+      "Effective": "2023-01-23"
+    },
+    {
+      "Id": "plj",
+      "RefName": "Polci",
+      "RetReason": "S",
+      "ChangeTo": [
+        "pze",
+        "nzr",
+        "zlu",
+        "uly"
+      ],
+      "RetRemedy": "Split into Pesse [pze], Nyamzak-Dir-Mbarimi [nzr], Zul [zlu], and Buli [uly]",
+      "Effective": "2023-01-23"
+    },
+    {
+      "Id": "dek",
+      "RefName": "Dek",
+      "RetReason": "D",
+      "ChangeTo": [
+        "sqm"
+      ],
+      "RetRemedy": "",
+      "Effective": "2024-09-09"
+    },
+    {
+      "Id": "nte",
+      "RefName": "Nathembo",
+      "RetReason": "M",
+      "ChangeTo": [
+        "eko"
+      ],
+      "RetRemedy": "",
+      "Effective": "2024-09-09"
     }
   ]
 }

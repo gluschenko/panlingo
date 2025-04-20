@@ -10,7 +10,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2025</Copyright>
+    <Copyright>© 2025 Alexander Gluschenko; © 2020–2023 Peter M. Stahl</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection lingua</PackageTags>
     <PackageReadmeFile>README_LINGUA.md</PackageReadmeFile>
@@ -83,6 +83,7 @@
 
   <ItemGroup>
     <None Include="..\..\README_LINGUA.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE_LINGUA" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
