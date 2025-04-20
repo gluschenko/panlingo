@@ -109,6 +109,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
             return result;
         }
 
+        /// <summary>
         /// Converts <see cref="WhatlangLanguage"/> to ISO 639-3 string.
         /// </summary>
         /// <param name="language"></param>
