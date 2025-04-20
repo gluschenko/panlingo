@@ -8,12 +8,23 @@ using Panlingo.LanguageIdentification.CLD2.Internal;
 namespace Panlingo.LanguageIdentification.CLD2
 {
     /// <summary>
-    /// .NET wrapper for CLD2
+    /// <para>Example:</para>
+    /// <code>
+    /// using var cld2 = new CLD2Detector();
+    /// var predictions = cld2.PredictLanguage("Привіт, як справи?");
+    /// </code>
+    /// 
+    /// <para>The using-operator is required to correctly remove unmanaged resources from memory after use.</para>
     /// </summary>
     public class CLD2Detector : IDisposable
     {
         private readonly Lazy<ImmutableHashSet<string>> _labels;
 
+        /// <summary>
+        /// <para>Creates an instance for <see cref="CLD2Detector"/>.</para>
+        /// <inheritdoc cref="CLD2Detector"/>
+        /// </summary>
+        /// <exception cref="NotSupportedException"></exception>
         public CLD2Detector()
         {
             if (!IsSupported())
@@ -44,6 +55,9 @@ namespace Panlingo.LanguageIdentification.CLD2
             );
         }
 
+        /// <summary>
+        /// Checks the suitability of the current platform for use. Key criteria are the operating system and processor architecture
+        /// </summary>
         public static bool IsSupported()
         {
             return RuntimeInformation.OSArchitecture switch
