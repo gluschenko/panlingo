@@ -72,7 +72,7 @@ functionality into their applications.
 | Model         |  Linux             | Windows            |  macOS             |
 | :------------ | :----------------: | :----------------: | :----------------: |
 | **CLD2**      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| **CLD3**      | :white_check_mark: | :white_check_mark: | :construction:     |
+| **CLD3**      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | **FastText**  | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | **Whatlang**  | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | **MediaPipe** | :white_check_mark: | :x:                | :x:                |
