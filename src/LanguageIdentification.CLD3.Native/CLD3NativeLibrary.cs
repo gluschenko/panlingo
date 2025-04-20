@@ -16,9 +16,8 @@ namespace Panlingo.LanguageIdentification.CLD3.Native
                 Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
 #if ALL_TARGETS
                 Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
-                // TODO: Find out why CLD3 is crashing on macOS
-                // Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
-                // Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+                Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
 #endif
                 _ => false,
             };
