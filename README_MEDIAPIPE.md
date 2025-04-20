@@ -65,13 +65,23 @@ Learn more about this model here:
 - [Google AI Edge](https://ai.google.dev/edge/mediapipe/solutions/text/language_detector)
 
 #### Use custom model in code
+
+**You can use the model included in this NuGet package:**
+```
+using var mediaPipe = new MediaPipeDetector(
+    options: MediaPipeOptions.FromDefault()
+);
+```
+
+**You can specify the path to the model file:**
 ```
 var modelPath = "/models/mediapipe_language_detector.tflite";
 using var mediaPipe = new MediaPipeDetector(
     options: MediaPipeOptions.FromFile(modelPath)
 );
 ```
-OR
+
+**Also you can also load the model as a memory stream:**
 ```
 var modelPath = "/models/mediapipe_language_detector.tflite";
 using var stream = File.Open(modelPath, FileMode.Open);

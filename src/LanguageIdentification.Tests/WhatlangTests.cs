@@ -27,6 +27,20 @@ public class WhatlangTests
     }
 
     [SkippableTheory]
+    [InlineData(WhatlangScript.Latn, Constants.PHRASE_ENG_1)]
+    [InlineData(WhatlangScript.Cyrl, Constants.PHRASE_UKR_1)]
+    [InlineData(WhatlangScript.Cyrl, Constants.PHRASE_RUS_1)]
+    public void WhatlangSingleScript(WhatlangScript script, string text)
+    {
+        Skip.IfNot(WhatlangDetector.IsSupported());
+
+        using var whatlang = new WhatlangDetector();
+
+        var prediction = whatlang.PredictScript(text: text);
+        Assert.Equal(script, prediction);
+    }
+
+    [SkippableTheory]
     [InlineData(WhatlangLanguage.Ukr, "ukr")]
     [InlineData(WhatlangLanguage.Uzb, "uzb")]
     [InlineData(WhatlangLanguage.Heb, "heb")]

@@ -10,7 +10,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2025</Copyright>
+    <Copyright>© 2025 Alexander Gluschenko; © 2016 Meta Platforms, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection fasttext</PackageTags>
     <PackageReadmeFile>README_FASTTEXT.md</PackageReadmeFile>
@@ -99,6 +99,7 @@
 
   <ItemGroup>
     <None Include="..\..\README_FASTTEXT.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE_FASTTEXT" Pack="true" PackagePath="\" />
   </ItemGroup>
   
 </Project>

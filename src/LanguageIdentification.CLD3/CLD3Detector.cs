@@ -9,7 +9,13 @@ using Panlingo.LanguageIdentification.CLD3.Native;
 namespace Panlingo.LanguageIdentification.CLD3
 {
     /// <summary>
-    /// .NET wrapper for CLD3
+    /// <para>Example:</para>
+    /// <code>
+    /// using var cld3 = new CLD3Detector(minNumBytes: 0, maxNumBytes: 512);
+    /// var prediction = cld3.PredictLanguage("Привіт, як справи?");
+    /// </code>
+    /// 
+    /// <para>The using-operator is required to correctly remove unmanaged resources from memory after use.</para>
     /// </summary>
     public class CLD3Detector : IDisposable
     {
@@ -18,6 +24,11 @@ namespace Panlingo.LanguageIdentification.CLD3
         private IntPtr _detector;
         private bool _disposed = false;
 
+        /// <summary>
+        /// <para>Creates an instance for <see cref="CLD3Detector"/>.</para>
+        /// <inheritdoc cref="CLD3Detector"/>
+        /// </summary>
+        /// <exception cref="NotSupportedException"></exception>
         public CLD3Detector(int minNumBytes, int maxNumBytes)
         {
             if (!IsSupported())
@@ -52,6 +63,9 @@ namespace Panlingo.LanguageIdentification.CLD3
             );
         }
 
+        /// <summary>
+        /// Checks the suitability of the current platform for use. Key criteria are the operating system and processor architecture
+        /// </summary>
         public static bool IsSupported()
         {
             return CLD3NativeLibrary.IsSupported();

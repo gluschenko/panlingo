@@ -10,7 +10,18 @@ using Panlingo.LanguageIdentification.FastText.Native;
 namespace Panlingo.LanguageIdentification.FastText
 {
     /// <summary>
-    /// .NET wrapper for FastText
+    /// <para>Example:</para>
+    /// <code>
+    /// using var fastText = new FastTextDetector();
+    /// fastText.LoadDefaultModel();
+    /// 
+    /// var predictions = fastText.Predict(
+    ///     text: "Привіт, як справи?", 
+    ///     count: 10
+    /// );
+    /// </code>
+    /// 
+    /// <para>The using-operator is required to correctly remove unmanaged resources from memory after use.</para>
     /// </summary>
     public class FastTextDetector : IDisposable
     {
@@ -18,6 +29,11 @@ namespace Panlingo.LanguageIdentification.FastText
         private readonly SemaphoreSlim _semaphore;
         private bool _disposed = false;
 
+        /// <summary>
+        /// <para>Creates an instance for <see cref="FastTextDetector"/>.</para>
+        /// <inheritdoc cref="FastTextDetector"/>
+        /// </summary>
+        /// <exception cref="NotSupportedException"></exception>
         public FastTextDetector()
         {
             if (!IsSupported())
@@ -31,6 +47,9 @@ namespace Panlingo.LanguageIdentification.FastText
             _semaphore = new SemaphoreSlim(1, 1);
         }
 
+        /// <summary>
+        /// Checks the suitability of the current platform for use. Key criteria are the operating system and processor architecture
+        /// </summary>
         public static bool IsSupported()
         {
             return FastTextNativeLibrary.IsSupported();
@@ -39,7 +58,7 @@ namespace Panlingo.LanguageIdentification.FastText
         public string ModelPath { get; private set; } = string.Empty;
 
         /// <summary>
-        /// Loads model file located on path
+        /// Loads model file located on path. Supports *.bin or *.ftz file formats.
         /// </summary>
         /// <param name="path">Path to *.bin or *.ftz model file</param>
         public void LoadModel(string path)
@@ -62,7 +81,7 @@ namespace Panlingo.LanguageIdentification.FastText
         }
 
         /// <summary>
-        /// Loads model file from binary stream
+        /// Loads model file from binary stream. Supports *.bin or *.ftz file formats.
         /// </summary>
         /// <param name="stream">Stream of *.bin or *.ftz model file</param>
         public void LoadModel(Stream stream)
