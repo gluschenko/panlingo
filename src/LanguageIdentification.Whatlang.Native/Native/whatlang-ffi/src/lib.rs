@@ -5,7 +5,7 @@ use libc::size_t;
 use std::ffi::CStr;
 use std::os::raw::c_char;
 use std::ptr;
-use whatlang::{detect, Lang, Script};
+use whatlang::{detect, detect_lang, detect_script, Lang, Script};
 
 #[repr(u8)]
 pub enum WhatlangStatus {
@@ -153,47 +153,43 @@ pub struct WhatlangPredictionResult {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_detect_n(
-    ptr: *const c_char,
-    len: libc::size_t,
-    info: *mut WhatlangPredictionResult,
-) -> WhatlangStatus {
-    let text = core::slice::from_raw_parts(ptr as *const u8, len);
-    detect_internal(&text, info)
+pub unsafe extern "C" fn whatlang_detect(ptr: *const c_char, result: *mut WhatlangPredictionResult) -> WhatlangStatus {
+    let x = CStr::from_ptr(ptr);
+    detect_internal(x.to_bytes(), result)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_detect(ptr: *const c_char, info: *mut WhatlangPredictionResult) -> WhatlangStatus {
-    let cs = CStr::from_ptr(ptr);
-    detect_internal(cs.to_bytes(), info)
+pub unsafe extern "C" fn whatlang_detect_script(ptr: *const c_char, result: *mut WhatlangScript) -> WhatlangStatus {
+    let x = CStr::from_ptr(ptr);
+    detect_script_internal(x.to_bytes(), result)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_lang_eng_name(lang: WhatlangLanguage, buffer_ptr: *mut c_char) -> size_t {
+pub unsafe extern "C" fn whatlang_lang_eng_name(lang: WhatlangLanguage, result: *mut c_char) -> size_t {
     let x: Lang = lang.into();
-    copy_cstr(x.eng_name(), buffer_ptr)
+    copy_string(x.eng_name(), result)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_lang_code(lang: WhatlangLanguage, buffer_ptr: *mut c_char) -> size_t {
+pub unsafe extern "C" fn whatlang_lang_code(lang: WhatlangLanguage, result: *mut c_char) -> size_t {
     let x: Lang = lang.into();
-    copy_cstr(x.code(), buffer_ptr)
+    copy_string(x.code(), result)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_lang_name(lang: WhatlangLanguage, buffer_ptr: *mut c_char) -> size_t {
+pub unsafe extern "C" fn whatlang_lang_name(lang: WhatlangLanguage, result: *mut c_char) -> size_t {
     let x: Lang = lang.into();
-    copy_cstr(x.name(), buffer_ptr)
+    copy_string(x.name(), result)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_script_name(script: WhatlangScript, buffer_ptr: *mut c_char) -> size_t {
+pub unsafe extern "C" fn whatlang_script_name(script: WhatlangScript, result: *mut c_char) -> size_t {
     let x: Script = script.into();
-    copy_cstr(x.name(), buffer_ptr)
+    copy_string(x.name(), result)
 }
 
-fn detect_internal(text: &[u8], cinfo: *mut WhatlangPredictionResult) -> WhatlangStatus {
-    if cinfo == ptr::null_mut() {
+fn detect_internal(text: &[u8], result: *mut WhatlangPredictionResult) -> WhatlangStatus {
+    if result == ptr::null_mut() {
         return WhatlangStatus::BadOutputPtr;
     }
 
@@ -203,10 +199,10 @@ fn detect_internal(text: &[u8], cinfo: *mut WhatlangPredictionResult) -> Whatlan
             match res {
                 Some(info) => {
                     unsafe {
-                        (*cinfo).lang = info.lang();
-                        (*cinfo).script = info.script();
-                        (*cinfo).confidence = info.confidence();
-                        (*cinfo).is_reliable = info.is_reliable();
+                        (*result).lang = info.lang();
+                        (*result).script = info.script();
+                        (*result).confidence = info.confidence();
+                        (*result).is_reliable = info.is_reliable();
                     }
                     WhatlangStatus::Ok
                 }
@@ -223,12 +219,41 @@ fn detect_internal(text: &[u8], cinfo: *mut WhatlangPredictionResult) -> Whatlan
     }
 }
 
-unsafe fn copy_cstr(src: &str, dst: *mut c_char) -> size_t {
-    let len = src.len();
-    if dst != ptr::null_mut() {
-        let src = src.as_ptr().cast::<c_char>();
-        src.copy_to_nonoverlapping(dst, len);
-        *dst.add(len) = 0;
+fn detect_script_internal(text: &[u8], result: *mut WhatlangScript) -> WhatlangStatus {
+    if result == ptr::null_mut() {
+        return WhatlangStatus::BadOutputPtr;
+    }
+
+    match std::str::from_utf8(text) {
+        Ok(s) => {
+            let res = detect_script(s);
+            match res {
+                Some(info) => {
+                    let x: WhatlangScript = info.to_owned().into();
+                    unsafe {
+                        *result = x;
+                    }
+                    WhatlangStatus::Ok
+                }
+                None => {
+                    // Could not detect language
+                    WhatlangStatus::DetectFailure
+                }
+            }
+        }
+        Err(_) => {
+            // Bad string pointer
+            WhatlangStatus::BadTextPtr
+        }
+    }
+}
+
+unsafe fn copy_string(source: &str, destination: *mut c_char) -> size_t {
+    let len = source.len();
+    if destination != ptr::null_mut() {
+        let src = source.as_ptr().cast::<c_char>();
+        src.copy_to_nonoverlapping(destination, len);
+        *destination.add(len) = 0;
     }
     len
 }
@@ -242,17 +267,37 @@ mod tests {
         let text = "Привіт, як справи?";
 
         let prediction_result = detect(text);
-        
+        let lang_prediction_result = detect_lang(text);
+        let script_prediction_result = detect_script(text);
+
         match prediction_result {
             None => {
                 panic!("Failed!")
             }
             Some(x) => {
                 println!("{}: {} ({})", x.lang().to_string(), x.confidence(), x.script().to_string());
+                assert_eq!(x.lang(), Lang::Ukr);
+                assert_eq!(x.script(), Script::Cyrillic);
             }
         }
 
-        assert_eq!(1, 1);
+        match lang_prediction_result {
+            None => {
+                panic!("Failed!")
+            }
+            Some(x) => {
+                assert_eq!(x, Lang::Ukr);
+            }
+        }
+
+        match script_prediction_result {
+            None => {
+                panic!("Failed!")
+            }
+            Some(x) => {
+                assert_eq!(x, Script::Cyrillic);
+            }
+        }
     }
 }
 

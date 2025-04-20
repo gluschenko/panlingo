@@ -39,18 +39,19 @@ extern "C"
         size_t length;
     } fasttext_labels_t;
 
-    EXPORT void DestroyString(char* s);
-    EXPORT fasttext_t* CreateFastText(void);
-    EXPORT void DestroyFastText(fasttext_t* handle);
-    EXPORT void FastTextLoadModel(fasttext_t* handle, const char* filename, char** err_ptr);
-    EXPORT int FastTextGetModelDimensions(fasttext_t* handle);
-    EXPORT fasttext_predictions_t* FastTextPredict(fasttext_t* handle, const char* text, int32_t k, float threshold, char** err_ptr);
-    EXPORT void DestroyPredictions(fasttext_predictions_t* predictions);
-    EXPORT fasttext_labels_t* FastTextGetLabels(fasttext_t* handle);
-    EXPORT void DestroyLabels(fasttext_labels_t* labels);
-    EXPORT fasttext_tokens_t* FastTextTokenize(fasttext_t* handle, const char* text);
-    EXPORT void DestroyTokens(fasttext_tokens_t* tokens);
-    EXPORT void FastTextAbort(fasttext_t* handle);
+    EXPORT void destroy_string(char* s);
+    EXPORT fasttext_t* create_fasttext(void);
+    EXPORT void destroy_fasttext(fasttext_t* handle);
+    EXPORT void fasttext_load_model(fasttext_t* handle, const char* filename, char** err_ptr);
+    EXPORT void fasttext_load_model_data(fasttext_t* handle, const char* buffer, size_t buffer_length, char** err_ptr);
+    EXPORT int fasttext_get_model_dimensions(fasttext_t* handle);
+    EXPORT fasttext_predictions_t* fasttext_predict(fasttext_t* handle, const char* text, int32_t k, float threshold, char** err_ptr);
+    EXPORT void destroy_predictions(fasttext_predictions_t* predictions);
+    EXPORT fasttext_labels_t* fasttext_get_labels(fasttext_t* handle);
+    EXPORT void destroy_labels(fasttext_labels_t* labels);
+    EXPORT fasttext_tokens_t* fasttext_tokenize(fasttext_t* handle, const char* text);
+    EXPORT void destroy_tokens(fasttext_tokens_t* tokens);
+    EXPORT void fasttext_abort(fasttext_t* handle);
 }
 
 struct membuf : std::streambuf {

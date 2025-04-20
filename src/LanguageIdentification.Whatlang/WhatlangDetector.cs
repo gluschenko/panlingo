@@ -85,6 +85,30 @@ namespace Panlingo.LanguageIdentification.Whatlang
         }
 
         /// <summary>
+        /// Makes script detection for 'text'
+        /// </summary>
+        /// <param name="text">Some text in natural language</param>
+        /// <exception cref="WhatlangDetectorException"></exception>
+        public WhatlangScript? PredictScript(string text)
+        {
+            var status = WhatlangDetectorWrapper.WhatlangDetectScript(
+                text: text,
+                result: out var result
+            );
+
+            if (status == WhatlangStatus.DetectFailure)
+            {
+                return null;
+            }
+
+            if (status == WhatlangStatus.BadTextPtr || status == WhatlangStatus.BadOutputPtr)
+            {
+                throw new WhatlangDetectorException($"Failed to detect language: {status}");
+            }
+
+            return result;
+        }
+
         /// Converts <see cref="WhatlangLanguage"/> to ISO 639-3 string.
         /// </summary>
         /// <param name="language"></param>
