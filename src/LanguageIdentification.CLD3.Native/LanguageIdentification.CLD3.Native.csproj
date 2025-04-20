@@ -10,7 +10,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2025</Copyright>
+    <Copyright>© 2025 Alexander Gluschenko; © 2016 Google, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection cld3</PackageTags>
     <PackageReadmeFile>README_CLD3.md</PackageReadmeFile>
@@ -94,6 +94,7 @@
 
   <ItemGroup>
     <None Include="..\..\README_CLD3.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE_CLD3" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
