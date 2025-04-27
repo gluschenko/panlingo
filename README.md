@@ -31,6 +31,7 @@ functionality into their applications.
 3. [Platform Support](#platform-support)
 4. [Key Concerns](#key-concerns)
 5. [Contributing](#contributing)
+6. [License](#license)
 
 ## Models
 
@@ -140,6 +141,21 @@ After opening a pull request, it will be reviewed by one of the project maintain
 ### Code of Conduct
 
 Please note that this project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE) © 2024–2025 Alexander Gluschenko.
+
+Includes software from the following project(s):
+
+- [CLD2](https://github.com/CLD2Owners/cld2) — © 2013 Google Inc., licensed under Apache-2.0  
+- [CLD3](https://github.com/google/cld3) — © 2016 Google Inc., licensed under Apache-2.0  
+- [FastText](https://github.com/facebookresearch/fastText) — © 2016–present Meta Platforms, Inc., licensed under MIT  
+- [Lingua](https://github.com/pemistahl/lingua-rs) — © 2020–2023 Peter M. Stahl, licensed under Apache-2.0  
+- [MediaPipe Language Detector](https://github.com/google-ai-edge/mediapipe) — © 2023–2025 Google Inc., licensed under Apache-2.0  
+- [Whatlang](https://github.com/greyblake/whatlang-rs) — © 2017 Serhii Potapov and others, licensed under MIT
+
+See the [LICENSE](./LICENSE) file for full details.
 
 ---
 
