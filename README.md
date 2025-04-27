@@ -130,7 +130,27 @@ To get started with contributing, follow these simple steps:
    ```
 
 6. **Build**
+
+   Each library project in the solution has four configurations: `ReleaseLinuxOnly`, `DebugLinuxOnly`, `Release`, `Debug`. 
+   First pair of configurations is designed for building on a local Linux machine (also WSL is supported).
+   Second pair of configurations is designed for cross-plantform build which is supported only for CI/CD (GitHub Actions). 
+
+   Below you can see examples to build projects on a local machine for Linux.
+
+   **Requirements:**
+   * Windows 10 or higher
+   * [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install)
+   * [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+   * 45GB of disk storage (for Docker images)
+   * Modern CPU with AVX support
+
+   **To build the whole solution:**
+   ```bash
+   cd src
+   dotnet build -c ReleaseLinuxOnly
+   ```
    
+   **To build a concrete library:**
    ```bash
    cd src/LanguageIdentification.FastText.Native
    dotnet build -c ReleaseLinuxOnly
@@ -141,7 +161,7 @@ To get started with contributing, follow these simple steps:
 
 7. **Run**
 
-   **Lunux:**
+   **Linux:**
    ```bash
    dotnet run -c ReleaseLinuxOnly
    ```
