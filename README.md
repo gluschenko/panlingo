@@ -131,30 +131,30 @@ To get started with contributing, follow these simple steps:
 
 6. **Build**
 
-   Each library project in the solution has four configurations: `ReleaseLinuxOnly`, `DebugLinuxOnly`, `Release`, `Debug`. 
-   First pair of configurations is designed for building on a local Linux machine (also WSL is supported).
-   Second pair of configurations is designed for cross-plantform build which is supported only for CI/CD (GitHub Actions). 
-
-   Below you can see examples to build projects on a local machine for Linux.
-
+   Each library project in the solution has four configurations: `ReleaseLinuxOnly`, `DebugLinuxOnly`, `Release`, and `Debug`. 
+   - The `ReleaseLinuxOnly` and `DebugLinuxOnly` configurations are for building on a local Linux or Windows machine (WSL is supported as well). It produces native binaries only for Linux.
+   - The `Release` and `Debug` configurations are intended for cross-platform builds, which are only supported in CI/CD environments like GitHub Actions.
+   
+   Here's how you can build the projects on a local Linux machine.
+   
    **Requirements:**
-   * Windows 10 or higher
-   * [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install)
-   * [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-   * 45GB of disk storage (for Docker images)
-   * Modern CPU with AVX support
-
-   **To build the whole solution:**
+   - Windows 10 or higher.
+   - [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) set up for simulating a Linux environment.
+   - [Docker Desktop](https://www.docker.com/products/docker-desktop/) for container management.
+   - 45GB of free disk space for storing Docker images.
+   - Modern CPU with AVX support for optimal performance.
+   
+   **To build the entire solution:**
    ```bash
    cd src
    dotnet build -c ReleaseLinuxOnly
    ```
    
-   **To build a concrete library:**
+   **To build a specific library:**
    ```bash
    cd src/LanguageIdentification.FastText.Native
    dotnet build -c ReleaseLinuxOnly
-
+   
    cd src/LanguageIdentification.FastText
    dotnet build -c ReleaseLinuxOnly
    ```
