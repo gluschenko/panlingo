@@ -161,17 +161,23 @@ To get started with contributing, follow these simple steps:
 
 7. **Run**
 
+   Here's how you can run the test project on both Linux and Windows.
+
    **Linux:**
+   To run the test project on a Linux machine, navigate to the test project's directory and use the following command:
    ```bash
+   cd src/LanguageIdentification.FastText.ConsoleTest
    dotnet run -c ReleaseLinuxOnly
    ```
-
+   
    **Windows:**
+   If you're on a Windows machine, you can still run the test project using WSL. Follow these steps:
    ```bash
+   cd src/LanguageIdentification.FastText.ConsoleTest
    wsl -d Ubuntu -e bash -c "dotnet run -c ReleaseLinuxOnly"
    ```
 
-7. **Open a Pull Request**
+8. **Open a Pull Request**
 
    Navigate to the repository on GitHub and open a pull request. Provide a detailed description of your changes and any additional information that might help reviewers understand your contribution.
 
