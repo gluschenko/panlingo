@@ -31,10 +31,15 @@
       leveraging the powerful and efficient MediaPipe library to recognize and classify texts in multiple languages.
       Ideal for applications that require fast and accurate language detection.
     </Description>
-    <Configurations>Debug;Release;CI</Configurations>
+    <Configurations>Debug;Release;CI;DebugLinuxOnly;ReleaseLinuxOnly</Configurations>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+  <PropertyGroup Condition="$(Configuration) != 'ReleaseLinuxOnly' AND $(Configuration) != 'DebugLinuxOnly'">
+    <DefineConstants>$(DefineConstants);ALL_TARGETS</DefineConstants>
+    <UseAllTargets Condition="'$(DefineConstants)' != '' and $(DefineConstants.Contains('ALL_TARGETS'))">true</UseAllTargets>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release' AND '$(Configuration)'=='ReleaseLinuxOnly'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
     <DocumentationFile>..\Panlingo.LanguageIdentification.MediaPipe.xml</DocumentationFile>
@@ -44,12 +49,7 @@
     <ProjectReference Include="..\LanguageIdentification.MediaPipe.Native\LanguageIdentification.MediaPipe.Native.csproj">
       <IncludeAssets>All</IncludeAssets>
     </ProjectReference>
-    <ProjectReference 
-      Include="..\LanguageIdentification.MediaPipe.SourceGenerator\LanguageIdentification.MediaPipe.SourceGenerator.csproj" 
-      PrivateAssets="all" 
-      OutputItemType="Analyzer" 
-      ReferenceOutputAssembly="false" 
-    />
+    <ProjectReference Include="..\LanguageIdentification.MediaPipe.SourceGenerator\LanguageIdentification.MediaPipe.SourceGenerator.csproj" PrivateAssets="all" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>

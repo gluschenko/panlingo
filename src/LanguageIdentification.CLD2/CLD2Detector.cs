@@ -4,6 +4,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Panlingo.LanguageIdentification.CLD2.Internal;
+using Panlingo.LanguageIdentification.CLD2.Native;
 
 namespace Panlingo.LanguageIdentification.CLD2
 {
@@ -60,14 +61,7 @@ namespace Panlingo.LanguageIdentification.CLD2
         /// </summary>
         public static bool IsSupported()
         {
-            return RuntimeInformation.OSArchitecture switch
-            {
-                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
-                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
-                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
-                Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
-                _ => false,
-            };
+            return CLD2NativeLibrary.IsSupported();
         }
 
         /// <summary>

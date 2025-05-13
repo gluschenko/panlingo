@@ -1,4 +1,6 @@
-﻿namespace Panlingo.LanguageIdentification.CLD3.Native
+﻿using System.Runtime.InteropServices;
+
+namespace Panlingo.LanguageIdentification.CLD3.Native
 {
     public static class CLD3NativeLibrary
     {
@@ -6,5 +8,19 @@
         /// Name of native binary
         /// </summary>
         public const string Name = "libcld3";
+
+        public static bool IsSupported()
+        {
+            return RuntimeInformation.OSArchitecture switch
+            {
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
+#if ALL_TARGETS
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
+                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+                Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+#endif
+                _ => false,
+            };
+        }
     }
 }

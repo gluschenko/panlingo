@@ -3,9 +3,9 @@ set -e
 
 echo "Hello world";
 
-workspace="build_temp"
+workspace="obj/native_build_temp"
 
-mkdir "$workspace" -p
+mkdir -p "$workspace"
 cp -a ../../third_party/cld3/. $workspace/.
 cp -a Native/. $workspace
 
@@ -20,7 +20,7 @@ nvm install 22
 nvm use 22
 npm install -g zx
 
-zx ../Native/monkey-patch.mjs
+zx ./monkey-patch.mjs
 
 mkdir build
 cd build
@@ -36,7 +36,7 @@ make -j $(nproc) # make
 ls -R
 
 ldd libcld3.so
-cp libcld3.so ../../libcld3.so
+cp libcld3.so ../../../libcld3.so
 
 # Build for Windows
 rm -rf *
@@ -45,7 +45,7 @@ make -j $(nproc) # make
 
 ls -R
 
-cp libcld3.dll ../../libcld3.dll
+cp libcld3.dll ../../../libcld3.dll
 
 # Clean up
 rm -rf "$workspace"

@@ -23,10 +23,15 @@
       in applications using the WhatlangWrapper for .NET. This package is essential for the
       proper functioning of Whatlang-based language identification features in your .NET projects.
     </Description>
-    <Configurations>Debug;Release;CI</Configurations>
+    <Configurations>Debug;Release;CI;DebugLinuxOnly;ReleaseLinuxOnly</Configurations>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+  <PropertyGroup Condition="$(Configuration) != 'ReleaseLinuxOnly' AND $(Configuration) != 'DebugLinuxOnly'">
+    <DefineConstants>$(DefineConstants);ALL_TARGETS</DefineConstants>
+    <UseAllTargets Condition="'$(DefineConstants)' != '' and $(DefineConstants.Contains('ALL_TARGETS'))">true</UseAllTargets>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release' AND '$(Configuration)'=='ReleaseLinuxOnly'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
     <DocumentationFile>..\Panlingo.LanguageIdentification.Whatlang.Native.xml</DocumentationFile>
@@ -63,7 +68,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="whatlang.dll">
+    <Content Include="whatlang.dll" Condition="'$(UseAllTargets)' == 'true'">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/win-x64/native</PackagePath>
@@ -73,7 +78,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="libwhatlang.x86_64.dylib">
+    <Content Include="libwhatlang.x86_64.dylib" Condition="'$(UseAllTargets)' == 'true'">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/osx-x64/native/libwhatlang.dylib</PackagePath>
@@ -83,7 +88,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="libwhatlang.arm64.dylib">
+    <Content Include="libwhatlang.arm64.dylib" Condition="'$(UseAllTargets)' == 'true'">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/osx-arm64/native/libwhatlang.dylib</PackagePath>

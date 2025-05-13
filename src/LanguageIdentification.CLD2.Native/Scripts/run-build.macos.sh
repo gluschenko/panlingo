@@ -18,9 +18,9 @@ echo "Hello world $ARCH";
 
 brew install llvm
 
-workspace="build_temp"
+workspace="obj/native_build_temp"
 
-mkdir "$workspace" -p
+mkdir -p "$workspace"
 cp -a ../../third_party/cld2/. $workspace/cld2
 cp -a Native/. $workspace
 
@@ -39,7 +39,7 @@ make -j $(sysctl -n hw.logicalcpu)
 ls -R
 
 otool -L libcld2.dylib
-cp libcld2.dylib ../../libcld2.$ARCH.dylib
+cp libcld2.dylib ../../../libcld2.$ARCH.dylib
 
 # Clean up
 rm -rf "$workspace"

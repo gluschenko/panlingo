@@ -3,9 +3,9 @@ set -e
 
 echo "Hello world";
 
-workspace="build_temp"
+workspace="obj/native_build_temp"
 
-mkdir "$workspace" -p
+mkdir -p "$workspace"
 cp -a ../../third_party/cld2/. $workspace/cld2
 cp -a Native/. $workspace
 
@@ -24,7 +24,7 @@ make -j $(nproc) # make
 ls -R
 
 ldd libcld2.so
-cp libcld2.so ../../libcld2.so
+cp libcld2.so ../../../libcld2.so
 
 # Build for Windows
 rm -rf *
@@ -33,7 +33,7 @@ make -j $(nproc) # make
 
 ls -R
 
-cp libcld2.dll ../../libcld2.dll
+cp libcld2.dll ../../../libcld2.dll
 
 # Clean up
 rm -rf "$workspace"

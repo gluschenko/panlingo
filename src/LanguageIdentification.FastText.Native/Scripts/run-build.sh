@@ -3,9 +3,9 @@ set -e
 
 echo "Hello world";
 
-workspace="build_temp"
+workspace="obj/native_build_temp"
 
-mkdir "$workspace" -p
+mkdir -p "$workspace"
 cp -a ../../third_party/fastText/. $workspace/fasttext
 cp -a Native/. $workspace
 
@@ -24,7 +24,7 @@ make -j $(nproc) # make
 ls -R
 
 ldd libfasttext.so
-cp libfasttext.so ../../libfasttext.so
+cp libfasttext.so ../../../libfasttext.so
 
 # Clean up
 rm -rf "$workspace"

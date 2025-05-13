@@ -130,7 +130,55 @@ To get started with contributing, follow these simple steps:
    git push origin feature/your-feature-name
    ```
 
-6. **Open a Pull Request**
+6. **Build**
+
+   Each library project in the solution has four configurations: `ReleaseLinuxOnly`, `DebugLinuxOnly`, `Release`, and `Debug`. 
+   - The `ReleaseLinuxOnly` and `DebugLinuxOnly` configurations are for building on a local Linux or Windows machine (WSL is supported as well). It produces native binaries only for Linux.
+   - The `Release` and `Debug` configurations are intended for cross-platform builds, which are only supported in CI/CD environments like GitHub Actions.
+   
+   Here's how you can build the projects on a local Linux machine.
+   
+   **Requirements:**
+   - Windows 10 or higher.
+   - [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) set up for simulating a Linux environment.
+   - [Docker Desktop](https://www.docker.com/products/docker-desktop/) for container management.
+   - 45GB of free disk space for storing Docker images.
+   - Modern CPU with AVX support for optimal performance.
+   
+   **To build the entire solution:**
+   ```bash
+   cd src
+   dotnet build -c ReleaseLinuxOnly
+   ```
+   
+   **To build a specific library:**
+   ```bash
+   cd src/LanguageIdentification.FastText.Native
+   dotnet build -c ReleaseLinuxOnly
+   
+   cd src/LanguageIdentification.FastText
+   dotnet build -c ReleaseLinuxOnly
+   ```
+
+7. **Run**
+
+   Here's how you can run the test project on both Linux and Windows.
+
+   **Linux:**
+   To run the test project on a Linux machine, navigate to the test project's directory and use the following command:
+   ```bash
+   cd src/LanguageIdentification.FastText.ConsoleTest
+   dotnet run -c ReleaseLinuxOnly
+   ```
+   
+   **Windows:**
+   If you're on a Windows machine, you can still run the test project using WSL. Follow these steps:
+   ```bash
+   cd src/LanguageIdentification.FastText.ConsoleTest
+   wsl -d Ubuntu -e bash -c "dotnet run -c ReleaseLinuxOnly"
+   ```
+
+8. **Open a Pull Request**
 
    Navigate to the repository on GitHub and open a pull request. Provide a detailed description of your changes and any additional information that might help reviewers understand your contribution.
 

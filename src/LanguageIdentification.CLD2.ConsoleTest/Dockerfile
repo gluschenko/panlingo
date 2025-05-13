@@ -8,17 +8,8 @@ COPY ["src/LanguageIdentification.CLD2.ConsoleTest/LanguageIdentification.CLD2.C
 COPY ["src/LanguageIdentification.CLD2.Native/LanguageIdentification.CLD2.Native.csproj", "src/LanguageIdentification.CLD2.Native/"]
 COPY ["src/LanguageIdentification.CLD2/LanguageIdentification.CLD2.csproj", "src/LanguageIdentification.CLD2/"]
 
-### CLD2
-# COPY ["src/LanguageIdentification.CLD2.Native/Scripts/setup-build.sh", "src/LanguageIdentification.CLD2.Native/Scripts/"]
-# RUN cd /repo/src/LanguageIdentification.CLD2.Native && bash -c ./Scripts/setup-build.sh
-###
-
 RUN dotnet restore "./src/LanguageIdentification.CLD2.ConsoleTest/LanguageIdentification.CLD2.ConsoleTest.csproj"
 COPY . .
-
-### CLD2
-# RUN cd /repo/src/LanguageIdentification.CLD2.Native && bash -c ./Scripts/run-build.sh
-###
 
 WORKDIR /repo/src/LanguageIdentification.CLD2.ConsoleTest
 RUN dotnet build "./LanguageIdentification.CLD2.ConsoleTest.csproj" -c $BUILD_CONFIGURATION -o /app/build

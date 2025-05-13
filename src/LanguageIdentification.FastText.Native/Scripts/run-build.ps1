@@ -4,7 +4,7 @@ $ErrorActionPreference = "Stop"
 
 Write-Output "Hello world"
 
-$workspace = "build_temp"
+$workspace = "obj/native_build_temp"
 
 # Create directory if it doesn't exist
 if (-Not (Test-Path $workspace)) {
@@ -35,7 +35,7 @@ cmake --build .
 Get-ChildItem -Recurse -Path .
 
 # Display shared library dependencies
-Copy-Item -Path ".\Debug\fasttext.dll" -Destination "..\..\fasttext.dll"
+Copy-Item -Path ".\Debug\fasttext.dll" -Destination "..\..\..\fasttext.dll"
 
 # List directory contents recursively
 Get-ChildItem -Recurse -Path .
