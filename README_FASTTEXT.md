@@ -105,6 +105,15 @@ If you are exploring other options, here are some alternatives to consider:
 2. [Enriching Word Vectors with Subword Information](https://arxiv.org/abs/1607.04606v2)
 3. [Language identification at Wikipedia](https://en.wikipedia.org/wiki/Language_identification)
 
+## License
+
+This project is licensed under the [MIT License](./LICENSE) © 2024–2025 Alexander Gluschenko.
+
+Includes software from the following project(s):
+- [FastText](https://github.com/facebookresearch/fastText) — © 2016–present Meta Platforms, Inc., licensed under MIT  
+
+See the [LICENSE](./LICENSE) file for full details.
+
 ---
 
 We value your feedback. Feel free to open issues or contribute to the repository. Let’s make language detection in .NET even more powerful and versatile! 🌍📝

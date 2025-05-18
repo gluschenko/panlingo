@@ -98,6 +98,15 @@ using var mediaPipe = new MediaPipeDetector(
 3. [Language detector (model card)](https://storage.googleapis.com/mediapipe-assets/LanguageDetector%20Model%20Card.pdf)
 4. [Language identification at Wikipedia](https://en.wikipedia.org/wiki/Language_identification)
 
+## License
+
+This project is licensed under the [MIT License](./LICENSE) © 2024–2025 Alexander Gluschenko.
+
+Includes software from the following project(s):
+- [MediaPipe Language Detector](https://github.com/google-ai-edge/mediapipe) — © 2023–2025 Google Inc., licensed under Apache-2.0  
+
+See the [LICENSE](./LICENSE) file for full details.
+
 ---
 
 We value your feedback. Feel free to open issues or contribute to the repository. Let’s make language detection in .NET even more powerful and versatile! 🌍📝
