@@ -18,9 +18,9 @@ echo "Hello world $ARCH";
 
 brew install llvm
 
-workspace="build_temp"
+workspace="obj/native_build_temp"
 
-mkdir "$workspace" -p
+mkdir -p "$workspace"
 cp -a Native/whatlang-ffi/. $workspace/.
 
 ls -R .
@@ -34,7 +34,7 @@ ls -R
 
 cd ./target/release
 otool -L libwhatlang.dylib
-cp libwhatlang.dylib ../../../libwhatlang.$ARCH.dylib
+cp libwhatlang.dylib ../../../../libwhatlang.$ARCH.dylib
 
 # Clean up
 rm -rf "$workspace"

@@ -10,7 +10,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2025</Copyright>
+    <Copyright>© 2025 Alexander Gluschenko; © 2023-2025 Google, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection mediapipe</PackageTags>
     <PackageReadmeFile>README_MEDIAPIPE.md</PackageReadmeFile>
@@ -23,10 +23,15 @@
       in applications using the MediaPipeWrapper for .NET. This package is essential for the proper functioning
       of MediaPipe-based language identification features in your .NET projects.
     </Description>
-    <Configurations>Debug;Release;CI</Configurations>
+    <Configurations>Debug;Release;CI;DebugLinuxOnly;ReleaseLinuxOnly</Configurations>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+  <PropertyGroup Condition="$(Configuration) != 'ReleaseLinuxOnly' AND $(Configuration) != 'DebugLinuxOnly'">
+    <DefineConstants>$(DefineConstants);ALL_TARGETS</DefineConstants>
+    <UseAllTargets Condition="'$(DefineConstants)' != '' and $(DefineConstants.Contains('ALL_TARGETS'))">true</UseAllTargets>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release' AND '$(Configuration)'=='ReleaseLinuxOnly'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
     <DocumentationFile>..\Panlingo.LanguageIdentification.MediaPipe.Native.xml</DocumentationFile>
@@ -64,6 +69,7 @@
   
   <ItemGroup>
     <None Include="..\..\README_MEDIAPIPE.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE_MEDIAPIPE" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

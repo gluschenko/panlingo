@@ -3,9 +3,9 @@ set -e
 
 echo "Hello world";
 
-workspace="build_temp"
+workspace="obj/native_build_temp"
 
-mkdir "$workspace" -p
+mkdir -p "$workspace"
 cp -a Native/lingua-ffi/. $workspace/.
 
 ls -R .
@@ -18,7 +18,7 @@ ls -R .
 
 cd ./target/release
 ldd liblingua.so
-cp liblingua.so ../../../liblingua.so
+cp liblingua.so ../../../../liblingua.so
 
 # Clean up
 rm -rf "$workspace"

@@ -4,11 +4,18 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Panlingo.LanguageIdentification.CLD3.Internal;
+using Panlingo.LanguageIdentification.CLD3.Native;
 
 namespace Panlingo.LanguageIdentification.CLD3
 {
     /// <summary>
-    /// .NET wrapper for CLD3
+    /// <para>Example:</para>
+    /// <code>
+    /// using var cld3 = new CLD3Detector(minNumBytes: 0, maxNumBytes: 512);
+    /// var prediction = cld3.PredictLanguage("Привіт, як справи?");
+    /// </code>
+    /// 
+    /// <para>The using-operator is required to correctly remove unmanaged resources from memory after use.</para>
     /// </summary>
     public class CLD3Detector : IDisposable
     {
@@ -17,6 +24,11 @@ namespace Panlingo.LanguageIdentification.CLD3
         private IntPtr _detector;
         private bool _disposed = false;
 
+        /// <summary>
+        /// <para>Creates an instance for <see cref="CLD3Detector"/>.</para>
+        /// <inheritdoc cref="CLD3Detector"/>
+        /// </summary>
+        /// <exception cref="NotSupportedException"></exception>
         public CLD3Detector(int minNumBytes, int maxNumBytes)
         {
             if (!IsSupported())
@@ -51,17 +63,12 @@ namespace Panlingo.LanguageIdentification.CLD3
             );
         }
 
+        /// <summary>
+        /// Checks the suitability of the current platform for use. Key criteria are the operating system and processor architecture
+        /// </summary>
         public static bool IsSupported()
         {
-            return RuntimeInformation.OSArchitecture switch
-            {
-                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
-                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
-                // TODO: Find out why CLD3 is crashing on macOS
-                // Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
-                // Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
-                _ => false,
-            };
+            return CLD3NativeLibrary.IsSupported();
         }
 
         /// <summary>

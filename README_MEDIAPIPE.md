@@ -65,13 +65,23 @@ Learn more about this model here:
 - [Google AI Edge](https://ai.google.dev/edge/mediapipe/solutions/text/language_detector)
 
 #### Use custom model in code
+
+**You can use the model included in this NuGet package:**
+```
+using var mediaPipe = new MediaPipeDetector(
+    options: MediaPipeOptions.FromDefault()
+);
+```
+
+**You can specify the path to the model file:**
 ```
 var modelPath = "/models/mediapipe_language_detector.tflite";
 using var mediaPipe = new MediaPipeDetector(
     options: MediaPipeOptions.FromFile(modelPath)
 );
 ```
-OR
+
+**Also you can also load the model as a memory stream:**
 ```
 var modelPath = "/models/mediapipe_language_detector.tflite";
 using var stream = File.Open(modelPath, FileMode.Open);
@@ -87,6 +97,15 @@ using var mediaPipe = new MediaPipeDetector(
 2. [Language detection guide](https://ai.google.dev/edge/mediapipe/solutions/text/language_detector)
 3. [Language detector (model card)](https://storage.googleapis.com/mediapipe-assets/LanguageDetector%20Model%20Card.pdf)
 4. [Language identification at Wikipedia](https://en.wikipedia.org/wiki/Language_identification)
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE) © 2024–2025 Alexander Gluschenko.
+
+Includes software from the following project(s):
+- [MediaPipe Language Detector](https://github.com/google-ai-edge/mediapipe) — © 2023–2025 Google Inc., licensed under Apache-2.0  
+
+See the [LICENSE](./LICENSE) file for full details.
 
 ---
 

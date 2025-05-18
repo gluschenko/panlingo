@@ -6,11 +6,21 @@ using System.IO.Compression;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Panlingo.LanguageIdentification.MediaPipe.Internal;
+using Panlingo.LanguageIdentification.MediaPipe.Native;
 
 namespace Panlingo.LanguageIdentification.MediaPipe
 {
     /// <summary>
-    /// .NET wrapper for MediaPipe
+    /// <para>Example:</para>
+    /// <code>
+    /// using var mediaPipe = new MediaPipeDetector(
+    ///     options: MediaPipeOptions.FromDefault()
+    /// );
+    /// 
+    /// var predictions = mediaPipe.PredictLanguages("Привіт, як справи?");
+    /// </code>
+    /// 
+    /// <para>The using-operator is required to correctly remove unmanaged resources from memory after use.</para>
     /// </summary>
     public class MediaPipeDetector : IDisposable
     {
@@ -22,6 +32,11 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
         private const string LABEL_FILE_NAME = "labels.txt";
 
+        /// <summary>
+        /// <para>Creates an instance for <see cref="MediaPipeDetector"/>.</para>
+        /// <inheritdoc cref="MediaPipeDetector"/>
+        /// </summary>
+        /// <exception cref="NotSupportedException"></exception>
         public MediaPipeDetector(MediaPipeOptions options)
         {
             if (!IsSupported())
@@ -66,6 +81,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                 throw new InvalidOperationException("Model data not specified");
             }
 
+            // The *.tflite is actually a zip archive. We need to read ‘labels.txt’ inside to get a list of labels.
             _labels = new Lazy<ImmutableHashSet<string>>(
                 () =>
                 {
@@ -128,13 +144,12 @@ namespace Panlingo.LanguageIdentification.MediaPipe
             }
         }
 
+        /// <summary>
+        /// Checks the suitability of the current platform for use. Key criteria are the operating system and processor architecture
+        /// </summary>
         public static bool IsSupported()
         {
-            return RuntimeInformation.OSArchitecture switch
-            {
-                Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
-                _ => false,
-            };
+            return MediaPipeNativeLibrary.IsSupported();
         }
 
         public IEnumerable<MediaPipePrediction> PredictLanguages(string text)

@@ -10,7 +10,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2025</Copyright>
+    <Copyright>© 2025 Alexander Gluschenko; © 2017 Serhii Potapov; © 2014 Titus Wormer; © 2008 Kent S Johnson; © 2006 Jacob R Rideout; © 2004 Maciej Ceglowski</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection whatlang</PackageTags>
     <PackageReadmeFile>README_WHATLANG.md</PackageReadmeFile>
@@ -23,10 +23,15 @@
       in applications using the WhatlangWrapper for .NET. This package is essential for the
       proper functioning of Whatlang-based language identification features in your .NET projects.
     </Description>
-    <Configurations>Debug;Release;CI</Configurations>
+    <Configurations>Debug;Release;CI;DebugLinuxOnly;ReleaseLinuxOnly</Configurations>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+  <PropertyGroup Condition="$(Configuration) != 'ReleaseLinuxOnly' AND $(Configuration) != 'DebugLinuxOnly'">
+    <DefineConstants>$(DefineConstants);ALL_TARGETS</DefineConstants>
+    <UseAllTargets Condition="'$(DefineConstants)' != '' and $(DefineConstants.Contains('ALL_TARGETS'))">true</UseAllTargets>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release' AND '$(Configuration)'=='ReleaseLinuxOnly'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
     <DocumentationFile>..\Panlingo.LanguageIdentification.Whatlang.Native.xml</DocumentationFile>
@@ -63,7 +68,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="whatlang.dll">
+    <Content Include="whatlang.dll" Condition="'$(UseAllTargets)' == 'true'">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/win-x64/native</PackagePath>
@@ -73,7 +78,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="libwhatlang.x86_64.dylib">
+    <Content Include="libwhatlang.x86_64.dylib" Condition="'$(UseAllTargets)' == 'true'">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/osx-x64/native/libwhatlang.dylib</PackagePath>
@@ -83,7 +88,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="libwhatlang.arm64.dylib">
+    <Content Include="libwhatlang.arm64.dylib" Condition="'$(UseAllTargets)' == 'true'">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/osx-arm64/native/libwhatlang.dylib</PackagePath>
@@ -94,6 +99,7 @@
 
   <ItemGroup>
     <None Include="..\..\README_WHATLANG.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE_WHATLANG" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

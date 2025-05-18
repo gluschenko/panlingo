@@ -18,9 +18,9 @@ echo "Hello world $ARCH";
 
 brew install llvm
 
-workspace="build_temp"
+workspace="obj/native_build_temp"
 
-mkdir "$workspace" -p
+mkdir -p "$workspace"
 cp -a ../../third_party/fastText/. $workspace/fasttext
 cp -a Native/. $workspace
 
@@ -39,7 +39,7 @@ make -j $(sysctl -n hw.logicalcpu)
 ls -R
 
 otool -L libfasttext.dylib
-cp libfasttext.dylib ../../libfasttext.$ARCH.dylib
+cp libfasttext.dylib ../../../libfasttext.$ARCH.dylib
 
 # Clean up
 rm -rf "$workspace"

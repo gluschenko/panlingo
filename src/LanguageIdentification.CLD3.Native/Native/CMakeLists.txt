@@ -7,6 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
+add_definitions(-fPIC -D_GLIBCXX_USE_CXX11_ABI=0)
+
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -pthread -funroll-loops -O3")
@@ -83,16 +85,7 @@ add_library(${PROJECT_NAME} SHARED
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "src/binding.h")
 
 if (APPLE)
-    if (CMAKE_OSX_ARCHITECTURES MATCHES "arm64")
-        set(CLANG_LIB_DIR /opt/homebrew/opt/llvm/lib/c++)
-    elseif (CMAKE_OSX_ARCHITECTURES MATCHES "x86_64")
-        set(CLANG_LIB_DIR /usr/local/opt/llvm/lib/c++)
-    endif()
-
-    target_link_libraries(${PROJECT_NAME}
-        -nostdlib++
-        -Wl,${CLANG_LIB_DIR}/libc++.a
-        -Wl,${CLANG_LIB_DIR}/libc++abi.a)
+    # nop
 else()
     if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
         # nop

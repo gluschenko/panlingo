@@ -10,7 +10,7 @@
 
     <RootNamespace>Panlingo.LanguageCode.Tests</RootNamespace>
 
-    <Configurations>Debug;Release;CI</Configurations>
+    <Configurations>Debug;Release;CI;DebugLinuxOnly;ReleaseLinuxOnly</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

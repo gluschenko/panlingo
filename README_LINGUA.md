@@ -160,6 +160,15 @@ If you are exploring other options, here are some alternatives to consider:
 | Yoruba        | yor | `LinguaLanguage.Yoruba`      |
 | Zulu          | zul | `LinguaLanguage.Zulu`        |
 
+## License
+
+This project is licensed under the [MIT License](./LICENSE) © 2024–2025 Alexander Gluschenko.
+
+Includes software from the following project(s):
+- [Lingua](https://github.com/pemistahl/lingua-rs) — © 2020–2023 Peter M. Stahl, licensed under Apache-2.0  
+
+See the [LICENSE](./LICENSE) file for full details.
+
 ---
 
 We value your feedback. Feel free to open issues or contribute to the repository. Let’s make language detection in .NET even more powerful and versatile! 🌍📝
