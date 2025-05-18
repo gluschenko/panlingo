@@ -27,6 +27,9 @@ jobs:
           - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: windows-2019, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: whatlang.dll }
           - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libwhatlang.x86_64.dylib }
           - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libwhatlang.arm64.dylib }
+          - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: windows-2019, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: liblanguage_detector.dll }
+          - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libwhatlang.x86_64.dylib }
+          - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libwhatlang.arm64.dylib }
     permissions:
       contents: read
       packages: write
