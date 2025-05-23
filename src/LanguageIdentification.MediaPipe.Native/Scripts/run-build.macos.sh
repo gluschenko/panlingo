@@ -16,7 +16,6 @@ brew install curl
 brew install ffmpeg
 brew install python@3.11
 brew install node@20
-brew install openjdk@8
 brew install bazelisk
 brew install llvm@16
 
