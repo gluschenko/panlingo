@@ -14,13 +14,11 @@ brew install curl
 brew install ffmpeg
 brew install python@3.11
 brew install python3
-brew install node@20
+# brew install node@20
 brew install bazelisk
 brew install llvm@16
 
 npm install -g zx
-export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
-echo 'export PATH="/opt/homebrew/opt/node@20/bin:$PATH"' >> ~/.zshrc
 
 echo -n "Bazel: " && bazel version
 echo -n "Node: " && node --version
