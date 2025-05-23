@@ -13,7 +13,6 @@ brew install pkg-config
 brew install curl
 brew install ffmpeg
 brew install python@3.11
-brew install python3
 # brew install node@20
 brew install bazelisk
 brew install llvm@16
@@ -24,7 +23,7 @@ echo -n "Bazel: " && bazel version
 echo -n "Node: " && node --version
 echo -n "npm: " && npm --version
 echo -n "clang: " && clang --version
-echo -n "Python: " && python3 --version
+echo -n "Python: " && python --version
 
 # Configure JAVA_HOME
 export JAVA_HOME="$(/usr/libexec/java_home -v1.8)"
