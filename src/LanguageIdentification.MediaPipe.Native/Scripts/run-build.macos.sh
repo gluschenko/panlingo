@@ -15,6 +15,7 @@ brew install pkg-config
 brew install curl
 brew install ffmpeg
 brew install python@3.11
+brew install python3
 brew install node@20
 brew install bazelisk
 brew install llvm@16
@@ -23,18 +24,6 @@ echo -n "Bazel: " && bazel version
 echo -n "Node: " && node --version
 echo -n "npm: " && npm --version
 echo -n "clang: " && clang --version
-
-# Ensure python3 points to Homebrew Python
-PYTHON_BIN="$(brew --prefix)/opt/python@3.11/bin/python3"
-if [ -x "$PYTHON_BIN" ]; then
-  echo "Using Python at $PYTHON_BIN"
-  ln -sf "$PYTHON_BIN" /usr/local/bin/python3 || true
-  ln -sf "$PYTHON_BIN" /usr/local/bin/python || true
-else
-  echo "Python3 not found at $PYTHON_BIN" >&2
-  exit 1
-fi
-
 echo -n "Python: " && python3 --version
 
 # Configure JAVA_HOME
