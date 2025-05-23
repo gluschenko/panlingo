@@ -12,6 +12,10 @@ brew install \
   ffmpeg python@3.11 node@20 openjdk@8 \
   bazelisk llvm@16 protobuf@3 opencv
 
+export LDFLAGS="-L$(brew --prefix protobuf@3)/lib"
+export CPPFLAGS="-I$(brew --prefix protobuf@3)/include"
+export PKG_CONFIG_PATH="$(brew --prefix protobuf@3)/lib/pkgconfig"
+
 # Ensure python3 points to Homebrew Python
 PYTHON_BIN="$(brew --prefix)/opt/python@3.11/bin/python3"
 if [ -x "$PYTHON_BIN" ]; then
