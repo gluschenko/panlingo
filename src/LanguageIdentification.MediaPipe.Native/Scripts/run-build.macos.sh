@@ -7,14 +7,23 @@ npm install -g zx
 
 brew update
 
-brew install \
-  git wget cmake pkg-config curl \
-  ffmpeg python@3.11 node@20 openjdk@8 \
-  bazelisk llvm@16 protobuf@3 opencv
+brew install protobuf@3
+brew install git 
+brew install wget 
+brew install cmake 
+brew install pkg-config 
+brew install curl
+brew install ffmpeg
+brew install python@3.11
+brew install node@20
+brew install openjdk@8
+brew install bazelisk
+brew install llvm@16
 
-export LDFLAGS="-L$(brew --prefix protobuf@3)/lib"
-export CPPFLAGS="-I$(brew --prefix protobuf@3)/include"
-export PKG_CONFIG_PATH="$(brew --prefix protobuf@3)/lib/pkgconfig"
+echo -n "Bazel: " && bazel version
+echo -n "Node: " && node --version
+echo -n "npm: " && npm --version
+echo -n "clang: " && clang --version
 
 # Ensure python3 points to Homebrew Python
 PYTHON_BIN="$(brew --prefix)/opt/python@3.11/bin/python3"
@@ -27,6 +36,8 @@ else
   exit 1
 fi
 
+echo -n "Python: " && python3 --version
+
 # Configure JAVA_HOME
 export JAVA_HOME="$(/usr/libexec/java_home -v1.8)"
 
@@ -36,13 +47,6 @@ export PATH="$LLVM_PREFIX/bin:$PATH"
 
 # Install Python packages
 pip3 install --upgrade setuptools wheel future absl-py "numpy<2" jax['cpu'] opencv-contrib-python protobuf==3.20.1 six==1.14.0 tensorflow tf_slim
-
-echo -n "Bazel: " && bazel version
-echo -n "Python: " && python3 --version
-echo -n "Node: " && node --version
-echo -n "npm: " && npm --version
-echo -n "clang: " && clang --version
-
 
 workspace="obj/native_build_temp"
 
