@@ -34,7 +34,7 @@ LLVM_PREFIX="$(brew --prefix llvm@16)"
 export PATH="$LLVM_PREFIX/bin:$PATH"
 
 # Install Python packages
-pip3 install --upgrade setuptools wheel future absl-py "numpy<2" jax['cpu'] opencv-contrib-python protobuf==3.20.1 six==1.14.0 tensorflow tf_slim
+pip3 install --break-system-packages --upgrade setuptools wheel future absl-py "numpy<2" jax['cpu'] opencv-contrib-python protobuf==3.20.1 six==1.14.0 tensorflow tf_slim
 
 workspace="obj/native_build_temp"
 
