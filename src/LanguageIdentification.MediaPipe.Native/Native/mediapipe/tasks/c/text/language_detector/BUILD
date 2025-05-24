@@ -69,7 +69,7 @@ cc_binary(
 )
 
 # Windows
-# bazel build --config darwin_arm64 -c opt --strip always --define MEDIAPIPE_DISABLE_GPU=1 \
+# bazel build -c opt --linkopt -s --strip always --define MEDIAPIPE_DISABLE_GPU=1 \
 # //mediapipe/tasks/c/text/language_detector:liblanguage_detector.dll
 cc_binary(
     name = "liblanguage_detector.dll",
