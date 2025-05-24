@@ -31,7 +31,7 @@ function b()
 {
     const lineEnding = "\\r?\\n";
 
-    const oldText = new RegExp(`build:linux --define=xnn_enable_avx512amx=false${lineEnding}${lineEnding}`, 'g');
+    const oldText = new RegExp(`build:linux --define=xnn_enable_avx512amx=false${lineEnding}`, 'g');
     const newText = `build:linux --define=xnn_enable_avx512amx=false\nbuild:linux --define=xnn_enable_avx512fp16=false\nbuild:linux --define=xnn_enable_avxvnniint8=false\n\n`;
 
     findAndPatch(".bazelrc", oldText, newText);
@@ -40,7 +40,7 @@ function b()
 function c() {
     const lineEnding = "\\r?\\n";
 
-    const oldText = new RegExp(`build:windows --host_copt=/D_USE_MATH_DEFINES${lineEnding}${lineEnding}`, 'g');
+    const oldText = new RegExp(`build:windows --host_copt=/D_USE_MATH_DEFINES${lineEnding}`, 'g');
     const newText = `build:windows --host_copt=/D_USE_MATH_DEFINES\nbuild:windows --define=xnn_enable_avx512amx=false\nbuild:windows --define=xnn_enable_avx512fp16=false\nbuild:windows --define=xnn_enable_avxvnni=falsee\nbuild:windows --define=xnn_enable_avxvnniint8=false\n\n`;
 
     findAndPatch(".bazelrc", oldText, newText);
