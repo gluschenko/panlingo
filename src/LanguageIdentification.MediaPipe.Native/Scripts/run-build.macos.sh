@@ -1,7 +1,20 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "Hello world"
+if [ -z "$1" ]; then
+    echo "Error: No architecture specified."
+    echo "Usage: $0 <arch>"
+    exit 1
+fi
+
+ARCH=$1
+
+if [[ "$ARCH" != "x86_64" && "$ARCH" != "arm64" ]]; then
+    echo "Error: Invalid architecture specified. Use 'x86_64' or 'arm64'."
+    exit 1
+fi
+
+echo "Hello world $ARCH";
 
 brew update
 HOMEBREW_NO_AUTO_UPDATE=1
@@ -72,14 +85,11 @@ bazel build -c opt \
     --sandbox_debug --verbose_failures \
     //mediapipe/tasks/c/text/language_detector:liblanguage_detector.dylib
 
-# Копируем результат сборки
-cp ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.dylib ../../liblanguage_detector.dylib
+cp ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.dylib ../../liblanguage_detector.$ARCH.dylib
 
-# Убираем временную папку
 cd ../..
 rm -rf "$workspace"
 
-# Проверка зависимостей через otool на macOS (аналог ldd в Linux)
-otool -L liblanguage_detector.dylib
+otool -L liblanguage_detector.$ARCH.dylib
 
 echo "Goodbye world"
