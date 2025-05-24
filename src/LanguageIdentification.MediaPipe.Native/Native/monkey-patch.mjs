@@ -47,7 +47,7 @@ function c() {
 }
 
 function d() {
-    const oldText = new RegExp(`-std=c++17`, 'g');
+    const oldText = new RegExp(`-std=c\\+\\+17`, 'g');
     const newText = `-std=c++20`;
 
     findAndPatch(".bazelrc", oldText, newText);
