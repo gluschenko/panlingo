@@ -5,6 +5,8 @@ echo "Hello world"
 
 brew update
 
+brew uninstall python
+
 brew install protobuf@3
 brew install git 
 brew install wget 
