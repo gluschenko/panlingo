@@ -4,6 +4,7 @@ set -euo pipefail
 echo "Hello world"
 
 brew update
+HOMEBREW_NO_AUTO_UPDATE=1
 
 # Python
 echo -n "Python: " && python --version
