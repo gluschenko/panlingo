@@ -5,6 +5,20 @@ echo "Hello world"
 
 brew update
 
+# Python
+echo -n "Python: " && python --version
+
+brew install python@3.11
+export PATH="/opt/homebrew/opt/python@3.11/bin:$PATH"
+
+echo -n "Python: " && python --version
+
+python3 -m venv venv
+
+pip3 install --upgrade setuptools wheel future absl-py "numpy<2" jax['cpu'] opencv-contrib-python protobuf==3.20.1 six==1.14.0 tensorflow-macos==2.16.2 tf_slim
+pip3 install --upgrade tensorflow-macos==2.16.2 tf_slim
+
+# Other bullshit
 brew install protobuf@3
 brew install git 
 brew install wget 
@@ -12,12 +26,8 @@ brew install cmake
 brew install pkg-config 
 brew install curl
 brew install ffmpeg
-brew install python@3.11
-# brew install node@20
 brew install bazelisk
 brew install llvm@16
-
-export PATH="/opt/homebrew/opt/python@3.11/bin:$PATH"
 
 npm install -g zx
 
@@ -25,7 +35,6 @@ echo -n "Bazel: " && bazel version
 echo -n "Node: " && node --version
 echo -n "npm: " && npm --version
 echo -n "clang: " && clang --version
-echo -n "Python: " && python --version
 
 # Configure JAVA_HOME
 export JAVA_HOME="$(/usr/libexec/java_home -v1.8)"
@@ -34,8 +43,6 @@ export JAVA_HOME="$(/usr/libexec/java_home -v1.8)"
 LLVM_PREFIX="$(brew --prefix llvm@16)"
 export PATH="$LLVM_PREFIX/bin:$PATH"
 
-# Install Python packages
-pip3 install --break-system-packages --upgrade setuptools wheel future absl-py "numpy<2" jax['cpu'] opencv-contrib-python protobuf==3.20.1 six==1.14.0 tensorflow-macos==2.16.2 tf_slim
 
 workspace="obj/native_build_temp"
 
