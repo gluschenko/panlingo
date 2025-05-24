@@ -8,7 +8,7 @@ brew update
 # Python
 echo -n "Python: " && python --version
 
-brew uninstall python@3.13
+brew uninstall --ignore-dependencies python@3.13
 brew install python@3.11
 export PATH="/opt/homebrew/opt/python@3.11/bin:$PATH"
 
