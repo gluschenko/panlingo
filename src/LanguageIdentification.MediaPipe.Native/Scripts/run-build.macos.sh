@@ -5,7 +5,7 @@ echo "Hello world"
 
 brew update
 
-brew uninstall python
+brew uninstall --ignore-dependencies python
 
 brew install protobuf@3
 brew install git 
