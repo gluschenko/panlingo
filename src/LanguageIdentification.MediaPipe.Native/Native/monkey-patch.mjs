@@ -38,10 +38,10 @@ function b()
     const lineEnding = "\\r?\\n";
 
     const oldTextA = new RegExp(`build:linux --define=xnn_enable_avx512amx=false${lineEnding}`, 'g');
-    const newTextA = `build:linux --define=xnn_enable_avx512amx=false\nbuild:linux --define=xnn_enable_avx512fp16=false\nbuild:linux --define=xnn_enable_avxvnniint8=false\n\n`;
+    const newTextA = `build:linux --define=xnn_enable_avx512amx=false\nbuild:linux --define=xnn_enable_avx512fp16=false\nbuild:linux --define=xnn_enable_avxvnni=false\nbuild:linux --define=xnn_enable_avxvnniint8=false\n\n`;
 
     const oldTextB = new RegExp(`build:windows --host_copt=/D_USE_MATH_DEFINES${lineEnding}`, 'g');
-    const newTextB = `build:windows --host_copt=/D_USE_MATH_DEFINES\nbuild:windows --define=xnn_enable_avx512amx=false\nbuild:windows --define=xnn_enable_avx512fp16=false\nbuild:windows --define=xnn_enable_avxvnni=falsee\nbuild:windows --define=xnn_enable_avxvnniint8=false\n\n`;
+    const newTextB = `build:windows --host_copt=/D_USE_MATH_DEFINES\nbuild:windows --define=xnn_enable_avx512amx=false\nbuild:windows --define=xnn_enable_avx512fp16=false\nbuild:windows --define=xnn_enable_avxvnni=false\nbuild:windows --define=xnn_enable_avxvnniint8=false\n\n`;
 
     findAndPatch(".bazelrc", [
         { a: oldTextA, b: newTextA },
@@ -49,12 +49,16 @@ function b()
     ]);
 }
 
+// MSVC:
+// error C7555: use of designated initializers requires at least '/std:c++20'
 function c() {
-    const oldText = `
-    language_detector_result.push_back(
-        {.language_code = *category.category_name,
-         .probability = category.score});
-    `;
+    const lineEnding = "\\r?\\n";
+
+    const oldText = new RegExp(
+        `    language_detector_result.push_back(${lineEnding}` +
+        `        {.language_code = *category.category_name,${lineEnding}` +
+        `         .probability = category.score});${lineEnding}`, 'g');
+
     const newText = `
     LanguageDetectorPrediction prediction;
     prediction.language_code = *category.category_name;
