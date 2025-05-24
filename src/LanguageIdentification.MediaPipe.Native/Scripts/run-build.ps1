@@ -3,6 +3,38 @@ $ErrorActionPreference = "Stop"
 
 Write-Host "Hello world"
 
+if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
+    Set-ExecutionPolicy Bypass -Scope Process -Force
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+}
+
+choco upgrade chocolatey -y
+
+choco install python --version=3.11.0 -y
+
+python --version
+
+python -m venv venv
+.\venv\Scripts\activate
+
+python -m pip install --upgrade pip
+pip install setuptools wheel future absl-py "numpy<2" jax[cpu] opencv-contrib-python protobuf==3.20.1 six==1.14.0 tensorflow tf_slim
+
+choco install git wget cmake curl ffmpeg -y
+
+choco install bazelisk -y
+
+choco install llvm -y
+
+choco install nodejs -y
+npm install -g zx
+
+bazel version
+node --version
+npm --version
+clang --version
+
 $workspace = "obj/native_build_temp"
 
 New-Item -ItemType Directory -Force -Path $workspace | Out-Null
