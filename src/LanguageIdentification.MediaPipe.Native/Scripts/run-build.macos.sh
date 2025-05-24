@@ -11,12 +11,12 @@ echo -n "Python: " && python --version
 
 brew uninstall --ignore-dependencies python@3.13
 brew install python@3.11
-export PATH="/opt/homebrew/opt/python@3.11/bin:$PATH"
-
-echo -n "Python: " && python --version
+export PATH="/opt/homebrew/opt/python@3.11/libexec/bin:$PATH"
+echo -n "Python: " && which python3 && python3 --version && venv/bin/python --version && venv/bin/pip --version
 
 python3 -m venv venv
 source venv/bin/activate
+
 python3 -m pip install --upgrade pip
 
 pip install --break-system-packages --upgrade setuptools wheel future absl-py
