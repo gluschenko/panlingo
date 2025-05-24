@@ -55,9 +55,9 @@ function c() {
     const lineEnding = "\\r?\\n";
 
     const oldText = new RegExp(
-        `    language_detector_result.push_back(${lineEnding}` +
-        `        {.language_code = *category.category_name,${lineEnding}` +
-        `         .probability = category.score});${lineEnding}`, 'g');
+        `    language_detector_result\\.push_back\\(${lineEnding}` +
+        `        \\{\\.language_code = \\*category\\.category_name,${lineEnding}` +
+        `         \\.probability = category\\.score\\}\\);${lineEnding}`, 'g');
 
     const newText = `
     LanguageDetectorPrediction prediction;
