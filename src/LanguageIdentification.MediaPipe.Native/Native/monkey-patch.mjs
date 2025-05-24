@@ -43,8 +43,8 @@ function b()
     const oldTextB = new RegExp(`build:windows --host_copt=/D_USE_MATH_DEFINES${lineEnding}`, 'g');
     const newTextB = `build:windows --host_copt=/D_USE_MATH_DEFINES\nbuild:windows --define=xnn_enable_avx512amx=false\nbuild:windows --define=xnn_enable_avx512fp16=false\nbuild:windows --define=xnn_enable_avxvnni=falsee\nbuild:windows --define=xnn_enable_avxvnniint8=false\n\n`;
 
-    const oldTextC = new RegExp(`-std=c\\+\\+17`, 'g');
-    const newTextC = `-std=c++20`;
+    const oldTextC = new RegExp(`c\\+\\+17`, 'g');
+    const newTextC = `c++20`;
 
     findAndPatch(".bazelrc", [
         { a: oldTextA, b: newTextA },
