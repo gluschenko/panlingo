@@ -46,11 +46,19 @@ function c() {
     findAndPatch(".bazelrc", oldText, newText);
 }
 
+function d() {
+    const oldText = new RegExp(`-std=c++17`, 'g');
+    const newText = `-std=c++20`;
+
+    findAndPatch(".bazelrc", oldText, newText);
+}
+
 console.log('[Monkey patching is started]');
 
 await a();
 await b();
 await c();
+await d();
 
 console.log('[Monkey patching is done]');
 
