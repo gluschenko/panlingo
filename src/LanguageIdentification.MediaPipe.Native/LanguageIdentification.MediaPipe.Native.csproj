@@ -66,6 +66,16 @@
       <Visible>false</Visible>
     </Content>
   </ItemGroup>
+
+  <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
+    <Content Include="liblanguage_detector.arm64.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/osx-arm64/native/liblanguage_detector.dylib</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
   
   <ItemGroup>
     <None Include="..\..\README_MEDIAPIPE.md" Pack="true" PackagePath="\" />
