@@ -7,17 +7,22 @@ brew update
 HOMEBREW_NO_AUTO_UPDATE=1
 
 # Python
-echo -n "Python: " && python --version
+PYTHON311_BIN="/opt/homebrew/opt/python@3.11/bin/python3.11"
 
-brew uninstall --ignore-dependencies python@3.13
-brew install python@3.11
-export PATH="/opt/homebrew/opt/python@3.11/libexec/bin:$PATH"
-echo -n "Python: " && which python3 && python3 --version && venv/bin/python --version && venv/bin/pip --version
+if [ ! -x "$PYTHON311_BIN" ]; then
+    echo "Installing Python 3.11..."
+    brew install python@3.11
+fi
 
-python3 -m venv venv
+echo -n "Using Python binary: " && echo "$PYTHON311_BIN"
+echo -n "Python version: " && "$PYTHON311_BIN" --version
+
+# Virtual environment
+"$PYTHON311_BIN" -m venv venv
 source venv/bin/activate
 
-python3 -m pip install --upgrade pip
+python --version
+python -m pip install --upgrade pip
 
 pip install --break-system-packages --upgrade setuptools wheel future absl-py
 pip install --break-system-packages --upgrade tensorflow-macos==2.16.2 tf_slim
