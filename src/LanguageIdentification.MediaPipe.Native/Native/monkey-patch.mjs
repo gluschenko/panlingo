@@ -49,10 +49,29 @@ function b()
     ]);
 }
 
+function c() {
+    const oldText = `
+    language_detector_result.push_back(
+        {.language_code = *category.category_name,
+         .probability = category.score});
+    `;
+    const newText = `
+    LanguageDetectorPrediction prediction;
+    prediction.language_code = *category.category_name;
+    prediction.probability = category.score;
+    language_detector_result.push_back(prediction);
+    `;
+
+    findAndPatch("language_detector.cc", [
+        { a: oldText, b: newText },
+    ]);
+}
+
 console.log('[Monkey patching is started]');
 
 await a();
 await b();
+await c();
 
 console.log('[Monkey patching is done]');
 
