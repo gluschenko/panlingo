@@ -1,4 +1,5 @@
-# PowerShell script for Windows
+# PowerShell equivalent script
+# Ensure script stops if any command fails
 $ErrorActionPreference = "Stop"
 
 Write-Host "Hello world"
