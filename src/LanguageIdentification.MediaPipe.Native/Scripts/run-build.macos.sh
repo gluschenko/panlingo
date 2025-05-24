@@ -15,11 +15,13 @@ export PATH="/opt/homebrew/opt/python@3.11/bin:$PATH"
 echo -n "Python: " && python --version
 
 python3 -m venv venv
+source venv/bin/activate
+python3 -m pip install --upgrade pip
 
-pip3 install --break-system-packages --upgrade setuptools wheel future absl-py
-pip3 install --break-system-packages --upgrade tensorflow-macos==2.16.2 tf_slim
-pip3 install --break-system-packages --upgrade "numpy<2" jax['cpu'] opencv-contrib-python protobuf==3.20.1 six==1.14.0
-pip3 install --break-system-packages --upgrade opencv-contrib-python protobuf==3.20.1 six==1.14.0
+pip install --break-system-packages --upgrade setuptools wheel future absl-py
+pip install --break-system-packages --upgrade tensorflow-macos==2.16.2 tf_slim
+pip install --break-system-packages --upgrade "numpy<2" jax['cpu'] opencv-contrib-python protobuf==3.20.1 six==1.14.0
+pip install --break-system-packages --upgrade opencv-contrib-python protobuf==3.20.1 six==1.14.0
 
 # Other bullshit
 brew install protobuf@3
