@@ -68,6 +68,16 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
+    <Content Include="liblanguage_detector.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/win-x64/native</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
     <Content Include="liblanguage_detector.arm64.dylib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
