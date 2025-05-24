@@ -5,8 +5,6 @@ echo "Hello world"
 
 brew update
 
-brew uninstall --ignore-dependencies python
-
 brew install protobuf@3
 brew install git 
 brew install wget 
@@ -18,6 +16,8 @@ brew install python@3.11
 # brew install node@20
 brew install bazelisk
 brew install llvm@16
+
+export PATH="/opt/homebrew/opt/python@3.11/bin:$PATH"
 
 npm install -g zx
 
