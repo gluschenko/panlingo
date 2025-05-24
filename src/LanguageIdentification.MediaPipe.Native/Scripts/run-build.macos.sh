@@ -8,6 +8,7 @@ brew update
 # Python
 echo -n "Python: " && python --version
 
+brew uninstall python@3.13
 brew install python@3.11
 export PATH="/opt/homebrew/opt/python@3.11/bin:$PATH"
 
@@ -15,8 +16,10 @@ echo -n "Python: " && python --version
 
 python3 -m venv venv
 
-pip3 install --upgrade setuptools wheel future absl-py "numpy<2" jax['cpu'] opencv-contrib-python protobuf==3.20.1 six==1.14.0 tensorflow-macos==2.16.2 tf_slim
-pip3 install --upgrade tensorflow-macos==2.16.2 tf_slim
+pip3 install --break-system-packages --upgrade setuptools wheel future absl-py
+pip3 install --break-system-packages --upgrade tensorflow-macos==2.16.2 tf_slim
+pip3 install --break-system-packages --upgrade "numpy<2" jax['cpu'] opencv-contrib-python protobuf==3.20.1 six==1.14.0
+pip3 install --break-system-packages --upgrade opencv-contrib-python protobuf==3.20.1 six==1.14.0
 
 # Other bullshit
 brew install protobuf@3
