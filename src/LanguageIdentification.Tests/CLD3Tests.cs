@@ -1,10 +1,29 @@
-﻿using Panlingo.LanguageIdentification.CLD3;
+﻿using System.Runtime.InteropServices;
+using Panlingo.LanguageIdentification.CLD3;
 using Panlingo.LanguageIdentification.Tests.Helpers;
 
 namespace Panlingo.LanguageIdentification.Tests;
 
 public class CLD3Tests
 {
+    [Fact]
+    public void CLD3CheckPlatformSupport()
+    {
+        var isSupported = RuntimeInformation.OSArchitecture switch
+        {
+            Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
+            Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
+            Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+            Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+            _ => false,
+        };
+
+        if (isSupported)
+        {
+            Assert.True(CLD3Detector.IsSupported());
+        }
+    }
+
     [SkippableTheory]
     [InlineData("en", Constants.PHRASE_ENG_1, 0.9985)]
     [InlineData("uk", Constants.PHRASE_UKR_1, 0.9992)]
