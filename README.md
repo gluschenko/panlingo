@@ -76,7 +76,7 @@ functionality into their applications.
 | **CLD3**      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | **FastText**  | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | **Whatlang**  | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| **MediaPipe** | :white_check_mark: | :x:                | :white_check_mark:\* |
+| **MediaPipe** | :white_check_mark: | :white_check_mark: | :white_check_mark:\* |
 | **Lingua**    | :white_check_mark: | :white_check_mark: | :white_check_mark:\* |
 
 :white_check_mark: — Full support |
