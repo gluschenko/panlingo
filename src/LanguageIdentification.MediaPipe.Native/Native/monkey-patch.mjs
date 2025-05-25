@@ -71,11 +71,33 @@ function c() {
     ]);
 }
 
+// MP_EXPORT with Windows-specific syntax for FFI
+function d() {
+    const lineEnding = "\\r?\\n";
+
+    const oldText = new RegExp(`#define MP_EXPORT __attribute__((visibility("default")))${lineEnding}`, 'g');
+
+    const newText = `
+#   if defined(_WIN32) || defined(_WIN64)
+#       define MP_EXPORT __declspec(dllexport)
+#   elif defined(__GNUC__) || defined(__clang__)
+#       define MP_EXPORT __attribute__((visibility("default")))
+#   else
+#       define MP_EXPORT
+#   endif
+    `;
+
+    findAndPatch("language_detector.h", [
+        { a: oldText, b: newText },
+    ]);
+}
+
 console.log('[Monkey patching is started]');
 
 await a();
 await b();
 await c();
+await d();
 
 console.log('[Monkey patching is done]');
 
