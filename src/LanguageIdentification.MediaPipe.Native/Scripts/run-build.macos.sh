@@ -85,7 +85,7 @@ bazel build -c opt \
     --sandbox_debug --verbose_failures \
     //mediapipe/tasks/c/text/language_detector:liblanguage_detector.dylib
 
-cp ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.dylib ../../liblanguage_detector.$ARCH.dylib
+cp ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.dylib ../../libmediapipe_language_detector.$ARCH.dylib
 
 cd ../..
 rm -rf "$workspace"

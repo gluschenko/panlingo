@@ -7,7 +7,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe.Native
         /// <summary>
         /// Name of native binary
         /// </summary>
-        public const string Name = "language_detector";
+        public const string Name = "mediapipe_language_detector";
         /// <summary>
         /// Name of model
         /// </summary>

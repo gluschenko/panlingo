@@ -1,1 +1,3 @@
-liblanguage_detector.so
+libmediapipe_language_detector.so
+mediapipe_language_detector.dll
+libmediapipe_language_detector.arm64.dylib
