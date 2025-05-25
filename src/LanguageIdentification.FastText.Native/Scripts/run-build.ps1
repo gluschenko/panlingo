@@ -40,6 +40,5 @@ Copy-Item -Path ".\Debug\fasttext.dll" -Destination "..\..\..\fasttext.dll"
 # List directory contents recursively
 Get-ChildItem -Recurse -Path .
 
-# Clean up
 cd ../..
 Write-Output "Goodbye world"

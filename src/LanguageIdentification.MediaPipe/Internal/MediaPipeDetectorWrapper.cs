@@ -15,7 +15,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe.Internal
         [DllImport(MediaPipeNativeLibrary.Name, EntryPoint = "language_detector_detect", CallingConvention = CallingConvention.Cdecl)]
         public static extern int UseLanguageDetector(
             IntPtr handle,
-            string text,
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string text,
             ref LanguageDetectorResult result,
             out IntPtr errorMessage
         );

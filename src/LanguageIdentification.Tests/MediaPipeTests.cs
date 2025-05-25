@@ -1,4 +1,5 @@
-﻿using Panlingo.LanguageIdentification.MediaPipe;
+﻿using System.Runtime.InteropServices;
+using Panlingo.LanguageIdentification.MediaPipe;
 using Panlingo.LanguageIdentification.Tests.Helpers;
 
 namespace Panlingo.LanguageIdentification.Tests;
@@ -6,6 +7,23 @@ namespace Panlingo.LanguageIdentification.Tests;
 public class MediaPipeTests : IAsyncLifetime
 {
     private readonly string _modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models/mediapipe_language_detector.tflite");
+
+    [Fact]
+    public void MediaPipeCheckPlatformSupport()
+    {
+        var isSupported = RuntimeInformation.OSArchitecture switch
+        {
+            Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
+            Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
+            Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+            _ => false,
+        };
+
+        if (isSupported)
+        {
+            Assert.True(MediaPipeDetector.IsSupported());
+        }
+    }
 
     [SkippableTheory]
     [InlineData("en", Constants.PHRASE_ENG_1, 0.9994)]
