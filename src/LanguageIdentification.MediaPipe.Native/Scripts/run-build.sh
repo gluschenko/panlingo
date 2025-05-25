@@ -24,7 +24,7 @@ cp ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.so 
 cd ..
 cd ..
 rm -rf "$workspace"
-ldd liblanguage_detector.so
+ldd libmediapipe_language_detector.so
 
 echo "Goodbye world";
 

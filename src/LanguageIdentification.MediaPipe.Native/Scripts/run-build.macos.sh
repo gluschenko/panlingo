@@ -90,6 +90,6 @@ cp ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.dyl
 cd ../..
 rm -rf "$workspace"
 
-otool -L liblanguage_detector.$ARCH.dylib
+otool -L libmediapipe_language_detector.$ARCH.dylib
 
 echo "Goodbye world"
