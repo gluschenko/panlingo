@@ -81,7 +81,7 @@
     <Content Include="libmediapipe_language_detector.arm64.dylib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>runtimes/osx-arm64/native/liblanguage_detector.dylib</PackagePath>
+      <PackagePath>runtimes/osx-arm64/native/libmediapipe_language_detector.dylib</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
