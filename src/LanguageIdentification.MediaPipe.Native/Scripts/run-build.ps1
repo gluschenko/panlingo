@@ -54,7 +54,7 @@ bazel build -c opt `
     --sandbox_debug --verbose_failures `
     //mediapipe/tasks/c/text/language_detector:liblanguage_detector.dll
 
-Copy-Item -Force ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.dll ../../liblanguage_detector.dll
+Copy-Item -Force ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.dll ../../language_detector.dll
 
 Set-Location ../..
 Write-Host "Goodbye world"
