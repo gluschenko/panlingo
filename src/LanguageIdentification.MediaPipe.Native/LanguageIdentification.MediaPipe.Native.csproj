@@ -68,7 +68,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
-    <Content Include="liblanguage_detector.dll">
+    <Content Include="language_detector.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/win-x64/native</PackagePath>
