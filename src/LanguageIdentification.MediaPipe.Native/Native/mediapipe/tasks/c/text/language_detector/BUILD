@@ -68,7 +68,9 @@ cc_binary(
     deps = [":language_detector_lib"],
 )
 
-# Windows
+# Modified code:
+# Added support for Windows
+# 
 # bazel build -c opt --linkopt -s --strip always --define MEDIAPIPE_DISABLE_GPU=1 \
 # //mediapipe/tasks/c/text/language_detector:liblanguage_detector.dll
 cc_binary(
