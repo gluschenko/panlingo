@@ -57,13 +57,4 @@ bazel build -c opt `
 Copy-Item -Force ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.dll ../../liblanguage_detector.dll
 
 Set-Location ../..
-Remove-Item -Recurse -Force $workspace
-
-Write-Host "DLL Dependencies:"
-if (Get-Command dumpbin -ErrorAction SilentlyContinue) {
-    dumpbin /DEPENDENTS liblanguage_detector.dll
-} else {
-    Write-Warning "You need to install 'Developer Command Prompt for VS'."
-}
-
 Write-Host "Goodbye world"
