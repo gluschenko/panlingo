@@ -73,10 +73,7 @@ function c() {
 
 // MP_EXPORT with Windows-specific syntax for FFI
 function d() {
-    const lineEnding = "\\r?\\n";
-
-    const oldText = new RegExp(`#define MP_EXPORT __attribute__((visibility("default")))${lineEnding}`, 'g');
-
+    const oldText = `#define MP_EXPORT __attribute__((visibility("default")))`;
     const newText = `
 #   if defined(_WIN32) || defined(_WIN64)
 #       define MP_EXPORT __declspec(dllexport)
