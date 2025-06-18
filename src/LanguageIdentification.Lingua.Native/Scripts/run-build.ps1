@@ -4,7 +4,7 @@ $ErrorActionPreference = "Stop"
 
 Write-Output "Hello world"
 
-$workspace = "build_temp"
+$workspace = "obj/native_build_temp"
 
 # Copy directories
 Copy-Item -Path "Native\lingua-ffi\." -Destination $workspace -Recurse -Force
@@ -21,7 +21,7 @@ cargo build --release
 Get-ChildItem -Recurse -Path .
 
 # Display shared library dependencies
-Copy-Item -Path ".\target\release\lingua.dll" -Destination "..\lingua.dll"
+Copy-Item -Path ".\target\release\lingua.dll" -Destination "..\..\lingua.dll"
 
 # Clean up
 Write-Output "Goodbye world"

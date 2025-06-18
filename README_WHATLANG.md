@@ -144,6 +144,15 @@ class Program
 | Tagalog     | tgl       | `WhatlangLanguage.Tgl` |
 | Armenian    | hye       | `WhatlangLanguage.Hye` |
 
+## License
+
+This project is licensed under the [MIT License](./LICENSE) © 2024–2025 Alexander Gluschenko.
+
+Includes software from the following project(s):
+- [Whatlang](https://github.com/greyblake/whatlang-rs) — © 2017 Serhii Potapov and others, licensed under MIT
+
+See the [LICENSE](./LICENSE) file for full details.
+
 ---
 
 We value your feedback. Feel free to open issues or contribute to the repository. Let’s make language detection in .NET even more powerful and versatile! 🌍📝

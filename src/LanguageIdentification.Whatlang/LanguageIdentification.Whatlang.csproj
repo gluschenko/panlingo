@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
-    <Version>0.4.0</Version>
+    <Version>0.5.0</Version>
     <PackageId>Panlingo.LanguageIdentification.Whatlang</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.Whatlang</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.Whatlang</RootNamespace>
@@ -10,7 +10,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2025</Copyright>
+    <Copyright>© 2025 Alexander Gluschenko; © 2017 Serhii Potapov; © 2014 Titus Wormer; © 2008 Kent S Johnson; © 2006 Jacob R Rideout; © 2004 Maciej Ceglowski</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection whatlang</PackageTags>
     <PackageReadmeFile>README_WHATLANG.md</PackageReadmeFile>
@@ -32,10 +32,15 @@
       library to accurately and quickly recognize the languages of given texts. Perfect for projects that require lightweight yet
       reliable language detection.
     </Description>
-    <Configurations>Debug;Release;CI</Configurations>
+    <Configurations>Debug;Release;CI;DebugLinuxOnly;ReleaseLinuxOnly</Configurations>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+  <PropertyGroup Condition="$(Configuration) != 'ReleaseLinuxOnly' AND $(Configuration) != 'DebugLinuxOnly'">
+    <DefineConstants>$(DefineConstants);ALL_TARGETS</DefineConstants>
+    <UseAllTargets Condition="'$(DefineConstants)' != '' and $(DefineConstants.Contains('ALL_TARGETS'))">true</UseAllTargets>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release' AND '$(Configuration)'=='ReleaseLinuxOnly'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
     <DocumentationFile>..\Panlingo.LanguageIdentification.Whatlang.xml</DocumentationFile>
@@ -49,6 +54,7 @@
 
   <ItemGroup>
     <None Include="..\..\README_WHATLANG.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE_WHATLANG" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

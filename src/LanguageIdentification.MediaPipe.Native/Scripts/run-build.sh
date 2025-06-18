@@ -3,15 +3,15 @@ set -e
 
 echo "Hello world";
 
-workspace="build_temp"
+workspace="obj/native_build_temp"
 
-mkdir "$workspace" -p
+mkdir -p "$workspace"
 cp -a ../../third_party/mediapipe/. $workspace/.
 cp -a Native/. $workspace
 
 cd "$workspace"
 
-zx ../Native/monkey-patch.mjs
+zx ./monkey-patch.mjs
 
 bazel-6.1.1 build -c opt \
     --linkopt -s --strip always \
@@ -20,10 +20,11 @@ bazel-6.1.1 build -c opt \
     --sandbox_debug --verbose_failures \
     //mediapipe/tasks/c/text/language_detector:liblanguage_detector.so
 
-cp ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.so ../liblanguage_detector.so
+cp ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.so ../../libmediapipe_language_detector.so
+cd ..
 cd ..
 rm -rf "$workspace"
-ldd liblanguage_detector.so
+ldd libmediapipe_language_detector.so
 
 echo "Goodbye world";
 

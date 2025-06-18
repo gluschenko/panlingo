@@ -1,10 +1,29 @@
-﻿using Panlingo.LanguageIdentification.Tests.Helpers;
+﻿using System.Runtime.InteropServices;
+using Panlingo.LanguageIdentification.Tests.Helpers;
 using Panlingo.LanguageIdentification.Whatlang;
 
 namespace Panlingo.LanguageIdentification.Tests;
 
 public class WhatlangTests
 {
+    [Fact]
+    public void WhatlangCheckPlatformSupport()
+    {
+        var isSupported = RuntimeInformation.OSArchitecture switch
+        {
+            Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
+            Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
+            Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+            Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+            _ => false,
+        };
+
+        if (isSupported)
+        {
+            Assert.True(WhatlangDetector.IsSupported());
+        }
+    }
+
     [SkippableTheory]
     [InlineData(WhatlangLanguage.Ron, Constants.PHRASE_ENG_1, 0.0274)]
     [InlineData(WhatlangLanguage.Ukr, Constants.PHRASE_UKR_1, 0.9999)]
@@ -24,6 +43,20 @@ public class WhatlangTests
 
         Assert.Equal(languageCode, prediction.Language);
         Assert.Equal(score, prediction.Confidence, Constants.EPSILON);
+    }
+
+    [SkippableTheory]
+    [InlineData(WhatlangScript.Latn, Constants.PHRASE_ENG_1)]
+    [InlineData(WhatlangScript.Cyrl, Constants.PHRASE_UKR_1)]
+    [InlineData(WhatlangScript.Cyrl, Constants.PHRASE_RUS_1)]
+    public void WhatlangSingleScript(WhatlangScript script, string text)
+    {
+        Skip.IfNot(WhatlangDetector.IsSupported());
+
+        using var whatlang = new WhatlangDetector();
+
+        var prediction = whatlang.PredictScript(text: text);
+        Assert.Equal(script, prediction);
     }
 
     [SkippableTheory]

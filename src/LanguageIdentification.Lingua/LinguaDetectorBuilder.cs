@@ -5,7 +5,18 @@ using Panlingo.LanguageIdentification.Lingua.Internal;
 namespace Panlingo.LanguageIdentification.Lingua
 {
     /// <summary>
-    /// .NET wrapper for Lingua
+    /// <para>Example:</para>
+    /// <code>
+    /// using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues&lt;LinguaLanguage&gt;())
+    ///     .WithPreloadedLanguageModels()     // optional
+    ///     .WithMinimumRelativeDistance(0.95) // optional
+    ///     .WithLowAccuracyMode();            // optional
+    ///     
+    /// using var lingua = linguaBuilder.Build();
+    /// var predictions = lingua.PredictLanguages("Привіт, як справи?");
+    /// </code>
+    /// 
+    /// <para>The using-operator is required to correctly remove unmanaged resources from memory after use.</para>
     /// </summary>
     public class LinguaDetectorBuilder : IDisposable
     {
@@ -13,6 +24,11 @@ namespace Panlingo.LanguageIdentification.Lingua
         private IntPtr _builder;
         private bool _disposed = false;
 
+        /// <summary>
+        /// <para>Creates an instance for <see cref="LinguaDetectorBuilder"/>.</para>
+        /// <inheritdoc cref="LinguaDetectorBuilder"/>
+        /// </summary>
+        /// <exception cref="NotSupportedException"></exception>
         public LinguaDetectorBuilder(LinguaLanguage[] languages)
         {
             if (!LinguaDetector.IsSupported())

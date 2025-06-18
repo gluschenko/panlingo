@@ -30,18 +30,19 @@ functionality into their applications.
 2. [Features](#features)
 3. [Platform Support](#platform-support)
 4. [Key Concerns](#key-concerns)
-5. [TODO](#todo)
+5. [Contributing](#contributing)
+6. [License](#license)
 
 ## Models
 
-| Model     | Authors              | Original source code | Wrapper docs         |
-| :-------- | :------------------- | :------------------- | :------------------- |
-| CLD2      | Google, Inc.         | [@CLD2Owners/cld2](https://github.com/CLD2Owners/cld2) | [link](./README_CLD2.md) |
-| CLD3      | Google, Inc.         | [@google/cld3](https://github.com/google/cld3) | [link](./README_CLD3.md) |
-| FastText  | Meta Platforms, Inc. | [@facebookresearch/fastText](https://github.com/facebookresearch/fastText) | [link](./README_FASTTEXT.md) |
-| Whatlang  | Serhii Potapov       | [@greyblake/whatlang-rs](https://github.com/greyblake/whatlang-rs) | [link](./README_WHATLANG.md) |
-| MediaPipe | Google, Inc.         | [@google-ai-edge/mediapipe](https://github.com/google-ai-edge/mediapipe) | [link](./README_MEDIAPIPE.md) |
-| Lingua    | Peter M. Stahl       | [@pemistahl/lingua-rs](https://github.com/pemistahl/lingua-rs) | [link](./README_LINGUA.md) |
+| Model         | Authors              | License    | Original source code | Wrapper docs         |
+| :------------ | :------------------- | :--------- | :------------------- | :------------------- |
+| **CLD2**      | Google, Inc.         | Apache-2.0 | [@CLD2Owners/cld2](https://github.com/CLD2Owners/cld2) | [link](./README_CLD2.md) |
+| **CLD3**      | Google, Inc.         | Apache-2.0 | [@google/cld3](https://github.com/google/cld3) | [link](./README_CLD3.md) |
+| **FastText**  | Meta Platforms, Inc. | MIT        | [@facebookresearch/fastText](https://github.com/facebookresearch/fastText) | [link](./README_FASTTEXT.md) |
+| **Whatlang**  | Serhii Potapov       | MIT        | [@greyblake/whatlang-rs](https://github.com/greyblake/whatlang-rs) | [link](./README_WHATLANG.md) |
+| **MediaPipe** | Google, Inc.         | Apache-2.0 | [@google-ai-edge/mediapipe](https://github.com/google-ai-edge/mediapipe) | [link](./README_MEDIAPIPE.md) |
+| **Lingua**    | Peter M. Stahl       | Apache-2.0 | [@pemistahl/lingua-rs](https://github.com/pemistahl/lingua-rs) | [link](./README_LINGUA.md) |
 
 ## Key concerns
 
@@ -51,15 +52,15 @@ functionality into their applications.
 
 ## Features
 
-| Feature                    | CLD2      | CLD3           | FastText*          | Whatlang | MediaPipe**    | Lingua   |
-| :------------------------- | :-------: | :------------: | :----------------: | :------: | :------------: | :------: |
-| Single language prediction | Yes       | Yes            | Yes                | Yes      | Yes            | Yes      |
-| Multi language prediction  | Yes       | Yes            | Yes                | No       | Yes            | Yes      |
-| Supported languages        | 83        | 107            | 176 or 217         | 69       | 110            | 75       |
-| Unknown language detection | Yes       | Yes            | No                 | No       | Yes            | No       |
-| Algorithm                  | quadgrams | neural network | neural network     | trigrams | neural network | trigrams |
-| Script detection           | No        | No             | Yes (only lid218e) | Yes      | No             | No       |
-| Written in                 | C++       | C++            | C++                | Rust     | C++            | Rust     |
+| Feature                        | CLD2      | CLD3           | FastText*          | Whatlang | MediaPipe**    | Lingua   |
+| :----------------------------- | :-------: | :------------: | :----------------: | :------: | :------------: | :------: |
+| **Single language prediction** | Yes       | Yes            | Yes                | Yes      | Yes            | Yes      |
+| **Multi language prediction**  | Yes       | Yes            | Yes                | No       | Yes            | Yes      |
+| **Supported languages**        | 83        | 107            | 176 or 217         | 69       | 110            | 75       |
+| **Unknown language detection** | Yes       | Yes            | No                 | No       | Yes            | No       |
+| **Algorithm**                  | quadgrams | neural network | neural network     | trigrams | neural network | trigrams |
+| **Script detection**           | No        | No             | Yes (only lid218e) | Yes      | No             | No       |
+| **Written in**                 | C++       | C++            | C++                | Rust     | C++            | Rust     |
 
 \* When using these models: 
 [lid176](https://fasttext.cc/docs/en/language-identification.html), 
@@ -69,29 +70,20 @@ functionality into their applications.
 
 ## Platform support
 
-| Model     |  Linux             | Windows            |  macOS             |
-| :-------- | :----------------: | :----------------: | :----------------: |
-| CLD2      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| CLD3      | :white_check_mark: | :white_check_mark: | :construction:     |
-| FastText  | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Whatlang  | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| MediaPipe | :white_check_mark: | :x:                | :x:                |
-| Lingua    | :white_check_mark: | :white_check_mark: | :white_check_mark:\* |
+| Model         |  Linux             | Windows            |  macOS             |
+| :------------ | :----------------: | :----------------: | :----------------: |
+| **CLD2**      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| **CLD3**      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| **FastText**  | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| **Whatlang**  | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| **MediaPipe** | :white_check_mark: | :white_check_mark: | :white_check_mark:\* |
+| **Lingua**    | :white_check_mark: | :white_check_mark: | :white_check_mark:\* |
 
 :white_check_mark: — Full support |
 :x: — No support |
 :construction: — Under research
 
 \* **arm64** CPU only (Apple silicon M series)
-
-## TODO
-
-- [x] Research support for other platforms (Windows, macOS).
-- [ ] Increase unit testing coverage.
-- [ ] Implement more native methods (FastText).
-- [x] Self-contained models (FastText + MediaPipe).
-- [x] Remove protobuf dependency (CLD3).
-
 
 ## Contributing
 
@@ -138,7 +130,55 @@ To get started with contributing, follow these simple steps:
    git push origin feature/your-feature-name
    ```
 
-6. **Open a Pull Request**
+6. **Build**
+
+   Each library project in the solution has four configurations: `ReleaseLinuxOnly`, `DebugLinuxOnly`, `Release`, and `Debug`. 
+   - The `ReleaseLinuxOnly` and `DebugLinuxOnly` configurations are for building on a local Linux or Windows machine (WSL is supported as well). It produces native binaries only for Linux.
+   - The `Release` and `Debug` configurations are intended for cross-platform builds, which are only supported in CI/CD environments like GitHub Actions.
+   
+   Here's how you can build the projects on a local Linux machine.
+   
+   **Requirements:**
+   - Windows 10 or higher.
+   - [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) set up for simulating a Linux environment.
+   - [Docker Desktop](https://www.docker.com/products/docker-desktop/) for container management.
+   - 45GB of free disk space for storing Docker images.
+   - Modern CPU with AVX support for optimal performance.
+   
+   **To build the entire solution:**
+   ```bash
+   cd src
+   dotnet build -c ReleaseLinuxOnly
+   ```
+   
+   **To build a specific library:**
+   ```bash
+   cd src/LanguageIdentification.FastText.Native
+   dotnet build -c ReleaseLinuxOnly
+   
+   cd src/LanguageIdentification.FastText
+   dotnet build -c ReleaseLinuxOnly
+   ```
+
+7. **Run**
+
+   Here's how you can run the test project on both Linux and Windows.
+
+   **Linux:**
+   To run the test project on a Linux machine, navigate to the test project's directory and use the following command:
+   ```bash
+   cd src/LanguageIdentification.FastText.ConsoleTest
+   dotnet run -c ReleaseLinuxOnly
+   ```
+   
+   **Windows:**
+   If you're on a Windows machine, you can still run the test project using WSL. Follow these steps:
+   ```bash
+   cd src/LanguageIdentification.FastText.ConsoleTest
+   wsl -d Ubuntu -e bash -c "dotnet run -c ReleaseLinuxOnly"
+   ```
+
+8. **Open a Pull Request**
 
    Navigate to the repository on GitHub and open a pull request. Provide a detailed description of your changes and any additional information that might help reviewers understand your contribution.
 
@@ -149,6 +189,21 @@ After opening a pull request, it will be reviewed by one of the project maintain
 ### Code of Conduct
 
 Please note that this project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE) © 2024–2025 Alexander Gluschenko.
+
+Includes software from the following project(s):
+
+- [CLD2](https://github.com/CLD2Owners/cld2) — © 2013 Google Inc., licensed under Apache-2.0  
+- [CLD3](https://github.com/google/cld3) — © 2016 Google Inc., licensed under Apache-2.0  
+- [FastText](https://github.com/facebookresearch/fastText) — © 2016–present Meta Platforms, Inc., licensed under MIT  
+- [Lingua](https://github.com/pemistahl/lingua-rs) — © 2020–2023 Peter M. Stahl, licensed under Apache-2.0  
+- [MediaPipe Language Detector](https://github.com/google-ai-edge/mediapipe) — © 2023–2025 Google Inc., licensed under Apache-2.0  
+- [Whatlang](https://github.com/greyblake/whatlang-rs) — © 2017 Serhii Potapov and others, licensed under MIT
+
+See the [LICENSE](./LICENSE) file for full details.
 
 ---
 

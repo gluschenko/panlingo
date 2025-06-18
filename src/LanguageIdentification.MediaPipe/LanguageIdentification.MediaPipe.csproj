@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
-    <Version>0.4.0</Version>
+    <Version>0.5.0</Version>
     <PackageId>Panlingo.LanguageIdentification.MediaPipe</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.MediaPipe</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.MediaPipe</RootNamespace>
@@ -10,7 +10,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2025</Copyright>
+    <Copyright>© 2025 Alexander Gluschenko; © 2023-2025 Google, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection mediapipe</PackageTags>
     <PackageReadmeFile>README_MEDIAPIPE.md</PackageReadmeFile>
@@ -31,10 +31,15 @@
       leveraging the powerful and efficient MediaPipe library to recognize and classify texts in multiple languages.
       Ideal for applications that require fast and accurate language detection.
     </Description>
-    <Configurations>Debug;Release;CI</Configurations>
+    <Configurations>Debug;Release;CI;DebugLinuxOnly;ReleaseLinuxOnly</Configurations>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+  <PropertyGroup Condition="$(Configuration) != 'ReleaseLinuxOnly' AND $(Configuration) != 'DebugLinuxOnly'">
+    <DefineConstants>$(DefineConstants);ALL_TARGETS</DefineConstants>
+    <UseAllTargets Condition="'$(DefineConstants)' != '' and $(DefineConstants.Contains('ALL_TARGETS'))">true</UseAllTargets>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release' AND '$(Configuration)'=='ReleaseLinuxOnly'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
     <DocumentationFile>..\Panlingo.LanguageIdentification.MediaPipe.xml</DocumentationFile>
@@ -44,16 +49,12 @@
     <ProjectReference Include="..\LanguageIdentification.MediaPipe.Native\LanguageIdentification.MediaPipe.Native.csproj">
       <IncludeAssets>All</IncludeAssets>
     </ProjectReference>
-    <ProjectReference 
-      Include="..\LanguageIdentification.MediaPipe.SourceGenerator\LanguageIdentification.MediaPipe.SourceGenerator.csproj" 
-      PrivateAssets="all" 
-      OutputItemType="Analyzer" 
-      ReferenceOutputAssembly="false" 
-    />
+    <ProjectReference Include="..\LanguageIdentification.MediaPipe.SourceGenerator\LanguageIdentification.MediaPipe.SourceGenerator.csproj" PrivateAssets="all" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\README_MEDIAPIPE.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE_MEDIAPIPE" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

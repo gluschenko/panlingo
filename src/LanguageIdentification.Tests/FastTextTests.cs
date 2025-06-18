@@ -1,4 +1,5 @@
-﻿using Panlingo.LanguageIdentification.FastText;
+﻿using System.Runtime.InteropServices;
+using Panlingo.LanguageIdentification.FastText;
 using Panlingo.LanguageIdentification.Tests.Helpers;
 
 namespace Panlingo.LanguageIdentification.Tests;
@@ -6,6 +7,24 @@ namespace Panlingo.LanguageIdentification.Tests;
 public class FastTextTests : IAsyncLifetime
 {
     private readonly string _modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models/fasttext176.bin");
+
+    [Fact]
+    public void FastTextCheckPlatformSupport()
+    {
+        var isSupported = RuntimeInformation.OSArchitecture switch
+        {
+            Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
+            Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
+            Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+            Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+            _ => false,
+        };
+
+        if (isSupported)
+        {
+            Assert.True(FastTextDetector.IsSupported());
+        }
+    }
 
     [SkippableTheory]
     [InlineData("__label__en", Constants.PHRASE_ENG_1, 0.9955)]

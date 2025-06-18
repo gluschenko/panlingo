@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.4.0</Version>
+    <Version>0.5.0</Version>
     <PackageId>Panlingo.LanguageIdentification.MediaPipe.Native</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.MediaPipe.Native</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.MediaPipe.Native</RootNamespace>
@@ -10,7 +10,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2025</Copyright>
+    <Copyright>© 2025 Alexander Gluschenko; © 2023-2025 Google, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection mediapipe</PackageTags>
     <PackageReadmeFile>README_MEDIAPIPE.md</PackageReadmeFile>
@@ -23,10 +23,15 @@
       in applications using the MediaPipeWrapper for .NET. This package is essential for the proper functioning
       of MediaPipe-based language identification features in your .NET projects.
     </Description>
-    <Configurations>Debug;Release;CI</Configurations>
+    <Configurations>Debug;Release;CI;DebugLinuxOnly;ReleaseLinuxOnly</Configurations>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+  <PropertyGroup Condition="$(Configuration) != 'ReleaseLinuxOnly' AND $(Configuration) != 'DebugLinuxOnly'">
+    <DefineConstants>$(DefineConstants);ALL_TARGETS</DefineConstants>
+    <UseAllTargets Condition="'$(DefineConstants)' != '' and $(DefineConstants.Contains('ALL_TARGETS'))">true</UseAllTargets>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release' AND '$(Configuration)'=='ReleaseLinuxOnly'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
     <DocumentationFile>..\Panlingo.LanguageIdentification.MediaPipe.Native.xml</DocumentationFile>
@@ -53,7 +58,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="liblanguage_detector.so">
+    <Content Include="libmediapipe_language_detector.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/linux-x64/native</PackagePath>
@@ -61,9 +66,30 @@
       <Visible>false</Visible>
     </Content>
   </ItemGroup>
+
+  <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
+    <Content Include="mediapipe_language_detector.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/win-x64/native</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
+    <Content Include="libmediapipe_language_detector.arm64.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/osx-arm64/native/libmediapipe_language_detector.dylib</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
   
   <ItemGroup>
     <None Include="..\..\README_MEDIAPIPE.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE_MEDIAPIPE" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

@@ -1,10 +1,28 @@
-﻿using Panlingo.LanguageIdentification.Lingua;
+﻿using System.Runtime.InteropServices;
+using Panlingo.LanguageIdentification.Lingua;
 using Panlingo.LanguageIdentification.Tests.Helpers;
 
 namespace Panlingo.LanguageIdentification.Tests;
 
 public class LinguaTests
 {
+    [Fact]
+    public void LinguaCheckPlatformSupport()
+    {
+        var isSupported = RuntimeInformation.OSArchitecture switch
+        {
+            Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
+            Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
+            Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
+            _ => false,
+        };
+
+        if (isSupported)
+        {
+            Assert.True(LinguaDetector.IsSupported());
+        }
+    }
+
     [SkippableTheory]
     [InlineData(LinguaLanguage.English, Constants.PHRASE_ENG_1, 0.1666)]
     [InlineData(LinguaLanguage.Ukrainian, Constants.PHRASE_UKR_1, 0.8228)]
