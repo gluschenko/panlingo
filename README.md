@@ -142,7 +142,7 @@ To get started with contributing, follow these simple steps:
    - Windows 10 or higher.
    - [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) set up for simulating a Linux environment.
    - [Docker Desktop](https://www.docker.com/products/docker-desktop/) for container management.
-   - 45GB of free disk space for storing Docker images.
+   - 45GB+ of free disk space for storing Docker images.
    - Modern CPU with AVX support for optimal performance.
    
    **To build the entire solution:**
