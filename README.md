@@ -162,17 +162,17 @@ To get started with contributing, follow these simple steps:
 
 7. **Test**
 
-   Here's how you can run the test project on both Linux and Windows.
+   To execute the test project on Linux or Windows, follow these instructions:
 
    **Linux:**
-   To run the test project on a Linux machine, navigate to the test project's directory and use the following command:
+   For Linux systems, access the test project's directory and execute:
    ```bash
    cd src/LanguageIdentification.Tests
    dotnet test -c ReleaseLinuxOnly
    ```
-   
+
    **Windows:**
-   If you're on a Windows machine, you can still run the test project using WSL. Follow these steps:
+   On Windows, you can utilize WSL to run the test project. Do so by:
    ```bash
    cd src/LanguageIdentification.Tests
    wsl -d Ubuntu -e bash -c "dotnet test -c ReleaseLinuxOnly"
@@ -180,17 +180,17 @@ To get started with contributing, follow these simple steps:
 
 8. **Run**
 
-   Here's how you can run the test project on both Linux and Windows.
+   To run the test project on either Linux or Windows, use the following steps:
 
    **Linux:**
-   To run the test project on a Linux machine, navigate to the test project's directory and use the following command:
+   If you're on a Linux OS, navigate to the directory of the test project and run:
    ```bash
    cd src/LanguageIdentification.FastText.ConsoleTest
    dotnet run -c ReleaseLinuxOnly
    ```
-   
+
    **Windows:**
-   If you're on a Windows machine, you can still run the test project using WSL. Follow these steps:
+   For Windows users, you can employ WSL to execute the test project by executing:
    ```bash
    cd src/LanguageIdentification.FastText.ConsoleTest
    wsl -d Ubuntu -e bash -c "dotnet run -c ReleaseLinuxOnly"
