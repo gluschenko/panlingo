@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".misc", ".misc", "{F741FF11-5F70-4E3B-BC72-9DA3090B90E9}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		run-tests.ps1 = run-tests.ps1
 		test-ci.Dockerfile = test-ci.Dockerfile
 		test.Dockerfile = test.Dockerfile
 		testEnvironments.json = testEnvironments.json

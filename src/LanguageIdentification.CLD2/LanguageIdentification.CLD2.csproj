@@ -25,8 +25,8 @@
 - Initial release
     </PackageReleaseNotes>
     <Description>
-      This is a .NET wrapper for the Chrome Language Detection (CLD2) library by Google Inc.
-      
+      This is a .NET wrapper for the Compact Language Detector (CLD2) library by Google Inc.
+
       This package facilitates the integration of language identification capabilities into .NET applications,
       allowing for accurate and efficient recognition of over 80 languages with minimal effort.
       Perfect for applications dealing with multilingual texts or requiring automatic language detection.
