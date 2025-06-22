@@ -178,6 +178,16 @@ To get started with contributing, follow these simple steps:
    wsl -d Ubuntu -e bash -c "dotnet test -c ReleaseLinuxOnly"
    ```
 
+   **Docker:**
+   Also you can run test project inside Docker-container:
+   ```bash
+   cd src
+   docker build --file test.Dockerfile -t panlingo-test-image .
+   docker container create --name panlingo-test-runner -v "${PWD}:/src" -i panlingo-test-image
+   docker container start panlingo-test-runner
+   docker exec panlingo-test-runner sh -c "cd /src && dotnet test -c ReleaseLinuxOnly -l 'console;verbosity=detailed'"
+   ```
+
 8. **Run**
 
    To run the test project on either Linux or Windows, use the following steps:
