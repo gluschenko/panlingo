@@ -188,6 +188,16 @@ jobs:
       working-directory: ${{env.ROOT}}
       run: mkdir -p local-packages
 
+    - name: 📂 Setup .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: |
+          5.0.x
+          6.0.x
+          7.0.x
+          8.0.x
+          9.0.x
+
     - uses: actions/download-artifact@v4
       with:
         pattern: build-*

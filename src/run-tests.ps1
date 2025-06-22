@@ -1,5 +1,7 @@
-$image_name = "panlingo-test-image"
+﻿$image_name = "panlingo-test-image"
 $container_name = "panlingo-test-runner"
+
+dotnet build -c ReleaseLinuxOnly
 
 docker build --file test.Dockerfile -t ${image_name} .
 docker container create --name ${container_name} -v "${PWD}:/src" -i ${image_name}
