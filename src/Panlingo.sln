@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".misc", ".misc", "{F741FF11
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		run-tests.ps1 = run-tests.ps1
+		run-tests.sh = run-tests.sh
 		test-ci.Dockerfile = test-ci.Dockerfile
 		test.Dockerfile = test.Dockerfile
 		testEnvironments.json = testEnvironments.json

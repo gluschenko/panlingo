@@ -165,6 +165,7 @@ To get started with contributing, follow these simple steps:
    To execute the test project on Linux or Windows, follow these instructions:
 
    **Linux:**
+
    For Linux systems, access the test project's directory and execute:
    ```bash
    cd src/LanguageIdentification.Tests
@@ -172,6 +173,7 @@ To get started with contributing, follow these simple steps:
    ```
 
    **Windows:**
+
    On Windows, you can utilize WSL to run the test project. Do so by:
    ```bash
    cd src/LanguageIdentification.Tests
@@ -179,7 +181,8 @@ To get started with contributing, follow these simple steps:
    ```
 
    **Docker:**
-   Also you can run test project inside Docker-container:
+
+   Also you can run test project inside Docker-container on every supported platform (see [run-tests.ps1](./src/run-tests.ps1) and [run-tests.sh](./src/run-tests.sh)):
    ```bash
    cd src
    docker build --file test.Dockerfile -t panlingo-test-image .
@@ -193,6 +196,7 @@ To get started with contributing, follow these simple steps:
    To run the test project on either Linux or Windows, use the following steps:
 
    **Linux:**
+
    If you're on a Linux OS, navigate to the directory of the test project and run:
    ```bash
    cd src/LanguageIdentification.FastText.ConsoleTest
@@ -200,6 +204,7 @@ To get started with contributing, follow these simple steps:
    ```
 
    **Windows:**
+
    For Windows users, you can employ WSL to execute the test project by executing:
    ```bash
    cd src/LanguageIdentification.FastText.ConsoleTest
