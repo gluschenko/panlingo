@@ -15,19 +15,19 @@ jobs:
       fail-fast: false
       matrix:
         task: 
-          - { title: FastText, projectName: LanguageIdentification.FastText, os: windows-2019, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: fasttext.dll }
+          - { title: FastText, projectName: LanguageIdentification.FastText, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: fasttext.dll }
           - { title: FastText, projectName: LanguageIdentification.FastText, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libfasttext.x86_64.dylib }
           - { title: FastText, projectName: LanguageIdentification.FastText, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libfasttext.arm64.dylib }
           - { title: CLD2, projectName: LanguageIdentification.CLD2, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libcld2.x86_64.dylib }
           - { title: CLD2, projectName: LanguageIdentification.CLD2, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libcld2.arm64.dylib }
           - { title: CLD3, projectName: LanguageIdentification.CLD3, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libcld3.x86_64.dylib }
           - { title: CLD3, projectName: LanguageIdentification.CLD3, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libcld3.arm64.dylib }
-          - { title: Lingua, projectName: LanguageIdentification.Lingua, os: windows-2019, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: lingua.dll }
+          - { title: Lingua, projectName: LanguageIdentification.Lingua, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: lingua.dll }
           - { title: Lingua, projectName: LanguageIdentification.Lingua, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: liblingua.arm64.dylib }
-          - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: windows-2019, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: whatlang.dll }
+          - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: whatlang.dll }
           - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: macos-13, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libwhatlang.x86_64.dylib }
           - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libwhatlang.arm64.dylib }
-          - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: windows-2019, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: mediapipe_language_detector.dll }
+          - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: mediapipe_language_detector.dll }
           - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libmediapipe_language_detector.arm64.dylib }
     permissions:
       contents: read
@@ -171,7 +171,7 @@ jobs:
           - { os: ubuntu-22.04 }
           # - { os: ubuntu-20.04 }
           - { os: windows-2022 }
-          - { os: windows-2019 }
+          - { os: windows-2025 }
           - { os: macos-13 }
           - { os: macos-14 }
           - { os: macos-15 }
