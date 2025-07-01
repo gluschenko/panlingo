@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
-    <Version>0.5.0</Version>
+    <Version>0.5.1</Version>
     <PackageId>Panlingo.LanguageIdentification.CLD3</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.CLD3</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.CLD3</RootNamespace>
@@ -28,7 +28,7 @@
 - Initial release
     </PackageReleaseNotes>
     <Description>
-      This is a .NET wrapper for the Chrome Language Detection (CLD3) library by Google Inc.
+      This is a .NET wrapper for the Compact Language Detector (CLD3) library by Google Inc.
 
       This package facilitates the integration of language identification capabilities into .NET applications,
       allowing for accurate and efficient recognition of over 107 languages with minimal effort.

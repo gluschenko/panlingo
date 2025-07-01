@@ -142,7 +142,7 @@ To get started with contributing, follow these simple steps:
    - Windows 10 or higher.
    - [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) set up for simulating a Linux environment.
    - [Docker Desktop](https://www.docker.com/products/docker-desktop/) for container management.
-   - 45GB of free disk space for storing Docker images.
+   - 45GB+ of free disk space for storing Docker images.
    - Modern CPU with AVX support for optimal performance.
    
    **To build the entire solution:**
@@ -160,25 +160,58 @@ To get started with contributing, follow these simple steps:
    dotnet build -c ReleaseLinuxOnly
    ```
 
-7. **Run**
+7. **Test**
 
-   Here's how you can run the test project on both Linux and Windows.
+   To execute the test project on Linux or Windows, follow these instructions:
 
    **Linux:**
-   To run the test project on a Linux machine, navigate to the test project's directory and use the following command:
+
+   For Linux systems, access the test project's directory and execute:
+   ```bash
+   cd src/LanguageIdentification.Tests
+   dotnet test -c ReleaseLinuxOnly
+   ```
+
+   **Windows:**
+
+   On Windows, you can utilize WSL to run the test project. Do so by:
+   ```bash
+   cd src/LanguageIdentification.Tests
+   wsl -d Ubuntu -e bash -c "dotnet test -c ReleaseLinuxOnly"
+   ```
+
+   **Docker:**
+
+   Also you can run test project inside Docker-container on every supported platform (see [run-tests.ps1](./src/run-tests.ps1) and [run-tests.sh](./src/run-tests.sh)):
+   ```bash
+   cd src
+   docker build --file test.Dockerfile -t panlingo-test-image .
+   docker container create --name panlingo-test-runner -v "${PWD}:/src" -i panlingo-test-image
+   docker container start panlingo-test-runner
+   docker exec panlingo-test-runner sh -c "cd /src && dotnet test -c ReleaseLinuxOnly -l 'console;verbosity=detailed'"
+   ```
+
+8. **Run**
+
+   To run the test project on either Linux or Windows, use the following steps:
+
+   **Linux:**
+
+   If you're on a Linux OS, navigate to the directory of the test project and run:
    ```bash
    cd src/LanguageIdentification.FastText.ConsoleTest
    dotnet run -c ReleaseLinuxOnly
    ```
-   
+
    **Windows:**
-   If you're on a Windows machine, you can still run the test project using WSL. Follow these steps:
+
+   For Windows users, you can employ WSL to execute the test project by executing:
    ```bash
    cd src/LanguageIdentification.FastText.ConsoleTest
    wsl -d Ubuntu -e bash -c "dotnet run -c ReleaseLinuxOnly"
    ```
 
-8. **Open a Pull Request**
+9. **Open a Pull Request**
 
    Navigate to the repository on GitHub and open a pull request. Provide a detailed description of your changes and any additional information that might help reviewers understand your contribution.
 

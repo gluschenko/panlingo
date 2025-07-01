@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.5.0</Version>
+    <Version>0.5.1</Version>
     <PackageId>Panlingo.LanguageIdentification.CLD3.Native</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.CLD3.Native</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.CLD3.Native</RootNamespace>
@@ -18,7 +18,7 @@
       - Initial release
     </PackageReleaseNotes>
     <Description>
-      This package provides the native resources required for the CLD3 (Chrome Language Detection) library
+      This package provides the native resources required for the CLD3 (Compact Language Detector) library
       by Google Inc. It includes the necessary native components to enable language recognition capabilities
       in applications using the CLD3 for .NET. This package is essential for the proper functioning
       of the CLD3 language identification features in your .NET
