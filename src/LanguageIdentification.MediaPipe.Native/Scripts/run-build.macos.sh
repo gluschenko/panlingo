@@ -43,7 +43,7 @@ pip install --break-system-packages --upgrade "numpy<2" jax['cpu'] opencv-contri
 pip install --break-system-packages --upgrade opencv-contrib-python protobuf==3.20.1 six==1.14.0
 
 # Other bullshit
-brew install protobuf@3
+brew install protobuf@29
 brew install git 
 brew install wget 
 brew install cmake 
