@@ -164,52 +164,52 @@ To get started with contributing, follow these simple steps:
 
    To execute the test project on Linux or Windows, follow these instructions:
 
-   **Linux:**
+   * **Linux:**
 
-   For Linux systems, access the test project's directory and execute:
-   ```bash
-   cd src/LanguageIdentification.Tests
-   dotnet test -c ReleaseLinuxOnly
-   ```
+     For Linux systems, access the test project's directory and execute:
+     ```bash
+     cd src/LanguageIdentification.Tests
+     dotnet test -c ReleaseLinuxOnly
+     ```
 
-   **Windows:**
+   * **Windows:**
 
-   On Windows, you can utilize WSL to run the test project. Do so by:
-   ```bash
-   cd src/LanguageIdentification.Tests
-   wsl -d Ubuntu -e bash -c "dotnet test -c ReleaseLinuxOnly"
-   ```
+     On Windows, you can utilize WSL to run the test project. Do so by:
+     ```bash
+     cd src/LanguageIdentification.Tests
+     wsl -d Ubuntu -e bash -c "dotnet test -c ReleaseLinuxOnly"
+     ```
 
-   **Docker:**
+   * **Docker:**
 
-   Also you can run test project inside Docker-container on every supported platform (see [run-tests.ps1](./src/run-tests.ps1) and [run-tests.sh](./src/run-tests.sh)):
-   ```bash
-   cd src
-   docker build --file test.Dockerfile -t panlingo-test-image .
-   docker container create --name panlingo-test-runner -v "${PWD}:/src" -i panlingo-test-image
-   docker container start panlingo-test-runner
-   docker exec panlingo-test-runner sh -c "cd /src && dotnet test -c ReleaseLinuxOnly -l 'console;verbosity=detailed'"
-   ```
+     Also you can run test project inside Docker-container on every supported platform (see [run-tests.ps1](./src/run-tests.ps1) and [run-tests.sh](./src/run-tests.sh)):
+     ```bash
+     cd src
+     docker build --file test.Dockerfile -t panlingo-test-image .
+     docker container create --name panlingo-test-runner -v "${PWD}:/src" -i panlingo-test-image
+     docker container start panlingo-test-runner
+     docker exec panlingo-test-runner sh -c "cd /src && dotnet test -c ReleaseLinuxOnly -l 'console;verbosity=detailed'"
+     ```
 
 8. **Run**
 
    To run the test project on either Linux or Windows, use the following steps:
 
-   **Linux:**
+   * **Linux:**
 
-   If you're on a Linux OS, navigate to the directory of the test project and run:
-   ```bash
-   cd src/LanguageIdentification.FastText.ConsoleTest
-   dotnet run -c ReleaseLinuxOnly
-   ```
+     If you're on a Linux OS, navigate to the directory of the test project and run:
+     ```bash
+     cd src/LanguageIdentification.FastText.ConsoleTest
+     dotnet run -c ReleaseLinuxOnly
+     ```
 
-   **Windows:**
+   * **Windows:**
 
-   For Windows users, you can employ WSL to execute the test project by executing:
-   ```bash
-   cd src/LanguageIdentification.FastText.ConsoleTest
-   wsl -d Ubuntu -e bash -c "dotnet run -c ReleaseLinuxOnly"
-   ```
+     For Windows users, you can employ WSL to execute the test project by executing:
+     ```bash
+     cd src/LanguageIdentification.FastText.ConsoleTest
+     wsl -d Ubuntu -e bash -c "dotnet run -c ReleaseLinuxOnly"
+     ```
 
 9. **Open a Pull Request**
 
