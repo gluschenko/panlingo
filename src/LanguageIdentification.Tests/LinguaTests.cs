@@ -111,4 +111,28 @@ public class LinguaTests
         Assert.Contains(LinguaLanguage.English, labels);
         Assert.Contains(LinguaLanguage.Chinese, labels);
     }
+
+    [SkippableTheory]
+    [InlineData(Constants.MALFORMED_BYTES_0)]
+    [InlineData(Constants.MALFORMED_BYTES_1)]
+    [InlineData(Constants.MALFORMED_BYTES_2)]
+    [InlineData(Constants.MALFORMED_BYTES_3)]
+    [InlineData(Constants.MALFORMED_BYTES_4)]
+    [InlineData(Constants.MALFORMED_BYTES_5)]
+    [InlineData(Constants.MALFORMED_BYTES_6)]
+    [InlineData(Constants.MALFORMED_BYTES_7)]
+    [InlineData(Constants.MALFORMED_BYTES_8)]
+    [InlineData(Constants.MALFORMED_BYTES_9)]
+    [InlineData(Constants.MALFORMED_BYTES_10)]
+    [InlineData(Constants.MALFORMED_BYTES_11)]
+    [InlineData(Constants.MALFORMED_BYTES_12)]
+    public void LinguaMalformedBytes(string text)
+    {
+        Skip.IfNot(LinguaDetector.IsSupported());
+
+        using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
+        using var lingua = linguaBuilder.Build();
+
+        var predictions = lingua.PredictMixedLanguages(text: text);
+    }
 }

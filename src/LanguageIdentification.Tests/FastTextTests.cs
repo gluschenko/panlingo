@@ -113,6 +113,28 @@ public class FastTextTests : IAsyncLifetime
         Assert.Contains(labels, x => x.Label == "__label__ru");
     }
 
+    [SkippableTheory]
+    [InlineData(Constants.MALFORMED_BYTES_0)]
+    [InlineData(Constants.MALFORMED_BYTES_1)]
+    [InlineData(Constants.MALFORMED_BYTES_2)]
+    [InlineData(Constants.MALFORMED_BYTES_3)]
+    [InlineData(Constants.MALFORMED_BYTES_4)]
+    [InlineData(Constants.MALFORMED_BYTES_5)]
+    [InlineData(Constants.MALFORMED_BYTES_6)]
+    [InlineData(Constants.MALFORMED_BYTES_7)]
+    [InlineData(Constants.MALFORMED_BYTES_8)]
+    [InlineData(Constants.MALFORMED_BYTES_9)]
+    [InlineData(Constants.MALFORMED_BYTES_10)]
+    [InlineData(Constants.MALFORMED_BYTES_11)]
+    [InlineData(Constants.MALFORMED_BYTES_12)]
+    public void FastTextMalformedBytes(string text)
+    {
+        using var fastText = new FastTextDetector();
+        fastText.LoadDefaultModel();
+
+        var predictions = fastText.Predict(text: text, count: 10);
+    }
+
     public async Task InitializeAsync()
     {
         var url = "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin";
