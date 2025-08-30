@@ -17,10 +17,7 @@ public class LinguaTests
             _ => false,
         };
 
-        if (isSupported)
-        {
-            Assert.True(LinguaDetector.IsSupported());
-        }
+        Assert.Equal(isSupported, LinguaDetector.IsSupported());
     }
 
     [SkippableTheory]

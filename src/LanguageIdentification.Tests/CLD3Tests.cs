@@ -18,10 +18,7 @@ public class CLD3Tests
             _ => false,
         };
 
-        if (isSupported)
-        {
-            Assert.True(CLD3Detector.IsSupported());
-        }
+        Assert.Equal(isSupported, CLD3Detector.IsSupported());
     }
 
     [SkippableTheory]

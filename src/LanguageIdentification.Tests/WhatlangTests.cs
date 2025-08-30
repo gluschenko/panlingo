@@ -18,10 +18,7 @@ public class WhatlangTests
             _ => false,
         };
 
-        if (isSupported)
-        {
-            Assert.True(WhatlangDetector.IsSupported());
-        }
+        Assert.Equal(isSupported, WhatlangDetector.IsSupported());
     }
 
     [SkippableTheory]

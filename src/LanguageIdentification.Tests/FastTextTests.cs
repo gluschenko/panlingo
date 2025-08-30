@@ -20,10 +20,7 @@ public class FastTextTests : IAsyncLifetime
             _ => false,
         };
 
-        if (isSupported)
-        {
-            Assert.True(FastTextDetector.IsSupported());
-        }
+        Assert.Equal(isSupported, FastTextDetector.IsSupported());
     }
 
     [SkippableTheory]

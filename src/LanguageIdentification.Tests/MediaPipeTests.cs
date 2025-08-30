@@ -19,10 +19,7 @@ public class MediaPipeTests : IAsyncLifetime
             _ => false,
         };
 
-        if (isSupported)
-        {
-            Assert.True(MediaPipeDetector.IsSupported());
-        }
+        Assert.Equal(isSupported, MediaPipeDetector.IsSupported());
     }
 
     [SkippableTheory]
