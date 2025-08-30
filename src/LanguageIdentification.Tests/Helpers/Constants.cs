@@ -2,6 +2,8 @@
 {
     internal class Constants
     {
+        public const double EPSILON = 0.0001;
+
         public const string PHRASE_ENG_1 = "Hello, how are you?";
         public const string PHRASE_UKR_1 = "Привіт, як справи?";
         public const string PHRASE_RUS_1 = "Привет, как дела?";
@@ -31,7 +33,5 @@
         public const string MALFORMED_BYTES_10 = "A" + "\u200D" + "B";
         public const string MALFORMED_BYTES_11 = "A" + "\u200C" + "B";
         public const string MALFORMED_BYTES_12 = "abc" + "\u202E" + "def";
-
-        public const double EPSILON = 0.0001;
     }
 }
