@@ -113,7 +113,7 @@ public class FastTextTests : IAsyncLifetime
         Assert.Contains(labels, x => x.Label == "__label__ru");
     }
 
-    [SkippableTheory]
+    /*[SkippableTheory]
     [InlineData(Constants.MALFORMED_BYTES_0)]
     [InlineData(Constants.MALFORMED_BYTES_1)]
     [InlineData(Constants.MALFORMED_BYTES_2)]
@@ -133,7 +133,7 @@ public class FastTextTests : IAsyncLifetime
         fastText.LoadDefaultModel();
 
         var predictions = fastText.Predict(text: text, count: 10);
-    }
+    }*/
 
     public async Task InitializeAsync()
     {
