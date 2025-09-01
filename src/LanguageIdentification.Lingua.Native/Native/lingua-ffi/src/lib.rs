@@ -262,8 +262,17 @@ pub unsafe extern "C" fn lingua_detect_single(
     text: *const c_char,
     result: *mut LinguaPredictionListResult,
 ) -> LinguaStatus {
-    let text = CStr::from_ptr(text);
-    detect_single_internal(&detector, text.to_bytes(), result)
+    if text.is_null() {
+        return LinguaStatus::BadTextPtr;
+    }
+
+    let raw = CStr::from_ptr(text).to_bytes();
+    let normalized = match std::str::from_utf8(raw) {
+        Ok(s) => s.to_owned(),
+        Err(_) => String::from_utf8_lossy(raw).into_owned()
+    };
+
+    detect_single_internal(&detector, normalized.as_bytes(), result)
 }
 
 #[no_mangle]
@@ -272,8 +281,17 @@ pub unsafe extern "C" fn lingua_detect_mixed(
     text: *const c_char,
     result: *mut LinguaPredictionRangeListResult,
 ) -> LinguaStatus {
-    let text = CStr::from_ptr(text);
-    detect_mixed_internal(&detector, text.to_bytes(), result)
+    if text.is_null() {
+        return LinguaStatus::BadTextPtr;
+    }
+
+    let raw = CStr::from_ptr(text).to_bytes();
+    let normalized = match std::str::from_utf8(raw) {
+        Ok(s) => s.to_owned(),
+        Err(_) => String::from_utf8_lossy(raw).into_owned()
+    };
+
+    detect_mixed_internal(&detector, normalized.as_bytes(), result)
 }
 
 fn detect_single_internal(
