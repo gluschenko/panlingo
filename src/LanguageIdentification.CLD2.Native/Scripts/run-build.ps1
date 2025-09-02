@@ -6,7 +6,12 @@ Write-Host "Hello world"
 
 $workspace = "obj/native_build_temp"
 
-New-Item -ItemType Directory -Force -Path $workspace
+# Create directory if it doesn't exist
+if (-Not (Test-Path $workspace)) {
+    New-Item -Path $workspace -ItemType Directory
+    New-Item -Path "$workspace/cld2" -ItemType Directory
+}
+
 Copy-Item -Path "../../third_party/cld2/*" -Destination "$workspace/cld2" -Recurse
 Copy-Item -Path "Native/*" -Destination "$workspace" -Recurse
 
