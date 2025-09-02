@@ -61,6 +61,8 @@ namespace Panlingo.LanguageIdentification.Lingua
         {
             CheckDisposed();
 
+            text = NormalizeString(text);
+
             var status = LinguaDetectorWrapper.LinguaDetectSingle(
                 detector: _detector,
                 text: text,
@@ -109,6 +111,8 @@ namespace Panlingo.LanguageIdentification.Lingua
         public IEnumerable<LinguaPredictionRange> PredictMixedLanguages(string text)
         {
             CheckDisposed();
+
+            text = NormalizeString(text);
 
             var status = LinguaDetectorWrapper.LinguaDetectMixed(
                 detector: _detector,
@@ -209,6 +213,45 @@ namespace Panlingo.LanguageIdentification.Lingua
             {
                 throw new ObjectDisposedException(nameof(LinguaDetector), "This instance has already been disposed");
             }
+        }
+
+        private static string NormalizeString(string text)
+        {
+            static bool IsNoncharacter(char ch)
+            {
+                int code = ch;
+
+                // Noncharacters: U+FDD0..U+FDEF, U+FFFE, U+FFFF
+                if ((code >= 0xFDD0 && code <= 0xFDEF) || code == 0xFFFE || code == 0xFFFF)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(text))
+            {
+                return text;
+            }
+
+            var stringBuilder = new StringBuilder(text.Length);
+
+            foreach (var ch in text)
+            {
+                if (char.IsSurrogate(ch) || IsNoncharacter(ch))
+                {
+                    // replace problematic characters with U+FFFD (replacement character �)
+                    stringBuilder.Append('\uFFFD');
+                }
+                else
+                {
+                    stringBuilder.Append(ch);
+                }
+            }
+
+            var result = stringBuilder.ToString();
+            return result;
         }
 
         protected virtual void Dispose(bool disposing)
