@@ -239,7 +239,7 @@ jobs:
         $vc_packages = Get-Package -Name "Microsoft Visual C++*"
         foreach ($package in $vc_packages) {
           Write-Host "Uninstalling $($package.Name) version $($package.Version)"
-          Uninstall-Package -Name $package.Name -Version $package.Version -Force
+          Uninstall-Package -Name $package.Name -Force
         }
 
     - name: 🧪 Run Tests for LanguageIdentification
