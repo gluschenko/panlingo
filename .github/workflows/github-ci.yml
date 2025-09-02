@@ -164,6 +164,7 @@ jobs:
     needs: build-package
     strategy:
       fail-fast: false
+      # Available runners:
       # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#standard-github-hosted-runners-for--private-repositories
       matrix:
         task: 
