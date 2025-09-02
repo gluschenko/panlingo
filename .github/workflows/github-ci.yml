@@ -227,6 +227,11 @@ jobs:
         path=$(realpath "${{env.ROOT}}/local-packages")
         dotnet nuget add source $path
 
+    - name: 💾 List installed VC Redistributables
+      if: ${{ startsWith(matrix.task.os, 'windows') }}
+      shell: powershell
+      run: Get-Package -Name "Microsoft Visual C++*"
+
     - name: 💾 Uninstall Visual C++ Redistributables
       if: ${{ startsWith(matrix.task.os, 'windows') }}
       shell: powershell
