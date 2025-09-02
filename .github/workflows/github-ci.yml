@@ -164,6 +164,7 @@ jobs:
     needs: build-package
     strategy:
       fail-fast: false
+      # Available runners:
       # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#standard-github-hosted-runners-for--private-repositories
       matrix:
         task: 
@@ -225,6 +226,16 @@ jobs:
       run: |
         path=$(realpath "${{env.ROOT}}/local-packages")
         dotnet nuget add source $path
+
+    - name: Uninstall Visual C++ Redistributables
+      if: ${{ startsWith(matrix.task.os, 'windows') }}
+      shell: powershell
+      run: |
+        $redistributables = Get-WmiObject -Class Win32_Product | Where-Object { $_.Name -like "Microsoft Visual C++ * Redistributable*" }
+        foreach ($redist in $redistributables) {
+            Write-Host "Uninstalling: $($redist.Name)"
+            $redist.Uninstall()
+        }
 
     - name: 🧪 Run Tests for LanguageIdentification
       working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
