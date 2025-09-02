@@ -231,12 +231,14 @@ jobs:
       if: ${{ startsWith(matrix.task.os, 'windows') }}
       shell: powershell
       run: |
+        # Via winget
         $vc_packages = Get-Package -Name "Microsoft Visual C++*"
         foreach ($package in $vc_packages) {
             Write-Host "Uninstalling $($package.Name) version $($package.Version)"
             Uninstall-Package -Name $package.Name -Force
         }
 
+        # Via registry
         $keys = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall",
                 "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
 
@@ -251,6 +253,13 @@ jobs:
                     }
                 }
             }
+        }
+
+        # Via msi
+        $vc_packages = Get-WmiObject -Class Win32_Product | Where-Object { $_.Name -like "Microsoft Visual C++*" }
+        foreach ($pkg in $vc_packages) {
+            Write-Host "Uninstalling $($pkg.Name) via ProductCode"
+            msiexec /x $pkg.IdentifyingNumber /qn /norestart
         }
 
     - name: 💾 List installed VC Redistributables
