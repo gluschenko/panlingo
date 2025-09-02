@@ -233,8 +233,24 @@ jobs:
       run: |
         $vc_packages = Get-Package -Name "Microsoft Visual C++*"
         foreach ($package in $vc_packages) {
-          Write-Host "Uninstalling $($package.Name) version $($package.Version)"
-          Uninstall-Package -Name $package.Name -Force
+            Write-Host "Uninstalling $($package.Name) version $($package.Version)"
+            Uninstall-Package -Name $package.Name -Force
+        }
+
+        $keys = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall",
+                "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
+
+        foreach ($key in $keys) {
+            Get-ChildItem $key | ForEach-Object {
+                $dispName = (Get-ItemProperty $_.PSPath).DisplayName
+                $uninstall = (Get-ItemProperty $_.PSPath).UninstallString
+                if ($dispName -like "Microsoft Visual C++*") {
+                    Write-Host "Removing $dispName"
+                    if ($uninstall) {
+                        Start-Process -FilePath "cmd.exe" -ArgumentList "/c $uninstall /quiet /norestart" -Wait
+                    }
+                }
+            }
         }
 
     - name: 💾 List installed VC Redistributables
