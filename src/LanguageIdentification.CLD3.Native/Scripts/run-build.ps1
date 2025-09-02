@@ -12,9 +12,8 @@ if (-Not (Test-Path $workspace)) {
     New-Item -Path "$workspace/cld3" -ItemType Directory
 }
 
-
 Copy-Item -Path "../../third_party/cld3/*" -Destination "$workspace/" -Recurse
-Copy-Item -Path "Native/*" -Destination "$workspace" -Recurse
+Copy-Item -Path "Native/*" -Destination $workspace -Recurse -Force
 
 Get-ChildItem -Recurse -Path .
 
