@@ -26,11 +26,6 @@ if (-Not (Test-Path "build")) {
 }
 Set-Location "build"
 
-choco install nvm
-$env:Path += ";C:\ProgramData\nvm"
-nvm install 22
-nvm use 22
-
 npm install -g zx
 
 zx ./monkey-patch.mjs
