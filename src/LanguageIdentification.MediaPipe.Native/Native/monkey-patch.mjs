@@ -38,10 +38,25 @@ function b()
     const lineEnding = "\\r?\\n";
 
     const oldTextA = new RegExp(`build:linux --define=xnn_enable_avx512amx=false${lineEnding}`, 'g');
-    const newTextA = `build:linux --define=xnn_enable_avx512amx=false\nbuild:linux --define=xnn_enable_avx512fp16=false\nbuild:linux --define=xnn_enable_avxvnni=false\nbuild:linux --define=xnn_enable_avxvnniint8=false\n\n`;
+    const newTextA = `
+build:linux --define=xnn_enable_avx512amx=false
+build:linux --define=xnn_enable_avx512fp16=false
+build:linux --define=xnn_enable_avxvnni=false
+build:linux --define=xnn_enable_avxvnniint8=false
+
+    `;
 
     const oldTextB = new RegExp(`build:windows --host_copt=/D_USE_MATH_DEFINES${lineEnding}`, 'g');
-    const newTextB = `build:windows --host_copt=/D_USE_MATH_DEFINES\nbuild:windows --define=xnn_enable_avx512amx=false\nbuild:windows --define=xnn_enable_avx512fp16=false\nbuild:windows --define=xnn_enable_avxvnni=false\nbuild:windows --define=xnn_enable_avxvnniint8=false\n\n`;
+    const newTextB = `
+build:windows --host_copt=/D_USE_MATH_DEFINES
+build:windows --define=xnn_enable_avx512amx=false
+build:windows --define=xnn_enable_avx512fp16=false
+build:windows --define=xnn_enable_avxvnni=false
+build:windows --define=xnn_enable_avxvnniint8=false
+build:windows --cxxopt=/MT
+build:windows --host_cxxopt=/MT
+
+    `;
 
     findAndPatch(".bazelrc", [
         { a: oldTextA, b: newTextA },
