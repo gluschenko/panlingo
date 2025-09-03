@@ -55,6 +55,7 @@ build:windows --define=xnn_enable_avxvnni=false
 build:windows --define=xnn_enable_avxvnniint8=false
 build:windows --cxxopt=/MT
 build:windows --host_cxxopt=/MT
+build:windows --linkopt=/NODEFAULTLIB:MSVCRT
 
     `;
 
