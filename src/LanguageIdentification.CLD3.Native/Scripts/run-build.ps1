@@ -27,7 +27,7 @@ if (-Not (Test-Path "build")) {
 Set-Location "build"
 
 choco install nvm
-$env:Path += ";C:\ProgramData\chocolatey\lib"
+$env:Path += ";C:\ProgramData\chocolatey\bin"
 nvm install 22
 nvm use 22
 
