@@ -48,17 +48,14 @@ build:linux --define=xnn_enable_avxvnniint8=false
 
     const oldTextB = new RegExp(`build:windows --host_copt=/D_USE_MATH_DEFINES${lineEnding}`, 'g');
     const newTextB = `
+build:windows --host_copt=/D_USE_MATH_DEFINES
 build:windows --define=xnn_enable_avx512amx=false
 build:windows --define=xnn_enable_avx512fp16=false
 build:windows --define=xnn_enable_avxvnni=false
 build:windows --define=xnn_enable_avxvnniint8=false
-build:windows --cxxopt=/MT
-build:windows --host_cxxopt=/MT
-build:windows --linkopt=libucrt.lib
-build:windows --linkopt=libvcruntime.lib
-build:windows --linkopt=libcmt.lib
-build:windows --linkopt=/NODEFAULTLIB:MSVCRT
-build:windows --linkopt=/NODEFAULTLIB:ucrtbase.lib
+build:windows --copt=/MT
+build:windows --host_copt=/MT
+build:windows --linkopt=/MT
 
     `;
 
