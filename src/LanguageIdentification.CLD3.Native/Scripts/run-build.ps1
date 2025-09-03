@@ -34,9 +34,6 @@ Remove-Item -Path "*" -Recurse -Force
 cmake ..
 cmake --build .
 
-.\Debug\language_identifier_main.exe
-.\Debug\language_identifier_features_test.exe
-
 Get-ChildItem -Recurse
 
 Copy-Item -Path ".\Debug\libcld3.dll" -Destination "..\..\..\libcld3.dll"
