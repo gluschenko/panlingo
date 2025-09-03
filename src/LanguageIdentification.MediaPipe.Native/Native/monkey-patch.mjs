@@ -55,7 +55,10 @@ build:windows --define=xnn_enable_avxvnniint8=false
 build:windows --cxxopt=/MT
 build:windows --host_cxxopt=/MT
 build:windows --linkopt=libucrt.lib
+build:windows --linkopt=libvcruntime.lib
+build:windows --linkopt=libcmt.lib
 build:windows --linkopt=/NODEFAULTLIB:MSVCRT
+build:windows --linkopt=/NODEFAULTLIB:ucrtbase.lib
 
     `;
 
