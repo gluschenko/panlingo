@@ -20,18 +20,14 @@ Get-ChildItem -Recurse -Path .
 
 Set-Location $workspace
 
+npm install -g zx
+zx ./monkey-patch.mjs
+
 # Create and enter build directory
 if (-Not (Test-Path "build")) {
     New-Item -Path "build" -ItemType Directory
 }
 Set-Location "build"
-
-npm install -g zx
-
-zx ./monkey-patch.mjs
-
-New-Item -ItemType Directory -Path "build"
-Set-Location -Path "build"
 
 Remove-Item -Path "*" -Recurse -Force
 # Build for Windows
