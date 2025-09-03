@@ -15,20 +15,25 @@ if (-Not (Test-Path $workspace)) {
 Copy-Item -Path "../../third_party/cld2/*" -Destination "$workspace/cld2" -Recurse
 Copy-Item -Path "Native/*" -Destination $workspace -Recurse -Force
 
+# List directory contents recursively
 Get-ChildItem -Recurse -Path .
 
-Set-Location -Path "$workspace"
+Set-Location $workspace
 
-New-Item -ItemType Directory -Path "build"
-Set-Location -Path "build"
+# Create and enter build directory
+if (-Not (Test-Path "build")) {
+    New-Item -Path "build" -ItemType Directory
+}
+Set-Location "build"
 
 Remove-Item -Path "*" -Recurse -Force
+# Build for Windows
 cmake ..
-make -j (Get-CimInstance Win32_Processor | Measure-Object -Property NumberOfCores -Sum).Sum
+cmake --build .
 
 Get-ChildItem -Recurse
 
-Copy-Item -Path "libcld2.so" -Destination "../../../libcld2.so"
+Copy-Item -Path "libcld2.dll" -Destination "../../../libcld2.dll"
 
 # Clean up
 Remove-Item -Path "$workspace" -Recurse -Force
