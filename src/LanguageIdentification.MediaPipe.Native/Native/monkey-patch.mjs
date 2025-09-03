@@ -48,7 +48,6 @@ build:linux --define=xnn_enable_avxvnniint8=false
 
     const oldTextB = new RegExp(`build:windows --host_copt=/D_USE_MATH_DEFINES${lineEnding}`, 'g');
     const newTextB = `
-build:windows --host_copt=/D_USE_MATH_DEFINES
 build:windows --define=xnn_enable_avx512amx=false
 build:windows --define=xnn_enable_avx512fp16=false
 build:windows --define=xnn_enable_avxvnni=false
