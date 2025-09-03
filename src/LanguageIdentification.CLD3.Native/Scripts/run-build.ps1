@@ -26,12 +26,7 @@ if (-Not (Test-Path "build")) {
 }
 Set-Location "build"
 
-$wingetReleaseUrl = "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
-Invoke-WebRequest -Uri $wingetReleaseUrl -OutFile winget.msixbundle
-Add-AppxPackage -Path .\winget.msixbundle
-winget --version
-
-winget install --id=CoreyButler.NVMforWindows -e
+choco install nvm
 nvm install 22
 nvm use 22
 
