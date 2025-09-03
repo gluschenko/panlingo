@@ -36,7 +36,7 @@ cmake --build .
 
 Get-ChildItem -Recurse
 
-Copy-Item -Path ".\Debug\libcld3.dll" -Destination "..\..\..\libcld3.dll"
+Copy-Item -Path ".\Debug\cld3.dll" -Destination "..\..\..\libcld3.dll"
 
 cd ../..
 Write-Output "Goodbye world"
