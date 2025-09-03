@@ -50,5 +50,5 @@ Get-ChildItem -Recurse
 
 Copy-Item -Path ".\Debug\libcld3.dll" -Destination "..\..\..\libcld3.dll"
 
-Remove-Item -Path $workspace -Recurse -Force
-Write-Host "Goodbye world"
+cd ../..
+Write-Output "Goodbye world"

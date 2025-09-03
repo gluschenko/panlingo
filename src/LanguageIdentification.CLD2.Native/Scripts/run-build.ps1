@@ -33,8 +33,7 @@ cmake --build .
 
 Get-ChildItem -Recurse
 
-Copy-Item -Path "cld2.dll" -Destination "../../../libcld2.dll"
+Copy-Item -Path ".\Debug\cld2.dll" -Destination "..\..\..\libcld2.dll"
 
-# Clean up
-Remove-Item -Path "$workspace" -Recurse -Force
-Write-Host "Goodbye world"
+cd ../..
+Write-Output "Goodbye world"
