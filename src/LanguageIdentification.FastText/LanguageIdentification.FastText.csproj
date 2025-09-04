@@ -16,7 +16,7 @@
     <PackageReadmeFile>README_FASTTEXT.md</PackageReadmeFile>
     <PackageReleaseNotes>
 0.6.1
-- Windows: static linkage of Visual C++ Runtime
+- Windows: static linking of Visual C++ Runtime
 
 0.1.0.0
 - Windows and MacOS support
