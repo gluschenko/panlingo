@@ -62,6 +62,7 @@ build:windows --linkopt=libvcruntime.lib
 build:windows --linkopt=libucrt.lib
 build:windows --linkopt=/NODEFAULTLIB:msvcrt.lib
 build:windows --linkopt=/NODEFAULTLIB:ucrtbase.lib
+build:windows --linkopt=/NODEFAULTLIB:dbghelp.lib
 build:windows --define=absl_disable_stacktrace=1
 build:windows --define=absl_disable_symbolize=1
 
