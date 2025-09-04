@@ -52,10 +52,16 @@ jobs:
         filters: |
           src:
             - '${{env.ROOT}}/${{matrix.task.projectName}}/**'
+
+    - uses: dorny/paths-filter@v3
+      id: changes-native
+      with:
+        filters: |
+          src:
             - '${{env.ROOT}}/${{matrix.task.projectName}}.Native/**'
 
     - name: 🚀 Build ${{matrix.task.projectName}}.Native
-      if: steps.changes.outputs.src == 'true'
+      if: steps.changes-native.outputs.src == 'true'
       working-directory: ${{env.ROOT}}/${{matrix.task.projectName}}.Native
       run: |
         echo $(pwd)
@@ -64,7 +70,7 @@ jobs:
         ${{matrix.task.script}} ${{matrix.task.arch}}
 
     - uses: actions/upload-artifact@v4
-      if: steps.changes.outputs.src == 'true'
+      if: steps.changes-native.outputs.src == 'true'
       with:
         name: native-${{matrix.task.projectName}}.Native-${{matrix.task.os}}
         path: ${{env.ROOT}}/${{matrix.task.projectName}}.Native/${{matrix.task.artifact}}
