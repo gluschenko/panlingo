@@ -23,6 +23,7 @@ workspace="obj/native_build_temp"
 mkdir -p "$workspace"
 cp -a ../../third_party/fastText/. $workspace/fasttext
 cp -a Native/. $workspace
+rm Native/fasttext/CMakeLists.txt
 
 ls -R .
 
