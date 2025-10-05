@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS build
+FROM debian:bullseye-slim AS build
 
 WORKDIR /repo
 COPY ["src/LanguageIdentification.Lingua.Native/LanguageIdentification.Lingua.Native.csproj", "src/LanguageIdentification.Lingua.Native/"]
