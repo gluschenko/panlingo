@@ -314,16 +314,6 @@ fn detect_single_internal(
             LinguaStatus::Ok
         }
         Err(_) => {
-            unsafe {
-                ptr::write(
-                    result,
-                    LinguaPredictionListResult {
-                        predictions: ptr::null(),
-                        predictions_count: 0,
-                    },
-                );
-            }
-
             // Bad string pointer
             LinguaStatus::BadTextPtr
         }
@@ -371,16 +361,6 @@ fn detect_mixed_internal(
             LinguaStatus::Ok
         }
         Err(_) => {
-            unsafe {
-                ptr::write(
-                    result,
-                    LinguaPredictionRangeListResult {
-                        predictions: ptr::null(),
-                        predictions_count: 0,
-                    },
-                );
-            }
-
             // Bad string pointer
             LinguaStatus::BadTextPtr
         }
