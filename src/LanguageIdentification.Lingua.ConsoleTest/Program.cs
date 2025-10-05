@@ -1,4 +1,6 @@
-﻿namespace Panlingo.LanguageIdentification.Lingua.ConsoleTest
+﻿using System.Text;
+
+namespace Panlingo.LanguageIdentification.Lingua.ConsoleTest
 {
     internal class Program
     {
@@ -13,6 +15,20 @@
 
             var texts = new[]
             {
+                "\u0080",
+                "\u00BF",
+                "hello\0world",
+                "\0",
+                "\u0080",
+                "\u00BF",
+                "\uD800",
+                "\uDC00",
+                "\uFFFF",
+                "\uFFFE",
+                "\uFEFF" + "Hello",
+                "A" + "\u200D" + "B",
+                "A" + "\u200C" + "B",
+                "abc" + "\u202E" + "def",
                 "Привіт",
                 "Привет",
                 "Hello",

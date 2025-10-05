@@ -6,6 +6,8 @@ use std::ffi::CStr;
 use std::os::raw::c_char;
 use std::ptr;
 use lingua::{Language, LanguageDetector, LanguageDetectorBuilder};
+use std::panic;
+use std::fmt::Write as _;
 
 #[repr(u8)]
 pub enum LinguaStatus {
@@ -267,9 +269,24 @@ pub unsafe extern "C" fn lingua_detect_single(
     }
 
     let raw = CStr::from_ptr(text).to_bytes();
-    let normalized = String::from_utf8_lossy(raw).into_owned();
+    let mut dump = String::new();
+    for b in raw {
+        let _ = write!(dump, "{:02X} ", b);
+    }
+    eprintln!("Rust received bytes: {}", dump);
 
-    detect_single_internal(&detector, normalized.as_bytes(), result)
+    let res = panic::catch_unwind(|| {
+        let normalized = String::from_utf8_lossy(raw).into_owned();
+        detect_single_internal(&detector, normalized.as_bytes(), result)
+    });
+
+    match res {
+        Ok(status) => status,
+        Err(_) => {
+            eprintln!("⚠️ Panic during lingua_detect_single on input: {}", dump);
+            LinguaStatus::DetectFailure
+        }
+    }
 }
 
 #[unsafe(no_mangle)]

@@ -17,8 +17,12 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' != 'CI'">
     <ProjectReference Include="..\LanguageIdentification.MediaPipe\LanguageIdentification.MediaPipe.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'CI'">
+    <PackageReference Include="Panlingo.LanguageIdentification.MediaPipe" Version="*" />
   </ItemGroup>
 
 </Project>
