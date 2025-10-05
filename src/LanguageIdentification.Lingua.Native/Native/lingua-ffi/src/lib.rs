@@ -399,8 +399,7 @@ unsafe fn copy_cstr(src: &str, dst: *mut c_char) -> size_t {
 mod tests {
     use super::*;
 
-    #[test]
-    fn test() {
+    fn build_detector() -> LanguageDetector {
         let mut languages = vec![];
 
         for x in Language::all() {
@@ -411,17 +410,49 @@ mod tests {
         builder.with_preloaded_language_models();
         builder.with_minimum_relative_distance(0.9);
         builder.with_low_accuracy_mode();
+        builder.build()
+    }
 
-        let detector: LanguageDetector = builder.build();
+    #[test]
+    fn test() {
+        let detector = build_detector();
 
         let text = "Привіт, як справи?";
 
         let language_confidence_values = detector.compute_language_confidence_values(text);
+        assert_eq!(language_confidence_values[0].0, Language::Ukrainian);
 
         for (language, confidence) in language_confidence_values {
             println!("{}: {}", language.to_string(), confidence);
         }
+    }
 
-        assert_eq!(1, 1);
+    #[test]
+    fn lingua_invalid_utf8_fuzz() {
+        let detector = build_detector();
+
+        let raw_cases: &[&[u8]] = &[
+            b"\x00",
+            b"\xC2\x80",
+            b"\xC2\xBF",
+            b"\xED\xA0\x80", // surrogate D800
+            b"\xED\xB0\x80", // surrogate DC00
+            b"\xEF\xBF\xBF", // FFFF
+            b"\xEF\xBF\xBE", // FFFE
+            b"\xFE\xFFHello", // BOM
+            b"A\xE2\x80\x8DB", // zero width joiner
+            b"abc\xE2\x80\xAEdef", // RTL override
+        ];
+
+        for raw in raw_cases {
+            let text = String::from_utf8_lossy(raw).to_string();
+
+            let x = detector.compute_language_confidence_values(&text);
+
+            for (language, confidence) in x {
+                println!("{}: {}", language.to_string(), confidence);
+                break;
+            }
+        }
     }
 }
