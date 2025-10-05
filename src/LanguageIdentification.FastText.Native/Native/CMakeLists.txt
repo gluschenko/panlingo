@@ -40,6 +40,14 @@ message(STATUS "C compiler: ${CMAKE_C_COMPILER_ID}")
 message(STATUS "CXX flags: ${CMAKE_CXX_FLAGS}")
 message(STATUS "C flags: ${CMAKE_C_FLAGS}")
 
+file(READ "${PROJECT_SOURCE_DIR}/fasttext/CMakeLists.txt" FASTTEXT_CMAKE)
+string(REGEX REPLACE
+    "cmake_minimum_required\\([^)]*\\)"
+    "cmake_minimum_required(VERSION 3.15 FATAL_ERROR)"
+    FASTTEXT_CMAKE "${FASTTEXT_CMAKE}"
+)
+file(WRITE "${PROJECT_SOURCE_DIR}/fasttext/CMakeLists.txt" "${FASTTEXT_CMAKE}")
+
 add_subdirectory(fasttext EXCLUDE_FROM_ALL)
 
 include_directories(
