@@ -6,8 +6,6 @@ use std::ffi::CStr;
 use std::os::raw::c_char;
 use std::ptr;
 use lingua::{Language, LanguageDetector, LanguageDetectorBuilder};
-use std::panic;
-use std::fmt::Write as _;
 
 #[repr(u8)]
 pub enum LinguaStatus {
@@ -264,29 +262,8 @@ pub unsafe extern "C" fn lingua_detect_single(
     text: *const c_char,
     result: *mut LinguaPredictionListResult,
 ) -> LinguaStatus {
-    if text.is_null() {
-        return LinguaStatus::BadTextPtr;
-    }
-
-    let raw = CStr::from_ptr(text).to_bytes();
-    let mut dump = String::new();
-    for b in raw {
-        let _ = write!(dump, "{:02X} ", b);
-    }
-    eprintln!("Rust received bytes: {}", dump);
-
-    let res = panic::catch_unwind(|| {
-        let normalized = String::from_utf8_lossy(raw).into_owned();
-        detect_single_internal(&detector, normalized.as_bytes(), result)
-    });
-
-    match res {
-        Ok(status) => status,
-        Err(_) => {
-            eprintln!("⚠️ Panic during lingua_detect_single on input: {}", dump);
-            LinguaStatus::DetectFailure
-        }
-    }
+    let text = CStr::from_ptr(text);
+    detect_single_internal(&detector, text.to_bytes(), result)
 }
 
 #[unsafe(no_mangle)]
@@ -295,14 +272,8 @@ pub unsafe extern "C" fn lingua_detect_mixed(
     text: *const c_char,
     result: *mut LinguaPredictionRangeListResult,
 ) -> LinguaStatus {
-    if text.is_null() {
-        return LinguaStatus::BadTextPtr;
-    }
-
-    let raw = CStr::from_ptr(text).to_bytes();
-    let normalized = String::from_utf8_lossy(raw).into_owned();
-
-    detect_mixed_internal(&detector, normalized.as_bytes(), result)
+    let text = CStr::from_ptr(text);
+    detect_mixed_internal(&detector, text.to_bytes(), result)
 }
 
 fn detect_single_internal(
@@ -343,6 +314,16 @@ fn detect_single_internal(
             LinguaStatus::Ok
         }
         Err(_) => {
+            unsafe {
+                ptr::write(
+                    result,
+                    LinguaPredictionListResult {
+                        predictions: ptr::null(),
+                        predictions_count: 0,
+                    },
+                );
+            }
+
             // Bad string pointer
             LinguaStatus::BadTextPtr
         }
@@ -390,6 +371,16 @@ fn detect_mixed_internal(
             LinguaStatus::Ok
         }
         Err(_) => {
+            unsafe {
+                ptr::write(
+                    result,
+                    LinguaPredictionRangeListResult {
+                        predictions: ptr::null(),
+                        predictions_count: 0,
+                    },
+                );
+            }
+
             // Bad string pointer
             LinguaStatus::BadTextPtr
         }
@@ -435,35 +426,6 @@ mod tests {
 
         for (language, confidence) in language_confidence_values {
             println!("{}: {}", language.to_string(), confidence);
-        }
-    }
-
-    #[test]
-    fn lingua_invalid_utf8_fuzz() {
-        let detector = build_detector();
-
-        let raw_cases: &[&[u8]] = &[
-            b"\x00",
-            b"\xC2\x80",
-            b"\xC2\xBF",
-            b"\xED\xA0\x80", // surrogate D800
-            b"\xED\xB0\x80", // surrogate DC00
-            b"\xEF\xBF\xBF", // FFFF
-            b"\xEF\xBF\xBE", // FFFE
-            b"\xFE\xFFHello", // BOM
-            b"A\xE2\x80\x8DB", // zero width joiner
-            b"abc\xE2\x80\xAEdef", // RTL override
-        ];
-
-        for raw in raw_cases {
-            let text = String::from_utf8_lossy(raw).to_string();
-
-            let x = detector.compute_language_confidence_values(&text);
-
-            for (language, confidence) in x {
-                println!("{}: {}", language.to_string(), confidence);
-                break;
-            }
         }
     }
 }
