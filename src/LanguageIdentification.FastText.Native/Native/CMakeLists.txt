@@ -1,4 +1,5 @@
-﻿cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+﻿cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
+cmake_policy(SET CMP0091 NEW)
 
 project(fasttext)
 
@@ -25,6 +26,9 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc /W3 /O2 /fp:precise /arch:AVX2")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W3 /O2 /fp:precise /arch:AVX2")
+    # MSVC CRT linkage
+    # https://cmake.org/cmake/help/latest/variable/CMAKE_MSVC_RUNTIME_LIBRARY.html#variable:CMAKE_MSVC_RUNTIME_LIBRARY
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" CACHE STRING "")
 endif()
 
 set(CMAKE_MACOSX_RPATH 1)
@@ -35,6 +39,14 @@ message(STATUS "C++ compiler: ${CMAKE_CXX_COMPILER_ID}")
 message(STATUS "C compiler: ${CMAKE_C_COMPILER_ID}")
 message(STATUS "CXX flags: ${CMAKE_CXX_FLAGS}")
 message(STATUS "C flags: ${CMAKE_C_FLAGS}")
+
+file(READ "${PROJECT_SOURCE_DIR}/fasttext/CMakeLists.txt" FASTTEXT_CMAKE)
+string(REGEX REPLACE
+    "cmake_minimum_required\\([^)]*\\)"
+    "cmake_minimum_required(VERSION 3.15 FATAL_ERROR)"
+    FASTTEXT_CMAKE "${FASTTEXT_CMAKE}"
+)
+file(WRITE "${PROJECT_SOURCE_DIR}/fasttext/CMakeLists.txt" "${FASTTEXT_CMAKE}")
 
 add_subdirectory(fasttext EXCLUDE_FROM_ALL)
 

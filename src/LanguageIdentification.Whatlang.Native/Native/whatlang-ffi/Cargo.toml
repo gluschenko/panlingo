@@ -10,3 +10,5 @@ libc = "0.2.157"
 [lib]
 name = "whatlang"
 crate-type = ["staticlib", "cdylib"]
+
+
