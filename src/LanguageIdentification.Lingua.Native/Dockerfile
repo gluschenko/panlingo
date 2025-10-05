@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim AS build
+FROM rust:1.72 AS build
 
 WORKDIR /repo
 COPY ["src/LanguageIdentification.Lingua.Native/LanguageIdentification.Lingua.Native.csproj", "src/LanguageIdentification.Lingua.Native/"]
