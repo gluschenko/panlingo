@@ -267,10 +267,7 @@ pub unsafe extern "C" fn lingua_detect_single(
     }
 
     let raw = CStr::from_ptr(text).to_bytes();
-    let normalized = match std::str::from_utf8(raw) {
-        Ok(s) => s.to_owned(),
-        Err(_) => String::from_utf8_lossy(raw).into_owned()
-    };
+    let normalized = String::from_utf8_lossy(raw).into_owned();
 
     detect_single_internal(&detector, normalized.as_bytes(), result)
 }
@@ -286,10 +283,7 @@ pub unsafe extern "C" fn lingua_detect_mixed(
     }
 
     let raw = CStr::from_ptr(text).to_bytes();
-    let normalized = match std::str::from_utf8(raw) {
-        Ok(s) => s.to_owned(),
-        Err(_) => String::from_utf8_lossy(raw).into_owned()
-    };
+    let normalized = String::from_utf8_lossy(raw).into_owned();
 
     detect_mixed_internal(&detector, normalized.as_bytes(), result)
 }
