@@ -233,14 +233,25 @@ jobs:
         path=$(realpath "${{env.ROOT}}/local-packages")
         dotnet nuget add source $path
 
+    - name: 🚀 Build Tests for LanguageIdentification
+      working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
+      run: dotnet build -c CI
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: test-build-${{matrix.task.os}}
+        path: ${{env.ROOT}}/LanguageIdentification.Tests/bin/CI
+        retention-days: 1
+        overwrite: 'true'
+        compression-level: 0
+
     - name: 🧪 Run Tests for LanguageIdentification
       working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
-      run: |
-        dotnet test -c CI --blame-crash
+      run: dotnet test -c CI --blame-crash
 
     - name: 🧪 Run Tests for LanguageCode
       working-directory: ${{env.ROOT}}/LanguageCode.Tests
-      run: dotnet test
+      run: dotnet test -c CI --blame-crash
 
   deploy-package:
     name: 🚚 Push ${{matrix.projectName}}
