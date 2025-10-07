@@ -132,7 +132,7 @@ public class FastTextTests : IAsyncLifetime
         using var fastText = new FastTextDetector();
         fastText.LoadDefaultModel();
 
-        // var predictions = fastText.Predict(text: text, count: 10);
+        var predictions = fastText.Predict(text: text, count: 10);
     }
 
     public async Task InitializeAsync()
