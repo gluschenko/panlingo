@@ -380,6 +380,7 @@ unsafe fn copy_cstr(src: &str, dst: *mut c_char) -> size_t {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::ffi::CString;
 
     fn build_detector() -> LanguageDetector {
         let mut languages = vec![];
@@ -406,6 +407,50 @@ mod tests {
 
         for (language, confidence) in language_confidence_values {
             println!("{}: {}", language.to_string(), confidence);
+        }
+    }
+
+    fn create_detector_ptr() -> *mut LanguageDetector {
+        let languages: Vec<LinguaLanguage> = Language::all()
+            .into_iter()
+            .map(|x| x.into())
+            .collect();
+
+        unsafe {
+            let builder = lingua_language_detector_builder_create(languages.as_ptr(), languages.len());
+            let builder = lingua_language_detector_builder_with_preloaded_language_models(builder);
+            let builder = lingua_language_detector_builder_with_low_accuracy_mode(builder);
+            let builder = lingua_language_detector_builder_with_minimum_relative_distance(builder, 0.9);
+            lingua_language_detector_create(builder)
+        }
+    }
+
+    #[test]
+    fn test_lingua_detect_mixed() {
+        unsafe {
+            let detector = create_detector_ptr();
+            assert!(!detector.is_null(), "detector should not be null");
+
+            let text = CString::new("Hello").unwrap();
+
+            let mut result = std::mem::MaybeUninit::<LinguaPredictionRangeListResult>::uninit();
+
+            let status = lingua_detect_mixed(detector.as_ref().unwrap(), text.as_ptr(), result.as_mut_ptr());
+
+            assert_eq!(status as u8, LinguaStatus::Ok as u8, "status should be Ok");
+
+            let result = result.assume_init();
+            assert_eq!(result.predictions_count, 0, "there should be at least one prediction");
+            assert!(!result.predictions.is_null(), "predictions pointer should not be null");
+
+            let first = &*result.predictions;
+            println!(
+                "Detected language: {:?}, confidence: {:.3}",
+                first.language, first.confidence
+            );
+
+            lingua_prediction_range_result_destroy(result.predictions as *mut LinguaPredictionRangeResult);
+            lingua_language_detector_destroy(detector);
         }
     }
 }
