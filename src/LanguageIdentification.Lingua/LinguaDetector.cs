@@ -217,8 +217,8 @@ namespace Panlingo.LanguageIdentification.Lingua
 
         private static string NormalizeString(string text)
         {
-            return new string(text
-                .Select(c => !char.IsSurrogate(c) && c != '\0' && !char.IsControl(c) ? c : '?')
+            return text = new string(text
+                .Select(x => char.IsLetterOrDigit(x) || char.IsWhiteSpace(x) || char.IsPunctuation(x) ? x : ' ')
                 .ToArray());
         }
 

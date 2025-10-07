@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using System.Text;
 using Panlingo.LanguageIdentification.Lingua;
 using Panlingo.LanguageIdentification.Tests.Helpers;
 
@@ -133,12 +134,6 @@ public class LinguaTests
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua = linguaBuilder.Build();
 
-        var text2 = new string(text
-            .Select(c => !char.IsSurrogate(c) && c != '\0' && !char.IsControl(c) ? c : '?')
-            .ToArray());
-
-        Console.WriteLine($"{text} <=> {text2}");
-
-        var predictions = lingua.PredictMixedLanguages(text: text2);
+        var predictions = lingua.PredictMixedLanguages(text: text);
     }
 }
