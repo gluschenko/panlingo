@@ -238,6 +238,7 @@ jobs:
       run: dotnet build -c CI
 
     - uses: actions/upload-artifact@v4
+      if: matrix.task.os == 'windows-2025'
       with:
         name: test-build-${{matrix.task.os}}
         path: ${{env.ROOT}}/LanguageIdentification.Tests/bin/CI
