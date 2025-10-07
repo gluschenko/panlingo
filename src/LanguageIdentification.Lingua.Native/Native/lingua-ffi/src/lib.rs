@@ -146,7 +146,7 @@ pub unsafe extern "C" fn lingua_language_code(
     language: LinguaLanguage,
     code: LinguaLanguageCode,
     buffer_ptr: *mut c_char
-) -> size_t {
+) -> size_t { unsafe {
     let x: Language = language.into();
 
     let code = match code {
@@ -159,13 +159,13 @@ pub unsafe extern "C" fn lingua_language_code(
     };
 
     copy_cstr(&code, buffer_ptr)
-}
+}}
 
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn lingua_language_detector_builder_create(
     languages: *const LinguaLanguage,
     language_count: size_t
-) -> *mut LanguageDetectorBuilder {
+) -> *mut LanguageDetectorBuilder { unsafe {
     if !languages.is_null() {
         let languages_slice = std::slice::from_raw_parts(languages, language_count);
         let languages: Vec<Language> = languages_slice.iter().map(|x| (*x).into()).collect();
@@ -174,12 +174,12 @@ pub unsafe extern "C" fn lingua_language_detector_builder_create(
     } else {
         ptr::null_mut()
     }
-}
+}}
 
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn lingua_language_detector_builder_with_low_accuracy_mode(
     builder: *mut LanguageDetectorBuilder
-) -> *mut LanguageDetectorBuilder {
+) -> *mut LanguageDetectorBuilder { unsafe {
     if !builder.is_null() {
         let mut builder = Box::from_raw(builder);
         builder.with_low_accuracy_mode();
@@ -187,12 +187,12 @@ pub unsafe extern "C" fn lingua_language_detector_builder_with_low_accuracy_mode
     } else {
         ptr::null_mut()
     }
-}
+}}
 
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn lingua_language_detector_builder_with_preloaded_language_models(
     builder: *mut LanguageDetectorBuilder
-) -> *mut LanguageDetectorBuilder {
+) -> *mut LanguageDetectorBuilder { unsafe {
     if !builder.is_null() {
         let mut builder = Box::from_raw(builder);
         builder.with_preloaded_language_models();
@@ -200,13 +200,13 @@ pub unsafe extern "C" fn lingua_language_detector_builder_with_preloaded_languag
     } else {
         ptr::null_mut()
     }
-}
+}}
 
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn lingua_language_detector_builder_with_minimum_relative_distance(
     builder: *mut LanguageDetectorBuilder,
     distance: f64
-) -> *mut LanguageDetectorBuilder {
+) -> *mut LanguageDetectorBuilder { unsafe {
     if !builder.is_null() {
         let mut builder = Box::from_raw(builder);
         builder.with_minimum_relative_distance(distance);
@@ -214,10 +214,10 @@ pub unsafe extern "C" fn lingua_language_detector_builder_with_minimum_relative_
     } else {
         ptr::null_mut()
     }
-}
+}}
 
 #[unsafe(no_mangle)]
-pub unsafe extern "C" fn lingua_language_detector_create(builder: *mut LanguageDetectorBuilder) -> *mut LanguageDetector {
+pub unsafe extern "C" fn lingua_language_detector_create(builder: *mut LanguageDetectorBuilder) -> *mut LanguageDetector { unsafe {
     if !builder.is_null() {
         let mut builder = Box::from_raw(builder);
         let detector = builder.build();
@@ -226,55 +226,55 @@ pub unsafe extern "C" fn lingua_language_detector_create(builder: *mut LanguageD
     } else {
         ptr::null_mut()
     }
-}
+}}
 
 #[unsafe(no_mangle)]
-pub unsafe extern "C" fn lingua_language_detector_builder_destroy(builder: *mut LanguageDetectorBuilder) {
+pub unsafe extern "C" fn lingua_language_detector_builder_destroy(builder: *mut LanguageDetectorBuilder) { unsafe {
     if !builder.is_null() {
         let _ = Box::from_raw(builder);
     }
-}
+}}
 
 #[unsafe(no_mangle)]
-pub unsafe extern "C" fn lingua_language_detector_destroy(detector: *mut LanguageDetector) {
+pub unsafe extern "C" fn lingua_language_detector_destroy(detector: *mut LanguageDetector) { unsafe {
     if !detector.is_null() {
         let _ = Box::from_raw(detector);
     }
-}
+}}
 
 #[unsafe(no_mangle)]
-pub unsafe extern "C" fn lingua_prediction_result_destroy(result: *mut LinguaPredictionResult) {
+pub unsafe extern "C" fn lingua_prediction_result_destroy(result: *mut LinguaPredictionResult) { unsafe {
     if !result.is_null() {
         let _ = Box::from_raw(result);
     }
-}
+}}
 
 #[unsafe(no_mangle)]
-pub unsafe extern "C" fn lingua_prediction_range_result_destroy(result: *mut LinguaPredictionRangeResult) {
+pub unsafe extern "C" fn lingua_prediction_range_result_destroy(result: *mut LinguaPredictionRangeResult) { unsafe {
     if !result.is_null() {
         let _ = Box::from_raw(result);
     }
-}
+}}
 
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn lingua_detect_single(
     detector: &LanguageDetector,
     text: *const c_char,
     result: *mut LinguaPredictionListResult,
-) -> LinguaStatus {
+) -> LinguaStatus { unsafe {
     let text = CStr::from_ptr(text);
     detect_single_internal(&detector, text.to_bytes(), result)
-}
+}}
 
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn lingua_detect_mixed(
     detector: &LanguageDetector,
     text: *const c_char,
     result: *mut LinguaPredictionRangeListResult,
-) -> LinguaStatus {
+) -> LinguaStatus { unsafe {
     let text = CStr::from_ptr(text);
     detect_mixed_internal(&detector, text.to_bytes(), result)
-}
+}}
 
 fn detect_single_internal(
     detector: &LanguageDetector,
@@ -367,7 +367,7 @@ fn detect_mixed_internal(
     }
 }
 
-unsafe fn copy_cstr(src: &str, dst: *mut c_char) -> size_t {
+unsafe fn copy_cstr(src: &str, dst: *mut c_char) -> size_t { unsafe {
     let len = src.len();
     if dst != ptr::null_mut() {
         let src = src.as_ptr().cast::<c_char>();
@@ -375,7 +375,7 @@ unsafe fn copy_cstr(src: &str, dst: *mut c_char) -> size_t {
         *dst.add(len) = 0;
     }
     return len;
-}
+}}
 
 #[cfg(test)]
 mod tests {
@@ -431,7 +431,7 @@ mod tests {
             let detector = create_detector_ptr();
             assert!(!detector.is_null(), "detector should not be null");
 
-            let text = CString::new("Hello").unwrap();
+            let text = CString::new("Hello world").unwrap();
 
             let mut result = std::mem::MaybeUninit::<LinguaPredictionRangeListResult>::uninit();
 
