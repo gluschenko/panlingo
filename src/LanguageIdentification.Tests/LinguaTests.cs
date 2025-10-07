@@ -133,6 +133,10 @@ public class LinguaTests
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua = linguaBuilder.Build();
 
+        text = new string(text
+            .Select(c => !char.IsSurrogate(c) && c != '\0' && !char.IsControl(c) ? c : '?')
+            .ToArray());
+
         var predictions = lingua.PredictMixedLanguages(text: text);
     }
 }
