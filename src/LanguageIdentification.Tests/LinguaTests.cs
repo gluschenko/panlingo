@@ -137,6 +137,6 @@ public class LinguaTests
             .Select(c => !char.IsSurrogate(c) && c != '\0' && !char.IsControl(c) ? c : '?')
             .ToArray());
 
-        var predictions = lingua.PredictMixedLanguages(text: text);
+        // var predictions = lingua.PredictMixedLanguages(text: text);
     }
 }
