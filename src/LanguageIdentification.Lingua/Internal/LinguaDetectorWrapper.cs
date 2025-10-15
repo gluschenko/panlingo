@@ -33,10 +33,10 @@ namespace Panlingo.LanguageIdentification.Lingua.Internal
         public static extern void LinguaLanguageDetectorDestroy(IntPtr detector);
 
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_prediction_result_destroy", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void LinguaPredictionResultDestroy(IntPtr result);
+        public static extern void LinguaPredictionResultDestroy(IntPtr result, uint count);
 
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_prediction_range_result_destroy", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void LinguaPredictionRangeResultDestroy(IntPtr result);
+        public static extern void LinguaPredictionRangeResultDestroy(IntPtr result, uint count);
 
         [DllImport(LinguaNativeLibrary.Name, EntryPoint = "lingua_detect_single", CallingConvention = CallingConvention.Cdecl)]
         public static extern LinguaStatus LinguaDetectSingle(

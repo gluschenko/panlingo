@@ -72,9 +72,9 @@ EXPORT void lingua_language_detector_builder_destroy(LinguaPredictionBuilder *bu
 
 EXPORT void lingua_language_detector_destroy(LanguageDetector *detector);
 
-EXPORT void lingua_prediction_result_destroy(LinguaPredictionResult *result);
+EXPORT void lingua_prediction_result_destroy(LinguaPredictionResult *result, size_t count);
 
-EXPORT void lingua_prediction_range_result_destroy(LinguaPredictionRangeResult *result);
+EXPORT void lingua_prediction_range_result_destroy(LinguaPredictionRangeResult *result, size_t count);
 
 EXPORT LinguaStatus lingua_detect_single(
     const LanguageDetector *detector,

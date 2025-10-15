@@ -98,7 +98,7 @@ namespace Panlingo.LanguageIdentification.Lingua
             }
             finally
             {
-                LinguaDetectorWrapper.LinguaPredictionResultDestroy(nativeResult.Predictions);
+                LinguaDetectorWrapper.LinguaPredictionResultDestroy(nativeResult.Predictions, nativeResult.PredictionsCount);
             }
         }
 
@@ -149,7 +149,7 @@ namespace Panlingo.LanguageIdentification.Lingua
             }
             finally
             {
-                LinguaDetectorWrapper.LinguaPredictionRangeResultDestroy(nativeResult.Predictions);
+                LinguaDetectorWrapper.LinguaPredictionRangeResultDestroy(nativeResult.Predictions, nativeResult.PredictionsCount);
             }
         }
 
