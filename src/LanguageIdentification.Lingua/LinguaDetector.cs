@@ -61,8 +61,6 @@ namespace Panlingo.LanguageIdentification.Lingua
         {
             CheckDisposed();
 
-            text = NormalizeString(text);
-
             var status = LinguaDetectorWrapper.LinguaDetectSingle(
                 detector: _detector,
                 text: text,
@@ -111,8 +109,6 @@ namespace Panlingo.LanguageIdentification.Lingua
         public IEnumerable<LinguaPredictionRange> PredictMixedLanguages(string text)
         {
             CheckDisposed();
-
-            text = NormalizeString(text);
 
             var status = LinguaDetectorWrapper.LinguaDetectMixed(
                 detector: _detector,
@@ -213,13 +209,6 @@ namespace Panlingo.LanguageIdentification.Lingua
             {
                 throw new ObjectDisposedException(nameof(LinguaDetector), "This instance has already been disposed");
             }
-        }
-
-        private static string NormalizeString(string text)
-        {
-            return new string(text
-                .Select(x => char.IsLetterOrDigit(x) || char.IsWhiteSpace(x) || char.IsPunctuation(x) ? x : ' ')
-                .ToArray());
         }
 
         protected virtual void Dispose(bool disposing)
