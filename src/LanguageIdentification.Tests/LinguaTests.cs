@@ -134,6 +134,14 @@ public class LinguaTests
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua = linguaBuilder.Build();
 
-        var predictions = lingua.PredictMixedLanguages(text: text);
+        var a = lingua.PredictLanguages("Hello world");
+        var b = lingua.PredictMixedLanguages("Hello world");
+
+        /*text = new string(text
+            .Select(x => char.IsLetterOrDigit(x) || char.IsWhiteSpace(x) || char.IsPunctuation(x) ? x : '_')
+            .ToArray());
+
+        var predictions = lingua.PredictMixedLanguages(text: "Hello world");*/
+        ;
     }
 }
