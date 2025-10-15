@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Panlingo.LanguageIdentification.Lingua.ConsoleTest
 {
@@ -56,7 +57,9 @@ namespace Panlingo.LanguageIdentification.Lingua.ConsoleTest
                 );
             }
 
-            var predictionsMultiple = lingua.PredictMixedLanguages(string.Join(" ", texts));
+            var mixedText = string.Join(" ", texts);
+            var predictionsMultiple1 = lingua.PredictLanguages(mixedText);
+            var predictionsMultiple2 = lingua.PredictMixedLanguages(mixedText);
 
             var code1 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, LinguaLanguageCode.Alpha2);
             var code2 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, LinguaLanguageCode.Alpha3);
