@@ -235,12 +235,11 @@ jobs:
 
     - name: 🧪 Run Tests for LanguageIdentification
       working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
-      run: |
-        dotnet test -c CI --blame-crash
+      run: dotnet test -c CI --blame-crash
 
     - name: 🧪 Run Tests for LanguageCode
       working-directory: ${{env.ROOT}}/LanguageCode.Tests
-      run: dotnet test
+      run: dotnet test -c CI --blame-crash
 
   deploy-package:
     name: 🚚 Push ${{matrix.projectName}}

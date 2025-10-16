@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS build
+FROM rust:1.90.0-bullseye AS build
 
 WORKDIR /repo
 COPY ["src/LanguageIdentification.Lingua.Native/LanguageIdentification.Lingua.Native.csproj", "src/LanguageIdentification.Lingua.Native/"]

@@ -1,4 +1,7 @@
-﻿namespace Panlingo.LanguageIdentification.Lingua.ConsoleTest
+﻿using System.Text;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace Panlingo.LanguageIdentification.Lingua.ConsoleTest
 {
     internal class Program
     {
@@ -13,6 +16,20 @@
 
             var texts = new[]
             {
+                "\u0080",
+                "\u00BF",
+                "hello\0world",
+                "\0",
+                "\u0080",
+                "\u00BF",
+                "\uD800",
+                "\uDC00",
+                "\uFFFF",
+                "\uFFFE",
+                "\uFEFF" + "Hello",
+                "A" + "\u200D" + "B",
+                "A" + "\u200C" + "B",
+                "abc" + "\u202E" + "def",
                 "Привіт",
                 "Привет",
                 "Hello",
@@ -40,7 +57,9 @@
                 );
             }
 
-            var predictionsMultiple = lingua.PredictMixedLanguages(string.Join(" ", texts));
+            var mixedText = string.Join(" ", texts);
+            var predictionsMultiple1 = lingua.PredictLanguages(mixedText);
+            var predictionsMultiple2 = lingua.PredictMixedLanguages(mixedText);
 
             var code1 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, LinguaLanguageCode.Alpha2);
             var code2 = lingua.GetLanguageCode(LinguaLanguage.Ukrainian, LinguaLanguageCode.Alpha3);
