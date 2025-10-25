@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
-    <Version>0.6.2</Version>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
+    <Version>0.6.5</Version>
     <PackageId>Panlingo.LanguageIdentification.FastText</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.FastText</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.FastText</RootNamespace>
