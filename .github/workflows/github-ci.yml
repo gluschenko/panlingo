@@ -184,7 +184,6 @@ jobs:
           - { os: macos-14 }
           - { os: macos-15 }
         dotnet-version:
-          - 5.0.x
           - 6.0.x
           - 7.0.x
           - 8.0.x
