@@ -166,7 +166,7 @@ jobs:
         compression-level: 0
 
   test-package:
-    name: 🧪 Test on ${{matrix.task.os}} and ${{matrix.dotnet-version}}
+    name: 🧪 Test on ${{matrix.task.os}} and .NET ${{matrix.dotnet-version}}
     runs-on: ${{matrix.task.os}}
     needs: build-package
     strategy:
