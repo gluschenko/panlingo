@@ -195,7 +195,7 @@ jobs:
     env:
       ROOT: ./src
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
-      PANLINGO_TARGET_FRAMEWORK: net${{ matrix.runtime.target }}
+      PANLINGO_TARGET_FRAMEWORK: ${{ matrix.runtime.target }}
     steps:
     - uses: actions/checkout@v4
   
