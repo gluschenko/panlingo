@@ -31,8 +31,12 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' != 'CI'">
     <ProjectReference Include="..\LanguageCode\LanguageCode.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'CI'">
+    <PackageReference Include="Panlingo.LanguageCode" Version="*" />
   </ItemGroup>
 
   <ItemGroup>
