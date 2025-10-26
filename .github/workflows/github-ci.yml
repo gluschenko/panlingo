@@ -166,7 +166,7 @@ jobs:
         compression-level: 0
 
   test-package:
-    name: 🧪 Test on ${{matrix.task.os}}
+    name: 🧪 Test on ${{matrix.task.os}} and .NET ${{matrix.runtime.version}}
     runs-on: ${{matrix.task.os}}
     needs: build-package
     strategy:
@@ -175,20 +175,27 @@ jobs:
       # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#standard-github-hosted-runners-for--private-repositories
       matrix:
         task: 
-          - { os: ubuntu-24.04 }
-          - { os: ubuntu-22.04 }
           # - { os: ubuntu-20.04 }
+          - { os: ubuntu-22.04 }
+          - { os: ubuntu-24.04 }
           - { os: windows-2022 }
           - { os: windows-2025 }
           - { os: macos-15-intel }
           - { os: macos-14 }
           - { os: macos-15 }
+        runtime:
+          - { version: 6.0.x, target: net6.0 }
+          - { version: 7.0.x, target: net7.0 }
+          - { version: 8.0.x, target: net8.0 }
+          - { version: 9.0.x, target: net9.0 }
+          - { version: 10.0.x, target: net10.0 }
     permissions:
       contents: read
       packages: write
     env:
       ROOT: ./src
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+      PANLINGO_TARGET_FRAMEWORK: ${{ matrix.runtime.target }}
     steps:
     - uses: actions/checkout@v4
   
@@ -199,13 +206,7 @@ jobs:
     - name: 📂 Setup .NET Core
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: |
-          5.0.x
-          6.0.x
-          7.0.x
-          8.0.x
-          9.0.x
-          10.0.x
+        dotnet-version: ${{matrix.runtime.version}}
 
     - uses: actions/download-artifact@v4
       with:
@@ -245,7 +246,7 @@ jobs:
 
   deploy-package:
     name: 🚚 Push ${{matrix.projectName}}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: test-package
     if: github.ref == 'refs/heads/master'
     strategy:
@@ -291,13 +292,7 @@ jobs:
     - name: 📂 Setup .NET Core
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: |
-          5.0.x
-          6.0.x
-          7.0.x
-          8.0.x
-          9.0.x
-          10.0.x
+        dotnet-version: 10.0.x
         source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
     - name: 📂 Files
