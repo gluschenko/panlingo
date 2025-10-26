@@ -1,0 +1,108 @@
+# For most projects, this workflow file will not need changing; you simply need
+# to commit it to your repository.
+#
+# You may wish to alter this file to override the set of languages analyzed,
+# or to provide custom queries or build logic.
+#
+# ******** NOTE ********
+# We have attempted to detect the languages in your repository. Please check
+# the `language` matrix defined below to confirm you have the correct set of
+# supported CodeQL languages.
+#
+name: "CodeQL Advanced"
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  schedule:
+    - cron: '41 15 * * 0'
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    permissions:
+      security-events: write
+      packages: read
+      actions: read
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - language: actions
+          build-mode: none
+        - language: c-cpp
+          build-mode: manual
+        - language: csharp
+          build-mode: manual
+        - language: rust
+          build-mode: none
+        # CodeQL supports: 'actions', 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'rust', 'swift'
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # Initializes the CodeQL tools for scanning.
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v4
+      with:
+        languages: ${{ matrix.language }}
+        build-mode: ${{ matrix.build-mode }}
+        # queries: security-extended,security-and-quality
+
+    # If a language is set to manual build-mode, build it here.
+    - name: Setup .NET SDK
+      if: matrix.build-mode == 'manual' && matrix.language == 'csharp'
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '7.0.x'
+
+    - name: Run manual build steps for .sln (restore/build/test)
+      if: matrix.build-mode == 'manual' && matrix.language == 'csharp'
+      shell: bash
+      run: |
+        set -euo pipefail
+
+        echo "Searching repository for .sln files..."
+        SOLUTIONS=$(git ls-files '*.sln' || true)
+
+        if [ -z "${SOLUTIONS}" ]; then
+          echo "No .sln files found in repository; nothing to build for csharp."
+          # Exit successfully to let CodeQL continue without failing the job.
+          exit 0
+        fi
+
+        echo "Found solution files:"
+        echo "${SOLUTIONS}"
+
+        # Use the first solution file found
+        SOLUTION=$(echo "${SOLUTIONS}" | head -n 1)
+        echo "Selected solution: ${SOLUTION}"
+
+        echo "dotnet --info"
+        dotnet --info
+
+        echo "Restoring solution..."
+        dotnet restore "${SOLUTION}"
+
+        echo "Building solution (Release)..."
+        dotnet build "${SOLUTION}" --configuration Release --no-restore
+
+        # Optionally run tests if any test projects exist under the repo
+        # If you prefer not to run tests in CI, remove the following block.
+        echo "Running tests in solution (if any)..."
+        if dotnet test "${SOLUTION}" --no-build --configuration Release; then
+          echo "dotnet test succeeded (or no tests found)."
+        else
+          echo "dotnet test failed."
+          exit 1
+        fi
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v4
+      with:
+        category: "/language:${{matrix.language}}"
