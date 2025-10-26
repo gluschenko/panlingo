@@ -166,7 +166,7 @@ jobs:
         compression-level: 0
 
   test-package:
-    name: 🧪 Test on ${{matrix.task.os}} and .NET ${{matrix.dotnet-version}}
+    name: 🧪 Test on ${{matrix.task.os}} and .NET ${{matrix.runtime.version}}
     runs-on: ${{matrix.task.os}}
     needs: build-package
     strategy:
@@ -183,18 +183,19 @@ jobs:
           - { os: macos-15-intel }
           - { os: macos-14 }
           - { os: macos-15 }
-        dotnet-version:
-          - 6.0.x
-          - 7.0.x
-          - 8.0.x
-          - 9.0.x
-          - 10.0.x
+        runtime:
+          - { version: 6.0.x, target: net6.0 }
+          - { version: 7.0.x, target: net7.0 }
+          - { version: 8.0.x, target: net8.0 }
+          - { version: 9.0.x, target: net9.0 }
+          - { version: 10.0.x, target: net10.0 }
     permissions:
       contents: read
       packages: write
     env:
       ROOT: ./src
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+      PANLINGO_TARGET_FRAMEWORK: net${{ matrix.runtime.target }}
     steps:
     - uses: actions/checkout@v4
   
@@ -205,7 +206,7 @@ jobs:
     - name: 📂 Setup .NET Core
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: ${{matrix.dotnet-version}}
+        dotnet-version: ${{matrix.runtime.version}}
 
     - uses: actions/download-artifact@v4
       with:
