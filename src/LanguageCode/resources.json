@@ -12987,7 +12987,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Clallam",
+      "RefName": "Klallam",
       "Comment": ""
     },
     {
@@ -23267,7 +23267,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Han",
+      "RefName": "H\u00E4n",
       "Comment": ""
     },
     {
@@ -28937,7 +28937,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Kamantan",
+      "RefName": "Ngyian",
       "Comment": ""
     },
     {
@@ -33917,7 +33917,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Kwakiutl",
+      "RefName": "Kwak\u0027wala",
       "Comment": ""
     },
     {
@@ -37966,7 +37966,7 @@
       "Part2t": "",
       "Part1": "",
       "Scope": "I",
-      "LanguageType": "L",
+      "LanguageType": "E",
       "RefName": "Lushootseed",
       "Comment": ""
     },
@@ -40127,7 +40127,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "M\u00F3cheno",
+      "RefName": "M\u00F2cheno",
       "Comment": ""
     },
     {
@@ -45757,7 +45757,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Newari",
+      "RefName": "Nepal Bhasa",
       "Comment": ""
     },
     {
@@ -49177,7 +49177,7 @@
       "Part1": "ny",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Nyanja",
+      "RefName": "Chichewa",
       "Comment": ""
     },
     {
@@ -49548,6 +49548,16 @@
       "Scope": "I",
       "LanguageType": "L",
       "RefName": "Oroch",
+      "Comment": ""
+    },
+    {
+      "Id": "oak",
+      "Part2b": "",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "I",
+      "LanguageType": "L",
+      "RefName": "Noakhali",
       "Comment": ""
     },
     {
@@ -50178,6 +50188,16 @@
       "Scope": "I",
       "LanguageType": "L",
       "RefName": "Walungge",
+      "Comment": ""
+    },
+    {
+      "Id": "olb",
+      "Part2b": "",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "I",
+      "LanguageType": "L",
+      "RefName": "Oli-Bodiman",
       "Comment": ""
     },
     {
@@ -50891,6 +50911,16 @@
       "Comment": ""
     },
     {
+      "Id": "osd",
+      "Part2b": "",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "I",
+      "LanguageType": "L",
+      "RefName": "Digor Ossetic",
+      "Comment": ""
+    },
+    {
       "Id": "osi",
       "Part2b": "",
       "Part2t": "",
@@ -50937,7 +50967,7 @@
       "Part1": "os",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Ossetian",
+      "RefName": "Iron Ossetic",
       "Comment": ""
     },
     {
@@ -57588,6 +57618,16 @@
       "Scope": "I",
       "LanguageType": "H",
       "RefName": "Sicel",
+      "Comment": ""
+    },
+    {
+      "Id": "scz",
+      "Part2b": "",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "I",
+      "LanguageType": "L",
+      "RefName": "Shaetlan",
       "Comment": ""
     },
     {
@@ -76521,16 +76561,6 @@
       "Comment": ""
     },
     {
-      "Id": "yol",
-      "Part2b": "",
-      "Part2t": "",
-      "Part1": "",
-      "Scope": "I",
-      "LanguageType": "E",
-      "RefName": "Yola",
-      "Comment": ""
-    },
-    {
       "Id": "yom",
       "Part2b": "",
       "Part2t": "",
@@ -78347,7 +78377,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Mpuono",
+      "RefName": "Mbuun",
       "Comment": ""
     },
     {
@@ -82316,7 +82346,7 @@
         "fry"
       ],
       "RetRemedy": "",
-      "Effective": "2007-02-01"
+      "Effective": "2005-11-16"
     },
     {
       "Id": "auv",
@@ -82512,16 +82542,6 @@
       "Effective": "2007-07-18"
     },
     {
-      "Id": "occ",
-      "RefName": "Occidental",
-      "RetReason": "D",
-      "ChangeTo": [
-        "ile"
-      ],
-      "RetRemedy": "",
-      "Effective": "2007-07-18"
-    },
-    {
       "Id": "tmx",
       "RefName": "Tomyang",
       "RetReason": "M",
@@ -82597,6 +82617,16 @@
       ],
       "RetRemedy": "",
       "Effective": "2007-08-10"
+    },
+    {
+      "Id": "occ",
+      "RefName": "Occidental",
+      "RetReason": "D",
+      "ChangeTo": [
+        "ile"
+      ],
+      "RetRemedy": "",
+      "Effective": "2007-12-07"
     },
     {
       "Id": "aex",
@@ -84066,7 +84096,7 @@
         "xpq",
         "xnt"
       ],
-      "RetRemedy": "split into Mohegan-Pequot [xpq] and Narragansett [xnt]",
+      "RetRemedy": "Split into Mohegan-Pequot [xpq] and Narragansett [xnt]",
       "Effective": "2010-01-18"
     },
     {
@@ -84097,7 +84127,7 @@
         "rmq",
         "emx"
       ],
-      "RetRemedy": "split into Cal\u00F3 [rmq] and Erromintxela [emx]",
+      "RetRemedy": "Split into Cal\u00F3 [rmq] and Erromintxela [emx]",
       "Effective": "2010-01-18"
     },
     {
@@ -84108,7 +84138,7 @@
         "sgy",
         "isk"
       ],
-      "RetRemedy": "split into Sanglechi [sgy] and Ishkashimi [isk]",
+      "RetRemedy": "Split into Sanglechi [sgy] and Ishkashimi [isk]",
       "Effective": "2010-01-18"
     },
     {
@@ -84172,7 +84202,7 @@
         "bzc",
         "tkg"
       ],
-      "RetRemedy": "split into Southern Betsimisaraka [bzc] and Tesaka Malagasy [tkg]",
+      "RetRemedy": "Split into Southern Betsimisaraka [bzc] and Tesaka Malagasy [tkg]",
       "Effective": "2011-05-18"
     },
     {
@@ -84191,7 +84221,7 @@
         "aqd",
         "dmb"
       ],
-      "RetRemedy": "split into Ampari Dogon [aqd] and Mombo Dogon [dmb]",
+      "RetRemedy": "Split into Ampari Dogon [aqd] and Mombo Dogon [dmb]",
       "Effective": "2011-05-18"
     },
     {
@@ -84210,7 +84240,7 @@
         "nxq",
         "nru"
       ],
-      "RetRemedy": "split into Naxi [nxq] and Narua [nru]",
+      "RetRemedy": "Split into Naxi [nxq] and Narua [nru]",
       "Effective": "2011-05-18"
     },
     {
@@ -84332,12 +84362,9 @@
       "RetReason": "S",
       "ChangeTo": [
         "gqu",
-        "aou",
-        "gig",
-        "gir",
-        "giw"
+        "aou"
       ],
-      "RetRemedy": "Split into Qau [gqu] and A\u0027ou [aou] with some going to Green Gelao [gig], some to Red Gelao [gir], and some to White Gelao [giw]",
+      "RetRemedy": "Split into Qau [gqu] and A\u0027ou [aou]",
       "Effective": "2012-02-03"
     },
     {
@@ -84368,7 +84395,7 @@
         "jgk",
         "jjr"
       ],
-      "RetRemedy": "split into Gwak [jgk] and Bankal [jjr]",
+      "RetRemedy": "Split into Gwak [jgk] and Bankal [jjr]",
       "Effective": "2012-02-03"
     },
     {
@@ -84379,7 +84406,7 @@
         "zkd",
         "zkn"
       ],
-      "RetRemedy": "split into Kadu [zkd] and Kanan [zkn]",
+      "RetRemedy": "Split into Kadu [zkd] and Kanan [zkn]",
       "Effective": "2012-02-03"
     },
     {
@@ -84412,16 +84439,6 @@
         "xnz"
       ],
       "RetRemedy": "Split into Andaandi (Dongolawi) [dgl] and Kenzi (Mattoki) [xnz]",
-      "Effective": "2012-02-03"
-    },
-    {
-      "Id": "lcq",
-      "RefName": "Luhu",
-      "RetReason": "M",
-      "ChangeTo": [
-        "ppr"
-      ],
-      "RetRemedy": "",
       "Effective": "2012-02-03"
     },
     {
@@ -84873,14 +84890,6 @@
       "Effective": "2015-01-12"
     },
     {
-      "Id": "dzd",
-      "RefName": "Daza",
-      "RetReason": "N",
-      "ChangeTo": [],
-      "RetRemedy": "",
-      "Effective": "2015-01-12"
-    },
-    {
       "Id": "gfx",
       "RefName": "Mangetti Dune \u01C3Xung",
       "RetReason": "M",
@@ -85035,16 +85044,6 @@
       "Effective": "2015-01-12"
     },
     {
-      "Id": "xsj",
-      "RefName": "Subi",
-      "RetReason": "D",
-      "ChangeTo": [
-        "suj"
-      ],
-      "RetRemedy": "",
-      "Effective": "2015-01-12"
-    },
-    {
       "Id": "yds",
       "RefName": "Yiddish Sign Language",
       "RetReason": "N",
@@ -85140,7 +85139,7 @@
         "dwu",
         "dwy"
       ],
-      "RetRemedy": "split into [dwu] Dhuwal and [dwy] Dhuwaya",
+      "RetRemedy": "Split into [dwu] Dhuwal and [dwy] Dhuwaya",
       "Effective": "2016-01-15"
     },
     {
@@ -85161,7 +85160,7 @@
         "esg",
         "wsg"
       ],
-      "RetRemedy": "split into [esg] Aheri Gondi and [wsg] Adilabad Gondi",
+      "RetRemedy": "Split into [esg] Aheri Gondi and [wsg] Adilabad Gondi",
       "Effective": "2016-01-15"
     },
     {
@@ -85823,7 +85822,7 @@
         "xpl",
         "xpz"
       ],
-      "RetRemedy": "Split into [xpv] Northern Tasman,  [xph] North Midlands Tasman, [xpb] Northeastern Tasman, [xpd] Oyster Bay Tasmanian, [xpf] Southeast Tasma, [xpx] Southwestern Tasman, [xpw] Northwestern Tasman., [xpl] Port Sorell Tasman. and [xpz] Bruny Island Tasman.",
+      "RetRemedy": "Split into [xpv] Northern Tasman,  [xph] North Midlands Tasman, [xpb] Northeastern Tasman, [xpd] Oyster Bay Tasman, [xpf] Southeast Tasman, [xpx] Southwestern Tasman, [xpw] Northwestern Tasman, [xpl] Port Sorell Tasman, and [xpz] Bruny Island Tasman",
       "Effective": "2020-01-23"
     },
     {
@@ -85947,7 +85946,7 @@
     {
       "Id": "ajt",
       "RefName": "Judeo-Tunisian Arabic",
-      "RetReason": "D",
+      "RetReason": "M",
       "ChangeTo": [
         "aeb"
       ],
@@ -86067,6 +86066,17 @@
       "Effective": "2023-01-20"
     },
     {
+      "Id": "ksa",
+      "RefName": "Shuwa-Zamani",
+      "RetReason": "S",
+      "ChangeTo": [
+        "rsw",
+        "izm"
+      ],
+      "RetRemedy": "Split into [rsw] Rishiwa and [izm] Kizamani",
+      "Effective": "2023-01-20"
+    },
+    {
       "Id": "nom",
       "RefName": "Nocam\u00E1n",
       "RetReason": "M",
@@ -86074,6 +86084,19 @@
         "cbr"
       ],
       "RetRemedy": "",
+      "Effective": "2023-01-20"
+    },
+    {
+      "Id": "plj",
+      "RefName": "Polci",
+      "RetReason": "S",
+      "ChangeTo": [
+        "pze",
+        "nzr",
+        "zlu",
+        "uly"
+      ],
+      "RetRemedy": "Split into Pesse [pze], Nyamzak-Dir-Mbarimi [nzr], Zul [zlu], and Buli [uly]",
       "Effective": "2023-01-20"
     },
     {
@@ -86169,30 +86192,6 @@
       "Effective": "2023-01-20"
     },
     {
-      "Id": "ksa",
-      "RefName": "Shuwa-Zamani",
-      "RetReason": "S",
-      "ChangeTo": [
-        "rsw",
-        "izm"
-      ],
-      "RetRemedy": "Split into [rsw] Rishiwa and [izm] Kizamani",
-      "Effective": "2023-01-23"
-    },
-    {
-      "Id": "plj",
-      "RefName": "Polci",
-      "RetReason": "S",
-      "ChangeTo": [
-        "pze",
-        "nzr",
-        "zlu",
-        "uly"
-      ],
-      "RetRemedy": "Split into Pesse [pze], Nyamzak-Dir-Mbarimi [nzr], Zul [zlu], and Buli [uly]",
-      "Effective": "2023-01-23"
-    },
-    {
       "Id": "dek",
       "RefName": "Dek",
       "RetReason": "D",
@@ -86200,7 +86199,7 @@
         "sqm"
       ],
       "RetRemedy": "",
-      "Effective": "2024-09-09"
+      "Effective": "2024-10-15"
     },
     {
       "Id": "nte",
@@ -86210,7 +86209,17 @@
         "eko"
       ],
       "RetRemedy": "",
-      "Effective": "2024-09-09"
+      "Effective": "2024-10-15"
+    },
+    {
+      "Id": "yol",
+      "RefName": "Yola",
+      "RetReason": "M",
+      "ChangeTo": [
+        "enm"
+      ],
+      "RetRemedy": "",
+      "Effective": "2025-10-15"
     }
   ]
 }
