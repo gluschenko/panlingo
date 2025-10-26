@@ -7,7 +7,8 @@ public class MainTests
     [Fact]
     public void CheckPackageVersion()
     {
-        Type[] types = [
+        var types = new Type[] 
+        {
             typeof(Panlingo.LanguageIdentification.CLD2.CLD2Detector),
             typeof(Panlingo.LanguageIdentification.CLD3.CLD3Detector),
             typeof(Panlingo.LanguageIdentification.FastText.FastTextDetector),
@@ -20,7 +21,7 @@ public class MainTests
             typeof(Panlingo.LanguageIdentification.Lingua.Native.LinguaNativeLibrary),
             typeof(Panlingo.LanguageIdentification.MediaPipe.Native.MediaPipeNativeLibrary),
             typeof(Panlingo.LanguageIdentification.Whatlang.Native.WhatlangNativeLibrary),
-        ];
+        };
 
         var root = AppDomain.CurrentDomain.BaseDirectory;
 
