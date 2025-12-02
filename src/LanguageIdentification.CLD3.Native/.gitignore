@@ -1,4 +1,6 @@
 libcld3.so
 libcld3.dll
+libcld3.arm64.so
+libcld3.x86_64.so
 libcld3.arm64.dylib
 libcld3.x86_64.dylib
