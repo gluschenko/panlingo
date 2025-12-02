@@ -61,7 +61,7 @@
     <Content Include="libcld3.x86_64.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>runtimes/linux-x64/native</PackagePath>
+      <PackagePath>runtimes/linux-x64/native/libcld3.so</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
@@ -71,7 +71,7 @@
     <Content Include="libcld3.arm64.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>runtimes/linux-arm64/native</PackagePath>
+      <PackagePath>runtimes/linux-arm64/native/libcld3.so</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
