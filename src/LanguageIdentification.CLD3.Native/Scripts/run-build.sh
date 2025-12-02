@@ -1,7 +1,20 @@
 #!/bin/bash
 set -e
 
-echo "Hello world";
+if [ -z "$1" ]; then
+    echo "Error: No architecture specified."
+    echo "Usage: $0 <arch>"
+    exit 1
+fi
+
+ARCH=$1
+
+if [[ "$ARCH" != "x86_64" && "$ARCH" != "arm64" ]]; then
+    echo "Error: Invalid architecture specified. Use 'x86_64' or 'arm64'."
+    exit 1
+fi
+
+echo "Hello world $ARCH";
 
 workspace="obj/native_build_temp"
 
@@ -36,7 +49,7 @@ make -j $(nproc) # make
 ls -R
 
 ldd libcld3.so
-cp libcld3.so ../../../libcld3.so
+cp libcld3.so ../../../libcld3.$ARCH.so
 
 # Clean up
 rm -rf "$workspace"
