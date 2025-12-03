@@ -129,6 +129,8 @@ public class FastTextTests : IAsyncLifetime
     [InlineData(Constants.MALFORMED_BYTES_12)]
     public void FastTextMalformedBytes(string text)
     {
+        Skip.IfNot(FastTextDetector.IsSupported());
+
         using var fastText = new FastTextDetector();
         fastText.LoadDefaultModel();
 

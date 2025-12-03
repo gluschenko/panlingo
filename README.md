@@ -70,20 +70,18 @@ functionality into their applications.
 
 ## Platform support
 
-| Model         |  Linux             | Windows            |  macOS             |
-| :------------ | :----------------: | :----------------: | :----------------: |
-| **CLD2**      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| **CLD3**      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| **FastText**  | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| **Whatlang**  | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| **MediaPipe** | :white_check_mark: | :white_check_mark: | :white_check_mark:\* |
-| **Lingua**    | :white_check_mark: | :white_check_mark: | :white_check_mark:\* |
+| Model         | Linux (x86_64)     | Linux (arm64)      | Windows (x86_64)   | Windows (arm64)    | macOS (x86_64)     | macOS (arm64)      |
+| :------------ | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
+| **CLD2**      | :white_check_mark: | :x:                | :white_check_mark: | :x:                | :white_check_mark: | :x:                |
+| **CLD3**      | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :white_check_mark: | :x:                |
+| **FastText**  | :white_check_mark: | :x:                | :white_check_mark: | :x:                | :white_check_mark: | :x:                |
+| **Whatlang**  | :white_check_mark: | :x:                | :white_check_mark: | :x:                | :white_check_mark: | :x:                |
+| **MediaPipe** | :white_check_mark: | :x:                | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: |
+| **Lingua**    | :white_check_mark: | :x:                | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: |
 
 :white_check_mark: — Full support |
 :x: — No support |
 :construction: — Under research
-
-\* **arm64** CPU only (Apple silicon M series)
 
 ## Contributing
 

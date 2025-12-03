@@ -12,6 +12,7 @@ public class CLD3Tests
         var isSupported = RuntimeInformation.OSArchitecture switch
         {
             Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
+            Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => true,
             Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => true,
             Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,
             Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => true,

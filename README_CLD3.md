@@ -6,7 +6,7 @@ Welcome to **Panlingo.LanguageIdentification.CLD3**, a .NET wrapper for the Comp
 
 - Runtime: **.NET >= 5.0**
 - OS: **Linux (Ubuntu, Debian)**, **Windows 10+** or **Windows Server 2019+**
-- Arch: **AMD64**
+- Arch: **AMD64** (or **ARM** for macOS and Linux)
 
 ## Installation
 
