@@ -15,6 +15,9 @@
     <PackageTags>nlp lid language-identification language-detection cld3</PackageTags>
     <PackageReadmeFile>README_CLD3.md</PackageReadmeFile>
     <PackageReleaseNotes>
+0.6.6
+- Linux: ARM64 support
+      
 0.6.1
 - Windows: static linking of Visual C++ Runtime
       
