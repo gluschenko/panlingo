@@ -252,7 +252,7 @@ jobs:
     name: 🚚 Push ${{matrix.projectName}}
     runs-on: ubuntu-24.04
     needs: test-package
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/staging'
     strategy:
       fail-fast: false
       matrix:
@@ -304,7 +304,7 @@ jobs:
       run: ls -R
 
     - name: 🚚 [GitHub] Push ${{matrix.projectName}} to registry
-      if: steps.changes.outputs.src == 'true'
+      if: steps.changes.outputs.src == 'true' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/staging')
       working-directory: ${{env.ROOT}}/${{matrix.projectName}}
       run: |
         dotnet nuget push ./out/**/*.nupkg \
@@ -312,7 +312,7 @@ jobs:
         --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
 
     - name: 🚚 [Microsoft] Push ${{matrix.projectName}} to registry
-      if: steps.changes.outputs.src == 'true'
+      if: steps.changes.outputs.src == 'true' && github.ref == 'refs/heads/master'
       working-directory: ${{env.ROOT}}/${{matrix.projectName}}
       run: |
         dotnet nuget push ./out/**/*.nupkg \
