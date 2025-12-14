@@ -42,7 +42,7 @@ jobs:
           - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: ubuntu-22.04, arch: x86_64, script: ./Scripts/run-build.sh, artifact: libwhatlang.so }
           - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: mediapipe_language_detector.dll }
           - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libmediapipe_language_detector.arm64.dylib }
-          - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: ubuntu-22.04, arch: x86_64, script: ./Scripts/run-build.sh, artifact: libmediapipe_language_detector.so }
+          # - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: ubuntu-22.04, arch: x86_64, script: ./Scripts/run-build.sh, artifact: libmediapipe_language_detector.so }
     permissions:
       contents: read
       packages: write
