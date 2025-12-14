@@ -3,10 +3,16 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 param(
-    [Parameter(Mandatory = $true)]
     [ValidateSet("x86_64", "arm64")]
     [string]$ARCH
 )
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+
+if (-not $ARCH) {
+    throw "ARCH argument is required. Usage: ./run-build.ps1 <x86_64|arm64>"
+}
 
 Write-Host "Hello world $ARCH"
 
