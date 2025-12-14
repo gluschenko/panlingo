@@ -2,7 +2,18 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-Write-Host "Hello world"
+param(
+    [Parameter(Mandatory = $true)]
+    [ValidateSet("x86_64", "arm64")]
+    [string]$ARCH
+)
+
+Write-Host "Hello world $ARCH"
+
+switch ($ARCH) {
+    "x86_64" { $CMakeArch = "x64" }
+    "arm64"  { $CMakeArch = "ARM64" }
+}
 
 $workspace = "obj/native_build_temp"
 
@@ -31,12 +42,12 @@ Set-Location "build"
 
 Remove-Item -Path "*" -Recurse -Force
 # Build for Windows
-cmake ..
+cmake .. -A $CMakeArch
 cmake --build .
 
 Get-ChildItem -Recurse
 
-Copy-Item -Path ".\Debug\cld3.dll" -Destination "..\..\..\libcld3.dll"
+Copy-Item -Path ".\Debug\cld3.dll" -Destination "..\..\..\libcld3.$ARCH.dll"
 
 cd ../..
 Write-Output "Goodbye world"
