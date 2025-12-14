@@ -38,118 +38,118 @@ limitations under the License.
 #include "tensorflow/lite/core/api/op_resolver.h"
 
 namespace mediapipe {
-namespace tasks {
-namespace core {
+    namespace tasks {
+        namespace core {
 
-template <typename T>
-using EnableIfBaseTaskApiSubclass =
-    typename std::enable_if<std::is_base_of<BaseTaskApi, T>::value>::type*;
+            template <typename T>
+            using EnableIfBaseTaskApiSubclass =
+                typename std::enable_if<std::is_base_of<BaseTaskApi, T>::value>::type*;
 
-// Template creator for all subclasses of BaseTaskApi.
-class TaskApiFactory {
- public:
-  TaskApiFactory() = delete;
+            // Template creator for all subclasses of BaseTaskApi.
+            class TaskApiFactory {
+            public:
+                TaskApiFactory() = delete;
 
-  template <typename T, typename Options,
-            EnableIfBaseTaskApiSubclass<T> = nullptr>
-  static absl::StatusOr<std::unique_ptr<T>> Create(
-      CalculatorGraphConfig graph_config,
-      std::unique_ptr<tflite::OpResolver> resolver,
-      PacketsCallback packets_callback = nullptr,
-      std::shared_ptr<Executor> default_executor = nullptr,
-      std::optional<PacketMap> input_side_packets = std::nullopt,
-      std::optional<ErrorFn> error_fn = std::nullopt) {
-    bool found_task_subgraph = false;
-    // This for-loop ensures there's only one subgraph besides
-    // FlowLimiterCalculator.
-    for (const auto& node : graph_config.node()) {
-      if (node.calculator() == "FlowLimiterCalculator") {
-        continue;
-      }
-      if (found_task_subgraph) {
-        return CreateStatusWithPayload(
-            absl::StatusCode::kInvalidArgument,
-            "Task graph config should only contain one task subgraph node.",
-            MediaPipeTasksStatus::kInvalidTaskGraphConfigError);
-      } else {
-        MP_RETURN_IF_ERROR(CheckHasValidOptions<Options>(node));
-        found_task_subgraph = true;
-      }
-    }
-	
+                template <typename T, typename Options,
+                    EnableIfBaseTaskApiSubclass<T> = nullptr>
+                static absl::StatusOr<std::unique_ptr<T>> Create(
+                    CalculatorGraphConfig graph_config,
+                    std::unique_ptr<tflite::OpResolver> resolver,
+                    PacketsCallback packets_callback = nullptr,
+                    std::shared_ptr<Executor> default_executor = nullptr,
+                    std::optional<PacketMap> input_side_packets = std::nullopt,
+                    std::optional<ErrorFn> error_fn = std::nullopt) {
+                    bool found_task_subgraph = false;
+                    // This for-loop ensures there's only one subgraph besides
+                    // FlowLimiterCalculator.
+                    for (const auto& node : graph_config.node()) {
+                        if (node.calculator() == "FlowLimiterCalculator") {
+                            continue;
+                        }
+                        if (found_task_subgraph) {
+                            return CreateStatusWithPayload(
+                                absl::StatusCode::kInvalidArgument,
+                                "Task graph config should only contain one task subgraph node.",
+                                MediaPipeTasksStatus::kInvalidTaskGraphConfigError);
+                        }
+                        else {
+                            MP_RETURN_IF_ERROR(CheckHasValidOptions<Options>(node));
+                            found_task_subgraph = true;
+                        }
+                    }
+                    
 // Build fails on MSVC: 
 // C2121: '#': invalid character: possibly the result of a macro expansion
 //
 // Original code:
 // 
-// MP_ASSIGN_OR_RETURN(
-//         auto runner,
+//                     MP_ASSIGN_OR_RETURN(
+//                         auto runner,
 // #if !MEDIAPIPE_DISABLE_GPU
-//         core::TaskRunner::Create(std::move(graph_config), std::move(resolver),
-//                                  std::move(packets_callback),
-//                                  std::move(default_executor),
-//                                  std::move(input_side_packets),
-//                                  /*resources=*/nullptr, std::move(error_fn)));
+//                     
+//                         core::TaskRunner::Create(std::move(graph_config), std::move(resolver),
+//                             std::move(packets_callback),
+//                             std::move(default_executor),
+//                             std::move(input_side_packets),
+//                             /*resources=*/nullptr, std::move(error_fn)));
 // #else
-//         core::TaskRunner::Create(
-//             std::move(graph_config), std::move(resolver),
-//             std::move(packets_callback), std::move(default_executor),
-//             std::move(input_side_packets), std::move(error_fn)));
+//                         core::TaskRunner::Create(
+//                             std::move(graph_config), std::move(resolver),
+//                             std::move(packets_callback), std::move(default_executor),
+//                             std::move(input_side_packets), std::move(error_fn)));
 // #endif
 
-// Modified code:
 #if !MEDIAPIPE_DISABLE_GPU
-    MP_ASSIGN_OR_RETURN(
-        auto runner,
-        core::TaskRunner::Create(std::move(graph_config), std::move(resolver),
-                                 std::move(packets_callback),
-                                 std::move(default_executor),
-                                 std::move(input_side_packets),
-                                 /*resources=*/nullptr, std::move(error_fn)));
+                    MP_ASSIGN_OR_RETURN(
+                        auto runner,
+                        core::TaskRunner::Create(std::move(graph_config), std::move(resolver),
+                            std::move(packets_callback),
+                            std::move(default_executor),
+                            std::move(input_side_packets),
+                            /*resources=*/nullptr, std::move(error_fn)));
 #else
-    MP_ASSIGN_OR_RETURN(
-        auto runner,
-        core::TaskRunner::Create(
-            std::move(graph_config), std::move(resolver),
-            std::move(packets_callback), std::move(default_executor),
-            std::move(input_side_packets), std::move(error_fn)));
+                    MP_ASSIGN_OR_RETURN(
+                        auto runner,
+                        core::TaskRunner::Create(
+                            std::move(graph_config), std::move(resolver),
+                            std::move(packets_callback), std::move(default_executor),
+                            std::move(input_side_packets), std::move(error_fn)));
 #endif
-// 
+                    return std::make_unique<T>(std::move(runner));
+                }
 
-    return std::make_unique<T>(std::move(runner));
-  }
-
-  template <typename Options>
-  static absl::Status CheckHasValidOptions(
-      const CalculatorGraphConfig::Node& node) {
-    if constexpr (mediapipe::Requires<Options>(
-                      [](auto&& o) -> decltype(o.ext) {})) {
-      if (node.options().HasExtension(Options::ext)) {
-        return absl::OkStatus();
-      }
-    } else {
+                template <typename Options>
+                static absl::Status CheckHasValidOptions(
+                    const CalculatorGraphConfig::Node& node) {
+                    if constexpr (mediapipe::Requires<Options>(
+                        [](auto&& o) -> decltype(o.ext) {})) {
+                        if (node.options().HasExtension(Options::ext)) {
+                            return absl::OkStatus();
+                        }
+                    }
+                    else {
 #ifndef MEDIAPIPE_PROTO_LITE
-      for (const auto& option : node.node_options()) {
-        if (absl::StrContains(option.type_url(),
-                              Options::descriptor()->full_name())) {
-          return absl::OkStatus();
-        }
-      }
+                        for (const auto& option : node.node_options()) {
+                            if (absl::StrContains(option.type_url(),
+                                Options::descriptor()->full_name())) {
+                                return absl::OkStatus();
+                            }
+                        }
 #else   // MEDIAPIPE_PROTO_LITE
-      // Skip the check for proto lite, as Options::descriptor() is unavailable.
-      return absl::OkStatus();
+                        // Skip the check for proto lite, as Options::descriptor() is unavailable.
+                        return absl::OkStatus();
 #endif  // MEDIAPIPE_PROTO_LITE
-    }
-    return CreateStatusWithPayload(
-        absl::StatusCode::kInvalidArgument,
-        absl::StrCat(node.calculator(),
-                     " is missing the required task options field."),
-        MediaPipeTasksStatus::kInvalidTaskGraphConfigError);
-  }
-};
+                    }
+                    return CreateStatusWithPayload(
+                        absl::StatusCode::kInvalidArgument,
+                        absl::StrCat(node.calculator(),
+                            " is missing the required task options field."),
+                        MediaPipeTasksStatus::kInvalidTaskGraphConfigError);
+                }
+            };
 
-}  // namespace core
-}  // namespace tasks
+        }  // namespace core
+    }  // namespace tasks
 }  // namespace mediapipe
 
 #endif  // MEDIAPIPE_TASKS_CC_CORE_TASK_API_FACTORY_H_
