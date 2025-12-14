@@ -20,7 +20,7 @@ npm install -g zx
 
 zx ./monkey-patch.mjs
 
-bazel-6.1.1 build -c opt \
+bazel build -c opt \
     --linkopt -s --strip always \
     --define MEDIAPIPE_DISABLE_GPU=1 \
     --define='absl=0' \
