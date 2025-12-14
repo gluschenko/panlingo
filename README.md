@@ -72,8 +72,8 @@ functionality into their applications.
 
 | Model         | Linux (x86_64)     | Linux (arm64)      | Windows (x86_64)   | Windows (arm64)    | macOS (x86_64)     | macOS (arm64)      |
 | :------------ | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
-| **CLD2**      | :white_check_mark: | :x:                | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: |
-| **CLD3**      | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: |
+| **CLD2**      | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| **CLD3**      | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | **FastText**  | :white_check_mark: | :x:                | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: |
 | **Whatlang**  | :white_check_mark: | :x:                | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: |
 | **MediaPipe** | :white_check_mark: | :x:                | :white_check_mark: | :x:                | :x:                | :white_check_mark: |
