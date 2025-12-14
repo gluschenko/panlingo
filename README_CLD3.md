@@ -8,6 +8,18 @@ Welcome to **Panlingo.LanguageIdentification.CLD3**, a .NET wrapper for the Comp
 - OS: **Linux (Ubuntu, Debian)**, **Windows 10+** or **Windows Server 2019+**
 - Arch: **AMD64** (or **ARM** for macOS and Linux)
 
+## Platform support
+
+| **OS / Arch** | x86_64             | arm64              |
+| :------------ | :----------------: | :----------------: |
+| **Linux**     | :white_check_mark: | :x:                |
+| **Windows**   | :white_check_mark: | :x:                |
+| **macOS**     | :white_check_mark: | :white_check_mark: |
+
+:white_check_mark: — Full support |
+:x: — No support |
+:construction: — Under research
+
 ## Installation
 
 To integrate the CLD3 functionality, follow these steps:
