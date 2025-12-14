@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
-    <Version>0.6.5</Version>
+    <Version>0.7.0</Version>
     <PackageId>Panlingo.LanguageIdentification.CLD2</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.CLD2</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.CLD2</RootNamespace>
@@ -15,6 +15,9 @@
     <PackageTags>nlp lid language-identification language-detection cld2</PackageTags>
     <PackageReadmeFile>README_CLD2.md</PackageReadmeFile>
     <PackageReleaseNotes>
+0.7.0
+- Windows and Linux: ARM64 support      
+
 0.6.1
 - Windows: static linking of Visual C++ Runtime
       
