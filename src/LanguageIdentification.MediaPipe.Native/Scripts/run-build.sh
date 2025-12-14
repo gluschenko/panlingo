@@ -11,6 +11,7 @@ cp -a Native/. $workspace
 
 cd "$workspace"
 
+npm install -g zx
 zx ./monkey-patch.mjs
 
 bazel-6.1.1 build -c opt \
