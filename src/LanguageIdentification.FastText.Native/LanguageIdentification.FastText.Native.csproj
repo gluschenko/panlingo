@@ -71,7 +71,7 @@
     <Content Include="libfasttext.arm64.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>runtimes/linux-x64/native/libfasttext.so</PackagePath>
+      <PackagePath>runtimes/linux-arm64/native/libfasttext.so</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
