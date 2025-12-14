@@ -1,13 +1,16 @@
 [submodule "third_party/cld3"]
 	path = third_party/cld3
 	url = https://github.com/google/cld3.git
+	branch = master
 [submodule "third_party/fastText"]
 	path = third_party/fastText
 	url = https://github.com/facebookresearch/fastText.git
+	branch = master
 [submodule "third_party/cld2"]
 	path = third_party/cld2
 	url = https://github.com/CLD2Owners/cld2.git
+	branch = master
 [submodule "third_party/mediapipe"]
 	path = third_party/mediapipe
 	url = https://github.com/google-ai-edge/mediapipe.git
-	branch = release
+	branch = master
