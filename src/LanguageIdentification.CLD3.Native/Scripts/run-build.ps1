@@ -1,7 +1,4 @@
 
-Set-StrictMode -Version Latest
-$ErrorActionPreference = "Stop"
-
 param(
     [ValidateSet("x86_64", "arm64")]
     [string]$ARCH
