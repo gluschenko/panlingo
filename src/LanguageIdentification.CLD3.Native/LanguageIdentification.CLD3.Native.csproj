@@ -91,7 +91,7 @@
     <Content Include="libcld3.arm64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>runtimes/windows-arm64/native/libcld3.dll</PackagePath>
+      <PackagePath>runtimes/win-arm64/native/libcld3.dll</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
