@@ -12,22 +12,6 @@ if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
 
 choco upgrade chocolatey -y
 
-choco install python --version=3.11.0 -y
-
-python --version
-
-python -m venv venv
-.\venv\Scripts\activate
-
-python -m pip install --upgrade pip
-pip install setuptools wheel future absl-py "numpy<2" jax[cpu] opencv-contrib-python protobuf==3.20.1 six==1.14.0 tensorflow tf_slim
-
-choco install git wget cmake curl ffmpeg -y
-
-choco install bazelisk -y
-
-choco install llvm -y
-
 choco install nodejs -y
 npm install -g zx
 
