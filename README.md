@@ -74,7 +74,7 @@ functionality into their applications.
 | :------------ | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
 | **CLD2**      | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | **CLD3**      | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| **FastText**  | :white_check_mark: | :x:                | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: |
+| **FastText**  | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | **Whatlang**  | :white_check_mark: | :x:                | :white_check_mark: | :x:                | :white_check_mark: | :white_check_mark: |
 | **MediaPipe** | :white_check_mark: | :x:                | :white_check_mark: | :x:                | :x:                | :white_check_mark: |
 | **Lingua**    | :white_check_mark: | :x:                | :white_check_mark: | :x:                | :x:                | :white_check_mark: |

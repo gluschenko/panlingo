@@ -6,14 +6,14 @@ Welcome to **Panlingo.LanguageIdentification.FastText**, a .NET wrapper for the 
 
 - Runtime: **.NET >= 5.0**
 - OS: **Linux (Ubuntu, Debian)**, **Windows 10+** or **Windows Server 2019+**, **macOS**
-- Arch: **AMD64** (or **ARM** for macOS)
+- Arch: **x86_64** or **arm64**
 
 ## Platform support
 
 | **OS / Arch** | x86_64             | arm64              |
 | :------------ | :----------------: | :----------------: |
-| **Linux**     | :white_check_mark: | :x:                |
-| **Windows**   | :white_check_mark: | :x:                |
+| **Linux**     | :white_check_mark: | :white_check_mark: |
+| **Windows**   | :white_check_mark: | :white_check_mark: |
 | **macOS**     | :white_check_mark: | :white_check_mark: |
 
 :white_check_mark: — Full support |
