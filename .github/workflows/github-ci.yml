@@ -2,9 +2,9 @@ name: GitHub CI
 
 on:
   push:
-    branches: [ master, staging ]
+    branches: [ master ]
   pull_request:
-    branches: [ master, staging ]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
