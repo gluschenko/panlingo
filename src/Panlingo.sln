@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.0.11111.16 d18.0
+VisualStudioVersion = 18.0.11111.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".misc", ".misc", "{F741FF11-5F70-4E3B-BC72-9DA3090B90E9}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".misc", ".misc", "{F741FF11
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{4F3FF1FF-F1F1-4A0F-805A-9ECCFD921660}"
 	ProjectSection(SolutionItems) = preProject
+		..\CODE_OF_CONDUCT.md = ..\CODE_OF_CONDUCT.md
+		..\CONTRIBUTING.md = ..\CONTRIBUTING.md
 		..\LICENSE = ..\LICENSE
 		..\LICENSE_CLD2 = ..\LICENSE_CLD2
 		..\LICENSE_CLD3 = ..\LICENSE_CLD3
@@ -30,6 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{4F3FF1FF
 		..\README_LINGUA.md = ..\README_LINGUA.md
 		..\README_MEDIAPIPE.md = ..\README_MEDIAPIPE.md
 		..\README_WHATLANG.md = ..\README_WHATLANG.md
+		..\SECURITY.md = ..\SECURITY.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageIdentification.CLD3", "LanguageIdentification.CLD3\LanguageIdentification.CLD3.csproj", "{43671662-433F-4CF1-B481-745BDC942A71}"

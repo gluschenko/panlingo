@@ -1,8 +1,22 @@
-# PowerShell equivalent script
-# Ensure script stops if any command fails
+
+param(
+    [ValidateSet("x86_64", "arm64")]
+    [string]$ARCH
+)
+
+Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-Write-Output "Hello world"
+if (-not $ARCH) {
+    throw "ARCH argument is required. Usage: ./run-build.ps1 <x86_64|arm64>"
+}
+
+Write-Host "Hello world $ARCH"
+
+switch ($ARCH) {
+    "x86_64" { $CMakeArch = "x64" }
+    "arm64"  { $CMakeArch = "ARM64" }
+}
 
 $workspace = "obj/native_build_temp"
 
@@ -28,14 +42,14 @@ if (-Not (Test-Path "build")) {
 Set-Location "build"
 
 # Build for Windows
-cmake ..
+cmake .. -A $CMakeArch
 cmake --build .
 
 # List directory contents recursively
 Get-ChildItem -Recurse -Path .
 
 # Display shared library dependencies
-Copy-Item -Path ".\Debug\fasttext.dll" -Destination "..\..\..\fasttext.dll"
+Copy-Item -Path ".\Debug\fasttext.dll" -Destination "..\..\..\fasttext.$ARCH.dll"
 
 # List directory contents recursively
 Get-ChildItem -Recurse -Path .
