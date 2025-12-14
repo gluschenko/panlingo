@@ -17,9 +17,6 @@ RUN apt-get update && apt-get install -y ca-certificates curl gnupg && \
     curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
     echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
 
-# Install ZX
-RUN npm install -g zx
-
 # Inspired by https://github.com/google-ai-edge/mediapipe/blob/master/Dockerfile
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
@@ -31,6 +28,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         wget \
         unzip \
         nodejs \
+        npm \
         python3-dev \
         python3-opencv \
         python3-pip \
