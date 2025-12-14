@@ -15,13 +15,20 @@ jobs:
       fail-fast: false
       matrix:
         task: 
-          - { title: FastText, projectName: LanguageIdentification.FastText, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: fasttext.dll }
+          - { title: FastText, projectName: LanguageIdentification.FastText, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: fasttext.x86_64.dll }
+          - { title: FastText, projectName: LanguageIdentification.FastText, os: windows-11-arm, arch: arm64, script: ./Scripts/run-build.ps1, artifact: fasttext.arm64.dll }
           - { title: FastText, projectName: LanguageIdentification.FastText, os: macos-15-intel, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libfasttext.x86_64.dylib }
           - { title: FastText, projectName: LanguageIdentification.FastText, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libfasttext.arm64.dylib }
-          - { title: CLD2, projectName: LanguageIdentification.CLD2, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: libcld2.dll }
+          - { title: FastText, projectName: LanguageIdentification.FastText, os: ubuntu-22.04, arch: x86_64, script: ./Scripts/run-build.sh, artifact: libfasttext.x86_64.so }
+          - { title: FastText, projectName: LanguageIdentification.FastText, os: ubuntu-22.04-arm, arch: arm64, script: ./Scripts/run-build.sh, artifact: libfasttext.arm64.so }
+          - { title: CLD2, projectName: LanguageIdentification.CLD2, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: libcld2.x86_64.dll }
+          - { title: CLD2, projectName: LanguageIdentification.CLD2, os: windows-11-arm, arch: arm64, script: ./Scripts/run-build.ps1, artifact: libcld2.arm64.dll }
           - { title: CLD2, projectName: LanguageIdentification.CLD2, os: macos-15-intel, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libcld2.x86_64.dylib }
           - { title: CLD2, projectName: LanguageIdentification.CLD2, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libcld2.arm64.dylib }
-          - { title: CLD3, projectName: LanguageIdentification.CLD3, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: libcld3.dll }
+          - { title: CLD2, projectName: LanguageIdentification.CLD2, os: ubuntu-22.04, arch: x86_64, script: ./Scripts/run-build.sh, artifact: libcld2.x86_64.so }
+          - { title: CLD2, projectName: LanguageIdentification.CLD2, os: ubuntu-22.04-arm, arch: arm64, script: ./Scripts/run-build.sh, artifact: libcld2.arm64.so }
+          - { title: CLD3, projectName: LanguageIdentification.CLD3, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: libcld3.x86_64.dll }
+          - { title: CLD3, projectName: LanguageIdentification.CLD3, os: windows-11-arm, arch: arm64, script: ./Scripts/run-build.ps1, artifact: libcld3.arm64.dll }
           - { title: CLD3, projectName: LanguageIdentification.CLD3, os: macos-15-intel, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libcld3.x86_64.dylib }
           - { title: CLD3, projectName: LanguageIdentification.CLD3, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libcld3.arm64.dylib }
           - { title: CLD3, projectName: LanguageIdentification.CLD3, os: ubuntu-22.04, arch: x86_64, script: ./Scripts/run-build.sh, artifact: libcld3.x86_64.so }
@@ -183,6 +190,7 @@ jobs:
           - { os: ubuntu-24.04-arm }
           - { os: windows-2022 }
           - { os: windows-2025 }
+          - { os: windows-11-arm }
           - { os: macos-15-intel }
           - { os: macos-14 }
           - { os: macos-15 }
