@@ -37,23 +37,6 @@ source venv/bin/activate
 python --version
 python -m pip install --upgrade pip
 
-pip install --break-system-packages --upgrade setuptools wheel future absl-py
-pip install --break-system-packages --upgrade tensorflow-macos==2.16.2 tf_slim
-pip install --break-system-packages --upgrade "numpy<2" jax['cpu'] opencv-contrib-python protobuf==3.20.1 six==1.14.0
-pip install --break-system-packages --upgrade opencv-contrib-python protobuf==3.20.1 six==1.14.0
-
-# Other bullshit
-brew uninstall cmake
-brew install cmake
-brew install protobuf@29
-brew install git 
-brew install wget 
-brew install pkg-config 
-brew install curl
-brew install ffmpeg
-brew install bazelisk
-brew install llvm@16
-
 npm install -g zx
 
 echo -n "Bazel: " && bazel version

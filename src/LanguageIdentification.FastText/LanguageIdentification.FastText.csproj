@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
-    <Version>0.6.5</Version>
+    <TargetFrameworks>net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
+    <Version>0.7.0</Version>
     <PackageId>Panlingo.LanguageIdentification.FastText</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.FastText</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.FastText</RootNamespace>
@@ -15,6 +15,9 @@
     <PackageTags>nlp lid language-identification language-detection fasttext</PackageTags>
     <PackageReadmeFile>README_FASTTEXT.md</PackageReadmeFile>
     <PackageReleaseNotes>
+0.7.0
+- Windows and Linux: ARM64 support      
+      
 0.6.1
 - Windows: static linking of Visual C++ Runtime
 
@@ -42,7 +45,7 @@
     <UseAllTargets Condition="'$(DefineConstants)' != '' and $(DefineConstants.Contains('ALL_TARGETS'))">true</UseAllTargets>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release' AND '$(Configuration)'=='ReleaseLinuxOnly'">
+  <PropertyGroup Condition="'$(Configuration)'=='Release' OR '$(Configuration)'=='ReleaseLinuxOnly'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
     <DocumentationFile>..\Panlingo.LanguageIdentification.FastText.xml</DocumentationFile>

@@ -11,9 +11,16 @@ cp -a Native/. $workspace
 
 cd "$workspace"
 
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm install 22
+nvm use 22
+npm install -g zx
+
 zx ./monkey-patch.mjs
 
-bazel-6.1.1 build -c opt \
+bazel build -c opt \
     --linkopt -s --strip always \
     --define MEDIAPIPE_DISABLE_GPU=1 \
     --define='absl=0' \

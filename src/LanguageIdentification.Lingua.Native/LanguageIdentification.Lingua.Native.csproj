@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.6.5</Version>
+    <Version>0.7.0</Version>
     <PackageId>Panlingo.LanguageIdentification.Lingua.Native</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.Lingua.Native</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.Lingua.Native</RootNamespace>
@@ -31,7 +31,7 @@
     <UseAllTargets Condition="'$(DefineConstants)' != '' and $(DefineConstants.Contains('ALL_TARGETS'))">true</UseAllTargets>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release' AND '$(Configuration)'=='ReleaseLinuxOnly'">
+  <PropertyGroup Condition="'$(Configuration)'=='Release' OR '$(Configuration)'=='ReleaseLinuxOnly'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
     <DocumentationFile>..\Panlingo.LanguageIdentification.Lingua.Native.xml</DocumentationFile>

@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
-    <Version>0.6.6</Version>
+    <TargetFrameworks>net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
+    <Version>0.7.0</Version>
     <PackageId>Panlingo.LanguageIdentification.CLD3</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.CLD3</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.CLD3</RootNamespace>
@@ -15,6 +15,12 @@
     <PackageTags>nlp lid language-identification language-detection cld3</PackageTags>
     <PackageReadmeFile>README_CLD3.md</PackageReadmeFile>
     <PackageReleaseNotes>
+0.7.0
+- Windows: ARM64 support
+      
+0.6.6
+- Linux: ARM64 support
+      
 0.6.1
 - Windows: static linking of Visual C++ Runtime
       
@@ -45,7 +51,7 @@
     <UseAllTargets Condition="'$(DefineConstants)' != '' and $(DefineConstants.Contains('ALL_TARGETS'))">true</UseAllTargets>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release' AND '$(Configuration)'=='ReleaseLinuxOnly'">
+  <PropertyGroup Condition="'$(Configuration)'=='Release' OR '$(Configuration)'=='ReleaseLinuxOnly'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
     <DocumentationFile>..\Panlingo.LanguageIdentification.CLD3.xml</DocumentationFile>

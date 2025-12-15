@@ -1,4 +1,6 @@
-libfasttext.so
-fasttext.dll
+libfasttext.arm64.so
+libfasttext.x86_64.so
+fasttext.arm64.dll
+fasttext.x86_64.dll
 libfasttext.arm64.dylib
 libfasttext.x86_64.dylib
