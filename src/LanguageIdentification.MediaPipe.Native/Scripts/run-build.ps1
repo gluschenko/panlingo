@@ -12,6 +12,13 @@ if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
 
 choco upgrade chocolatey -y
 
+choco install python --version=3.11.0 -y
+
+python --version
+
+python -m venv venv
+.\venv\Scripts\activate
+
 choco install nodejs -y
 npm install -g zx
 
