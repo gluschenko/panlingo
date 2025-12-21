@@ -21,6 +21,7 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 brew update
 
 python --version
+brew uninstall pipx
 brew uninstall python
 
 # Python
