@@ -6,7 +6,7 @@ Welcome to **Panlingo.LanguageIdentification.Whatlang**, a .NET wrapper for the 
 
 - Runtime: **.NET >= 5.0**
 - OS: **Linux (Ubuntu, Debian)**, **Windows 10+** or **Windows Server 2019+**, **macOS**
-- Arch: **AMD64** (or **ARM** for macOS)
+- Arch: **x86_64** or **arm64**
 
 ## Platform support
 
