@@ -18,22 +18,10 @@ switch ($ARCH) {
     "arm64"  { $CMakeArch = "ARM64" }
 }
 
-if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
-    Set-ExecutionPolicy Bypass -Scope Process -Force
-    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-}
-
-choco upgrade chocolatey -y
-
-choco install python --version=3.11.0 -y
-
 python --version
-
 python -m venv venv
 .\venv\Scripts\activate
 
-choco install nodejs -y
 npm install -g zx
 
 bazel version
