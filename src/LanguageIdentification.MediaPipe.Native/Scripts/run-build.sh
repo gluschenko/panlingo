@@ -1,7 +1,20 @@
 #!/bin/bash
 set -e
 
-echo "Hello world";
+if [ -z "$1" ]; then
+    echo "Error: No architecture specified."
+    echo "Usage: $0 <arch>"
+    exit 1
+fi
+
+ARCH=$1
+
+if [[ "$ARCH" != "x86_64" && "$ARCH" != "arm64" ]]; then
+    echo "Error: Invalid architecture specified. Use 'x86_64' or 'arm64'."
+    exit 1
+fi
+
+echo "Hello world $ARCH";
 
 workspace="obj/native_build_temp"
 
@@ -27,11 +40,11 @@ bazel build -c opt \
     --sandbox_debug --verbose_failures \
     //mediapipe/tasks/c/text/language_detector:liblanguage_detector.so
 
-cp ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.so ../../libmediapipe_language_detector.so
+cp ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.so ../../libmediapipe_language_detector.$ARCH.so
 cd ..
 cd ..
 rm -rf "$workspace"
-ldd libmediapipe_language_detector.so
+ldd libmediapipe_language_detector.$ARCH.so
 
 echo "Goodbye world";
 

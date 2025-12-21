@@ -1,4 +1,6 @@
-libwhatlang.so
-whatlang.dll
-libwhatlang.arm64.dylib
+libwhatlang.x86_64.so
+libwhatlang.arm64.so
+whatlang.x86_64.dll
+whatlang.arm64.dll
 libwhatlang.x86_64.dylib
+libwhatlang.arm64.dylib

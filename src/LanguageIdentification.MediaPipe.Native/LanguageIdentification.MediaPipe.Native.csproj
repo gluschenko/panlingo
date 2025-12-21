@@ -42,7 +42,7 @@
     <DockerContainerName>mediapipe-builder</DockerContainerName>
     <CurrentAbsolutePath>$(MSBuildThisFileDirectory)</CurrentAbsolutePath>
     <ThirdPartyAbsolutePath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', '../../third_party/mediapipe/'))</ThirdPartyAbsolutePath>
-    <NativeFileAbsolutePath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', 'libmediapipe_language_detector.so'))</NativeFileAbsolutePath>
+    <NativeFileAbsolutePath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', 'libmediapipe_language_detector.x86_64.so'))</NativeFileAbsolutePath>
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="!Exists('$(NativeFileAbsolutePath)')">
@@ -58,20 +58,30 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="libmediapipe_language_detector.so">
+    <Content Include="libmediapipe_language_detector.x86_64.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>runtimes/linux-x64/native</PackagePath>
+      <PackagePath>runtimes/linux-x64/native/libmediapipe_language_detector.so</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
-    <Content Include="mediapipe_language_detector.dll">
+    <Content Include="libmediapipe_language_detector.arm64.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/linux-arm64/native/libmediapipe_language_detector.so</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
+    <Content Include="mediapipe_language_detector.x86_64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>runtimes/win-x64/native</PackagePath>
+      <PackagePath>runtimes/win-x64/native/mediapipe_language_detector.dll</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
