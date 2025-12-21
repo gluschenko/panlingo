@@ -34,8 +34,8 @@ echo -n "Python version: " && "$PYTHON311_BIN" --version
 "$PYTHON311_BIN" -m venv venv
 source venv/bin/activate
 
-python --version
-python -m pip install --upgrade pip
+"$PYTHON311_BIN" --version
+"$PYTHON311_BIN" -m pip install --upgrade pip
 
 npm install -g zx
 
