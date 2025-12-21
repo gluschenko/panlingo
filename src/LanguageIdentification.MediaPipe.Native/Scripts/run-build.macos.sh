@@ -21,8 +21,6 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 brew update
 
 python --version
-brew uninstall pipx
-brew uninstall python
 
 # Python
 PYTHON311_BIN="/opt/homebrew/opt/python@3.11/bin/python3.11"
