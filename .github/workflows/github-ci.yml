@@ -33,16 +33,24 @@ jobs:
           - { title: CLD3, projectName: LanguageIdentification.CLD3, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libcld3.arm64.dylib }
           - { title: CLD3, projectName: LanguageIdentification.CLD3, os: ubuntu-22.04, arch: x86_64, script: ./Scripts/run-build.sh, artifact: libcld3.x86_64.so }
           - { title: CLD3, projectName: LanguageIdentification.CLD3, os: ubuntu-22.04-arm, arch: arm64, script: ./Scripts/run-build.sh, artifact: libcld3.arm64.so }
-          - { title: Lingua, projectName: LanguageIdentification.Lingua, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: lingua.dll }
+          - { title: Lingua, projectName: LanguageIdentification.Lingua, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: lingua.x86_64.dll }
+          - { title: Lingua, projectName: LanguageIdentification.Lingua, os: windows-11-arm, arch: arm64, script: ./Scripts/run-build.ps1, artifact: lingua.arm64.dll }
+          - { title: Lingua, projectName: LanguageIdentification.Lingua, os: macos-15-intel, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: liblingua.x86_64.dylib }
           - { title: Lingua, projectName: LanguageIdentification.Lingua, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: liblingua.arm64.dylib }
-          - { title: Lingua, projectName: LanguageIdentification.Lingua, os: ubuntu-22.04, arch: x86_64, script: ./Scripts/run-build.sh, artifact: liblingua.so }
-          - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: whatlang.dll }
+          - { title: Lingua, projectName: LanguageIdentification.Lingua, os: ubuntu-22.04, arch: x86_64, script: ./Scripts/run-build.sh, artifact: liblingua.x86_64.so }
+          - { title: Lingua, projectName: LanguageIdentification.Lingua, os: ubuntu-22.04-arm, arch: arm64, script: ./Scripts/run-build.sh, artifact: liblingua.arm64.so }
+          - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: whatlang.x86_64.dll }
+          - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: windows-11-arm, arch: arm64, script: ./Scripts/run-build.ps1, artifact: whatlang.arm64.dll }
           - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: macos-15-intel, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libwhatlang.x86_64.dylib }
           - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libwhatlang.arm64.dylib }
-          - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: ubuntu-22.04, arch: x86_64, script: ./Scripts/run-build.sh, artifact: libwhatlang.so }
-          - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: mediapipe_language_detector.dll }
+          - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: ubuntu-22.04, arch: x86_64, script: ./Scripts/run-build.sh, artifact: libwhatlang.x86_64.so }
+          - { title: Whatlang, projectName: LanguageIdentification.Whatlang, os: ubuntu-22.04-arm, arch: arm64, script: ./Scripts/run-build.sh, artifact: libwhatlang.arm64.so }
+          - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: windows-2022, arch: x86_64, script: ./Scripts/run-build.ps1, artifact: mediapipe_language_detector.x86_64.dll }
+          - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: windows-11-arm, arch: arm64, script: ./Scripts/run-build.ps1, artifact: mediapipe_language_detector.arm64.dll }
+          - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: macos-15-intel, arch: x86_64, script: ./Scripts/run-build.macos.sh, artifact: libmediapipe_language_detector.x86_64.dylib }
           - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: macos-14, arch: arm64, script: ./Scripts/run-build.macos.sh, artifact: libmediapipe_language_detector.arm64.dylib }
-          - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: ubuntu-22.04, arch: x86_64, script: ./Scripts/run-build.sh, artifact: libmediapipe_language_detector.so }
+          - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: ubuntu-22.04, arch: x86_64, script: ./Scripts/run-build.sh, artifact: libmediapipe_language_detector.x86_64.so }
+          - { title: MediaPipe, projectName: LanguageIdentification.MediaPipe, os: ubuntu-22.04-arm, arch: arm64, script: ./Scripts/run-build.sh, artifact: libmediapipe_language_detector.arm64.so }
     permissions:
       contents: read
       packages: write
