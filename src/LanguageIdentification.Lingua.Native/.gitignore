@@ -1,3 +1,7 @@
-liblingua.so
+liblingua.x86_64.so
+liblingua.arm64.so
+lingua.x86_64.dll
+lingua.arm64.dll
+liblingua.x86_64.dylib
 liblingua.arm64.dylib
-lingua.dll
+

@@ -1,3 +1,6 @@
-libmediapipe_language_detector.so
-mediapipe_language_detector.dll
+libmediapipe_language_detector.x86_64.so
+libmediapipe_language_detector.arm64.so
+mediapipe_language_detector.x86_64.dll
+mediapipe_language_detector.arm64.dll
+libmediapipe_language_detector.x86_64.dylib
 libmediapipe_language_detector.arm64.dylib

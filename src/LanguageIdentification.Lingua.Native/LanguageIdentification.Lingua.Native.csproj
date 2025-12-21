@@ -41,7 +41,7 @@
     <DockerImageName>lingua-builder</DockerImageName>
     <DockerContainerName>lingua-builder</DockerContainerName>
     <CurrentAbsolutePath>$(MSBuildThisFileDirectory)</CurrentAbsolutePath>
-    <NativeFileAbsolutePath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', 'liblingua.so'))</NativeFileAbsolutePath>
+    <NativeFileAbsolutePath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', 'liblingua.x86_64.so'))</NativeFileAbsolutePath>
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="!Exists('$(NativeFileAbsolutePath)')">
@@ -57,20 +57,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="liblingua.so">
+    <Content Include="liblingua.x86_64.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>runtimes/linux-x64/native</PackagePath>
+      <PackagePath>runtimes/linux-x64/native/liblingua.so</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
-    <Content Include="lingua.dll">
+    <Content Include="lingua.x86_64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>runtimes/win-x64/native</PackagePath>
+      <PackagePath>runtimes/win-x64/native/liblingua.dll</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>

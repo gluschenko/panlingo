@@ -42,7 +42,7 @@
     <DockerContainerName>whatlang-builder</DockerContainerName>
     <CurrentAbsolutePath>$(MSBuildThisFileDirectory)</CurrentAbsolutePath>
     <ThirdPartyAbsolutePath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', '../../third_party/whatlang-ffi/'))</ThirdPartyAbsolutePath>
-    <NativeFileAbsolutePath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', 'libwhatlang.so'))</NativeFileAbsolutePath>
+    <NativeFileAbsolutePath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', 'libwhatlang.x86_64.so'))</NativeFileAbsolutePath>
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="!Exists('$(NativeFileAbsolutePath)')">
@@ -58,20 +58,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="libwhatlang.so">
+    <Content Include="libwhatlang.x86_64.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>runtimes/linux-x64/native</PackagePath>
+      <PackagePath>runtimes/linux-x64/native/libwhatlang.so</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="whatlang.dll" Condition="'$(UseAllTargets)' == 'true'">
+    <Content Include="whatlang.x86_64.dll" Condition="'$(UseAllTargets)' == 'true'">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>runtimes/win-x64/native</PackagePath>
+      <PackagePath>runtimes/win-x64/native/whatlang.dll</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
