@@ -67,8 +67,8 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="libwhatlang.arm64.so" Condition="'$(UseAllTargets)' == 'true'">
+  <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
+    <Content Include="libwhatlang.arm64.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/linux-arm64/native/libwhatlang.so</PackagePath>
@@ -77,8 +77,8 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="whatlang.x86_64.dll" Condition="'$(UseAllTargets)' == 'true'">
+  <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
+    <Content Include="whatlang.x86_64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/win-x64/native/whatlang.dll</PackagePath>
@@ -87,8 +87,8 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="whatlang.arm64.dll" Condition="'$(UseAllTargets)' == 'true'">
+  <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
+    <Content Include="whatlang.arm64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/win-arm64/native/whatlang.dll</PackagePath>
@@ -97,8 +97,8 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="libwhatlang.x86_64.dylib" Condition="'$(UseAllTargets)' == 'true'">
+  <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
+    <Content Include="libwhatlang.x86_64.dylib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/osx-x64/native/libwhatlang.dylib</PackagePath>
@@ -107,8 +107,8 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="libwhatlang.arm64.dylib" Condition="'$(UseAllTargets)' == 'true'">
+  <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
+    <Content Include="libwhatlang.arm64.dylib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/osx-arm64/native/libwhatlang.dylib</PackagePath>

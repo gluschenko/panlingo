@@ -68,6 +68,16 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
+    <Content Include="libmediapipe_language_detector.arm64.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/linux-arm64/native/libmediapipe_language_detector.so</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(UseAllTargets)' == 'true'">
     <Content Include="mediapipe_language_detector.x86_64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
