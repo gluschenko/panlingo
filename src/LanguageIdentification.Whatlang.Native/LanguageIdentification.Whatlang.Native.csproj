@@ -68,10 +68,30 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="libwhatlang.arm64.so" Condition="'$(UseAllTargets)' == 'true'">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/linux-arm64/native/libwhatlang.so</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="whatlang.x86_64.dll" Condition="'$(UseAllTargets)' == 'true'">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>runtimes/win-x64/native/whatlang.dll</PackagePath>
+      <pack>true</pack>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="whatlang.arm64.dll" Condition="'$(UseAllTargets)' == 'true'">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>runtimes/win-arm64/native/whatlang.dll</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
