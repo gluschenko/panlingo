@@ -20,6 +20,8 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 brew update
 
+python --version
+
 # Python
 PYTHON311_BIN="/opt/homebrew/opt/python@3.11/bin/python3.11"
 if [[ "$ARCH" == "x86_64" ]]; then
