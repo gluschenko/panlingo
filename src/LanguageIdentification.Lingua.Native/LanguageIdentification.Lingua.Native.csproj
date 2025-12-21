@@ -70,7 +70,7 @@
     <Content Include="lingua.x86_64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>runtimes/win-x64/native/liblingua.dll</PackagePath>
+      <PackagePath>runtimes/win-x64/native/lingua.dll</PackagePath>
       <pack>true</pack>
       <Visible>false</Visible>
     </Content>
