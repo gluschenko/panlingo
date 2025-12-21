@@ -24,6 +24,7 @@ PYTHON311_BIN="/opt/homebrew/opt/python@3.11/bin/python3.11"
 
 if [ ! -x "$PYTHON311_BIN" ]; then
     echo "Installing Python 3.11..."
+    brew install python-tk@3.11
     brew install python@3.11
 fi
 
