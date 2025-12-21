@@ -19,26 +19,19 @@ echo "Hello world $ARCH";
 brew update
 HOMEBREW_NO_AUTO_UPDATE=1
 
-python --version
-
 # Python
+PYTHON311_BIN="/opt/homebrew/opt/python@3.11/bin/python3.11"
 
-if ! brew list python@3.11 >/dev/null 2>&1; then
-    echo "Installing python@3.11 via Homebrew..."
+if [ ! -x "$PYTHON311_BIN" ]; then
+    echo "Installing Python 3.11..."
     brew install python@3.11
-else
-    echo "python@3.11 already installed"
 fi
 
-brew link --overwrite --force python@3.11
-
-ln -sf /usr/local/bin/python3.11 /usr/local/bin/python3
-ln -sf /usr/local/bin/python3.11 /usr/local/bin/python
-ln -sf /usr/local/bin/pip3.11 /usr/local/bin/pip3
-ln -sf /usr/local/bin/pip3.11 /usr/local/bin/pip
+echo -n "Using Python binary: " && echo "$PYTHON311_BIN"
+echo -n "Python version: " && "$PYTHON311_BIN" --version
 
 # Virtual environment
-python -m venv venv
+"$PYTHON311_BIN" -m venv venv
 source venv/bin/activate
 
 python --version
