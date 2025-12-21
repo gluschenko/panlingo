@@ -16,33 +16,14 @@ fi
 
 echo "Hello world $ARCH";
 
-export HOMEBREW_NO_AUTO_UPDATE=1
-export HOMEBREW_NO_INSTALL_CLEANUP=1
-brew update
-
 python --version
 
-# Python
-PYTHON311_BIN="/opt/homebrew/opt/python@3.11/bin/python3.11"
-if [[ "$ARCH" == "x86_64" ]]; then
-    PYTHON311_BIN="/usr/local/opt/python@3.11/bin/python3.11"
-fi
-
-if [ ! -x "$PYTHON311_BIN" ]; then
-    echo "Installing Python 3.11..."
-    brew install python-tk@3.11
-    brew install python@3.11
-fi
-
-echo -n "Using Python binary: " && echo "$PYTHON311_BIN"
-echo -n "Python version: " && "$PYTHON311_BIN" --version
-
 # Virtual environment
-"$PYTHON311_BIN" -m venv venv
+python -m venv venv
 source venv/bin/activate
 
-"$PYTHON311_BIN" --version
-"$PYTHON311_BIN" -m pip install --upgrade pip
+python --version
+python -m pip install --upgrade pip
 
 npm install -g zx
 
