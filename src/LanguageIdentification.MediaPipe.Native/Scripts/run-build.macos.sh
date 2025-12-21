@@ -16,8 +16,6 @@ fi
 
 echo "Hello world $ARCH";
 
-python --version
-
 # Virtual environment
 python -m venv venv
 source venv/bin/activate
@@ -51,6 +49,7 @@ cd "$workspace"
 zx ./monkey-patch.mjs
 
 bazel build -c opt \
+    --copt=-DHAVE_FDOPEN \
     --linkopt=-s --strip=always \
     --define=MEDIAPIPE_DISABLE_GPU=1 \
     --define=absl=0 \
