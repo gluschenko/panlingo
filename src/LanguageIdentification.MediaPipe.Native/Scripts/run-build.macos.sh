@@ -16,11 +16,15 @@ fi
 
 echo "Hello world $ARCH";
 
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_INSTALL_CLEANUP=1
 brew update
-HOMEBREW_NO_AUTO_UPDATE=1
 
 # Python
 PYTHON311_BIN="/opt/homebrew/opt/python@3.11/bin/python3.11"
+if [[ "$ARCH" == "x86_64" ]]; then
+    PYTHON311_BIN="/usr/local/opt/python@3.11/bin/python3.11"
+fi
 
 if [ ! -x "$PYTHON311_BIN" ]; then
     echo "Installing Python 3.11..."
