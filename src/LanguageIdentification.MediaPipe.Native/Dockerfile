@@ -77,4 +77,4 @@ RUN npm install -g zx
 
 COPY . .
 
-ENTRYPOINT ["bash", "./Scripts/run-build.sh"]
+ENTRYPOINT ["bash", "./Scripts/run-build.sh", "x86_64"]

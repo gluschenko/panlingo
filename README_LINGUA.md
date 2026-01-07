@@ -6,7 +6,7 @@ Welcome to **Panlingo.LanguageIdentification.Lingua**, a .NET wrapper for the Li
 
 - Runtime: **.NET >= 5.0**
 - OS: **Linux (Ubuntu, Debian)**, **Windows 10+** or **Windows Server 2019+**, **macOS**
-- Arch: **AMD64** (or **ARM** for macOS)
+- Arch: **x86_64** or **arm64** (macOS only)
 
 ## Platform support
 

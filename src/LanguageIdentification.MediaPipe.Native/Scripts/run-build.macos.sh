@@ -16,22 +16,8 @@ fi
 
 echo "Hello world $ARCH";
 
-brew update
-HOMEBREW_NO_AUTO_UPDATE=1
-
-# Python
-PYTHON311_BIN="/opt/homebrew/opt/python@3.11/bin/python3.11"
-
-if [ ! -x "$PYTHON311_BIN" ]; then
-    echo "Installing Python 3.11..."
-    brew install python@3.11
-fi
-
-echo -n "Using Python binary: " && echo "$PYTHON311_BIN"
-echo -n "Python version: " && "$PYTHON311_BIN" --version
-
 # Virtual environment
-"$PYTHON311_BIN" -m venv venv
+python -m venv venv
 source venv/bin/activate
 
 python --version
@@ -63,6 +49,7 @@ cd "$workspace"
 zx ./monkey-patch.mjs
 
 bazel build -c opt \
+    --copt=-DHAVE_FDOPEN \
     --linkopt=-s --strip=always \
     --define=MEDIAPIPE_DISABLE_GPU=1 \
     --define=absl=0 \
