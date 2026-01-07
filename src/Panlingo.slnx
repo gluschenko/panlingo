@@ -1,0 +1,83 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="CI" />
+    <BuildType Name="Debug" />
+    <BuildType Name="DebugLinuxOnly" />
+    <BuildType Name="Release" />
+    <BuildType Name="ReleaseLinuxOnly" />
+  </Configurations>
+  <Folder Name="/.deploy/">
+    <File Path="../.github/workflows/github-ci.yml" />
+  </Folder>
+  <Folder Name="/.docs/">
+    <File Path="../CODE_OF_CONDUCT.md" />
+    <File Path="../CONTRIBUTING.md" />
+    <File Path="../LICENSE" />
+    <File Path="../LICENSE_CLD2" />
+    <File Path="../LICENSE_CLD3" />
+    <File Path="../LICENSE_FASTTEXT" />
+    <File Path="../LICENSE_LINGUA" />
+    <File Path="../LICENSE_MEDIAPIPE" />
+    <File Path="../LICENSE_WHATLANG" />
+    <File Path="../README.md" />
+    <File Path="../README_CLD2.md" />
+    <File Path="../README_CLD3.md" />
+    <File Path="../README_FASTTEXT.md" />
+    <File Path="../README_LANGUAGE_CODE.md" />
+    <File Path="../README_LINGUA.md" />
+    <File Path="../README_MEDIAPIPE.md" />
+    <File Path="../README_WHATLANG.md" />
+    <File Path="../SECURITY.md" />
+  </Folder>
+  <Folder Name="/.misc/">
+    <File Path=".editorconfig" />
+    <File Path="run-tests.ps1" />
+    <File Path="run-tests.sh" />
+    <File Path="test-ci.Dockerfile" />
+    <File Path="test.Dockerfile" />
+    <File Path="testEnvironments.json" />
+  </Folder>
+  <Folder Name="/cld2/">
+    <Project Path="LanguageIdentification.CLD2.ConsoleTest/LanguageIdentification.CLD2.ConsoleTest.csproj" />
+    <Project Path="LanguageIdentification.CLD2.Native/LanguageIdentification.CLD2.Native.csproj" />
+    <Project Path="LanguageIdentification.CLD2/LanguageIdentification.CLD2.csproj" />
+  </Folder>
+  <Folder Name="/cld3/">
+    <Project Path="LanguageIdentification.CLD3.ConsoleTest/LanguageIdentification.CLD3.ConsoleTest.csproj" />
+    <Project Path="LanguageIdentification.CLD3.Native/LanguageIdentification.CLD3.Native.csproj" />
+    <Project Path="LanguageIdentification.CLD3/LanguageIdentification.CLD3.csproj" />
+  </Folder>
+  <Folder Name="/fasttext/">
+    <Project Path="LanguageIdentification.FastText.ConsoleTest/LanguageIdentification.FastText.ConsoleTest.csproj" />
+    <Project Path="LanguageIdentification.FastText.Native/LanguageIdentification.FastText.Native.csproj" />
+    <Project Path="LanguageIdentification.FastText.SourceGenerator/LanguageIdentification.FastText.SourceGenerator.csproj" />
+    <Project Path="LanguageIdentification.FastText/LanguageIdentification.FastText.csproj" />
+  </Folder>
+  <Folder Name="/iso639/">
+    <Project Path="LanguageCode.Benchmark/LanguageCode.Benchmark.csproj" />
+    <Project Path="LanguageCode.Generator/LanguageCode.Generator.csproj" />
+    <Project Path="LanguageCode.Models/LanguageCode.Models.csproj" />
+    <Project Path="LanguageCode.SourceGenerator/LanguageCode.SourceGenerator.csproj" />
+    <Project Path="LanguageCode/LanguageCode.csproj" />
+  </Folder>
+  <Folder Name="/lingua/">
+    <Project Path="LanguageIdentification.Lingua.ConsoleTest/LanguageIdentification.Lingua.ConsoleTest.csproj" />
+    <Project Path="LanguageIdentification.Lingua.Native/LanguageIdentification.Lingua.Native.csproj" />
+    <Project Path="LanguageIdentification.Lingua/LanguageIdentification.Lingua.csproj" />
+  </Folder>
+  <Folder Name="/mediapipe/">
+    <Project Path="LanguageIdentification.MediaPipe.ConsoleTest/LanguageIdentification.MediaPipe.ConsoleTest.csproj" />
+    <Project Path="LanguageIdentification.MediaPipe.Native/LanguageIdentification.MediaPipe.Native.csproj" />
+    <Project Path="LanguageIdentification.MediaPipe.SourceGenerator/LanguageIdentification.MediaPipe.SourceGenerator.csproj" />
+    <Project Path="LanguageIdentification.MediaPipe/LanguageIdentification.MediaPipe.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="LanguageCode.Tests/LanguageCode.Tests.csproj" />
+    <Project Path="LanguageIdentification.Tests/LanguageIdentification.Tests.csproj" />
+  </Folder>
+  <Folder Name="/whatlang/">
+    <Project Path="LanguageIdentification.Whatlang.ConsoleTest/LanguageIdentification.Whatlang.ConsoleTest.csproj" />
+    <Project Path="LanguageIdentification.Whatlang.Native/LanguageIdentification.Whatlang.Native.csproj" />
+    <Project Path="LanguageIdentification.Whatlang/LanguageIdentification.Whatlang.csproj" />
+  </Folder>
+</Solution>
