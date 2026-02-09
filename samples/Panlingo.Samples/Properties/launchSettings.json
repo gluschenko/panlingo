@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Panlingo.Samples": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
