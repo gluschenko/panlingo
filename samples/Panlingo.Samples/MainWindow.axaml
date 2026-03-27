@@ -1,0 +1,130 @@
+<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+    xmlns:vm="clr-namespace:Panlingo.Samples.ViewModels"
+    x:Class="Panlingo.Samples.MainWindow"
+    x:DataType="vm:MainWindowViewModel"
+    Width="800"
+    Height="600"
+    MinWidth="800"
+    MinHeight="600"
+    WindowStartupLocation="CenterScreen"
+    Title="Panlingo Samples">
+  <Grid RowDefinitions="Auto,*" Margin="20">
+    <Grid Grid.Row="1" ColumnDefinitions="290,*,360" ColumnSpacing="18">
+      <Border Grid.Column="0" Padding="18" CornerRadius="14" Background="#141A25" BorderBrush="#2B3649" BorderThickness="1">
+        <Grid RowDefinitions="Auto,*" RowSpacing="12">
+          <TextBlock Grid.Row="0" Text="Detectors" FontSize="18" FontWeight="SemiBold" />
+          <ListBox Grid.Row="1" ItemsSource="{Binding Engines}" SelectedItem="{Binding SelectedEngine}">
+            <ListBox.ItemTemplate>
+              <DataTemplate x:DataType="vm:DetectorOption">
+                <StackPanel Spacing="4">
+                  <TextBlock Text="{Binding DisplayName}" FontWeight="SemiBold" />
+                  <TextBlock Text="{Binding ShortDescription}" Opacity="0.75" TextWrapping="Wrap" />
+                </StackPanel>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+        </Grid>
+      </Border>
+
+      <Grid Grid.Column="1" RowDefinitions="Auto,Auto,220,Auto,*" RowSpacing="14">
+        <Border Grid.Row="0" Padding="18" CornerRadius="14" Background="#141A25" BorderBrush="#2B3649" BorderThickness="1">
+          <StackPanel Spacing="6">
+            <TextBlock Text="{Binding SelectedEngine.DisplayName}" FontSize="20" FontWeight="SemiBold" />
+            <TextBlock Text="{Binding SelectedEngine.Description}" Opacity="0.86" TextWrapping="Wrap" />
+          </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1" Padding="18" CornerRadius="14" Background="#141A25" BorderBrush="#2B3649" BorderThickness="1">
+          <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,260,*,Auto,Auto,Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Sample" VerticalAlignment="Center" />
+            <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Samples}" SelectedItem="{Binding SelectedSample}" MinWidth="220">
+              <ComboBox.ItemTemplate>
+                <DataTemplate x:DataType="vm:SampleTextOption">
+                  <TextBlock Text="{Binding Title}" />
+                </DataTemplate>
+              </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Grid Grid.Row="0" Grid.Column="2" />
+            <Button Grid.Row="0" Grid.Column="3" Content="Load sample" Command="{Binding LoadSampleCommand}" MinWidth="120" />
+            <Button Grid.Row="0" Grid.Column="4" Content="Run selected" Command="{Binding RunSelectedCommand}" MinWidth="120" />
+            <Button Grid.Row="0" Grid.Column="5" Content="Compare all" Command="{Binding RunAllCommand}" MinWidth="120" />
+            <Button Grid.Row="0" Grid.Column="6" Content="Clear" Command="{Binding ClearResultsCommand}" MinWidth="90" />
+
+            <CheckBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Use Lingua mixed-language mode" IsChecked="{Binding UseLinguaMixedMode}" VerticalAlignment="Center" />
+            <CheckBox Grid.Row="1" Grid.Column="2" Content="Preload Lingua models" IsChecked="{Binding PreloadLinguaModels}" VerticalAlignment="Center" />
+            <StackPanel Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2" Orientation="Horizontal" Spacing="10" HorizontalAlignment="Right">
+              <TextBlock Text="Top N" VerticalAlignment="Center" />
+              <NumericUpDown Minimum="1" Maximum="10" Value="{Binding ResultCount}" Width="90" />
+            </StackPanel>
+          </Grid>
+        </Border>
+
+        <Border Grid.Row="2" Padding="18" CornerRadius="14" Background="#141A25" BorderBrush="#2B3649" BorderThickness="1">
+          <Grid RowDefinitions="Auto,*" RowSpacing="10">
+            <TextBlock Grid.Row="0" Text="Input text" FontSize="18" FontWeight="SemiBold" />
+            <TextBox Grid.Row="1" Text="{Binding InputText}" AcceptsReturn="True" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+          </Grid>
+        </Border>
+
+        <Border Grid.Row="3" Padding="18" CornerRadius="14" Background="#141A25" BorderBrush="#2B3649" BorderThickness="1">
+          <StackPanel Spacing="6">
+            <TextBlock Text="Status" FontSize="18" FontWeight="SemiBold" />
+            <TextBlock Text="{Binding StatusMessage}" TextWrapping="Wrap" />
+          </StackPanel>
+        </Border>
+
+        <Border Grid.Row="4" Padding="18" CornerRadius="14" Background="#141A25" BorderBrush="#2B3649" BorderThickness="1">
+          <Grid RowDefinitions="Auto,*" RowSpacing="10">
+            <TextBlock Grid.Row="0" Text="Results" FontSize="18" FontWeight="SemiBold" />
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+              <ItemsControl ItemsSource="{Binding Results}">
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate x:DataType="vm:DetectionResultItem">
+                    <Border Padding="14" Margin="0,0,0,10" CornerRadius="12" Background="#1D2533" BorderBrush="#31415C" BorderThickness="1">
+                      <StackPanel Spacing="6">
+                        <TextBlock Text="{Binding Title}" FontWeight="SemiBold" />
+                        <TextBlock Text="{Binding Summary}" Opacity="0.9" TextWrapping="Wrap" />
+                        <TextBlock Text="{Binding Details}" Opacity="0.78" TextWrapping="Wrap" />
+                      </StackPanel>
+                    </Border>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+            </ScrollViewer>
+          </Grid>
+        </Border>
+      </Grid>
+
+      <Border Grid.Column="2" Padding="18" CornerRadius="14" Background="#141A25" BorderBrush="#2B3649" BorderThickness="1">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+          <StackPanel Spacing="14">
+            <TextBlock Text="Inspector" FontSize="18" FontWeight="SemiBold" />
+
+            <Border Padding="14" CornerRadius="12" Background="#1D2533">
+              <StackPanel Spacing="6">
+                <TextBlock Text="{Binding InspectorTitle}" FontWeight="SemiBold" />
+                <TextBlock Text="{Binding InspectorText}" Opacity="0.86" TextWrapping="Wrap" />
+              </StackPanel>
+            </Border>
+
+            <StackPanel Spacing="8">
+              <TextBlock Text="Supported on this runtime" FontWeight="SemiBold" />
+              <ItemsControl ItemsSource="{Binding SupportMatrix}">
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate x:DataType="sys:String">
+                    <Border Padding="10" Margin="0,0,0,8" CornerRadius="10" Background="#1D2533">
+                      <TextBlock Text="{Binding}" />
+                    </Border>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+            </StackPanel>
+          </StackPanel>
+        </ScrollViewer>
+      </Border>
+    </Grid>
+  </Grid>
+</Window>

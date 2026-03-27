@@ -399,3 +399,5 @@ FodyWeavers.xsd
 
 # Auto-generated documentation files
 *.xml
+
+.dotnet/**

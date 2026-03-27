@@ -1,9 +1,18 @@
-﻿namespace Panlingo.Samples;
+using Avalonia;
 
-internal class Program
+namespace Panlingo.Samples;
+
+internal static class Program
 {
-    static void Main(string[] args)
+    [STAThread]
+    private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+    }
+
+    private static AppBuilder BuildAvaloniaApp()
+    {
+        return AppBuilder.Configure<App>()
+            .UsePlatformDetect();
     }
 }
