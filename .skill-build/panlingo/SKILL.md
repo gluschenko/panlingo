@@ -35,6 +35,16 @@ If the user has not already picked a detector, start with this decision order:
 - Choose `Panlingo.LanguageIdentification.CLD2` only when its behavior or output shape is explicitly desired.
 - Add `Panlingo.LanguageCode` whenever the app needs one canonical language-code format across multiple detectors or upstream systems.
 
+After the package is chosen, read its dedicated page instead of relying on the short summary in this file:
+
+- [references/cld2.md](references/cld2.md)
+- [references/cld3.md](references/cld3.md)
+- [references/fasttext.md](references/fasttext.md)
+- [references/whatlang.md](references/whatlang.md)
+- [references/mediapipe.md](references/mediapipe.md)
+- [references/lingua.md](references/lingua.md)
+- [references/language-code.md](references/language-code.md)
+
 ## Integration Rules
 
 - Always dispose detector instances with `using` or an explicit lifetime wrapper. These packages hold unmanaged resources.
@@ -64,3 +74,11 @@ If the user has not already picked a detector, start with this decision order:
 
 - Read [references/package-selection.md](references/package-selection.md) for detector capabilities, platform tradeoffs, and package-selection heuristics.
 - Read [references/integration-patterns.md](references/integration-patterns.md) for production code patterns, normalization snippets, and testing guidance.
+- Read the model-specific pages once the package is chosen:
+  [references/cld2.md](references/cld2.md),
+  [references/cld3.md](references/cld3.md),
+  [references/fasttext.md](references/fasttext.md),
+  [references/whatlang.md](references/whatlang.md),
+  [references/mediapipe.md](references/mediapipe.md),
+  [references/lingua.md](references/lingua.md),
+  [references/language-code.md](references/language-code.md).

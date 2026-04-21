@@ -14,53 +14,17 @@ Use this file when the user has not already committed to one Panlingo package.
 | Older CLD-family behavior plus script field in predictions | `Panlingo.LanguageIdentification.CLD2` |
 | One canonical language-code pipeline across detectors | `Panlingo.LanguageCode` |
 
-## Package Notes
+## Open the Detailed Page
 
-### Panlingo.LanguageIdentification.CLD3
+Once the package is chosen, switch to the dedicated reference page:
 
-- Good default when the app needs `PredictLanguage()` and `PredictLanguages(text, count)`.
-- Returns `Language`, `Probability`, `IsReliable`, and `Proportion`.
-- Constructor requires byte-window parameters, so keep those explicit instead of hiding them as magic constants.
-- Use when you want a simple native-backed detector without model-file management.
-
-### Panlingo.LanguageIdentification.FastText
-
-- Use when model choice matters.
-- Supports `LoadDefaultModel()`, `LoadModel(path)`, and `LoadModel(stream)`.
-- Returns `Label` values such as `__label__en`; normalize them before exposing them to the rest of the app.
-- Best choice when the user asks for a specific FastText model like `lid.176`, `lid218e`, or a custom classifier.
-
-### Panlingo.LanguageIdentification.Whatlang
-
-- Use for single-language detection with script output.
-- `PredictLanguage()` returns a nullable prediction and `PredictScript()` is available separately.
-- Convert enum output with `GetLanguageCode()`, `GetLanguageName()`, or `GetLanguageEnglishName()` before building DTOs.
-
-### Panlingo.LanguageIdentification.Lingua
-
-- Use when short-text quality or mixed-language ranges are important.
-- Build through `LinguaDetectorBuilder`, then call `Build()`.
-- `PredictLanguages()` gives ranked candidates; `PredictMixedLanguages()` gives spans.
-- Platform support is narrower than CLD3 or FastText, so check deployment targets early.
-
-### Panlingo.LanguageIdentification.MediaPipe
-
-- Use when a `.tflite` model is part of the requirement.
-- Build options through `MediaPipeOptions.FromDefault()`, `.FromFile()`, `.FromStream()`, or `.FromData()`.
-- Tune `WithResultCount()` and `WithScoreThreshold()` instead of post-filtering everything manually.
-- Platform support is selective, so gate registration with `MediaPipeDetector.IsSupported()`.
-
-### Panlingo.LanguageIdentification.CLD2
-
-- Use only when the project explicitly wants CLD2 behavior or its output shape.
-- `PredictLanguage()` returns multiple predictions, each with `Language`, `Script`, `Probability`, `IsReliable`, and `Proportion`.
-- Treat it as a compatibility or deliberate-choice option, not the automatic default.
-
-### Panlingo.LanguageCode
-
-- Use alongside a detector when the app contract requires normalized language codes.
-- Prefer it whenever the project mixes detector outputs, user input, locale tags, or legacy codes.
-- `LanguageCodeResolver` is the main pipeline builder; `LanguageCodeHelper` performs resolution and lookup.
+- `CLD2`: [cld2.md](cld2.md)
+- `CLD3`: [cld3.md](cld3.md)
+- `FastText`: [fasttext.md](fasttext.md)
+- `Whatlang`: [whatlang.md](whatlang.md)
+- `MediaPipe`: [mediapipe.md](mediapipe.md)
+- `Lingua`: [lingua.md](lingua.md)
+- `LanguageCode`: [language-code.md](language-code.md)
 
 ## Platform Heuristics
 
