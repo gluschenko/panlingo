@@ -11,17 +11,17 @@
 using namespace std;
 using namespace fasttext;
 
+static void save_error(char** err_ptr, const char* message) {
+    if (err_ptr != nullptr) {
+        *err_ptr = strdup(message);
+    }
+}
+
+static void save_error(char** err_ptr, const std::exception& e) {
+    save_error(err_ptr, e.what());
+}
+
 extern "C" {
-
-    static void save_error(char** err_ptr, const char* message) {
-        if (err_ptr != nullptr) {
-            *err_ptr = strdup(message);
-        }
-    }
-
-    static void save_error(char** err_ptr, const std::exception& e) {
-        save_error(err_ptr, e.what());
-    }
 
     EXPORT void destroy_string(char* s) {
         if (s != nullptr) {
