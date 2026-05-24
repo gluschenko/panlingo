@@ -110,4 +110,40 @@ public class WhatlangTests
 
         var prediction = whatlang.PredictScript(text: text);
     }
+
+    [SkippableFact]
+    public void WhatlangRejectsNullText()
+    {
+        Skip.IfNot(WhatlangDetector.IsSupported());
+
+        using var whatlang = new WhatlangDetector();
+
+        Assert.Throws<ArgumentNullException>(() => whatlang.PredictLanguage(null!));
+        Assert.Throws<ArgumentNullException>(() => whatlang.PredictScript(null!));
+    }
+
+    [SkippableFact]
+    public void WhatlangRejectsInvalidEnums()
+    {
+        Skip.IfNot(WhatlangDetector.IsSupported());
+
+        using var whatlang = new WhatlangDetector();
+
+        Assert.Throws<WhatlangDetectorException>(() => whatlang.GetLanguageCode((WhatlangLanguage)255));
+        Assert.Throws<WhatlangDetectorException>(() => whatlang.GetLanguageName((WhatlangLanguage)255));
+        Assert.Throws<WhatlangDetectorException>(() => whatlang.GetLanguageEnglishName((WhatlangLanguage)255));
+        Assert.Throws<WhatlangDetectorException>(() => whatlang.GetScriptName((WhatlangScript)255));
+    }
+
+    [SkippableFact]
+    public void WhatlangAcceptsEmbeddedNulText()
+    {
+        Skip.IfNot(WhatlangDetector.IsSupported());
+
+        using var whatlang = new WhatlangDetector();
+
+        var prediction = whatlang.PredictScript(Constants.MALFORMED_BYTES_1);
+
+        Assert.True(prediction is null || Enum.IsDefined(typeof(WhatlangScript), prediction.Value));
+    }
 }
