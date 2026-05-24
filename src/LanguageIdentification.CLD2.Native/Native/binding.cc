@@ -1,7 +1,9 @@
-﻿#include <cstddef>
+#include <cstddef>
 #include <cstring>
-#include <vector>
+#include <limits>
 #include <string>
+#include <vector>
+
 #include "./cld2/public/compact_lang_det.h"
 #include "binding.h"
 
@@ -9,13 +11,22 @@
 
 extern "C"
 {
-    EXPORT PredictionResult* predict_language(char *text, int* resultCount)
+    EXPORT PredictionResult* predict_language(const char* text, size_t inputLength, int* resultCount)
     {
-        int textLength = strlen(text);
+        if (resultCount == nullptr) {
+            return nullptr;
+        }
+
+        *resultCount = 0;
+
+        if ((text == nullptr && inputLength > 0) || inputLength > static_cast<size_t>(std::numeric_limits<int>::max())) {
+            return nullptr;
+        }
+
+        int textLength = static_cast<int>(inputLength);
 
         bool is_plain_text = true;
         CLD2::CLDHints cldhints = {NULL, NULL, 0, CLD2::UNKNOWN_LANGUAGE};
-        bool allow_extended_lang = true;
         int flags = 0;
         CLD2::ResultChunkVector result_chunk_vector;
         int text_bytes;
@@ -25,20 +36,23 @@ extern "C"
         int percents[MAX_LANGUAGE_COUNT];
         double scores[MAX_LANGUAGE_COUNT];
 
-        CLD2::Language summary_lang = CLD2::UNKNOWN_LANGUAGE;
-
-        summary_lang = CLD2::ExtDetectLanguageSummary(
-            text,
-            textLength,
-            is_plain_text,
-            &cldhints,
-            flags,
-            languages,
-            percents,
-            scores,
-            &result_chunk_vector,
-            &text_bytes,
-            &is_reliable);
+        try {
+            CLD2::ExtDetectLanguageSummary(
+                text == nullptr ? "" : text,
+                textLength,
+                is_plain_text,
+                &cldhints,
+                flags,
+                languages,
+                percents,
+                scores,
+                &result_chunk_vector,
+                &text_bytes,
+                &is_reliable);
+        }
+        catch (...) {
+            return nullptr;
+        }
 
         int predictionCount = 0;
 
@@ -77,6 +91,10 @@ extern "C"
 
     EXPORT void free_results(PredictionResult* results, int count)
     {
+        if (results == nullptr) {
+            return;
+        }
+
         for (int i = 0; i < count; ++i) {
             free((void*)results[i].language);
             free((void*)results[i].script);
