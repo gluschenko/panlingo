@@ -14,46 +14,46 @@ extern "C" {
 #endif
 
 #include <stddef.h>
+#include <stdint.h>
 
 typedef enum LinguaStatus {
     LINGUA_OK = 0,
     LINGUA_DETECT_FAILURE = 1,
     LINGUA_BAD_TEXT_PTR = 2,
-    LINGUA_BAD_OUTPUT_PTR = 3
+    LINGUA_BAD_OUTPUT_PTR = 3,
+    LINGUA_BAD_DETECTOR_PTR = 4,
+    LINGUA_BAD_ENUM_VALUE = 5
 } LinguaStatus;
 
-typedef enum LinguaLanguage LinguaLanguage;
-typedef enum LinguaLanguageCode LinguaLanguageCode;
-
 typedef struct LinguaPredictionResult {
-    LinguaLanguage language;
+    uint8_t language;
     double confidence;
 } LinguaPredictionResult;
 
 typedef struct LinguaPredictionRangeResult {
-    LinguaLanguage language;
+    uint8_t language;
     double confidence;
-    size_t start_index;
-    size_t end_index;
-    size_t word_count;
+    uint32_t start_index;
+    uint32_t end_index;
+    uint32_t word_count;
 } LinguaPredictionRangeResult;
 
 typedef struct LinguaPredictionListResult {
     LinguaPredictionResult* predictions;
-    size_t predictionsCount;
-} LinguaPredictionRangeListResult;
+    uint32_t predictionsCount;
+} LinguaPredictionListResult;
 
 typedef struct LinguaPredictionRangeListResult {
     LinguaPredictionRangeResult* predictions;
-    size_t predictionsCount;
+    uint32_t predictionsCount;
 } LinguaPredictionRangeListResult;
 
 typedef struct LanguageDetector LanguageDetector;
 typedef struct LinguaPredictionBuilder LinguaPredictionBuilder;
 
-EXPORT size_t lingua_language_code(LinguaLanguage language, LinguaLanguageCode code, char* buffer);
+EXPORT size_t lingua_language_code(uint8_t language, uint8_t code, char* buffer, size_t buffer_len);
 
-EXPORT LinguaPredictionBuilder* lingua_language_detector_builder_create(const LinguaLanguage* languages, size_t language_count);
+EXPORT LinguaPredictionBuilder* lingua_language_detector_builder_create(const uint8_t* languages, size_t language_count);
 
 EXPORT LinguaPredictionBuilder* lingua_language_detector_builder_with_low_accuracy_mode(
     const LinguaPredictionBuilder* builder
@@ -66,7 +66,7 @@ EXPORT LinguaPredictionBuilder* lingua_language_detector_builder_with_minimum_re
     double distance
 );
 
-EXPORT LinguaPrediction* lingua_language_detector_create(LinguaPredictionBuilder *builder);
+EXPORT LanguageDetector* lingua_language_detector_create(LinguaPredictionBuilder *builder);
 
 EXPORT void lingua_language_detector_builder_destroy(LinguaPredictionBuilder *builder);
 
@@ -79,12 +79,14 @@ EXPORT void lingua_prediction_range_result_destroy(LinguaPredictionRangeResult *
 EXPORT LinguaStatus lingua_detect_single(
     const LanguageDetector *detector,
     const char *text,
-    LinguaPredictionResult *result
+    size_t text_len,
+    LinguaPredictionListResult *result
 );
 
 EXPORT LinguaStatus lingua_detect_mixed(
     const LanguageDetector *detector,
     const char *text,
+    size_t text_len,
     LinguaPredictionRangeListResult *result
 );
 

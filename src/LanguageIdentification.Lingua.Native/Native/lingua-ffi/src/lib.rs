@@ -2,7 +2,6 @@ extern crate libc;
 extern crate lingua;
 
 use libc::size_t;
-use std::ffi::CStr;
 use std::os::raw::c_char;
 use std::ptr;
 use lingua::{Language, LanguageDetector, LanguageDetectorBuilder};
@@ -13,6 +12,8 @@ pub enum LinguaStatus {
     DetectFailure = 1,
     BadTextPtr = 2,
     BadOutputPtr = 3,
+    BadDetectorPtr = 4,
+    BadEnumValue = 5,
 }
 
 #[repr(u8)]
@@ -102,40 +103,30 @@ pub enum LinguaLanguageCode {
     Alpha3 = 3,
 }
 
-impl From<Language> for LinguaLanguage {
-    fn from(language: Language) -> Self {
-        unsafe { std::mem::transmute(language as u8) }
-    }
-}
-
-impl From<LinguaLanguage> for Language {
-    fn from(ffi_language: LinguaLanguage) -> Self {
-        unsafe { std::mem::transmute(ffi_language as u8) }
-    }
-}
-
 #[repr(C)]
 #[derive(Debug)]
 pub struct LinguaPredictionResult {
-    pub language: LinguaLanguage,
+    pub language: u8,
     pub confidence: f64,
 }
 
 #[repr(C)]
 #[derive(Debug)]
 pub struct LinguaPredictionRangeResult {
-    pub language: LinguaLanguage,
+    pub language: u8,
     pub confidence: f64,
     pub start_index: u32,
     pub end_index: u32,
     pub word_count: u32,
 }
 
+#[repr(C)]
 pub struct LinguaPredictionListResult {
     pub predictions: *const LinguaPredictionResult,
     pub predictions_count: u32,
 }
 
+#[repr(C)]
 pub struct LinguaPredictionRangeListResult {
     pub predictions: *const LinguaPredictionRangeResult,
     pub predictions_count: u32,
@@ -143,11 +134,14 @@ pub struct LinguaPredictionRangeListResult {
 
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn lingua_language_code(
-    language: LinguaLanguage,
-    code: LinguaLanguageCode,
-    buffer_ptr: *mut c_char
+    language: u8,
+    code: u8,
+    buffer_ptr: *mut c_char,
+    buffer_len: size_t,
 ) -> size_t { unsafe {
-    let x: Language = language.into();
+    let Some(x) = language_from_u8(language) else { return usize::MAX; };
+
+    let Some(code) = language_code_from_u8(code) else { return usize::MAX; };
 
     let code = match code {
         LinguaLanguageCode::Alpha2 => {
@@ -158,17 +152,23 @@ pub unsafe extern "C" fn lingua_language_code(
         },
     };
 
-    copy_cstr(&code, buffer_ptr)
+    copy_cstr(&code, buffer_ptr, buffer_len)
 }}
 
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn lingua_language_detector_builder_create(
-    languages: *const LinguaLanguage,
+    languages: *const u8,
     language_count: size_t
 ) -> *mut LanguageDetectorBuilder { unsafe {
     if !languages.is_null() {
         let languages_slice = std::slice::from_raw_parts(languages, language_count);
-        let languages: Vec<Language> = languages_slice.iter().map(|x| (*x).into()).collect();
+        let mut languages = Vec::with_capacity(languages_slice.len());
+        for language in languages_slice {
+            let Some(language) = language_from_u8(*language) else {
+                return ptr::null_mut();
+            };
+            languages.push(language);
+        }
         let builder = LanguageDetectorBuilder::from_languages(&languages);
         Box::into_raw(Box::new(builder))
     } else {
@@ -284,22 +284,38 @@ pub unsafe extern "C" fn lingua_prediction_range_result_destroy(result: *mut Lin
 
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn lingua_detect_single(
-    detector: &LanguageDetector,
+    detector: *const LanguageDetector,
     text: *const c_char,
+    text_len: size_t,
     result: *mut LinguaPredictionListResult,
 ) -> LinguaStatus { unsafe {
-    let text = CStr::from_ptr(text);
-    detect_single_internal(&detector, text.to_bytes(), result)
+    if detector.is_null() {
+        return LinguaStatus::BadDetectorPtr;
+    }
+    if text.is_null() && text_len > 0 {
+        return LinguaStatus::BadTextPtr;
+    }
+
+    let text = if text_len == 0 { &[] } else { std::slice::from_raw_parts(text as *const u8, text_len) };
+    detect_single_internal(&*detector, text, result)
 }}
 
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn lingua_detect_mixed(
-    detector: &LanguageDetector,
+    detector: *const LanguageDetector,
     text: *const c_char,
+    text_len: size_t,
     result: *mut LinguaPredictionRangeListResult,
 ) -> LinguaStatus { unsafe {
-    let text = CStr::from_ptr(text);
-    detect_mixed_internal(&detector, text.to_bytes(), result)
+    if detector.is_null() {
+        return LinguaStatus::BadDetectorPtr;
+    }
+    if text.is_null() && text_len > 0 {
+        return LinguaStatus::BadTextPtr;
+    }
+
+    let text = if text_len == 0 { &[] } else { std::slice::from_raw_parts(text as *const u8, text_len) };
+    detect_mixed_internal(&*detector, text, result)
 }}
 
 fn detect_single_internal(
@@ -317,7 +333,7 @@ fn detect_single_internal(
                 .compute_language_confidence_values(text)
                 .iter()
                 .map(|(language, value)| LinguaPredictionResult {
-                    language: (*language).into(),
+                    language: language_to_u8(*language),
                     confidence: *value,
                 })
                 .collect();
@@ -361,7 +377,7 @@ fn detect_mixed_internal(
                 .detect_multiple_languages_of(text)
                 .iter()
                 .map(|x| LinguaPredictionRangeResult {
-                    language: x.language().into(),
+                    language: language_to_u8(x.language()),
                     confidence: detector.compute_language_confidence(text, x.language()),
                     start_index: x.start_index() as u32,
                     end_index: x.end_index() as u32,
@@ -393,15 +409,184 @@ fn detect_mixed_internal(
     }
 }
 
-unsafe fn copy_cstr(src: &str, dst: *mut c_char) -> size_t { unsafe {
+unsafe fn copy_cstr(src: &str, dst: *mut c_char, dst_len: size_t) -> size_t { unsafe {
     let len = src.len();
-    if dst != ptr::null_mut() {
+    if dst != ptr::null_mut() && dst_len > len {
         let src = src.as_ptr().cast::<c_char>();
         src.copy_to_nonoverlapping(dst, len);
         *dst.add(len) = 0;
     }
     return len;
 }}
+
+fn language_code_from_u8(value: u8) -> Option<LinguaLanguageCode> {
+    Some(match value {
+        2 => LinguaLanguageCode::Alpha2,
+        3 => LinguaLanguageCode::Alpha3,
+        _ => return None,
+    })
+}
+
+fn language_from_u8(value: u8) -> Option<Language> {
+    Some(match value {
+        0 => Language::Afrikaans,
+        1 => Language::Albanian,
+        2 => Language::Arabic,
+        3 => Language::Armenian,
+        4 => Language::Azerbaijani,
+        5 => Language::Basque,
+        6 => Language::Belarusian,
+        7 => Language::Bengali,
+        8 => Language::Bokmal,
+        9 => Language::Bosnian,
+        10 => Language::Bulgarian,
+        11 => Language::Catalan,
+        12 => Language::Chinese,
+        13 => Language::Croatian,
+        14 => Language::Czech,
+        15 => Language::Danish,
+        16 => Language::Dutch,
+        17 => Language::English,
+        18 => Language::Esperanto,
+        19 => Language::Estonian,
+        20 => Language::Finnish,
+        21 => Language::French,
+        22 => Language::Ganda,
+        23 => Language::Georgian,
+        24 => Language::German,
+        25 => Language::Greek,
+        26 => Language::Gujarati,
+        27 => Language::Hebrew,
+        28 => Language::Hindi,
+        29 => Language::Hungarian,
+        30 => Language::Icelandic,
+        31 => Language::Indonesian,
+        32 => Language::Irish,
+        33 => Language::Italian,
+        34 => Language::Japanese,
+        35 => Language::Kazakh,
+        36 => Language::Korean,
+        37 => Language::Latin,
+        38 => Language::Latvian,
+        39 => Language::Lithuanian,
+        40 => Language::Macedonian,
+        41 => Language::Malay,
+        42 => Language::Maori,
+        43 => Language::Marathi,
+        44 => Language::Mongolian,
+        45 => Language::Nynorsk,
+        46 => Language::Persian,
+        47 => Language::Polish,
+        48 => Language::Portuguese,
+        49 => Language::Punjabi,
+        50 => Language::Romanian,
+        51 => Language::Russian,
+        52 => Language::Serbian,
+        53 => Language::Shona,
+        54 => Language::Slovak,
+        55 => Language::Slovene,
+        56 => Language::Somali,
+        57 => Language::Sotho,
+        58 => Language::Spanish,
+        59 => Language::Swahili,
+        60 => Language::Swedish,
+        61 => Language::Tagalog,
+        62 => Language::Tamil,
+        63 => Language::Telugu,
+        64 => Language::Thai,
+        65 => Language::Tsonga,
+        66 => Language::Tswana,
+        67 => Language::Turkish,
+        68 => Language::Ukrainian,
+        69 => Language::Urdu,
+        70 => Language::Vietnamese,
+        71 => Language::Welsh,
+        72 => Language::Xhosa,
+        73 => Language::Yoruba,
+        74 => Language::Zulu,
+        _ => return None,
+    })
+}
+
+fn language_to_u8(value: Language) -> u8 {
+    match value {
+        Language::Afrikaans => 0,
+        Language::Albanian => 1,
+        Language::Arabic => 2,
+        Language::Armenian => 3,
+        Language::Azerbaijani => 4,
+        Language::Basque => 5,
+        Language::Belarusian => 6,
+        Language::Bengali => 7,
+        Language::Bokmal => 8,
+        Language::Bosnian => 9,
+        Language::Bulgarian => 10,
+        Language::Catalan => 11,
+        Language::Chinese => 12,
+        Language::Croatian => 13,
+        Language::Czech => 14,
+        Language::Danish => 15,
+        Language::Dutch => 16,
+        Language::English => 17,
+        Language::Esperanto => 18,
+        Language::Estonian => 19,
+        Language::Finnish => 20,
+        Language::French => 21,
+        Language::Ganda => 22,
+        Language::Georgian => 23,
+        Language::German => 24,
+        Language::Greek => 25,
+        Language::Gujarati => 26,
+        Language::Hebrew => 27,
+        Language::Hindi => 28,
+        Language::Hungarian => 29,
+        Language::Icelandic => 30,
+        Language::Indonesian => 31,
+        Language::Irish => 32,
+        Language::Italian => 33,
+        Language::Japanese => 34,
+        Language::Kazakh => 35,
+        Language::Korean => 36,
+        Language::Latin => 37,
+        Language::Latvian => 38,
+        Language::Lithuanian => 39,
+        Language::Macedonian => 40,
+        Language::Malay => 41,
+        Language::Maori => 42,
+        Language::Marathi => 43,
+        Language::Mongolian => 44,
+        Language::Nynorsk => 45,
+        Language::Persian => 46,
+        Language::Polish => 47,
+        Language::Portuguese => 48,
+        Language::Punjabi => 49,
+        Language::Romanian => 50,
+        Language::Russian => 51,
+        Language::Serbian => 52,
+        Language::Shona => 53,
+        Language::Slovak => 54,
+        Language::Slovene => 55,
+        Language::Somali => 56,
+        Language::Sotho => 57,
+        Language::Spanish => 58,
+        Language::Swahili => 59,
+        Language::Swedish => 60,
+        Language::Tagalog => 61,
+        Language::Tamil => 62,
+        Language::Telugu => 63,
+        Language::Thai => 64,
+        Language::Tsonga => 65,
+        Language::Tswana => 66,
+        Language::Turkish => 67,
+        Language::Ukrainian => 68,
+        Language::Urdu => 69,
+        Language::Vietnamese => 70,
+        Language::Welsh => 71,
+        Language::Xhosa => 72,
+        Language::Yoruba => 73,
+        Language::Zulu => 74,
+    }
+}
 
 #[cfg(test)]
 mod tests {
@@ -437,9 +622,9 @@ mod tests {
     }
 
     fn create_detector_ptr() -> *mut LanguageDetector {
-        let languages: Vec<LinguaLanguage> = Language::all()
+        let languages: Vec<u8> = Language::all()
             .into_iter()
-            .map(|x| x.into())
+            .map(language_to_u8)
             .collect();
 
         unsafe {
@@ -461,7 +646,7 @@ mod tests {
 
             let mut result = std::mem::MaybeUninit::<LinguaPredictionRangeListResult>::uninit();
 
-            let status = lingua_detect_mixed(detector.as_ref().unwrap(), text.as_ptr(), result.as_mut_ptr());
+            let status = lingua_detect_mixed(detector, text.as_ptr(), text.as_bytes().len(), result.as_mut_ptr());
 
             assert_eq!(status as u8, LinguaStatus::Ok as u8, "status should be Ok");
 

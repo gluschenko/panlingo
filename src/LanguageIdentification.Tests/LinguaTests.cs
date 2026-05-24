@@ -136,4 +136,76 @@ public class LinguaTests
 
         var predictions = lingua.PredictMixedLanguages(text: text);
     }
+
+    [SkippableFact]
+    public void LinguaRejectsNullText()
+    {
+        Skip.IfNot(LinguaDetector.IsSupported());
+
+        using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
+        using var lingua = linguaBuilder.Build();
+
+        Assert.Throws<ArgumentNullException>(() => lingua.PredictLanguages(null!));
+        Assert.Throws<ArgumentNullException>(() => lingua.PredictMixedLanguages(null!));
+    }
+
+    [SkippableFact]
+    public void LinguaRejectsInvalidEnums()
+    {
+        Skip.IfNot(LinguaDetector.IsSupported());
+
+        Assert.Throws<LinguaDetectorException>(() => new LinguaDetectorBuilder(new[] { (LinguaLanguage)255 }));
+
+        using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
+        using var lingua = linguaBuilder.Build();
+
+        Assert.Throws<LinguaDetectorException>(() => lingua.GetLanguageCode((LinguaLanguage)255, LinguaLanguageCode.Alpha2));
+        Assert.Throws<LinguaDetectorException>(() => lingua.GetLanguageCode(LinguaLanguage.English, (LinguaLanguageCode)255));
+    }
+
+    [SkippableFact]
+    public void LinguaRejectsNegativeCount()
+    {
+        Skip.IfNot(LinguaDetector.IsSupported());
+
+        using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
+        using var lingua = linguaBuilder.Build();
+
+        Assert.Throws<ArgumentOutOfRangeException>(() => lingua.PredictLanguages(Constants.PHRASE_ENG_1, -1));
+    }
+
+    [SkippableFact]
+    public void LinguaAcceptsEmbeddedNulText()
+    {
+        Skip.IfNot(LinguaDetector.IsSupported());
+
+        using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
+        using var lingua = linguaBuilder.Build();
+
+        var predictions = lingua.PredictMixedLanguages(Constants.MALFORMED_BYTES_1);
+
+        Assert.NotNull(predictions);
+    }
+
+    [SkippableFact]
+    public async Task LinguaPredictAndDisposeRaceDoesNotCrash()
+    {
+        Skip.IfNot(LinguaDetector.IsSupported());
+
+        using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
+        var lingua = linguaBuilder.Build();
+        var predict = Task.Run(() =>
+        {
+            try
+            {
+                _ = lingua.PredictLanguages(Constants.PHRASE_ENG_1).ToArray();
+            }
+            catch (ObjectDisposedException)
+            {
+            }
+        });
+        var dispose = Task.Run(lingua.Dispose);
+
+        await Task.WhenAll(predict, dispose);
+    }
 }

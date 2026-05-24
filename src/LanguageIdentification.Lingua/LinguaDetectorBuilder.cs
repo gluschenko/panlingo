@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Panlingo.LanguageIdentification.Lingua.Internal;
 
@@ -31,6 +32,12 @@ namespace Panlingo.LanguageIdentification.Lingua
         /// <exception cref="NotSupportedException"></exception>
         public LinguaDetectorBuilder(LinguaLanguage[] languages)
         {
+            ArgumentNullException.ThrowIfNull(languages);
+            if (languages.Any(x => !Enum.IsDefined(typeof(LinguaLanguage), x)))
+            {
+                throw new LinguaDetectorException("At least one language is not supported");
+            }
+
             if (!LinguaDetector.IsSupported())
             {
                 throw new NotSupportedException(
