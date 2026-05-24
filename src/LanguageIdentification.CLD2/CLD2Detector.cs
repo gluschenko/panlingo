@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
 using Panlingo.LanguageIdentification.CLD2.Internal;
 using Panlingo.LanguageIdentification.CLD2.Native;
 
@@ -71,10 +72,19 @@ namespace Panlingo.LanguageIdentification.CLD2
         /// <returns>List of language predictions</returns>
         public IEnumerable<CLD2Prediction> PredictLanguage(string text)
         {
+            ArgumentNullException.ThrowIfNull(text);
+
+            var textBytes = Encoding.UTF8.GetBytes(text);
             var resultPtr = CLD2DetectorWrapper.PredictLanguage(
-                text: text,
+                text: textBytes,
+                textLength: (UIntPtr)textBytes.Length,
                 resultCount: out var resultCount
             );
+
+            if (resultPtr == IntPtr.Zero || resultCount == 0)
+            {
+                return Array.Empty<CLD2Prediction>();
+            }
 
             try
             {

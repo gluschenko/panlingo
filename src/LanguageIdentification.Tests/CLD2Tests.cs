@@ -82,4 +82,26 @@ public class CLD2Tests
 
         var predictions = cld2.PredictLanguage(text);
     }
+
+    [SkippableFact]
+    public void CLD2RejectsNullText()
+    {
+        Skip.IfNot(CLD2Detector.IsSupported());
+
+        using var cld2 = new CLD2Detector();
+
+        Assert.Throws<ArgumentNullException>(() => cld2.PredictLanguage(null!));
+    }
+
+    [SkippableFact]
+    public void CLD2AcceptsEmbeddedNulText()
+    {
+        Skip.IfNot(CLD2Detector.IsSupported());
+
+        using var cld2 = new CLD2Detector();
+
+        var predictions = cld2.PredictLanguage(Constants.MALFORMED_BYTES_1);
+
+        Assert.NotNull(predictions);
+    }
 }
