@@ -4,7 +4,6 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading;
 using Panlingo.LanguageIdentification.CLD3.Internal;
 using Panlingo.LanguageIdentification.CLD3.Native;
 
@@ -25,7 +24,6 @@ namespace Panlingo.LanguageIdentification.CLD3
 
         private IntPtr _detector;
         private bool _disposed = false;
-        private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
 
         /// <summary>
         /// <para>Creates an instance for <see cref="CLD3Detector"/>.</para>
@@ -88,43 +86,34 @@ namespace Panlingo.LanguageIdentification.CLD3
             CheckDisposed();
             var textBytes = EncodeText(text);
 
-            _semaphore.Wait();
+            var resultPtr = CLD3DetectorWrapper.PredictLanguage(
+                identifier: _detector,
+                text: textBytes,
+                textLength: (UIntPtr)textBytes.Length,
+                resultCount: out var resultCount
+            );
+
+            if (resultPtr == IntPtr.Zero || resultCount == 0)
+            {
+                throw new InvalidOperationException("Failed to detect language");
+            }
+
             try
             {
-                CheckDisposed();
-                var resultPtr = CLD3DetectorWrapper.PredictLanguage(
-                    identifier: _detector,
-                    text: textBytes,
-                    textLength: (UIntPtr)textBytes.Length,
-                    resultCount: out var resultCount
-                );
+                var nativeResult = new CLD3PredictionResult[resultCount];
+                var structSize = Marshal.SizeOf(typeof(CLD3PredictionResult));
 
-                if (resultPtr == IntPtr.Zero || resultCount == 0)
+                for (var i = 0; i < resultCount; i++)
                 {
-                    throw new InvalidOperationException("Failed to detect language");
+                    nativeResult[i] = Marshal.PtrToStructure<CLD3PredictionResult>(resultPtr + i * structSize);
                 }
 
-                try
-                {
-                    var nativeResult = new CLD3PredictionResult[resultCount];
-                    var structSize = Marshal.SizeOf(typeof(CLD3PredictionResult));
-
-                    for (var i = 0; i < resultCount; i++)
-                    {
-                        nativeResult[i] = Marshal.PtrToStructure<CLD3PredictionResult>(resultPtr + i * structSize);
-                    }
-
-                    var firstItem = nativeResult.First();
-                    return new CLD3Prediction(firstItem);
-                }
-                finally
-                {
-                    CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
-                }
+                var firstItem = nativeResult.First();
+                return new CLD3Prediction(firstItem);
             }
             finally
             {
-                _semaphore.Release();
+                CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
             }
         }
 
@@ -146,46 +135,37 @@ namespace Panlingo.LanguageIdentification.CLD3
             }
 
             var textBytes = EncodeText(text);
-            _semaphore.Wait();
+            var resultPtr = CLD3DetectorWrapper.PredictLanguages(
+                identifier: _detector,
+                text: textBytes,
+                textLength: (UIntPtr)textBytes.Length,
+                numLangs: count,
+                resultCount: out var resultCount
+            );
+
+            if (resultPtr == IntPtr.Zero || resultCount == 0)
+            {
+                return Array.Empty<CLD3Prediction>();
+            }
+
             try
             {
-                CheckDisposed();
-                var resultPtr = CLD3DetectorWrapper.PredictLanguages(
-                    identifier: _detector,
-                    text: textBytes,
-                    textLength: (UIntPtr)textBytes.Length,
-                    numLangs: count,
-                    resultCount: out var resultCount
-                );
+                var nativeResult = new CLD3PredictionResult[resultCount];
+                var structSize = Marshal.SizeOf(typeof(CLD3PredictionResult));
 
-                if (resultPtr == IntPtr.Zero || resultCount == 0)
+                for (var i = 0; i < resultCount; i++)
                 {
-                    return Array.Empty<CLD3Prediction>();
+                    nativeResult[i] = Marshal.PtrToStructure<CLD3PredictionResult>(resultPtr + i * structSize);
                 }
 
-                try
-                {
-                    var nativeResult = new CLD3PredictionResult[resultCount];
-                    var structSize = Marshal.SizeOf(typeof(CLD3PredictionResult));
-
-                    for (var i = 0; i < resultCount; i++)
-                    {
-                        nativeResult[i] = Marshal.PtrToStructure<CLD3PredictionResult>(resultPtr + i * structSize);
-                    }
-
-                    return nativeResult
-                        .OrderByDescending(x => x.Probability)
-                        .Select(x => new CLD3Prediction(x))
-                        .ToArray();
-                }
-                finally
-                {
-                    CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
-                }
+                return nativeResult
+                    .OrderByDescending(x => x.Probability)
+                    .Select(x => new CLD3Prediction(x))
+                    .ToArray();
             }
             finally
             {
-                _semaphore.Release();
+                CLD3DetectorWrapper.DestroyPredictionResult(resultPtr, resultCount);
             }
         }
 
@@ -217,19 +197,8 @@ namespace Panlingo.LanguageIdentification.CLD3
 
                 if (_detector != IntPtr.Zero)
                 {
-                    _semaphore.Wait();
-                    try
-                    {
-                        if (_detector != IntPtr.Zero)
-                        {
-                            CLD3DetectorWrapper.DestroyCLD3(_detector);
-                            _detector = IntPtr.Zero;
-                        }
-                    }
-                    finally
-                    {
-                        _semaphore.Release();
-                    }
+                    CLD3DetectorWrapper.DestroyCLD3(_detector);
+                    _detector = IntPtr.Zero;
                 }
 
                 _disposed = true;
