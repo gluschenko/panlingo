@@ -4,6 +4,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using Panlingo.LanguageIdentification.Lingua.Internal;
 using Panlingo.LanguageIdentification.Lingua.Native;
 
@@ -18,6 +19,7 @@ namespace Panlingo.LanguageIdentification.Lingua
 
         private IntPtr _detector;
         private bool _disposed = false;
+        private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
 
         internal LinguaDetector(LinguaDetectorBuilder builder)
         {
@@ -60,43 +62,55 @@ namespace Panlingo.LanguageIdentification.Lingua
         public IEnumerable<LinguaPrediction> PredictLanguages(string text, int count = 10)
         {
             CheckDisposed();
-
-            var status = LinguaDetectorWrapper.LinguaDetectSingle(
-                detector: _detector,
-                text: text,
-                result: out var nativeResult
-            );
-
-            if (status == LinguaStatus.DetectFailure)
+            if (count < 0)
             {
-                return Array.Empty<LinguaPrediction>();
+                throw new ArgumentOutOfRangeException(nameof(count), count, "Count must be greater than or equal to zero");
             }
 
-            if (status == LinguaStatus.BadTextPtr || status == LinguaStatus.BadOutputPtr)
-            {
-                throw new LinguaDetectorException($"Failed to detect language: {status}");
-            }
-
+            var textBytes = LinguaDetectorWrapper.EncodeText(text);
+            _semaphore.Wait();
             try
             {
-                var result = new LinguaPredictionResult[nativeResult.PredictionsCount];
-                var structSize = Marshal.SizeOf(typeof(LinguaPredictionResult));
+                CheckDisposed();
+                var status = LinguaDetectorWrapper.LinguaDetectSingle(
+                    detector: _detector,
+                    text: textBytes,
+                    textLength: (UIntPtr)textBytes.Length,
+                    result: out var nativeResult
+                );
 
-                for (var i = 0; i < nativeResult.PredictionsCount; i++)
+                if (status == LinguaStatus.DetectFailure)
                 {
-                    result[i] = Marshal.PtrToStructure<LinguaPredictionResult>(nativeResult.Predictions + i * structSize);
+                    return Array.Empty<LinguaPrediction>();
                 }
 
-                return result
-                    .Take(count)
-                    .Where(x => x.Confidence > 0)
-                    .OrderByDescending(x => x.Confidence)
-                    .Select(x => new LinguaPrediction(x))
-                    .ToArray();
+                CheckNativeStatus(status);
+
+                try
+                {
+                    var result = new LinguaPredictionResult[nativeResult.PredictionsCount];
+                    var structSize = Marshal.SizeOf(typeof(LinguaPredictionResult));
+
+                    for (var i = 0; i < nativeResult.PredictionsCount; i++)
+                    {
+                        result[i] = Marshal.PtrToStructure<LinguaPredictionResult>(nativeResult.Predictions + i * structSize);
+                    }
+
+                    return result
+                        .Take(count)
+                        .Where(x => x.Confidence > 0)
+                        .OrderByDescending(x => x.Confidence)
+                        .Select(x => new LinguaPrediction(x))
+                        .ToArray();
+                }
+                finally
+                {
+                    LinguaDetectorWrapper.LinguaPredictionResultDestroy(nativeResult.Predictions, nativeResult.PredictionsCount);
+                }
             }
             finally
             {
-                LinguaDetectorWrapper.LinguaPredictionResultDestroy(nativeResult.Predictions, nativeResult.PredictionsCount);
+                _semaphore.Release();
             }
         }
 
@@ -110,42 +124,48 @@ namespace Panlingo.LanguageIdentification.Lingua
         {
             CheckDisposed();
 
-            var status = LinguaDetectorWrapper.LinguaDetectMixed(
-                detector: _detector,
-                text: text,
-                result: out var nativeResult
-            );
-
-            if (status == LinguaStatus.DetectFailure)
-            {
-                return Array.Empty<LinguaPredictionRange>();
-            }
-
-            if (status == LinguaStatus.BadTextPtr || status == LinguaStatus.BadOutputPtr)
-            {
-                throw new LinguaDetectorException($"Failed to detect language: {status}");
-            }
-
+            var textBytes = LinguaDetectorWrapper.EncodeText(text);
+            _semaphore.Wait();
             try
             {
-                var result = new LinguaPredictionRangeResult[nativeResult.PredictionsCount];
-                var structSize = Marshal.SizeOf(typeof(LinguaPredictionRangeResult));
+                CheckDisposed();
+                var status = LinguaDetectorWrapper.LinguaDetectMixed(
+                    detector: _detector,
+                    text: textBytes,
+                    textLength: (UIntPtr)textBytes.Length,
+                    result: out var nativeResult
+                );
 
-                for (var i = 0; i < nativeResult.PredictionsCount; i++)
+                if (status == LinguaStatus.DetectFailure)
                 {
-                    result[i] = Marshal.PtrToStructure<LinguaPredictionRangeResult>(nativeResult.Predictions + i * structSize);
+                    return Array.Empty<LinguaPredictionRange>();
                 }
 
-                var textBytes = Encoding.UTF8.GetBytes(text);
+                CheckNativeStatus(status);
 
-                return result
-                    .OrderByDescending(x => x.Confidence)
-                    .Select(x => new LinguaPredictionRange(x, textBytes))
-                    .ToArray();
+                try
+                {
+                    var result = new LinguaPredictionRangeResult[nativeResult.PredictionsCount];
+                    var structSize = Marshal.SizeOf(typeof(LinguaPredictionRangeResult));
+
+                    for (var i = 0; i < nativeResult.PredictionsCount; i++)
+                    {
+                        result[i] = Marshal.PtrToStructure<LinguaPredictionRangeResult>(nativeResult.Predictions + i * structSize);
+                    }
+
+                    return result
+                        .OrderByDescending(x => x.Confidence)
+                        .Select(x => new LinguaPredictionRange(x, textBytes))
+                        .ToArray();
+                }
+                finally
+                {
+                    LinguaDetectorWrapper.LinguaPredictionRangeResultDestroy(nativeResult.Predictions, nativeResult.PredictionsCount);
+                }
             }
             finally
             {
-                LinguaDetectorWrapper.LinguaPredictionRangeResultDestroy(nativeResult.Predictions, nativeResult.PredictionsCount);
+                _semaphore.Release();
             }
         }
 
@@ -169,29 +189,7 @@ namespace Panlingo.LanguageIdentification.Lingua
                 throw new LinguaDetectorException($"Language code type '{code}' is not found");
             }
 
-            var stringBuider = new StringBuilder(10);
-
-            try
-            {
-                var status = LinguaDetectorWrapper.LinguaLangCode(
-                    lang: language,
-                    code: code,
-                    buffer: stringBuider,
-                    bufferSize: (UIntPtr)stringBuider.Capacity
-                );
-
-                if (status < 0)
-                {
-                    throw new LinguaDetectorException($"Language code '{language}' is not found");
-                }
-
-                var result = stringBuider.ToString();
-                return result;
-            }
-            finally
-            {
-                stringBuider.Clear();
-            }
+            return LinguaDetectorWrapper.LinguaLangCode(language, code);
         }
 
         /// <summary>
@@ -222,8 +220,19 @@ namespace Panlingo.LanguageIdentification.Lingua
 
                 if (_detector != IntPtr.Zero)
                 {
-                    LinguaDetectorWrapper.LinguaLanguageDetectorDestroy(_detector);
-                    _detector = IntPtr.Zero;
+                    _semaphore.Wait();
+                    try
+                    {
+                        if (_detector != IntPtr.Zero)
+                        {
+                            LinguaDetectorWrapper.LinguaLanguageDetectorDestroy(_detector);
+                            _detector = IntPtr.Zero;
+                        }
+                    }
+                    finally
+                    {
+                        _semaphore.Release();
+                    }
                 }
 
                 _disposed = true;
@@ -238,7 +247,21 @@ namespace Panlingo.LanguageIdentification.Lingua
 
         ~LinguaDetector()
         {
-            Dispose(false);
+            try
+            {
+                Dispose(false);
+            }
+            catch
+            {
+            }
+        }
+
+        private static void CheckNativeStatus(LinguaStatus status)
+        {
+            if (status != LinguaStatus.OK)
+            {
+                throw new LinguaDetectorException($"Failed to detect language: {status}");
+            }
         }
     }
 
