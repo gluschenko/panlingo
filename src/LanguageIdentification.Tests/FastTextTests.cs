@@ -139,6 +139,63 @@ public class FastTextTests : IAsyncLifetime
         var predictions = fastText.Predict(text: text, count: 10);
     }
 
+    [SkippableFact]
+    public void FastTextRejectsNullText()
+    {
+        Skip.IfNot(FastTextDetector.IsSupported());
+
+        using var fastText = new FastTextDetector();
+        fastText.LoadDefaultModel();
+
+        Assert.Throws<ArgumentNullException>(() => fastText.Predict(null!, 10));
+    }
+
+    [SkippableFact]
+    public void FastTextRejectsNegativeCount()
+    {
+        Skip.IfNot(FastTextDetector.IsSupported());
+
+        using var fastText = new FastTextDetector();
+        fastText.LoadDefaultModel();
+
+        Assert.Throws<ArgumentOutOfRangeException>(() => fastText.Predict(Constants.PHRASE_ENG_1, -1));
+    }
+
+    [SkippableFact]
+    public void FastTextAcceptsEmbeddedNulText()
+    {
+        Skip.IfNot(FastTextDetector.IsSupported());
+
+        using var fastText = new FastTextDetector();
+        fastText.LoadDefaultModel();
+
+        var predictions = fastText.Predict(Constants.MALFORMED_BYTES_1, 10);
+
+        Assert.NotNull(predictions);
+    }
+
+    [SkippableFact]
+    public async Task FastTextPredictAndDisposeRaceDoesNotCrash()
+    {
+        Skip.IfNot(FastTextDetector.IsSupported());
+
+        var fastText = new FastTextDetector();
+        fastText.LoadDefaultModel();
+        var predict = Task.Run(() =>
+        {
+            try
+            {
+                _ = fastText.Predict(Constants.PHRASE_ENG_1, 10).ToArray();
+            }
+            catch (ObjectDisposedException)
+            {
+            }
+        });
+        var dispose = Task.Run(fastText.Dispose);
+
+        await Task.WhenAll(predict, dispose);
+    }
+
     public async Task InitializeAsync()
     {
         var url = "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin";

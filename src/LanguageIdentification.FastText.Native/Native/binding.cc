@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <sstream>
 #include <string.h>
 
@@ -13,9 +13,14 @@ using namespace fasttext;
 
 extern "C" {
 
+    static void save_error(char** err_ptr, const char* message) {
+        if (err_ptr != nullptr) {
+            *err_ptr = strdup(message);
+        }
+    }
+
     static void save_error(char** err_ptr, const std::exception& e) {
-        assert(err_ptr != nullptr);
-        *err_ptr = strdup(e.what());
+        save_error(err_ptr, e.what());
     }
 
     EXPORT void destroy_string(char* s) {
@@ -25,7 +30,12 @@ extern "C" {
     }
 
     EXPORT fasttext_t* create_fasttext(void) {
-        return (fasttext_t*)(new FastTextExtension());
+        try {
+            return (fasttext_t*)(new FastTextExtension());
+        }
+        catch (...) {
+            return nullptr;
+        }
     }
 
     EXPORT void destroy_fasttext(fasttext_t* handle) {
@@ -34,35 +44,70 @@ extern "C" {
     }
 
     EXPORT void fasttext_load_model(fasttext_t* handle, const char* filename, char** err_ptr) {
+        if (handle == nullptr || filename == nullptr) {
+            save_error(err_ptr, "Invalid FastText handle or model path");
+            return;
+        }
+
         try {
             ((FastTextExtension*)handle)->loadModel(filename);
         }
-        catch (const std::invalid_argument& e) {
+        catch (const std::exception& e) {
             save_error(err_ptr, e);
+        }
+        catch (...) {
+            save_error(err_ptr, "Unknown native FastText error");
         }
     }
 
     EXPORT void fasttext_load_model_data(fasttext_t* handle, const char* buffer, size_t buffer_length, char** err_ptr) {
-        try {
-            ((FastTextExtension*)handle)->loadModelData(buffer, buffer_length);
+        if (handle == nullptr || (buffer == nullptr && buffer_length > 0)) {
+            save_error(err_ptr, "Invalid FastText handle or model buffer");
+            return;
         }
-        catch (const std::invalid_argument& e) {
+
+        try {
+            ((FastTextExtension*)handle)->loadModelData(buffer == nullptr ? "" : buffer, buffer_length);
+        }
+        catch (const std::exception& e) {
             save_error(err_ptr, e);
+        }
+        catch (...) {
+            save_error(err_ptr, "Unknown native FastText error");
         }
     }
 
     EXPORT int fasttext_get_model_dimensions(fasttext_t* handle) {
-        return ((FastTextExtension*)handle)->getDimension();
+        if (handle == nullptr) {
+            return 0;
+        }
+
+        try {
+            return ((FastTextExtension*)handle)->getDimension();
+        }
+        catch (...) {
+            return 0;
+        }
     }
 
-    EXPORT fasttext_predictions_t* fasttext_predict(fasttext_t* handle, const char* text, int32_t k, float threshold, char** err_ptr) {
+    EXPORT fasttext_predictions_t* fasttext_predict(fasttext_t* handle, const char* text, size_t text_length, int32_t k, float threshold, char** err_ptr) {
+        if (handle == nullptr || k < 0 || (text == nullptr && text_length > 0)) {
+            save_error(err_ptr, "Invalid FastText prediction arguments");
+            return nullptr;
+        }
+
         std::vector<std::pair<fasttext::real, std::string>> predictions;
-        std::stringstream ioss(text);
+        std::string input(text == nullptr ? "" : text, text_length);
+        std::stringstream ioss(input);
         try {
             ((FastTextExtension*)handle)->predictLine(ioss, predictions, k, threshold);
         }
-        catch (const std::invalid_argument& e) {
+        catch (const std::exception& e) {
             save_error(err_ptr, e);
+            return nullptr;
+        }
+        catch (...) {
+            save_error(err_ptr, "Unknown native FastText error");
             return nullptr;
         }
         size_t len = predictions.size();
@@ -90,22 +135,31 @@ extern "C" {
     }
 
     EXPORT fasttext_labels_t* fasttext_get_labels(fasttext_t* handle) {
-        std::shared_ptr<const fasttext::Dictionary> d = ((FastTextExtension*)handle)->getDictionary();
-        std::vector<int64_t> labels_freq = d->getCounts(fasttext::entry_type::label);
-        size_t len = labels_freq.size();
-
-        fasttext_labels_t* ret = static_cast<fasttext_labels_t*>(malloc(sizeof(fasttext_labels_t)));
-        ret->length = len;
-        char** labels = static_cast<char**>(malloc(sizeof(char*) * len));
-        int64_t* freqs = static_cast<int64_t*>(malloc(sizeof(int64_t) * len));
-        for (int32_t i = 0; i < labels_freq.size(); i++) {
-            std::string label = d->getLabel(i);
-            labels[i] = strdup(label.c_str());
-            freqs[i] = labels_freq[i];
+        if (handle == nullptr) {
+            return nullptr;
         }
-        ret->labels = labels;
-        ret->freqs = freqs;
-        return ret;
+
+        try {
+            std::shared_ptr<const fasttext::Dictionary> d = ((FastTextExtension*)handle)->getDictionary();
+            std::vector<int64_t> labels_freq = d->getCounts(fasttext::entry_type::label);
+            size_t len = labels_freq.size();
+
+            fasttext_labels_t* ret = static_cast<fasttext_labels_t*>(malloc(sizeof(fasttext_labels_t)));
+            ret->length = len;
+            char** labels = static_cast<char**>(malloc(sizeof(char*) * len));
+            int64_t* freqs = static_cast<int64_t*>(malloc(sizeof(int64_t) * len));
+            for (int32_t i = 0; i < labels_freq.size(); i++) {
+                std::string label = d->getLabel(i);
+                labels[i] = strdup(label.c_str());
+                freqs[i] = labels_freq[i];
+            }
+            ret->labels = labels;
+            ret->freqs = freqs;
+            return ret;
+        }
+        catch (...) {
+            return nullptr;
+        }
     }
 
     EXPORT void destroy_labels(fasttext_labels_t* labels) {
@@ -120,28 +174,42 @@ extern "C" {
         free(labels);
     }
 
-    EXPORT fasttext_tokens_t* fasttext_tokenize(fasttext_t* handle, const char* text) {
-        std::vector<std::string> text_split;
-        std::shared_ptr<const fasttext::Dictionary> d = ((FastTextExtension*)handle)->getDictionary();
-        std::stringstream ioss(text);
-        std::string token;
-        while (!ioss.eof()) {
-            while (d->readWord(ioss, token)) {
-                text_split.push_back(token);
+    EXPORT fasttext_tokens_t* fasttext_tokenize(fasttext_t* handle, const char* text, size_t text_length) {
+        if (handle == nullptr || (text == nullptr && text_length > 0)) {
+            return nullptr;
+        }
+
+        try {
+            std::vector<std::string> text_split;
+            std::shared_ptr<const fasttext::Dictionary> d = ((FastTextExtension*)handle)->getDictionary();
+            std::string input(text == nullptr ? "" : text, text_length);
+            std::stringstream ioss(input);
+            std::string token;
+            while (!ioss.eof()) {
+                while (d->readWord(ioss, token)) {
+                    text_split.push_back(token);
+                }
             }
+            size_t len = text_split.size();
+            fasttext_tokens_t* ret = static_cast<fasttext_tokens_t*>(malloc(sizeof(fasttext_tokens_t)));
+            ret->length = len;
+            char** tokens = static_cast<char**>(malloc(sizeof(char*) * len));
+            for (size_t i = 0; i < len; i++) {
+                tokens[i] = strdup(text_split[i].c_str());
+            }
+            ret->tokens = tokens;
+            return ret;
         }
-        size_t len = text_split.size();
-        fasttext_tokens_t* ret = static_cast<fasttext_tokens_t*>(malloc(sizeof(fasttext_tokens_t)));
-        ret->length = len;
-        char** tokens = static_cast<char**>(malloc(sizeof(char*) * len));
-        for (size_t i = 0; i < len; i++) {
-            tokens[i] = strdup(text_split[i].c_str());
+        catch (...) {
+            return nullptr;
         }
-        ret->tokens = tokens;
-        return ret;
     }
 
     EXPORT void destroy_tokens(fasttext_tokens_t* tokens) {
+        if (tokens == nullptr) {
+            return;
+        }
+
         for (size_t i = 0; i < tokens->length; i++) {
             free(tokens->tokens[i]);
         }
@@ -150,6 +218,8 @@ extern "C" {
     }
 
     EXPORT void fasttext_abort(fasttext_t* handle) {
-        ((FastTextExtension*)handle)->abort();
+        if (handle != nullptr) {
+            ((FastTextExtension*)handle)->abort();
+        }
     }
 }
