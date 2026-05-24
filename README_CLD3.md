@@ -198,7 +198,7 @@ zu          | Zulu            | Latin
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE) © 2024–2025 Alexander Gluschenko.
+This project is licensed under the [MIT License](./LICENSE) © 2024–2026 Alexander Gluschenko.
 
 Includes software from the following project(s):
 - [CLD3](https://github.com/google/cld3) — © 2016 Google Inc., licensed under Apache-2.0  

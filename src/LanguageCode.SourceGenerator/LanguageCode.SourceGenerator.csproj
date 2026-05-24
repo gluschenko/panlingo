@@ -8,6 +8,7 @@
     <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)Generated</CompilerGeneratedFilesOutputPath>
     <IsRoslynComponent>true</IsRoslynComponent>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <LangVersion>latest</LangVersion>
     <NoWarn>$(NoWarn);1591,1573</NoWarn>
     <Configurations>Debug;Release;DebugLinuxOnly;ReleaseLinuxOnly;CI</Configurations>
   </PropertyGroup>

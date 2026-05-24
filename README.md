@@ -223,7 +223,7 @@ Please note that this project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md)
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE) © 2024–2025 Alexander Gluschenko.
+This project is licensed under the [MIT License](./LICENSE) © 2024–2026 Alexander Gluschenko.
 
 Includes software from the following project(s):
 
@@ -231,7 +231,7 @@ Includes software from the following project(s):
 - [CLD3](https://github.com/google/cld3) — © 2016 Google Inc., licensed under Apache-2.0  
 - [FastText](https://github.com/facebookresearch/fastText) — © 2016–present Meta Platforms, Inc., licensed under MIT  
 - [Lingua](https://github.com/pemistahl/lingua-rs) — © 2020–2023 Peter M. Stahl, licensed under Apache-2.0  
-- [MediaPipe Language Detector](https://github.com/google-ai-edge/mediapipe) — © 2023–2025 Google Inc., licensed under Apache-2.0  
+- [MediaPipe Language Detector](https://github.com/google-ai-edge/mediapipe) — © 2023–2026 Google Inc., licensed under Apache-2.0  
 - [Whatlang](https://github.com/greyblake/whatlang-rs) — © 2017 Serhii Potapov and others, licensed under MIT
 
 See the [LICENSE](./LICENSE) file for full details.

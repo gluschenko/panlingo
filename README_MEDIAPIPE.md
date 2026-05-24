@@ -112,10 +112,10 @@ using var mediaPipe = new MediaPipeDetector(
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE) © 2024–2025 Alexander Gluschenko.
+This project is licensed under the [MIT License](./LICENSE) © 2024–2026 Alexander Gluschenko.
 
 Includes software from the following project(s):
-- [MediaPipe Language Detector](https://github.com/google-ai-edge/mediapipe) — © 2023–2025 Google Inc., licensed under Apache-2.0  
+- [MediaPipe Language Detector](https://github.com/google-ai-edge/mediapipe) — © 2023–2026 Google Inc., licensed under Apache-2.0  
 
 See the [LICENSE](./LICENSE) file for full details.
 
