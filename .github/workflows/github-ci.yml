@@ -223,7 +223,7 @@ jobs:
       ROOT: ./src
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
       PANLINGO_TARGET_FRAMEWORK: ${{ matrix.runtime.target }}
-      CONFIGURATION: Release
+      CONFIGURATION: CI
     steps:
     - uses: actions/checkout@v4
   
@@ -266,11 +266,11 @@ jobs:
 
     - name: 🧪 Run Tests for LanguageCode
       working-directory: ${{env.ROOT}}/LanguageCode.Tests
-      run: dotnet test -c CI --blame-crash
+      run: dotnet test --configuration ${{ env.CONFIGURATION }} --blame-crash
 
     # - name: 🧪 Run Tests for LanguageIdentification
     #   working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
-    #   run: dotnet test -c CI --blame-crash
+    #   run: dotnet test --configuration ${{ env.CONFIGURATION }} --blame-crash
 
     - name: 🧪 Restore test project
       run: dotnet restore ${{env.ROOT}}/LanguageIdentification.Tests/LanguageIdentification.Tests.csproj
