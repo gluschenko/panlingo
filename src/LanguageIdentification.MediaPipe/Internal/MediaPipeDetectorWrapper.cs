@@ -15,7 +15,8 @@ namespace Panlingo.LanguageIdentification.MediaPipe.Internal
         [DllImport(MediaPipeNativeLibrary.Name, EntryPoint = "language_detector_detect", CallingConvention = CallingConvention.Cdecl)]
         public static extern int UseLanguageDetector(
             IntPtr handle,
-            [MarshalAs(UnmanagedType.LPUTF8Str)] string text,
+            byte[] text,
+            UIntPtr textLength,
             ref LanguageDetectorResult result,
             out IntPtr errorMessage
         );
@@ -28,6 +29,9 @@ namespace Panlingo.LanguageIdentification.MediaPipe.Internal
             IntPtr handle,
             out IntPtr errorMessage
         );
+
+        [DllImport(MediaPipeNativeLibrary.Name, EntryPoint = "language_detector_destroy_string", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void DestroyString(IntPtr value);
     }
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]

@@ -5,6 +5,8 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading;
 using Panlingo.LanguageIdentification.MediaPipe.Internal;
 using Panlingo.LanguageIdentification.MediaPipe.Native;
 
@@ -29,6 +31,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
         private IntPtr _detector;
         private bool _disposed = false;
+        private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
 
         private const string LABEL_FILE_NAME = "labels.txt";
 
@@ -137,6 +140,10 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                 _detector = MediaPipeDetectorWrapper.CreateLanguageDetector(ref nativeOptions, out var errorMessage);
 
                 CheckError(errorMessage);
+                if (_detector == IntPtr.Zero)
+                {
+                    throw new NativeLibraryException($"Failed to create {nameof(MediaPipeDetector)}");
+                }
             }
             finally
             {
@@ -155,35 +162,46 @@ namespace Panlingo.LanguageIdentification.MediaPipe
         public IEnumerable<MediaPipePrediction> PredictLanguages(string text)
         {
             CheckDisposed();
+            var textBytes = EncodeText(text);
 
-            var nativeResult = new LanguageDetectorResult();
-
-            _ = MediaPipeDetectorWrapper.UseLanguageDetector(
-                handle: _detector,
-                text: text,
-                result: ref nativeResult,
-                errorMessage: out var errorMessage
-            );
-            CheckError(errorMessage);
-
+            _semaphore.Wait();
             try
             {
-                var result = new LanguageDetectorPrediction[nativeResult.PredictionsCount];
-                var structSize = Marshal.SizeOf<LanguageDetectorPrediction>();
+                CheckDisposed();
+                var nativeResult = new LanguageDetectorResult();
 
-                for (var i = 0; i < nativeResult.PredictionsCount; i++)
+                _ = MediaPipeDetectorWrapper.UseLanguageDetector(
+                    handle: _detector,
+                    text: textBytes,
+                    textLength: (UIntPtr)textBytes.Length,
+                    result: ref nativeResult,
+                    errorMessage: out var errorMessage
+                );
+                CheckError(errorMessage);
+
+                try
                 {
-                    result[i] = Marshal.PtrToStructure<LanguageDetectorPrediction>(nativeResult.Predictions + i * structSize);
-                }
+                    var result = new LanguageDetectorPrediction[nativeResult.PredictionsCount];
+                    var structSize = Marshal.SizeOf<LanguageDetectorPrediction>();
 
-                return result
-                    .OrderByDescending(x => x.Probability)
-                    .Select(x => new MediaPipePrediction(x))
-                    .ToArray();
+                    for (var i = 0; i < nativeResult.PredictionsCount; i++)
+                    {
+                        result[i] = Marshal.PtrToStructure<LanguageDetectorPrediction>(nativeResult.Predictions + i * structSize);
+                    }
+
+                    return result
+                        .OrderByDescending(x => x.Probability)
+                        .Select(x => new MediaPipePrediction(x))
+                        .ToArray();
+                }
+                finally
+                {
+                    MediaPipeDetectorWrapper.FreeLanguageDetectorResult(ref nativeResult);
+                }
             }
             finally
             {
-                MediaPipeDetectorWrapper.FreeLanguageDetectorResult(ref nativeResult);
+                _semaphore.Release();
             }
         }
 
@@ -193,7 +211,18 @@ namespace Panlingo.LanguageIdentification.MediaPipe
         /// <returns>Collection of label strings</returns>
         public IEnumerable<string> GetLabels()
         {
-            return _labels.Value;
+            CheckDisposed();
+
+            _semaphore.Wait();
+            try
+            {
+                CheckDisposed();
+                return _labels.Value;
+            }
+            finally
+            {
+                _semaphore.Release();
+            }
         }
 
         private byte[] ReadModelData()
@@ -232,8 +261,15 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
         private static void ThrowNativeException(IntPtr errorPtr)
         {
-            var error = DecodeString(errorPtr);
-            throw new NativeLibraryException(error);
+            try
+            {
+                var error = DecodeString(errorPtr);
+                throw new NativeLibraryException(error);
+            }
+            finally
+            {
+                MediaPipeDetectorWrapper.DestroyString(errorPtr);
+            }
         }
 
         private static string DecodeString(IntPtr ptr)
@@ -260,9 +296,27 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
                 if (_detector != IntPtr.Zero)
                 {
-                    _ = MediaPipeDetectorWrapper.FreeLanguageDetector(_detector, out var errorMessage);
-                    _detector = IntPtr.Zero;
-                    CheckError(errorMessage);
+                    _semaphore.Wait();
+                    try
+                    {
+                        if (_detector != IntPtr.Zero)
+                        {
+                            _ = MediaPipeDetectorWrapper.FreeLanguageDetector(_detector, out var errorMessage);
+                            _detector = IntPtr.Zero;
+                            if (disposing)
+                            {
+                                CheckError(errorMessage);
+                            }
+                            else if (errorMessage != IntPtr.Zero)
+                            {
+                                MediaPipeDetectorWrapper.DestroyString(errorMessage);
+                            }
+                        }
+                    }
+                    finally
+                    {
+                        _semaphore.Release();
+                    }
                 }
 
                 _disposed = true;
@@ -277,7 +331,19 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
         ~MediaPipeDetector()
         {
-            Dispose(false);
+            try
+            {
+                Dispose(false);
+            }
+            catch
+            {
+            }
+        }
+
+        private static byte[] EncodeText(string text)
+        {
+            ArgumentNullException.ThrowIfNull(text);
+            return Encoding.UTF8.GetBytes(text);
         }
     }
 }

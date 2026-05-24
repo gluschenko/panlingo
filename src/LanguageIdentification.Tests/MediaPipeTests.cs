@@ -139,6 +139,55 @@ public class MediaPipeTests : IAsyncLifetime
         var predictions = mediaPipe.PredictLanguages(text: text);
     }
 
+    [SkippableFact]
+    public void MediaPipeRejectsNullText()
+    {
+        Skip.IfNot(MediaPipeDetector.IsSupported());
+
+        using var mediaPipe = new MediaPipeDetector(
+            options: MediaPipeOptions.FromDefault().WithResultCount(10)
+        );
+
+        Assert.Throws<ArgumentNullException>(() => mediaPipe.PredictLanguages(null!));
+    }
+
+    [SkippableFact]
+    public void MediaPipeAcceptsEmbeddedNulText()
+    {
+        Skip.IfNot(MediaPipeDetector.IsSupported());
+
+        using var mediaPipe = new MediaPipeDetector(
+            options: MediaPipeOptions.FromDefault().WithResultCount(10)
+        );
+
+        var predictions = mediaPipe.PredictLanguages(Constants.MALFORMED_BYTES_1);
+
+        Assert.NotNull(predictions);
+    }
+
+    [SkippableFact]
+    public async Task MediaPipePredictAndDisposeRaceDoesNotCrash()
+    {
+        Skip.IfNot(MediaPipeDetector.IsSupported());
+
+        var mediaPipe = new MediaPipeDetector(
+            options: MediaPipeOptions.FromDefault().WithResultCount(10)
+        );
+        var predict = Task.Run(() =>
+        {
+            try
+            {
+                _ = mediaPipe.PredictLanguages(Constants.PHRASE_ENG_1).ToArray();
+            }
+            catch (ObjectDisposedException)
+            {
+            }
+        });
+        var dispose = Task.Run(mediaPipe.Dispose);
+
+        await Task.WhenAll(predict, dispose);
+    }
+
     public async Task InitializeAsync()
     {
         var url = "https://storage.googleapis.com/mediapipe-models/language_detector/language_detector/float32/1/language_detector.tflite";
