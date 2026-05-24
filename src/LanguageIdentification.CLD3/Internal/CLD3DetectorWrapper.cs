@@ -15,14 +15,16 @@ namespace Panlingo.LanguageIdentification.CLD3.Internal
         [DllImport(CLD3NativeLibrary.Name, EntryPoint = "cld3_find_language", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr PredictLanguage(
             IntPtr identifier,
-            [MarshalAs(UnmanagedType.LPUTF8Str)] string text,
+            byte[] text,
+            UIntPtr textLength,
             out int resultCount
         );
 
         [DllImport(CLD3NativeLibrary.Name, EntryPoint = "cld3_find_languages", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr PredictLanguages(
             IntPtr identifier,
-            [MarshalAs(UnmanagedType.LPUTF8Str)] string text,
+            byte[] text,
+            UIntPtr textLength,
             int numLangs,
             out int resultCount
         );
