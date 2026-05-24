@@ -223,6 +223,7 @@ jobs:
       ROOT: ./src
       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
       PANLINGO_TARGET_FRAMEWORK: ${{ matrix.runtime.target }}
+      CONFIGURATION: Release
     steps:
     - uses: actions/checkout@v4
   
@@ -263,13 +264,51 @@ jobs:
         path=$(realpath "${{env.ROOT}}/local-packages")
         dotnet nuget add source $path
 
-    - name: 🧪 Run Tests for LanguageIdentification
-      working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
-      run: dotnet test -c CI --blame-crash
-
     - name: 🧪 Run Tests for LanguageCode
       working-directory: ${{env.ROOT}}/LanguageCode.Tests
       run: dotnet test -c CI --blame-crash
+
+    # - name: 🧪 Run Tests for LanguageIdentification
+    #   working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
+    #   run: dotnet test -c CI --blame-crash
+
+    - name: 🧪 Restore test project
+      run: dotnet restore ${{env.ROOT}}/LanguageIdentification.Tests/LanguageIdentification.Tests.csproj
+
+    - name: 🧪 Build test project
+      run: dotnet build ${{env.ROOT}}/LanguageIdentification.Tests/LanguageIdentification.Tests.csproj --configuration ${{ env.CONFIGURATION }} --no-restore
+
+    - name: 🧪 Run tests
+      env:
+        DOTNET_DbgEnableMiniDump: 1
+        DOTNET_DbgMiniDumpType: 4
+        DOTNET_DbgMiniDumpName: ${{ runner.temp }}/dotnet-crash-${{ env.PANLINGO_TARGET_FRAMEWORK }}-%p.dmp
+      run: >
+        dotnet test ${{env.ROOT}}/LanguageIdentification.Tests/LanguageIdentification.Tests.csproj
+        --configuration ${{ env.CONFIGURATION }}
+        --framework ${{ env.PANLINGO_TARGET_FRAMEWORK }}
+        --no-build
+        --no-restore
+        --logger "trx;LogFileName=LanguageIdentification.Tests.${{ env.PANLINGO_TARGET_FRAMEWORK }}.trx"
+        --logger "console;verbosity=detailed"
+        --diag "${{ runner.temp }}/vstest-${{ env.PANLINGO_TARGET_FRAMEWORK }}.log"
+        --blame
+        --blame-crash
+        --blame-hang
+        --blame-hang-timeout 5m
+
+    - name: Upload test diagnostics
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-diagnostics-${{ matrix.os }}
+        path: |
+          src/Onnxify.Tests/TestResults/**
+          ${{ runner.temp }}/vstest-*.log
+          ${{ runner.temp }}/dotnet-crash-*.dmp
+          ${{ runner.temp }}/*.dmp
+          ${{ runner.temp }}/*.crashdump
+        if-no-files-found: ignore
 
   deploy-package:
     name: 🚚 Push ${{matrix.projectName}}
