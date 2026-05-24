@@ -301,7 +301,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: test-diagnostics-${{ matrix.os }}
+        name: test-diagnostics-${{ matrix.task.os }}-${{ matrix.runtime.target }}
         path: |
           src/Onnxify.Tests/TestResults/**
           ${{ runner.temp }}/vstest-*.log
