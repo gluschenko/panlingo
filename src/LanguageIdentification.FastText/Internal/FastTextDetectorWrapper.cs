@@ -20,7 +20,7 @@ namespace Panlingo.LanguageIdentification.FastText.Internal
         public static extern void FastTextLoadModel(IntPtr handle, string filename, ref IntPtr errPtr);
 
         [DllImport(FastTextNativeLibrary.Name, EntryPoint = "fasttext_load_model_data", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void FastTextLoadModelData(IntPtr handle, IntPtr buffer, uint bufferLength, ref IntPtr errPtr);
+        public static extern void FastTextLoadModelData(IntPtr handle, IntPtr buffer, UIntPtr bufferLength, ref IntPtr errPtr);
 
         [DllImport(FastTextNativeLibrary.Name, EntryPoint = "fasttext_get_model_dimensions", CallingConvention = CallingConvention.Cdecl)]
         public static extern int FastTextGetModelDimensions(IntPtr handle);
@@ -28,7 +28,8 @@ namespace Panlingo.LanguageIdentification.FastText.Internal
         [DllImport(FastTextNativeLibrary.Name, EntryPoint = "fasttext_predict", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr FastTextPredict(
             IntPtr handle,
-            [MarshalAs(UnmanagedType.LPUTF8Str)] string text,
+            byte[] text,
+            UIntPtr textLength,
             int k,
             float threshold,
             ref IntPtr errPtr
@@ -44,7 +45,7 @@ namespace Panlingo.LanguageIdentification.FastText.Internal
         public static extern void DestroyLabels(IntPtr labels);
 
         [DllImport(FastTextNativeLibrary.Name, EntryPoint = "fasttext_tokenize", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr FastTextTokenize(IntPtr handle, string text);
+        public static extern IntPtr FastTextTokenize(IntPtr handle, byte[] text, UIntPtr textLength);
 
         [DllImport(FastTextNativeLibrary.Name, EntryPoint = "destroy_tokens", CallingConvention = CallingConvention.Cdecl)]
         public static extern void DestroyTokens(IntPtr tokens);
