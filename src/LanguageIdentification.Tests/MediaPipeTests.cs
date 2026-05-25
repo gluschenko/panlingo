@@ -139,6 +139,92 @@ public class MediaPipeTests : IAsyncLifetime
         var predictions = mediaPipe.PredictLanguages(text: text);
     }
 
+    [SkippableFact]
+    public void MediaPipeRejectsNullText()
+    {
+        Skip.IfNot(MediaPipeDetector.IsSupported());
+
+        using var mediaPipe = new MediaPipeDetector(
+            options: MediaPipeOptions.FromDefault().WithResultCount(10)
+        );
+
+        Assert.Throws<ArgumentNullException>(() => mediaPipe.PredictLanguages(null!));
+    }
+
+    [SkippableFact]
+    public void MediaPipeStreamModelCanReadLabels()
+    {
+        Skip.IfNot(MediaPipeDetector.IsSupported());
+
+        using var stream = File.Open(_modelPath, FileMode.Open);
+        using var mediaPipe = new MediaPipeDetector(
+            options: MediaPipeOptions.FromStream(stream).WithResultCount(10)
+        );
+
+        var labels = mediaPipe.GetLabels();
+
+        Assert.Equal(111, labels.Count());
+        Assert.Contains("en", labels);
+        Assert.Contains("uk", labels);
+    }
+
+    [SkippableFact]
+    public void MediaPipeThrowsAfterDispose()
+    {
+        Skip.IfNot(MediaPipeDetector.IsSupported());
+
+        var mediaPipe = new MediaPipeDetector(
+            options: MediaPipeOptions.FromDefault().WithResultCount(10)
+        );
+        mediaPipe.Dispose();
+
+        Assert.Throws<ObjectDisposedException>(() => mediaPipe.PredictLanguages(Constants.PHRASE_ENG_1).ToArray());
+        Assert.Throws<ObjectDisposedException>(() => mediaPipe.GetLabels().ToArray());
+    }
+
+    [SkippableFact]
+    public async Task MediaPipeParallelPredictionsDoNotCrash()
+    {
+        Skip.IfNot(MediaPipeDetector.IsSupported());
+
+        using var mediaPipe = new MediaPipeDetector(
+            options: MediaPipeOptions.FromDefault().WithResultCount(10)
+        );
+        var tasks = Enumerable.Range(0, 24)
+            .Select(i => Task.Run(() => mediaPipe.PredictLanguages(i % 2 == 0 ? Constants.PHRASE_NOISY_1 : Constants.PHRASE_MIXED_1).ToArray()));
+
+        var results = await Task.WhenAll(tasks);
+
+        Assert.All(results, predictions =>
+        {
+            Assert.NotNull(predictions);
+            Assert.All(predictions, prediction => Assert.InRange(prediction.Probability, 0, 1));
+        });
+    }
+
+    [SkippableFact]
+    public async Task MediaPipePredictAndDisposeRaceDoesNotCrash()
+    {
+        Skip.IfNot(MediaPipeDetector.IsSupported());
+
+        var mediaPipe = new MediaPipeDetector(
+            options: MediaPipeOptions.FromDefault().WithResultCount(10)
+        );
+        var predict = Task.Run(() =>
+        {
+            try
+            {
+                _ = mediaPipe.PredictLanguages(Constants.PHRASE_ENG_1).ToArray();
+            }
+            catch (ObjectDisposedException)
+            {
+            }
+        });
+        var dispose = Task.Run(mediaPipe.Dispose);
+
+        await Task.WhenAll(predict, dispose);
+    }
+
     public async Task InitializeAsync()
     {
         var url = "https://storage.googleapis.com/mediapipe-models/language_detector/language_detector/float32/1/language_detector.tflite";

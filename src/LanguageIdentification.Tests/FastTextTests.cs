@@ -151,6 +151,16 @@ public class FastTextTests : IAsyncLifetime
     }
 
     [SkippableFact]
+    public void FastTextRejectsNullModelStream()
+    {
+        Skip.IfNot(FastTextDetector.IsSupported());
+
+        using var fastText = new FastTextDetector();
+
+        Assert.Throws<ArgumentNullException>(() => fastText.LoadModel((Stream)null!));
+    }
+
+    [SkippableFact]
     public void FastTextRejectsNegativeCount()
     {
         Skip.IfNot(FastTextDetector.IsSupported());
@@ -194,6 +204,90 @@ public class FastTextTests : IAsyncLifetime
         var dispose = Task.Run(fastText.Dispose);
 
         await Task.WhenAll(predict, dispose);
+    }
+
+    [SkippableFact]
+    public void FastTextReturnsEmptyForZeroCount()
+    {
+        Skip.IfNot(FastTextDetector.IsSupported());
+
+        using var fastText = new FastTextDetector();
+        fastText.LoadDefaultModel();
+
+        var predictions = fastText.Predict(Constants.PHRASE_ENG_1, 0);
+
+        Assert.Empty(predictions);
+    }
+
+    [SkippableFact]
+    public void FastTextModelDimensionsAreAvailableAfterLoad()
+    {
+        Skip.IfNot(FastTextDetector.IsSupported());
+
+        using var fastText = new FastTextDetector();
+        fastText.LoadDefaultModel();
+
+        var dimensions = fastText.GetModelDimensions();
+
+        Assert.True(dimensions > 0);
+    }
+
+    [SkippableFact]
+    public void FastTextThrowsAfterDispose()
+    {
+        Skip.IfNot(FastTextDetector.IsSupported());
+
+        var fastText = new FastTextDetector();
+        fastText.LoadDefaultModel();
+        fastText.Dispose();
+
+        Assert.Throws<ObjectDisposedException>(() => fastText.Predict(Constants.PHRASE_ENG_1, 10).ToArray());
+        Assert.Throws<ObjectDisposedException>(() => fastText.GetLabels().ToArray());
+        Assert.Throws<ObjectDisposedException>(() => fastText.GetModelDimensions());
+        Assert.Throws<ObjectDisposedException>(() => fastText.LoadModel(_modelPath));
+        Assert.Throws<ObjectDisposedException>(() => fastText.LoadModel(new MemoryStream(Array.Empty<byte>())));
+        Assert.Throws<ObjectDisposedException>(() => fastText.LoadDefaultModel());
+    }
+
+    [SkippableFact]
+    public async Task FastTextLoadModelAndDisposeRaceDoesNotCrash()
+    {
+        Skip.IfNot(FastTextDetector.IsSupported());
+
+        var fastText = new FastTextDetector();
+        var load = Task.Run(() =>
+        {
+            try
+            {
+                using var stream = File.OpenRead(_modelPath);
+                fastText.LoadModel(stream);
+            }
+            catch (ObjectDisposedException)
+            {
+            }
+        });
+        var dispose = Task.Run(fastText.Dispose);
+
+        await Task.WhenAll(load, dispose);
+    }
+
+    [SkippableFact]
+    public async Task FastTextParallelPredictionsDoNotCrash()
+    {
+        Skip.IfNot(FastTextDetector.IsSupported());
+
+        using var fastText = new FastTextDetector();
+        fastText.LoadDefaultModel();
+        var tasks = Enumerable.Range(0, 32)
+            .Select(i => Task.Run(() => fastText.Predict(i % 2 == 0 ? Constants.PHRASE_NOISY_1 : Constants.PHRASE_MIXED_1, 10).ToArray()));
+
+        var results = await Task.WhenAll(tasks);
+
+        Assert.All(results, predictions =>
+        {
+            Assert.NotNull(predictions);
+            Assert.All(predictions, prediction => Assert.InRange(prediction.Probability, 0, 1));
+        });
     }
 
     public async Task InitializeAsync()

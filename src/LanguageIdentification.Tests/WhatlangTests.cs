@@ -146,4 +146,73 @@ public class WhatlangTests
 
         Assert.True(prediction is null || Enum.IsDefined(typeof(WhatlangScript), prediction.Value));
     }
+
+    [SkippableTheory]
+    [InlineData(Constants.PHRASE_NOISY_1)]
+    [InlineData(Constants.PHRASE_SHORT_1)]
+    [InlineData(Constants.PHRASE_NUMERIC_1)]
+    public void WhatlangHandlesLowSignalText(string text)
+    {
+        Skip.IfNot(WhatlangDetector.IsSupported());
+
+        using var whatlang = new WhatlangDetector();
+
+        var language = whatlang.PredictLanguage(text);
+        var script = whatlang.PredictScript(text);
+
+        Assert.True(language is null || Enum.IsDefined(typeof(WhatlangLanguage), language.Language));
+        Assert.True(language is null || Enum.IsDefined(typeof(WhatlangScript), language.Script));
+        Assert.True(language is null || language.Confidence is >= 0 and <= 1);
+        Assert.True(script is null || Enum.IsDefined(typeof(WhatlangScript), script.Value));
+    }
+
+    [SkippableFact]
+    public void WhatlangRepeatedCallsDoNotCorruptResults()
+    {
+        Skip.IfNot(WhatlangDetector.IsSupported());
+
+        using var whatlang = new WhatlangDetector();
+
+        for (var i = 0; i < 100; i++)
+        {
+            var prediction = whatlang.PredictLanguage(Constants.PHRASE_UKR_1);
+            Assert.NotNull(prediction);
+            Assert.InRange(prediction.Confidence, 0, 1);
+        }
+    }
+
+    [SkippableFact]
+    public async Task WhatlangParallelPredictionsDoNotCrash()
+    {
+        Skip.IfNot(WhatlangDetector.IsSupported());
+
+        using var whatlang = new WhatlangDetector();
+        var tasks = Enumerable.Range(0, 64)
+            .Select(i => Task.Run(() => (whatlang.PredictLanguage(i % 2 == 0 ? Constants.PHRASE_NOISY_1 : Constants.PHRASE_MIXED_1), whatlang.PredictScript(Constants.PHRASE_ENG_1))));
+
+        var results = await Task.WhenAll(tasks);
+
+        Assert.All(results, result =>
+        {
+            Assert.True(result.Item1 is null || Enum.IsDefined(typeof(WhatlangLanguage), result.Item1.Language));
+            Assert.True(result.Item2 is null || Enum.IsDefined(typeof(WhatlangScript), result.Item2.Value));
+        });
+    }
+
+    [SkippableFact]
+    public void WhatlangThrowsAfterDispose()
+    {
+        Skip.IfNot(WhatlangDetector.IsSupported());
+
+        var whatlang = new WhatlangDetector();
+        whatlang.Dispose();
+
+        Assert.Throws<ObjectDisposedException>(() => whatlang.PredictLanguage(Constants.PHRASE_ENG_1));
+        Assert.Throws<ObjectDisposedException>(() => whatlang.PredictScript(Constants.PHRASE_ENG_1));
+        Assert.Throws<ObjectDisposedException>(() => whatlang.GetLanguageCode(WhatlangLanguage.Eng));
+        Assert.Throws<ObjectDisposedException>(() => whatlang.GetLanguageName(WhatlangLanguage.Eng));
+        Assert.Throws<ObjectDisposedException>(() => whatlang.GetLanguageEnglishName(WhatlangLanguage.Eng));
+        Assert.Throws<ObjectDisposedException>(() => whatlang.GetScriptName(WhatlangScript.Latn));
+        Assert.Throws<ObjectDisposedException>(() => whatlang.GetLanguages().ToArray());
+    }
 }

@@ -104,4 +104,66 @@ public class CLD2Tests
 
         Assert.NotNull(predictions);
     }
+
+    [SkippableTheory]
+    [InlineData(Constants.PHRASE_ENG_1)]
+    [InlineData(Constants.PHRASE_NOISY_1)]
+    [InlineData(Constants.PHRASE_SHORT_1)]
+    [InlineData(Constants.PHRASE_NUMERIC_1)]
+    public void CLD2PredictionsStayInValidRange(string text)
+    {
+        Skip.IfNot(CLD2Detector.IsSupported());
+
+        using var cld2 = new CLD2Detector();
+
+        var predictions = cld2.PredictLanguage(text).ToArray();
+
+        Assert.NotNull(predictions);
+        Assert.All(predictions, prediction =>
+        {
+            Assert.False(string.IsNullOrWhiteSpace(prediction.Language));
+            Assert.InRange(prediction.Probability, 0, 1);
+        });
+    }
+
+    [SkippableFact]
+    public void CLD2RepeatedCallsDoNotCorruptResults()
+    {
+        Skip.IfNot(CLD2Detector.IsSupported());
+
+        using var cld2 = new CLD2Detector();
+
+        for (var i = 0; i < 50; i++)
+        {
+            var predictions = cld2.PredictLanguage(Constants.PHRASE_ENG_1).ToArray();
+            Assert.NotEmpty(predictions);
+            Assert.All(predictions, prediction => Assert.InRange(prediction.Probability, 0, 1));
+        }
+    }
+
+    [SkippableFact]
+    public async Task CLD2ParallelPredictionsDoNotCrash()
+    {
+        Skip.IfNot(CLD2Detector.IsSupported());
+
+        using var cld2 = new CLD2Detector();
+        var tasks = Enumerable.Range(0, 32)
+            .Select(_ => Task.Run(() => cld2.PredictLanguage(Constants.PHRASE_NOISY_1).ToArray()));
+
+        var results = await Task.WhenAll(tasks);
+
+        Assert.All(results, predictions => Assert.NotNull(predictions));
+    }
+
+    [SkippableFact]
+    public void CLD2ThrowsAfterDispose()
+    {
+        Skip.IfNot(CLD2Detector.IsSupported());
+
+        var cld2 = new CLD2Detector();
+        cld2.Dispose();
+
+        Assert.Throws<ObjectDisposedException>(() => cld2.PredictLanguage(Constants.PHRASE_ENG_1).ToArray());
+        Assert.Throws<ObjectDisposedException>(() => cld2.GetLanguages().ToArray());
+    }
 }
