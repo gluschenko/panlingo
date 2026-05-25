@@ -28,7 +28,7 @@ namespace Panlingo.LanguageIdentification.FastText
     {
         private IntPtr _detector;
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
-        private bool _disposed = false;
+        private volatile bool _disposed = false;
 
         /// <summary>
         /// <para>Creates an instance for <see cref="FastTextDetector"/>.</para>
@@ -300,8 +300,19 @@ namespace Panlingo.LanguageIdentification.FastText
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!_disposed)
+            if (_disposed)
             {
+                return;
+            }
+
+            _semaphore.Wait();
+            try
+            {
+                if (_disposed)
+                {
+                    return;
+                }
+
                 if (disposing)
                 {
                     // Dispose managed resources if any
@@ -309,23 +320,15 @@ namespace Panlingo.LanguageIdentification.FastText
 
                 if (_detector != IntPtr.Zero)
                 {
-                    try
-                    {
-                        _semaphore.Wait();
-
-                        if (_detector != IntPtr.Zero)
-                        {
-                            FastTextDetectorWrapper.DestroyFastText(_detector);
-                            _detector = IntPtr.Zero;
-                        }
-                    }
-                    finally
-                    {
-                        _semaphore.Release();
-                    }
+                    FastTextDetectorWrapper.DestroyFastText(_detector);
+                    _detector = IntPtr.Zero;
                 }
 
                 _disposed = true;
+            }
+            finally
+            {
+                _semaphore.Release();
             }
         }
 
