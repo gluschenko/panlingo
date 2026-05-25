@@ -18,7 +18,7 @@ namespace Panlingo.LanguageIdentification.Lingua
         private readonly Lazy<ImmutableHashSet<LinguaLanguage>> _labels;
 
         private IntPtr _detector;
-        private bool _disposed = false;
+        private volatile bool _disposed = false;
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
 
         internal LinguaDetector(LinguaDetectorBuilder builder)
@@ -211,8 +211,19 @@ namespace Panlingo.LanguageIdentification.Lingua
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!_disposed)
+            if (_disposed)
             {
+                return;
+            }
+
+            _semaphore.Wait();
+            try
+            {
+                if (_disposed)
+                {
+                    return;
+                }
+
                 if (disposing)
                 {
                     // Dispose managed resources if any
@@ -220,22 +231,15 @@ namespace Panlingo.LanguageIdentification.Lingua
 
                 if (_detector != IntPtr.Zero)
                 {
-                    _semaphore.Wait();
-                    try
-                    {
-                        if (_detector != IntPtr.Zero)
-                        {
-                            LinguaDetectorWrapper.LinguaLanguageDetectorDestroy(_detector);
-                            _detector = IntPtr.Zero;
-                        }
-                    }
-                    finally
-                    {
-                        _semaphore.Release();
-                    }
+                    LinguaDetectorWrapper.LinguaLanguageDetectorDestroy(_detector);
+                    _detector = IntPtr.Zero;
                 }
 
                 _disposed = true;
+            }
+            finally
+            {
+                _semaphore.Release();
             }
         }
 
