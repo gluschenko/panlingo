@@ -21,7 +21,7 @@ namespace Panlingo.LanguageIdentification.Lingua
         private volatile bool _disposed = false;
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
 
-        internal LinguaDetector(LinguaDetectorBuilder builder)
+        internal LinguaDetector(IntPtr builder)
         {
             if (!IsSupported())
             {
@@ -30,7 +30,7 @@ namespace Panlingo.LanguageIdentification.Lingua
                 );
             }
 
-            _detector = LinguaDetectorWrapper.LinguaLanguageDetectorCreate(builder.GetNativePointer());
+            _detector = LinguaDetectorWrapper.LinguaLanguageDetectorCreate(builder);
             if (_detector == IntPtr.Zero)
             {
                 throw new LinguaDetectorException($"Failed to create {nameof(LinguaDetector)}");
@@ -198,6 +198,7 @@ namespace Panlingo.LanguageIdentification.Lingua
         /// <returns>Collection of strings</returns>
         public IEnumerable<LinguaLanguage> GetLanguages()
         {
+            CheckDisposed();
             return _labels.Value;
         }
 

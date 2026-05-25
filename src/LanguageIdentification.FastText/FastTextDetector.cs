@@ -73,6 +73,7 @@ namespace Panlingo.LanguageIdentification.FastText
             _semaphore.Wait();
             try
             {
+                CheckDisposed();
                 var errPtr = IntPtr.Zero;
                 FastTextDetectorWrapper.FastTextLoadModel(_detector, path, ref errPtr);
                 CheckError(errPtr);
@@ -92,10 +93,12 @@ namespace Panlingo.LanguageIdentification.FastText
         public void LoadModel(Stream stream)
         {
             CheckDisposed();
+            ArgumentNullException.ThrowIfNull(stream);
 
             _semaphore.Wait();
             try
             {
+                CheckDisposed();
                 using var memoryStream = new MemoryStream();
                 stream.CopyTo(memoryStream);
 

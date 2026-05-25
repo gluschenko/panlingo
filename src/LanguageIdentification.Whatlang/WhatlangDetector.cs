@@ -19,6 +19,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
     public class WhatlangDetector : IDisposable
     {
         private readonly Lazy<ImmutableHashSet<WhatlangLanguage>> _labels;
+        private bool _disposed = false;
 
         /// <summary>
         /// <para>Creates an instance for <see cref="WhatlangDetector"/>.</para>
@@ -59,6 +60,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <exception cref="WhatlangDetectorException"></exception>
         public WhatlangPrediction? PredictLanguage(string text)
         {
+            CheckDisposed();
             var textBytes = WhatlangDetectorWrapper.EncodeText(text);
             var status = WhatlangDetectorWrapper.WhatlangDetect(
                 text: textBytes,
@@ -86,6 +88,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <exception cref="WhatlangDetectorException"></exception>
         public WhatlangScript? PredictScript(string text)
         {
+            CheckDisposed();
             var textBytes = WhatlangDetectorWrapper.EncodeText(text);
             var status = WhatlangDetectorWrapper.WhatlangDetectScript(
                 text: textBytes,
@@ -114,6 +117,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <exception cref="WhatlangDetectorException"></exception>
         public string GetLanguageCode(WhatlangLanguage language)
         {
+            CheckDisposed();
             ValidateLanguage(language);
             return WhatlangDetectorWrapper.WhatlangLangCode(language);
         }
@@ -126,6 +130,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <exception cref="WhatlangDetectorException"></exception>
         public string GetLanguageName(WhatlangLanguage language)
         {
+            CheckDisposed();
             ValidateLanguage(language);
             return WhatlangDetectorWrapper.WhatlangLangName(language);
         }
@@ -138,6 +143,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <exception cref="WhatlangDetectorException"></exception>
         public string GetScriptName(WhatlangScript script)
         {
+            CheckDisposed();
             if (!Enum.IsDefined(typeof(WhatlangScript), script))
             {
                 throw new WhatlangDetectorException($"Language script '{script}' is not found");
@@ -154,6 +160,7 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <exception cref="WhatlangDetectorException"></exception>
         public string GetLanguageEnglishName(WhatlangLanguage language)
         {
+            CheckDisposed();
             ValidateLanguage(language);
             return WhatlangDetectorWrapper.WhatlangLangEngName(language);
         }
@@ -164,12 +171,22 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <returns>Collection of strings</returns>
         public IEnumerable<WhatlangLanguage> GetLanguages()
         {
+            CheckDisposed();
             return _labels.Value;
         }
 
         public void Dispose()
         {
+            _disposed = true;
             GC.SuppressFinalize(this);
+        }
+
+        private void CheckDisposed()
+        {
+            if (_disposed)
+            {
+                throw new ObjectDisposedException(nameof(WhatlangDetector), "This instance has already been disposed");
+            }
         }
 
         private static void ValidateLanguage(WhatlangLanguage language)

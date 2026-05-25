@@ -162,6 +162,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
         public IEnumerable<MediaPipePrediction> PredictLanguages(string text)
         {
+            ArgumentNullException.ThrowIfNull(text);
             CheckDisposed();
             var detector = AcquireDetector();
 
@@ -212,6 +213,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
         /// <returns>Collection of label strings</returns>
         public IEnumerable<string> GetLabels()
         {
+            CheckDisposed();
             return _labels.Value;
         }
 

@@ -195,6 +195,7 @@ namespace Panlingo.LanguageIdentification.CLD3
         /// <returns>Collection of strings</returns>
         public IEnumerable<string> GetLanguages()
         {
+            CheckDisposed();
             return _labels.Value;
         }
 

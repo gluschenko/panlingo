@@ -24,6 +24,7 @@ namespace Panlingo.LanguageIdentification.Lingua
         private readonly LinguaLanguage[] _languages;
         private IntPtr _builder;
         private bool _disposed = false;
+        private readonly object _lifetimeLock = new object();
 
         /// <summary>
         /// <para>Creates an instance for <see cref="LinguaDetectorBuilder"/>.</para>
@@ -54,11 +55,6 @@ namespace Panlingo.LanguageIdentification.Lingua
             _languages = languages;
         }
 
-        internal IntPtr GetNativePointer()
-        {
-            return _builder;
-        }
-
         public static LinguaDetectorBuilder FromLanguages(LinguaLanguage[] languages)
         {
             return new LinguaDetectorBuilder(languages);
@@ -66,37 +62,48 @@ namespace Panlingo.LanguageIdentification.Lingua
 
         public LinguaDetector Build()
         {
-            CheckDisposed();
-
-            return new LinguaDetector(this);
+            lock (_lifetimeLock)
+            {
+                CheckDisposed();
+                return new LinguaDetector(_builder);
+            }
         }
 
         public LinguaDetectorBuilder WithLowAccuracyMode()
         {
-            CheckDisposed();
+            lock (_lifetimeLock)
+            {
+                CheckDisposed();
+                _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderWithLowAccuracyMode(_builder);
+            }
 
-            _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderWithLowAccuracyMode(_builder);
             return this;
         }
 
         public LinguaDetectorBuilder WithPreloadedLanguageModels()
         {
-            CheckDisposed();
+            lock (_lifetimeLock)
+            {
+                CheckDisposed();
+                _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderWithPreloadedLanguageModels(_builder);
+            }
 
-            _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderWithPreloadedLanguageModels(_builder);
             return this;
         }
 
         public LinguaDetectorBuilder WithMinimumRelativeDistance(double distance)
         {
-            CheckDisposed();
-
             if (distance < 0.0 || distance > 0.99)
             {
                 throw new ArgumentOutOfRangeException(nameof(distance), distance, "[0.00, 0.99]");
             }
 
-            _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderWithMinimumRelativeDistance(_builder, distance);
+            lock (_lifetimeLock)
+            {
+                CheckDisposed();
+                _builder = LinguaDetectorWrapper.LinguaLanguageDetectorBuilderWithMinimumRelativeDistance(_builder, distance);
+            }
+
             return this;
         }
 
@@ -110,8 +117,13 @@ namespace Panlingo.LanguageIdentification.Lingua
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!_disposed)
+            lock (_lifetimeLock)
             {
+                if (_disposed)
+                {
+                    return;
+                }
+
                 if (disposing)
                 {
                     // Dispose managed resources if any
@@ -135,7 +147,13 @@ namespace Panlingo.LanguageIdentification.Lingua
 
         ~LinguaDetectorBuilder()
         {
-            Dispose(false);
+            try
+            {
+                Dispose(false);
+            }
+            catch
+            {
+            }
         }
     }
 

@@ -21,6 +21,7 @@ namespace Panlingo.LanguageIdentification.CLD2
     public class CLD2Detector : IDisposable
     {
         private readonly Lazy<ImmutableHashSet<string>> _labels;
+        private bool _disposed = false;
 
         /// <summary>
         /// <para>Creates an instance for <see cref="CLD2Detector"/>.</para>
@@ -72,6 +73,7 @@ namespace Panlingo.LanguageIdentification.CLD2
         /// <returns>List of language predictions</returns>
         public IEnumerable<CLD2Prediction> PredictLanguage(string text)
         {
+            CheckDisposed();
             ArgumentNullException.ThrowIfNull(text);
 
             var textBytes = Encoding.UTF8.GetBytes(text);
@@ -113,12 +115,22 @@ namespace Panlingo.LanguageIdentification.CLD2
         /// <returns>Collection of strings</returns>
         public IEnumerable<string> GetLanguages()
         {
+            CheckDisposed();
             return _labels.Value;
         }
 
         public void Dispose()
         {
+            _disposed = true;
             GC.SuppressFinalize(this);
+        }
+
+        private void CheckDisposed()
+        {
+            if (_disposed)
+            {
+                throw new ObjectDisposedException(nameof(CLD2Detector), "This instance has already been disposed");
+            }
         }
     }
 }
