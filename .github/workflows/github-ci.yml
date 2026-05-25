@@ -205,7 +205,7 @@ jobs:
           - { os: ubuntu-22.04-arm }
           - { os: ubuntu-24.04-arm }
           - { os: windows-2022 }
-          - { os: windows-2025 }
+          - { os: windows-2025-vs2026 }
           - { os: windows-11-arm }
           - { os: macos-15-intel }
           - { os: macos-14 }
