@@ -196,6 +196,11 @@ namespace Panlingo.LanguageIdentification.FastText
                 throw new ArgumentOutOfRangeException(nameof(count), count, "Count must be greater than or equal to zero");
             }
 
+            if (count == 0)
+            {
+                return Array.Empty<FastTextPrediction>();
+            }
+
             var textBytes = EncodeText(text);
             _semaphore.Wait();
             try

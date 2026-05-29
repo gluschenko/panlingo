@@ -96,6 +96,13 @@ extern "C" {
             return nullptr;
         }
 
+        if (k == 0) {
+            fasttext_predictions_t* ret = static_cast<fasttext_predictions_t*>(malloc(sizeof(fasttext_predictions_t)));
+            ret->length = 0;
+            ret->predictions = nullptr;
+            return ret;
+        }
+
         std::vector<std::pair<fasttext::real, std::string>> predictions;
         std::string input(text == nullptr ? "" : text, text_length);
         std::stringstream ioss(input);
