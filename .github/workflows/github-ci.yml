@@ -303,7 +303,8 @@ jobs:
       with:
         name: test-diagnostics-${{ matrix.task.os }}-${{ matrix.runtime.target }}
         path: |
-          src/Onnxify.Tests/TestResults/**
+          src/LanguageIdentification.Tests/TestResults/**
+          src/LanguageCode.Tests/TestResults/**
           ${{ runner.temp }}/vstest-*.log
           ${{ runner.temp }}/dotnet-crash-*.dmp
           ${{ runner.temp }}/*.dmp
