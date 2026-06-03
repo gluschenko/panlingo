@@ -14,9 +14,6 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection whatlang</PackageTags>
     <PackageReadmeFile>README_WHATLANG.md</PackageReadmeFile>
-    <PackageReleaseNotes>
-      - Initial release
-    </PackageReleaseNotes>
     <Description>
       This package provides the native resources required for the Whatlang library.
       It includes the necessary native components to enable language recognition capabilities
@@ -123,3 +120,4 @@
   </ItemGroup>
 
 </Project>
+

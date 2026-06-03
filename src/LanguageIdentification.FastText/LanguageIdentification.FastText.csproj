@@ -14,22 +14,6 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection fasttext</PackageTags>
     <PackageReadmeFile>README_FASTTEXT.md</PackageReadmeFile>
-    <PackageReleaseNotes>
-0.7.0
-- Windows and Linux: ARM64 support      
-      
-0.6.1
-- Windows: static linking of Visual C++ Runtime
-
-0.1.0.0
-- Windows and MacOS support
-
-0.0.0.21:
-- Default FastText model is included in NuGet package
-
-0.0.0.10:
-- Initial release
-    </PackageReleaseNotes>
     <Description>
       This is a .NET wrapper for the FastText library by Facebook AI Research (FAIR).
       
@@ -64,3 +48,4 @@
   </ItemGroup>
 
 </Project>
+

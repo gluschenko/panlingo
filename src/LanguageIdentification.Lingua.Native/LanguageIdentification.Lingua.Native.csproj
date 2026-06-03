@@ -14,9 +14,6 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection lingua</PackageTags>
     <PackageReadmeFile>README_LINGUA.md</PackageReadmeFile>
-    <PackageReleaseNotes>
-      - Initial release
-    </PackageReleaseNotes>
     <Description>
       This package provides the native resources required for the Lingua library.
       It includes the necessary native components to enable language recognition capabilities
@@ -92,3 +89,4 @@
   </ItemGroup>
 
 </Project>
+

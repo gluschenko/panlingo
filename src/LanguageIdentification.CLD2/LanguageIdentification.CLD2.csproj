@@ -14,22 +14,6 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection cld2</PackageTags>
     <PackageReadmeFile>README_CLD2.md</PackageReadmeFile>
-    <PackageReleaseNotes>
-0.7.0
-- Windows and Linux: ARM64 support      
-
-0.6.1
-- Windows: static linking of Visual C++ Runtime
-      
-0.4.0.0
-- Add GetLanguages method
-      
-0.1.0.0
-- Windows and MacOS support
-      
-0.0.0.1
-- Initial release
-    </PackageReleaseNotes>
     <Description>
       This is a .NET wrapper for the Compact Language Detector (CLD2) library by Google Inc.
 
@@ -63,3 +47,4 @@
   </ItemGroup>
 
 </Project>
+

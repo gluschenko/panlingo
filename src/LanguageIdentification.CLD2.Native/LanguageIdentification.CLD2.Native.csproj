@@ -14,9 +14,6 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nlp lid language-identification language-detection cld2</PackageTags>
     <PackageReadmeFile>README_CLD2.md</PackageReadmeFile>
-    <PackageReleaseNotes>
-      - Initial release
-    </PackageReleaseNotes>
     <Description>
       This package provides the native resources required for the CLD2 (Compact Language Detector) library
       by Google Inc. It includes the necessary native components to enable language recognition capabilities
@@ -123,3 +120,4 @@
   </ItemGroup>
 
 </Project>
+
