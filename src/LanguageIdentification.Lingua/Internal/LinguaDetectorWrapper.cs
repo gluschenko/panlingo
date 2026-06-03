@@ -69,8 +69,7 @@ namespace Panlingo.LanguageIdentification.Lingua.Internal
 
         public static byte[] EncodeText(string text)
         {
-            ArgumentNullException.ThrowIfNull(text);
-            return Encoding.UTF8.GetBytes(text);
+            return text is null ? Array.Empty<byte>() : Encoding.UTF8.GetBytes(text);
         }
 
         private static string ReadNativeString(Func<IntPtr, UIntPtr, UIntPtr> nativeCall)

@@ -43,6 +43,11 @@ namespace Panlingo.LanguageIdentification.MediaPipe
         /// <exception cref="NotSupportedException"></exception>
         public MediaPipeDetector(MediaPipeOptions options)
         {
+            NativePackageVersionGuard.EnsureMatches(
+                typeof(MediaPipeDetector).Assembly,
+                typeof(MediaPipeNativeLibrary).Assembly
+            );
+
             if (!IsSupported())
             {
                 throw new NotSupportedException(
@@ -162,7 +167,6 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
         public IEnumerable<MediaPipePrediction> PredictLanguages(string text)
         {
-            ArgumentNullException.ThrowIfNull(text);
             CheckDisposed();
             var detector = AcquireDetector();
 
@@ -172,7 +176,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
             {
                 var status = MediaPipeDetectorWrapper.UseLanguageDetector(
                     handle: detector,
-                    text: text,
+                    text: text ?? string.Empty,
                     result: ref nativeResult,
                     errorMessage: IntPtr.Zero
                 );

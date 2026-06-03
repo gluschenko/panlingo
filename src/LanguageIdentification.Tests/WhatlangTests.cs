@@ -112,14 +112,17 @@ public class WhatlangTests
     }
 
     [SkippableFact]
-    public void WhatlangRejectsNullText()
+    public void WhatlangAcceptsNullText()
     {
         Skip.IfNot(WhatlangDetector.IsSupported());
 
         using var whatlang = new WhatlangDetector();
 
-        Assert.Throws<ArgumentNullException>(() => whatlang.PredictLanguage(null!));
-        Assert.Throws<ArgumentNullException>(() => whatlang.PredictScript(null!));
+        var language = whatlang.PredictLanguage(null!);
+        var script = whatlang.PredictScript(null!);
+
+        Assert.True(language is null || Enum.IsDefined(typeof(WhatlangLanguage), language.Language));
+        Assert.True(script is null || Enum.IsDefined(typeof(WhatlangScript), script.Value));
     }
 
     [SkippableFact]

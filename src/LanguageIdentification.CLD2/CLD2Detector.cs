@@ -30,6 +30,11 @@ namespace Panlingo.LanguageIdentification.CLD2
         /// <exception cref="NotSupportedException"></exception>
         public CLD2Detector()
         {
+            NativePackageVersionGuard.EnsureMatches(
+                typeof(CLD2Detector).Assembly,
+                typeof(CLD2NativeLibrary).Assembly
+            );
+
             if (!IsSupported())
             {
                 throw new NotSupportedException(
@@ -74,9 +79,8 @@ namespace Panlingo.LanguageIdentification.CLD2
         public IEnumerable<CLD2Prediction> PredictLanguage(string text)
         {
             CheckDisposed();
-            ArgumentNullException.ThrowIfNull(text);
 
-            var textBytes = Encoding.UTF8.GetBytes(text);
+            var textBytes = EncodeText(text);
             var resultPtr = CLD2DetectorWrapper.PredictLanguage(
                 text: textBytes,
                 textLength: (UIntPtr)textBytes.Length,
@@ -132,6 +136,10 @@ namespace Panlingo.LanguageIdentification.CLD2
                 throw new ObjectDisposedException(nameof(CLD2Detector), "This instance has already been disposed");
             }
         }
+
+        private static byte[] EncodeText(string text)
+        {
+            return text is null ? Array.Empty<byte>() : Encoding.UTF8.GetBytes(text);
+        }
     }
 }
-

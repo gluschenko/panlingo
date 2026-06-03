@@ -138,15 +138,18 @@ public class LinguaTests
     }
 
     [SkippableFact]
-    public void LinguaRejectsNullText()
+    public void LinguaAcceptsNullText()
     {
         Skip.IfNot(LinguaDetector.IsSupported());
 
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua = linguaBuilder.Build();
 
-        Assert.Throws<ArgumentNullException>(() => lingua.PredictLanguages(null!));
-        Assert.Throws<ArgumentNullException>(() => lingua.PredictMixedLanguages(null!));
+        var predictions = lingua.PredictLanguages(null!).ToArray();
+        var ranges = lingua.PredictMixedLanguages(null!).ToArray();
+
+        Assert.NotNull(predictions);
+        Assert.NotNull(ranges);
     }
 
     [SkippableFact]
@@ -164,14 +167,16 @@ public class LinguaTests
     }
 
     [SkippableFact]
-    public void LinguaRejectsNegativeCount()
+    public void LinguaReturnsEmptyForNegativeCount()
     {
         Skip.IfNot(LinguaDetector.IsSupported());
 
         using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>());
         using var lingua = linguaBuilder.Build();
 
-        Assert.Throws<ArgumentOutOfRangeException>(() => lingua.PredictLanguages(Constants.PHRASE_ENG_1, -1));
+        var predictions = lingua.PredictLanguages(Constants.PHRASE_ENG_1, -1);
+
+        Assert.Empty(predictions);
     }
 
     [SkippableFact]

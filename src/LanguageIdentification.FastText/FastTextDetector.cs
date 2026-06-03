@@ -37,6 +37,11 @@ namespace Panlingo.LanguageIdentification.FastText
         /// <exception cref="NotSupportedException"></exception>
         public FastTextDetector()
         {
+            NativePackageVersionGuard.EnsureMatches(
+                typeof(FastTextDetector).Assembly,
+                typeof(FastTextNativeLibrary).Assembly
+            );
+
             if (!IsSupported())
             {
                 throw new NotSupportedException(
@@ -68,7 +73,6 @@ namespace Panlingo.LanguageIdentification.FastText
         public void LoadModel(string path)
         {
             CheckDisposed();
-            ArgumentNullException.ThrowIfNull(path);
 
             _semaphore.Wait();
             try
@@ -93,7 +97,6 @@ namespace Panlingo.LanguageIdentification.FastText
         public void LoadModel(Stream stream)
         {
             CheckDisposed();
-            ArgumentNullException.ThrowIfNull(stream);
 
             _semaphore.Wait();
             try
@@ -191,10 +194,6 @@ namespace Panlingo.LanguageIdentification.FastText
         public IEnumerable<FastTextPrediction> Predict(string text, int count, float threshold = 0.0f)
         {
             CheckDisposed();
-            if (count < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count), count, "Count must be greater than or equal to zero");
-            }
 
             if (count == 0)
             {
@@ -359,8 +358,7 @@ namespace Panlingo.LanguageIdentification.FastText
 
         private static byte[] EncodeText(string text)
         {
-            ArgumentNullException.ThrowIfNull(text);
-            return Encoding.UTF8.GetBytes(text);
+            return text is null ? Array.Empty<byte>() : Encoding.UTF8.GetBytes(text);
         }
     }
 }

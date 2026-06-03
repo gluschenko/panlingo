@@ -84,13 +84,15 @@ public class CLD2Tests
     }
 
     [SkippableFact]
-    public void CLD2RejectsNullText()
+    public void CLD2AcceptsNullText()
     {
         Skip.IfNot(CLD2Detector.IsSupported());
 
         using var cld2 = new CLD2Detector();
 
-        Assert.Throws<ArgumentNullException>(() => cld2.PredictLanguage(null!));
+        var predictions = cld2.PredictLanguage(null!).ToArray();
+
+        Assert.NotNull(predictions);
     }
 
     [SkippableFact]

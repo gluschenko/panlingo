@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Runtime.InteropServices;
 using Panlingo.LanguageIdentification.Lingua.Internal;
+using Panlingo.LanguageIdentification.Lingua.Native;
 
 namespace Panlingo.LanguageIdentification.Lingua
 {
@@ -33,6 +34,11 @@ namespace Panlingo.LanguageIdentification.Lingua
         /// <exception cref="NotSupportedException"></exception>
         public LinguaDetectorBuilder(LinguaLanguage[] languages)
         {
+            NativePackageVersionGuard.EnsureMatches(
+                typeof(LinguaDetectorBuilder).Assembly,
+                typeof(LinguaNativeLibrary).Assembly
+            );
+
             ArgumentNullException.ThrowIfNull(languages);
             if (languages.Any(x => !Enum.IsDefined(typeof(LinguaLanguage), x)))
             {

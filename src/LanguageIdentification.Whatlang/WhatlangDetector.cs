@@ -28,6 +28,11 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <exception cref="NotSupportedException"></exception>
         public WhatlangDetector()
         {
+            NativePackageVersionGuard.EnsureMatches(
+                typeof(WhatlangDetector).Assembly,
+                typeof(WhatlangNativeLibrary).Assembly
+            );
+
             if (!IsSupported())
             {
                 throw new NotSupportedException(

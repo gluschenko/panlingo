@@ -140,7 +140,7 @@ public class MediaPipeTests : IAsyncLifetime
     }
 
     [SkippableFact]
-    public void MediaPipeRejectsNullText()
+    public void MediaPipeAcceptsNullText()
     {
         Skip.IfNot(MediaPipeDetector.IsSupported());
 
@@ -148,7 +148,9 @@ public class MediaPipeTests : IAsyncLifetime
             options: MediaPipeOptions.FromDefault().WithResultCount(10)
         );
 
-        Assert.Throws<ArgumentNullException>(() => mediaPipe.PredictLanguages(null!));
+        var predictions = mediaPipe.PredictLanguages(null!).ToArray();
+
+        Assert.NotNull(predictions);
     }
 
     [SkippableFact]

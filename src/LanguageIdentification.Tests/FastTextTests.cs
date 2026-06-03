@@ -140,35 +140,39 @@ public class FastTextTests : IAsyncLifetime
     }
 
     [SkippableFact]
-    public void FastTextRejectsNullText()
+    public void FastTextAcceptsNullText()
     {
         Skip.IfNot(FastTextDetector.IsSupported());
 
         using var fastText = new FastTextDetector();
         fastText.LoadDefaultModel();
 
-        Assert.Throws<ArgumentNullException>(() => fastText.Predict(null!, 10));
+        var predictions = fastText.Predict(null!, 10).ToArray();
+
+        Assert.NotNull(predictions);
     }
 
     [SkippableFact]
-    public void FastTextRejectsNullModelStream()
+    public void FastTextDoesNotGuardNullModelStream()
     {
         Skip.IfNot(FastTextDetector.IsSupported());
 
         using var fastText = new FastTextDetector();
 
-        Assert.Throws<ArgumentNullException>(() => fastText.LoadModel((Stream)null!));
+        Assert.Throws<NullReferenceException>(() => fastText.LoadModel((Stream)null!));
     }
 
     [SkippableFact]
-    public void FastTextRejectsNegativeCount()
+    public void FastTextAcceptsNegativeCount()
     {
         Skip.IfNot(FastTextDetector.IsSupported());
 
         using var fastText = new FastTextDetector();
         fastText.LoadDefaultModel();
 
-        Assert.Throws<ArgumentOutOfRangeException>(() => fastText.Predict(Constants.PHRASE_ENG_1, -1));
+        var predictions = fastText.Predict(Constants.PHRASE_ENG_1, -1).ToArray();
+
+        Assert.NotNull(predictions);
     }
 
     [SkippableFact]

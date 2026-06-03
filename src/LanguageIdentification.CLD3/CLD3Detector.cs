@@ -35,6 +35,11 @@ namespace Panlingo.LanguageIdentification.CLD3
         /// <exception cref="NotSupportedException"></exception>
         public CLD3Detector(int minNumBytes, int maxNumBytes)
         {
+            NativePackageVersionGuard.EnsureMatches(
+                typeof(CLD3Detector).Assembly,
+                typeof(CLD3NativeLibrary).Assembly
+            );
+
             if (!IsSupported())
             {
                 throw new NotSupportedException(
@@ -140,10 +145,6 @@ namespace Panlingo.LanguageIdentification.CLD3
         )
         {
             CheckDisposed();
-            if (count < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count), count, "Count must be greater than or equal to zero");
-            }
 
             var textBytes = EncodeText(text);
             var detector = AcquireDetector();
@@ -287,8 +288,7 @@ namespace Panlingo.LanguageIdentification.CLD3
 
         private static byte[] EncodeText(string text)
         {
-            ArgumentNullException.ThrowIfNull(text);
-            return Encoding.UTF8.GetBytes(text);
+            return text is null ? Array.Empty<byte>() : Encoding.UTF8.GetBytes(text);
         }
     }
 }

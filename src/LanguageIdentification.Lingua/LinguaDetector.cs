@@ -62,10 +62,6 @@ namespace Panlingo.LanguageIdentification.Lingua
         public IEnumerable<LinguaPrediction> PredictLanguages(string text, int count = 10)
         {
             CheckDisposed();
-            if (count < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count), count, "Count must be greater than or equal to zero");
-            }
 
             var textBytes = LinguaDetectorWrapper.EncodeText(text);
             _semaphore.Wait();

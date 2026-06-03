@@ -91,12 +91,12 @@ extern "C" {
     }
 
     EXPORT fasttext_predictions_t* fasttext_predict(fasttext_t* handle, const char* text, size_t text_length, int32_t k, float threshold, char** err_ptr) {
-        if (handle == nullptr || k < 0 || (text == nullptr && text_length > 0)) {
+        if (handle == nullptr || (text == nullptr && text_length > 0)) {
             save_error(err_ptr, "Invalid FastText prediction arguments");
             return nullptr;
         }
 
-        if (k == 0) {
+        if (k <= 0) {
             fasttext_predictions_t* ret = static_cast<fasttext_predictions_t*>(malloc(sizeof(fasttext_predictions_t)));
             ret->length = 0;
             ret->predictions = nullptr;

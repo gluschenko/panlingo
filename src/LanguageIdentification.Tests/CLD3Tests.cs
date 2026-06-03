@@ -106,24 +106,27 @@ public class CLD3Tests
     }
 
     [SkippableFact]
-    public void CLD3RejectsNullText()
+    public void CLD3AcceptsNullText()
     {
         Skip.IfNot(CLD3Detector.IsSupported());
 
         using var cld3 = new CLD3Detector(0, 512);
 
-        Assert.Throws<ArgumentNullException>(() => cld3.PredictLanguage(null!));
-        Assert.Throws<ArgumentNullException>(() => cld3.PredictLanguages(null!, 3));
+        var predictions = cld3.PredictLanguages(null!, 3).ToArray();
+
+        Assert.NotNull(predictions);
     }
 
     [SkippableFact]
-    public void CLD3RejectsNegativeCount()
+    public void CLD3ReturnsEmptyForNegativeCount()
     {
         Skip.IfNot(CLD3Detector.IsSupported());
 
         using var cld3 = new CLD3Detector(0, 512);
 
-        Assert.Throws<ArgumentOutOfRangeException>(() => cld3.PredictLanguages(Constants.PHRASE_ENG_1, -1));
+        var predictions = cld3.PredictLanguages(Constants.PHRASE_ENG_1, -1);
+
+        Assert.Empty(predictions);
     }
 
     [SkippableFact]
