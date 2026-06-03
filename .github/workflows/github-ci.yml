@@ -268,10 +268,6 @@ jobs:
       working-directory: ${{env.ROOT}}/LanguageCode.Tests
       run: dotnet test --configuration ${{ env.CONFIGURATION }} --blame-crash
 
-    # - name: 🧪 Run Tests for LanguageIdentification
-    #   working-directory: ${{env.ROOT}}/LanguageIdentification.Tests
-    #   run: dotnet test --configuration ${{ env.CONFIGURATION }} --blame-crash
-
     - name: 🧪 Restore test project
       run: dotnet restore ${{env.ROOT}}/LanguageIdentification.Tests/LanguageIdentification.Tests.csproj
 
