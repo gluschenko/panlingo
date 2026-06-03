@@ -3,13 +3,13 @@ using Cld2 = Panlingo.LanguageIdentification.CLD2.CLD2Detector;
 using Cld2Native = Panlingo.LanguageIdentification.CLD2.Native.CLD2NativeLibrary;
 using Cld3 = Panlingo.LanguageIdentification.CLD3.CLD3Detector;
 using Cld3Native = Panlingo.LanguageIdentification.CLD3.Native.CLD3NativeLibrary;
-using FastText = Panlingo.LanguageIdentification.FastText.FastTextDetector;
+using FastTextDetectorType = Panlingo.LanguageIdentification.FastText.FastTextDetector;
 using FastTextNative = Panlingo.LanguageIdentification.FastText.Native.FastTextNativeLibrary;
-using Lingua = Panlingo.LanguageIdentification.Lingua.LinguaDetector;
+using LinguaDetectorType = Panlingo.LanguageIdentification.Lingua.LinguaDetector;
 using LinguaNative = Panlingo.LanguageIdentification.Lingua.Native.LinguaNativeLibrary;
-using MediaPipe = Panlingo.LanguageIdentification.MediaPipe.MediaPipeDetector;
+using MediaPipeDetectorType = Panlingo.LanguageIdentification.MediaPipe.MediaPipeDetector;
 using MediaPipeNative = Panlingo.LanguageIdentification.MediaPipe.Native.MediaPipeNativeLibrary;
-using Whatlang = Panlingo.LanguageIdentification.Whatlang.WhatlangDetector;
+using WhatlangDetectorType = Panlingo.LanguageIdentification.Whatlang.WhatlangDetector;
 using WhatlangNative = Panlingo.LanguageIdentification.Whatlang.Native.WhatlangNativeLibrary;
 
 namespace Panlingo.LanguageIdentification.Tests;
@@ -27,10 +27,10 @@ public class NativePackageVersionTests
     {
         yield return new object[] { typeof(Cld2).Assembly, typeof(Cld2Native).Assembly };
         yield return new object[] { typeof(Cld3).Assembly, typeof(Cld3Native).Assembly };
-        yield return new object[] { typeof(FastText).Assembly, typeof(FastTextNative).Assembly };
-        yield return new object[] { typeof(Lingua).Assembly, typeof(LinguaNative).Assembly };
-        yield return new object[] { typeof(MediaPipe).Assembly, typeof(MediaPipeNative).Assembly };
-        yield return new object[] { typeof(Whatlang).Assembly, typeof(WhatlangNative).Assembly };
+        yield return new object[] { typeof(FastTextDetectorType).Assembly, typeof(FastTextNative).Assembly };
+        yield return new object[] { typeof(LinguaDetectorType).Assembly, typeof(LinguaNative).Assembly };
+        yield return new object[] { typeof(MediaPipeDetectorType).Assembly, typeof(MediaPipeNative).Assembly };
+        yield return new object[] { typeof(WhatlangDetectorType).Assembly, typeof(WhatlangNative).Assembly };
     }
 
     private static string GetPackageVersion(Assembly assembly)
