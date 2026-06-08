@@ -20,6 +20,12 @@ Welcome to **Panlingo.LanguageIdentification.FastText**, a .NET wrapper for the 
 :x: — No support |
 :construction: — Under research
 
+## Native model version
+
+package. The native FastText sources are pinned to commit [`1142dc4c4ecbc19cc16eee5cdd28472e689267e6`](https://github.com/facebookresearch/fastText/commit/1142dc4c4ecbc19cc16eee5cdd28472e689267e6).
+
+The bundled default language identification model is [`lid.176.ftz`](https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz).
+
 ## Installation
 
 To integrate the FastText functionality, follow these steps:

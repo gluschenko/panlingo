@@ -20,6 +20,12 @@ Welcome to **Panlingo.LanguageIdentification.MediaPipe**, a .NET wrapper for the
 :x: — No support |
 :construction: — Under research
 
+## Native model version
+
+The native MediaPipe sources are pinned to commit [`cad7f3ab99ebf175947e40c5252c642612aae927`](https://github.com/google-ai-edge/mediapipe/commit/cad7f3ab99ebf175947e40c5252c642612aae927).
+
+The bundled default language detector model is version `1` from [`language_detector/float32/1/language_detector.tflite`](https://storage.googleapis.com/mediapipe-models/language_detector/language_detector/float32/1/language_detector.tflite).
+
 ## Installation
 
 To integrate the MediaPipe functionality, follow these steps:

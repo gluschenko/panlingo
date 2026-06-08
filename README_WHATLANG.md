@@ -20,6 +20,10 @@ Welcome to **Panlingo.LanguageIdentification.Whatlang**, a .NET wrapper for the 
 :x: — No support |
 :construction: — Under research
 
+## Native model version
+
+This package uses the Rust [`whatlang` crate version 0.16.4](https://crates.io/crates/whatlang/0.16.4).
+
 ## Installation
 
 To integrate the Whatlang functionality, follow these steps:
