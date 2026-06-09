@@ -12,7 +12,7 @@
     <Authors>Alexander Gluschenko</Authors>
     <Copyright>© 2026 Alexander Gluschenko; © 2016 Google, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>nlp lid language-identification language-detection cld3</PackageTags>
+    <PackageTags>panlingo nlp natural-language-processing lid language-identification language-detection language-recognition language-classification text-classification multilingual i18n localization globalization computational-linguistics dotnet csharp net cld3 compact-language-detector google neural-network offline native-wrapper</PackageTags>
     <PackageReadmeFile>README_CLD3.md</PackageReadmeFile>
     <Description>
       This is a .NET wrapper for the Compact Language Detector (CLD3) library by Google Inc.

@@ -12,7 +12,7 @@
     <Authors>Alexander Gluschenko</Authors>
     <Copyright>© 2026 Alexander Gluschenko; © 2023-2026 Google, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>nlp lid language-identification language-detection mediapipe</PackageTags>
+    <PackageTags>panlingo nlp natural-language-processing lid language-identification language-detection language-recognition language-classification text-classification multilingual i18n localization globalization computational-linguistics machine-learning dotnet csharp net mediapipe google-ai-edge tflite edge-ai model offline native-wrapper</PackageTags>
     <PackageReadmeFile>README_MEDIAPIPE.md</PackageReadmeFile>
     <Description>
       This is a .NET wrapper for the MediaPipe library by Google AI Edge.

@@ -12,7 +12,7 @@
     <Authors>Alexander Gluschenko</Authors>
     <Copyright>© 2026 Alexander Gluschenko; © 2016 Meta Platforms, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>nlp lid language-identification language-detection fasttext</PackageTags>
+    <PackageTags>panlingo nlp natural-language-processing lid language-identification language-detection language-recognition language-classification text-classification multilingual computational-linguistics machine-learning dotnet csharp net native native-library native-bindings interop runtime fasttext facebook fair model custom-model offline</PackageTags>
     <PackageReadmeFile>README_FASTTEXT.md</PackageReadmeFile>
     <Description>
       This package provides the native resources required for the FastText library by Facebook AI Research (FAIR).

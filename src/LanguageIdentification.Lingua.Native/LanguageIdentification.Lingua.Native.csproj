@@ -12,7 +12,7 @@
     <Authors>Alexander Gluschenko</Authors>
     <Copyright>© 2026 Alexander Gluschenko; © 2020–2023 Peter M. Stahl</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>nlp lid language-identification language-detection lingua</PackageTags>
+    <PackageTags>panlingo nlp natural-language-processing lid language-identification language-detection language-recognition language-classification text-classification multilingual computational-linguistics dotnet csharp net native native-library native-bindings interop runtime lingua short-text offline</PackageTags>
     <PackageReadmeFile>README_LINGUA.md</PackageReadmeFile>
     <Description>
       This package provides the native resources required for the Lingua library.

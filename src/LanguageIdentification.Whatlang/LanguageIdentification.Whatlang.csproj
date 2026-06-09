@@ -12,7 +12,7 @@
     <Authors>Alexander Gluschenko</Authors>
     <Copyright>© 2026 Alexander Gluschenko; © 2017 Serhii Potapov; © 2014 Titus Wormer; © 2008 Kent S Johnson; © 2006 Jacob R Rideout; © 2004 Maciej Ceglowski</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>nlp lid language-identification language-detection whatlang</PackageTags>
+    <PackageTags>panlingo nlp natural-language-processing lid language-identification language-detection language-recognition language-classification text-classification script-detection unicode multilingual i18n localization globalization computational-linguistics dotnet csharp net whatlang offline native-wrapper</PackageTags>
     <PackageReadmeFile>README_WHATLANG.md</PackageReadmeFile>
     <Description>
       This is a .NET wrapper for the Whatlang library, which is an efficient and easy-to-use language detection library.
