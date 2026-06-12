@@ -1,4 +1,12 @@
-﻿0.7.1
+0.8.0
+- Add managed/native package version validation at detector startup
+- Improve UTF-8 text handling by passing explicit byte lengths to the native layer
+- Validate language and script enum values before native name/code lookups
+- Throw ObjectDisposedException after the detector is disposed
+- Add NuGet package icon and expanded package tags
+
+
+0.7.1
 - ARM64 support for Linux and Windows
       
 0.6.1
@@ -13,4 +21,3 @@
       
 0.0.0.10:
 - Initial release
-
