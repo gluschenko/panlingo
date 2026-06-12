@@ -122,19 +122,6 @@ function e() {
     ]);
 }
 
-function f() {
-    if (process.platform !== "linux") {
-        return;
-    }
-
-    const oldText = "b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f846ab30";
-    const newText = "ff4ab312d6cc18542ea01941f1fc450ee1c0150240d6cab183ca9bb36e5eaf1a";
-
-    findAndPatch("WORKSPACE", [
-        { a: oldText, b: newText },
-    ]);
-}
-
 console.log('[Monkey patching is started]');
 
 await a();
@@ -142,7 +129,6 @@ await b();
 await c();
 await d();
 await e();
-await f();
 
 console.log('[Monkey patching is done]');
 
