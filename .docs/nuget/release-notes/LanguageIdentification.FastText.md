@@ -1,7 +1,7 @@
 0.8.0
 - Add managed/native package version validation at detector startup
 - Improve UTF-8 text handling by passing explicit byte lengths to the native layer
-- Serialize detector operations to avoid races with model access and disposal
+- Allow concurrent detector operations while keeping disposal safe
 - Return an empty result for zero-count predictions
 - Add NuGet package icon and expanded package tags
 

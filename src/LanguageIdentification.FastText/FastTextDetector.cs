@@ -27,8 +27,9 @@ namespace Panlingo.LanguageIdentification.FastText
     public class FastTextDetector : IDisposable
     {
         private IntPtr _detector;
-        private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
-        private volatile bool _disposed = false;
+        private bool _disposed = false;
+        private int _activeOperations = 0;
+        private readonly object _lifetimeLock = new object();
 
         /// <summary>
         /// <para>Creates an instance for <see cref="FastTextDetector"/>.</para>
@@ -72,21 +73,19 @@ namespace Panlingo.LanguageIdentification.FastText
         /// <param name="path">Path to *.bin or *.ftz model file</param>
         public void LoadModel(string path)
         {
-            CheckDisposed();
+            var detector = AcquireDetector();
 
-            _semaphore.Wait();
             try
             {
-                CheckDisposed();
                 var errPtr = IntPtr.Zero;
-                FastTextDetectorWrapper.FastTextLoadModel(_detector, path, ref errPtr);
+                FastTextDetectorWrapper.FastTextLoadModel(detector, path, ref errPtr);
                 CheckError(errPtr);
 
                 ModelPath = path;
             }
             finally
             {
-                _semaphore.Release();
+                ReleaseDetector();
             }
         }
 
@@ -96,34 +95,24 @@ namespace Panlingo.LanguageIdentification.FastText
         /// <param name="stream">Stream of *.bin or *.ftz model file</param>
         public void LoadModel(Stream stream)
         {
-            CheckDisposed();
+            using var memoryStream = new MemoryStream();
+            stream.CopyTo(memoryStream);
 
-            _semaphore.Wait();
+            var modelData = memoryStream.ToArray();
+            var detector = AcquireDetector();
+            var modelDataHandle = GCHandle.Alloc(modelData, GCHandleType.Pinned);
             try
             {
-                CheckDisposed();
-                using var memoryStream = new MemoryStream();
-                stream.CopyTo(memoryStream);
-
-                var modelData = memoryStream.ToArray();
-                var modelDataHandle = GCHandle.Alloc(modelData, GCHandleType.Pinned);
                 var modelAssetBuffer = modelDataHandle.AddrOfPinnedObject();
                 var modelAssetBufferCount = (UIntPtr)modelData.Length;
-
-                try
-                {
-                    var errPtr = IntPtr.Zero;
-                    FastTextDetectorWrapper.FastTextLoadModelData(_detector, modelAssetBuffer, modelAssetBufferCount, ref errPtr);
-                    CheckError(errPtr);
-                }
-                finally
-                {
-                    modelDataHandle.Free();
-                }
+                var errPtr = IntPtr.Zero;
+                FastTextDetectorWrapper.FastTextLoadModelData(detector, modelAssetBuffer, modelAssetBufferCount, ref errPtr);
+                CheckError(errPtr);
             }
             finally
             {
-                _semaphore.Release();
+                modelDataHandle.Free();
+                ReleaseDetector();
             }
         }
 
@@ -145,13 +134,11 @@ namespace Panlingo.LanguageIdentification.FastText
         /// <returns>Collection of label objects</returns>
         public IEnumerable<FastTextLabel> GetLabels()
         {
-            CheckDisposed();
+            var detector = AcquireDetector();
 
-            _semaphore.Wait();
             try
             {
-                CheckDisposed();
-                var labelsPtr = FastTextDetectorWrapper.FastTextGetLabels(_detector);
+                var labelsPtr = FastTextDetectorWrapper.FastTextGetLabels(detector);
 
                 if (labelsPtr == IntPtr.Zero)
                 {
@@ -180,7 +167,7 @@ namespace Panlingo.LanguageIdentification.FastText
             }
             finally
             {
-                _semaphore.Release();
+                ReleaseDetector();
             }
         }
 
@@ -201,13 +188,12 @@ namespace Panlingo.LanguageIdentification.FastText
             }
 
             var textBytes = EncodeText(text);
-            _semaphore.Wait();
+            var detector = AcquireDetector();
             try
             {
-                CheckDisposed();
                 var errPtr = IntPtr.Zero;
                 var predictionPtr = FastTextDetectorWrapper.FastTextPredict(
-                    handle: _detector,
+                    handle: detector,
                     text: textBytes,
                     textLength: (UIntPtr)textBytes.Length,
                     k: count,
@@ -251,23 +237,21 @@ namespace Panlingo.LanguageIdentification.FastText
             }
             finally
             {
-                _semaphore.Release();
+                ReleaseDetector();
             }
         }
 
         public int GetModelDimensions()
         {
-            CheckDisposed();
+            var detector = AcquireDetector();
 
-            _semaphore.Wait();
             try
             {
-                CheckDisposed();
-                return FastTextDetectorWrapper.FastTextGetModelDimensions(_detector);
+                return FastTextDetectorWrapper.FastTextGetModelDimensions(detector);
             }
             finally
             {
-                _semaphore.Release();
+                ReleaseDetector();
             }
         }
 
@@ -299,25 +283,56 @@ namespace Panlingo.LanguageIdentification.FastText
 
         private void CheckDisposed()
         {
-            if (_disposed)
+            lock (_lifetimeLock)
             {
-                throw new ObjectDisposedException(nameof(FastTextDetector), "This instance has already been disposed");
+                if (_disposed)
+                {
+                    throw new ObjectDisposedException(nameof(FastTextDetector), "This instance has already been disposed");
+                }
+            }
+        }
+
+        private IntPtr AcquireDetector()
+        {
+            lock (_lifetimeLock)
+            {
+                if (_disposed)
+                {
+                    throw new ObjectDisposedException(nameof(FastTextDetector), "This instance has already been disposed");
+                }
+
+                _activeOperations++;
+                return _detector;
+            }
+        }
+
+        private void ReleaseDetector()
+        {
+            lock (_lifetimeLock)
+            {
+                _activeOperations--;
+                if (_activeOperations == 0)
+                {
+                    Monitor.PulseAll(_lifetimeLock);
+                }
             }
         }
 
         protected virtual void Dispose(bool disposing)
         {
-            if (_disposed)
-            {
-                return;
-            }
+            IntPtr detector;
 
-            _semaphore.Wait();
-            try
+            lock (_lifetimeLock)
             {
                 if (_disposed)
                 {
                     return;
+                }
+
+                _disposed = true;
+                while (_activeOperations > 0)
+                {
+                    Monitor.Wait(_lifetimeLock);
                 }
 
                 if (disposing)
@@ -325,17 +340,13 @@ namespace Panlingo.LanguageIdentification.FastText
                     // Dispose managed resources if any
                 }
 
-                if (_detector != IntPtr.Zero)
-                {
-                    FastTextDetectorWrapper.DestroyFastText(_detector);
-                    _detector = IntPtr.Zero;
-                }
-
-                _disposed = true;
+                detector = _detector;
+                _detector = IntPtr.Zero;
             }
-            finally
+
+            if (detector != IntPtr.Zero)
             {
-                _semaphore.Release();
+                FastTextDetectorWrapper.DestroyFastText(detector);
             }
         }
 

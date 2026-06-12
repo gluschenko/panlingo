@@ -18,8 +18,9 @@ namespace Panlingo.LanguageIdentification.Lingua
         private readonly Lazy<ImmutableHashSet<LinguaLanguage>> _labels;
 
         private IntPtr _detector;
-        private volatile bool _disposed = false;
-        private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
+        private bool _disposed = false;
+        private int _activeOperations = 0;
+        private readonly object _lifetimeLock = new object();
 
         internal LinguaDetector(IntPtr builder)
         {
@@ -61,15 +62,12 @@ namespace Panlingo.LanguageIdentification.Lingua
         /// <exception cref="LinguaDetectorException"></exception>
         public IEnumerable<LinguaPrediction> PredictLanguages(string text, int count = 10)
         {
-            CheckDisposed();
-
             var textBytes = LinguaDetectorWrapper.EncodeText(text);
-            _semaphore.Wait();
+            var detector = AcquireDetector();
             try
             {
-                CheckDisposed();
                 var status = LinguaDetectorWrapper.LinguaDetectSingle(
-                    detector: _detector,
+                    detector: detector,
                     text: textBytes,
                     textLength: (UIntPtr)textBytes.Length,
                     result: out var nativeResult
@@ -106,7 +104,7 @@ namespace Panlingo.LanguageIdentification.Lingua
             }
             finally
             {
-                _semaphore.Release();
+                ReleaseDetector();
             }
         }
 
@@ -118,15 +116,12 @@ namespace Panlingo.LanguageIdentification.Lingua
         /// <exception cref="LinguaDetectorException"></exception>
         public IEnumerable<LinguaPredictionRange> PredictMixedLanguages(string text)
         {
-            CheckDisposed();
-
             var textBytes = LinguaDetectorWrapper.EncodeText(text);
-            _semaphore.Wait();
+            var detector = AcquireDetector();
             try
             {
-                CheckDisposed();
                 var status = LinguaDetectorWrapper.LinguaDetectMixed(
-                    detector: _detector,
+                    detector: detector,
                     text: textBytes,
                     textLength: (UIntPtr)textBytes.Length,
                     result: out var nativeResult
@@ -161,7 +156,7 @@ namespace Panlingo.LanguageIdentification.Lingua
             }
             finally
             {
-                _semaphore.Release();
+                ReleaseDetector();
             }
         }
 
@@ -200,25 +195,56 @@ namespace Panlingo.LanguageIdentification.Lingua
 
         private void CheckDisposed()
         {
-            if (_disposed)
+            lock (_lifetimeLock)
             {
-                throw new ObjectDisposedException(nameof(LinguaDetector), "This instance has already been disposed");
+                if (_disposed)
+                {
+                    throw new ObjectDisposedException(nameof(LinguaDetector), "This instance has already been disposed");
+                }
+            }
+        }
+
+        private IntPtr AcquireDetector()
+        {
+            lock (_lifetimeLock)
+            {
+                if (_disposed)
+                {
+                    throw new ObjectDisposedException(nameof(LinguaDetector), "This instance has already been disposed");
+                }
+
+                _activeOperations++;
+                return _detector;
+            }
+        }
+
+        private void ReleaseDetector()
+        {
+            lock (_lifetimeLock)
+            {
+                _activeOperations--;
+                if (_activeOperations == 0)
+                {
+                    Monitor.PulseAll(_lifetimeLock);
+                }
             }
         }
 
         protected virtual void Dispose(bool disposing)
         {
-            if (_disposed)
-            {
-                return;
-            }
+            IntPtr detector;
 
-            _semaphore.Wait();
-            try
+            lock (_lifetimeLock)
             {
                 if (_disposed)
                 {
                     return;
+                }
+
+                _disposed = true;
+                while (_activeOperations > 0)
+                {
+                    Monitor.Wait(_lifetimeLock);
                 }
 
                 if (disposing)
@@ -226,17 +252,13 @@ namespace Panlingo.LanguageIdentification.Lingua
                     // Dispose managed resources if any
                 }
 
-                if (_detector != IntPtr.Zero)
-                {
-                    LinguaDetectorWrapper.LinguaLanguageDetectorDestroy(_detector);
-                    _detector = IntPtr.Zero;
-                }
-
-                _disposed = true;
+                detector = _detector;
+                _detector = IntPtr.Zero;
             }
-            finally
+
+            if (detector != IntPtr.Zero)
             {
-                _semaphore.Release();
+                LinguaDetectorWrapper.LinguaLanguageDetectorDestroy(detector);
             }
         }
 
