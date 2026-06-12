@@ -1,0 +1,17 @@
+<Project>
+  <PropertyGroup>
+    <PanlingoRepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\'))</PanlingoRepoRoot>
+    <PanlingoPackageIconSource>$([System.IO.Path]::Combine('$(PanlingoRepoRoot)', '.assets', 'icons', '$(MSBuildProjectName).png'))</PanlingoPackageIconSource>
+    <PanlingoPackageReleaseNotesSource>$([System.IO.Path]::Combine('$(PanlingoRepoRoot)', '.docs', 'nuget', 'release-notes', '$(MSBuildProjectName).md'))</PanlingoPackageReleaseNotesSource>
+    <PackageIcon Condition="Exists('$(PanlingoPackageIconSource)')">Icon.png</PackageIcon>
+    <PackageReleaseNotes Condition="Exists('$(PanlingoPackageReleaseNotesSource)')">$([System.IO.File]::ReadAllText('$(PanlingoPackageReleaseNotesSource)').Trim())</PackageReleaseNotes>
+  </PropertyGroup>
+  <ItemGroup Condition="Exists('$(PanlingoPackageIconSource)')">
+    <None
+      Include="$(PanlingoPackageIconSource)"
+      Pack="true"
+      PackagePath="Icon.png"
+      Link="Icon.png"
+      Visible="false" />
+  </ItemGroup>
+</Project>

@@ -8517,7 +8517,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Mundabli",
+      "RefName": "Mundabli-Mufu",
       "Comment": ""
     },
     {
@@ -15337,7 +15337,7 @@
       "Part1": "",
       "Scope": "M",
       "LanguageType": "L",
-      "RefName": "Slave (Athapascan)",
+      "RefName": "Slavey",
       "Comment": ""
     },
     {
@@ -17518,6 +17518,16 @@
       "Scope": "I",
       "LanguageType": "L",
       "RefName": "Djimini Senoufo",
+      "Comment": ""
+    },
+    {
+      "Id": "dyl",
+      "Part2b": "",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "I",
+      "LanguageType": "L",
+      "RefName": "Bhutanese Sign Language",
       "Comment": ""
     },
     {
@@ -26177,7 +26187,7 @@
       "Part1": "ia",
       "Scope": "I",
       "LanguageType": "C",
-      "RefName": "Interlingua (International Auxiliary Language Association)",
+      "RefName": "Interlingua (IALA)",
       "Comment": ""
     },
     {
@@ -26627,7 +26637,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Isu (Menchum Division)",
+      "RefName": "Isu",
       "Comment": ""
     },
     {
@@ -30707,7 +30717,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Harijan Kinnauri",
+      "RefName": "Kinnauri Pahari",
       "Comment": ""
     },
     {
@@ -33497,7 +33507,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Kutenai",
+      "RefName": "Ktunaxa",
       "Comment": ""
     },
     {
@@ -35741,6 +35751,16 @@
       "Comment": ""
     },
     {
+      "Id": "lfb",
+      "Part2b": "",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "I",
+      "LanguageType": "L",
+      "RefName": "Buu (Cameroon)",
+      "Comment": ""
+    },
+    {
       "Id": "lfn",
       "Part2b": "",
       "Part2t": "",
@@ -37857,7 +37877,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "E",
-      "RefName": "Luiseno",
+      "RefName": "Luise\u00F1o",
       "Comment": ""
     },
     {
@@ -39027,7 +39047,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Male (Papua New Guinea)",
+      "RefName": "Soq",
       "Comment": ""
     },
     {
@@ -39237,7 +39257,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Male (Ethiopia)",
+      "RefName": "Male",
       "Comment": ""
     },
     {
@@ -60657,7 +60677,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Sarsi",
+      "RefName": "Tsuut\u0027ina",
       "Comment": ""
     },
     {
@@ -62087,7 +62107,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Isu (Fako Division)",
+      "RefName": "Isubu",
       "Comment": ""
     },
     {
@@ -66571,6 +66591,16 @@
       "Comment": ""
     },
     {
+      "Id": "tvg",
+      "Part2b": "",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "I",
+      "LanguageType": "E",
+      "RefName": "Tugunese",
+      "Comment": ""
+    },
+    {
       "Id": "tvi",
       "Part2b": "",
       "Part2t": "",
@@ -69627,7 +69657,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Wab",
+      "RefName": "Yote",
       "Comment": ""
     },
     {
@@ -76057,7 +76087,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Yasa",
+      "RefName": "Iyasa",
       "Comment": ""
     },
     {
@@ -77918,6 +77948,16 @@
       "Scope": "I",
       "LanguageType": "L",
       "RefName": "Zhire",
+      "Comment": ""
+    },
+    {
+      "Id": "zhk",
+      "Part2b": "",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "I",
+      "LanguageType": "L",
+      "RefName": "Kurdish Sign Language",
       "Comment": ""
     },
     {

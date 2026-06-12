@@ -9,6 +9,9 @@
         public const string PHRASE_RUS_1 = "Привет, как дела?";
 
         public const string PHRASE_MIXED_1 = PHRASE_ENG_1 + " " + PHRASE_RUS_1 + " " + PHRASE_UKR_1;
+        public const string PHRASE_NOISY_1 = "  " + PHRASE_ENG_1 + " 123 !!! " + PHRASE_UKR_1 + " \n\t " + PHRASE_RUS_1;
+        public const string PHRASE_SHORT_1 = "ok";
+        public const string PHRASE_NUMERIC_1 = "1234567890 !!! ???";
 
         public const string MALFORMED_BYTES_0 = "";
 

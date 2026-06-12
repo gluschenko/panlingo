@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.7.2</Version>
+    <Version>0.8.0</Version>
     <PackageId>Panlingo.LanguageIdentification.MediaPipe.Native</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.MediaPipe.Native</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.MediaPipe.Native</RootNamespace>
@@ -10,13 +10,10 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>© 2025 Alexander Gluschenko; © 2023-2025 Google, Inc.</Copyright>
+    <Copyright>© 2026 Alexander Gluschenko; © 2023-2026 Google, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>nlp lid language-identification language-detection mediapipe</PackageTags>
+    <PackageTags>panlingo nlp natural-language-processing lid language-identification language-detection language-recognition language-classification text-classification multilingual computational-linguistics machine-learning dotnet csharp net native native-library native-bindings interop runtime mediapipe google-ai-edge tflite edge-ai model offline</PackageTags>
     <PackageReadmeFile>README_MEDIAPIPE.md</PackageReadmeFile>
-    <PackageReleaseNotes>
-      - Initial release
-    </PackageReleaseNotes>
     <Description>
       This package provides the native resources required for the MediaPipe library by Google AI Edge.
       It includes the necessary native components to enable language recognition and classification capabilities
@@ -103,3 +100,4 @@
   </ItemGroup>
 
 </Project>
+

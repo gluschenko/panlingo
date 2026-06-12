@@ -1,4 +1,6 @@
-﻿#pragma once
+#pragma once
+
+#include <cstddef>
 
 #include "base.h"
 #include "nnet_language_identifier.h"
@@ -15,7 +17,7 @@ using namespace std;
 #   endif
 #endif
 
-extern "C" 
+extern "C"
 {
     struct PredictionResult {
         const char* language;
@@ -26,7 +28,7 @@ extern "C"
 
     EXPORT void* create_cld3(int minNumBytes, int maxNumBytes);
     EXPORT void destroy_cld3(void* identifier);
-    EXPORT PredictionResult* cld3_find_language(void* identifier, const char* text, int* resultCount);
-    EXPORT PredictionResult* cld3_find_languages(void* identifier, const char* text, int numLangs, int* resultCount);
+    EXPORT PredictionResult* cld3_find_language(void* identifier, const char* text, size_t textLength, int* resultCount);
+    EXPORT PredictionResult* cld3_find_languages(void* identifier, const char* text, size_t textLength, int numLangs, int* resultCount);
     EXPORT void cld3_destroy_prediction_result(PredictionResult* results, int count);
 }

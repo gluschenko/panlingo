@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
-    <Version>0.7.2</Version>
+    <Version>0.8.0</Version>
     <PackageId>Panlingo.LanguageIdentification.MediaPipe</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.MediaPipe</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.MediaPipe</RootNamespace>
@@ -10,26 +10,10 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>© 2025 Alexander Gluschenko; © 2023-2025 Google, Inc.</Copyright>
+    <Copyright>© 2026 Alexander Gluschenko; © 2023-2026 Google, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>nlp lid language-identification language-detection mediapipe</PackageTags>
+    <PackageTags>panlingo nlp natural-language-processing lid language-identification language-detection language-recognition language-classification text-classification multilingual i18n localization globalization computational-linguistics machine-learning dotnet csharp net mediapipe google-ai-edge tflite edge-ai model offline native-wrapper</PackageTags>
     <PackageReadmeFile>README_MEDIAPIPE.md</PackageReadmeFile>
-    <PackageReleaseNotes>
-0.7.1
-- ARM64 support for Linux
-      
-0.6.1
-- Windows: static linking of Visual C++ Runtime
-      
-0.4.0.0
-- Add GetLabels method
-      
-0.0.0.21:
-- Default MediaPipe model is included in NuGet package
-
-0.0.0.10:
-- Initial release
-    </PackageReleaseNotes>
     <Description>
       This is a .NET wrapper for the MediaPipe library by Google AI Edge.
 
@@ -64,3 +48,4 @@
   </ItemGroup>
 
 </Project>
+

@@ -104,4 +104,113 @@ public class CLD3Tests
 
         var predictions = cld3.PredictLanguages(text: text, count: 3);
     }
+
+    [SkippableFact]
+    public void CLD3AcceptsNullText()
+    {
+        Skip.IfNot(CLD3Detector.IsSupported());
+
+        using var cld3 = new CLD3Detector(0, 512);
+
+        var predictions = cld3.PredictLanguages(null!, 3).ToArray();
+
+        Assert.NotNull(predictions);
+    }
+
+    [SkippableFact]
+    public void CLD3ReturnsEmptyForNegativeCount()
+    {
+        Skip.IfNot(CLD3Detector.IsSupported());
+
+        using var cld3 = new CLD3Detector(0, 512);
+
+        var predictions = cld3.PredictLanguages(Constants.PHRASE_ENG_1, -1);
+
+        Assert.Empty(predictions);
+    }
+
+    [SkippableFact]
+    public void CLD3AcceptsEmbeddedNulText()
+    {
+        Skip.IfNot(CLD3Detector.IsSupported());
+
+        using var cld3 = new CLD3Detector(0, 512);
+
+        var predictions = cld3.PredictLanguages(Constants.MALFORMED_BYTES_1, 3);
+
+        Assert.NotNull(predictions);
+    }
+
+    [SkippableFact]
+    public async Task CLD3PredictAndDisposeRaceDoesNotCrash()
+    {
+        Skip.IfNot(CLD3Detector.IsSupported());
+
+        var cld3 = new CLD3Detector(0, 512);
+        var predict = Task.Run(() =>
+        {
+            try
+            {
+                _ = cld3.PredictLanguages(Constants.PHRASE_ENG_1, 3).ToArray();
+            }
+            catch (ObjectDisposedException)
+            {
+            }
+        });
+        var dispose = Task.Run(cld3.Dispose);
+
+        await Task.WhenAll(predict, dispose);
+    }
+
+    [SkippableFact]
+    public void CLD3RejectsInvalidByteLimits()
+    {
+        Skip.IfNot(CLD3Detector.IsSupported());
+
+        Assert.Throws<InvalidOperationException>(() => new CLD3Detector(-1, 512));
+        Assert.Throws<InvalidOperationException>(() => new CLD3Detector(512, 0));
+    }
+
+    [SkippableFact]
+    public void CLD3ReturnsEmptyForZeroCount()
+    {
+        Skip.IfNot(CLD3Detector.IsSupported());
+
+        using var cld3 = new CLD3Detector(0, 512);
+
+        var predictions = cld3.PredictLanguages(Constants.PHRASE_ENG_1, 0);
+
+        Assert.Empty(predictions);
+    }
+
+    [SkippableFact]
+    public void CLD3ThrowsAfterDispose()
+    {
+        Skip.IfNot(CLD3Detector.IsSupported());
+
+        var cld3 = new CLD3Detector(0, 512);
+        cld3.Dispose();
+
+        Assert.Throws<ObjectDisposedException>(() => cld3.PredictLanguage(Constants.PHRASE_ENG_1));
+        Assert.Throws<ObjectDisposedException>(() => cld3.PredictLanguages(Constants.PHRASE_ENG_1, 3).ToArray());
+        Assert.Throws<ObjectDisposedException>(() => cld3.GetLanguages().ToArray());
+    }
+
+    [SkippableFact]
+    public async Task CLD3ParallelPredictionsDoNotCrash()
+    {
+        Skip.IfNot(CLD3Detector.IsSupported());
+
+        using var cld3 = new CLD3Detector(0, 512);
+        var tasks = Enumerable.Range(0, 64)
+            .Select(i => Task.Run(() => cld3.PredictLanguages(i % 2 == 0 ? Constants.PHRASE_NOISY_1 : Constants.PHRASE_MIXED_1, 3).ToArray()));
+
+        var results = await Task.WhenAll(tasks);
+
+        Assert.All(results, predictions =>
+        {
+            Assert.NotNull(predictions);
+            Assert.All(predictions, prediction => Assert.InRange(prediction.Probability, 0, 1));
+        });
+    }
 }

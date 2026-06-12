@@ -2,17 +2,17 @@ extern crate libc;
 extern crate whatlang;
 
 use libc::size_t;
-use std::ffi::CStr;
 use std::os::raw::c_char;
 use std::ptr;
-use whatlang::{detect, detect_lang, detect_script, Lang, Script};
+use whatlang::{detect, detect_script, Lang, Script};
 
-#[repr(u8)]
+#[repr(C)]
 pub enum WhatlangStatus {
     Ok = 0,
     DetectFailure = 1,
     BadTextPtr = 2,
     BadOutputPtr = 3,
+    BadEnumValue = 4,
 }
 
 #[repr(u8)]
@@ -119,73 +119,57 @@ pub enum WhatlangScript {
     Thai = 24,
 }
 
-impl From<Lang> for WhatlangLanguage {
-    fn from(language: Lang) -> Self {
-        unsafe { std::mem::transmute(language as u8) }
-    }
-}
-
-impl From<WhatlangLanguage> for Lang {
-    fn from(ffi_language: WhatlangLanguage) -> Self {
-        unsafe { std::mem::transmute(ffi_language as u8) }
-    }
-}
-
-impl From<Script> for WhatlangScript {
-    fn from(script: Script) -> Self {
-        unsafe { std::mem::transmute(script as u8) }
-    }
-}
-
-impl From<WhatlangScript> for Script {
-    fn from(ffi_script: WhatlangScript) -> Self {
-        unsafe { std::mem::transmute(ffi_script as u8) }
-    }
-}
-
 #[repr(C)]
 #[derive(Debug)]
 pub struct WhatlangPredictionResult {
-    lang: Lang,
-    script: Script,
+    lang: u8,
+    script: u8,
     confidence: f64,
     is_reliable: bool,
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_detect(ptr: *const c_char, result: *mut WhatlangPredictionResult) -> WhatlangStatus {
-    let x = CStr::from_ptr(ptr);
-    detect_internal(x.to_bytes(), result)
+pub unsafe extern "C" fn whatlang_detect(ptr: *const c_char, len: size_t, result: *mut WhatlangPredictionResult) -> WhatlangStatus {
+    if ptr.is_null() && len > 0 {
+        return WhatlangStatus::BadTextPtr;
+    }
+
+    let text = if len == 0 { &[] } else { std::slice::from_raw_parts(ptr as *const u8, len) };
+    detect_internal(text, result)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_detect_script(ptr: *const c_char, result: *mut WhatlangScript) -> WhatlangStatus {
-    let x = CStr::from_ptr(ptr);
-    detect_script_internal(x.to_bytes(), result)
+pub unsafe extern "C" fn whatlang_detect_script(ptr: *const c_char, len: size_t, result: *mut u8) -> WhatlangStatus {
+    if ptr.is_null() && len > 0 {
+        return WhatlangStatus::BadTextPtr;
+    }
+
+    let text = if len == 0 { &[] } else { std::slice::from_raw_parts(ptr as *const u8, len) };
+    detect_script_internal(text, result)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_lang_eng_name(lang: WhatlangLanguage, result: *mut c_char) -> size_t {
-    let x: Lang = lang.into();
-    copy_string(x.eng_name(), result)
+pub unsafe extern "C" fn whatlang_lang_eng_name(lang: u8, result: *mut c_char, result_len: size_t) -> size_t {
+    let Some(x) = lang_from_u8(lang) else { return usize::MAX; };
+    copy_string(x.eng_name(), result, result_len)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_lang_code(lang: WhatlangLanguage, result: *mut c_char) -> size_t {
-    let x: Lang = lang.into();
-    copy_string(x.code(), result)
+pub unsafe extern "C" fn whatlang_lang_code(lang: u8, result: *mut c_char, result_len: size_t) -> size_t {
+    let Some(x) = lang_from_u8(lang) else { return usize::MAX; };
+    copy_string(x.code(), result, result_len)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_lang_name(lang: WhatlangLanguage, result: *mut c_char) -> size_t {
-    let x: Lang = lang.into();
-    copy_string(x.name(), result)
+pub unsafe extern "C" fn whatlang_lang_name(lang: u8, result: *mut c_char, result_len: size_t) -> size_t {
+    let Some(x) = lang_from_u8(lang) else { return usize::MAX; };
+    copy_string(x.name(), result, result_len)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn whatlang_script_name(script: WhatlangScript, result: *mut c_char) -> size_t {
-    let x: Script = script.into();
-    copy_string(x.name(), result)
+pub unsafe extern "C" fn whatlang_script_name(script: u8, result: *mut c_char, result_len: size_t) -> size_t {
+    let Some(x) = script_from_u8(script) else { return usize::MAX; };
+    copy_string(x.name(), result, result_len)
 }
 
 fn detect_internal(text: &[u8], result: *mut WhatlangPredictionResult) -> WhatlangStatus {
@@ -199,8 +183,8 @@ fn detect_internal(text: &[u8], result: *mut WhatlangPredictionResult) -> Whatla
             match res {
                 Some(info) => {
                     unsafe {
-                        (*result).lang = info.lang();
-                        (*result).script = info.script();
+                        (*result).lang = lang_to_u8(info.lang());
+                        (*result).script = script_to_u8(info.script());
                         (*result).confidence = info.confidence();
                         (*result).is_reliable = info.is_reliable();
                     }
@@ -219,7 +203,7 @@ fn detect_internal(text: &[u8], result: *mut WhatlangPredictionResult) -> Whatla
     }
 }
 
-fn detect_script_internal(text: &[u8], result: *mut WhatlangScript) -> WhatlangStatus {
+fn detect_script_internal(text: &[u8], result: *mut u8) -> WhatlangStatus {
     if result == ptr::null_mut() {
         return WhatlangStatus::BadOutputPtr;
     }
@@ -229,9 +213,8 @@ fn detect_script_internal(text: &[u8], result: *mut WhatlangScript) -> WhatlangS
             let res = detect_script(s);
             match res {
                 Some(info) => {
-                    let x: WhatlangScript = info.to_owned().into();
                     unsafe {
-                        *result = x;
+                        *result = script_to_u8(info.to_owned());
                     }
                     WhatlangStatus::Ok
                 }
@@ -248,14 +231,224 @@ fn detect_script_internal(text: &[u8], result: *mut WhatlangScript) -> WhatlangS
     }
 }
 
-unsafe fn copy_string(source: &str, destination: *mut c_char) -> size_t {
+unsafe fn copy_string(source: &str, destination: *mut c_char, destination_len: size_t) -> size_t {
     let len = source.len();
-    if destination != ptr::null_mut() {
+    if destination != ptr::null_mut() && destination_len > len {
         let src = source.as_ptr().cast::<c_char>();
         src.copy_to_nonoverlapping(destination, len);
         *destination.add(len) = 0;
     }
     len
+}
+
+fn lang_from_u8(value: u8) -> Option<Lang> {
+    Some(match value {
+        0 => Lang::Epo,
+        1 => Lang::Eng,
+        2 => Lang::Rus,
+        3 => Lang::Cmn,
+        4 => Lang::Spa,
+        5 => Lang::Por,
+        6 => Lang::Ita,
+        7 => Lang::Ben,
+        8 => Lang::Fra,
+        9 => Lang::Deu,
+        10 => Lang::Ukr,
+        11 => Lang::Kat,
+        12 => Lang::Ara,
+        13 => Lang::Hin,
+        14 => Lang::Jpn,
+        15 => Lang::Heb,
+        16 => Lang::Yid,
+        17 => Lang::Pol,
+        18 => Lang::Amh,
+        19 => Lang::Jav,
+        20 => Lang::Kor,
+        21 => Lang::Nob,
+        22 => Lang::Dan,
+        23 => Lang::Swe,
+        24 => Lang::Fin,
+        25 => Lang::Tur,
+        26 => Lang::Nld,
+        27 => Lang::Hun,
+        28 => Lang::Ces,
+        29 => Lang::Ell,
+        30 => Lang::Bul,
+        31 => Lang::Bel,
+        32 => Lang::Mar,
+        33 => Lang::Kan,
+        34 => Lang::Ron,
+        35 => Lang::Slv,
+        36 => Lang::Hrv,
+        37 => Lang::Srp,
+        38 => Lang::Mkd,
+        39 => Lang::Lit,
+        40 => Lang::Lav,
+        41 => Lang::Est,
+        42 => Lang::Tam,
+        43 => Lang::Vie,
+        44 => Lang::Urd,
+        45 => Lang::Tha,
+        46 => Lang::Guj,
+        47 => Lang::Uzb,
+        48 => Lang::Pan,
+        49 => Lang::Aze,
+        50 => Lang::Ind,
+        51 => Lang::Tel,
+        52 => Lang::Pes,
+        53 => Lang::Mal,
+        54 => Lang::Ori,
+        55 => Lang::Mya,
+        56 => Lang::Nep,
+        57 => Lang::Sin,
+        58 => Lang::Khm,
+        59 => Lang::Tuk,
+        60 => Lang::Aka,
+        61 => Lang::Zul,
+        62 => Lang::Sna,
+        63 => Lang::Afr,
+        64 => Lang::Lat,
+        65 => Lang::Slk,
+        66 => Lang::Cat,
+        67 => Lang::Tgl,
+        68 => Lang::Hye,
+        _ => return None,
+    })
+}
+
+fn lang_to_u8(value: Lang) -> u8 {
+    match value {
+        Lang::Epo => 0,
+        Lang::Eng => 1,
+        Lang::Rus => 2,
+        Lang::Cmn => 3,
+        Lang::Spa => 4,
+        Lang::Por => 5,
+        Lang::Ita => 6,
+        Lang::Ben => 7,
+        Lang::Fra => 8,
+        Lang::Deu => 9,
+        Lang::Ukr => 10,
+        Lang::Kat => 11,
+        Lang::Ara => 12,
+        Lang::Hin => 13,
+        Lang::Jpn => 14,
+        Lang::Heb => 15,
+        Lang::Yid => 16,
+        Lang::Pol => 17,
+        Lang::Amh => 18,
+        Lang::Jav => 19,
+        Lang::Kor => 20,
+        Lang::Nob => 21,
+        Lang::Dan => 22,
+        Lang::Swe => 23,
+        Lang::Fin => 24,
+        Lang::Tur => 25,
+        Lang::Nld => 26,
+        Lang::Hun => 27,
+        Lang::Ces => 28,
+        Lang::Ell => 29,
+        Lang::Bul => 30,
+        Lang::Bel => 31,
+        Lang::Mar => 32,
+        Lang::Kan => 33,
+        Lang::Ron => 34,
+        Lang::Slv => 35,
+        Lang::Hrv => 36,
+        Lang::Srp => 37,
+        Lang::Mkd => 38,
+        Lang::Lit => 39,
+        Lang::Lav => 40,
+        Lang::Est => 41,
+        Lang::Tam => 42,
+        Lang::Vie => 43,
+        Lang::Urd => 44,
+        Lang::Tha => 45,
+        Lang::Guj => 46,
+        Lang::Uzb => 47,
+        Lang::Pan => 48,
+        Lang::Aze => 49,
+        Lang::Ind => 50,
+        Lang::Tel => 51,
+        Lang::Pes => 52,
+        Lang::Mal => 53,
+        Lang::Ori => 54,
+        Lang::Mya => 55,
+        Lang::Nep => 56,
+        Lang::Sin => 57,
+        Lang::Khm => 58,
+        Lang::Tuk => 59,
+        Lang::Aka => 60,
+        Lang::Zul => 61,
+        Lang::Sna => 62,
+        Lang::Afr => 63,
+        Lang::Lat => 64,
+        Lang::Slk => 65,
+        Lang::Cat => 66,
+        Lang::Tgl => 67,
+        Lang::Hye => 68,
+    }
+}
+
+fn script_from_u8(value: u8) -> Option<Script> {
+    Some(match value {
+        0 => Script::Arabic,
+        1 => Script::Armenian,
+        2 => Script::Bengali,
+        3 => Script::Cyrillic,
+        4 => Script::Devanagari,
+        5 => Script::Ethiopic,
+        6 => Script::Georgian,
+        7 => Script::Greek,
+        8 => Script::Gujarati,
+        9 => Script::Gurmukhi,
+        10 => Script::Hangul,
+        11 => Script::Hebrew,
+        12 => Script::Hiragana,
+        13 => Script::Kannada,
+        14 => Script::Katakana,
+        15 => Script::Khmer,
+        16 => Script::Latin,
+        17 => Script::Malayalam,
+        18 => Script::Mandarin,
+        19 => Script::Myanmar,
+        20 => Script::Oriya,
+        21 => Script::Sinhala,
+        22 => Script::Tamil,
+        23 => Script::Telugu,
+        24 => Script::Thai,
+        _ => return None,
+    })
+}
+
+fn script_to_u8(value: Script) -> u8 {
+    match value {
+        Script::Arabic => 0,
+        Script::Armenian => 1,
+        Script::Bengali => 2,
+        Script::Cyrillic => 3,
+        Script::Devanagari => 4,
+        Script::Ethiopic => 5,
+        Script::Georgian => 6,
+        Script::Greek => 7,
+        Script::Gujarati => 8,
+        Script::Gurmukhi => 9,
+        Script::Hangul => 10,
+        Script::Hebrew => 11,
+        Script::Hiragana => 12,
+        Script::Kannada => 13,
+        Script::Katakana => 14,
+        Script::Khmer => 15,
+        Script::Latin => 16,
+        Script::Malayalam => 17,
+        Script::Mandarin => 18,
+        Script::Myanmar => 19,
+        Script::Oriya => 20,
+        Script::Sinhala => 21,
+        Script::Tamil => 22,
+        Script::Telugu => 23,
+        Script::Thai => 24,
+    }
 }
 
 #[cfg(test)]

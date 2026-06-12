@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
-    <Version>0.7.2</Version>
+    <Version>0.8.0</Version>
     <PackageId>Panlingo.LanguageIdentification.Whatlang</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.Whatlang</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.Whatlang</RootNamespace>
@@ -10,27 +10,10 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>© 2025 Alexander Gluschenko; © 2017 Serhii Potapov; © 2014 Titus Wormer; © 2008 Kent S Johnson; © 2006 Jacob R Rideout; © 2004 Maciej Ceglowski</Copyright>
+    <Copyright>© 2026 Alexander Gluschenko; © 2017 Serhii Potapov; © 2014 Titus Wormer; © 2008 Kent S Johnson; © 2006 Jacob R Rideout; © 2004 Maciej Ceglowski</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>nlp lid language-identification language-detection whatlang</PackageTags>
+    <PackageTags>panlingo nlp natural-language-processing lid language-identification language-detection language-recognition language-classification text-classification script-detection unicode multilingual i18n localization globalization computational-linguistics dotnet csharp net whatlang offline native-wrapper</PackageTags>
     <PackageReadmeFile>README_WHATLANG.md</PackageReadmeFile>
-    <PackageReleaseNotes>
-0.7.1
-- ARM64 support for Linux and Windows
-      
-0.6.1
-- Windows: static linking of Visual C++ Runtime
-      
-0.4.0.0
-- Add GetLanguages method
-      
-0.2.0.0
-- Windows and MacOS support
-- Armenian support
-      
-0.0.0.10:
-- Initial release
-    </PackageReleaseNotes>
     <Description>
       This is a .NET wrapper for the Whatlang library, which is an efficient and easy-to-use language detection library.
       
@@ -64,3 +47,4 @@
   </ItemGroup>
 
 </Project>
+

@@ -45,11 +45,11 @@ extern "C"
     EXPORT void fasttext_load_model(fasttext_t* handle, const char* filename, char** err_ptr);
     EXPORT void fasttext_load_model_data(fasttext_t* handle, const char* buffer, size_t buffer_length, char** err_ptr);
     EXPORT int fasttext_get_model_dimensions(fasttext_t* handle);
-    EXPORT fasttext_predictions_t* fasttext_predict(fasttext_t* handle, const char* text, int32_t k, float threshold, char** err_ptr);
+    EXPORT fasttext_predictions_t* fasttext_predict(fasttext_t* handle, const char* text, size_t text_length, int32_t k, float threshold, char** err_ptr);
     EXPORT void destroy_predictions(fasttext_predictions_t* predictions);
     EXPORT fasttext_labels_t* fasttext_get_labels(fasttext_t* handle);
     EXPORT void destroy_labels(fasttext_labels_t* labels);
-    EXPORT fasttext_tokens_t* fasttext_tokenize(fasttext_t* handle, const char* text);
+    EXPORT fasttext_tokens_t* fasttext_tokenize(fasttext_t* handle, const char* text, size_t text_length);
     EXPORT void destroy_tokens(fasttext_tokens_t* tokens);
     EXPORT void fasttext_abort(fasttext_t* handle);
 }

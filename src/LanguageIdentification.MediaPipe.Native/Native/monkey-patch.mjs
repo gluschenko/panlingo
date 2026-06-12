@@ -113,12 +113,22 @@ function d() {
     ]);
 }
 
+function e() {
+    const oldText = "ad37707084a6d4ff41be10cbe8540c75bea057ba79d0de6c367c1bfac6ba0852";
+    const newText = "8eeb81ff6bc7ab2de678c0c4a3d18b02c382a5122ac4edc26a3334c858531739";
+
+    findAndPatch("WORKSPACE", [
+        { a: oldText, b: newText },
+    ]);
+}
+
 console.log('[Monkey patching is started]');
 
 await a();
 await b();
 await c();
 await d();
+await e();
 
 console.log('[Monkey patching is done]');
 

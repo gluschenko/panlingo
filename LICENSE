@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2024-2025 Alexander Gluschenko
+Copyright (c) 2024-2026 Alexander Gluschenko
 
 Includes software from the following project(s):
 
@@ -21,7 +21,7 @@ Includes software from the following project(s):
   Licensed under Apache-2.0
 
 - MediaPipe Language Detector (https://github.com/google-ai-edge/mediapipe)
-  Copyright (c) 2023-2025 Google, Inc.
+  Copyright (c) 2023-2026 Google, Inc.
   Licensed under Apache-2.0
 
 - Whatlang (https://github.com/greyblake/whatlang-rs)

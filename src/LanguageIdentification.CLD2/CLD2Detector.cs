@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
 using Panlingo.LanguageIdentification.CLD2.Internal;
 using Panlingo.LanguageIdentification.CLD2.Native;
 
@@ -20,6 +21,7 @@ namespace Panlingo.LanguageIdentification.CLD2
     public class CLD2Detector : IDisposable
     {
         private readonly Lazy<ImmutableHashSet<string>> _labels;
+        private bool _disposed = false;
 
         /// <summary>
         /// <para>Creates an instance for <see cref="CLD2Detector"/>.</para>
@@ -28,6 +30,11 @@ namespace Panlingo.LanguageIdentification.CLD2
         /// <exception cref="NotSupportedException"></exception>
         public CLD2Detector()
         {
+            NativePackageVersionGuard.EnsureMatches(
+                typeof(CLD2Detector).Assembly,
+                typeof(CLD2NativeLibrary).Assembly
+            );
+
             if (!IsSupported())
             {
                 throw new NotSupportedException(
@@ -71,10 +78,19 @@ namespace Panlingo.LanguageIdentification.CLD2
         /// <returns>List of language predictions</returns>
         public IEnumerable<CLD2Prediction> PredictLanguage(string text)
         {
+            CheckDisposed();
+
+            var textBytes = EncodeText(text);
             var resultPtr = CLD2DetectorWrapper.PredictLanguage(
-                text: text,
+                text: textBytes,
+                textLength: (UIntPtr)textBytes.Length,
                 resultCount: out var resultCount
             );
+
+            if (resultPtr == IntPtr.Zero || resultCount == 0)
+            {
+                return Array.Empty<CLD2Prediction>();
+            }
 
             try
             {
@@ -103,13 +119,27 @@ namespace Panlingo.LanguageIdentification.CLD2
         /// <returns>Collection of strings</returns>
         public IEnumerable<string> GetLanguages()
         {
+            CheckDisposed();
             return _labels.Value;
         }
 
         public void Dispose()
         {
+            _disposed = true;
             GC.SuppressFinalize(this);
+        }
+
+        private void CheckDisposed()
+        {
+            if (_disposed)
+            {
+                throw new ObjectDisposedException(nameof(CLD2Detector), "This instance has already been disposed");
+            }
+        }
+
+        private static byte[] EncodeText(string text)
+        {
+            return text is null ? Array.Empty<byte>() : Encoding.UTF8.GetBytes(text);
         }
     }
 }
-

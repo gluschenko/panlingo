@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
 using Panlingo.LanguageIdentification.FastText.Internal;
 using Panlingo.LanguageIdentification.FastText.Native;
@@ -26,8 +27,9 @@ namespace Panlingo.LanguageIdentification.FastText
     public class FastTextDetector : IDisposable
     {
         private IntPtr _detector;
-        private readonly SemaphoreSlim _semaphore;
         private bool _disposed = false;
+        private int _activeOperations = 0;
+        private readonly object _lifetimeLock = new object();
 
         /// <summary>
         /// <para>Creates an instance for <see cref="FastTextDetector"/>.</para>
@@ -36,6 +38,11 @@ namespace Panlingo.LanguageIdentification.FastText
         /// <exception cref="NotSupportedException"></exception>
         public FastTextDetector()
         {
+            NativePackageVersionGuard.EnsureMatches(
+                typeof(FastTextDetector).Assembly,
+                typeof(FastTextNativeLibrary).Assembly
+            );
+
             if (!IsSupported())
             {
                 throw new NotSupportedException(
@@ -44,7 +51,10 @@ namespace Panlingo.LanguageIdentification.FastText
             }
 
             _detector = FastTextDetectorWrapper.CreateFastText();
-            _semaphore = new SemaphoreSlim(1, 1);
+            if (_detector == IntPtr.Zero)
+            {
+                throw new NativeLibraryException($"Failed to create {nameof(FastTextDetector)}");
+            }
         }
 
         /// <summary>
@@ -63,20 +73,19 @@ namespace Panlingo.LanguageIdentification.FastText
         /// <param name="path">Path to *.bin or *.ftz model file</param>
         public void LoadModel(string path)
         {
-            CheckDisposed();
+            var detector = AcquireDetector();
 
-            _semaphore.Wait();
             try
             {
                 var errPtr = IntPtr.Zero;
-                FastTextDetectorWrapper.FastTextLoadModel(_detector, path, ref errPtr);
+                FastTextDetectorWrapper.FastTextLoadModel(detector, path, ref errPtr);
                 CheckError(errPtr);
 
                 ModelPath = path;
             }
             finally
             {
-                _semaphore.Release();
+                ReleaseDetector();
             }
         }
 
@@ -86,33 +95,24 @@ namespace Panlingo.LanguageIdentification.FastText
         /// <param name="stream">Stream of *.bin or *.ftz model file</param>
         public void LoadModel(Stream stream)
         {
-            CheckDisposed();
+            using var memoryStream = new MemoryStream();
+            stream.CopyTo(memoryStream);
 
-            _semaphore.Wait();
+            var modelData = memoryStream.ToArray();
+            var detector = AcquireDetector();
+            var modelDataHandle = GCHandle.Alloc(modelData, GCHandleType.Pinned);
             try
             {
-                using var memoryStream = new MemoryStream();
-                stream.CopyTo(memoryStream);
-
-                var modelData = memoryStream.ToArray();
-                var modelDataHandle = GCHandle.Alloc(modelData, GCHandleType.Pinned);
                 var modelAssetBuffer = modelDataHandle.AddrOfPinnedObject();
-                var modelAssetBufferCount = (uint)modelData.Length;
-
-                try
-                {
-                    var errPtr = IntPtr.Zero;
-                    FastTextDetectorWrapper.FastTextLoadModelData(_detector, modelAssetBuffer, modelAssetBufferCount, ref errPtr);
-                    CheckError(errPtr);
-                }
-                finally
-                {
-                    modelDataHandle.Free();
-                }
+                var modelAssetBufferCount = (UIntPtr)modelData.Length;
+                var errPtr = IntPtr.Zero;
+                FastTextDetectorWrapper.FastTextLoadModelData(detector, modelAssetBuffer, modelAssetBufferCount, ref errPtr);
+                CheckError(errPtr);
             }
             finally
             {
-                _semaphore.Release();
+                modelDataHandle.Free();
+                ReleaseDetector();
             }
         }
 
@@ -134,29 +134,41 @@ namespace Panlingo.LanguageIdentification.FastText
         /// <returns>Collection of label objects</returns>
         public IEnumerable<FastTextLabel> GetLabels()
         {
-            CheckDisposed();
+            var detector = AcquireDetector();
 
-            var labelsPtr = FastTextDetectorWrapper.FastTextGetLabels(_detector);
-
-            if (labelsPtr == IntPtr.Zero)
+            try
             {
-                return Array.Empty<FastTextLabel>();
+                var labelsPtr = FastTextDetectorWrapper.FastTextGetLabels(detector);
+
+                if (labelsPtr == IntPtr.Zero)
+                {
+                    return Array.Empty<FastTextLabel>();
+                }
+
+                try
+                {
+                    var labelsStruct = Marshal.PtrToStructure<FastTextLabels>(labelsPtr);
+                    var result = new List<FastTextLabel>();
+
+                    for (ulong i = 0; i < labelsStruct.Length; i++)
+                    {
+                        var labelPtr = Marshal.ReadIntPtr(labelsStruct.Labels, (int)i * IntPtr.Size);
+                        var label = DecodeString(labelPtr);
+                        var freq = Marshal.ReadInt64(labelsStruct.Freqs, (int)i * sizeof(long));
+                        result.Add(new FastTextLabel(label: label, frequency: freq));
+                    }
+
+                    return result;
+                }
+                finally
+                {
+                    FastTextDetectorWrapper.DestroyLabels(labelsPtr);
+                }
             }
-
-            var labelsStruct = Marshal.PtrToStructure<FastTextLabels>(labelsPtr);
-            var result = new List<FastTextLabel>();
-
-            for (ulong i = 0; i < labelsStruct.Length; i++)
+            finally
             {
-                var labelPtr = Marshal.ReadIntPtr(labelsStruct.Labels, (int)i * IntPtr.Size);
-                var label = DecodeString(labelPtr);
-                var freq = Marshal.ReadInt64(labelsStruct.Freqs, (int)i * sizeof(long));
-                result.Add(new FastTextLabel(label: label, frequency: freq));
+                ReleaseDetector();
             }
-
-            FastTextDetectorWrapper.DestroyLabels(labelsPtr);
-
-            return result;
         }
 
         /// <summary>
@@ -170,48 +182,77 @@ namespace Panlingo.LanguageIdentification.FastText
         {
             CheckDisposed();
 
-            var errPtr = IntPtr.Zero;
-            var predictionPtr = FastTextDetectorWrapper.FastTextPredict(
-                handle: _detector,
-                text: text,
-                k: count,
-                threshold: threshold,
-                ref errPtr
-            );
-
-            CheckError(errPtr);
-
-            if (predictionPtr == IntPtr.Zero)
+            if (count == 0)
             {
                 return Array.Empty<FastTextPrediction>();
             }
 
-            var predictions = Marshal.PtrToStructure<FastTextPredictionListNativeResult>(predictionPtr);
-            var result = new List<FastTextPrediction>();
-
-            var structSize = Marshal.SizeOf<FastTextPredictionNativeResult>();
-
-            for (var i = 0; i < (int)predictions.Length; i++)
+            var textBytes = EncodeText(text);
+            var detector = AcquireDetector();
+            try
             {
-                var prediction = Marshal.PtrToStructure<FastTextPredictionNativeResult>(predictions.Predictions + i * structSize);
-                var label = DecodeString(prediction.Label);
+                var errPtr = IntPtr.Zero;
+                var predictionPtr = FastTextDetectorWrapper.FastTextPredict(
+                    handle: detector,
+                    text: textBytes,
+                    textLength: (UIntPtr)textBytes.Length,
+                    k: count,
+                    threshold: threshold,
+                    ref errPtr
+                );
 
-                result.Add(new FastTextPrediction(
-                    label: label,
-                    probability: prediction.Prob
-                ));
+                CheckError(errPtr);
+
+                if (predictionPtr == IntPtr.Zero)
+                {
+                    return Array.Empty<FastTextPrediction>();
+                }
+
+                try
+                {
+                    var predictions = Marshal.PtrToStructure<FastTextPredictionListNativeResult>(predictionPtr);
+                    var result = new List<FastTextPrediction>();
+
+                    var structSize = Marshal.SizeOf<FastTextPredictionNativeResult>();
+
+                    for (var i = 0; i < (int)predictions.Length; i++)
+                    {
+                        var prediction = Marshal.PtrToStructure<FastTextPredictionNativeResult>(predictions.Predictions + i * structSize);
+                        var label = DecodeString(prediction.Label);
+
+                        result.Add(new FastTextPrediction(
+                            label: label,
+                            probability: prediction.Prob
+                        ));
+                    }
+
+                    return result
+                        .OrderByDescending(x => x.Probability)
+                        .ToArray();
+                }
+                finally
+                {
+                    FastTextDetectorWrapper.DestroyPredictions(predictionPtr);
+                }
             }
-
-            FastTextDetectorWrapper.DestroyPredictions(predictionPtr);
-
-            return result
-                .OrderByDescending(x => x.Probability)
-                .ToArray();
+            finally
+            {
+                ReleaseDetector();
+            }
         }
 
         public int GetModelDimensions()
         {
-            return FastTextDetectorWrapper.FastTextGetModelDimensions(_detector);
+            var detector = AcquireDetector();
+
+            try
+            {
+                return FastTextDetectorWrapper.FastTextGetModelDimensions(detector);
+            }
+            finally
+            {
+                ReleaseDetector();
+            }
         }
 
         private static void CheckError(IntPtr errorPtr)
@@ -242,40 +283,70 @@ namespace Panlingo.LanguageIdentification.FastText
 
         private void CheckDisposed()
         {
-            if (_disposed)
+            lock (_lifetimeLock)
             {
-                throw new ObjectDisposedException(nameof(FastTextDetector), "This instance has already been disposed");
+                if (_disposed)
+                {
+                    throw new ObjectDisposedException(nameof(FastTextDetector), "This instance has already been disposed");
+                }
+            }
+        }
+
+        private IntPtr AcquireDetector()
+        {
+            lock (_lifetimeLock)
+            {
+                if (_disposed)
+                {
+                    throw new ObjectDisposedException(nameof(FastTextDetector), "This instance has already been disposed");
+                }
+
+                _activeOperations++;
+                return _detector;
+            }
+        }
+
+        private void ReleaseDetector()
+        {
+            lock (_lifetimeLock)
+            {
+                _activeOperations--;
+                if (_activeOperations == 0)
+                {
+                    Monitor.PulseAll(_lifetimeLock);
+                }
             }
         }
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!_disposed)
+            IntPtr detector;
+
+            lock (_lifetimeLock)
             {
+                if (_disposed)
+                {
+                    return;
+                }
+
+                _disposed = true;
+                while (_activeOperations > 0)
+                {
+                    Monitor.Wait(_lifetimeLock);
+                }
+
                 if (disposing)
                 {
                     // Dispose managed resources if any
                 }
 
-                if (_detector != IntPtr.Zero)
-                {
-                    try
-                    {
-                        _semaphore.Wait();
+                detector = _detector;
+                _detector = IntPtr.Zero;
+            }
 
-                        if (_detector != IntPtr.Zero)
-                        {
-                            FastTextDetectorWrapper.DestroyFastText(_detector);
-                            _detector = IntPtr.Zero;
-                        }
-                    }
-                    finally
-                    {
-                        _semaphore.Release();
-                    }
-                }
-
-                _disposed = true;
+            if (detector != IntPtr.Zero)
+            {
+                FastTextDetectorWrapper.DestroyFastText(detector);
             }
         }
 
@@ -287,7 +358,18 @@ namespace Panlingo.LanguageIdentification.FastText
 
         ~FastTextDetector()
         {
-            Dispose(false);
+            try
+            {
+                Dispose(false);
+            }
+            catch
+            {
+            }
+        }
+
+        private static byte[] EncodeText(string text)
+        {
+            return text is null ? Array.Empty<byte>() : Encoding.UTF8.GetBytes(text);
         }
     }
 }

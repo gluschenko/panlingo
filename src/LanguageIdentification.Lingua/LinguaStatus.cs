@@ -6,5 +6,7 @@
         DetectFailure = 1,
         BadTextPtr = 2,
         BadOutputPtr = 3,
+        BadDetectorPtr = 4,
+        BadEnumValue = 5,
     }
 }

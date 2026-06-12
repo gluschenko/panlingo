@@ -9,7 +9,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe.Internal
         [DllImport(MediaPipeNativeLibrary.Name, EntryPoint = "language_detector_create", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr CreateLanguageDetector(
             ref LanguageDetectorOptions options,
-            out IntPtr errorMessage
+            IntPtr errorMessage
         );
 
         [DllImport(MediaPipeNativeLibrary.Name, EntryPoint = "language_detector_detect", CallingConvention = CallingConvention.Cdecl)]
@@ -17,7 +17,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe.Internal
             IntPtr handle,
             [MarshalAs(UnmanagedType.LPUTF8Str)] string text,
             ref LanguageDetectorResult result,
-            out IntPtr errorMessage
+            IntPtr errorMessage
         );
 
         [DllImport(MediaPipeNativeLibrary.Name, EntryPoint = "language_detector_close_result", CallingConvention = CallingConvention.Cdecl)]
@@ -26,7 +26,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe.Internal
         [DllImport(MediaPipeNativeLibrary.Name, EntryPoint = "language_detector_close", CallingConvention = CallingConvention.Cdecl)]
         public static extern int FreeLanguageDetector(
             IntPtr handle,
-            out IntPtr errorMessage
+            IntPtr errorMessage
         );
     }
 
@@ -67,7 +67,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe.Internal
 
         public readonly uint ModelAssetBufferCount;
 
-        [MarshalAs(UnmanagedType.LPStr)]
+        [MarshalAs(UnmanagedType.LPUTF8Str)]
         public readonly string? ModelAssetPath;
 
         public BaseOptions(

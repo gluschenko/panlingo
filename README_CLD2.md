@@ -20,6 +20,10 @@ Welcome to **Panlingo.LanguageIdentification.CLD2**, a .NET wrapper for the Comp
 :x: — No support |
 :construction: — Under research
 
+## Native model version
+
+The native CLD2 sources are pinned to commit [`b56fa78a2fe44ac2851bae5bf4f4693a0644da7b`](https://github.com/CLD2Owners/cld2/commit/b56fa78a2fe44ac2851bae5bf4f4693a0644da7b).
+
 ## Installation
 
 To integrate the CLD2 functionality, you need to add this NuGet package to your project:
@@ -166,7 +170,7 @@ If you are exploring other options, here are some alternatives to consider:
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE) © 2024–2025 Alexander Gluschenko.
+This project is licensed under the [MIT License](./LICENSE) © 2024–2026 Alexander Gluschenko.
 
 Includes software from the following project(s):
 - [CLD2](https://github.com/CLD2Owners/cld2) — © 2013 Google Inc., licensed under Apache-2.0  

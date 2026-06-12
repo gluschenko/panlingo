@@ -20,6 +20,10 @@ Welcome to **Panlingo.LanguageIdentification.Lingua**, a .NET wrapper for the Li
 :x: — No support |
 :construction: — Under research
 
+## Native model version
+
+This package uses the Rust [`lingua` crate version 1.6.2](https://crates.io/crates/lingua/1.6.2).
+
 ## Installation
 
 To integrate the Lingua functionality, follow these steps:
@@ -174,7 +178,7 @@ If you are exploring other options, here are some alternatives to consider:
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE) © 2024–2025 Alexander Gluschenko.
+This project is licensed under the [MIT License](./LICENSE) © 2024–2026 Alexander Gluschenko.
 
 Includes software from the following project(s):
 - [Lingua](https://github.com/pemistahl/lingua-rs) — © 2020–2023 Peter M. Stahl, licensed under Apache-2.0  

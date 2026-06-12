@@ -20,6 +20,10 @@ Welcome to **Panlingo.LanguageIdentification.CLD3**, a .NET wrapper for the Comp
 :x: — No support |
 :construction: — Under research
 
+## Native model version
+
+The native CLD3 sources are pinned to commit [`b48dc46512566f5a2d41118c8c1116c4f96dc661`](https://github.com/google/cld3/commit/b48dc46512566f5a2d41118c8c1116c4f96dc661).
+
 ## Installation
 
 To integrate the CLD3 functionality, follow these steps:
@@ -198,7 +202,7 @@ zu          | Zulu            | Latin
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE) © 2024–2025 Alexander Gluschenko.
+This project is licensed under the [MIT License](./LICENSE) © 2024–2026 Alexander Gluschenko.
 
 Includes software from the following project(s):
 - [CLD3](https://github.com/google/cld3) — © 2016 Google Inc., licensed under Apache-2.0  

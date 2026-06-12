@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
-    <Version>0.7.2</Version>
+    <Version>0.8.0</Version>
     <PackageId>Panlingo.LanguageCode</PackageId>
     <AssemblyName>Panlingo.LanguageCode</AssemblyName>
     <RootNamespace>Panlingo.LanguageCode</RootNamespace>
@@ -10,17 +10,10 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>Alexander Gluschenko © 2025</Copyright>
+    <Copyright>Alexander Gluschenko © 2026</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>iso iso639 language-code</PackageTags>
+    <PackageTags>panlingo language-code language-codes language-tag language-tags iso iso-639 iso639 iso639-1 iso639-2 iso639-3 alpha2 alpha3 ietf bcp47 locale locales localization globalization i18n multilingual language-normalization language-names dotnet csharp net</PackageTags>
     <PackageReadmeFile>README_LANGUAGE_CODE.md</PackageReadmeFile>
-    <PackageReleaseNotes>
-0.1.2:
-- "bh" is deprecated
-    
-0.0.0.1:
-- Initial release
-    </PackageReleaseNotes>
     <Description>
       Helper library for ISO language codes (ISO 639-1, ISO 639-2, ISO 639-3)
     </Description>
@@ -71,3 +64,4 @@
   </ItemGroup>
 
 </Project>
+

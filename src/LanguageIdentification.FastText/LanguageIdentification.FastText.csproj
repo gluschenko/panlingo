@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
-    <Version>0.7.2</Version>
+    <Version>0.8.0</Version>
     <PackageId>Panlingo.LanguageIdentification.FastText</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.FastText</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.FastText</RootNamespace>
@@ -10,26 +10,10 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>© 2025 Alexander Gluschenko; © 2016 Meta Platforms, Inc.</Copyright>
+    <Copyright>© 2026 Alexander Gluschenko; © 2016 Meta Platforms, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>nlp lid language-identification language-detection fasttext</PackageTags>
+    <PackageTags>panlingo nlp natural-language-processing lid language-identification language-detection language-recognition language-classification text-classification multilingual i18n localization globalization computational-linguistics machine-learning dotnet csharp net fasttext facebook fair model custom-model offline native-wrapper</PackageTags>
     <PackageReadmeFile>README_FASTTEXT.md</PackageReadmeFile>
-    <PackageReleaseNotes>
-0.7.0
-- Windows and Linux: ARM64 support      
-      
-0.6.1
-- Windows: static linking of Visual C++ Runtime
-
-0.1.0.0
-- Windows and MacOS support
-
-0.0.0.21:
-- Default FastText model is included in NuGet package
-
-0.0.0.10:
-- Initial release
-    </PackageReleaseNotes>
     <Description>
       This is a .NET wrapper for the FastText library by Facebook AI Research (FAIR).
       
@@ -64,3 +48,4 @@
   </ItemGroup>
 
 </Project>
+

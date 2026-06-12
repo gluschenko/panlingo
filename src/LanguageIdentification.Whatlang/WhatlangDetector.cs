@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Runtime.InteropServices;
-using System.Text;
 using Panlingo.LanguageIdentification.Whatlang.Internal;
 using Panlingo.LanguageIdentification.Whatlang.Native;
 
@@ -14,12 +13,13 @@ namespace Panlingo.LanguageIdentification.Whatlang
     /// using var whatlang = new WhatlangDetector();
     /// var prediction = whatlang.PredictLanguage("Привіт, як справи?");
     /// </code>
-    /// 
+    ///
     /// <para>The using-operator is required to correctly remove unmanaged resources from memory after use.</para>
     /// </summary>
     public class WhatlangDetector : IDisposable
     {
         private readonly Lazy<ImmutableHashSet<WhatlangLanguage>> _labels;
+        private bool _disposed = false;
 
         /// <summary>
         /// <para>Creates an instance for <see cref="WhatlangDetector"/>.</para>
@@ -28,6 +28,11 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <exception cref="NotSupportedException"></exception>
         public WhatlangDetector()
         {
+            NativePackageVersionGuard.EnsureMatches(
+                typeof(WhatlangDetector).Assembly,
+                typeof(WhatlangNativeLibrary).Assembly
+            );
+
             if (!IsSupported())
             {
                 throw new NotSupportedException(
@@ -60,8 +65,11 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <exception cref="WhatlangDetectorException"></exception>
         public WhatlangPrediction? PredictLanguage(string text)
         {
+            CheckDisposed();
+            var textBytes = WhatlangDetectorWrapper.EncodeText(text);
             var status = WhatlangDetectorWrapper.WhatlangDetect(
-                text: text,
+                text: textBytes,
+                textLength: (UIntPtr)textBytes.Length,
                 result: out var result
             );
 
@@ -85,8 +93,11 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <exception cref="WhatlangDetectorException"></exception>
         public WhatlangScript? PredictScript(string text)
         {
+            CheckDisposed();
+            var textBytes = WhatlangDetectorWrapper.EncodeText(text);
             var status = WhatlangDetectorWrapper.WhatlangDetectScript(
-                text: text,
+                text: textBytes,
+                textLength: (UIntPtr)textBytes.Length,
                 result: out var result
             );
 
@@ -111,23 +122,9 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <exception cref="WhatlangDetectorException"></exception>
         public string GetLanguageCode(WhatlangLanguage language)
         {
-            var stringBuilder = new StringBuilder(100);
-
-            try
-            {
-                var code = WhatlangDetectorWrapper.WhatlangLangCode(language, stringBuilder, (UIntPtr)stringBuilder.Capacity);
-                if (code < 0)
-                {
-                    throw new WhatlangDetectorException($"Language code '{language}' is not found");
-                }
-
-                var result = stringBuilder.ToString();
-                return result;
-            }
-            finally
-            {
-                stringBuilder.Clear();
-            }
+            CheckDisposed();
+            ValidateLanguage(language);
+            return WhatlangDetectorWrapper.WhatlangLangCode(language);
         }
 
         /// <summary>
@@ -138,23 +135,9 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <exception cref="WhatlangDetectorException"></exception>
         public string GetLanguageName(WhatlangLanguage language)
         {
-            var stringBuilder = new StringBuilder(100);
-
-            try
-            {
-                var code = WhatlangDetectorWrapper.WhatlangLangName(language, stringBuilder, (UIntPtr)stringBuilder.Capacity);
-                if (code < 0)
-                {
-                    throw new WhatlangDetectorException($"Language code '{language}' is not found");
-                }
-
-                var result = stringBuilder.ToString();
-                return result;
-            }
-            finally
-            {
-                stringBuilder.Clear();
-            }
+            CheckDisposed();
+            ValidateLanguage(language);
+            return WhatlangDetectorWrapper.WhatlangLangName(language);
         }
 
         /// <summary>
@@ -165,23 +148,13 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <exception cref="WhatlangDetectorException"></exception>
         public string GetScriptName(WhatlangScript script)
         {
-            var stringBuilder = new StringBuilder(100);
-
-            try
+            CheckDisposed();
+            if (!Enum.IsDefined(typeof(WhatlangScript), script))
             {
-                var code = WhatlangDetectorWrapper.WhatlangScriptName(script, stringBuilder, (UIntPtr)stringBuilder.Capacity);
-                if (code < 0)
-                {
-                    throw new WhatlangDetectorException($"Language script '{script}' is not found");
-                }
+                throw new WhatlangDetectorException($"Language script '{script}' is not found");
+            }
 
-                var result = stringBuilder.ToString();
-                return result;
-            }
-            finally
-            {
-                stringBuilder.Clear();
-            }
+            return WhatlangDetectorWrapper.WhatlangScriptName(script);
         }
 
         /// <summary>
@@ -192,23 +165,9 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <exception cref="WhatlangDetectorException"></exception>
         public string GetLanguageEnglishName(WhatlangLanguage language)
         {
-            var stringBuilder = new StringBuilder(100);
-
-            try
-            {
-                var code = WhatlangDetectorWrapper.WhatlangLangEngName(language, stringBuilder, (UIntPtr)stringBuilder.Capacity);
-                if (code < 0)
-                {
-                    throw new WhatlangDetectorException($"Language code '{language}' is not found");
-                }
-
-                var result = stringBuilder.ToString();
-                return result;
-            }
-            finally
-            {
-                stringBuilder.Clear();
-            }
+            CheckDisposed();
+            ValidateLanguage(language);
+            return WhatlangDetectorWrapper.WhatlangLangEngName(language);
         }
 
         /// <summary>
@@ -217,13 +176,30 @@ namespace Panlingo.LanguageIdentification.Whatlang
         /// <returns>Collection of strings</returns>
         public IEnumerable<WhatlangLanguage> GetLanguages()
         {
+            CheckDisposed();
             return _labels.Value;
         }
 
         public void Dispose()
         {
+            _disposed = true;
             GC.SuppressFinalize(this);
         }
-    }
 
+        private void CheckDisposed()
+        {
+            if (_disposed)
+            {
+                throw new ObjectDisposedException(nameof(WhatlangDetector), "This instance has already been disposed");
+            }
+        }
+
+        private static void ValidateLanguage(WhatlangLanguage language)
+        {
+            if (!Enum.IsDefined(typeof(WhatlangLanguage), language))
+            {
+                throw new WhatlangDetectorException($"Language code '{language}' is not found");
+            }
+        }
+    }
 }

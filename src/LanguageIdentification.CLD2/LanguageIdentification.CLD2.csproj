@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
-    <Version>0.7.2</Version>
+    <Version>0.8.0</Version>
     <PackageId>Panlingo.LanguageIdentification.CLD2</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.CLD2</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.CLD2</RootNamespace>
@@ -10,26 +10,10 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Alexander Gluschenko</Authors>
-    <Copyright>© 2025 Alexander Gluschenko; © 2013 Google, Inc.</Copyright>
+    <Copyright>© 2026 Alexander Gluschenko; © 2013 Google, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>nlp lid language-identification language-detection cld2</PackageTags>
+    <PackageTags>panlingo nlp natural-language-processing lid language-identification language-detection language-recognition language-classification text-classification multilingual i18n localization globalization computational-linguistics dotnet csharp net cld2 compact-language-detector google offline native-wrapper</PackageTags>
     <PackageReadmeFile>README_CLD2.md</PackageReadmeFile>
-    <PackageReleaseNotes>
-0.7.0
-- Windows and Linux: ARM64 support      
-
-0.6.1
-- Windows: static linking of Visual C++ Runtime
-      
-0.4.0.0
-- Add GetLanguages method
-      
-0.1.0.0
-- Windows and MacOS support
-      
-0.0.0.1
-- Initial release
-    </PackageReleaseNotes>
     <Description>
       This is a .NET wrapper for the Compact Language Detector (CLD2) library by Google Inc.
 
@@ -63,3 +47,4 @@
   </ItemGroup>
 
 </Project>
+

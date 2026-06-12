@@ -20,6 +20,10 @@ Welcome to **Panlingo.LanguageIdentification.Whatlang**, a .NET wrapper for the 
 :x: — No support |
 :construction: — Under research
 
+## Native model version
+
+This package uses the Rust [`whatlang` crate version 0.16.4](https://crates.io/crates/whatlang/0.16.4).
+
 ## Installation
 
 To integrate the Whatlang functionality, follow these steps:
@@ -158,7 +162,7 @@ class Program
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE) © 2024–2025 Alexander Gluschenko.
+This project is licensed under the [MIT License](./LICENSE) © 2024–2026 Alexander Gluschenko.
 
 Includes software from the following project(s):
 - [Whatlang](https://github.com/greyblake/whatlang-rs) — © 2017 Serhii Potapov and others, licensed under MIT

@@ -5,6 +5,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Panlingo.LanguageIdentification.MediaPipe.Internal;
 using Panlingo.LanguageIdentification.MediaPipe.Native;
 
@@ -26,9 +27,12 @@ namespace Panlingo.LanguageIdentification.MediaPipe
     {
         private readonly MediaPipeOptions _options;
         private readonly Lazy<ImmutableHashSet<string>> _labels;
+        private readonly byte[]? _modelData;
 
         private IntPtr _detector;
         private bool _disposed = false;
+        private int _activeOperations = 0;
+        private readonly object _lifetimeLock = new object();
 
         private const string LABEL_FILE_NAME = "labels.txt";
 
@@ -39,6 +43,11 @@ namespace Panlingo.LanguageIdentification.MediaPipe
         /// <exception cref="NotSupportedException"></exception>
         public MediaPipeDetector(MediaPipeOptions options)
         {
+            NativePackageVersionGuard.EnsureMatches(
+                typeof(MediaPipeDetector).Assembly,
+                typeof(MediaPipeNativeLibrary).Assembly
+            );
+
             if (!IsSupported())
             {
                 throw new NotSupportedException(
@@ -57,14 +66,16 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                 using var memoryStream = new MemoryStream();
                 options.ModelStream.CopyTo(memoryStream);
 
-                var modelData = memoryStream.ToArray();
+                _modelData = memoryStream.ToArray();
+                var modelData = _modelData;
                 modelDataHandle = GCHandle.Alloc(modelData, GCHandleType.Pinned);
                 modelAssetBuffer = modelDataHandle.Value.AddrOfPinnedObject();
                 modelAssetBufferCount = (uint)modelData.Length;
             }
             else if (options.ModelData is not null)
             {
-                var modelData = options.ModelData;
+                _modelData = options.ModelData;
+                var modelData = _modelData;
                 modelDataHandle = GCHandle.Alloc(modelData, GCHandleType.Pinned);
                 modelAssetBuffer = modelDataHandle.Value.AddrOfPinnedObject();
                 modelAssetBufferCount = (uint)modelData.Length;
@@ -134,9 +145,11 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                     )
                 );
 
-                _detector = MediaPipeDetectorWrapper.CreateLanguageDetector(ref nativeOptions, out var errorMessage);
-
-                CheckError(errorMessage);
+                _detector = MediaPipeDetectorWrapper.CreateLanguageDetector(ref nativeOptions, IntPtr.Zero);
+                if (_detector == IntPtr.Zero)
+                {
+                    throw new NativeLibraryException($"Failed to create {nameof(MediaPipeDetector)}");
+                }
             }
             finally
             {
@@ -155,35 +168,46 @@ namespace Panlingo.LanguageIdentification.MediaPipe
         public IEnumerable<MediaPipePrediction> PredictLanguages(string text)
         {
             CheckDisposed();
+            var detector = AcquireDetector();
 
             var nativeResult = new LanguageDetectorResult();
 
-            _ = MediaPipeDetectorWrapper.UseLanguageDetector(
-                handle: _detector,
-                text: text,
-                result: ref nativeResult,
-                errorMessage: out var errorMessage
-            );
-            CheckError(errorMessage);
-
             try
             {
-                var result = new LanguageDetectorPrediction[nativeResult.PredictionsCount];
-                var structSize = Marshal.SizeOf<LanguageDetectorPrediction>();
-
-                for (var i = 0; i < nativeResult.PredictionsCount; i++)
+                var status = MediaPipeDetectorWrapper.UseLanguageDetector(
+                    handle: detector,
+                    text: text ?? string.Empty,
+                    result: ref nativeResult,
+                    errorMessage: IntPtr.Zero
+                );
+                if (status != 0)
                 {
-                    result[i] = Marshal.PtrToStructure<LanguageDetectorPrediction>(nativeResult.Predictions + i * structSize);
+                    throw new NativeLibraryException($"Failed to run {nameof(MediaPipeDetector)}");
                 }
 
-                return result
-                    .OrderByDescending(x => x.Probability)
-                    .Select(x => new MediaPipePrediction(x))
-                    .ToArray();
+                try
+                {
+                    var result = new LanguageDetectorPrediction[nativeResult.PredictionsCount];
+                    var structSize = Marshal.SizeOf<LanguageDetectorPrediction>();
+
+                    for (var i = 0; i < nativeResult.PredictionsCount; i++)
+                    {
+                        result[i] = Marshal.PtrToStructure<LanguageDetectorPrediction>(nativeResult.Predictions + i * structSize);
+                    }
+
+                    return result
+                        .OrderByDescending(x => x.Probability)
+                        .Select(x => new MediaPipePrediction(x))
+                        .ToArray();
+                }
+                finally
+                {
+                    MediaPipeDetectorWrapper.FreeLanguageDetectorResult(ref nativeResult);
+                }
             }
             finally
             {
-                MediaPipeDetectorWrapper.FreeLanguageDetectorResult(ref nativeResult);
+                ReleaseDetector();
             }
         }
 
@@ -193,21 +217,18 @@ namespace Panlingo.LanguageIdentification.MediaPipe
         /// <returns>Collection of label strings</returns>
         public IEnumerable<string> GetLabels()
         {
+            CheckDisposed();
             return _labels.Value;
         }
 
         private byte[] ReadModelData()
         {
-            if (_options.ModelStream is not null)
+            if (_modelData is not null)
             {
-                using var memoryStream = new MemoryStream();
-                return memoryStream.ToArray();
+                return _modelData;
             }
-            else if (_options.ModelData is not null)
-            {
-                return _options.ModelData;
-            }
-            else if (_options.ModelPath is not null)
+
+            if (_options.ModelPath is not null)
             {
                 if (!File.Exists(_options.ModelPath))
                 {
@@ -222,50 +243,72 @@ namespace Panlingo.LanguageIdentification.MediaPipe
             }
         }
 
-        private static void CheckError(IntPtr errorPtr)
+        private void CheckDisposed()
         {
-            if (errorPtr != IntPtr.Zero)
+            lock (_lifetimeLock)
             {
-                ThrowNativeException(errorPtr);
+                if (_disposed)
+                {
+                    throw new ObjectDisposedException(nameof(MediaPipeDetector), "This instance has already been disposed");
+                }
             }
         }
 
-        private static void ThrowNativeException(IntPtr errorPtr)
+        private IntPtr AcquireDetector()
         {
-            var error = DecodeString(errorPtr);
-            throw new NativeLibraryException(error);
-        }
-
-        private static string DecodeString(IntPtr ptr)
-        {
-            return Marshal.PtrToStringUTF8(ptr) ?? throw new NullReferenceException("Failed to decode non-nullable string");
-        }
-
-        private void CheckDisposed()
-        {
-            if (_disposed)
+            lock (_lifetimeLock)
             {
-                throw new ObjectDisposedException(nameof(MediaPipeDetector), "This instance has already been disposed");
+                if (_disposed)
+                {
+                    throw new ObjectDisposedException(nameof(MediaPipeDetector), "This instance has already been disposed");
+                }
+
+                _activeOperations++;
+                return _detector;
+            }
+        }
+
+        private void ReleaseDetector()
+        {
+            lock (_lifetimeLock)
+            {
+                _activeOperations--;
+                if (_activeOperations == 0)
+                {
+                    Monitor.PulseAll(_lifetimeLock);
+                }
             }
         }
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!_disposed)
+            IntPtr detector;
+
+            lock (_lifetimeLock)
             {
+                if (_disposed)
+                {
+                    return;
+                }
+
+                _disposed = true;
+                while (_activeOperations > 0)
+                {
+                    Monitor.Wait(_lifetimeLock);
+                }
+
                 if (disposing)
                 {
                     // Dispose managed resources if any
                 }
 
-                if (_detector != IntPtr.Zero)
-                {
-                    _ = MediaPipeDetectorWrapper.FreeLanguageDetector(_detector, out var errorMessage);
-                    _detector = IntPtr.Zero;
-                    CheckError(errorMessage);
-                }
+                detector = _detector;
+                _detector = IntPtr.Zero;
+            }
 
-                _disposed = true;
+            if (detector != IntPtr.Zero)
+            {
+                _ = MediaPipeDetectorWrapper.FreeLanguageDetector(detector, IntPtr.Zero);
             }
         }
 
@@ -277,7 +320,13 @@ namespace Panlingo.LanguageIdentification.MediaPipe
 
         ~MediaPipeDetector()
         {
-            Dispose(false);
+            try
+            {
+                Dispose(false);
+            }
+            catch
+            {
+            }
         }
     }
 }
