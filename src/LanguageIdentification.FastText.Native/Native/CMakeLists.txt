@@ -10,7 +10,8 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -pthread")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -pthread -fno-rtti -lpthread")
+    # FastText uses std::dynamic_pointer_cast, so RTTI must remain enabled.
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -pthread -lpthread")
     set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -funroll-loops -O3")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -funroll-loops -O3")
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
