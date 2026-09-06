@@ -48,7 +48,7 @@ cd "$workspace"
 
 zx ./monkey-patch.mjs
 
-bazel build -c opt \
+bazel build -c opt --compilation_mode=opt \
     --copt=-DHAVE_FDOPEN \
     --linkopt=-s --strip=always \
     --define=MEDIAPIPE_DISABLE_GPU=1 \
@@ -56,7 +56,10 @@ bazel build -c opt \
     --sandbox_debug --verbose_failures \
     //mediapipe/tasks/c/text/language_detector:liblanguage_detector.dylib
 
-cp ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.dylib ../../libmediapipe_language_detector.$ARCH.dylib
+artifact=./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.dylib
+test -s "$artifact"
+echo "Verified MediaPipe artifact from Bazel compilation_mode=opt: $artifact"
+cp "$artifact" ../../libmediapipe_language_detector.$ARCH.dylib
 
 cd ../..
 rm -rf "$workspace"
