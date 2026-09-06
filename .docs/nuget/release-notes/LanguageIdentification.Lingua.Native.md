@@ -1,3 +1,8 @@
+0.8.1
+- Improve performance and reduce package size
+- Improve build consistency and release reliability
+
+
 0.8.0
 - Harden native Lingua bindings with explicit input lengths and argument validation
 - Use stable byte-sized language values across the FFI boundary

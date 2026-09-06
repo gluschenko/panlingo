@@ -1,3 +1,8 @@
+0.8.1
+- Improve performance and reduce package size
+- Improve build consistency and release reliability
+
+
 0.8.0
 - Harden native Whatlang bindings with explicit input lengths and argument validation
 - Use stable byte-sized language and script values across the FFI boundary

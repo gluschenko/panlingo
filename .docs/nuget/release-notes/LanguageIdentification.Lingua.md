@@ -1,3 +1,7 @@
+0.8.1
+- Improve performance, compatibility, and release reliability
+
+
 0.8.0
 - Add managed/native package version validation at detector builder startup
 - Improve UTF-8 text handling by passing explicit byte lengths to the native layer

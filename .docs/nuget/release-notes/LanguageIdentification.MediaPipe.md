@@ -1,3 +1,7 @@
+0.8.1
+- Improve performance, compatibility, and release reliability
+
+
 0.8.0
 - Add managed/native package version validation at detector startup
 - Preserve in-memory model data for label loading and detector setup
