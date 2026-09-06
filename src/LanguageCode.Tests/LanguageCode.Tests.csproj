@@ -33,6 +33,7 @@
 
   <ItemGroup Condition="'$(Configuration)' != 'CI'">
     <ProjectReference Include="..\LanguageCode\LanguageCode.csproj" />
+    <ProjectReference Include="..\LanguageCode.Models\LanguageCode.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'CI'">

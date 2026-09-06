@@ -40,11 +40,13 @@ cd build
 
 # Build for Linux
 rm -rf *
-cmake ..
-make -j $(nproc) # make
+cmake -DCMAKE_BUILD_TYPE=Release ..
+cmake --build . --config Release --parallel --verbose
 
 ./language_identifier_main           # run tests
 ./language_identifier_features_test  # run tests
+
+strip --strip-unneeded libcld3.so
 
 ls -R
 
@@ -54,4 +56,3 @@ cp libcld3.so ../../../libcld3.$ARCH.so
 # Clean up
 rm -rf "$workspace"
 echo "Goodbye world";
-

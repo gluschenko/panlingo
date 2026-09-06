@@ -1,3 +1,9 @@
+0.8.1
+- Improve performance and reduce package size
+- Improve compatibility across supported platforms
+- Strengthen release packaging checks
+
+
 0.8.0
 - Harden native FastText bindings with explicit input lengths and argument validation
 - Improve native error reporting for invalid handles, model buffers, and prediction arguments

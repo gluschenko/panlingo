@@ -31,8 +31,10 @@ cd build
 
 # Build for Linux
 rm -rf *
-cmake ..
-make -j $(nproc) # make
+cmake -DCMAKE_BUILD_TYPE=Release ..
+cmake --build . --config Release --parallel --verbose
+
+strip --strip-unneeded libfasttext.so
 
 ls -R
 

@@ -43,13 +43,16 @@ Set-Location "build"
 
 # Build for Windows
 cmake .. -A $CMakeArch
-cmake --build .
+cmake --build . --config Release --parallel --verbose
 
 # List directory contents recursively
 Get-ChildItem -Recurse -Path .
 
 # Display shared library dependencies
-Copy-Item -Path ".\Debug\fasttext.dll" -Destination "..\..\..\fasttext.$ARCH.dll"
+if (-not (Test-Path ".\Release\fasttext.dll")) {
+    throw "Release build did not produce fasttext.dll"
+}
+Copy-Item -Path ".\Release\fasttext.dll" -Destination "..\..\..\fasttext.$ARCH.dll"
 
 # List directory contents recursively
 Get-ChildItem -Recurse -Path .

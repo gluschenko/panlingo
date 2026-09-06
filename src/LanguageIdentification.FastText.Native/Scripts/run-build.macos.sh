@@ -33,8 +33,10 @@ cd build
 
 echo "Build for MacOS on $ARCH";
 rm -rf *
-cmake -DCMAKE_OSX_ARCHITECTURES=$ARCH ..
-make -j $(sysctl -n hw.logicalcpu) 
+cmake -DCMAKE_OSX_ARCHITECTURES=$ARCH -DCMAKE_BUILD_TYPE=Release ..
+cmake --build . --config Release --parallel --verbose
+
+strip -x libfasttext.dylib
 
 ls -R
 

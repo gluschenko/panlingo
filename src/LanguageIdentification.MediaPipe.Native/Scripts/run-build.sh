@@ -33,18 +33,20 @@ npm install -g zx
 
 zx ./monkey-patch.mjs
 
-bazel build -c opt \
+bazel build -c opt --compilation_mode=opt \
     --linkopt -s --strip always \
     --define MEDIAPIPE_DISABLE_GPU=1 \
     --define='absl=0' \
     --sandbox_debug --verbose_failures \
     //mediapipe/tasks/c/text/language_detector:liblanguage_detector.so
 
-cp ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.so ../../libmediapipe_language_detector.$ARCH.so
+artifact=./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.so
+test -s "$artifact"
+echo "Verified MediaPipe artifact from Bazel compilation_mode=opt: $artifact"
+cp "$artifact" ../../libmediapipe_language_detector.$ARCH.so
 cd ..
 cd ..
 rm -rf "$workspace"
 ldd libmediapipe_language_detector.$ARCH.so
 
 echo "Goodbye world";
-

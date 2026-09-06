@@ -9,12 +9,16 @@ set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -pthread -funroll-loops -O3")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -pthread -funroll-loops -O3")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti -lpthread")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -pthread")
+    # FastText uses std::dynamic_pointer_cast, so RTTI must remain enabled.
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -pthread -lpthread")
+    set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -funroll-loops -O3")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -funroll-loops -O3")
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -pthread -funroll-loops -O3")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -pthread -funroll-loops -O3")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -pthread")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -pthread")
+    set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -funroll-loops -O3")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -funroll-loops -O3")
 
     if (CMAKE_OSX_ARCHITECTURES MATCHES "arm64")
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -arch arm64 -target arm64-apple-macos11")
@@ -24,11 +28,31 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -arch x86_64 -target x86_64-apple-macos10.15")
     endif()
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc /W3 /O2 /fp:precise")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W3 /O2 /fp:precise")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc /W3 /fp:precise")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W3 /fp:precise")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2")
+    set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} /O2")
     # MSVC CRT linkage
     # https://cmake.org/cmake/help/latest/variable/CMAKE_MSVC_RUNTIME_LIBRARY.html#variable:CMAKE_MSVC_RUNTIME_LIBRARY
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" CACHE STRING "")
+endif()
+
+include(CheckIPOSupported)
+check_ipo_supported(
+    RESULT PANLINGO_IPO_SUPPORTED
+    OUTPUT PANLINGO_IPO_ERROR
+    LANGUAGES C CXX)
+if (PANLINGO_IPO_SUPPORTED)
+    set(CMAKE_INTERPROCEDURAL_OPTIMIZATION_RELEASE ON)
+    message(STATUS "Release IPO/LTO: enabled")
+else()
+    message(STATUS "Release IPO/LTO: unavailable (${PANLINGO_IPO_ERROR})")
+endif()
+
+set(PANLINGO_RELEASE_FLAGS
+    "${CMAKE_C_FLAGS} ${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS_RELEASE} ${CMAKE_CXX_FLAGS_RELEASE} ${CMAKE_SHARED_LINKER_FLAGS} ${CMAKE_SHARED_LINKER_FLAGS_RELEASE}")
+if (PANLINGO_RELEASE_FLAGS MATCHES "/Od|/RTC1|-O0|-m(arch|tune)=native|-ffast-math")
+    message(FATAL_ERROR "Unsupported non-portable or non-release compiler/linker flag detected: ${PANLINGO_RELEASE_FLAGS}")
 endif()
 
 set(CMAKE_MACOSX_RPATH 1)
@@ -37,8 +61,8 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 message(STATUS "CMake version: ${CMAKE_VERSION}")
 message(STATUS "C++ compiler: ${CMAKE_CXX_COMPILER_ID}")
 message(STATUS "C compiler: ${CMAKE_C_COMPILER_ID}")
-message(STATUS "CXX flags: ${CMAKE_CXX_FLAGS}")
-message(STATUS "C flags: ${CMAKE_C_FLAGS}")
+message(STATUS "CXX flags (Release): ${CMAKE_CXX_FLAGS_RELEASE}")
+message(STATUS "C flags (Release): ${CMAKE_C_FLAGS_RELEASE}")
 
 file(READ "${PROJECT_SOURCE_DIR}/fasttext/CMakeLists.txt" FASTTEXT_CMAKE)
 string(REGEX REPLACE
@@ -46,9 +70,11 @@ string(REGEX REPLACE
     "cmake_minimum_required(VERSION 3.15 FATAL_ERROR)"
     FASTTEXT_CMAKE "${FASTTEXT_CMAKE}"
 )
-string(REPLACE " -march=native" "" FASTTEXT_CMAKE "${FASTTEXT_CMAKE}")
-string(REPLACE "-march=native " "" FASTTEXT_CMAKE "${FASTTEXT_CMAKE}")
-string(REPLACE "-march=native" "" FASTTEXT_CMAKE "${FASTTEXT_CMAKE}")
+string(REGEX REPLACE "-m(arch|tune)=native" "" FASTTEXT_CMAKE "${FASTTEXT_CMAKE}")
+string(REPLACE "set(CMAKE_CXX_FLAGS " "set(CMAKE_CXX_FLAGS_RELEASE " FASTTEXT_CMAKE "${FASTTEXT_CMAKE}")
+if (FASTTEXT_CMAKE MATCHES "-m(arch|tune)=native")
+    message(FATAL_ERROR "FastText vendor CMakeLists.txt still contains a native CPU flag")
+endif()
 file(WRITE "${PROJECT_SOURCE_DIR}/fasttext/CMakeLists.txt" "${FASTTEXT_CMAKE}")
 
 add_subdirectory(fasttext EXCLUDE_FROM_ALL)

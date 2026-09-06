@@ -38,7 +38,13 @@ namespace Panlingo.LanguageCode
 
                 if (!string.IsNullOrWhiteSpace(item.Part2b))
                 {
-                    Languages[item.Part2b] = item;
+                    // ISO 639-2/T aliases may be emitted as separate, partial
+                    // descriptors. Never let one replace a complete ISO 639-3
+                    // descriptor that was indexed above.
+                    if (!Languages.ContainsKey(item.Part2b))
+                    {
+                        Languages[item.Part2b] = item;
+                    }
                 }
             }
 

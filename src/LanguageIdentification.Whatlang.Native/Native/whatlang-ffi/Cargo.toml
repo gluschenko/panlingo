@@ -11,4 +11,10 @@ libc = "0.2.157"
 name = "whatlang"
 crate-type = ["staticlib", "cdylib"]
 
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+debug = false
+strip = "symbols"
 

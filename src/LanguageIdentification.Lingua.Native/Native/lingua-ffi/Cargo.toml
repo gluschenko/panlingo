@@ -11,3 +11,9 @@ libc = "0.2.157"
 name = "lingua"
 crate-type = ["cdylib"]
 
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+debug = false
+strip = "symbols"

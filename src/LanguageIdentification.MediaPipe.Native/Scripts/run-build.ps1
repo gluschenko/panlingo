@@ -40,14 +40,22 @@ Set-Location $workspace
 
 zx ./monkey-patch.mjs
 
-bazel build -c opt `
+bazel build -c opt --compilation_mode=opt `
     --linkopt -s --strip always `
     --define MEDIAPIPE_DISABLE_GPU=1 `
     --define "absl=0" `
     --sandbox_debug --verbose_failures `
     //mediapipe/tasks/c/text/language_detector:liblanguage_detector.dll
 
-Copy-Item -Force ./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.dll ../../mediapipe_language_detector.$ARCH.dll
+$artifact = "./bazel-bin/mediapipe/tasks/c/text/language_detector/liblanguage_detector.dll"
+if (-not (Test-Path $artifact)) {
+    throw "Bazel opt build did not produce the MediaPipe artifact"
+}
+if ((Get-Item $artifact).Length -le 0) {
+    throw "Bazel opt build produced an empty MediaPipe artifact"
+}
+Write-Host "Verified MediaPipe artifact from Bazel compilation_mode=opt: $artifact"
+Copy-Item -Force $artifact ../../mediapipe_language_detector.$ARCH.dll
 
 Set-Location ../..
 Write-Host "Goodbye world"
