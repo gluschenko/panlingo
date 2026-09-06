@@ -1,5 +1,6 @@
 ﻿using System.Text;
-using HtmlAgilityPack;
+using System.Text.Json;
+using System.Xml.Linq;
 using Panlingo.LanguageCode.Models;
 
 namespace Panlingo.LanguageCode.Generator
@@ -27,12 +28,140 @@ namespace Panlingo.LanguageCode.Generator
     /// </summary>
     public class ISOExtractor
     {
+        private const string ISO_639_2_SEARCH_ENDPOINT = "https://id.loc.gov/search/";
+        private const string ISO_639_1_PAST_PRESENT_COLLECTION = "http://id.loc.gov/vocabulary/iso639-1/collection_PastPresentISO639-1Entries";
+        private const string ISO_639_2_PAST_PRESENT_COLLECTION = "http://id.loc.gov/vocabulary/iso639-2/collection_PastPresentISO639-2Entries";
+
         private readonly HttpClient _httpClient;
 
         public ISOExtractor(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
+
+        private async Task<string> GetStringAsync(string url, CancellationToken token)
+        {
+            using var response = await _httpClient.GetAsync(url, token);
+            var content = await response.Content.ReadAsStringAsync(token);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var challenge = response.Headers.TryGetValues("cf-mitigated", out var values) &&
+                    values.Any(x => x.Equals("challenge", StringComparison.OrdinalIgnoreCase));
+
+                throw new HttpRequestException(
+                    $"Request to '{url}' failed with {(int)response.StatusCode} ({response.ReasonPhrase})" +
+                    (challenge ? ". Cloudflare challenge detected." : "."));
+            }
+
+            return content;
+        }
+
+        private static IEnumerable<string> GetJsonLdValues(JsonElement resource, string propertyName)
+        {
+            if (!resource.TryGetProperty(propertyName, out var values) || values.ValueKind != JsonValueKind.Array)
+            {
+                return Enumerable.Empty<string>();
+            }
+
+            return values.EnumerateArray()
+                .Where(x => x.TryGetProperty("@value", out _))
+                .Select(x => x.GetProperty("@value").GetString() ?? string.Empty)
+                .Where(x => !string.IsNullOrWhiteSpace(x));
+        }
+
+        private static string? GetJsonLdLink(JsonElement resource, string propertyName)
+        {
+            if (!resource.TryGetProperty(propertyName, out var values) || values.ValueKind != JsonValueKind.Array)
+            {
+                return null;
+            }
+
+            return values.EnumerateArray()
+                .Where(x => x.TryGetProperty("@id", out _))
+                .Select(x => x.GetProperty("@id").GetString())
+                .FirstOrDefault(x => !string.IsNullOrWhiteSpace(x));
+        }
+
+        private static JsonElement? FindJsonLdResource(string json, string resourceUri)
+        {
+            using var document = JsonDocument.Parse(json);
+            var normalizedResourceUri = resourceUri.Replace("https://", "http://");
+
+            return document.RootElement.EnumerateArray()
+                .Where(x => x.TryGetProperty("@id", out _))
+                .Where(x => x.GetProperty("@id").GetString()?.Replace("https://", "http://") == normalizedResourceUri)
+                .Select(x => (JsonElement?)x.Clone())
+                .FirstOrDefault();
+        }
+
+        private async Task<IReadOnlyList<string>> GetDeprecatedUrisAsync(
+            string searchEndpoint,
+            string collectionUri,
+            CancellationToken token)
+        {
+            var typeQuery = Uri.EscapeDataString("rdftype:DeprecatedAuthority");
+            var collectionQuery = Uri.EscapeDataString($"memberOf:{collectionUri}");
+            var url = $"{searchEndpoint.TrimEnd('/')}/?q={typeQuery}&q={collectionQuery}&format=atom-xml";
+            var xml = await GetStringAsync(url, token);
+
+            var document = XDocument.Parse(xml);
+            XNamespace atom = "http://www.w3.org/2005/Atom";
+
+            return document.Root?
+                .Elements(atom + "entry")
+                .SelectMany(x => x.Elements(atom + "link"))
+                .Where(x => (string?)x.Attribute("type") == "application/json")
+                .Select(x => ((string?)x.Attribute("href") ?? string.Empty).Replace("http://", "https://"))
+                .Where(x => x.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+                .Select(x => x[..^5])
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .ToArray() ?? Array.Empty<string>();
+        }
+
+        private async Task<DeprecatedLanguageCode?> GetDeprecatedLanguageCodeAsync(
+            string resourceUri,
+            CancellationToken token)
+        {
+            var json = await GetStringAsync($"{resourceUri}.json", token);
+            var resource = FindJsonLdResource(json, resourceUri);
+
+            if (resource is null)
+            {
+                return null;
+            }
+
+            var code = GetJsonLdValues(resource.Value, "http://www.loc.gov/mads/rdf/v1#code").FirstOrDefault();
+
+            if (string.IsNullOrWhiteSpace(code))
+            {
+                return null;
+            }
+
+            var label = GetJsonLdValues(resource.Value, "http://www.loc.gov/mads/rdf/v1#deprecatedLabel")
+                .FirstOrDefault() ?? string.Empty;
+            var note = GetJsonLdValues(resource.Value, "http://www.loc.gov/mads/rdf/v1#historyNote")
+                .FirstOrDefault() ?? string.Empty;
+
+            return new DeprecatedLanguageCode(
+                code,
+                NormalizeText(label),
+                NormalizeText(note),
+                GetJsonLdLink(resource.Value, "http://www.loc.gov/mads/rdf/v1#useInstead"));
+        }
+
+        private static string NormalizeText(string value)
+        {
+            return string.Join(" ", value
+                .Replace(" | ", "; ")
+                .Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));
+        }
+
+        private sealed record DeprecatedLanguageCode(
+            string Code,
+            string EnglishName,
+            string Comment,
+            string? UseInstead);
 
         /// <summary>
         /// Source: https://www.loc.gov/standards/iso639-2/ascii_8bits.html
@@ -48,14 +177,13 @@ namespace Panlingo.LanguageCode.Generator
         /// </summary>
         /// <returns></returns>
         public async Task<IEnumerable<LanguageDescriptor>> ExtractLanguageCodesSetTwoAsync(
-            string baseUrl = "https://www.loc.gov/standards/iso639-2/ISO-639-2_8859-1.txt",
+            string baseUrl = "https://id.loc.gov/vocabulary/iso639-2.tsv",
             CancellationToken token = default
         )
         {
             var result = new List<LanguageDescriptor>();
 
-            var response = await _httpClient.GetStringAsync(baseUrl, token);
-            response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
+            var response = await GetStringAsync(baseUrl, token);
 
             var lines = response.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(x => x.Trim())
@@ -64,17 +192,22 @@ namespace Panlingo.LanguageCode.Generator
 
             foreach (var line in lines)
             {
-                var lineArray = line.Split(new[] { '|' });
+                var lineArray = line.Split(new[] { '\t' }, StringSplitOptions.None);
+
+                if (lineArray.Length < 3 || lineArray[0].Equals("URI", StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
 
                 result.Add(new LanguageDescriptor
                 {
-                    Id = lineArray.Length > 1 ? lineArray[1].Trim() : string.Empty,
-                    Part2b = lineArray.Length > 0 ? lineArray[0].Trim() : string.Empty,
-                    Part2t = lineArray.Length > 1 ? lineArray[1].Trim() : string.Empty,
-                    Part1 = lineArray.Length > 2 ? lineArray[2].Trim() : string.Empty,
+                    Id = string.Empty,
+                    Part2b = lineArray[1].Trim(),
+                    Part2t = string.Empty,
+                    Part1 = string.Empty,
                     Scope = string.Empty,
                     LanguageType = string.Empty,
-                    RefName = lineArray.Length > 3 ? lineArray[3].Trim() : string.Empty,
+                    RefName = NormalizeText(lineArray[2]),
                     Comment = string.Empty,
                 });
             }
@@ -109,8 +242,7 @@ namespace Panlingo.LanguageCode.Generator
         {
             var result = new List<LanguageDescriptor>();
 
-            var response = await _httpClient.GetStringAsync(baseUrl, token);
-            response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
+            var response = await GetStringAsync(baseUrl, token);
 
             var lines = response.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(x => x.Trim())
@@ -144,7 +276,7 @@ namespace Panlingo.LanguageCode.Generator
         }
 
         /// <summary>
-        /// Source: https://www.loc.gov/standards/iso639-2/php/code_changes.php
+        /// Source: https://id.loc.gov/search/
         /// 
         /// Deprecated codes are listed inside brackets [] with a hyphen preceding the code.
         /// 
@@ -153,104 +285,196 @@ namespace Panlingo.LanguageCode.Generator
         /// </summary>
         /// <param name="baseUrl"></param>
         /// <param name="token"></param>
+        /// <param name="currentLanguages">Current ISO 639-2/639-3 entries used to resolve replacement codes.</param>
         /// <returns></returns>
         public async Task<IEnumerable<LegacyLanguageAlphaTwoDescriptor>> ExtractLanguageCodeDeprecationsSetTwoAsync(
-            string baseUrl = "https://www.loc.gov/standards/iso639-2/php/code_changes.php",
-            CancellationToken token = default
+            string baseUrl = ISO_639_2_SEARCH_ENDPOINT,
+            CancellationToken token = default,
+            IEnumerable<LanguageDescriptor>? currentLanguages = null
         )
         {
-            KeyValuePair<string, string> ParseLanguagePair(string text)
+            static string GetCodeFromUri(string? uri)
             {
-                text = text.Replace("&nbsp;", "").Trim();
-
-                var actual = "";
-                var deprecated = "";
-
-                var words = text.Split(new[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
-
-                foreach (var word in words)
-                {
-                    if (word.StartsWith('-'))
-                    {
-                        deprecated = word.TrimStart('-').Trim();
-                    }
-                    else
-                    {
-                        actual = word.Trim();
-                    }
-                }
-
-                return new KeyValuePair<string, string>(actual, deprecated);
+                return string.IsNullOrWhiteSpace(uri) ? string.Empty : uri.TrimEnd('/').Split('/').Last();
             }
 
-            var result = new List<LegacyLanguageAlphaTwoDescriptor>();
+            var current = (currentLanguages ?? Enumerable.Empty<LanguageDescriptor>()).ToArray();
 
-            var response = await _httpClient.GetStringAsync(baseUrl, token);
-            response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
-
-            var htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(response);
-
-            var tables = htmlDoc.DocumentNode.Descendants("table");
-
-            var table = tables.ElementAt(1);
-
-            var rows = table.Descendants("tr");
-
-            foreach (var row in rows)
+            LanguageDescriptor? FindCurrentByCode(string code)
             {
-                var cells = row.Descendants("td");
-
-                var rowTexts = new List<string>();
-
-                foreach (var cell in cells)
+                if (string.IsNullOrWhiteSpace(code))
                 {
-                    var text = cell.InnerText.Trim();
-
-                    if (text == "&nbsp;")
-                    {
-                        text = string.Empty;
-                    }
-
-                    if (text == "(none)")
-                    {
-                        text = string.Empty;
-                    }
-
-                    rowTexts.Add(text);
+                    return null;
                 }
 
-                if (!rowTexts.Any())
+                return current.FirstOrDefault(x =>
+                    x.Id.Equals(code, StringComparison.OrdinalIgnoreCase) ||
+                    x.Part2b.Equals(code, StringComparison.OrdinalIgnoreCase) ||
+                    x.Part2t.Equals(code, StringComparison.OrdinalIgnoreCase));
+            }
+
+            LanguageDescriptor? FindCurrentByAlphaTwo(string code)
+            {
+                if (string.IsNullOrWhiteSpace(code))
+                {
+                    return null;
+                }
+
+                return current.FirstOrDefault(x => x.Part1.Equals(code, StringComparison.OrdinalIgnoreCase));
+            }
+
+            static string GetCurrentAlphaThree(LanguageDescriptor? descriptor)
+            {
+                return descriptor is null
+                    ? string.Empty
+                    : !string.IsNullOrWhiteSpace(descriptor.Id) ? descriptor.Id : descriptor.Part2b;
+            }
+
+            string? FindCodeInComment(string comment, Func<string, bool> predicate)
+            {
+                return comment
+                    .Split(new[] { ' ', '\t', '\r', '\n', ',', '.', ';', ':', '(', ')', '[', ']' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(x => x.Trim())
+                    .FirstOrDefault(x => predicate(x));
+            }
+
+            string? FindExplicitAlphaThreeReplacement(string comment)
+            {
+                const string marker = "three-letter identifier ";
+                var markerIndex = comment.IndexOf(marker, StringComparison.OrdinalIgnoreCase);
+
+                if (markerIndex < 0)
+                {
+                    return null;
+                }
+
+                var candidate = comment[(markerIndex + marker.Length)..]
+                    .Split(new[] { ' ', '\t', '\r', '\n', ',', '.', ';', ':', '(', ')', '[', ']' }, StringSplitOptions.RemoveEmptyEntries)
+                    .FirstOrDefault();
+
+                return candidate?.Length == 3 && FindCurrentByCode(candidate) is not null
+                    ? candidate
+                    : null;
+            }
+
+            async Task<IReadOnlyList<DeprecatedLanguageCode>> LoadDeprecatedCodesAsync(
+                string collectionUri)
+            {
+                var uris = await GetDeprecatedUrisAsync(baseUrl, collectionUri, token);
+                var codes = new List<DeprecatedLanguageCode>();
+
+                foreach (var uri in uris)
+                {
+                    var code = await GetDeprecatedLanguageCodeAsync(uri, token);
+
+                    if (code is not null)
+                    {
+                        codes.Add(code);
+                    }
+                }
+
+                return codes;
+            }
+
+            var alphaThreeDeprecated = await LoadDeprecatedCodesAsync(ISO_639_2_PAST_PRESENT_COLLECTION);
+            var alphaTwoDeprecated = await LoadDeprecatedCodesAsync(ISO_639_1_PAST_PRESENT_COLLECTION);
+            var alphaThreeResults = new List<LegacyLanguageAlphaTwoDescriptor>();
+
+            foreach (var deprecated in alphaThreeDeprecated)
+            {
+                var deprecatedCode = deprecated.Code;
+                var targetCode = GetCodeFromUri(deprecated.UseInstead);
+                var target = FindCurrentByCode(targetCode);
+
+                // MOL is a special case: LOC describes both deprecated identifiers and
+                // their replacements only in the history note, without useInstead.
+                if (deprecatedCode.Equals("mol", StringComparison.OrdinalIgnoreCase))
+                {
+                    var oldAlphaTwo = FindCodeInComment(
+                        deprecated.Comment,
+                        x => x.Length == 2 && alphaTwoDeprecated.Any(y => y.Code.Equals(x, StringComparison.OrdinalIgnoreCase)));
+
+                    alphaThreeResults.Add(new LegacyLanguageAlphaTwoDescriptor
+                    {
+                        CodeAlpha2 = string.Empty,
+                        CodeAlpha2Deprecated = oldAlphaTwo ?? string.Empty,
+                        CodeAlpha3 = string.Empty,
+                        CodeAlpha3Deprecated = deprecatedCode,
+                        CategoryOfChange = "Dep",
+                        EnglishName = deprecated.EnglishName,
+                        Comment = deprecated.Comment,
+                    });
+
+                    continue;
+                }
+
+                if (target is null)
                 {
                     continue;
                 }
 
-                var alpha2 = rowTexts[0];
-                var alpha3 = rowTexts[1];
-                var englishName = rowTexts[2];
-                var categoryOfChange = rowTexts[5];
-                var comment = rowTexts[6];
+                alphaThreeResults.Add(new LegacyLanguageAlphaTwoDescriptor
+                {
+                    CodeAlpha2 = target.Part1,
+                    CodeAlpha2Deprecated = string.Empty,
+                    CodeAlpha3 = GetCurrentAlphaThree(target),
+                    CodeAlpha3Deprecated = deprecatedCode,
+                    CategoryOfChange = "CC",
+                    EnglishName = deprecated.EnglishName,
+                    Comment = deprecated.Comment,
+                });
+            }
 
-                // We only need desrecations and code changes
-                if (!categoryOfChange.Equals("Dep", StringComparison.OrdinalIgnoreCase) &&
-                    !categoryOfChange.Equals("CC", StringComparison.OrdinalIgnoreCase))
+            var result = new List<LegacyLanguageAlphaTwoDescriptor>(alphaThreeResults);
+
+            foreach (var deprecated in alphaTwoDeprecated)
+            {
+                // MOL and MO are represented by one combined LOC change record.
+                if (deprecated.Code.Equals("mo", StringComparison.OrdinalIgnoreCase) &&
+                    alphaThreeResults.Any(x => x.CodeAlpha3Deprecated.Equals("mol", StringComparison.OrdinalIgnoreCase)))
                 {
                     continue;
                 }
 
-                var a = ParseLanguagePair(alpha2);
-                var b = ParseLanguagePair(alpha3);
+                var targetAlphaTwo = GetCodeFromUri(deprecated.UseInstead);
+                var target = FindCurrentByAlphaTwo(targetAlphaTwo);
+                var targetAlphaThree = GetCurrentAlphaThree(target);
+
+                if (target is null)
+                {
+                    targetAlphaThree = FindExplicitAlphaThreeReplacement(deprecated.Comment) ?? string.Empty;
+                    target = FindCurrentByCode(targetAlphaThree);
+                }
 
                 result.Add(new LegacyLanguageAlphaTwoDescriptor
                 {
-                    CodeAlpha2 = a.Key,
-                    CodeAlpha2Deprecated = a.Value,
-                    CodeAlpha3 = b.Key,
-                    CodeAlpha3Deprecated = b.Value,
-                    CategoryOfChange = categoryOfChange,
-                    EnglishName = englishName,
-                    Comment = comment,
+                    CodeAlpha2 = target?.Part1 ?? string.Empty,
+                    CodeAlpha2Deprecated = deprecated.Code,
+                    CodeAlpha3 = targetAlphaThree,
+                    CodeAlpha3Deprecated = string.Empty,
+                    CategoryOfChange = "Dep",
+                    EnglishName = deprecated.EnglishName,
+                    Comment = deprecated.Comment,
                 });
+
+                // LOC exposes the old alpha-2 record and the replacement link. The
+                // legacy change table also contains a separate current-code CC row
+                // when no alpha-3 code was deprecated alongside it.
+                if (!string.IsNullOrWhiteSpace(targetAlphaTwo) &&
+                    target is not null &&
+                    !alphaThreeResults.Any(x => x.CodeAlpha3.Equals(targetAlphaThree, StringComparison.OrdinalIgnoreCase)))
+                {
+                    result.Add(new LegacyLanguageAlphaTwoDescriptor
+                    {
+                        CodeAlpha2 = target.Part1,
+                        CodeAlpha2Deprecated = string.Empty,
+                        CodeAlpha3 = targetAlphaThree,
+                        CodeAlpha3Deprecated = string.Empty,
+                        CategoryOfChange = "CC",
+                        EnglishName = deprecated.EnglishName,
+                        Comment = string.Empty,
+                    });
+                }
             }
 
             return result;
@@ -274,8 +498,7 @@ namespace Panlingo.LanguageCode.Generator
         {
             var result = new List<MarcolanguageDescriptor>();
 
-            var response = await _httpClient.GetStringAsync(baseUrl, token);
-            response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
+            var response = await GetStringAsync(baseUrl, token);
 
             var lines = response.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(x => x.Trim())
@@ -325,8 +548,7 @@ namespace Panlingo.LanguageCode.Generator
         {
             var result = new List<LegacyLanguageAlphaThreeDescriptor>();
 
-            var response = await _httpClient.GetStringAsync(baseUrl, token);
-            response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
+            var response = await GetStringAsync(baseUrl, token);
 
             var lines = response.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(x => x.Trim())

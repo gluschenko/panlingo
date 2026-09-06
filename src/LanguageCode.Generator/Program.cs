@@ -6,7 +6,10 @@ namespace Panlingo.LanguageCode.Generator
     {
         static async Task Main(string[] args)
         {
-            var extractor = new ISOExtractor(new HttpClient());
+            using var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Panlingo.LanguageCode.Generator/1.0");
+
+            var extractor = new ISOExtractor(httpClient);
 
             var languageSet3 = await extractor.ExtractLanguageCodesSetThreeAsync();
             var languageSet2 = await extractor.ExtractLanguageCodesSetTwoAsync();
@@ -26,7 +29,8 @@ namespace Panlingo.LanguageCode.Generator
             {
                 LanguageDescriptorList = languageDescriptorList,
                 MarcolanguageDescriptorList = await extractor.ExtractMarcolanguagesAsync(),
-                LegacyLanguageAlphaTwoDescriptorList = await extractor.ExtractLanguageCodeDeprecationsSetTwoAsync(),
+                LegacyLanguageAlphaTwoDescriptorList = await extractor.ExtractLanguageCodeDeprecationsSetTwoAsync(
+                    currentLanguages: languageSet3.Concat(languageSet2)),
                 LegacyLanguageAlphaThreeDescriptorList = await extractor.ExtractLegacyLanguagesAsync(),
             };
 

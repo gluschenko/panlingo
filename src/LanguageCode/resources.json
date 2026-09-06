@@ -12167,7 +12167,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Ekai Chin",
+      "RefName": "Laoktu Chin",
       "Comment": ""
     },
     {
@@ -39927,7 +39927,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Eastern Magar",
+      "RefName": "Magar",
       "Comment": ""
     },
     {
@@ -42491,16 +42491,6 @@
       "Comment": ""
     },
     {
-      "Id": "mrd",
-      "Part2b": "",
-      "Part2t": "",
-      "Part1": "",
-      "Scope": "I",
-      "LanguageType": "L",
-      "RefName": "Western Magar",
-      "Comment": ""
-    },
-    {
       "Id": "mre",
       "Part2b": "",
       "Part2t": "",
@@ -42537,7 +42527,7 @@
       "Part1": "",
       "Scope": "I",
       "LanguageType": "L",
-      "RefName": "Mara Chin",
+      "RefName": "Mara",
       "Comment": ""
     },
     {
@@ -58438,16 +58428,6 @@
       "Scope": "I",
       "LanguageType": "L",
       "RefName": "Shilluk",
-      "Comment": ""
-    },
-    {
-      "Id": "shl",
-      "Part2b": "",
-      "Part2t": "",
-      "Part1": "",
-      "Scope": "I",
-      "LanguageType": "L",
-      "RefName": "Shendu",
       "Comment": ""
     },
     {
@@ -79412,6 +79392,16 @@
     },
     {
       "Id": "",
+      "Part2b": "bod",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Tibetan",
+      "Comment": ""
+    },
+    {
+      "Id": "",
       "Part2b": "btk",
       "Part2t": "",
       "Part1": "",
@@ -79448,6 +79438,16 @@
       "Scope": "",
       "LanguageType": "",
       "RefName": "Celtic languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "ces",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Czech",
       "Comment": ""
     },
     {
@@ -79512,12 +79512,32 @@
     },
     {
       "Id": "",
+      "Part2b": "cym",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Welsh",
+      "Comment": ""
+    },
+    {
+      "Id": "",
       "Part2b": "day",
       "Part2t": "",
       "Part1": "",
       "Scope": "",
       "LanguageType": "",
       "RefName": "Land Dayak languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "deu",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "German",
       "Comment": ""
     },
     {
@@ -79532,12 +79552,52 @@
     },
     {
       "Id": "",
+      "Part2b": "ell",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Modern Greek (1453-)",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "eus",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Basque",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "fas",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Persian",
+      "Comment": ""
+    },
+    {
+      "Id": "",
       "Part2b": "fiu",
       "Part2t": "",
       "Part1": "",
       "Scope": "",
       "LanguageType": "",
       "RefName": "Finno-Ugrian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "fra",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "French",
       "Comment": ""
     },
     {
@@ -79558,6 +79618,16 @@
       "Scope": "",
       "LanguageType": "",
       "RefName": "Himachali languages; Western Pahari languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "hye",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Armenian",
       "Comment": ""
     },
     {
@@ -79612,12 +79682,32 @@
     },
     {
       "Id": "",
+      "Part2b": "isl",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Icelandic",
+      "Comment": ""
+    },
+    {
+      "Id": "",
       "Part2b": "kar",
       "Part2t": "",
       "Part1": "",
       "Scope": "",
       "LanguageType": "",
       "RefName": "Karen languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "kat",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Georgian",
       "Comment": ""
     },
     {
@@ -79652,6 +79742,16 @@
     },
     {
       "Id": "",
+      "Part2b": "mkd",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Macedonian",
+      "Comment": ""
+    },
+    {
+      "Id": "",
       "Part2b": "mkh",
       "Part2t": "",
       "Part1": "",
@@ -79672,12 +79772,42 @@
     },
     {
       "Id": "",
+      "Part2b": "mri",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Maori",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "msa",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Malay (macrolanguage)",
+      "Comment": ""
+    },
+    {
+      "Id": "",
       "Part2b": "mun",
       "Part2t": "",
       "Part1": "",
       "Scope": "",
       "LanguageType": "",
       "RefName": "Munda languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "mya",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Burmese",
       "Comment": ""
     },
     {
@@ -79718,6 +79848,16 @@
       "Scope": "",
       "LanguageType": "",
       "RefName": "Niger-Kordofanian languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "nld",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Dutch; Flemish",
       "Comment": ""
     },
     {
@@ -79792,6 +79932,16 @@
     },
     {
       "Id": "",
+      "Part2b": "ron",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Romanian; Moldavian; Moldovan",
+      "Comment": ""
+    },
+    {
+      "Id": "",
       "Part2b": "sai",
       "Part2t": "",
       "Part1": "",
@@ -79862,6 +80012,16 @@
     },
     {
       "Id": "",
+      "Part2b": "slk",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Slovak",
+      "Comment": ""
+    },
+    {
+      "Id": "",
       "Part2b": "smi",
       "Part2t": "",
       "Part1": "",
@@ -79878,6 +80038,16 @@
       "Scope": "",
       "LanguageType": "",
       "RefName": "Songhai languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "sqi",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Albanian",
       "Comment": ""
     },
     {
@@ -79948,6 +80118,16 @@
       "Scope": "",
       "LanguageType": "",
       "RefName": "Yupik languages",
+      "Comment": ""
+    },
+    {
+      "Id": "",
+      "Part2b": "zho",
+      "Part2t": "",
+      "Part1": "",
+      "Scope": "",
+      "LanguageType": "",
+      "RefName": "Chinese",
       "Comment": ""
     },
     {
@@ -82260,13 +82440,13 @@
   ],
   "LegacyLanguageAlphaTwoDescriptorList": [
     {
-      "CodeAlpha2": "",
-      "CodeAlpha2Deprecated": "bh",
-      "CodeAlpha3": "bih",
-      "CodeAlpha3Deprecated": "",
-      "CategoryOfChange": "Dep",
-      "EnglishName": "Bihari languages",
-      "Comment": "Two-letter identifier bh deprecated in ISO 639-1; use of three-letter identifier bih for Bihari languages is favored."
+      "CodeAlpha2": "hr",
+      "CodeAlpha2Deprecated": "",
+      "CodeAlpha3": "hrv",
+      "CodeAlpha3Deprecated": "scr",
+      "CategoryOfChange": "CC",
+      "EnglishName": "Croatian",
+      "Comment": "ISO 639-2/B code deprecated in favor of ISO 639-2/T code"
     },
     {
       "CodeAlpha2": "",
@@ -82287,24 +82467,6 @@
       "Comment": "ISO 639-2/B code deprecated in favor of ISO 639-2/T code"
     },
     {
-      "CodeAlpha2": "hr",
-      "CodeAlpha2Deprecated": "",
-      "CodeAlpha3": "hrv",
-      "CodeAlpha3Deprecated": "scr",
-      "CategoryOfChange": "CC",
-      "EnglishName": "Croatian",
-      "Comment": "ISO 639-2/B code deprecated in favor of ISO 639-2/T code"
-    },
-    {
-      "CodeAlpha2": "jv",
-      "CodeAlpha2Deprecated": "jw",
-      "CodeAlpha3": "jav",
-      "CodeAlpha3Deprecated": "",
-      "CategoryOfChange": "Dep",
-      "EnglishName": "Javanese",
-      "Comment": "jw published in error; withdrawn in favor of jv."
-    },
-    {
       "CodeAlpha2": "jv",
       "CodeAlpha2Deprecated": "",
       "CodeAlpha3": "jav",
@@ -82314,13 +82476,22 @@
       "Comment": "jaw based on incorrect code; withdrawn in favor of jav."
     },
     {
-      "CodeAlpha2": "",
-      "CodeAlpha2Deprecated": "sh",
-      "CodeAlpha3": "",
+      "CodeAlpha2": "yi",
+      "CodeAlpha2Deprecated": "ji",
+      "CodeAlpha3": "yid",
       "CodeAlpha3Deprecated": "",
       "CategoryOfChange": "Dep",
-      "EnglishName": "Serbo-Croatian",
-      "Comment": "This  code was deprecated in 2000 because there were separate language codes for each individual language represented (Serbian, Croatian, and then Bosnian was added). It was published in a revision of ISO 639-1, but never was included in ISO 639-2. It is considered a macrolanguage (general name for a cluster of closely related individual languages) in ISO 639-3. Its deprecated status was reaffirmed by the ISO 639 JAC in 2005."
+      "EnglishName": "Yiddish",
+      "Comment": "Withdrawn"
+    },
+    {
+      "CodeAlpha2": "yi",
+      "CodeAlpha2Deprecated": "",
+      "CodeAlpha3": "yid",
+      "CodeAlpha3Deprecated": "",
+      "CategoryOfChange": "CC",
+      "EnglishName": "Yiddish",
+      "Comment": ""
     },
     {
       "CodeAlpha2": "he",
@@ -82341,40 +82512,49 @@
       "Comment": ""
     },
     {
-      "CodeAlpha2": "id",
-      "CodeAlpha2Deprecated": "in",
-      "CodeAlpha3": "ind",
+      "CodeAlpha2": "jv",
+      "CodeAlpha2Deprecated": "jw",
+      "CodeAlpha3": "jav",
       "CodeAlpha3Deprecated": "",
       "CategoryOfChange": "Dep",
-      "EnglishName": "Indonesian",
-      "Comment": "Withdrawn"
+      "EnglishName": "Javanese",
+      "Comment": "jw published in error; withdrawn in favor of jv."
+    },
+    {
+      "CodeAlpha2": "",
+      "CodeAlpha2Deprecated": "bh",
+      "CodeAlpha3": "bih",
+      "CodeAlpha3Deprecated": "",
+      "CategoryOfChange": "Dep",
+      "EnglishName": "Bihari languages",
+      "Comment": "Two-letter identifier bh deprecated in ISO 639-1; use of three-letter identifier bih for Bihari languages is favored."
     },
     {
       "CodeAlpha2": "id",
       "CodeAlpha2Deprecated": "in",
       "CodeAlpha3": "ind",
       "CodeAlpha3Deprecated": "",
-      "CategoryOfChange": "CC",
+      "CategoryOfChange": "Dep",
       "EnglishName": "Indonesian",
       "Comment": ""
     },
     {
-      "CodeAlpha2": "yi",
-      "CodeAlpha2Deprecated": "ji",
-      "CodeAlpha3": "yid",
-      "CodeAlpha3Deprecated": "",
-      "CategoryOfChange": "Dep",
-      "EnglishName": "Yiddish",
-      "Comment": "Withdrawn"
-    },
-    {
-      "CodeAlpha2": "yi",
+      "CodeAlpha2": "id",
       "CodeAlpha2Deprecated": "",
-      "CodeAlpha3": "yid",
+      "CodeAlpha3": "ind",
       "CodeAlpha3Deprecated": "",
       "CategoryOfChange": "CC",
-      "EnglishName": "Yiddish",
+      "EnglishName": "Indonesian",
       "Comment": ""
+    },
+    {
+      "CodeAlpha2": "",
+      "CodeAlpha2Deprecated": "sh",
+      "CodeAlpha3": "",
+      "CodeAlpha3Deprecated": "",
+      "CategoryOfChange": "Dep",
+      "EnglishName": "Serbo-Croatian",
+      "Comment": "This code was deprecated in 2000 because there were separate language codes for each individual language represented (Serbian, Croatian, and then Bosnian was added). It was published in a revision of ISO 639-1, but never was included in ISO 639-2. It is considered a macrolanguage (general name for a cluster of closely related individual languages) in ISO 639-3. Its deprecated status was reaffirmed by the ISO 639 JAC in 2005."
     }
   ],
   "LegacyLanguageAlphaThreeDescriptorList": [
@@ -86260,6 +86440,26 @@
       ],
       "RetRemedy": "",
       "Effective": "2025-10-15"
+    },
+    {
+      "Id": "mrd",
+      "RefName": "Western Magar",
+      "RetReason": "M",
+      "ChangeTo": [
+        "mgp"
+      ],
+      "RetRemedy": "",
+      "Effective": "2026-07-15"
+    },
+    {
+      "Id": "shl",
+      "RefName": "Shendu",
+      "RetReason": "D",
+      "ChangeTo": [
+        "mrh"
+      ],
+      "RetRemedy": "",
+      "Effective": "2026-07-15"
     }
   ]
 }

@@ -108,6 +108,41 @@ namespace Panlingo.LanguageCode.Tests
             Assert.Equal(target, code);
         }
 
+        [Fact]
+        public void EveryCurrentIso639ThreeCodeRemainsResolvable()
+        {
+            var currentCodes = ISOGeneratorResourceProvider.ISOGeneratorResources.LanguageDescriptorList
+                .Where(x => !string.IsNullOrWhiteSpace(x.Id));
+
+            foreach (var language in currentCodes)
+            {
+                Assert.Equal(language.Id, LanguageCodeHelper.GetThreeLetterISOCode(language.Id));
+
+                if (!string.IsNullOrWhiteSpace(language.Part2b))
+                {
+                    Assert.Equal(language.Id, LanguageCodeHelper.GetThreeLetterISOCode(language.Part2b));
+                }
+
+                if (!string.IsNullOrWhiteSpace(language.Part2t))
+                {
+                    Assert.Equal(language.Id, LanguageCodeHelper.GetThreeLetterISOCode(language.Part2t));
+                }
+            }
+        }
+
+        [Theory]
+        [InlineData("mrd", "mgp")]
+        [InlineData("shl", "mrh")]
+        public void RecentlyRetiredCodesKeepTheirReplacement(string source, string target)
+        {
+            var options = BasicResolver
+                .Select(LanguageCodeEntity.Alpha3);
+
+            var code = LanguageCodeHelper.Resolve(code: source, options: options);
+
+            Assert.Equal(target, code);
+        }
+
         [Theory]
         [InlineData("ru", "Russian")]
         [InlineData("uk", "Ukrainian")]
