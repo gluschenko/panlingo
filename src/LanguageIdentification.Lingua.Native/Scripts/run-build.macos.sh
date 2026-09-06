@@ -28,7 +28,7 @@ ls -R .
 cd "$workspace"
 
 echo "Build for MacOS on $ARCH";
-cargo build --release
+cargo build --release --locked
 
 ls -R
 

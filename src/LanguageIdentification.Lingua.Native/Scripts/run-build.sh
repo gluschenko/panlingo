@@ -25,7 +25,7 @@ ls -R .
 
 cd "$workspace"
 
-cargo build --release
+cargo build --release --locked
 
 ls -R .
 
@@ -36,4 +36,3 @@ cp liblingua.so ../../../../liblingua.$ARCH.so
 # Clean up
 rm -rf "$workspace"
 echo "Goodbye world";
-

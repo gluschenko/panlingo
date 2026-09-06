@@ -29,7 +29,7 @@ Get-ChildItem -Recurse -Path .
 Set-Location $workspace
 
 # Build for Windows
-cargo build --release
+cargo build --release --locked
 
 # List directory contents recursively
 Get-ChildItem -Recurse -Path .
