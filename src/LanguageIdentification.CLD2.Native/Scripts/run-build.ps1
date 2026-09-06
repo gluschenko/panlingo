@@ -42,11 +42,14 @@ Set-Location "build"
 Remove-Item -Path "*" -Recurse -Force
 # Build for Windows
 cmake .. -A $CMakeArch
-cmake --build .
+cmake --build . --config Release --parallel --verbose
 
 Get-ChildItem -Recurse
 
-Copy-Item -Path ".\Debug\cld2.dll" -Destination "..\..\..\libcld2.$ARCH.dll"
+if (-not (Test-Path ".\Release\cld2.dll")) {
+    throw "Release build did not produce cld2.dll"
+}
+Copy-Item -Path ".\Release\cld2.dll" -Destination "..\..\..\libcld2.$ARCH.dll"
 
 cd ../..
 Write-Output "Goodbye world"
