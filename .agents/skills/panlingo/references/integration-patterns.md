@@ -154,3 +154,19 @@ Useful cases:
 - Assert the normalized code you expose, not only the detector's raw value.
 - When platform support is conditional, test the guard path around `IsSupported()`.
 - For `FastText` and `MediaPipe`, test both bundled-model and explicit-model flows when the app supports both.
+
+## README Example
+
+The package README examples use the following minimal FastText setup:
+
+```csharp
+using Panlingo.LanguageIdentification.FastText;
+
+using var fastText = new FastTextDetector();
+fastText.LoadDefaultModel();
+
+var predictions = fastText.Predict(
+    text: "Привіт, як справи?",
+    count: 10
+);
+```
