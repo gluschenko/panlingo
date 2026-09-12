@@ -90,9 +90,9 @@ jobs:
         (steps.changes.outputs.src == 'true' || steps.changes-native.outputs.src == 'true') &&
         matrix.task.title == 'MediaPipe' && matrix.task.arch == 'arm64'
       run: |
-        sudo apt-get update
-        sudo apt-get install --reinstall -y ca-certificates ca-certificates-java
-        sudo update-ca-certificates
+        apt-get update
+        apt-get install --reinstall -y ca-certificates ca-certificates-java
+        update-ca-certificates
 
     - name: 🚀 Build ${{matrix.task.projectName}}.Native
       if: steps.changes.outputs.src == 'true' || steps.changes-native.outputs.src == 'true'
