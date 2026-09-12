@@ -26,7 +26,25 @@ cd "$workspace"
 
 dotnet run --file ./monkey-patch.cs
 
-bazel build -c opt --compilation_mode=opt \
+if [[ "$ARCH" == "arm64" ]]; then
+    # Bazel's Java downloader cannot validate the TLS chain served by
+    # gitlab.arm.com on the GitHub-hosted ARM runner. Download the archive
+    # with curl and let Bazel consume the verified file from its distdir.
+    kleidi_version="40a926833857fb64786e02f97703e42b1537cb57"
+    kleidi_archive="kleidiai-${kleidi_version}.zip"
+    kleidi_url="https://gitlab.arm.com/kleidi/kleidiai/-/archive/${kleidi_version}/${kleidi_archive}"
+    bazel_distdir="${RUNNER_TEMP:-/tmp}/bazel-distdir"
+
+    mkdir -p "$bazel_distdir"
+    curl --fail --location --retry 5 --retry-all-errors \
+        --output "$bazel_distdir/$kleidi_archive" \
+        "$kleidi_url"
+    bazel_repository_args=(--distdir="$bazel_distdir")
+else
+    bazel_repository_args=()
+fi
+
+bazel build "${bazel_repository_args[@]}" -c opt --compilation_mode=opt \
     --linkopt -s --strip always \
     --define MEDIAPIPE_DISABLE_GPU=1 \
     --define='absl=0' \
