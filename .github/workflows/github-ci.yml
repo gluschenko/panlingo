@@ -88,11 +88,11 @@ jobs:
     - name: Update CA certificates for MediaPipe ARM build
       if: >-
         (steps.changes.outputs.src == 'true' || steps.changes-native.outputs.src == 'true') &&
-        matrix.task.title == 'MediaPipe' && matrix.task.arch == 'arm64'
+        matrix.task.title == 'MediaPipe' && matrix.task.os == 'ubuntu-22.04-arm'
       run: |
-        apt-get update
-        apt-get install --reinstall -y ca-certificates ca-certificates-java
-        update-ca-certificates
+        sudo apt-get update
+        sudo apt-get install --reinstall -y ca-certificates ca-certificates-java
+        sudo update-ca-certificates
 
     - name: 🚀 Build ${{matrix.task.projectName}}.Native
       if: steps.changes.outputs.src == 'true' || steps.changes-native.outputs.src == 'true'
