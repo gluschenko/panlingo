@@ -14,6 +14,46 @@ Use this page after choosing `Panlingo.LanguageIdentification.Whatlang`.
 dotnet add package Panlingo.LanguageIdentification.Whatlang
 ```
 
+## README Example
+
+```csharp
+using Panlingo.LanguageIdentification.Whatlang;
+
+class Program
+{
+    static void Main()
+    {
+        using var whatlang = new WhatlangDetector();
+
+        var texts = new[]
+        {
+            "Hello, how are you?",
+            "Привіт, як справи?",
+            "Привет, как дела?",
+        };
+
+        var predictions = texts
+            .Select(x => new
+            {
+                Text = x,
+                Prediction = whatlang.PredictLanguage(x),
+            })
+            .ToArray();
+
+        foreach (var x in predictions)
+        {
+            Console.WriteLine(
+                $"Text: {x.Text}, " +
+                $"Language: {x.Prediction?.Language.ToString() ?? "NULL"}, " +
+                $"Probability: {x.Prediction?.Confidence.ToString() ?? "NULL"}, " +
+                $"IsReliable: {x.Prediction?.IsReliable.ToString() ?? "NULL"}, " +
+                $"Script: {x.Prediction?.Script.ToString() ?? "NULL"}"
+            );
+        }
+    }
+}
+```
+
 ## API Shape
 
 - Create the detector with `new WhatlangDetector()`.

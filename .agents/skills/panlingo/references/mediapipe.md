@@ -14,6 +14,57 @@ Use this page after choosing `Panlingo.LanguageIdentification.MediaPipe`.
 dotnet add package Panlingo.LanguageIdentification.MediaPipe
 ```
 
+## README Example
+
+```csharp
+using Panlingo.LanguageIdentification.MediaPipe;
+
+class Program
+{
+    static void Main()
+    {
+        using var mediaPipe = new MediaPipeDetector(
+            options: MediaPipeOptions.FromDefault()
+                .WithCpuNumThreads(4)
+        );
+
+        var predictions = mediaPipe.PredictLanguages("Привіт, як справи?");
+
+        foreach (var prediction in predictions)
+        {
+            Console.WriteLine(
+                $"Language: {prediction.Language}, " +
+                $"Probability: {prediction.Probability}"
+            );
+        }
+    }
+}
+```
+
+The README also demonstrates loading the bundled model, a model file, and a stream:
+
+```csharp
+using var mediaPipe = new MediaPipeDetector(
+    options: MediaPipeOptions.FromDefault()
+);
+```
+
+```csharp
+var modelPath = "/models/mediapipe_language_detector.tflite";
+using var mediaPipe = new MediaPipeDetector(
+    options: MediaPipeOptions.FromFile(modelPath)
+);
+```
+
+```csharp
+var modelPath = "/models/mediapipe_language_detector.tflite";
+using var stream = File.Open(modelPath, FileMode.Open);
+
+using var mediaPipe = new MediaPipeDetector(
+    options: MediaPipeOptions.FromStream(stream)
+);
+```
+
 ## API Shape
 
 - Build options with `MediaPipeOptions.FromDefault()`, `.FromFile(path)`, `.FromStream(stream)`, or `.FromData(bytes)`.

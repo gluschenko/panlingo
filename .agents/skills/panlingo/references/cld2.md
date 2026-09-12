@@ -14,6 +14,32 @@ Use this page after choosing `Panlingo.LanguageIdentification.CLD2`.
 dotnet add package Panlingo.LanguageIdentification.CLD2
 ```
 
+## README Example
+
+```csharp
+using Panlingo.LanguageIdentification.CLD2;
+
+class Program
+{
+    static void Main()
+    {
+        using var cld2 = new CLD2Detector();
+
+        var predictions = cld2.PredictLanguage("Привіт, як справи?");
+
+        foreach (var prediction in predictions)
+        {
+            Console.WriteLine(
+                $"Language: {prediction.Language}, " +
+                $"Probability: {prediction.Probability}, " +
+                $"IsReliable: {prediction.IsReliable}, " +
+                $"Proportion: {prediction.Proportion}"
+            );
+        }
+    }
+}
+```
+
 ## API Shape
 
 - Create the detector with `new CLD2Detector()`.

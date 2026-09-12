@@ -14,6 +14,48 @@ Use this page after choosing `Panlingo.LanguageCode` or when a detector's raw ou
 dotnet add package Panlingo.LanguageCode
 ```
 
+## README Examples
+
+```csharp
+var resolver = new LanguageCodeResolver()
+    .ToLowerAndTrim()
+    .ConvertFromIETF()
+    .ConvertFromDeprecatedCode()
+    .ReduceToMacrolanguage();
+```
+
+```csharp
+var options = new LanguageCodeResolver()
+    .Select(LanguageCodeEntity.Alpha3);
+
+string result = LanguageCodeHelper.Resolve("uk", options);
+// result => "ukr"
+```
+
+```csharp
+var options = new LanguageCodeResolver()
+    .Select(LanguageCodeEntity.EnglishName);
+
+string result = LanguageCodeHelper.Resolve("uk", options);
+// result => "Ukrainian"
+```
+
+```csharp
+var options = new LanguageCodeResolver()
+    .ConvertFromIETF();
+
+string result = LanguageCodeHelper.Resolve("en-US", options);
+// result => "en"
+```
+
+```csharp
+string result = LanguageCodeHelper.GetTwoLetterISOCode("rus");
+// result => "ru"
+
+string result = LanguageCodeHelper.GetThreeLetterISOCode("en");
+// result => "eng"
+```
+
 ## API Shape
 
 - Build a normalization pipeline with `LanguageCodeResolver`.

@@ -14,6 +14,51 @@ Use this page after choosing `Panlingo.LanguageIdentification.Lingua`.
 dotnet add package Panlingo.LanguageIdentification.Lingua
 ```
 
+## README Example
+
+```csharp
+using Panlingo.LanguageIdentification.Lingua;
+
+class Program
+{
+    static void Main()
+    {
+        using var linguaBuilder = new LinguaDetectorBuilder(Enum.GetValues<LinguaLanguage>())
+            .WithPreloadedLanguageModels()
+            .WithMinimumRelativeDistance(0.95)
+            .WithLowAccuracyMode();
+
+        using var lingua = linguaBuilder.Build();
+
+        var texts = new[]
+        {
+            "Hello, how are you?",
+            "Привіт, як справи?",
+            "Привет, как дела?",
+        };
+
+        var predictions = texts
+            .Select(x => new
+            {
+                Text = x,
+                Predictions = lingua.PredictLanguages(x),
+            })
+            .ToArray();
+
+        foreach (var x in predictions)
+        {
+            var prediction = x.Predictions.FirstOrDefault();
+
+            Console.WriteLine(
+                $"Text: {x.Text}, " +
+                $"Language: {prediction?.Language.ToString() ?? "NULL"}, " +
+                $"Probability: {prediction?.Confidence.ToString() ?? "NULL"}"
+            );
+        }
+    }
+}
+```
+
 ## API Shape
 
 - Build through `new LinguaDetectorBuilder(languages)` or `FromLanguages(languages)`.

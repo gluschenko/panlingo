@@ -26,6 +26,23 @@ Once the package is chosen, switch to the dedicated reference page:
 - `Lingua`: [lingua.md](lingua.md)
 - `LanguageCode`: [language-code.md](language-code.md)
 
+## README Example
+
+The package READMEs use the same basic install-first workflow. After selecting a
+package, start with its README installation command and then use the complete
+example in the linked detailed page.
+
+```sh
+dotnet add package Panlingo.LanguageIdentification.CLD3
+```
+
+```csharp
+using Panlingo.LanguageIdentification.CLD3;
+
+using var cld3 = new CLD3Detector(minNumBytes: 0, maxNumBytes: 512);
+var prediction = cld3.PredictLanguage("Привіт, як справи?");
+```
+
 ## Platform Heuristics
 
 - Prefer `CLD3`, `FastText`, or `Whatlang` when the app must cover Windows, Linux, and macOS across both `x64` and `arm64`.

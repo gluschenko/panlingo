@@ -72,6 +72,8 @@ After the package is chosen, read its dedicated page instead of relying on the s
 
 ## References
 
+- Every package-specific reference page contains a `README Example` section copied from the matching `README_*.md`. Read that example before proposing an integration so the API usage stays aligned with the repository documentation.
+
 - Read [references/package-selection.md](references/package-selection.md) for detector capabilities, platform tradeoffs, and package-selection heuristics.
 - Read [references/integration-patterns.md](references/integration-patterns.md) for production code patterns, normalization snippets, and testing guidance.
 - Read the model-specific pages once the package is chosen:

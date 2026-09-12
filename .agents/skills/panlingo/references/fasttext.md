@@ -14,6 +14,51 @@ Use this page after choosing `Panlingo.LanguageIdentification.FastText`.
 dotnet add package Panlingo.LanguageIdentification.FastText
 ```
 
+## README Example
+
+```csharp
+using Panlingo.LanguageIdentification.FastText;
+
+class Program
+{
+    static void Main()
+    {
+        using var fastText = new FastTextDetector();
+        fastText.LoadDefaultModel();
+
+        var predictions = fastText.Predict(
+            text: "Привіт, як справи?",
+            count: 10
+        );
+
+        foreach (var prediction in predictions)
+        {
+            Console.WriteLine($"{prediction.Label}: {prediction.Probability}");
+        }
+
+        var dimensions = fastText.GetModelDimensions();
+        var labels = fastText.GetLabels();
+    }
+}
+```
+
+Custom model loading from the README:
+
+```csharp
+using var fastText = new FastTextDetector();
+
+var modelPath = "/path/to/model/fasttext176.bin";
+fastText.LoadModel(modelPath);
+```
+
+```csharp
+using var fastText = new FastTextDetector();
+
+var modelPath = "/path/to/model/fasttext176.bin";
+using var stream = File.Open(modelPath, FileMode.Open);
+fastText.LoadModel(stream);
+```
+
 ## API Shape
 
 - Create the detector with `new FastTextDetector()`.

@@ -14,6 +14,42 @@ Use this page after choosing `Panlingo.LanguageIdentification.CLD3`.
 dotnet add package Panlingo.LanguageIdentification.CLD3
 ```
 
+## README Example
+
+```csharp
+using Panlingo.LanguageIdentification.CLD3;
+
+class Program
+{
+    static void Main()
+    {
+        using var cld3 = new CLD3Detector(minNumBytes: 0, maxNumBytes: 512);
+
+        var singlePrediction = cld3.PredictLanguage("Привіт, як справи?");
+
+        Console.WriteLine($"Language: {singlePrediction.Language}");
+        Console.WriteLine($"Probability: {singlePrediction.Probability}");
+        Console.WriteLine($"IsReliable: {singlePrediction.IsReliable}");
+        Console.WriteLine($"Proportion: {singlePrediction.Proportion}");
+
+        var predictions = cld3.PredictLanguages(
+            "Hello, how are you? Привіт, як справи? Привет, как дела?",
+            3
+        );
+
+        foreach (var prediction in predictions)
+        {
+            Console.WriteLine(
+                $"Language: {prediction.Language}, " +
+                $"Probability: {prediction.Probability}, " +
+                $"IsReliable: {prediction.IsReliable}, " +
+                $"Proportion: {prediction.Proportion}"
+            );
+        }
+    }
+}
+```
+
 ## API Shape
 
 - Create the detector with `new CLD3Detector(minNumBytes, maxNumBytes)`.
