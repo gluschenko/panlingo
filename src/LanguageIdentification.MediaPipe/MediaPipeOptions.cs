@@ -6,6 +6,7 @@ namespace Panlingo.LanguageIdentification.MediaPipe
     {
         public int ResultCount { get; private set; } = 10;
         public float ScoreThreshold { get; private set; } = 0.0f;
+        public int CpuNumThreads { get; private set; } = -1;
         public string? ModelPath { get; private set; } = null;
         public Stream? ModelStream { get; private set; } = null;
         public byte[]? ModelData { get; private set; } = null;
@@ -72,6 +73,21 @@ namespace Panlingo.LanguageIdentification.MediaPipe
         public MediaPipeOptions WithScoreThreshold(float scoreThreshold)
         {
             ScoreThreshold = scoreThreshold;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the number of CPU threads used by the TensorFlow Lite interpreter.
+        /// A value of -1 keeps the native default.
+        /// </summary>
+        public MediaPipeOptions WithCpuNumThreads(int cpuNumThreads)
+        {
+            if (cpuNumThreads < -1)
+            {
+                throw new System.ArgumentOutOfRangeException(nameof(cpuNumThreads), cpuNumThreads, "The value must be -1 or greater.");
+            }
+
+            CpuNumThreads = cpuNumThreads;
             return this;
         }
     }

@@ -49,6 +49,10 @@
   </Target>
 
   <ItemGroup>
+    <Compile Remove="Native\monkey-patch.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\.dockerignore" Link=".dockerignore">
       <DependentUpon>$(DockerDefaultDockerfile)</DependentUpon>
     </None>
@@ -97,6 +101,7 @@
   <ItemGroup>
     <None Include="..\..\README_MEDIAPIPE.md" Pack="true" PackagePath="\" />
     <None Include="..\..\LICENSE_MEDIAPIPE" Pack="true" PackagePath="\" />
+    <None Include="Native\monkey-patch.cs" />
   </ItemGroup>
 
 </Project>

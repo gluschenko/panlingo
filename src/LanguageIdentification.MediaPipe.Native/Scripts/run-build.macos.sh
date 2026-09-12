@@ -23,11 +23,8 @@ source venv/bin/activate
 python --version
 python -m pip install --upgrade pip
 
-npm install -g zx
-
 echo -n "Bazel: " && bazel version
-echo -n "Node: " && node --version
-echo -n "npm: " && npm --version
+echo -n ".NET: " && dotnet --version
 echo -n "clang: " && clang --version
 
 # Configure JAVA_HOME
@@ -46,7 +43,7 @@ cp -a Native/. "$workspace"/
 
 cd "$workspace"
 
-zx ./monkey-patch.mjs
+dotnet run --file ./monkey-patch.cs
 
 bazel build -c opt --compilation_mode=opt \
     --copt=-DHAVE_FDOPEN \

@@ -9,6 +9,18 @@ public class MediaPipeTests : IAsyncLifetime
     private readonly string _modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models/mediapipe_language_detector.tflite");
 
     [Fact]
+    public void MediaPipeCpuNumThreadsOptionsAreValidated()
+    {
+        var options = MediaPipeOptions.FromDefault().WithCpuNumThreads(4);
+
+        Assert.Equal(4, options.CpuNumThreads);
+        Assert.Equal(-1, MediaPipeOptions.FromDefault().CpuNumThreads);
+        Assert.Throws<ArgumentOutOfRangeException>(
+            () => MediaPipeOptions.FromDefault().WithCpuNumThreads(-2)
+        );
+    }
+
+    [Fact]
     public void MediaPipeCheckPlatformSupport()
     {
         var isSupported = RuntimeInformation.OSArchitecture switch
