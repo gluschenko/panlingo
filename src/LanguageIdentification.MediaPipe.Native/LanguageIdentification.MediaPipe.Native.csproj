@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.8.1</Version>
+    <Version>0.8.2</Version>
     <PackageId>Panlingo.LanguageIdentification.MediaPipe.Native</PackageId>
     <AssemblyName>Panlingo.LanguageIdentification.MediaPipe.Native</AssemblyName>
     <RootNamespace>Panlingo.LanguageIdentification.MediaPipe.Native</RootNamespace>
@@ -47,6 +47,10 @@
     <Exec Command="docker run --name $(DockerContainerName) -v $(ThirdPartyAbsolutePath):/repo/third_party/mediapipe/ -v $(CurrentAbsolutePath):/repo/src/LanguageIdentification.MediaPipe.Native $(DockerImageName)" />
     <Exec Command="docker rm $(DockerContainerName) --force" />
   </Target>
+
+  <ItemGroup>
+    <Compile Remove="Native\monkey-patch.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\.dockerignore" Link=".dockerignore">
@@ -97,6 +101,7 @@
   <ItemGroup>
     <None Include="..\..\README_MEDIAPIPE.md" Pack="true" PackagePath="\" />
     <None Include="..\..\LICENSE_MEDIAPIPE" Pack="true" PackagePath="\" />
+    <None Include="Native\monkey-patch.cs" />
   </ItemGroup>
 
 </Project>

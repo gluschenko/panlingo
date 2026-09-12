@@ -22,11 +22,8 @@ python --version
 python -m venv venv
 .\venv\Scripts\activate
 
-npm install -g zx
-
 bazel version
-node --version
-npm --version
+dotnet --version
 clang --version
 
 $workspace = "obj/native_build_temp"
@@ -38,7 +35,10 @@ Copy-Item -Recurse -Force ./Native/* $workspace/
 
 Set-Location $workspace
 
-zx ./monkey-patch.mjs
+dotnet run --file ./monkey-patch.cs
+if ($LASTEXITCODE -ne 0) {
+    throw "MediaPipe monkey patcher failed with exit code $LASTEXITCODE"
+}
 
 bazel build -c opt --compilation_mode=opt `
     --linkopt -s --strip always `

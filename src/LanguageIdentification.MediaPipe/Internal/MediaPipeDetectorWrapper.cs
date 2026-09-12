@@ -52,11 +52,17 @@ namespace Panlingo.LanguageIdentification.MediaPipe.Internal
     {
         public readonly BaseOptions BaseOptions;
         public readonly ClassifierOptions ClassifierOptions;
+        public readonly int CpuNumThreads;
 
-        public LanguageDetectorOptions(BaseOptions baseOptions, ClassifierOptions classifierOptions)
+        public LanguageDetectorOptions(
+            BaseOptions baseOptions,
+            ClassifierOptions classifierOptions,
+            int cpuNumThreads
+        )
         {
             BaseOptions = baseOptions;
             ClassifierOptions = classifierOptions;
+            CpuNumThreads = cpuNumThreads;
         }
     }
 

@@ -1,12 +1,181 @@
 ﻿using System.Runtime.InteropServices;
+using System.Diagnostics;
 using Panlingo.LanguageIdentification.MediaPipe;
 using Panlingo.LanguageIdentification.Tests.Helpers;
+using Xunit.Abstractions;
 
 namespace Panlingo.LanguageIdentification.Tests;
 
 public class MediaPipeTests : IAsyncLifetime
 {
+    private const int TimingIterations = 40;
+    private const int TimingRounds = 5;
+
     private readonly string _modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models/mediapipe_language_detector.tflite");
+    private readonly ITestOutputHelper _output;
+
+    public MediaPipeTests(ITestOutputHelper output)
+    {
+        _output = output;
+    }
+
+    [Fact]
+    public void MediaPipeCpuNumThreadsOptionsAreValidated()
+    {
+        var options = MediaPipeOptions.FromDefault().WithCpuNumThreads(4);
+
+        Assert.Equal(4, options.CpuNumThreads);
+        Assert.Equal(-1, MediaPipeOptions.FromDefault().CpuNumThreads);
+        Assert.Throws<ArgumentOutOfRangeException>(
+            () => MediaPipeOptions.FromDefault().WithCpuNumThreads(-2)
+        );
+    }
+
+    public static IEnumerable<object[]> CpuNumThreadsValues()
+    {
+        yield return new object[] { -1 };
+        yield return new object[] { 1 };
+        yield return new object[] { 2 };
+        yield return new object[] { 4 };
+    }
+
+    public static IReadOnlyList<(string ExpectedLanguage, string Text)> InferenceTexts { get; } = new[]
+    {
+        ("en", "The quick brown fox jumps over the lazy dog."),
+        ("en", "Language identification should continue to work when the interpreter uses multiple CPU threads."),
+        ("en", "This is a longer English sentence used to verify MediaPipe inference."),
+        ("en", "A reliable detector must return a prediction for ordinary application text."),
+        ("en", "The package is tested with default models and several native interpreter configurations."),
+        ("fr", "Le détecteur doit continuer à fonctionner avec plusieurs textes et plusieurs threads du processeur."),
+        ("fr", "Cette phrase française vérifie que l'inférence MediaPipe produit une prédiction fiable."),
+        ("de", "Der Detektor muss mit verschiedenen Texten und mehreren Prozessorthreads funktionieren."),
+        ("de", "Dieser deutsche Satz überprüft die zuverlässige MediaPipe-Inferenz."),
+        ("es", "El detector debe funcionar correctamente con diferentes textos y varios hilos del procesador."),
+        ("es", "Esta frase en español comprueba que la inferencia de MediaPipe produce una predicción fiable."),
+        ("it", "Il rilevatore deve funzionare correttamente con testi diversi e più thread del processore."),
+        ("it", "Questa frase italiana verifica che l'inferenza di MediaPipe produca una previsione affidabile."),
+        ("pt", "O detector deve funcionar corretamente com textos diferentes e várias threads do processador."),
+        ("pt", "Esta frase em português verifica se a inferência do MediaPipe produz uma previsão confiável."),
+        ("pl", "Detektor powinien poprawnie działać z różnymi tekstami i wieloma wątkami procesora."),
+        ("pl", "To polskie zdanie sprawdza, czy inferencja MediaPipe zwraca wiarygodną prognozę."),
+        ("tr", "Algılayıcı farklı metinlerle ve birden fazla işlemci iş parçacığıyla çalışmalıdır."),
+        ("tr", "Bu Türkçe cümle MediaPipe çıkarımının güvenilir bir tahmin ürettiğini doğrular."),
+        ("ar", "يجب أن يعمل الكاشف بشكل صحيح مع نصوص مختلفة ومع عدة خيوط للمعالج."),
+        ("ar", "تتحقق هذه الجملة العربية من أن استدلال MediaPipe ينتج تنبؤاً موثوقاً."),
+        ("uk", "Швидка бура лисиця перестрибує через ледачого собаку."),
+        ("uk", "Визначення мови має продовжувати працювати під час використання кількох потоків CPU."),
+        ("uk", "Це довше українське речення для перевірки інференсу MediaPipe."),
+        ("uk", "Надійний детектор повинен повертати прогноз для звичайного тексту застосунку."),
+        ("uk", "Пакет перевіряється з типовою моделлю та кількома конфігураціями нативного інтерпретатора."),
+        ("zh", "语言检测器应该能够使用多个处理器线程处理不同的文本。"),
+        ("zh", "这句话用于验证 MediaPipe 推理能够返回可靠的预测结果。"),
+        ("ja", "検出器は複数のプロセッサスレッドとさまざまなテキストで正常に動作する必要があります。"),
+        ("ja", "この日本語の文章はMediaPipe推論が信頼できる予測を返すことを確認します。"),
+    };
+
+    [SkippableTheory]
+    [MemberData(nameof(CpuNumThreadsValues))]
+    public void MediaPipeInferenceWorksWithConfiguredCpuNumThreads(int cpuNumThreads)
+    {
+        Skip.IfNot(MediaPipeDetector.IsSupported());
+
+        using var mediaPipe = new MediaPipeDetector(
+            options: MediaPipeOptions.FromDefault()
+                .WithResultCount(3)
+                .WithCpuNumThreads(cpuNumThreads)
+        );
+
+        foreach (var testCase in InferenceTexts)
+        {
+            var predictions = mediaPipe.PredictLanguages(testCase.Text).ToArray();
+
+            Assert.NotEmpty(predictions);
+            Assert.Equal(testCase.ExpectedLanguage, predictions[0].Language);
+            Assert.All(
+                predictions,
+                prediction => Assert.InRange(prediction.Probability, 0.0, 1.0)
+            );
+        }
+    }
+
+    [SkippableFact]
+    [Trait("Category", "Performance")]
+    public void MediaPipeCpuNumThreadsTimingShowsConfiguredModes()
+    {
+        Skip.IfNot(MediaPipeDetector.IsSupported());
+        Skip.If(
+            Environment.ProcessorCount == 1,
+            "Timing comparison requires more than one logical processor."
+        );
+
+        var machineThreadCount = Environment.ProcessorCount;
+
+        using var singleThreadDetector = new MediaPipeDetector(
+            MediaPipeOptions.FromDefault()
+                .WithResultCount(1)
+                .WithCpuNumThreads(1)
+        );
+        using var multiThreadDetector = new MediaPipeDetector(
+            MediaPipeOptions.FromDefault()
+                .WithResultCount(1)
+                .WithCpuNumThreads(machineThreadCount)
+        );
+
+        var texts = InferenceTexts.Select(testCase => testCase.Text).ToArray();
+
+        // Warm up model execution and JIT before measuring either mode.
+        RunInference(singleThreadDetector, texts, iterations: 2);
+        RunInference(multiThreadDetector, texts, iterations: 2);
+
+        var singleThreadTimings = MeasureInference(singleThreadDetector, texts);
+        var multiThreadTimings = MeasureInference(multiThreadDetector, texts);
+        var singleThreadMedian = Median(singleThreadTimings);
+        var multiThreadMedian = Median(multiThreadTimings);
+        var speedup = singleThreadMedian / multiThreadMedian;
+
+        _output.WriteLine($"CpuNumThreads=1 timings (ms): {string.Join(", ", singleThreadTimings.Select(x => x.ToString("F1")))}");
+        _output.WriteLine($"CpuNumThreads={machineThreadCount} timings (ms): {string.Join(", ", multiThreadTimings.Select(x => x.ToString("F1")))}");
+        _output.WriteLine($"Median speedup (1 thread / {machineThreadCount} threads): {speedup:F2}x");
+
+        Assert.All(singleThreadTimings, timing => Assert.True(timing > 0));
+        Assert.All(multiThreadTimings, timing => Assert.True(timing > 0));
+    }
+
+    private static double[] MeasureInference(MediaPipeDetector detector, string[] texts)
+    {
+        var timings = new double[TimingRounds];
+
+        for (var round = 0; round < timings.Length; round++)
+        {
+            var stopwatch = Stopwatch.StartNew();
+            RunInference(detector, texts, TimingIterations);
+            stopwatch.Stop();
+            timings[round] = stopwatch.Elapsed.TotalMilliseconds;
+        }
+
+        return timings;
+    }
+
+    private static void RunInference(MediaPipeDetector detector, string[] texts, int iterations)
+    {
+        for (var iteration = 0; iteration < iterations; iteration++)
+        {
+            foreach (var text in texts)
+            {
+                var predictions = detector.PredictLanguages(text).ToArray();
+                if (predictions.Length == 0)
+                {
+                    throw new InvalidOperationException("MediaPipe returned no predictions during timing measurement.");
+                }
+            }
+        }
+    }
+
+    private static double Median(IEnumerable<double> values)
+    {
+        var sorted = values.OrderBy(value => value).ToArray();
+        return sorted[sorted.Length / 2];
+    }
 
     [Fact]
     public void MediaPipeCheckPlatformSupport()

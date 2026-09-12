@@ -1,0 +1,4 @@
+interface:
+  display_name: "Panlingo"
+  short_description: "Use Panlingo in .NET apps"
+  default_prompt: "Use $panlingo to integrate Panlingo language detection or language-code normalization into this .NET project."

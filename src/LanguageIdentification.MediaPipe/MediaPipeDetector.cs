@@ -142,7 +142,8 @@ namespace Panlingo.LanguageIdentification.MediaPipe
                     classifierOptions: new ClassifierOptions(
                         resultCount: options.ResultCount,
                         scoreThreshold: options.ScoreThreshold
-                    )
+                    ),
+                    cpuNumThreads: options.CpuNumThreads
                 );
 
                 _detector = MediaPipeDetectorWrapper.CreateLanguageDetector(ref nativeOptions, IntPtr.Zero);

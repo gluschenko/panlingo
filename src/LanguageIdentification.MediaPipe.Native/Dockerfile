@@ -14,22 +14,16 @@ RUN bash ./Scripts/setup-build.sh
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install node.js source
-RUN apt-get update && apt-get install -y ca-certificates curl gnupg && \
-    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
-    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         gcc g++ \
         ca-certificates \
+        ca-certificates-java \
         curl \
         ffmpeg \
         git \
         wget \
         unzip \
-        nodejs \
-        # npm \
         python3-dev \
         python3-opencv \
         python3-pip \
@@ -40,7 +34,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libopencv-calib3d-dev \
         libopencv-features2d-dev \
         software-properties-common && \
+    update-ca-certificates && \
     apt-get update && apt-get install -y openjdk-8-jdk && \
+    update-ca-certificates && \
     apt-get install -y mesa-common-dev libegl1-mesa-dev libgles2-mesa-dev && \
     apt-get install -y mesa-utils && \
     apt-get clean && \
@@ -72,8 +68,11 @@ RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gp
 
 RUN apt-get update -y && apt-get install bazel-6.1.1 -y
 
-# Install ZX
-RUN npm install -g zx
+# The native source patcher is a .NET 10 file-based C# app.
+RUN curl -fsSL https://dot.net/v1/dotnet-install.sh -o /tmp/dotnet-install.sh && \
+    bash /tmp/dotnet-install.sh --channel 10.0 --install-dir /usr/share/dotnet --no-path && \
+    ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet && \
+    rm /tmp/dotnet-install.sh
 
 COPY . .
 
