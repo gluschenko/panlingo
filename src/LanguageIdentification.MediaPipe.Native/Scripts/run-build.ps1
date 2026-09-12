@@ -36,6 +36,9 @@ Copy-Item -Recurse -Force ./Native/* $workspace/
 Set-Location $workspace
 
 dotnet run --file ./monkey-patch.cs
+if ($LASTEXITCODE -ne 0) {
+    throw "MediaPipe monkey patcher failed with exit code $LASTEXITCODE"
+}
 
 bazel build -c opt --compilation_mode=opt `
     --linkopt -s --strip always `

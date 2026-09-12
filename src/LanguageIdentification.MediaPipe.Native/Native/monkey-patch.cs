@@ -133,12 +133,12 @@ PatchFile(
     "tasks/cc/text/language_detector/language_detector.cc",
     new Patch(
         """
-            language_detector_result.push_back(
+        language_detector_result.push_back(
                 {.language_code = *category.category_name,
                  .probability = category.score});
         """,
-        $$"""
-            LanguageDetectorPrediction prediction;
+        """
+        LanguageDetectorPrediction prediction;
             prediction.language_code = *category.category_name;
             prediction.probability = category.score;
             language_detector_result.push_back(prediction);
