@@ -21,7 +21,7 @@ void PatchFile(string suffix, params Patch[] patches)
 
     foreach (var patch in patches)
     {
-        var matchCount = CountOccurrences(content, patch.Pattern);
+        var matchCount = CountTrimmedLineMatches(content, patch.Pattern);
         if (matchCount != patch.ExpectedMatches)
         {
             throw new InvalidOperationException(
@@ -30,7 +30,7 @@ void PatchFile(string suffix, params Patch[] patches)
             );
         }
 
-        content = content.Replace(patch.Pattern, patch.Replacement, StringComparison.Ordinal);
+        content = ReplaceTrimmedLineMatches(content, patch.Pattern, patch.Replacement);
     }
 
     if (content == original.Replace("\r\n", "\n"))
@@ -45,22 +45,70 @@ void PatchFile(string suffix, params Patch[] patches)
     Console.WriteLine($"Patched: {Normalize(file)}");
 }
 
-int CountOccurrences(string content, string pattern)
+int CountTrimmedLineMatches(string content, string pattern)
 {
+    var contentLines = content.Split('\n');
+    var patternLines = GetBlockLines(pattern);
     var count = 0;
-    var startIndex = 0;
 
-    while (true)
+    for (var i = 0; i <= contentLines.Length - patternLines.Length; i++)
     {
-        var matchIndex = content.IndexOf(pattern, startIndex, StringComparison.Ordinal);
-        if (matchIndex < 0)
+        if (LinesMatch(contentLines, i, patternLines))
         {
-            return count;
+            count++;
         }
-
-        count++;
-        startIndex = matchIndex + pattern.Length;
     }
+
+    return count;
+}
+
+string ReplaceTrimmedLineMatches(string content, string pattern, string replacement)
+{
+    var contentLines = content.Split('\n').ToList();
+    var patternLines = GetBlockLines(pattern);
+    var replacementLines = GetBlockLines(replacement);
+    var matches = new List<int>();
+
+    for (var i = 0; i <= contentLines.Count - patternLines.Length; i++)
+    {
+        if (LinesMatch(contentLines.ToArray(), i, patternLines))
+        {
+            matches.Add(i);
+        }
+    }
+
+    for (var match = matches.Count - 1; match >= 0; match--)
+    {
+        contentLines.RemoveRange(matches[match], patternLines.Length);
+        contentLines.InsertRange(matches[match], replacementLines);
+    }
+
+    return string.Join('\n', contentLines);
+}
+
+string[] GetBlockLines(string block) => block
+    .Replace("\r\n", "\n")
+    .Split('\n')
+    .SkipWhile(line => string.IsNullOrWhiteSpace(line))
+    .Reverse()
+    .SkipWhile(line => string.IsNullOrWhiteSpace(line))
+    .Reverse()
+    .ToArray();
+
+bool LinesMatch(string[] contentLines, int start, string[] patternLines)
+{
+    for (var i = 0; i < patternLines.Length; i++)
+    {
+        if (!string.Equals(
+                contentLines[start + i].Trim(),
+                patternLines[i].Trim(),
+                StringComparison.Ordinal))
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 void VerifyMarker(string suffix, string marker)
@@ -133,12 +181,12 @@ PatchFile(
     "tasks/cc/text/language_detector/language_detector.cc",
     new Patch(
         """
-        language_detector_result.push_back(
+            language_detector_result.push_back(
                 {.language_code = *category.category_name,
                  .probability = category.score});
         """,
         """
-        LanguageDetectorPrediction prediction;
+            LanguageDetectorPrediction prediction;
             prediction.language_code = *category.category_name;
             prediction.probability = category.score;
             language_detector_result.push_back(prediction);
