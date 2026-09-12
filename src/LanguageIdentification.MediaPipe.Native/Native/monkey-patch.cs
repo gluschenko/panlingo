@@ -21,7 +21,7 @@ void PatchFile(string suffix, params Patch[] patches)
 
     foreach (var patch in patches)
     {
-        var matchCount = CountTrimmedLineMatches(content, patch.Pattern);
+        var matchCount = CountMatches(content, patch.Pattern);
         if (matchCount != patch.ExpectedMatches)
         {
             throw new InvalidOperationException(
@@ -30,7 +30,7 @@ void PatchFile(string suffix, params Patch[] patches)
             );
         }
 
-        content = ReplaceTrimmedLineMatches(content, patch.Pattern, patch.Replacement);
+        content = ReplaceMatches(content, patch.Pattern, patch.Replacement);
     }
 
     if (content == original.Replace("\r\n", "\n"))
@@ -45,38 +45,36 @@ void PatchFile(string suffix, params Patch[] patches)
     Console.WriteLine($"Patched: {Normalize(file)}");
 }
 
-int CountTrimmedLineMatches(string content, string pattern)
+int CountMatches(string content, string pattern)
 {
-    var contentLines = content.Split('\n');
     var patternLines = GetBlockLines(pattern);
-    var count = 0;
 
-    for (var i = 0; i <= contentLines.Length - patternLines.Length; i++)
+    if (patternLines.Length == 1)
     {
-        if (LinesMatch(contentLines, i, patternLines))
-        {
-            count++;
-        }
+        return CountOccurrences(content, patternLines[0].Trim());
     }
 
+    var contentLines = content.Split('\n');
+    var count = 0;
+    for (var i = 0; i <= contentLines.Length - patternLines.Length; i++)
+        if (LinesMatch(contentLines, i, patternLines)) count++;
     return count;
 }
 
-string ReplaceTrimmedLineMatches(string content, string pattern, string replacement)
+string ReplaceMatches(string content, string pattern, string replacement)
 {
-    var contentLines = content.Split('\n').ToList();
     var patternLines = GetBlockLines(pattern);
+    if (patternLines.Length == 1)
+        return content.Replace(
+            patternLines[0].Trim(),
+            string.Join('\n', GetBlockLines(replacement)),
+            StringComparison.Ordinal);
+
+    var contentLines = content.Split('\n').ToList();
     var replacementLines = GetBlockLines(replacement);
     var matches = new List<int>();
-
     for (var i = 0; i <= contentLines.Count - patternLines.Length; i++)
-    {
-        if (LinesMatch(contentLines.ToArray(), i, patternLines))
-        {
-            matches.Add(i);
-        }
-    }
-
+        if (LinesMatch(contentLines.ToArray(), i, patternLines)) matches.Add(i);
     for (var match = matches.Count - 1; match >= 0; match--)
     {
         contentLines.RemoveRange(matches[match], patternLines.Length);
@@ -84,6 +82,14 @@ string ReplaceTrimmedLineMatches(string content, string pattern, string replacem
     }
 
     return string.Join('\n', contentLines);
+}
+
+int CountOccurrences(string content, string pattern)
+{
+    var count = 0;
+    for (var index = 0; (index = content.IndexOf(pattern, index, StringComparison.Ordinal)) >= 0; index += pattern.Length)
+        count++;
+    return count;
 }
 
 string[] GetBlockLines(string block) => block
