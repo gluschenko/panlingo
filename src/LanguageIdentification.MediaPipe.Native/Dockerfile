@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         gcc g++ \
         ca-certificates \
+        ca-certificates-java \
         curl \
         ffmpeg \
         git \
@@ -33,7 +34,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libopencv-calib3d-dev \
         libopencv-features2d-dev \
         software-properties-common && \
+    update-ca-certificates && \
     apt-get update && apt-get install -y openjdk-8-jdk && \
+    update-ca-certificates && \
     apt-get install -y mesa-common-dev libegl1-mesa-dev libgles2-mesa-dev && \
     apt-get install -y mesa-utils && \
     apt-get clean && \
